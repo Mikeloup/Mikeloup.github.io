@@ -13,6 +13,35 @@
     });
   }
 
+  // --- Menus déroulants (Émissions / Thèmes) -------------------------------
+  var menuBtns = [].slice.call(document.querySelectorAll('.menu-btn'));
+  var closeMenus = function (except) {
+    menuBtns.forEach(function (b) {
+      if (b === except) return;
+      b.setAttribute('aria-expanded', 'false');
+      var panel = document.getElementById(b.getAttribute('aria-controls'));
+      if (panel) panel.hidden = true;
+    });
+  };
+  menuBtns.forEach(function (btn) {
+    var panel = document.getElementById(btn.getAttribute('aria-controls'));
+    if (!panel) return;
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var open = btn.getAttribute('aria-expanded') === 'true';
+      closeMenus(btn);
+      btn.setAttribute('aria-expanded', String(!open));
+      panel.hidden = open;
+    });
+    panel.addEventListener('click', function (e) { e.stopPropagation(); });
+  });
+  if (menuBtns.length) {
+    document.addEventListener('click', function () { closeMenus(null); });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeMenus(null);
+    });
+  }
+
   // --- Lecteur YouTube différé (chargé au clic, pas au chargement) ----------
   var player = document.querySelector('.player');
   if (player) {

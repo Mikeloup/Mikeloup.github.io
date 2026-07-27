@@ -69,10 +69,8 @@ async function collectFromApi(config) {
   log(`  ${channel.title} — ${channel.videoCount} vidéos, ${channel.subscribers} abonnés`);
 
   log('Playlists…');
-  let playlists = await yt.fetchPlaylists(channel.id);
-  const exclude = new Set((config.playlists?.exclude || []).map((x) => String(x).trim()));
-  playlists = playlists.filter((p) => !exclude.has(p.id) && !exclude.has(p.title));
-  log(`  ${playlists.length} playlist(s) retenue(s)`);
+  const playlists = await yt.fetchPlaylists(channel.id);
+  log(`  ${playlists.length} playlist(s) trouvée(s)`);
 
   log('Contenu des playlists…');
   for (const p of playlists) {
@@ -128,34 +126,73 @@ async function collectData(config) {
 
 // --- Mise en forme des données -----------------------------------------------
 
+/** Clé de comparaison insensible à la casse, aux accents et aux espaces. */
+function normKey(str = '') {
+  return String(str)
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase().replace(/\s+/g, ' ').trim();
+}
+
 function buildModel(config, data) {
   const byId = new Map(data.videos.map((v) => [
     v.id,
     { ...v, description: cleanDescription(v.description, v.title), playlists: [] },
   ]));
 
-  // Ordre des rubriques : celui de config.playlists.order d'abord, puis YouTube.
+  // 1. Playlists exclues par la configuration (titre ou identifiant).
+  const excluded = new Set((config.playlists?.exclude || []).map(normKey));
+  let playlists = data.playlists.filter((p) => !excluded.has(normKey(p.title)) && !excluded.has(p.id));
+  if (playlists.length !== data.playlists.length) {
+    log(`${data.playlists.length - playlists.length} playlist(s) exclue(s) par la configuration.`);
+  }
+
+  // 2. Fusion des playlists qui ne diffèrent que par la casse ou les accents.
+  if (config.playlists?.mergeDuplicates !== false) {
+    const merged = new Map();
+    for (const p of playlists) {
+      const key = normKey(p.title);
+      const found = merged.get(key);
+      if (!found) {
+        merged.set(key, { ...p, videoIds: [...p.videoIds] });
+      } else {
+        found.videoIds.push(...p.videoIds);
+        if ((p.description || '').length > (found.description || '').length) found.description = p.description;
+        if (!found.thumbnail) found.thumbnail = p.thumbnail;
+      }
+    }
+    const before = playlists.length;
+    playlists = [...merged.values()].map((p) => ({ ...p, videoIds: [...new Set(p.videoIds)] }));
+    if (before !== playlists.length) log(`${before - playlists.length} playlist(s) en doublon fusionnée(s).`);
+  }
+
+  // 3. Ordre : `order` d'abord, puis activité la plus récente.
   const order = config.playlists?.order || [];
   const rank = (p) => {
-    const i = order.findIndex((o) => o === p.id || o === p.title);
+    const i = order.findIndex((o) => normKey(o) === normKey(p.title) || o === p.id);
     return i === -1 ? order.length + 1 : i;
   };
 
-  const categories = data.playlists
+  const themeKeys = new Set((config.groups?.themes?.playlists || []).map(normKey));
+
+  const categories = playlists
     .map((p) => {
       const videos = p.videoIds
         .map((id) => byId.get(id))
         .filter(Boolean)
-        .sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
-      return { ...p, slug: slugify(p.title), videos };
+        .sort((a2, b2) => new Date(b2.publishedAt) - new Date(a2.publishedAt));
+      return {
+        ...p,
+        slug: slugify(p.title),
+        group: themeKeys.has(normKey(p.title)) ? 'themes' : 'shows',
+        videos,
+      };
     })
     .filter((c) => c.videos.length >= (config.playlists?.minVideos ?? 1))
-    // Rubriques les plus récemment alimentées en premier ; `order` reste prioritaire.
-    .sort((a, b) => rank(a) - rank(b)
-      || new Date(b.videos[0]?.publishedAt || 0) - new Date(a.videos[0]?.publishedAt || 0)
-      || b.videos.length - a.videos.length);
+    .sort((a2, b2) => rank(a2) - rank(b2)
+      || new Date(b2.videos[0]?.publishedAt || 0) - new Date(a2.videos[0]?.publishedAt || 0)
+      || b2.videos.length - a2.videos.length);
 
-  // Slugs uniques
+  // 4. Slugs uniques
   const seen = new Map();
   for (const c of categories) {
     const n = (seen.get(c.slug) || 0) + 1;
@@ -163,16 +200,33 @@ function buildModel(config, data) {
     if (n > 1) c.slug = `${c.slug}-${n}`;
   }
 
-  // Rattache chaque vidéo à ses rubriques (ordre = ordre des rubriques).
-  for (const c of categories) {
-    for (const v of c.videos) v.playlists.push({ id: c.id, title: c.title, slug: c.slug });
+  // 5. Rattachement des vidéos à leurs rubriques : une émission d'abord,
+  //    pour que l'étiquette affichée sur une vignette soit le rendez-vous.
+  const ordered = [...categories].sort((a2, b2) => (a2.group === 'shows' ? 0 : 1) - (b2.group === 'shows' ? 0 : 1));
+  for (const c of ordered) {
+    for (const v of c.videos) v.playlists.push({ id: c.id, title: c.title, slug: c.slug, group: c.group });
   }
 
   const allVideos = [...byId.values()]
     .filter((v) => !v.isShort || v.playlists.length)
-    .sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
+    .sort((a2, b2) => new Date(b2.publishedAt) - new Date(a2.publishedAt));
 
-  return { channel: data.channel, categories, allVideos, byId };
+  const menuMin = config.playlists?.menuMinVideos ?? 1;
+  const shows = categories.filter((c) => c.group === 'shows');
+  const themes = categories.filter((c) => c.group === 'themes');
+  // Dans les menus et les index, l'ordre alphabétique est le plus lisible ;
+  // l'ordre par activité récente reste celui de la page d'accueil.
+  const alpha = (list) => [...list].sort((a2, b2) => a2.title.localeCompare(b2.title, 'fr', { sensitivity: 'base' }));
+  const nav = {
+    shows,
+    themes,
+    showsAZ: alpha(shows),
+    themesAZ: alpha(themes),
+    menuShows: alpha(shows.filter((c) => c.videos.length >= menuMin)),
+    menuThemes: alpha(themes.filter((c) => c.videos.length >= menuMin)),
+  };
+
+  return { channel: data.channel, categories, allVideos, byId, nav };
 }
 
 // --- Fichiers annexes --------------------------------------------------------
@@ -217,31 +271,37 @@ async function main() {
   config.siteUrl = config.siteUrl.replace(/\/$/, '');
 
   const data = await collectData(config);
-  const { categories, allVideos } = buildModel(config, data);
+  const { categories, allVideos, nav } = buildModel(config, data);
 
   if (!allVideos.length) throw new Error('Aucune vidéo récupérée : build interrompu.');
-  log(`${allVideos.length} vidéos, ${categories.length} rubriques.`);
+  log(`${allVideos.length} vidéos, ${categories.length} rubriques (${nav.shows.length} émissions, ${nav.themes.length} thèmes).`);
 
   await fs.rm(DIST, { recursive: true, force: true });
   await fs.mkdir(DIST, { recursive: true });
 
-  const ctx = { config, categories, buildTime };
+  const ctx = { config, categories, nav, buildTime };
   const urls = [];
 
   // Accueil
   await writePage('/', R.homePage({ ...ctx, latest: allVideos }));
   urls.push({ loc: '/', freq: 'daily', priority: '1.0', lastmod: allVideos[0]?.publishedAt });
 
-  // Catalogue complet, paginé
+  // Catalogue complet (sous /emissions/), paginé
   const allPages = paginate(allVideos, PER_PAGE);
   for (const [i, pageVideos] of allPages.entries()) {
     const page = i + 1;
     const route = page === 1 ? '/emissions/' : `/emissions/page/${page}/`;
-    await writePage(route, R.allCategoriesPage({
-      ...ctx, videos: pageVideos, page, totalPages: allPages.length,
+    await writePage(route, R.groupIndexPage({
+      ...ctx, group: 'shows', items: nav.showsAZ, videos: pageVideos, page, totalPages: allPages.length,
     }));
     urls.push({ loc: route, freq: 'daily', priority: page === 1 ? '0.9' : '0.4' });
   }
+
+  // Index des thèmes
+  await writePage('/themes/', R.groupIndexPage({
+    ...ctx, group: 'themes', items: nav.themesAZ, rows: nav.themes, videos: null, page: 1, totalPages: 1,
+  }));
+  urls.push({ loc: '/themes/', freq: 'weekly', priority: '0.8' });
 
   // Une page (paginée) par rubrique
   for (const category of categories) {

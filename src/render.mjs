@@ -93,14 +93,34 @@ function pagination(baseHref, page, totalPages) {
 
 // --- Enveloppe ---------------------------------------------------------------
 
+function menuPanel(id, label, items, allHref, allLabel) {
+  if (!items.length) return `<a href="${allHref}">${escapeHtml(label)}</a>`;
+  return `
+      <div class="menu">
+        <button class="menu-btn" type="button" aria-expanded="false" aria-controls="${id}">
+          ${escapeHtml(label)} <span class="caret" aria-hidden="true"></span>
+        </button>
+        <div class="menu-panel" id="${id}" hidden>
+          <div class="wrap menu-panel-inner">
+            <div class="menu-grid">
+              ${items.map((c) => `<a href="/emissions/${c.slug}/">${escapeHtml(c.title)} <span>${c.videos.length}</span></a>`).join('')}
+            </div>
+            <a class="menu-all" href="${allHref}">${escapeHtml(allLabel)} <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+      </div>`;
+}
+
 export function layout({
-  config, categories, title, description, canonical, image, bodyClass = '',
+  config, categories, nav = {}, title, description, canonical, image, bodyClass = '',
   content, jsonLd = null, buildTime,
 }) {
   const fullTitle = title === config.siteName ? `${config.siteName} — ${config.tagline}` : `${title} | ${config.siteName}`;
   const url = config.siteUrl.replace(/\/$/, '') + canonical;
-  const navCats = categories.slice(0, 7);
   const pages = config.pages || [];
+  const menuShows = nav.menuShows || [];
+  const menuThemes = nav.menuThemes || [];
+  const footerCats = (nav.shows || categories).slice(0, 7);
   const analytics = [
     config.analytics?.plausibleDomain
       ? `<script defer data-domain="${escapeHtml(config.analytics.plausibleDomain)}" src="https://plausible.io/js/script.js"></script>`
@@ -161,11 +181,12 @@ ${analytics}
     <button class="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button>
   </div>
 
-  <nav class="nav" id="nav" aria-label="Émissions">
+  <nav class="nav" id="nav" aria-label="Rubriques">
     <div class="wrap nav-inner">
       <a href="/">Accueil</a>
-      ${navCats.map((c) => `<a href="/emissions/${c.slug}/">${escapeHtml(c.title)}</a>`).join('')}
-      <a href="/emissions/">Toutes les émissions</a>
+      ${menuPanel('menu-emissions', config.groups?.shows?.label || 'Émissions', menuShows, '/emissions/', 'Voir toutes les émissions')}
+      ${menuPanel('menu-themes', config.groups?.themes?.label || 'Thèmes', menuThemes, '/themes/', 'Voir tous les thèmes')}
+      <a href="/emissions/">Tout le catalogue</a>
       <span class="nav-only-mobile-sep" aria-hidden="true"></span>
       ${pages.map((pg) => `<a class="nav-alt" href="/${pg.slug}/">${escapeHtml(pg.title)}</a>`).join('')}
     </div>
@@ -187,7 +208,8 @@ ${content}
     </div>
     <div class="footer-col">
       <h4>Émissions</h4>
-      <ul>${categories.slice(0, 8).map((c) => `<li><a href="/emissions/${c.slug}/">${escapeHtml(c.title)}</a></li>`).join('')}</ul>
+      <ul>${footerCats.map((c) => `<li><a href="/emissions/${c.slug}/">${escapeHtml(c.title)}</a></li>`).join('')}
+        <li><a href="/emissions/">Tout le catalogue</a></li></ul>
     </div>
     <div class="footer-col">
       <h4>Le site</h4>
@@ -210,15 +232,20 @@ ${content}
 
 // --- Pages -------------------------------------------------------------------
 
-export function homePage({ config, categories, latest, buildTime }) {
+function chips(items) {
+  return `<div class="cat-chips">${items.map((c) => `<a class="chip" href="/emissions/${c.slug}/">${escapeHtml(c.title)} <span>${c.videos.length}</span></a>`).join('')}</div>`;
+}
+
+export function homePage({ config, categories, nav, latest, buildTime }) {
   const featured = latest[0];
   const featuredCat = featured?.playlists?.[0];
-  const rest = latest.slice(1, config.home.latestCount + 1);
+  const rest = latest.slice(1, (config.home?.latestCount ?? 8) + 1);
+  const rowSize = config.home?.rowSize ?? 8;
 
-  const rows = categories
-    .filter((c) => c.videos.length)
-    .map((c) => row(c.title, `/emissions/${c.slug}/`, c.videos.slice(0, config.home.rowSize)))
-    .join('');
+  const themes = nav.themes || [];
+  const shows = nav.shows || [];
+  const themeRows = themes.slice(0, config.home?.themeRows ?? 3);
+  const showRows = shows.slice(0, config.home?.showRows ?? 3);
 
   const content = `
 <div class="wrap">
@@ -227,23 +254,36 @@ export function homePage({ config, categories, latest, buildTime }) {
   <section class="row">
     <div class="row-head">
       <h2 class="row-title"><a href="/emissions/">Dernières vidéos</a></h2>
-      <a class="row-more" href="/emissions/">Tout voir <span aria-hidden="true">→</span></a>
+      <a class="row-more" href="/emissions/">Tout le catalogue <span aria-hidden="true">→</span></a>
     </div>
     ${grid(rest)}
   </section>
 
+  ${themes.length ? `
   <section class="cats">
-    <h2 class="row-title">Nos rubriques</h2>
-    <div class="cat-chips">
-      ${categories.map((c) => `<a class="chip" href="/emissions/${c.slug}/">${escapeHtml(c.title)} <span>${c.videos.length}</span></a>`).join('')}
+    <div class="row-head">
+      <h2 class="row-title"><a href="/themes/">${escapeHtml(config.groups?.themes?.label || 'Thèmes')}</a></h2>
+      <a class="row-more" href="/themes/">Tous les thèmes <span aria-hidden="true">→</span></a>
     </div>
-  </section>
+    ${chips(nav.menuThemes?.length ? nav.menuThemes : themes)}
+  </section>` : ''}
 
-  ${rows}
+  ${themeRows.map((c) => row(c.title, `/emissions/${c.slug}/`, c.videos.slice(0, rowSize))).join('')}
+
+  ${shows.length ? `
+  <section class="cats">
+    <div class="row-head">
+      <h2 class="row-title"><a href="/emissions/">${escapeHtml(config.groups?.shows?.label || 'Émissions')}</a></h2>
+      <a class="row-more" href="/emissions/">Toutes les émissions <span aria-hidden="true">→</span></a>
+    </div>
+    ${chips((nav.menuShows?.length ? nav.menuShows : shows).slice(0, 24))}
+  </section>` : ''}
+
+  ${showRows.map((c) => row(c.title, `/emissions/${c.slug}/`, c.videos.slice(0, rowSize))).join('')}
 </div>`;
 
   return layout({
-    config, categories, buildTime,
+    config, categories, nav, buildTime,
     title: config.siteName,
     description: config.description,
     canonical: '/',
@@ -265,13 +305,59 @@ export function homePage({ config, categories, latest, buildTime }) {
   });
 }
 
-export function categoryPage({ config, categories, category, videos, page, totalPages, buildTime }) {
+/** Page d'index d'une famille : /emissions/ (avec le catalogue) ou /themes/. */
+export function groupIndexPage({
+  config, categories, nav, group, items, videos, rows = [], page, totalPages, buildTime,
+}) {
+  const isShows = group === 'shows';
+  const base = isShows ? '/emissions/' : '/themes/';
+  const label = config.groups?.[group]?.label || (isShows ? 'Émissions' : 'Thèmes');
+  const other = isShows
+    ? { href: '/themes/', label: config.groups?.themes?.label || 'Thèmes' }
+    : { href: '/emissions/', label: config.groups?.shows?.label || 'Émissions' };
+
+  const content = `
+<div class="wrap">
+  <nav class="breadcrumb"><a href="/">Accueil</a> <span>›</span> <span>${escapeHtml(label)}</span></nav>
+  <header class="page-head">
+    <p class="kicker">${isShows ? 'Nos rendez-vous' : 'Par sujet'}</p>
+    <h1>${escapeHtml(label)}</h1>
+    <p class="lede">${isShows
+      ? "Chaque émission de la chaîne, avec son présentateur et son rythme de publication."
+      : "Les grands sujets suivis par Tandem TV, toutes émissions confondues."}</p>
+    ${chips(items)}
+    <p class="muted small" style="margin-top:1.25rem">${items.length} rubrique${items.length > 1 ? 's' : ''} · Voir aussi <a href="${other.href}">${escapeHtml(other.label)}</a>.</p>
+  </header>
+
+  ${rows.map((c) => row(c.title, `/emissions/${c.slug}/`, c.videos.slice(0, 4))).join('')}
+
+  ${videos ? `
+  <div class="row-head">
+    <h2 class="row-title">Toutes les vidéos</h2>
+  </div>
+  ${grid(videos)}
+  ${pagination(base, page, totalPages)}` : ''}
+</div>`;
+
+  return layout({
+    config, categories, nav, buildTime,
+    title: page > 1 ? `${label} — page ${page}` : label,
+    description: isShows
+      ? `Toutes les émissions de ${config.siteName}, classées par rendez-vous.`
+      : `Tous les thèmes suivis par ${config.siteName}.`,
+    canonical: page > 1 ? `${base}page/${page}/` : base,
+    bodyClass: 'page-group',
+    content,
+  });
+}
+
+export function categoryPage({ config, categories, nav, category, videos, page, totalPages, buildTime }) {
   const base = `/emissions/${category.slug}/`;
   const content = `
 <div class="wrap">
-  <nav class="breadcrumb"><a href="/">Accueil</a> <span>›</span> <a href="/emissions/">Émissions</a> <span>›</span> <span>${escapeHtml(category.title)}</span></nav>
+  <nav class="breadcrumb"><a href="/">Accueil</a> <span>›</span> <a href="${category.group === 'themes' ? '/themes/' : '/emissions/'}">${category.group === 'themes' ? escapeHtml(config.groups?.themes?.label || 'Thèmes') : escapeHtml(config.groups?.shows?.label || 'Émissions')}</a> <span>›</span> <span>${escapeHtml(category.title)}</span></nav>
   <header class="page-head">
-    <p class="kicker">Émission</p>
+    <p class="kicker">${category.group === 'themes' ? 'Thème' : 'Émission'}</p>
     <h1>${escapeHtml(category.title)}</h1>
     ${category.description ? `<p class="lede">${escapeHtml(truncate(category.description, 400))}</p>` : ''}
     <p class="muted small">${category.videos.length} vidéo${category.videos.length > 1 ? 's' : ''}${page > 1 ? ` · page ${page} sur ${totalPages}` : ''}</p>
@@ -281,7 +367,7 @@ export function categoryPage({ config, categories, category, videos, page, total
 </div>`;
 
   return layout({
-    config, categories, buildTime,
+    config, categories, nav, buildTime,
     title: page > 1 ? `${category.title} — page ${page}` : category.title,
     description: category.description || `Toutes les vidéos de l'émission ${category.title} sur ${config.siteName}.`,
     canonical: page > 1 ? `${base}page/${page}/` : base,
@@ -291,33 +377,7 @@ export function categoryPage({ config, categories, category, videos, page, total
   });
 }
 
-export function allCategoriesPage({ config, categories, videos, page, totalPages, buildTime }) {
-  const content = `
-<div class="wrap">
-  <nav class="breadcrumb"><a href="/">Accueil</a> <span>›</span> <span>Émissions</span></nav>
-  <header class="page-head">
-    <p class="kicker">Catalogue</p>
-    <h1>Toutes les émissions</h1>
-    <div class="cat-chips">
-      ${categories.map((c) => `<a class="chip" href="/emissions/${c.slug}/">${escapeHtml(c.title)} <span>${c.videos.length}</span></a>`).join('')}
-    </div>
-  </header>
-  <h2 class="row-title">Toutes les vidéos</h2>
-  ${grid(videos)}
-  ${pagination('/emissions/', page, totalPages)}
-</div>`;
-
-  return layout({
-    config, categories, buildTime,
-    title: page > 1 ? `Toutes les émissions — page ${page}` : 'Toutes les émissions',
-    description: `L'intégralité des émissions et vidéos de ${config.siteName}, classées par rubrique.`,
-    canonical: page > 1 ? `/emissions/page/${page}/` : '/emissions/',
-    bodyClass: 'page-all',
-    content,
-  });
-}
-
-export function videoPage({ config, categories, video, related, buildTime }) {
+export function videoPage({ config, categories, nav, video, related, buildTime }) {
   const cat = video.playlists?.[0];
   const desc = descriptionToHtml(video.description, video.id);
 
@@ -371,7 +431,7 @@ export function videoPage({ config, categories, video, related, buildTime }) {
 </div>`;
 
   return layout({
-    config, categories, buildTime,
+    config, categories, nav, buildTime,
     title: video.title,
     description: excerpt(video.description, 300) || video.title,
     canonical: `/video/${video.id}/`,
@@ -394,7 +454,7 @@ export function videoPage({ config, categories, video, related, buildTime }) {
   });
 }
 
-export function contentPage({ config, categories, title, description, canonical, html, buildTime }) {
+export function contentPage({ config, categories, nav, title, description, canonical, html, buildTime }) {
   const content = `
 <div class="wrap narrow">
   <nav class="breadcrumb"><a href="/">Accueil</a> <span>›</span> <span>${escapeHtml(title)}</span></nav>
@@ -403,12 +463,12 @@ export function contentPage({ config, categories, title, description, canonical,
   </article>
 </div>`;
   return layout({
-    config, categories, buildTime, title, description, canonical,
+    config, categories, nav, buildTime, title, description, canonical,
     bodyClass: 'page-content', content,
   });
 }
 
-export function searchPage({ config, categories, buildTime }) {
+export function searchPage({ config, categories, nav, buildTime }) {
   const content = `
 <div class="wrap">
   <header class="page-head">
@@ -424,7 +484,7 @@ export function searchPage({ config, categories, buildTime }) {
   <p class="empty" id="search-empty" hidden>Aucun résultat. Essayez un autre mot-clé.</p>
 </div>`;
   return layout({
-    config, categories, buildTime,
+    config, categories, nav, buildTime,
     title: 'Recherche',
     description: `Rechercher parmi toutes les vidéos de ${config.siteName}.`,
     canonical: '/recherche/',
@@ -433,7 +493,7 @@ export function searchPage({ config, categories, buildTime }) {
   });
 }
 
-export function notFoundPage({ config, categories, buildTime }) {
+export function notFoundPage({ config, categories, nav, buildTime }) {
   const content = `
 <div class="wrap narrow">
   <header class="page-head center">
@@ -444,7 +504,7 @@ export function notFoundPage({ config, categories, buildTime }) {
   </header>
 </div>`;
   return layout({
-    config, categories, buildTime,
+    config, categories, nav, buildTime,
     title: 'Page introuvable',
     description: 'Page introuvable.',
     canonical: '/404.html',

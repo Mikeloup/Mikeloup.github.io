@@ -9,15 +9,21 @@
   "channelHandle": "@tandem_tv",
   "channelUrl": "https://www.youtube.com/@tandem_tv",
   "contactEmail": "contact@tandemtv.net",
-  "_comment_playlists": "Contrôle des catégories. Laissez les listes vides pour tout prendre automatiquement. 'order' fixe l'ordre d'affichage en page d'accueil (les playlists non citées suivent, par ordre YouTube). 'exclude' masque une playlist (par titre exact ou par ID).",
+  "_comment_playlists": "Contrôle des rubriques. 'exclude' masque une playlist (titre exact ou ID). 'minVideos' = seuil pour exister sur le site. 'menuMinVideos' = seuil pour apparaître dans les menus déroulants (les autres restent dans « Tout le catalogue » et dans la recherche). 'mergeDuplicates' fusionne les playlists dont le titre ne diffère que par la casse ou les accents.",
   "playlists": {
     "order": [],
-    "exclude": [],
-    "minVideos": 1
+    "exclude": [
+      "Shorts"
+    ],
+    "minVideos": 1,
+    "menuMinVideos": 4,
+    "mergeDuplicates": true
   },
   "home": {
     "rowSize": 8,
-    "latestCount": 12
+    "latestCount": 8,
+    "themeRows": 3,
+    "showRows": 3
   },
   "social": {
     "youtube": "https://www.youtube.com/@tandem_tv",
@@ -48,5 +54,33 @@
       "title": "Contact",
       "description": "Contacter la rédaction de Tandem TV."
     }
-  ]
+  ],
+  "_comment_groups": "Deux familles de rubriques. Il suffit de lister les THÈMES : toute playlist non citée est automatiquement traitée comme une émission. Comparaison insensible à la casse et aux accents.",
+  "groups": {
+    "shows": {
+      "label": "Émissions",
+      "slug": "emissions"
+    },
+    "themes": {
+      "label": "Thèmes",
+      "slug": "themes",
+      "playlists": [
+        "Actu Israël",
+        "Iran",
+        "Gaza",
+        "Liban",
+        "Syrie",
+        "Antisémitisme",
+        "Géopolitique du Proche Orient",
+        "Politique israélienne",
+        "Société",
+        "People",
+        "Spiritualité juive",
+        "Histoires d'Israël",
+        "Histoires juives",
+        "Tour d'Israël"
+      ]
+    }
+  },
+  "_comment_home": "Page d'accueil : 'latestCount' = nombre de vidéos dans « Dernières vidéos », 'themeRows'/'showRows' = nombre de rangées thématiques et d'émissions affichées (les autres restent accessibles par les menus). Garder des valeurs basses pour que la page reste légère."
 }

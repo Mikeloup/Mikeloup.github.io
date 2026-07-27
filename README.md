@@ -2,7 +2,7 @@
 
 Ce dossier contient le nouveau site **tandemtv.net**. Il se fabrique tout seul à partir de la chaîne YouTube [@tandem_tv](https://www.youtube.com/@tandem_tv) :
 
-- chaque **playlist YouTube** devient une **rubrique** du site ;
+- chaque **playlist YouTube** devient une **rubrique** du site, rangée soit dans **Émissions** (les rendez-vous) soit dans **Thèmes** (les sujets) ;
 - chaque **vidéo** devient une **page d'article** (lecteur + titre + description + date) ;
 - les rubriques les plus récemment alimentées remontent automatiquement en page d'accueil ;
 - le site se met à jour **4 fois par jour**, sans aucune intervention ;
@@ -98,8 +98,45 @@ Publiez-la sur YouTube et **ajoutez-la à la playlist** correspondante. Elle app
 ### Créer une nouvelle rubrique
 Créez une nouvelle playlist publique sur YouTube. Elle devient automatiquement une rubrique du site.
 
+### Émissions ou thème ?
+Le menu du site a deux entrées : **Émissions** (un présentateur, un rendez-vous) et **Thèmes** (un sujet qui traverse les émissions).
+
+Pour ne pas avoir à classer 76 playlists, **seuls les thèmes sont listés** dans `site.config.json` ; tout le reste est automatiquement rangé dans « Émissions » :
+
+```json
+"groups": {
+  "themes": {
+    "label": "Thèmes",
+    "playlists": ["Actu Israël", "Iran", "Gaza", "…"]
+  }
+}
+```
+
+Déplacer une rubrique d'une famille à l'autre = ajouter ou retirer son titre de cette liste. La comparaison ignore la casse et les accents.
+
+### Alléger les menus
+```json
+"playlists": {
+  "exclude": ["Shorts"],
+  "minVideos": 1,
+  "menuMinVideos": 4,
+  "mergeDuplicates": true
+}
+```
+
+- `exclude` — playlists totalement absentes du site.
+- `minVideos` — en dessous de ce nombre de vidéos, la rubrique n'existe pas sur le site.
+- `menuMinVideos` — en dessous, la rubrique n'apparaît pas dans les menus déroulants, mais reste accessible depuis « Tout le catalogue » et par la recherche. Elle réapparaît toute seule dès qu'elle atteint le seuil.
+- `mergeDuplicates` — fusionne les playlists dont le titre ne diffère que par la casse ou les accents (utile pour les doublons créés par erreur sur YouTube).
+
+### Alléger la page d'accueil
+```json
+"home": { "latestCount": 8, "rowSize": 8, "themeRows": 3, "showRows": 3 }
+```
+`themeRows` et `showRows` limitent le nombre de rangées affichées en page d'accueil. Avec 74 rubriques, mieux vaut rester bas : le reste est à un clic dans les menus.
+
 ### L'ordre des rubriques
-Par défaut, les rubriques sont classées **par activité récente** : celle dont la dernière vidéo est la plus récente passe en tête de la page d'accueil. L'ordre évolue donc tout seul au fil de vos publications.
+Sur la page d'accueil, les rubriques sont classées **par activité récente** : celle dont la dernière vidéo est la plus récente passe en tête. L'ordre évolue donc tout seul au fil de vos publications. Dans les menus déroulants et les pages d'index, le classement est **alphabétique**, plus pratique pour retrouver une rubrique précise.
 
 Pour figer certaines rubriques en tête, listez-les dans `order` (`site.config.json`) :
 
