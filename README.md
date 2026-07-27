@@ -168,6 +168,28 @@ Les couleurs sont toutes regroupées en haut de `assets/style.css`, dans le bloc
 
 Le logo est le fichier `assets/logo.png` : remplacez-le par une autre image (fond transparent, format paysage) et tout le site suit. `assets/favicon.png` est l'icône affichée dans l'onglet du navigateur.
 
+### Référencement Google
+Le site est conçu pour que Google lise réellement le contenu, ce que ne permettait pas l'ancien site Wix :
+
+- chaque page vidéo est un **fichier HTML déjà rempli** (titre, description, date en clair dans le code source) — aucun JavaScript n'est nécessaire pour la lire ;
+- chaque page vidéo porte des **données structurées `VideoObject`** (titre, description, miniature, durée, date, lecteur, nombre de vues) ;
+- un **`sitemap-video.xml`** au format vidéo de Google est généré à chaque mise à jour, en plus du `sitemap.xml` classique ; les deux sont déclarés dans `robots.txt` et regroupés dans `sitemap-index.xml` ;
+- le lecteur YouTube ne se charge qu'au clic (rapidité, pas de cookie avant action du visiteur) mais une balise `<noscript>` contient le vrai lecteur, **détectable par les robots**.
+
+**À garder en tête** : la vidéo reste hébergée par YouTube, qui garde l'antériorité et l'autorité. Le site se positionnera surtout sur les requêtes de marque et la longue traîne (nom d'un invité, sujet précis). Pour aller plus loin, la seule vraie marge est d'écrire quelques lignes d'introduction propres au site sur les vidéos importantes.
+
+### Raccorder Google Search Console
+1. Allez sur **https://search.google.com/search-console**, ajoutez une propriété de type **Préfixe d'URL** avec l'adresse du site.
+2. Choisissez la méthode **Balise HTML**. Google affiche `<meta name="google-site-verification" content="XXXX">`.
+3. Copiez **uniquement la valeur `XXXX`** dans `site.config.json` :
+   ```json
+   "googleSiteVerification": "XXXX"
+   ```
+4. Enregistrez, attendez la republication (1 à 2 minutes), puis cliquez sur **Vérifier** dans Search Console.
+5. Une fois vérifié : menu **Sitemaps** → ajoutez `sitemap-index.xml` → **Envoyer**.
+
+L'indexation complète d'un site de cette taille prend plusieurs semaines. Search Console vous montrera la progression réelle, page par page.
+
 ### Ajouter des statistiques de visite
 Dans `site.config.json`, renseignez `analytics.plausibleDomain` ou `analytics.gaMeasurementId`. Laissez vide pour n'installer aucun traceur.
 

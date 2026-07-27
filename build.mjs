@@ -257,6 +257,49 @@ ${items}
 </rss>`;
 }
 
+/** Rend une URL absolue (les miniatures YouTube le sont déjà). */
+function absoluteUrl(config, url) {
+  if (!url) return '';
+  return /^https?:\/\//.test(url) ? url : `${config.siteUrl}${url.startsWith('/') ? '' : '/'}${url}`;
+}
+
+/**
+ * Sitemap vidéo au format Google : une entrée par vidéo, avec le lecteur,
+ * la miniature, la durée et la date. C'est le signal le plus explicite pour
+ * l'indexation vidéo.
+ */
+function videoSitemap(config, videos) {
+  const items = videos
+    .filter((v) => v.duration > 0 && v.duration <= 28_800)
+    .map((v) => `  <url>
+    <loc>${config.siteUrl}/video/${v.id}/</loc>
+    <video:video>
+      <video:thumbnail_loc>${escapeHtml(absoluteUrl(config, v.thumbnail) || `https://i.ytimg.com/vi/${v.id}/hqdefault.jpg`)}</video:thumbnail_loc>
+      <video:title>${escapeHtml(truncate(v.title, 100))}</video:title>
+      <video:description>${escapeHtml(excerpt(v.description, 2000) || v.title)}</video:description>
+      <video:player_loc allow_embed="yes">https://www.youtube-nocookie.com/embed/${v.id}</video:player_loc>
+      <video:duration>${v.duration}</video:duration>
+      <video:publication_date>${new Date(v.publishedAt).toISOString()}</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+      <video:live>no</video:live>
+      <video:uploader info="${config.channelUrl}">${escapeHtml(config.siteName)}</video:uploader>
+    </video:video>
+  </url>`).join('\n');
+
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+${items}
+</urlset>`;
+}
+
+function sitemapIndex(config, files) {
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${files.map((f) => `  <sitemap><loc>${config.siteUrl}/${f}</loc><lastmod>${new Date(buildTime).toISOString().slice(0, 10)}</lastmod></sitemap>`).join('\n')}
+</sitemapindex>`;
+}
+
 function sitemap(config, urls) {
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -365,7 +408,13 @@ async function main() {
   await writePage('/404.html', R.notFoundPage(ctx));
   await writeFile('rss.xml', rssFeed(config, allVideos));
   await writeFile('sitemap.xml', sitemap(config, urls));
-  await writeFile('robots.txt', `User-agent: *\nAllow: /\n\nSitemap: ${config.siteUrl}/sitemap.xml\n`);
+  await writeFile('sitemap-video.xml', videoSitemap(config, allVideos));
+  await writeFile('sitemap-index.xml', sitemapIndex(config, ['sitemap.xml', 'sitemap-video.xml']));
+  await writeFile('robots.txt',
+    `User-agent: *\nAllow: /\n\n`
+    + `Sitemap: ${config.siteUrl}/sitemap-index.xml\n`
+    + `Sitemap: ${config.siteUrl}/sitemap.xml\n`
+    + `Sitemap: ${config.siteUrl}/sitemap-video.xml\n`);
   await writeFile('.nojekyll', '');
 
   const domain = config.siteUrl.replace(/^https?:\/\//, '').replace(/\/$/, '');

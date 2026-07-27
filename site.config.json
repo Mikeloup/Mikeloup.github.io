@@ -83,5 +83,7 @@
       ]
     }
   },
-  "_comment_home": "Page d'accueil : 'latestCount' = nombre de vidéos dans « Dernières vidéos », 'themeRows'/'showRows' = nombre de rangées thématiques et d'émissions affichées (les autres restent accessibles par les menus). Garder des valeurs basses pour que la page reste légère."
+  "_comment_home": "Page d'accueil : 'latestCount' = nombre de vidéos dans « Dernières vidéos », 'themeRows'/'showRows' = nombre de rangées thématiques et d'émissions affichées (les autres restent accessibles par les menus). Garder des valeurs basses pour que la page reste légère.",
+  "googleSiteVerification": "",
+  "_comment_googleSiteVerification": "Code de vérification fourni par Google Search Console (méthode « Balise HTML »). Collez uniquement la valeur de l'attribut content, pas la balise entière. Laissez vide si non utilisé."
 }

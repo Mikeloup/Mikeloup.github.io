@@ -113,7 +113,7 @@ function menuPanel(id, label, items, allHref, allLabel, hint) {
 }
 
 export function layout({
-  config, categories, nav = {}, title, description, canonical, image, bodyClass = '',
+  config, categories, nav = {}, title, description, canonical, image, ogType = 'website', bodyClass = '',
   content, jsonLd = null, buildTime,
 }) {
   const fullTitle = title === config.siteName ? `${config.siteName} — ${config.tagline}` : `${title} | ${config.siteName}`;
@@ -143,7 +143,7 @@ export function layout({
 <title>${escapeHtml(fullTitle)}</title>
 <meta name="description" content="${escapeHtml(truncate(description, 300))}">
 <link rel="canonical" href="${escapeHtml(url)}">
-<meta property="og:type" content="website">
+<meta property="og:type" content="${ogType}">
 <meta property="og:site_name" content="${escapeHtml(config.siteName)}">
 <meta property="og:locale" content="${config.locale}">
 <meta property="og:title" content="${escapeHtml(fullTitle)}">
@@ -159,6 +159,7 @@ ${image ? `<meta property="og:image" content="${escapeHtml(image)}">` : ''}
 <link rel="icon" href="/favicon.png" type="image/png">
 <link rel="apple-touch-icon" href="/favicon.png">
 <link rel="stylesheet" href="/assets/style.css">
+${config.googleSiteVerification ? `<meta name="google-site-verification" content="${escapeHtml(config.googleSiteVerification)}">` : ''}
 ${jsonLd ? `<script type="application/ld+json">${JSON.stringify(jsonLd)}</script>` : ''}
 ${analytics}
 </head>
@@ -407,7 +408,12 @@ export function videoPage({ config, categories, nav, video, related, buildTime }
     <div class="player" data-video="${video.id}" data-title="${escapeHtml(video.title)}">
       <img class="player-poster" src="${escapeHtml(video.thumbnail || YT_THUMB(video.id))}" alt="${escapeHtml(video.title)}" fetchpriority="high" width="1280" height="720">
       <button class="player-btn" type="button" aria-label="Lire la vidéo"></button>
-      <noscript><a class="btn btn-primary" href="https://www.youtube.com/watch?v=${video.id}" target="_blank" rel="noopener">Voir sur YouTube</a></noscript>
+      <noscript>
+        <iframe src="https://www.youtube-nocookie.com/embed/${video.id}?rel=0&amp;modestbranding=1&amp;hl=fr"
+                title="${escapeHtml(video.title)}" width="1280" height="720" loading="lazy"
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+      </noscript>
     </div>
 
     <div class="share">
@@ -440,6 +446,7 @@ export function videoPage({ config, categories, nav, video, related, buildTime }
     description: excerpt(video.description, 300) || video.title,
     canonical: `/video/${video.id}/`,
     image: video.thumbnail || YT_THUMB(video.id),
+    ogType: 'video.other',
     bodyClass: 'page-video',
     content,
     jsonLd: {
@@ -454,6 +461,14 @@ export function videoPage({ config, categories, nav, video, related, buildTime }
       url: `${config.siteUrl}/video/${video.id}/`,
       publisher: { '@type': 'Organization', name: config.siteName, url: config.siteUrl },
       inLanguage: config.lang,
+      isFamilyFriendly: true,
+      ...(video.views ? {
+        interactionStatistic: {
+          '@type': 'InteractionCounter',
+          interactionType: { '@type': 'WatchAction' },
+          userInteractionCount: video.views,
+        },
+      } : {}),
     },
   });
 }
