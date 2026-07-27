@@ -1,0 +1,34 @@
+{
+  "siteName": "Tandem TV",
+  "tagline": "L'actualité d'Israël et du monde juif",
+  "description": "Tandem TV — interviews exclusives, débats et analyses approfondies sur Israël, le monde juif et l'international. Toutes les émissions de la chaîne, mises à jour automatiquement.",
+  "siteUrl": "https://mikeloup.github.io",
+  "locale": "fr_FR",
+  "lang": "fr",
+  "channelId": "",
+  "channelHandle": "@tandem_tv",
+  "channelUrl": "https://www.youtube.com/@tandem_tv",
+  "contactEmail": "contact@tandemtv.net",
+  "_comment_playlists": "Contrôle des catégories. Laissez les listes vides pour tout prendre automatiquement. 'order' fixe l'ordre d'affichage en page d'accueil (les playlists non citées suivent, par ordre YouTube). 'exclude' masque une playlist (par titre exact ou par ID).",
+  "playlists": {
+    "order": [],
+    "exclude": [],
+    "minVideos": 1
+  },
+  "home": {
+    "rowSize": 8,
+    "latestCount": 12
+  },
+  "social": {
+    "youtube": "https://www.youtube.com/@tandem_tv",
+    "facebook": "",
+    "x": "",
+    "instagram": ""
+  },
+  "analytics": {
+    "plausibleDomain": "",
+    "gaMeasurementId": ""
+  },
+  "_comment_siteUrl": "Adresse publique du site. Mettez https://www.tandemtv.net une fois le domaine branché (étape 5 du README).",
+  "_comment_channelId": "Laissez vide : la chaîne est retrouvée automatiquement via channelHandle."
+}
