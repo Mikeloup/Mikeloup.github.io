@@ -13,7 +13,3 @@ Retrouvez la liste complète sur la page [Toutes les émissions](/emissions/).
 ## Nous suivre
 
 Toutes nos vidéos sont publiées en premier sur [notre chaîne YouTube](https://www.youtube.com/@tandem_tv). Abonnez-vous pour être prévenu de chaque nouvelle publication, ou suivez [le flux RSS](/rss.xml) de ce site.
-
-## Comment fonctionne ce site
-
-Ce site est directement connecté à la chaîne YouTube de Tandem TV. Dès qu'une vidéo est mise en ligne, elle apparaît ici automatiquement dans la bonne rubrique, avec son titre, sa description et sa miniature. Aucune saisie manuelle n'est nécessaire.

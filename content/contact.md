@@ -18,7 +18,7 @@ Vous êtes chercheur, journaliste, responsable associatif ou témoin d'un évén
 
 ## Partenariats et publicité
 
-Pour toute demande commerciale, de partenariat média ou de sponsoring, écrivez à **[{{email}}](mailto:{{email}})** avec la mention « Partenariat » en objet. Voir aussi [notre page Partenaires](/partenaires/).
+Pour toute demande commerciale, de partenariat média ou de sponsoring, écrivez à **[{{email}}](mailto:{{email}})** avec la mention « Partenariat » en objet.
 
 ## Droits et rediffusion
 

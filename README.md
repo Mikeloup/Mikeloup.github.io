@@ -119,15 +119,28 @@ Déplacer une rubrique d'une famille à l'autre = ajouter ou retirer son titre d
 "playlists": {
   "exclude": ["Shorts"],
   "minVideos": 1,
-  "menuMinVideos": 4,
+  "menuMaxAgeMonths": 6,
   "mergeDuplicates": true
 }
 ```
 
 - `exclude` — playlists totalement absentes du site.
 - `minVideos` — en dessous de ce nombre de vidéos, la rubrique n'existe pas sur le site.
-- `menuMinVideos` — en dessous, la rubrique n'apparaît pas dans les menus déroulants, mais reste accessible depuis « Tout le catalogue » et par la recherche. Elle réapparaît toute seule dès qu'elle atteint le seuil.
+- `menuMaxAgeMonths` — une rubrique **sans nouvelle vidéo depuis ce nombre de mois** sort des menus déroulants. Elle reste accessible depuis « Tout le catalogue » et par la recherche, et **revient d'elle-même dès la publication suivante**. Mettre `0` désactive la règle. C'est le nombre de mois qu'on ajuste si les menus paraissent trop vides ou trop chargés.
 - `mergeDuplicates` — fusionne les playlists dont le titre ne diffère que par la casse ou les accents (utile pour les doublons créés par erreur sur YouTube).
+
+### Corriger les titres écrits en majuscules
+```json
+"display": {
+  "smartCase": true,
+  "properNouns": ["Tandem", "Israël", "Rav", "Nathalie", "…"]
+}
+```
+Les playlists écrites TOUT EN MAJUSCULES sont réaffichées en minuscules, avec une majuscule à la première lettre : `LES COURS DU RAV YOEL BENHARROUCHE` devient « Les cours du Rav Yoel Benharrouche ». Les titres déjà correctement écrits ne sont pas touchés.
+
+Si un nom propre ressort en minuscules, ajoutez-le à `properNouns`. À l'inverse, si un mot est capitalisé à tort, retirez-le de la liste. Rien n'est modifié sur YouTube : c'est un habillage à l'affichage.
+
+> Les **accents manquants** dans un titre YouTube ne peuvent pas être devinés (`PROCES` reste `proces`). Pour les corriger, renommez la playlist sur YouTube : le site suivra à la mise à jour suivante.
 
 ### Alléger la page d'accueil
 ```json

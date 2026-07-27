@@ -13,7 +13,9 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import * as yt from './src/youtube.mjs';
 import { markdownToHtml } from './src/markdown.mjs';
-import { slugify, escapeHtml, truncate, excerpt, paginate, cleanDescription } from './src/util.mjs';
+import {
+  slugify, escapeHtml, truncate, excerpt, paginate, cleanDescription, smartTitle,
+} from './src/util.mjs';
 import * as R from './src/render.mjs';
 
 const ROOT = path.dirname(fileURLToPath(import.meta.url));
@@ -182,6 +184,12 @@ function buildModel(config, data) {
         .sort((a2, b2) => new Date(b2.publishedAt) - new Date(a2.publishedAt));
       return {
         ...p,
+        rawTitle: p.title,
+        // L'affichage corrige les titres tout en majuscules ; les comparaisons
+        // (thèmes, exclusions, ordre) continuent de porter sur le titre d'origine.
+        title: config.display?.smartCase === false
+          ? p.title
+          : smartTitle(p.title, config.display?.properNouns || []),
         slug: slugify(p.title),
         group: themeKeys.has(normKey(p.title)) ? 'themes' : 'shows',
         videos,
@@ -211,7 +219,16 @@ function buildModel(config, data) {
     .filter((v) => !v.isShort || v.playlists.length)
     .sort((a2, b2) => new Date(b2.publishedAt) - new Date(a2.publishedAt));
 
-  const menuMin = config.playlists?.menuMinVideos ?? 1;
+  // Une rubrique sort des menus quand elle n'a rien publié depuis N mois.
+  const maxAgeMonths = config.playlists?.menuMaxAgeMonths ?? 0;
+  const cutoff = maxAgeMonths > 0
+    ? new Date(new Date(buildTime).getTime() - maxAgeMonths * 30.44 * 86_400_000)
+    : null;
+  const isActive = (c) => {
+    if (!cutoff) return true;
+    const last = c.videos[0]?.publishedAt;
+    return last ? new Date(last) >= cutoff : false;
+  };
   const shows = categories.filter((c) => c.group === 'shows');
   const themes = categories.filter((c) => c.group === 'themes');
   // Ordre des menus et des index : par activité récente (défaut) ou alphabétique.
@@ -223,9 +240,14 @@ function buildModel(config, data) {
     themes,
     showsIndex: sortMode(shows),
     themesIndex: sortMode(themes),
-    menuShows: sortMode(shows.filter((c) => c.videos.length >= menuMin)),
-    menuThemes: sortMode(themes.filter((c) => c.videos.length >= menuMin)),
+    menuShows: sortMode(shows.filter(isActive)),
+    menuThemes: sortMode(themes.filter(isActive)),
   };
+  if (cutoff) {
+    const hidden = categories.length - nav.menuShows.length - nav.menuThemes.length;
+    log(`${hidden} rubrique(s) sans publication depuis ${maxAgeMonths} mois : hors menus, `
+      + 'toujours accessibles par le catalogue et la recherche.');
+  }
 
   return { channel: data.channel, categories, allVideos, byId, nav };
 }

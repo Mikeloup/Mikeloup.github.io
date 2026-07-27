@@ -9,7 +9,7 @@
   "channelHandle": "@tandem_tv",
   "channelUrl": "https://www.youtube.com/@tandem_tv",
   "contactEmail": "contact@tandemtv.net",
-  "_comment_playlists": "Contrôle des rubriques. 'sort' = ordre des menus et des index : \"activity\" (la rubrique dont la vidéo la plus récente est la plus fraîche passe en tête) ou \"alpha\" (alphabétique). 'order' force certaines rubriques en tête quel que soit 'sort'. 'exclude' masque une playlist. 'minVideos' = seuil d'existence sur le site. 'menuMinVideos' = seuil d'apparition dans les menus déroulants. 'mergeDuplicates' fusionne les titres qui ne diffèrent que par la casse ou les accents.",
+  "_comment_playlists": "Contrôle des rubriques. 'sort' = ordre des menus et index : \"activity\" (dernière publication la plus récente en tête) ou \"alpha\". 'order' force certaines rubriques en tête. 'exclude' masque une playlist. 'minVideos' = seuil d'existence sur le site. 'menuMaxAgeMonths' = une rubrique sans nouvelle vidéo depuis ce nombre de mois sort des menus (elle reste dans « Tout le catalogue » et dans la recherche, et revient d'elle-même dès une nouvelle publication ; 0 désactive la règle). 'mergeDuplicates' fusionne les titres qui ne diffèrent que par la casse ou les accents.",
   "playlists": {
     "order": [],
     "sort": "activity",
@@ -17,7 +17,7 @@
       "Shorts"
     ],
     "minVideos": 1,
-    "menuMinVideos": 4,
+    "menuMaxAgeMonths": 6,
     "mergeDuplicates": true
   },
   "home": {
@@ -44,11 +44,6 @@
       "slug": "a-propos",
       "title": "À propos",
       "description": "Qui sommes-nous ? Présentation de Tandem TV."
-    },
-    {
-      "slug": "partenaires",
-      "title": "Partenaires",
-      "description": "Les partenaires de Tandem TV."
     },
     {
       "slug": "contact",
@@ -78,12 +73,65 @@
         "People",
         "Spiritualité juive",
         "Histoires d'Israël",
-        "Histoires juives",
-        "Tour d'Israël"
+        "Histoires juives"
       ]
     }
   },
   "_comment_home": "Page d'accueil : 'latestCount' = nombre de vidéos dans « Dernières vidéos », 'themeRows'/'showRows' = nombre de rangées thématiques et d'émissions affichées (les autres restent accessibles par les menus). Garder des valeurs basses pour que la page reste légère.",
   "googleSiteVerification": "",
-  "_comment_googleSiteVerification": "Code de vérification fourni par Google Search Console (méthode « Balise HTML »). Collez uniquement la valeur de l'attribut content, pas la balise entière. Laissez vide si non utilisé."
+  "_comment_googleSiteVerification": "Code de vérification fourni par Google Search Console (méthode « Balise HTML »). Collez uniquement la valeur de l'attribut content, pas la balise entière. Laissez vide si non utilisé.",
+  "display": {
+    "smartCase": true,
+    "properNouns": [
+      "Tandem",
+      "TV",
+      "Israël",
+      "Israel",
+      "Jérusalem",
+      "Gaza",
+      "Iran",
+      "Liban",
+      "Syrie",
+      "France",
+      "Knesset",
+      "Hasbara",
+      "Haolam",
+      "Hamedoubar",
+      "Juifs",
+      "Jewish",
+      "Rav",
+      "Yoel",
+      "Benharrouche",
+      "Mendel",
+      "Mimoun",
+      "Saadia",
+      "Morali",
+      "Rony",
+      "Akrich",
+      "Hayot",
+      "William",
+      "Zerbib",
+      "Stéphane",
+      "Goldin",
+      "Jérôme",
+      "Haas",
+      "Myriam",
+      "Danan",
+      "Sophie",
+      "Bria",
+      "Sylvie",
+      "Galith",
+      "Benzimra",
+      "Dana",
+      "Nathalie",
+      "Michael",
+      "Wolf",
+      "Erbstein",
+      "Jo",
+      "Hanna",
+      "Daat",
+      "Bari"
+    ]
+  },
+  "_comment_display": "Mise en forme des titres de rubriques. 'smartCase' remet en minuscules les titres écrits TOUT EN MAJUSCULES (majuscule uniquement à la première lettre). Les titres déjà correctement écrits ne sont pas touchés. 'properNouns' liste les mots qui doivent garder leur majuscule : ajoutez-y tout nom propre mal rendu."
 }

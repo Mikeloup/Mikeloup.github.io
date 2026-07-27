@@ -127,3 +127,31 @@ export function excerpt(desc = '', max = 260) {
     .filter((l) => l && !noise.some((re) => re.test(l)));
   return truncate(keep.join(' '), max);
 }
+
+/**
+ * Remet en forme les titres écrits TOUT EN MAJUSCULES : minuscules partout,
+ * majuscule à la première lettre, et noms propres rétablis d'après le
+ * dictionnaire de la configuration. Les titres déjà correctement casés
+ * (« L'invité de William Zerbib ») sont laissés intacts.
+ */
+export function smartTitle(title = '', properNouns = []) {
+  const raw = String(title);
+  const letters = raw.match(/\p{L}/gu) || [];
+  if (letters.length <= 2) return raw;
+  const uppers = raw.match(/\p{Lu}/gu) || [];
+  if (uppers.length / letters.length < 0.7) return raw; // déjà bien écrit
+
+  const dict = new Map(properNouns.map((n) => [n.toLocaleLowerCase('fr'), n]));
+  let out = raw.toLocaleLowerCase('fr');
+
+  // Noms propres composés d'abord (« Jo Hanna »), puis les mots simples.
+  for (const [key, value] of [...dict].sort((a, b) => b[0].length - a[0].length)) {
+    if (!key.includes(' ')) continue;
+    out = out.replace(new RegExp(`(^|[^\\p{L}])${key.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}(?=$|[^\\p{L}])`, 'giu'),
+      (m, pre) => `${pre}${value}`);
+  }
+  out = out.replace(/\p{L}[\p{L}\p{M}-]*/gu, (word) => dict.get(word.toLocaleLowerCase('fr')) || word);
+
+  // Majuscule initiale (uniquement si le titre commence par une lettre).
+  return out.replace(/^\p{L}/u, (c) => c.toLocaleUpperCase('fr'));
+}

@@ -77,7 +77,7 @@ for (let n = 0; n < POOL; n += 1) {
     id,
     title: `${SUJETS[n % SUJETS.length]} — épisode ${n + 1}`,
     description: `Un texte de présentation fictif pour la démonstration du site.\n\n00:00 Introduction\n03:20 Le sujet\n\n👉 Abonnez-vous : https://www.youtube.com/@tandem_tv\n\n#TandemTV`,
-    publishedAt: new Date(start - n * 20 * 3_600_000).toISOString(),
+    publishedAt: new Date(start - n * 8 * 3_600_000).toISOString(),
     thumbnail: `/assets/demo/thumb-${n % 12}.svg`,
     tags: ['Israël'],
     duration: 300 + ((n * 137) % 3000),
@@ -92,7 +92,10 @@ const playlists = PLAYLISTS.map(([title, count], i) => {
   const ids = new Set();
   // Les playlists récentes piochent dans les vidéos récentes.
   const window = Math.min(POOL, Math.max(count * 3, 60));
-  const offset = Math.floor(rnd() * (POOL - window));
+  // Deux tiers des rubriques restent actives (vidéos récentes), un tiers dort :
+  // cela permet de tester la règle « hors menus après 6 mois sans publication ».
+  const dormant = i % 3 === 0;
+  const offset = Math.floor(rnd() * (POOL - window) * (dormant ? 1 : 0.12));
   while (ids.size < Math.min(count, window)) {
     ids.add(videos[offset + Math.floor(rnd() * window)].id);
   }
