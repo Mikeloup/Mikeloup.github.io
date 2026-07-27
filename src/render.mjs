@@ -4,7 +4,7 @@
 // -----------------------------------------------------------------------------
 
 import {
-  escapeHtml, formatDate, formatDuration, formatCount, truncate, descriptionToHtml,
+  escapeHtml, formatDate, formatDuration, formatCount, truncate, excerpt, descriptionToHtml,
 } from './util.mjs';
 
 const YT_THUMB = (id) => `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
@@ -59,7 +59,7 @@ function hero(video, category) {
   <div class="hero-body">
     <p class="kicker"><span class="live-dot" aria-hidden="true"></span>Dernière publication${category ? ` · <a href="/emissions/${category.slug}/">${escapeHtml(category.title)}</a>` : ''}</p>
     <h1 class="hero-title"><a href="/video/${video.id}/">${escapeHtml(video.title)}</a></h1>
-    <p class="hero-desc">${escapeHtml(truncate(video.description, 260))}</p>
+    <p class="hero-desc">${escapeHtml(excerpt(video.description, 260))}</p>
     <p class="hero-meta">
       <time datetime="${video.publishedAt || ''}">${formatDate(video.publishedAt)}</time>
       ${video.duration ? `<span class="dot">·</span>${formatDuration(video.duration)}` : ''}
@@ -100,6 +100,7 @@ export function layout({
   const fullTitle = title === config.siteName ? `${config.siteName} — ${config.tagline}` : `${title} | ${config.siteName}`;
   const url = config.siteUrl.replace(/\/$/, '') + canonical;
   const navCats = categories.slice(0, 7);
+  const pages = config.pages || [];
   const analytics = [
     config.analytics?.plausibleDomain
       ? `<script defer data-domain="${escapeHtml(config.analytics.plausibleDomain)}" src="https://plausible.io/js/script.js"></script>`
@@ -131,7 +132,8 @@ ${image ? `<meta property="og:image" content="${escapeHtml(image)}">` : ''}
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
 <link rel="alternate" type="application/rss+xml" title="${escapeHtml(config.siteName)}" href="/rss.xml">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="/favicon.png">
 <link rel="stylesheet" href="/assets/style.css">
 ${jsonLd ? `<script type="application/ld+json">${JSON.stringify(jsonLd)}</script>` : ''}
 ${analytics}
@@ -141,16 +143,12 @@ ${analytics}
 
 <header class="site-header">
   <div class="wrap header-inner">
-    <a class="brand" href="/">
-      <span class="brand-mark" aria-hidden="true">T</span>
-      <span class="brand-text"><strong>TANDEM</strong><span>TV</span></span>
+    <a class="brand" href="/" aria-label="${escapeHtml(config.siteName)} — accueil">
+      <img src="/assets/logo.png" alt="${escapeHtml(config.siteName)}" width="1000" height="500">
     </a>
 
     <nav class="utility" aria-label="Pages du site">
-      <a href="/revue-de-presse/">Revue de presse</a>
-      <a href="/partenaires/">Partenaires</a>
-      <a href="/a-propos/">À propos</a>
-      <a href="/contact/">Contact</a>
+      ${pages.map((pg) => `<a href="/${pg.slug}/">${escapeHtml(pg.title)}</a>`).join('')}
     </nav>
 
     <form class="search" action="/recherche/" method="get" role="search">
@@ -169,10 +167,7 @@ ${analytics}
       ${navCats.map((c) => `<a href="/emissions/${c.slug}/">${escapeHtml(c.title)}</a>`).join('')}
       <a href="/emissions/">Toutes les émissions</a>
       <span class="nav-only-mobile-sep" aria-hidden="true"></span>
-      <a class="nav-alt" href="/revue-de-presse/">Revue de presse</a>
-      <a class="nav-alt" href="/partenaires/">Partenaires</a>
-      <a class="nav-alt" href="/a-propos/">À propos</a>
-      <a class="nav-alt" href="/contact/">Contact</a>
+      ${pages.map((pg) => `<a class="nav-alt" href="/${pg.slug}/">${escapeHtml(pg.title)}</a>`).join('')}
     </div>
   </nav>
 </header>
@@ -184,9 +179,8 @@ ${content}
 <footer class="site-footer">
   <div class="wrap footer-inner">
     <div class="footer-col">
-      <a class="brand" href="/">
-        <span class="brand-mark" aria-hidden="true">T</span>
-        <span class="brand-text"><strong>TANDEM</strong><span>TV</span></span>
+      <a class="brand footer-logo" href="/" aria-label="${escapeHtml(config.siteName)} — accueil">
+        <img src="/assets/logo.png" alt="${escapeHtml(config.siteName)}" width="1000" height="500">
       </a>
       <p class="muted">${escapeHtml(config.tagline)}</p>
       <p class="muted small">Toutes les vidéos sont publiées sur <a href="${escapeHtml(config.channelUrl)}" target="_blank" rel="noopener">la chaîne YouTube Tandem TV</a>.</p>
@@ -198,10 +192,7 @@ ${content}
     <div class="footer-col">
       <h4>Le site</h4>
       <ul>
-        <li><a href="/a-propos/">À propos</a></li>
-        <li><a href="/partenaires/">Partenaires</a></li>
-        <li><a href="/revue-de-presse/">Revue de presse</a></li>
-        <li><a href="/contact/">Contact</a></li>
+        ${pages.map((pg) => `<li><a href="/${pg.slug}/">${escapeHtml(pg.title)}</a></li>`).join('')}
         <li><a href="/rss.xml">Flux RSS</a></li>
       </ul>
     </div>
@@ -382,7 +373,7 @@ export function videoPage({ config, categories, video, related, buildTime }) {
   return layout({
     config, categories, buildTime,
     title: video.title,
-    description: truncate(video.description || video.title, 300),
+    description: excerpt(video.description, 300) || video.title,
     canonical: `/video/${video.id}/`,
     image: video.thumbnail || YT_THUMB(video.id),
     bodyClass: 'page-video',
@@ -391,7 +382,7 @@ export function videoPage({ config, categories, video, related, buildTime }) {
       '@context': 'https://schema.org',
       '@type': 'VideoObject',
       name: video.title,
-      description: truncate(video.description || video.title, 900),
+      description: excerpt(video.description, 900) || video.title,
       thumbnailUrl: [video.thumbnail || YT_THUMB(video.id)],
       uploadDate: video.publishedAt,
       duration: video.duration ? `PT${Math.floor(video.duration / 60)}M${video.duration % 60}S` : undefined,

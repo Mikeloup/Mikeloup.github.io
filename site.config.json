@@ -30,5 +30,23 @@
     "gaMeasurementId": ""
   },
   "_comment_siteUrl": "Adresse publique du site. Mettez https://www.tandemtv.net une fois le domaine branché (étape 5 du README).",
-  "_comment_channelId": "Laissez vide : la chaîne est retrouvée automatiquement via channelHandle."
+  "_comment_channelId": "Laissez vide : la chaîne est retrouvée automatiquement via channelHandle.",
+  "_comment_pages": "Pages éditoriales du site. Chaque entrée correspond à un fichier content/<slug>.md. Retirez une ligne pour faire disparaître la page du site et des menus.",
+  "pages": [
+    {
+      "slug": "a-propos",
+      "title": "À propos",
+      "description": "Qui sommes-nous ? Présentation de Tandem TV."
+    },
+    {
+      "slug": "partenaires",
+      "title": "Partenaires",
+      "description": "Les partenaires de Tandem TV."
+    },
+    {
+      "slug": "contact",
+      "title": "Contact",
+      "description": "Contacter la rédaction de Tandem TV."
+    }
+  ]
 }

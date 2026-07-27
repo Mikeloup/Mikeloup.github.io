@@ -4,6 +4,7 @@ Ce dossier contient le nouveau site **tandemtv.net**. Il se fabrique tout seul �
 
 - chaque **playlist YouTube** devient une **rubrique** du site ;
 - chaque **vidéo** devient une **page d'article** (lecteur + titre + description + date) ;
+- les rubriques les plus récemment alimentées remontent automatiquement en page d'accueil ;
 - le site se met à jour **4 fois par jour**, sans aucune intervention ;
 - l'hébergement est **gratuit** (GitHub Pages), sans serveur ni base de données.
 
@@ -97,8 +98,10 @@ Publiez-la sur YouTube et **ajoutez-la à la playlist** correspondante. Elle app
 ### Créer une nouvelle rubrique
 Créez une nouvelle playlist publique sur YouTube. Elle devient automatiquement une rubrique du site.
 
-### Ranger les rubriques dans un ordre précis
-Dans `site.config.json` :
+### L'ordre des rubriques
+Par défaut, les rubriques sont classées **par activité récente** : celle dont la dernière vidéo est la plus récente passe en tête de la page d'accueil. L'ordre évolue donc tout seul au fil de vos publications.
+
+Pour figer certaines rubriques en tête, listez-les dans `order` (`site.config.json`) :
 
 ```json
 "playlists": {
@@ -116,14 +119,17 @@ Les quatre pages rédactionnelles sont dans le dossier `content/` :
 | Fichier | Page |
 | --- | --- |
 | `content/a-propos.md` | À propos |
-| `content/contact.md` | Contact |
 | `content/partenaires.md` | Partenaires |
-| `content/revue-de-presse.md` | Revue de presse |
+| `content/contact.md` | Contact |
+
+La liste des pages affichées est pilotée par le bloc `pages` de `site.config.json` : retirez une ligne et la page disparaît du site et de tous les menus ; ajoutez-en une (avec le fichier `content/<slug>.md` correspondant) et elle apparaît partout.
 
 Modifiez-les directement sur GitHub (clic sur le fichier → icône crayon → **Commit changes**). Le site se régénère tout seul après chaque enregistrement. Le format est du Markdown : `#` pour un titre, `-` pour une puce, `[texte](lien)` pour un lien.
 
-### Changer les couleurs
-Tout est en haut de `assets/style.css`, dans le bloc `:root` : `--accent` est le rouge de la marque, `--bg` le fond, etc.
+### Changer les couleurs ou le logo
+Les couleurs sont toutes regroupées en haut de `assets/style.css`, dans le bloc `:root` : `--brand` est le bleu marine du logo, `--sky` le bleu ciel, `--accent` le bleu des liens, `--bg` le fond.
+
+Le logo est le fichier `assets/logo.png` : remplacez-le par une autre image (fond transparent, format paysage) et tout le site suit. `assets/favicon.png` est l'icône affichée dans l'onglet du navigateur.
 
 ### Ajouter des statistiques de visite
 Dans `site.config.json`, renseignez `analytics.plausibleDomain` ou `analytics.gaMeasurementId`. Laissez vide pour n'installer aucun traceur.
@@ -153,7 +159,8 @@ src/youtube.mjs        appels à l'API YouTube
 src/render.mjs         gabarits HTML des pages
 src/markdown.mjs       conversion Markdown → HTML
 src/util.mjs           formatage (dates, durées, slugs…)
-assets/style.css       tout le design
+assets/style.css       tout le design (couleurs en haut du fichier)
+assets/logo.png        le logo affiché en en-tête et en pied de page
 assets/app.js          menu, lecteur vidéo, recherche
 content/*.md           les textes des pages rédactionnelles
 data/demo.json         données de démonstration

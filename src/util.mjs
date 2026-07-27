@@ -106,3 +106,24 @@ export function cleanDescription(desc = '', title = '') {
   while (lines.length && (!lines[0].trim() || norm(lines[0]) === norm(title))) lines.shift();
   return lines.join('\n').replace(/\n{3,}/g, '\n\n').trim();
 }
+
+/**
+ * Extrait lisible d'une description YouTube : on écarte les lignes de
+ * chapitrage (timecodes), les hashtags, les appels à l'abonnement et les liens
+ * bruts, pour ne garder que le texte rédactionnel.
+ */
+export function excerpt(desc = '', max = 260) {
+  const noise = [
+    /^\s*(?:\d{1,2}:)?\d{1,2}:\d{2}\b/,          // 00:00 Introduction
+    /^\s*#[^\s]/,                                  // #Israel #Actualite
+    /^\s*(?:https?:\/\/|www\.)/i,                  // lien seul
+    /abonn|s'inscrire|subscribe|retrouvez-nous|suivez-nous/i,
+    /^\s*[-–—=_*•]{3,}\s*$/,                        // séparateurs
+    /^[\u{1F000}-\u{1FAFF}\u{2190}-\u{27BF}\u{2B00}-\u{2BFF}\u{FE0F}]/u, // ligne ouverte par un pictogramme
+  ];
+  const keep = String(desc)
+    .split('\n')
+    .map((l) => l.trim())
+    .filter((l) => l && !noise.some((re) => re.test(l)));
+  return truncate(keep.join(' '), max);
+}

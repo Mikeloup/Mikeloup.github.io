@@ -13,7 +13,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import * as yt from './src/youtube.mjs';
 import { markdownToHtml } from './src/markdown.mjs';
-import { slugify, escapeHtml, truncate, paginate, cleanDescription } from './src/util.mjs';
+import { slugify, escapeHtml, truncate, excerpt, paginate, cleanDescription } from './src/util.mjs';
 import * as R from './src/render.mjs';
 
 const ROOT = path.dirname(fileURLToPath(import.meta.url));
@@ -150,7 +150,10 @@ function buildModel(config, data) {
       return { ...p, slug: slugify(p.title), videos };
     })
     .filter((c) => c.videos.length >= (config.playlists?.minVideos ?? 1))
-    .sort((a, b) => rank(a) - rank(b) || b.videos.length - a.videos.length);
+    // Rubriques les plus récemment alimentées en premier ; `order` reste prioritaire.
+    .sort((a, b) => rank(a) - rank(b)
+      || new Date(b.videos[0]?.publishedAt || 0) - new Date(a.videos[0]?.publishedAt || 0)
+      || b.videos.length - a.videos.length);
 
   // Slugs uniques
   const seen = new Map();
@@ -182,7 +185,7 @@ function rssFeed(config, videos) {
     <guid isPermaLink="true">${config.siteUrl}/video/${v.id}/</guid>
     <pubDate>${new Date(v.publishedAt).toUTCString()}</pubDate>
     ${v.playlists?.[0] ? `<category>${escapeHtml(v.playlists[0].title)}</category>` : ''}
-    <description>${escapeHtml(truncate(v.description, 500))}</description>
+    <description>${escapeHtml(excerpt(v.description, 500) || v.title)}</description>
   </item>`).join('');
 
   return `<?xml version="1.0" encoding="UTF-8"?>
@@ -262,24 +265,25 @@ async function main() {
     urls.push({ loc: `/video/${video.id}/`, freq: 'monthly', priority: '0.7', lastmod: video.publishedAt });
   }
 
-  // Pages éditoriales (Markdown)
+  // Pages éditoriales (Markdown) — la liste est pilotée par site.config.json
   const contentDir = path.join(ROOT, 'content');
-  const pageMeta = {
-    'a-propos': { title: 'À propos', description: `Qui sommes-nous ? Présentation de ${config.siteName}.` },
-    contact: { title: 'Contact', description: `Contacter la rédaction de ${config.siteName}.` },
-    partenaires: { title: 'Partenaires', description: `Les partenaires de ${config.siteName}.` },
-    'revue-de-presse': { title: 'Revue de presse', description: `${config.siteName} dans les médias.` },
-  };
-  for (const file of await fs.readdir(contentDir)) {
-    if (!file.endsWith('.md')) continue;
-    const slug = file.replace(/\.md$/, '');
-    const meta = pageMeta[slug] || { title: slug, description: slug };
-    const md = await fs.readFile(path.join(contentDir, file), 'utf8');
+  for (const pg of config.pages || []) {
+    let md;
+    try {
+      md = await fs.readFile(path.join(contentDir, `${pg.slug}.md`), 'utf8');
+    } catch {
+      warn(`Page « ${pg.title} » ignorée : content/${pg.slug}.md est introuvable.`);
+      continue;
+    }
     const html = markdownToHtml(md.replace(/\{\{email\}\}/g, config.contactEmail));
-    await writePage(`/${slug}/`, R.contentPage({
-      ...ctx, title: meta.title, description: meta.description, canonical: `/${slug}/`, html,
+    await writePage(`/${pg.slug}/`, R.contentPage({
+      ...ctx,
+      title: pg.title,
+      description: pg.description || `${pg.title} — ${config.siteName}.`,
+      canonical: `/${pg.slug}/`,
+      html,
     }));
-    urls.push({ loc: `/${slug}/`, freq: 'monthly', priority: '0.5' });
+    urls.push({ loc: `/${pg.slug}/`, freq: 'monthly', priority: '0.5' });
   }
 
   // Recherche (index JSON + page cliente)
@@ -287,7 +291,7 @@ async function main() {
   await writeFile('search.json', JSON.stringify(allVideos.map((v) => ({
     i: v.id,
     t: v.title,
-    d: truncate(v.description, 220),
+    d: excerpt(v.description, 220),
     p: v.publishedAt,
     c: v.playlists?.[0]?.title || '',
     s: v.playlists?.[0]?.slug || '',
@@ -307,7 +311,7 @@ async function main() {
   if (domain && !domain.includes('github.io')) await writeFile('CNAME', `${domain}\n`);
 
   await copyDir(path.join(ROOT, 'assets'), path.join(DIST, 'assets'));
-  for (const f of ['favicon.svg']) {
+  for (const f of ['favicon.png']) {
     try {
       await fs.copyFile(path.join(ROOT, 'assets', f), path.join(DIST, f));
     } catch { /* facultatif */ }

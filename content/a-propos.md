@@ -6,12 +6,9 @@ Notre ligne éditoriale : décrypter l'actualité d'Israël, du monde juif et de
 
 ## Nos émissions
 
-Chaque rubrique de ce site correspond à une émission de la chaîne. Les vidéos y sont classées automatiquement, de la plus récente à la plus ancienne.
+Chaque rubrique de ce site correspond à une émission de la chaîne. Les vidéos y sont classées automatiquement, de la plus récente à la plus ancienne, et les rubriques les plus régulièrement alimentées apparaissent en tête de la page d'accueil.
 
-- **L'invité de Jérôme Haas** — le grand entretien de la semaine.
-- **L'invité de William Zerbib** — géopolitique et analyse stratégique.
-- **Tour d'Israël** — reportages et découvertes à travers le pays.
-- **Histoires juives** — récits et mémoire des communautés.
+Retrouvez la liste complète sur la page [Toutes les émissions](/emissions/).
 
 ## Nous suivre
 
