@@ -9,7 +9,7 @@
   "channelHandle": "@tandem_tv",
   "channelUrl": "https://www.youtube.com/@tandem_tv",
   "contactEmail": "contact@tandemtv.net",
-  "_comment_playlists": "Contrôle des rubriques. 'sort' = ordre des menus et index : \"activity\" (dernière publication la plus récente en tête) ou \"alpha\". 'order' force certaines rubriques en tête. 'exclude' masque une playlist. 'minVideos' = seuil d'existence sur le site. 'menuMaxAgeMonths' = une rubrique sans nouvelle vidéo depuis ce nombre de mois sort des menus (elle reste dans « Tout le catalogue » et dans la recherche, et revient d'elle-même dès une nouvelle publication ; 0 désactive la règle). 'mergeDuplicates' fusionne les titres qui ne diffèrent que par la casse ou les accents.",
+  "_comment_playlists": "Contrôle des rubriques. 'sort' = ordre des menus et index : \"activity\" (dernière publication la plus récente en tête) ou \"alpha\". 'order' force certaines rubriques en tête. 'exclude' masque une playlist. 'minVideos' = seuil d'existence sur le site. Règle des menus déroulants : une rubrique y figure si elle a publié depuis moins de 'menuMaxAgeMonths' mois OU si elle compte au moins 'menuMinVideos' vidéos. Mettre l'un ou l'autre à 0 pour désactiver ce critère. Les rubriques hors menus restent dans « Tout le catalogue » et dans la recherche. 'mergeDuplicates' fusionne les titres qui ne diffèrent que par la casse ou les accents.",
   "playlists": {
     "order": [],
     "sort": "activity",
@@ -18,6 +18,7 @@
     ],
     "minVideos": 1,
     "menuMaxAgeMonths": 6,
+    "menuMinVideos": 15,
     "mergeDuplicates": true
   },
   "home": {

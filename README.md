@@ -120,13 +120,14 @@ Déplacer une rubrique d'une famille à l'autre = ajouter ou retirer son titre d
   "exclude": ["Shorts"],
   "minVideos": 1,
   "menuMaxAgeMonths": 6,
+  "menuMinVideos": 15,
   "mergeDuplicates": true
 }
 ```
 
 - `exclude` — playlists totalement absentes du site.
 - `minVideos` — en dessous de ce nombre de vidéos, la rubrique n'existe pas sur le site.
-- `menuMaxAgeMonths` — une rubrique **sans nouvelle vidéo depuis ce nombre de mois** sort des menus déroulants. Elle reste accessible depuis « Tout le catalogue » et par la recherche, et **revient d'elle-même dès la publication suivante**. Mettre `0` désactive la règle. C'est le nombre de mois qu'on ajuste si les menus paraissent trop vides ou trop chargés.
+- **Règle des menus déroulants** : une rubrique y figure si elle a publié **depuis moins de `menuMaxAgeMonths` mois** *ou* si elle compte **au moins `menuMinVideos` vidéos**. Les rendez-vous actifs remontent, les gros catalogues restent visibles, les rubriques abandonnées à deux ou trois vidéos disparaissent. Mettre l'un ou l'autre à `0` désactive ce critère. Les rubriques hors menus restent dans « Tout le catalogue » et dans la recherche, et **reviennent d'elles-mêmes dès la publication suivante**.
 - `mergeDuplicates` — fusionne les playlists dont le titre ne diffère que par la casse ou les accents (utile pour les doublons créés par erreur sur YouTube).
 
 ### Corriger les titres écrits en majuscules

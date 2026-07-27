@@ -224,10 +224,14 @@ function buildModel(config, data) {
   const cutoff = maxAgeMonths > 0
     ? new Date(new Date(buildTime).getTime() - maxAgeMonths * 30.44 * 86_400_000)
     : null;
-  const isActive = (c) => {
-    if (!cutoff) return true;
-    const last = c.videos[0]?.publishedAt;
-    return last ? new Date(last) >= cutoff : false;
+  // Règle mixte : une rubrique reste au menu si elle a publié récemment
+  // OU si son catalogue dépasse un certain volume.
+  const menuMin = config.playlists?.menuMinVideos ?? 0;
+  const inMenu = (c) => {
+    const recent = !cutoff
+      || (c.videos[0]?.publishedAt ? new Date(c.videos[0].publishedAt) >= cutoff : false);
+    const substantial = menuMin > 0 && c.videos.length >= menuMin;
+    return recent || substantial;
   };
   const shows = categories.filter((c) => c.group === 'shows');
   const themes = categories.filter((c) => c.group === 'themes');
@@ -240,13 +244,14 @@ function buildModel(config, data) {
     themes,
     showsIndex: sortMode(shows),
     themesIndex: sortMode(themes),
-    menuShows: sortMode(shows.filter(isActive)),
-    menuThemes: sortMode(themes.filter(isActive)),
+    menuShows: sortMode(shows.filter(inMenu)),
+    menuThemes: sortMode(themes.filter(inMenu)),
   };
-  if (cutoff) {
-    const hidden = categories.length - nav.menuShows.length - nav.menuThemes.length;
-    log(`${hidden} rubrique(s) sans publication depuis ${maxAgeMonths} mois : hors menus, `
-      + 'toujours accessibles par le catalogue et la recherche.');
+  if (cutoff || menuMin) {
+    const shown = nav.menuShows.length + nav.menuThemes.length;
+    log(`Menus : ${shown} rubrique(s) sur ${categories.length} `
+      + `(actives depuis moins de ${maxAgeMonths} mois, ou ${menuMin}+ vidéos). `
+      + 'Les autres restent dans le catalogue et la recherche.');
   }
 
   return { channel: data.channel, categories, allVideos, byId, nav };
