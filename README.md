@@ -136,7 +136,7 @@ Déplacer une rubrique d'une famille à l'autre = ajouter ou retirer son titre d
 `themeRows` et `showRows` limitent le nombre de rangées affichées en page d'accueil. Avec 74 rubriques, mieux vaut rester bas : le reste est à un clic dans les menus.
 
 ### L'ordre des rubriques
-Sur la page d'accueil, les rubriques sont classées **par activité récente** : celle dont la dernière vidéo est la plus récente passe en tête. L'ordre évolue donc tout seul au fil de vos publications. Dans les menus déroulants et les pages d'index, le classement est **alphabétique**, plus pratique pour retrouver une rubrique précise.
+Sur la page d'accueil, les rubriques sont classées **par activité récente** : celle dont la dernière vidéo est la plus récente passe en tête. L'ordre évolue donc tout seul au fil de vos publications. Les menus déroulants et les pages d'index suivent le même classement. Pour passer les menus en ordre alphabétique, mettez `"sort": "alpha"` dans le bloc `playlists` de `site.config.json`.
 
 Pour figer certaines rubriques en tête, listez-les dans `order` (`site.config.json`) :
 

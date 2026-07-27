@@ -9,9 +9,10 @@
   "channelHandle": "@tandem_tv",
   "channelUrl": "https://www.youtube.com/@tandem_tv",
   "contactEmail": "contact@tandemtv.net",
-  "_comment_playlists": "Contrôle des rubriques. 'exclude' masque une playlist (titre exact ou ID). 'minVideos' = seuil pour exister sur le site. 'menuMinVideos' = seuil pour apparaître dans les menus déroulants (les autres restent dans « Tout le catalogue » et dans la recherche). 'mergeDuplicates' fusionne les playlists dont le titre ne diffère que par la casse ou les accents.",
+  "_comment_playlists": "Contrôle des rubriques. 'sort' = ordre des menus et des index : \"activity\" (la rubrique dont la vidéo la plus récente est la plus fraîche passe en tête) ou \"alpha\" (alphabétique). 'order' force certaines rubriques en tête quel que soit 'sort'. 'exclude' masque une playlist. 'minVideos' = seuil d'existence sur le site. 'menuMinVideos' = seuil d'apparition dans les menus déroulants. 'mergeDuplicates' fusionne les titres qui ne diffèrent que par la casse ou les accents.",
   "playlists": {
     "order": [],
+    "sort": "activity",
     "exclude": [
       "Shorts"
     ],

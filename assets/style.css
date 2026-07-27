@@ -140,6 +140,10 @@ p { margin: 0 0 1em; }
 }
 .menu-panel[hidden] { display: none; }
 .menu-panel-inner { padding: 1.5rem 20px 1.75rem; }
+.menu-hint {
+  margin: 0 0 .85rem .6rem; font-size: .76rem; font-weight: 700;
+  letter-spacing: .1em; text-transform: uppercase; color: var(--muted);
+}
 .menu-grid {
   display: grid; gap: .15rem 1.5rem;
   grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
@@ -364,6 +368,7 @@ p { margin: 0 0 1em; }
     border-top: 0; box-shadow: none; border-radius: 10px; margin: .5rem 0 .75rem;
   }
   .menu-panel-inner { padding: .5rem; }
+  .menu-hint { color: rgb(255 255 255 / 55%); margin: .35rem 0 .35rem .5rem; }
   .menu-grid { grid-template-columns: 1fr; gap: 0; }
   .menu-grid a { color: rgb(255 255 255 / 92%); border-bottom: 0; padding: .65rem .5rem; }
   .menu-grid a:hover { background: rgb(255 255 255 / 12%); color: #fff; }

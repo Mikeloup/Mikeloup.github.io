@@ -93,7 +93,7 @@ function pagination(baseHref, page, totalPages) {
 
 // --- Enveloppe ---------------------------------------------------------------
 
-function menuPanel(id, label, items, allHref, allLabel) {
+function menuPanel(id, label, items, allHref, allLabel, hint) {
   if (!items.length) return `<a href="${allHref}">${escapeHtml(label)}</a>`;
   return `
       <div class="menu">
@@ -102,6 +102,7 @@ function menuPanel(id, label, items, allHref, allLabel) {
         </button>
         <div class="menu-panel" id="${id}" hidden>
           <div class="wrap menu-panel-inner">
+            <p class="menu-hint">${escapeHtml(hint)}</p>
             <div class="menu-grid">
               ${items.map((c) => `<a href="/emissions/${c.slug}/">${escapeHtml(c.title)} <span>${c.videos.length}</span></a>`).join('')}
             </div>
@@ -121,6 +122,9 @@ export function layout({
   const menuShows = nav.menuShows || [];
   const menuThemes = nav.menuThemes || [];
   const footerCats = (nav.shows || categories).slice(0, 7);
+  const menuHint = config.playlists?.sort === 'alpha'
+    ? 'Par ordre alphabétique'
+    : 'De la publication la plus récente à la plus ancienne';
   const analytics = [
     config.analytics?.plausibleDomain
       ? `<script defer data-domain="${escapeHtml(config.analytics.plausibleDomain)}" src="https://plausible.io/js/script.js"></script>`
@@ -184,8 +188,8 @@ ${analytics}
   <nav class="nav" id="nav" aria-label="Rubriques">
     <div class="wrap nav-inner">
       <a href="/">Accueil</a>
-      ${menuPanel('menu-emissions', config.groups?.shows?.label || 'Émissions', menuShows, '/emissions/', 'Voir toutes les émissions')}
-      ${menuPanel('menu-themes', config.groups?.themes?.label || 'Thèmes', menuThemes, '/themes/', 'Voir tous les thèmes')}
+      ${menuPanel('menu-emissions', config.groups?.shows?.label || 'Émissions', menuShows, '/emissions/', 'Voir toutes les émissions', menuHint)}
+      ${menuPanel('menu-themes', config.groups?.themes?.label || 'Thèmes', menuThemes, '/themes/', 'Voir tous les thèmes', menuHint)}
       <a href="/emissions/">Tout le catalogue</a>
       <span class="nav-only-mobile-sep" aria-hidden="true"></span>
       ${pages.map((pg) => `<a class="nav-alt" href="/${pg.slug}/">${escapeHtml(pg.title)}</a>`).join('')}

@@ -214,16 +214,17 @@ function buildModel(config, data) {
   const menuMin = config.playlists?.menuMinVideos ?? 1;
   const shows = categories.filter((c) => c.group === 'shows');
   const themes = categories.filter((c) => c.group === 'themes');
-  // Dans les menus et les index, l'ordre alphabétique est le plus lisible ;
-  // l'ordre par activité récente reste celui de la page d'accueil.
+  // Ordre des menus et des index : par activité récente (défaut) ou alphabétique.
+  // `categories` est déjà trié par activité, un simple filtre conserve cet ordre.
   const alpha = (list) => [...list].sort((a2, b2) => a2.title.localeCompare(b2.title, 'fr', { sensitivity: 'base' }));
+  const sortMode = config.playlists?.sort === 'alpha' ? alpha : ((list) => list);
   const nav = {
     shows,
     themes,
-    showsAZ: alpha(shows),
-    themesAZ: alpha(themes),
-    menuShows: alpha(shows.filter((c) => c.videos.length >= menuMin)),
-    menuThemes: alpha(themes.filter((c) => c.videos.length >= menuMin)),
+    showsIndex: sortMode(shows),
+    themesIndex: sortMode(themes),
+    menuShows: sortMode(shows.filter((c) => c.videos.length >= menuMin)),
+    menuThemes: sortMode(themes.filter((c) => c.videos.length >= menuMin)),
   };
 
   return { channel: data.channel, categories, allVideos, byId, nav };
@@ -292,14 +293,14 @@ async function main() {
     const page = i + 1;
     const route = page === 1 ? '/emissions/' : `/emissions/page/${page}/`;
     await writePage(route, R.groupIndexPage({
-      ...ctx, group: 'shows', items: nav.showsAZ, videos: pageVideos, page, totalPages: allPages.length,
+      ...ctx, group: 'shows', items: nav.showsIndex, videos: pageVideos, page, totalPages: allPages.length,
     }));
     urls.push({ loc: route, freq: 'daily', priority: page === 1 ? '0.9' : '0.4' });
   }
 
   // Index des thèmes
   await writePage('/themes/', R.groupIndexPage({
-    ...ctx, group: 'themes', items: nav.themesAZ, rows: nav.themes, videos: null, page: 1, totalPages: 1,
+    ...ctx, group: 'themes', items: nav.themesIndex, rows: nav.themes, videos: null, page: 1, totalPages: 1,
   }));
   urls.push({ loc: '/themes/', freq: 'weekly', priority: '0.8' });
 
