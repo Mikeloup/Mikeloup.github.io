@@ -219,6 +219,11 @@ p { margin: 0 0 1em; }
 
 .grid { display: grid; gap: 1.75rem 1.35rem; grid-template-columns: repeat(auto-fill, minmax(255px, 1fr)); }
 
+/* Grille éditoriale : la première carte occupe deux colonnes. */
+.grid-lead .card--lead { grid-column: span 2; }
+.grid-lead .card--lead .card-title { font-size: 1.3rem; line-height: 1.25; }
+.grid-lead .card--lead .card-cat { font-size: .78rem; }
+
 .card { display: flex; flex-direction: column; min-width: 0; }
 .card-thumb { position: relative; display: block; border-radius: var(--radius-sm); overflow: hidden; background: var(--surface-2); margin-bottom: .75rem; box-shadow: var(--shadow); }
 .card-thumb img { width: 100%; aspect-ratio: 16/9; object-fit: cover; transition: transform .35s ease; }
@@ -387,6 +392,31 @@ p { margin: 0 0 1em; }
   .brand img { height: 36px; }
 }
 
+
+/* Sommaire des chapitres */
+.chapters {
+  margin: 2rem 0 0; padding: 1.35rem 1.5rem;
+  border: 1px solid var(--line); border-left: 4px solid var(--accent);
+  border-radius: 10px; background: var(--surface-2);
+}
+.chapters-title {
+  font-size: .78rem; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--brand); margin: 0 0 .9rem;
+}
+.chapters-list { list-style: none; margin: 0; padding: 0; display: grid; gap: .1rem; }
+.chapters-list li { margin: 0; }
+.chapters-list a {
+  display: flex; gap: .85rem; align-items: baseline;
+  padding: .42rem .5rem; margin-inline: -.5rem; border-radius: 6px;
+  color: inherit; text-decoration: none;
+}
+.chapters-list a:hover { background: rgb(43 95 217 / 8%); }
+.chapters-time {
+  flex: 0 0 auto; font-variant-numeric: tabular-nums; font-weight: 600;
+  font-size: .875rem; color: var(--accent); min-width: 3.4rem;
+}
+.chapters-label { flex: 1 1 auto; }
+
 @media (max-width: 780px) {
   .grid { grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr)); gap: 1.5rem 1rem; }
   .row { padding-top: 1.9rem; margin-top: 1.5rem; }
@@ -395,6 +425,10 @@ p { margin: 0 0 1em; }
 
 @media (max-width: 480px) {
   .grid { grid-template-columns: 1fr; }
+  .grid-lead .card--lead { grid-column: auto; }
+  .grid-lead .card--lead .card-title { font-size: 1.05rem; }
+  .chapters { padding: 1.1rem 1.15rem; }
+  .chapters-list a { gap: .6rem; }
   .card-title { -webkit-line-clamp: 2; line-clamp: 2; }
   .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
 }

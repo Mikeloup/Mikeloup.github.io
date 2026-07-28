@@ -5,16 +5,17 @@
 
 import {
   escapeHtml, formatDate, formatDuration, formatCount, truncate, excerpt, descriptionToHtml,
+  extractChapters, removeChapterLines,
 } from './util.mjs';
 
 const YT_THUMB = (id) => `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
 
 // --- Briques réutilisables ---------------------------------------------------
 
-export function videoCard(video, { showCategory = true, eager = false } = {}) {
+export function videoCard(video, { showCategory = true, eager = false, lead = false } = {}) {
   const cat = showCategory && video.playlists?.[0];
   return `
-<article class="card">
+<article class="card${lead ? ' card--lead' : ''}">
   <a class="card-thumb" href="/video/${video.id}/" aria-label="${escapeHtml(video.title)}">
     <img src="${escapeHtml(video.thumbnail || YT_THUMB(video.id))}" alt="" loading="${eager ? 'eager' : 'lazy'}" decoding="async" width="480" height="270">
     ${video.duration ? `<span class="badge-duration">${formatDuration(video.duration)}</span>` : ''}
@@ -33,7 +34,11 @@ export function videoCard(video, { showCategory = true, eager = false } = {}) {
 
 function grid(videos, opts = {}) {
   if (!videos.length) return '<p class="empty">Aucune vidéo dans cette rubrique pour le moment.</p>';
-  return `<div class="grid">${videos.map((v, i) => videoCard(v, { ...opts, eager: i < 4 })).join('')}</div>`;
+  const { lead = false, ...cardOpts } = opts;
+  const cls = lead && videos.length > 2 ? 'grid grid-lead' : 'grid';
+  return `<div class="${cls}">${videos.map((v, i) => videoCard(v, {
+    ...cardOpts, eager: i < 4, lead: lead && i === 0 && videos.length > 2,
+  })).join('')}</div>`;
 }
 
 function row(title, href, videos) {
@@ -48,7 +53,7 @@ function row(title, href, videos) {
 </section>`;
 }
 
-function hero(video, category) {
+function hero(video, category, { pinned = false } = {}) {
   if (!video) return '';
   return `
 <section class="hero">
@@ -57,7 +62,7 @@ function hero(video, category) {
     <span class="hero-play" aria-hidden="true"></span>
   </a>
   <div class="hero-body">
-    <p class="kicker"><span class="live-dot" aria-hidden="true"></span>Dernière publication${category ? ` · <a href="/emissions/${category.slug}/">${escapeHtml(category.title)}</a>` : ''}</p>
+    <p class="kicker"><span class="live-dot" aria-hidden="true"></span>${pinned ? 'À la une' : 'Dernière publication'}${category ? ` · <a href="/emissions/${category.slug}/">${escapeHtml(category.title)}</a>` : ''}</p>
     <h1 class="hero-title"><a href="/video/${video.id}/">${escapeHtml(video.title)}</a></h1>
     <p class="hero-desc">${escapeHtml(excerpt(video.description, 260))}</p>
     <p class="hero-meta">
@@ -264,9 +269,13 @@ function chips(items) {
 }
 
 export function homePage({ config, categories, nav, latest, buildTime }) {
-  const featured = latest[0];
+  const pinnedId = String(config.home?.featured || '').trim();
+  const pinned = pinnedId ? latest.find((v) => v.id === pinnedId) : null;
+  const featured = pinned || latest[0];
   const featuredCat = featured?.playlists?.[0];
-  const rest = latest.slice(1, (config.home?.latestCount ?? 8) + 1);
+  const rest = latest
+    .filter((v) => v.id !== featured?.id)
+    .slice(0, config.home?.latestCount ?? 8);
   const rowSize = config.home?.rowSize ?? 8;
 
   const themes = nav.themes || [];
@@ -276,14 +285,14 @@ export function homePage({ config, categories, nav, latest, buildTime }) {
 
   const content = `
 <div class="wrap">
-  ${hero(featured, featuredCat)}
+  ${hero(featured, featuredCat, { pinned: Boolean(pinned) })}
 
   <section class="row">
     <div class="row-head">
       <h2 class="row-title"><a href="/emissions/">Dernières vidéos</a></h2>
       <a class="row-more" href="/emissions/">Tout le catalogue <span aria-hidden="true">→</span></a>
     </div>
-    ${grid(rest)}
+    ${grid(rest, { lead: true })}
   </section>
 
   ${themes.length ? `
@@ -406,7 +415,15 @@ export function categoryPage({ config, categories, nav, category, videos, page, 
 
 export function videoPage({ config, categories, nav, video, related, buildTime }) {
   const cat = video.playlists?.[0];
-  const desc = descriptionToHtml(video.description, video.id);
+  const chapters = extractChapters(video.description);
+  const desc = descriptionToHtml(removeChapterLines(video.description, chapters), video.id);
+  const summary = chapters.length ? `
+    <nav class="chapters" aria-label="Sommaire de la vidéo">
+      <h2 class="chapters-title">Au sommaire</h2>
+      <ol class="chapters-list">
+        ${chapters.map((ch) => `<li><a href="https://www.youtube.com/watch?v=${video.id}&amp;t=${ch.seconds}s" data-seek="${ch.seconds}"><span class="chapters-time">${escapeHtml(ch.time)}</span><span class="chapters-label">${escapeHtml(ch.label)}</span></a></li>`).join('')}
+      </ol>
+    </nav>` : '';
 
   const content = `
 <div class="wrap">
@@ -446,6 +463,8 @@ export function videoPage({ config, categories, nav, video, related, buildTime }
       <a href="mailto:?subject=${encodeURIComponent(video.title)}&body=${encodeURIComponent(`${config.siteUrl}/video/${video.id}/`)}">E-mail</a>
       <a class="right" href="https://www.youtube.com/watch?v=${video.id}" target="_blank" rel="noopener">Voir sur YouTube ↗</a>
     </div>
+
+    ${summary}
 
     ${desc ? `<div class="prose article-body">${desc}</div>` : ''}
 
@@ -490,6 +509,18 @@ export function videoPage({ config, categories, nav, video, related, buildTime }
           interactionType: { '@type': 'WatchAction' },
           userInteractionCount: video.views,
         },
+      } : {}),
+      // « Moments clés » : Google peut afficher les chapitres directement
+      // sous le résultat de recherche, avec un lien vers chaque séquence.
+      ...(chapters.length ? {
+        hasPart: chapters.map((ch, i) => ({
+          '@type': 'Clip',
+          name: ch.label,
+          startOffset: ch.seconds,
+          ...(chapters[i + 1] ? { endOffset: chapters[i + 1].seconds }
+            : (video.duration ? { endOffset: video.duration } : {})),
+          url: `${config.siteUrl}/video/${video.id}/?t=${ch.seconds}`,
+        })),
       } : {}),
     },
   });

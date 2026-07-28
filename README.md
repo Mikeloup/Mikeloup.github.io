@@ -245,3 +245,35 @@ data/demo.json         données de démonstration
 - La clé API vit uniquement dans les secrets GitHub, jamais dans les pages publiées.
 - Si YouTube est indisponible au moment d'une mise à jour, le build réutilise la dernière synchronisation réussie : le site ne casse pas.
 - Aucune base de données, aucun formulaire côté serveur, aucun mot de passe à gérer : la surface d'attaque est nulle.
+
+## Réglages ajoutés en version 8 et 9
+
+### Épingler une vidéo en une
+
+Par défaut, la page d'accueil met en avant la dernière vidéo publiée. Pour choisir vous-même :
+
+```json
+"home": { "featured": "dQw4w9WgXcQ" }
+```
+
+Collez l'identifiant de la vidéo — les 11 caractères qui suivent `watch?v=` dans son adresse YouTube.
+Le bandeau affiche alors « À la une » au lieu de « Dernière publication », et la vidéo épinglée n'apparaît pas en double dans la grille.
+Remettez `""` pour revenir au fonctionnement automatique.
+
+Si l'identifiant ne correspond à aucune vidéo du catalogue, le site revient silencieusement à la dernière publication : une faute de frappe ne casse rien.
+
+### Pages visibles seulement en pied de page
+
+Ajoutez `"footerOnly": true` à une entrée de `pages` pour qu'elle disparaisse du menu principal tout en restant accessible par le pied de page. C'est le réglage utilisé pour les mentions légales et la politique de confidentialité.
+
+### Réseaux sociaux
+
+Les adresses renseignées dans `social` apparaissent en pied de page **et** alimentent la fiche `Organization` lue par Google (`sameAs`), qui relie officiellement le site à vos comptes. Une adresse laissée vide n'apparaît pas.
+
+### Sommaire automatique des vidéos
+
+Aucun réglage : quand une description contient au moins trois timecodes en ordre chronologique (`00:00 Introduction`, `Introduction 00:00`, `00:00 - Introduction`…), le site en tire un encadré « Au sommaire » cliquable, et retire ces lignes du corps de la description pour éviter le doublon.
+
+Un clic sur un chapitre lance la lecture **sur le site**, au bon moment — la vue est donc comptabilisée par YouTube. Ces chapitres sont également déclarés à Google en données structurées `Clip` : ils peuvent apparaître comme « moments clés » sous le résultat de recherche.
+
+Si un sommaire vous paraît mal découpé, la cause est toujours dans la description YouTube : corrigez-la là-bas, la prochaine synchronisation reprendra la correction.

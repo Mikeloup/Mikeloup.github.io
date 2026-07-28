@@ -89,6 +89,79 @@ export function descriptionToHtml(text = '', videoId = '') {
     .join('\n');
 }
 
+/**
+ * Extrait les chapitres d'une description YouTube.
+ * Reconnaît « 12:34 Titre », « 12:34 - Titre » et « Titre 12:34 ».
+ * Renvoie [] si moins de `min` chapitres : mieux vaut ne rien afficher
+ * qu'un sommaire d'une seule ligne bâti sur un timecode isolé.
+ */
+export function extractChapters(text = '', { min = 3 } = {}) {
+  const TIME = String.raw`(?:\d{1,2}:)?\d{1,2}:\d{2}`;
+  const leading = new RegExp(`^\\s*(${TIME})\\s*(?:[-–—:.)\\]]|\\|)?\\s*(.+?)\\s*$`);
+  const trailing = new RegExp(`^\\s*(.+?)\\s*(?:[-–—:(\\[]|\\|)?\\s*(${TIME})\\s*$`);
+  const seen = new Set();
+  const chapters = [];
+  const lines = String(text).split(/\r?\n/);
+
+  for (let index = 0; index < lines.length; index += 1) {
+    const line = lines[index].trim();
+    if (!line) continue;
+    let time = null;
+    let label = null;
+    const a = leading.exec(line);
+    if (a) { [, time, label] = a; } else {
+      const b = trailing.exec(line);
+      if (b) { [, label, time] = b; }
+    }
+    if (!time || !label) continue;
+
+    label = label.replace(/^[\s\-–—:|.)\]]+/, '').replace(/[\s\-–—:|(\[]+$/, '').trim();
+    if (label.length < 2 || label.length > 120) continue;
+    // Une ligne qui n'est qu'un second timecode n'est pas un titre de chapitre.
+    if (new RegExp(`^${TIME}$`).test(label)) continue;
+
+    const parts = time.split(':').map(Number);
+    const seconds = parts.length === 3
+      ? parts[0] * 3600 + parts[1] * 60 + parts[2]
+      : parts[0] * 60 + parts[1];
+    if (seen.has(seconds)) continue;
+    seen.add(seconds);
+    chapters.push({ time, seconds, label, index });
+  }
+
+  if (chapters.length < min) return [];
+  // Un vrai sommaire est chronologique ; sinon on a ramassé autre chose.
+  for (let i = 1; i < chapters.length; i += 1) {
+    if (chapters[i].seconds <= chapters[i - 1].seconds) return [];
+  }
+  return chapters;
+}
+
+/**
+ * Retire de la description les lignes déjà reprises dans le sommaire,
+ * ainsi qu'un éventuel intertitre devenu orphelin (« Sommaire », « Chapitres »…).
+ */
+export function removeChapterLines(text = '', chapters = []) {
+  if (!chapters.length) return String(text);
+  const lines = String(text).split(/\r?\n/);
+  const drop = new Set(chapters.map((c) => c.index));
+  const HEADING = /^\s*(?:au\s+)?(?:sommaire|chapitres?|timecodes?|minutage|programme)\s*:?\s*$/i;
+
+  const first = Math.min(...drop);
+  for (let i = first - 1; i >= 0; i -= 1) {
+    const line = lines[i].trim();
+    if (!line) continue;
+    if (HEADING.test(line)) drop.add(i);
+    break;
+  }
+
+  return lines
+    .filter((_, i) => !drop.has(i))
+    .join('\n')
+    .replace(/\n{3,}/g, '\n\n')
+    .trim();
+}
+
 /** Découpe un tableau en pages de n éléments. */
 export function paginate(arr, perPage) {
   const pages = [];

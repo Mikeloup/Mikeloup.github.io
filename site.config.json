@@ -25,7 +25,8 @@
     "rowSize": 8,
     "latestCount": 8,
     "themeRows": 3,
-    "showRows": 3
+    "showRows": 3,
+    "featured": ""
   },
   "_comment_social": "Comptes officiels. Une adresse vide n'apparaît pas sur le site. Ces liens alimentent aussi la fiche « Organization » lue par Google (champ sameAs), qui relie officiellement le site à vos comptes.",
   "social": {
@@ -94,7 +95,7 @@
       ]
     }
   },
-  "_comment_home": "Page d'accueil : 'latestCount' = nombre de vidéos dans « Dernières vidéos », 'themeRows'/'showRows' = nombre de rangées thématiques et d'émissions affichées (les autres restent accessibles par les menus). Garder des valeurs basses pour que la page reste légère.",
+  "_comment_home": "Page d'accueil : 'latestCount' = nombre de vidéos dans « Dernières vidéos », 'themeRows'/'showRows' = nombre de rangées thématiques et d'émissions affichées (les autres restent accessibles par les menus). Garder des valeurs basses pour que la page reste légère. 'featured' = identifiant YouTube de la vidéo à épingler en une (les 11 caractères après « watch?v= » dans l'adresse de la vidéo). Laisser vide pour afficher automatiquement la dernière publication.",
   "googleSiteVerification": "",
   "_comment_googleSiteVerification": "Code de vérification fourni par Google Search Console (méthode « Balise HTML »). Collez uniquement la valeur de l'attribut content, pas la balise entière. Laissez vide si non utilisé.",
   "display": {

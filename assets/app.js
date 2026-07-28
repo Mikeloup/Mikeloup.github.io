@@ -45,11 +45,14 @@
   // --- Lecteur YouTube différé (chargé au clic, pas au chargement) ----------
   var player = document.querySelector('.player');
   if (player) {
-    var load = function () {
+    var load = function (start) {
       var id = player.getAttribute('data-video');
       var title = player.getAttribute('data-title') || 'Vidéo';
+      var src = 'https://www.youtube-nocookie.com/embed/' + id
+        + '?autoplay=1&rel=0&modestbranding=1&hl=fr';
+      if (start > 0) src += '&start=' + start;
       var iframe = document.createElement('iframe');
-      iframe.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0&modestbranding=1&hl=fr';
+      iframe.src = src;
       iframe.title = title;
       iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
       iframe.allowFullscreen = true;
@@ -57,9 +60,22 @@
       player.innerHTML = '';
       player.appendChild(iframe);
     };
-    player.addEventListener('click', load);
+    // Un lien « moment clé » (…/?t=320) démarre la lecture au bon endroit.
+    var urlStart = parseInt((location.search.match(/[?&]t=(\d+)/) || [])[1], 10) || 0;
+
+    player.addEventListener('click', function () { load(urlStart); });
     player.addEventListener('keydown', function (e) {
-      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); load(); }
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); load(urlStart); }
+    });
+
+    // Sommaire : on lance la lecture sur place, au chapitre choisi.
+    document.addEventListener('click', function (e) {
+      var link = e.target.closest ? e.target.closest('[data-seek]') : null;
+      if (!link) return;
+      e.preventDefault();
+      load(parseInt(link.getAttribute('data-seek'), 10) || 0);
+      var top = player.getBoundingClientRect().top + window.pageYOffset - 80;
+      window.scrollTo({ top: top < 0 ? 0 : top, behavior: 'smooth' });
     });
   }
 
