@@ -42,7 +42,7 @@ Ce site n'utilise **aucune police chargée depuis un serveur tiers**. Il s'appui
 
 ## Statistiques de fréquentation
 
-Aucun outil de mesure d'audience n'est actif à ce jour. Si nous en installons un, ce sera une solution respectueuse de la vie privée, sans cookie et sans identification individuelle, et cette page sera mise à jour en conséquence.
+{{analytics}}
 
 ## Si vous nous écrivez
 

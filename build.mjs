@@ -406,7 +406,12 @@ async function main() {
       warn(`Page « ${pg.title} » ignorée : content/${pg.slug}.md est introuvable.`);
       continue;
     }
-    const html = markdownToHtml(md.replace(/\{\{email\}\}/g, config.contactEmail));
+    const analyticsNote = config.analytics?.cloudflareToken
+      ? "La fréquentation du site est mesurée avec **Cloudflare Web Analytics**. Cet outil ne dépose aucun cookie, n'utilise pas d'empreinte numérique et ne permet pas de vous identifier ni de vous suivre d'un site à l'autre. Il compte les pages vues et les provenances, de façon agrégée."
+      : "Aucun outil de mesure d'audience n'est actif à ce jour. Si nous en installons un, ce sera une solution respectueuse de la vie privée, sans cookie et sans identification individuelle, et cette page sera mise à jour en conséquence.";
+    const html = markdownToHtml(md
+      .replace(/\{\{email\}\}/g, config.contactEmail)
+      .replace(/\{\{analytics\}\}/g, analyticsNote));
     await writePage(`/${pg.slug}/`, R.contentPage({
       ...ctx,
       title: pg.title,

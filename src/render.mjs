@@ -141,6 +141,9 @@ export function layout({
   const menuThemes = nav.menuThemes || [];
   const footerCats = (nav.shows || categories).slice(0, 7);
   const analytics = [
+    config.analytics?.cloudflareToken
+      ? `<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "${escapeHtml(config.analytics.cloudflareToken)}"}'></script>`
+      : '',
     config.analytics?.plausibleDomain
       ? `<script defer data-domain="${escapeHtml(config.analytics.plausibleDomain)}" src="https://plausible.io/js/script.js"></script>`
       : '',
