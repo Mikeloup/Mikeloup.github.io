@@ -336,6 +336,15 @@ p { margin: 0 0 1em; }
 .footer-logo { background: #fff; padding: .55rem .8rem; border-radius: 10px; display: inline-flex; }
 .footer-logo img { height: 40px; width: auto; }
 .footer-col p a { color: var(--sky); }
+
+.social { list-style: none; margin: 1.1rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: .45rem; }
+.social li { margin: 0; }
+.social a {
+  display: inline-block; padding: .3rem .7rem; border-radius: 999px;
+  border: 1px solid rgb(255 255 255 / 24%); font-size: .8rem; line-height: 1.4;
+  color: rgb(255 255 255 / 85%); transition: background-color .15s, border-color .15s, color .15s;
+}
+.social a:hover { background: rgb(255 255 255 / 10%); border-color: var(--sky); color: #fff; }
 .footer-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem; padding: 1.25rem 20px; border-top: 1px solid rgb(255 255 255 / 14%); }
 .footer-bottom p { margin: 0; }
 

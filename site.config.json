@@ -8,7 +8,7 @@
   "channelId": "",
   "channelHandle": "@tandem_tv",
   "channelUrl": "https://www.youtube.com/@tandem_tv",
-  "contactEmail": "contact@tandemtv.net",
+  "contactEmail": "contact@tandemtv.org",
   "_comment_playlists": "Contrôle des rubriques. 'sort' = ordre des menus et index : \"activity\" (dernière publication la plus récente en tête) ou \"alpha\". 'order' force certaines rubriques en tête. 'exclude' masque une playlist. 'minVideos' = seuil d'existence sur le site. Règle des menus déroulants : une rubrique y figure si elle a publié depuis moins de 'menuMaxAgeMonths' mois OU si elle compte au moins 'menuMinVideos' vidéos. Mettre l'un ou l'autre à 0 pour désactiver ce critère. Les rubriques hors menus restent dans « Tout le catalogue » et dans la recherche. 'mergeDuplicates' fusionne les titres qui ne diffèrent que par la casse ou les accents.",
   "playlists": {
     "order": [],
@@ -27,11 +27,15 @@
     "themeRows": 3,
     "showRows": 3
   },
+  "_comment_social": "Comptes officiels. Une adresse vide n'apparaît pas sur le site. Ces liens alimentent aussi la fiche « Organization » lue par Google (champ sameAs), qui relie officiellement le site à vos comptes.",
   "social": {
     "youtube": "https://www.youtube.com/@tandem_tv",
-    "facebook": "",
-    "x": "",
-    "instagram": ""
+    "facebook": "https://www.facebook.com/groups/1425584844147065",
+    "x": "https://x.com/TandemTVoff",
+    "instagram": "https://www.instagram.com/tandem_tv_2/",
+    "telegram": "",
+    "linkedin": "https://www.linkedin.com/company/tandem-tv/",
+    "tiktok": ""
   },
   "analytics": {
     "plausibleDomain": "",
@@ -39,7 +43,7 @@
   },
   "_comment_siteUrl": "Adresse publique du site. Mettez https://www.tandemtv.net une fois le domaine branché (étape 5 du README).",
   "_comment_channelId": "Laissez vide : la chaîne est retrouvée automatiquement via channelHandle.",
-  "_comment_pages": "Pages éditoriales du site. Chaque entrée correspond à un fichier content/<slug>.md. Retirez une ligne pour faire disparaître la page du site et des menus.",
+  "_comment_pages": "Pages éditoriales du site. Chaque entrée correspond à un fichier content/<slug>.md. Retirez une ligne pour faire disparaître la page du site et des menus. Ajoutez \"footerOnly\": true pour qu'une page n'apparaisse que dans le pied de page (mentions légales, confidentialité) et pas dans le menu principal.",
   "pages": [
     {
       "slug": "a-propos",
@@ -50,6 +54,18 @@
       "slug": "contact",
       "title": "Contact",
       "description": "Contacter la rédaction de Tandem TV."
+    },
+    {
+      "slug": "mentions-legales",
+      "title": "Mentions légales",
+      "description": "Éditeur, directeur de la publication et hébergeur du site Tandem TV.",
+      "footerOnly": true
+    },
+    {
+      "slug": "confidentialite",
+      "title": "Politique de confidentialité",
+      "description": "Données personnelles, cookies et services tiers utilisés par le site Tandem TV.",
+      "footerOnly": true
     }
   ],
   "_comment_groups": "Deux familles de rubriques. Il suffit de lister les THÈMES : toute playlist non citée est automatiquement traitée comme une émission. Comparaison insensible à la casse et aux accents.",

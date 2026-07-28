@@ -111,6 +111,16 @@ function menuPanel(id, label, items, allHref, allLabel) {
       </div>`;
 }
 
+const SOCIAL_ORDER = [
+  ['youtube', 'YouTube'],
+  ['facebook', 'Facebook'],
+  ['x', 'X'],
+  ['instagram', 'Instagram'],
+  ['telegram', 'Telegram'],
+  ['linkedin', 'LinkedIn'],
+  ['tiktok', 'TikTok'],
+];
+
 export function layout({
   config, categories, nav = {}, title, description, canonical, image, ogType = 'website', bodyClass = '',
   content, jsonLd = null, buildTime,
@@ -118,6 +128,10 @@ export function layout({
   const fullTitle = title === config.siteName ? `${config.siteName} — ${config.tagline}` : `${title} | ${config.siteName}`;
   const url = config.siteUrl.replace(/\/$/, '') + canonical;
   const pages = config.pages || [];
+  const navPages = pages.filter((pg) => !pg.footerOnly);
+  const socialLinks = SOCIAL_ORDER
+    .map(([key, label]) => [config.social?.[key], label])
+    .filter(([href]) => href);
   const menuShows = nav.menuShows || [];
   const menuThemes = nav.menuThemes || [];
   const footerCats = (nav.shows || categories).slice(0, 7);
@@ -130,6 +144,17 @@ export function layout({
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','${escapeHtml(config.analytics.gaMeasurementId)}');</script>`
       : '',
   ].join('');
+
+  const orgLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: config.siteName,
+    url: config.siteUrl.replace(/\/$/, '') + '/',
+    logo: config.siteUrl.replace(/\/$/, '') + '/assets/logo.png',
+    description: config.description,
+    email: config.contactEmail || undefined,
+    sameAs: socialLinks.map(([href]) => href),
+  };
 
   return `<!doctype html>
 <html lang="${config.lang}">
@@ -148,14 +173,12 @@ export function layout({
 ${image ? `<meta property="og:image" content="${escapeHtml(image)}">` : ''}
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://i.ytimg.com" crossorigin>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
 <link rel="alternate" type="application/rss+xml" title="${escapeHtml(config.siteName)}" href="/rss.xml">
 <link rel="icon" href="/favicon.png" type="image/png">
 <link rel="apple-touch-icon" href="/favicon.png">
 <link rel="stylesheet" href="/assets/style.css">
 ${config.googleSiteVerification ? `<meta name="google-site-verification" content="${escapeHtml(config.googleSiteVerification)}">` : ''}
+<script type="application/ld+json">${JSON.stringify(orgLd)}</script>
 ${jsonLd ? `<script type="application/ld+json">${JSON.stringify(jsonLd)}</script>` : ''}
 ${analytics}
 </head>
@@ -169,7 +192,7 @@ ${analytics}
     </a>
 
     <nav class="utility" aria-label="Pages du site">
-      ${pages.map((pg) => `<a href="/${pg.slug}/">${escapeHtml(pg.title)}</a>`).join('')}
+      ${navPages.map((pg) => `<a href="/${pg.slug}/">${escapeHtml(pg.title)}</a>`).join('')}
     </nav>
 
     <form class="search" action="/recherche/" method="get" role="search">
@@ -189,7 +212,7 @@ ${analytics}
       ${menuPanel('menu-themes', config.groups?.themes?.label || 'Thèmes', menuThemes, '/themes/', 'Voir tous les thèmes')}
       <a href="/emissions/">Tout le catalogue</a>
       <span class="nav-only-mobile-sep" aria-hidden="true"></span>
-      ${pages.map((pg) => `<a class="nav-alt" href="/${pg.slug}/">${escapeHtml(pg.title)}</a>`).join('')}
+      ${navPages.map((pg) => `<a class="nav-alt" href="/${pg.slug}/">${escapeHtml(pg.title)}</a>`).join('')}
     </div>
   </nav>
 </header>
@@ -206,6 +229,9 @@ ${content}
       </a>
       <p class="muted">${escapeHtml(config.tagline)}</p>
       <p class="muted small">Toutes les vidéos sont publiées sur <a href="${escapeHtml(config.channelUrl)}" target="_blank" rel="noopener">la chaîne YouTube Tandem TV</a>.</p>
+      ${socialLinks.length ? `<ul class="social" aria-label="Tandem TV sur les réseaux sociaux">
+        ${socialLinks.map(([href, label]) => `<li><a href="${escapeHtml(href)}" target="_blank" rel="noopener">${escapeHtml(label)}</a></li>`).join('')}
+      </ul>` : ''}
     </div>
     <div class="footer-col">
       <h4>Émissions</h4>
