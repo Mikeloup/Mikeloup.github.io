@@ -409,9 +409,13 @@ async function main() {
     const analyticsNote = config.analytics?.cloudflareToken
       ? "La fréquentation du site est mesurée avec **Cloudflare Web Analytics**. Cet outil ne dépose aucun cookie, n'utilise pas d'empreinte numérique et ne permet pas de vous identifier ni de vous suivre d'un site à l'autre. Il compte les pages vues et les provenances, de façon agrégée."
       : "Aucun outil de mesure d'audience n'est actif à ce jour. Si nous en installons un, ce sera une solution respectueuse de la vie privée, sans cookie et sans identification individuelle, et cette page sera mise à jour en conséquence.";
+    const pushNote = config.push?.oneSignalAppId
+      ? "Le site propose de vous prévenir des nouvelles vidéos par notification du navigateur. **Rien ne se déclenche sans votre accord explicite** : tant que vous n'avez pas accepté, aucun identifiant n'est créé. Si vous acceptez, votre navigateur génère un identifiant technique anonyme, confié à notre prestataire **OneSignal**, qui achemine les notifications. Cet identifiant n'est associé ni à votre nom, ni à votre adresse électronique — nous ne les connaissons pas. Vous pouvez retirer cette autorisation à tout moment dans les réglages de votre navigateur, sans avoir à nous en informer. Voir la [politique de confidentialité de OneSignal](https://onesignal.com/privacy_policy)."
+      : "Le site n'envoie aucune notification.";
     const html = markdownToHtml(md
       .replace(/\{\{email\}\}/g, config.contactEmail)
-      .replace(/\{\{analytics\}\}/g, analyticsNote));
+      .replace(/\{\{analytics\}\}/g, analyticsNote)
+      .replace(/\{\{push\}\}/g, pushNote));
     await writePage(`/${pg.slug}/`, R.contentPage({
       ...ctx,
       title: pg.title,
@@ -449,6 +453,12 @@ async function main() {
     + `Sitemap: ${config.siteUrl}/sitemap-video.xml\n`);
   await writeFile('.nojekyll', '');
 
+  // Agent de service OneSignal : doit être servi à la racine du domaine.
+  if (config.push?.oneSignalAppId) {
+    await writeFile('OneSignalSDKWorker.js',
+      'importScripts("https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.sw.js");\n');
+  }
+
   const domain = config.siteUrl.replace(/^https?:\/\//, '').replace(/\/$/, '');
   if (domain && !domain.includes('github.io')) await writeFile('CNAME', `${domain}\n`);
 
@@ -460,6 +470,96 @@ async function main() {
   }
 
   log(`✅ ${urls.length} pages générées dans dist/ en ${((Date.now() - t0) / 1000).toFixed(1)}s`);
+
+  await notifyNewVideos(config, allVideos);
+}
+
+// --- Notifications navigateur ------------------------------------------------
+
+/**
+ * Envoie une notification pour chaque vidéo absente de la version actuellement
+ * publiée. L'état n'est pas stocké : la référence est le search.json en ligne.
+ * En cas de doute (fichier illisible, réponse vide), on n'envoie rien —
+ * une notification manquée vaut mieux qu'un envoi en double à toute l'audience.
+ */
+async function notifyNewVideos(config, allVideos) {
+  const appId = config.push?.oneSignalAppId;
+  const apiKey = process.env.ONESIGNAL_API_KEY;
+
+  if (DEMO || !appId || config.push?.notifyOnNewVideos === false) return;
+  if (!apiKey) {
+    warn('Notifications : secret ONESIGNAL_API_KEY absent, aucun envoi.');
+    return;
+  }
+
+  let published;
+  try {
+    const res = await fetch(`${config.siteUrl}/search.json`, { cache: 'no-store' });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    published = await res.json();
+  } catch (err) {
+    warn(`Notifications : liste publiée illisible (${err.message}). Aucun envoi.`);
+    return;
+  }
+
+  if (!Array.isArray(published) || published.length === 0) {
+    warn('Notifications : liste publiée vide ou inattendue. Aucun envoi par sécurité.');
+    return;
+  }
+
+  const known = new Set(published.map((v) => v.i));
+  const maxAgeMs = (config.push?.maxAgeHours ?? 72) * 3600 * 1000;
+  const fresh = allVideos
+    .filter((v) => !known.has(v.id))
+    .filter((v) => v.publishedAt && (buildTime - new Date(v.publishedAt).getTime()) < maxAgeMs)
+    .sort((a, b) => new Date(a.publishedAt) - new Date(b.publishedAt));
+
+  if (fresh.length === 0) {
+    log('Notifications : aucune nouvelle vidéo à annoncer.');
+    return;
+  }
+
+  const max = config.push?.maxPerRun ?? 3;
+  if (fresh.length > max) {
+    warn(`Notifications : ${fresh.length} nouveautés détectées, seules les ${max} plus récentes seront annoncées.`);
+  }
+  const toSend = fresh.slice(-max);
+
+  const fill = (tpl, video) => String(tpl || '')
+    .replace(/\{emission\}/g, video.playlists?.[0]?.title || config.siteName)
+    .replace(/\{titre\}/g, video.title)
+    .replace(/\{site\}/g, config.siteName);
+
+  for (const video of toSend) {
+    const payload = {
+      app_id: appId,
+      target_channel: 'push',
+      included_segments: ['Subscribed Users'],
+      headings: { en: fill(config.push?.titleTemplate || 'Nouvelle vidéo · {emission}', video) },
+      contents: { en: fill(config.push?.bodyTemplate || '{titre}', video) },
+      url: `${config.siteUrl}/video/${video.id}/`,
+      chrome_web_image: video.thumbnail || `https://i.ytimg.com/vi/${video.id}/maxresdefault.jpg`,
+    };
+
+    try {
+      const res = await fetch('https://api.onesignal.com/notifications', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Key ${apiKey}`,
+        },
+        body: JSON.stringify(payload),
+      });
+      const body = await res.text();
+      if (res.ok && !/\"errors\"/.test(body)) {
+        log(`Notification envoyée : ${video.title}`);
+      } else {
+        warn(`Notification refusée pour « ${video.title} » — HTTP ${res.status} ${body.slice(0, 300)}`);
+      }
+    } catch (err) {
+      warn(`Notification impossible pour « ${video.title} » : ${err.message}`);
+    }
+  }
 }
 
 main().catch((err) => {

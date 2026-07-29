@@ -153,6 +153,16 @@ export function layout({
       : '',
   ].join('');
 
+  const push = config.push?.oneSignalAppId
+    ? `<script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+<script>
+window.OneSignalDeferred = window.OneSignalDeferred || [];
+OneSignalDeferred.push(async function (OneSignal) {
+  await OneSignal.init({ appId: "${escapeHtml(config.push.oneSignalAppId)}" });
+});
+</script>`
+    : '';
+
   const orgLd = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
@@ -189,6 +199,7 @@ ${config.googleSiteVerification ? `<meta name="google-site-verification" content
 <script type="application/ld+json">${JSON.stringify(orgLd)}</script>
 ${jsonLd ? `<script type="application/ld+json">${JSON.stringify(jsonLd)}</script>` : ''}
 ${analytics}
+${push}
 </head>
 <body class="${bodyClass}">
 <a class="skip" href="#main">Aller au contenu</a>

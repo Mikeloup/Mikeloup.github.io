@@ -38,6 +38,15 @@
     "linkedin": "https://www.linkedin.com/company/tandem-tv/",
     "tiktok": ""
   },
+  "_comment_push": "Notifications navigateur (OneSignal). 'oneSignalAppId' vide = fonction désactivée, rien n'est injecté dans les pages. 'notifyOnNewVideos' déclenche l'envoi automatique à chaque nouvelle vidéo détectée (nécessite le secret GitHub ONESIGNAL_API_KEY). 'maxPerRun' limite le nombre d'envois par synchronisation, 'maxAgeHours' ignore les vidéos plus anciennes : deux garde-fous contre un envoi massif accidentel. Dans les modèles de texte : {emission} = nom de la rubrique, {titre} = titre de la vidéo, {site} = nom du site.",
+  "push": {
+    "oneSignalAppId": "89a3a773-175a-47aa-95a3-b7fddb28a462",
+    "notifyOnNewVideos": true,
+    "maxPerRun": 3,
+    "maxAgeHours": 72,
+    "titleTemplate": "Nouvelle vidéo · {emission}",
+    "bodyTemplate": "{titre}"
+  },
   "_comment_analytics": "Mesure d'audience. Recommandé : 'cloudflareToken' — Cloudflare Web Analytics, gratuit, sans cookie, sans bandeau de consentement. Collez uniquement la valeur du token (la longue suite de caractères qui suit 'token\": ' dans l'extrait fourni par Cloudflare). Les deux autres champs restent disponibles si vous préférez Plausible (payant) ou Google Analytics (gratuit mais soumis au consentement). Laissez tout vide pour ne rien mesurer : la politique de confidentialité s'adapte automatiquement.",
   "analytics": {
     "cloudflareToken": "85d2424ba23b4b2681237b9f0b254312",

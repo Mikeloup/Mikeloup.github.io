@@ -277,3 +277,57 @@ Aucun réglage : quand une description contient au moins trois timecodes en ordr
 Un clic sur un chapitre lance la lecture **sur le site**, au bon moment — la vue est donc comptabilisée par YouTube. Ces chapitres sont également déclarés à Google en données structurées `Clip` : ils peuvent apparaître comme « moments clés » sous le résultat de recherche.
 
 Si un sommaire vous paraît mal découpé, la cause est toujours dans la description YouTube : corrigez-la là-bas, la prochaine synchronisation reprendra la correction.
+
+## Notifications navigateur (version 13)
+
+Le site peut prévenir ses visiteurs à chaque nouvelle vidéo, sans aucune intervention de votre part.
+
+### Ce qui est nécessaire
+
+1. Un compte OneSignal gratuit, avec une application **Web** configurée sur `https://www.tandemtv.net`.
+2. L'App ID renseigné dans `site.config.json`, section `push`.
+3. Un secret GitHub nommé **`ONESIGNAL_API_KEY`** contenant la REST API Key de OneSignal.
+
+Si l'App ID est vide, aucun code n'est injecté dans les pages : la fonction disparaît entièrement.
+Si le secret est absent, le site fonctionne normalement mais n'envoie rien.
+
+### Comment l'envoi automatique fonctionne
+
+À chaque synchronisation, le générateur télécharge le fichier `search.json` **actuellement publié** et le compare à la liste qu'il vient de récupérer sur YouTube. Toute vidéo absente de la version en ligne est considérée comme nouvelle.
+
+Il n'y a donc aucun fichier d'état à maintenir : la référence, c'est le site lui-même.
+
+Trois garde-fous protègent votre audience d'un envoi massif accidentel :
+
+- **`maxPerRun`** (3 par défaut) — nombre maximal de notifications par synchronisation ;
+- **`maxAgeHours`** (72 par défaut) — une vidéo publiée il y a plus longtemps n'est jamais annoncée, même si elle apparaît pour la première fois sur le site (cas d'une playlist réorganisée) ;
+- **échec = silence** — si le `search.json` en ligne est illisible ou vide, rien n'est envoyé. Une notification manquée vaut mieux qu'un doublon envoyé à tout le monde.
+
+### Modifier le texte des notifications
+
+Dans `site.config.json` :
+
+```json
+"titleTemplate": "Nouvelle vidéo · {emission}",
+"bodyTemplate": "{titre}"
+```
+
+Trois variables sont disponibles : `{emission}` (nom de la rubrique), `{titre}` (titre de la vidéo) et `{site}`.
+
+Le texte du bandeau d'invitation à s'abonner, lui, se modifie **dans le tableau de bord OneSignal** (Settings → Push & In-App → Permission Prompt Setup), pas dans le code.
+
+### Envoyer une notification exceptionnelle
+
+Pour une alerte hors publication (direct, information de dernière minute), passez par OneSignal : **Messages → New Push**. Le site n'intervient pas.
+
+### Vérifier que tout fonctionne
+
+Après une synchronisation, l'onglet **Actions** de GitHub affiche l'une de ces lignes :
+
+- `Notifications : aucune nouvelle vidéo à annoncer.` — cas normal la plupart du temps ;
+- `Notification envoyée : <titre>` — c'est parti ;
+- `Notifications : ... Aucun envoi.` — un garde-fou s'est déclenché, le message précise lequel.
+
+### En cas de problème
+
+Le fichier `OneSignalSDKWorker.js` est généré automatiquement à la racine du site. Si les notifications ne s'activent pas côté navigateur, remplacez-le par celui proposé au téléchargement dans le tableau de bord OneSignal : son contenu peut évoluer avec les versions du SDK.
