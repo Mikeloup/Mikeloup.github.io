@@ -52,10 +52,10 @@ site, en service payant.*
 
 Ne dépend de rien :
 
-- [ ] **Appel à commenter sur YouTube** sous chaque vidéo (le commentaire nourrit l'algorithme là-bas, pas ici).
-- [ ] **Mise en évidence de la télévision** : bandeau d'accueil + bloc de pied de page, canal 14 Annatel.
-- [ ] **Page « Sponsoring »** alimentée automatiquement par les chiffres de la chaîne (abonnés, vues, nombre de vidéos).
-- [ ] **Appel à proposer un sujet ou un invité**, remonté depuis la page Contact.
+- [x] **Appel à commenter sur YouTube** — bloc « Réagir » sous chaque vidéo, avec aussi « Proposer un sujet ou un invité ».
+- [x] **Mise en évidence de la télévision** — bandeau sur l'accueil + mention en pied de page. Réglé par le bloc `tv` de la configuration (horaires et lien encore vides).
+- [x] **Page « Sponsoring »** — `/sponsoring/`, chiffres relevés à chaque synchronisation.
+- [x] **Appel à proposer un sujet ou un invité** — dans le bloc « Réagir » de chaque page vidéo.
 - [ ] **Lettre d'information** : Kit (ex-ConvertKit) — 10 000 abonnés, envois illimités, gratuit. Formulaire sur le site + envoi déclenché par le site à chaque nouvelle vidéo, comme les notifications.
 - [x] **Rapport d'audience quotidien** — script `tools/rapport-audience.mjs` + workflow `.github/workflows/rapport.yml`. Interroge Cloudflare, publie un ticket GitHub assigné à Michael (qui déclenche l'e-mail). Nécessite le secret `CLOUDFLARE_API_TOKEN`.
 

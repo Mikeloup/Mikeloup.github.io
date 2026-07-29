@@ -4,8 +4,8 @@
 // -----------------------------------------------------------------------------
 
 import {
-  escapeHtml, formatDate, formatDateTime, formatDuration, formatCount, truncate, excerpt,
-  descriptionToHtml, extractChapters, removeChapterLines,
+  escapeHtml, formatDate, formatDateTime, formatDuration, formatCount, formatNumber, truncate,
+  excerpt, descriptionToHtml, extractChapters, removeChapterLines,
 } from './util.mjs';
 
 const YT_THUMB = (id) => `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
@@ -152,6 +152,23 @@ const SOCIAL_ORDER = [
   ['tiktok', 'TikTok'],
 ];
 
+/** Bandeau « Tandem TV, c'est aussi une chaîne de télévision ». */
+function tvBanner(config) {
+  const tv = config.tv;
+  if (!tv?.enabled || !tv.channelNumber) return '';
+  const lien = tv.url
+    ? ` <a href="${escapeHtml(tv.url)}" target="_blank" rel="noopener">En savoir plus</a>`
+    : '';
+  return `
+<aside class="tv-banner">
+  <span class="tv-badge" aria-hidden="true">TV</span>
+  <p>
+    <strong>Tandem TV est une chaîne de télévision.</strong>
+    Retrouvez-nous sur le <strong>canal ${escapeHtml(tv.channelNumber)}</strong>${tv.operator ? ` du bouquet <strong>${escapeHtml(tv.operator)}</strong>` : ''}${tv.schedule ? `, ${escapeHtml(tv.schedule)}` : ''}.${lien}
+  </p>
+</aside>`;
+}
+
 export function layout({
   config, categories, nav = {}, title, description, canonical, image, ogType = 'website', bodyClass = '',
   content, jsonLd = null, buildTime,
@@ -282,6 +299,7 @@ ${content}
       </a>
       <p class="muted">${escapeHtml(config.tagline)}</p>
       <p class="muted small">Toutes les vidéos sont publiées sur <a href="${escapeHtml(config.channelUrl)}" target="_blank" rel="noopener">la chaîne YouTube Tandem TV</a>.</p>
+      ${config.tv?.enabled && config.tv.channelNumber ? `<p class="muted small tv-footer"><span class="tv-badge" aria-hidden="true">TV</span> Canal ${escapeHtml(config.tv.channelNumber)}${config.tv.operator ? ` du bouquet ${escapeHtml(config.tv.operator)}` : ''}</p>` : ''}
       ${socialLinks.length ? `<ul class="social" aria-label="Tandem TV sur les réseaux sociaux">
         ${socialLinks.map(([href, label, key]) => `<li><a href="${escapeHtml(href)}" target="_blank" rel="noopener">${socialIcon(key)}<span>${escapeHtml(label)}</span></a></li>`).join('')}
       </ul>` : ''}
@@ -295,6 +313,8 @@ ${content}
       <h4>Le site</h4>
       <ul>
         ${pages.map((pg) => `<li><a href="/${pg.slug}/">${escapeHtml(pg.title)}</a></li>`).join('')}
+        <li><a href="/suivre/">Suivre Tandem TV</a></li>
+        <li><a href="/sponsoring/">Sponsoring</a></li>
         <li><a href="/rss.xml">Flux RSS</a></li>
       </ul>
     </div>
@@ -334,6 +354,8 @@ export function homePage({ config, categories, nav, latest, buildTime }) {
   const content = `
 <div class="wrap">
   ${hero(featured, featuredCat, { pinned: Boolean(pinned) })}
+
+  ${tvBanner(config)}
 
   <section class="row">
     <div class="row-head">
@@ -520,6 +542,15 @@ export function videoPage({ config, categories, nav, video, related, buildTime }
       <a class="right" href="https://www.youtube.com/watch?v=${video.id}" target="_blank" rel="noopener">Voir sur YouTube ↗</a>
     </div>
 
+    <aside class="react">
+      <h2 class="react-title">Réagir</h2>
+      <p class="muted small">Les échanges se passent sur la chaîne : c'est là que la rédaction lit et répond.</p>
+      <div class="react-actions">
+        <a class="btn btn-yt" href="https://www.youtube.com/watch?v=${video.id}" target="_blank" rel="noopener">Commenter sur YouTube</a>
+        <a class="btn" href="/contact/">Proposer un sujet ou un invité</a>
+      </div>
+    </aside>
+
     ${summary}
 
     ${desc ? `<div class="prose article-body">${desc}</div>` : ''}
@@ -650,6 +681,75 @@ export function followPage({ config, categories, nav, buildTime }) {
     description: "Toutes les façons de suivre Tandem TV : chaîne YouTube, alertes du navigateur, flux RSS et réseaux sociaux.",
     canonical: '/suivre/',
     bodyClass: 'page-follow',
+    content,
+  });
+}
+
+export function sponsoringPage({ config, categories, nav, channel, buildTime, videoCount, showCount }) {
+  // Les gros volumes s'abrègent (18 k abonnés), les inventaires se comptent
+  // en toutes lettres : « 1 100 vidéos » inspire plus confiance que « 1,1 k ».
+  const chiffre = (n, mot, abrege = false) => (n
+    ? `<div class="figure"><strong>${abrege ? formatCount(n) : formatNumber(n)}</strong><span>${mot}</span></div>`
+    : '');
+  const mail = config.contactEmail;
+  const objet = encodeURIComponent('Sponsoring — Tandem TV');
+  const tv = config.tv;
+
+  const content = `
+<div class="wrap narrow">
+  <nav class="breadcrumb"><a href="/">Accueil</a> <span>›</span> <span>Sponsoring</span></nav>
+
+  <header class="page-head">
+    <p class="kicker">Annonceurs et partenaires</p>
+    <h1>Associer votre marque à Tandem TV</h1>
+    <p class="lede">Une chaîne de télévision francophone en Israël, une audience engagée, et des formats qui laissent le temps au message.</p>
+  </header>
+
+  <section class="figures">
+    ${chiffre(channel?.subscribers, 'abonnés sur YouTube', true)}
+    ${chiffre(channel?.totalViews, 'vues cumulées', true)}
+    ${chiffre(videoCount, 'vidéos en ligne')}
+    ${chiffre(showCount, 'émissions régulières')}
+  </section>
+  <p class="muted small center">Chiffres relevés automatiquement le ${formatDate(new Date(buildTime).toISOString())}.</p>
+
+  <section class="follow-card">
+    <h2>Qui nous regarde</h2>
+    <p>Un public francophone d'Israël, de France et de la diaspora, qui vient chercher chez nous ce qu'il ne trouve pas ailleurs : des entretiens longs, des débats menés jusqu'au bout, des analyses qui acceptent la complexité.</p>
+    <p>Ce n'est pas une audience de passage. Nos formats durent souvent plus d'une heure, et sont regardés jusqu'au bout.</p>
+  </section>
+
+  ${tv?.enabled && tv.channelNumber ? `
+  <section class="follow-card">
+    <h2>Deux écrans, une seule audience</h2>
+    <p>Tandem TV n'est pas qu'une chaîne en ligne : nous sommes diffusés sur le <strong>canal ${escapeHtml(tv.channelNumber)}</strong>${tv.operator ? ` du bouquet <strong>${escapeHtml(tv.operator)}</strong>` : ''}${tv.schedule ? `, ${escapeHtml(tv.schedule)}` : ''}. Un partenariat touche donc à la fois le téléspectateur et l'internaute.</p>
+  </section>` : ''}
+
+  <section class="follow-card">
+    <h2>Les formes de partenariat</h2>
+    <p>Nous étudions chaque proposition au cas par cas, avec une règle constante : <strong>rien qui compromette l'indépendance éditoriale</strong>. Un annonceur n'a jamais son mot à dire sur le contenu d'une émission.</p>
+    <ul>
+      <li><strong>Parrainage d'émission</strong> — votre marque associée à un rendez-vous régulier.</li>
+      <li><strong>Mention en ouverture ou en clôture</strong>, lue par le présentateur.</li>
+      <li><strong>Habillage</strong> — présence dans le générique et les éléments graphiques.</li>
+      <li><strong>Partenariat de rubrique</strong> sur le site, avec visibilité sur les pages concernées.</li>
+      <li><strong>Opérations spéciales</strong> — événement, table ronde, série d'entretiens.</li>
+    </ul>
+  </section>
+
+  <section class="follow-card">
+    <h2>Nous écrire</h2>
+    <p>Présentez-nous votre marque et ce que vous cherchez à obtenir. Nous répondons à toutes les demandes sérieuses, y compris pour dire non.</p>
+    <a class="btn btn-primary" href="mailto:${escapeHtml(mail)}?subject=${objet}">Écrire à ${escapeHtml(mail)}</a>
+  </section>
+</div>`;
+
+  return layout({
+    config, categories, nav, buildTime,
+    title: 'Sponsoring et partenariats',
+    description: `Associer votre marque à Tandem TV : audience, formats de partenariat et contact. Chaîne francophone d'Israël${config.tv?.channelNumber ? `, canal ${config.tv.channelNumber}` : ''}.`,
+    canonical: '/sponsoring/',
+    bodyClass: 'page-sponsoring',
     content,
   });
 }

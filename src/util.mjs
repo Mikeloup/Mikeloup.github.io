@@ -72,6 +72,12 @@ export function formatCount(n) {
   return String(n);
 }
 
+/** Nombre entier avec séparateur de milliers français (1100 → 1 100). */
+export function formatNumber(n) {
+  if (!n && n !== 0) return '';
+  return new Intl.NumberFormat('fr-FR').format(n).replace(/\u202f/g, '\u00a0');
+}
+
 export function truncate(str = '', max = 180) {
   const clean = String(str).replace(/\s+/g, ' ').trim();
   if (clean.length <= max) return clean;

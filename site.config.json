@@ -38,6 +38,14 @@
     "linkedin": "https://www.linkedin.com/company/tandem-tv/",
     "tiktok": ""
   },
+  "_comment_tv": "Diffusion télévisée. 'enabled' à false fait disparaître entièrement le bandeau et le bloc de pied de page. 'url' est facultatif (lien vers l'opérateur) ; 'schedule' aussi (ex. « tous les soirs à 20h »). Ce bloc est ce qui distingue Tandem TV d'une simple chaîne YouTube : il mérite d'être exact.",
+  "tv": {
+    "enabled": true,
+    "channelNumber": "14",
+    "operator": "Annatel TV",
+    "url": "",
+    "schedule": ""
+  },
   "_comment_push": "Notifications navigateur (OneSignal). 'oneSignalAppId' vide = fonction désactivée, rien n'est injecté dans les pages. 'notifyOnNewVideos' déclenche l'envoi automatique à chaque nouvelle vidéo détectée (nécessite le secret GitHub ONESIGNAL_API_KEY). 'maxPerRun' limite le nombre d'envois par synchronisation, 'maxAgeHours' ignore les vidéos plus anciennes : deux garde-fous contre un envoi massif accidentel. Dans les modèles de texte : {emission} = nom de la rubrique, {titre} = titre de la vidéo, {site} = nom du site.",
   "push": {
     "oneSignalAppId": "89a3a773-175a-47aa-95a3-b7fddb28a462",

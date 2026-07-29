@@ -342,7 +342,7 @@ async function main() {
   config.siteUrl = config.siteUrl.replace(/\/$/, '');
 
   const data = await collectData(config);
-  const { categories, allVideos, nav } = buildModel(config, data);
+  const { channel, categories, allVideos, nav } = buildModel(config, data);
 
   if (!allVideos.length) throw new Error('Aucune vidéo récupérée : build interrompu.');
   log(`${allVideos.length} vidéos, ${categories.length} rubriques (${nav.shows.length} émissions, ${nav.themes.length} thèmes).`);
@@ -350,7 +350,7 @@ async function main() {
   await fs.rm(DIST, { recursive: true, force: true });
   await fs.mkdir(DIST, { recursive: true });
 
-  const ctx = { config, categories, nav, buildTime };
+  const ctx = { config, categories, nav, buildTime, channel };
   const urls = [];
 
   // Accueil
@@ -425,6 +425,12 @@ async function main() {
     }));
     urls.push({ loc: `/${pg.slug}/`, freq: 'monthly', priority: '0.5' });
   }
+
+  // Sponsoring : chiffres de la chaîne, relevés à chaque synchronisation
+  await writePage('/sponsoring/', R.sponsoringPage({
+    ...ctx, videoCount: allVideos.length, showCount: nav.shows.length,
+  }));
+  urls.push({ loc: '/sponsoring/', freq: 'monthly', priority: '0.5' });
 
   // Page « Suivre » : tous les canaux d'abonnement au même endroit
   await writePage('/suivre/', R.followPage(ctx));

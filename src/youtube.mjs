@@ -131,6 +131,7 @@ export async function fetchChannel(channelId, handle) {
     uploadsPlaylistId: c.contentDetails.relatedPlaylists.uploads,
     subscribers: Number(c.statistics?.subscriberCount || 0),
     videoCount: Number(c.statistics?.videoCount || 0),
+    totalViews: Number(c.statistics?.viewCount || 0),
   };
 }
 

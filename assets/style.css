@@ -465,6 +465,49 @@ p { margin: 0 0 1em; }
 }
 .share-time:hover { text-decoration: underline; }
 
+/* Bandeau télévision */
+.tv-banner {
+  display: flex; align-items: center; gap: 1rem;
+  margin: 1.75rem 0 0; padding: 1rem 1.35rem;
+  background: var(--brand); color: rgb(255 255 255 / 90%);
+  border-radius: var(--radius);
+}
+.tv-banner p { margin: 0; font-size: .95rem; }
+.tv-banner strong { color: #fff; }
+.tv-banner a { color: var(--sky); font-weight: 650; white-space: nowrap; }
+.tv-banner a:hover { text-decoration: underline; }
+.tv-badge {
+  flex: 0 0 auto; display: inline-flex; align-items: center; justify-content: center;
+  min-width: 2.4rem; padding: .18rem .5rem; border-radius: 5px;
+  background: #e8123c; color: #fff;
+  font-size: .72rem; font-weight: 800; letter-spacing: .1em;
+}
+.tv-footer { display: flex; align-items: center; gap: .5rem; margin-top: .6rem; }
+
+/* Bloc « Réagir » sur les pages vidéo */
+.react {
+  margin: 2rem 0 0; padding: 1.35rem 1.5rem;
+  border: 1px solid var(--line); border-radius: 10px; background: #fff;
+}
+.react-title { font-size: 1.05rem; margin-bottom: .25rem; }
+.react .muted { margin-bottom: 1rem; }
+.react-actions { display: flex; flex-wrap: wrap; gap: .65rem; }
+
+/* Chiffres de la page sponsoring */
+.figures {
+  display: grid; gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  margin: 2rem 0 .5rem;
+}
+.figure {
+  text-align: center; padding: 1.2rem .8rem;
+  border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface-2);
+}
+.figure strong { display: block; font-size: 1.9rem; font-weight: 800; color: var(--brand); line-height: 1.1; }
+.figure span { display: block; margin-top: .35rem; font-size: .82rem; color: var(--muted); }
+.page-sponsoring .follow-card ul { margin: .6rem 0 0; padding-left: 1.15rem; }
+.page-sponsoring .follow-card li { margin-bottom: .5rem; }
+
 /* Page « Suivre » */
 .follow-card {
   border: 1px solid var(--line); border-radius: var(--radius);
