@@ -4,8 +4,8 @@
 // -----------------------------------------------------------------------------
 
 import {
-  escapeHtml, formatDate, formatDuration, formatCount, truncate, excerpt, descriptionToHtml,
-  extractChapters, removeChapterLines,
+  escapeHtml, formatDate, formatDateTime, formatDuration, formatCount, truncate, excerpt,
+  descriptionToHtml, extractChapters, removeChapterLines,
 } from './util.mjs';
 
 const YT_THUMB = (id) => `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
@@ -256,7 +256,7 @@ ${content}
   </div>
   <div class="wrap footer-bottom">
     <p class="muted small">© ${new Date(buildTime).getUTCFullYear()} ${escapeHtml(config.siteName)} — Tous droits réservés.</p>
-    <p class="muted small">Site mis à jour automatiquement · dernière synchronisation le ${formatDate(buildTime)}</p>
+    <p class="muted small">Site mis à jour automatiquement · dernière synchronisation le ${formatDateTime(buildTime)}</p>
   </div>
 </footer>
 

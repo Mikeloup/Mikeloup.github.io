@@ -32,6 +32,22 @@ export function formatDate(iso) {
   return `${d.getUTCDate()} ${MOIS[d.getUTCMonth()]} ${d.getUTCFullYear()}`;
 }
 
+/**
+ * Date + heure, en heure locale d'Israël : sert à afficher en pied de page
+ * le moment exact de la dernière synchronisation avec YouTube.
+ */
+export function formatDateTime(value, timeZone = 'Asia/Jerusalem') {
+  const d = new Date(value);
+  if (Number.isNaN(d.getTime())) return '';
+  try {
+    return new Intl.DateTimeFormat('fr-FR', {
+      dateStyle: 'long', timeStyle: 'short', timeZone,
+    }).format(d);
+  } catch {
+    return formatDate(d.toISOString());
+  }
+}
+
 export function formatDateShort(iso) {
   if (!iso) return '';
   const d = new Date(iso);
