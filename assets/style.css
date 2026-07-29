@@ -345,7 +345,7 @@ p { margin: 0 0 1em; }
 .social { list-style: none; margin: 1.1rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: .45rem; }
 .social li { margin: 0; }
 .social a {
-  display: inline-block; padding: .3rem .7rem; border-radius: 999px;
+  display: inline-flex; align-items: center; gap: .4rem; padding: .32rem .72rem; border-radius: 999px;
   border: 1px solid rgb(255 255 255 / 24%); font-size: .8rem; line-height: 1.4;
   color: rgb(255 255 255 / 85%); transition: background-color .15s, border-color .15s, color .15s;
 }
@@ -420,6 +420,50 @@ p { margin: 0 0 1em; }
 
 /* L'attribut hidden doit l'emporter sur les display: des classes (.btn, .social…). */
 [hidden] { display: none !important; }
+
+.social-icon { flex: 0 0 auto; }
+
+/* Badge « Nouveau », progression de lecture, reprise, suite */
+.badge-new {
+  position: absolute; top: .55rem; left: .55rem; z-index: 2;
+  background: #e8123c; color: #fff; font-size: .68rem; font-weight: 800;
+  letter-spacing: .07em; text-transform: uppercase;
+  padding: .2rem .5rem; border-radius: 5px;
+  box-shadow: 0 2px 8px rgb(232 18 60 / 35%);
+}
+.card-progress {
+  position: absolute; left: 0; right: 0; bottom: 0; height: 4px; z-index: 2;
+  background: rgb(0 0 0 / 35%);
+}
+.card-progress > span { display: block; height: 100%; background: #e8123c; }
+
+.btn-sm { padding: .45rem .9rem; font-size: .86rem; }
+.resume-bar {
+  display: flex; align-items: center; flex-wrap: wrap; gap: .7rem;
+  margin: 0 0 1rem; padding: .85rem 1.1rem;
+  background: var(--surface-2); border: 1px solid var(--line);
+  border-left: 4px solid var(--accent); border-radius: 10px;
+}
+.resume-text { flex: 1 1 auto; font-size: .93rem; }
+
+.next-up {
+  position: absolute; inset: 0; z-index: 5;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: .6rem; padding: 1.5rem; text-align: center;
+  background: rgb(10 6 40 / 92%); color: #fff;
+}
+.next-up img { width: min(260px, 45%); height: auto; object-fit: contain; border-radius: 8px; }
+.next-up-label { margin: 0; font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: var(--sky); }
+.next-up-title { margin: 0; font-weight: 700; font-size: 1.05rem; max-width: 32ch; }
+.next-up-count { margin: 0; font-size: .85rem; color: rgb(255 255 255 / 70%); }
+.next-up .btn { background: #fff; border-color: #fff; }
+.next-up .btn-primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+.share-time {
+  font: inherit; font-size: .875rem; font-weight: 600; color: var(--accent);
+  background: none; border: 0; padding: 0; cursor: pointer; text-align: left;
+}
+.share-time:hover { text-decoration: underline; }
 
 /* Page « Suivre » */
 .follow-card {

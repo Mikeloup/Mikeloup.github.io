@@ -43,41 +43,174 @@
   }
 
   // --- Lecteur YouTube différé (chargé au clic, pas au chargement) ----------
+  // --- Lecteur vidéo : reprise, partage à la minute, suite automatique ------
+  var STORE = 'ttv-progress';
+  var readStore = function () {
+    try { return JSON.parse(localStorage.getItem(STORE) || '{}'); } catch (e) { return {}; }
+  };
+  var writeStore = function (data) {
+    try { localStorage.setItem(STORE, JSON.stringify(data)); } catch (e) { /* mode privé */ }
+  };
+  var fmtTime = function (sec) {
+    sec = Math.max(0, Math.floor(sec));
+    var h = Math.floor(sec / 3600), m = Math.floor((sec % 3600) / 60), s2 = sec % 60;
+    var pad = function (n) { return n < 10 ? '0' + n : String(n); };
+    return h > 0 ? h + ':' + pad(m) + ':' + pad(s2) : m + ':' + pad(s2);
+  };
+
   var player = document.querySelector('.player');
   if (player) {
-    var load = function (start) {
-      var id = player.getAttribute('data-video');
-      var title = player.getAttribute('data-title') || 'Vidéo';
-      var src = 'https://www.youtube-nocookie.com/embed/' + id
-        + '?autoplay=1&rel=0&modestbranding=1&hl=fr';
-      if (start > 0) src += '&start=' + start;
-      var iframe = document.createElement('iframe');
-      iframe.src = src;
-      iframe.title = title;
-      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
-      iframe.allowFullscreen = true;
-      iframe.setAttribute('loading', 'lazy');
-      player.innerHTML = '';
-      player.appendChild(iframe);
-    };
-    // Un lien « moment clé » (…/?t=320) démarre la lecture au bon endroit.
-    var urlStart = parseInt((location.search.match(/[?&]t=(\d+)/) || [])[1], 10) || 0;
+    var vid = player.getAttribute('data-video');
+    var vtitle = player.getAttribute('data-title') || 'Vidéo';
+    var ytPlayer = null;
+    var saveTimer = null;
 
-    player.addEventListener('click', function () { load(urlStart); });
+    var urlStart = parseInt((location.search.match(/[?&]t=(\d+)/) || [])[1], 10) || 0;
+    var store = readStore();
+    var saved = store[vid] && store[vid].t ? Math.floor(store[vid].t) : 0;
+
+    // Proposition de reprise (seulement si l'arrêt est significatif)
+    var bar = document.getElementById('resume-bar');
+    if (bar && !urlStart && saved > 30) {
+      document.getElementById('resume-time').textContent = fmtTime(saved);
+      bar.hidden = false;
+      document.getElementById('resume-btn').addEventListener('click', function () {
+        bar.hidden = true; start(saved);
+      });
+      document.getElementById('resume-restart').addEventListener('click', function () {
+        bar.hidden = true; start(0);
+      });
+    }
+
+    var remember = function (t, duration) {
+      var data = readStore();
+      // Vidéo terminée (ou presque) : on oublie, elle n'a plus à être reprise.
+      if (duration && t > duration - 25) { delete data[vid]; }
+      else { data[vid] = { t: Math.floor(t), d: Math.floor(duration || 0), u: Date.now(), n: vtitle }; }
+      var keys = Object.keys(data);
+      if (keys.length > 40) {
+        keys.sort(function (a, b) { return (data[a].u || 0) - (data[b].u || 0); });
+        keys.slice(0, keys.length - 40).forEach(function (k) { delete data[k]; });
+      }
+      writeStore(data);
+    };
+
+    var showNext = function () {
+      var nid = player.getAttribute('data-next-id');
+      if (!nid) return;
+      var card = document.createElement('div');
+      card.className = 'next-up';
+      card.innerHTML = '<p class="next-up-label">À suivre</p>'
+        + '<img alt="">'
+        + '<p class="next-up-title"></p>'
+        + '<p class="next-up-count">Lecture dans <span>8</span> s</p>'
+        + '<a class="btn btn-primary">Regarder maintenant</a>'
+        + '<button class="btn" type="button">Rester ici</button>';
+      card.querySelector('img').src = player.getAttribute('data-next-thumb') || '';
+      card.querySelector('.next-up-title').textContent = player.getAttribute('data-next-title') || '';
+      card.querySelector('a').href = '/video/' + nid + '/';
+      player.appendChild(card);
+      var n = 8;
+      var span = card.querySelector('.next-up-count span');
+      var tick = setInterval(function () {
+        n -= 1; span.textContent = n;
+        if (n <= 0) { clearInterval(tick); location.href = '/video/' + nid + '/'; }
+      }, 1000);
+      card.querySelector('button').addEventListener('click', function () {
+        clearInterval(tick); card.remove();
+      });
+    };
+
+    var onReady = function () {
+      var shareBtn = document.getElementById('share-at-time');
+      if (shareBtn) {
+        shareBtn.hidden = false;
+        shareBtn.addEventListener('click', function () {
+          var t = ytPlayer && ytPlayer.getCurrentTime ? Math.floor(ytPlayer.getCurrentTime()) : 0;
+          var link = location.origin + location.pathname + '?t=' + t;
+          var done = function () {
+            var old = shareBtn.textContent;
+            shareBtn.textContent = 'Lien copié (' + fmtTime(t) + ')';
+            setTimeout(function () { shareBtn.textContent = old; }, 2500);
+          };
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(link).then(done, function () { window.prompt('Copiez ce lien :', link); });
+          } else { window.prompt('Copiez ce lien :', link); }
+        });
+      }
+      saveTimer = setInterval(function () {
+        if (!ytPlayer || !ytPlayer.getCurrentTime) return;
+        if (ytPlayer.getPlayerState && ytPlayer.getPlayerState() !== 1) return;
+        remember(ytPlayer.getCurrentTime(), ytPlayer.getDuration ? ytPlayer.getDuration() : 0);
+      }, 5000);
+    };
+
+    var buildPlayer = function (from) {
+      var holder = document.createElement('div');
+      player.innerHTML = '';
+      player.appendChild(holder);
+      ytPlayer = new window.YT.Player(holder, {
+        host: 'https://www.youtube-nocookie.com',
+        videoId: vid,
+        playerVars: { autoplay: 1, rel: 0, modestbranding: 1, hl: 'fr', start: from || 0 },
+        events: {
+          onReady: onReady,
+          onStateChange: function (e) {
+            if (e.data === 0) { // terminée
+              if (saveTimer) clearInterval(saveTimer);
+              remember(1e9, 1);
+              showNext();
+            }
+          },
+        },
+      });
+    };
+
+    var start = function (from) {
+      if (window.YT && window.YT.Player) { buildPlayer(from); return; }
+      window.onYouTubeIframeAPIReady = function () { buildPlayer(from); };
+      var tag = document.createElement('script');
+      tag.src = 'https://www.youtube.com/iframe_api';
+      document.head.appendChild(tag);
+    };
+
+    player.addEventListener('click', function (e) {
+      if (e.target.closest && e.target.closest('.next-up')) return;
+      if (!ytPlayer) start(urlStart);
+    });
     player.addEventListener('keydown', function (e) {
-      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); load(urlStart); }
+      if ((e.key === 'Enter' || e.key === ' ') && !ytPlayer) { e.preventDefault(); start(urlStart); }
     });
 
-    // Sommaire : on lance la lecture sur place, au chapitre choisi.
+    // Liens du sommaire : lecture sur place, au chapitre choisi.
     document.addEventListener('click', function (e) {
       var link = e.target.closest ? e.target.closest('[data-seek]') : null;
       if (!link) return;
       e.preventDefault();
-      load(parseInt(link.getAttribute('data-seek'), 10) || 0);
+      var sec = parseInt(link.getAttribute('data-seek'), 10) || 0;
+      if (ytPlayer && ytPlayer.seekTo) { ytPlayer.seekTo(sec, true); ytPlayer.playVideo(); }
+      else { start(sec); }
       var top = player.getBoundingClientRect().top + window.pageYOffset - 80;
       window.scrollTo({ top: top < 0 ? 0 : top, behavior: 'smooth' });
     });
   }
+
+  // --- Reprendre la lecture : rappel discret sur les grilles ---------------
+  (function () {
+    var data = readStore();
+    var ids = Object.keys(data);
+    if (!ids.length) return;
+    ids.forEach(function (id) {
+      var entry = data[id];
+      if (!entry || !entry.d || !entry.t) return;
+      var pct = Math.min(100, Math.round((entry.t / entry.d) * 100));
+      if (pct < 3 || pct > 95) return;
+      document.querySelectorAll('[data-video-id="' + id + '"] .card-progress').forEach(function (el) {
+        el.hidden = false;
+        el.firstElementChild.style.width = pct + '%';
+      });
+    });
+  })();
 
   // --- Alertes du navigateur (page « Suivre ») ------------------------------
   var pushBtn = document.getElementById('push-optin');

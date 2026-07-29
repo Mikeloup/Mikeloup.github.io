@@ -12,13 +12,21 @@ const YT_THUMB = (id) => `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
 
 // --- Briques réutilisables ---------------------------------------------------
 
+/** Une vidéo publiée depuis moins de `hours` heures mérite d'attirer l'œil. */
+export function isFresh(video, hours = 48) {
+  if (!video?.publishedAt) return false;
+  return (Date.now() - new Date(video.publishedAt).getTime()) < hours * 3600 * 1000;
+}
+
 export function videoCard(video, { showCategory = true, eager = false, lead = false } = {}) {
   const cat = showCategory && video.playlists?.[0];
   return `
-<article class="card${lead ? ' card--lead' : ''}">
+<article class="card${lead ? ' card--lead' : ''}" data-video-id="${escapeHtml(video.id)}">
   <a class="card-thumb" href="/video/${video.id}/" aria-label="${escapeHtml(video.title)}">
     <img src="${escapeHtml(video.thumbnail || YT_THUMB(video.id))}" alt="" loading="${eager ? 'eager' : 'lazy'}" decoding="async" width="480" height="270">
+    ${isFresh(video) ? '<span class="badge-new">Nouveau</span>' : ''}
     ${video.duration ? `<span class="badge-duration">${formatDuration(video.duration)}</span>` : ''}
+    <span class="card-progress" hidden><span></span></span>
     <span class="card-play" aria-hidden="true"></span>
   </a>
   <div class="card-body">
@@ -116,6 +124,24 @@ function menuPanel(id, label, items, allHref, allLabel) {
       </div>`;
 }
 
+// Marques des réseaux, dessinées en SVG monochrome : aucun fichier à charger,
+// aucune requête vers un serveur tiers, et la couleur suit celle du texte.
+const SOCIAL_ICONS = {
+  youtube: '<path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1c.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8ZM9.6 15.6V8.4l6.3 3.6-6.3 3.6Z"/>',
+  facebook: '<path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.68.24 2.68.24v2.97h-1.51c-1.49 0-1.96.93-1.96 1.89v2.25h3.33l-.53 3.49h-2.8V24C19.61 23.1 24 18.1 24 12.07Z"/>',
+  x: '<path d="M18.9 1.9h3.3l-7.2 8.3L23.5 22h-6.6l-5.2-6.8L5.8 22H2.5l7.7-8.8L2 1.9h6.8l4.7 6.2 5.4-6.2Zm-1.2 18.1h1.8L7.4 3.8H5.5L17.7 20Z"/>',
+  instagram: '<path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.42-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41 1.27-.06 1.65-.07 4.85-.07M12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63c-.79.3-1.46.72-2.13 1.38C1.35 2.68.93 3.35.63 4.14.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.3.79.72 1.46 1.38 2.13.67.66 1.34 1.08 2.13 1.38.76.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56.79-.3 1.46-.72 2.13-1.38.66-.67 1.08-1.34 1.38-2.13.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91-.3-.79-.72-1.46-1.38-2.13C21.32 1.35 20.65.93 19.86.63 19.1.33 18.22.13 16.95.07 15.67.01 15.26 0 12 0Zm0 5.84a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32Zm0 10.16a4 4 0 1 1 0-8 4 4 0 0 1 0 8Zm7.85-10.4a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0Z"/>',
+  telegram: '<path d="M23.9 3.5 20.3 20.4c-.27 1.2-.98 1.5-1.99.93l-5.5-4.05-2.65 2.55c-.29.29-.54.54-1.11.54l.4-5.6L19.6 5.57c.44-.4-.1-.61-.68-.22L6.32 13.16.9 11.47c-1.18-.37-1.2-1.18.25-1.75L22.37 1.5c.98-.36 1.84.22 1.53 2Z"/>',
+  linkedin: '<path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05a3.74 3.74 0 0 1 3.37-1.85c3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13Zm1.78 13.02H3.55V9h3.57v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.72v20.55C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.72C24 .77 23.2 0 22.22 0Z"/>',
+  tiktok: '<path d="M16.6 5.82a4.82 4.82 0 0 1-1.05-.91 4.7 4.7 0 0 1-1.13-2.66V2h-3.4v13.5a2.84 2.84 0 0 1-5.1 1.7 2.84 2.84 0 0 1 3.72-4.2V9.4a6.24 6.24 0 1 0 5.31 6.16V8.9a8.1 8.1 0 0 0 4.72 1.51V7.03a4.77 4.77 0 0 1-3.07-1.21Z"/>',
+};
+
+function socialIcon(key) {
+  const d = SOCIAL_ICONS[key];
+  if (!d) return '';
+  return `<svg class="social-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true" focusable="false">${d}</svg>`;
+}
+
 const SOCIAL_ORDER = [
   ['youtube', 'YouTube'],
   ['facebook', 'Facebook'],
@@ -135,7 +161,7 @@ export function layout({
   const pages = config.pages || [];
   const navPages = pages.filter((pg) => !pg.footerOnly);
   const socialLinks = SOCIAL_ORDER
-    .map(([key, label]) => [config.social?.[key], label])
+    .map(([key, label]) => [config.social?.[key], label, key])
     .filter(([href]) => href);
   const menuShows = nav.menuShows || [];
   const menuThemes = nav.menuThemes || [];
@@ -257,7 +283,7 @@ ${content}
       <p class="muted">${escapeHtml(config.tagline)}</p>
       <p class="muted small">Toutes les vidéos sont publiées sur <a href="${escapeHtml(config.channelUrl)}" target="_blank" rel="noopener">la chaîne YouTube Tandem TV</a>.</p>
       ${socialLinks.length ? `<ul class="social" aria-label="Tandem TV sur les réseaux sociaux">
-        ${socialLinks.map(([href, label]) => `<li><a href="${escapeHtml(href)}" target="_blank" rel="noopener">${escapeHtml(label)}</a></li>`).join('')}
+        ${socialLinks.map(([href, label, key]) => `<li><a href="${escapeHtml(href)}" target="_blank" rel="noopener">${socialIcon(key)}<span>${escapeHtml(label)}</span></a></li>`).join('')}
       </ul>` : ''}
     </div>
     <div class="footer-col">
@@ -466,7 +492,13 @@ export function videoPage({ config, categories, nav, video, related, buildTime }
       </p>
     </header>
 
-    <div class="player" data-video="${video.id}" data-title="${escapeHtml(video.title)}">
+    <div class="resume-bar" id="resume-bar" hidden>
+      <span class="resume-text">Vous aviez commencé cette vidéo.</span>
+      <button class="btn btn-primary btn-sm" id="resume-btn" type="button">Reprendre à <span id="resume-time">0:00</span></button>
+      <button class="btn btn-sm" id="resume-restart" type="button">Reprendre au début</button>
+    </div>
+
+    <div class="player" data-video="${video.id}" data-title="${escapeHtml(video.title)}"${related[0] ? ` data-next-id="${escapeHtml(related[0].id)}" data-next-title="${escapeHtml(related[0].title)}" data-next-thumb="${escapeHtml(related[0].thumbnail || YT_THUMB(related[0].id))}"` : ''}>
       <img class="player-poster" src="${escapeHtml(video.thumbnail || YT_THUMB(video.id))}" alt="${escapeHtml(video.title)}" fetchpriority="high" width="1280" height="720">
       <button class="player-btn" type="button" aria-label="Lire la vidéo"></button>
       <noscript>
@@ -482,7 +514,9 @@ export function videoPage({ config, categories, nav, video, related, buildTime }
       <a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(`${config.siteUrl}/video/${video.id}/`)}" target="_blank" rel="noopener">Facebook</a>
       <a href="https://x.com/intent/tweet?url=${encodeURIComponent(`${config.siteUrl}/video/${video.id}/`)}&text=${encodeURIComponent(video.title)}" target="_blank" rel="noopener">X</a>
       <a href="https://wa.me/?text=${encodeURIComponent(`${video.title} ${config.siteUrl}/video/${video.id}/`)}" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="https://t.me/share/url?url=${encodeURIComponent(`${config.siteUrl}/video/${video.id}/`)}&text=${encodeURIComponent(video.title)}" target="_blank" rel="noopener">Telegram</a>
       <a href="mailto:?subject=${encodeURIComponent(video.title)}&body=${encodeURIComponent(`${config.siteUrl}/video/${video.id}/`)}">E-mail</a>
+      <button class="share-time" id="share-at-time" type="button" hidden>Copier le lien à cet instant</button>
       <a class="right" href="https://www.youtube.com/watch?v=${video.id}" target="_blank" rel="noopener">Voir sur YouTube ↗</a>
     </div>
 
@@ -551,7 +585,7 @@ export function videoPage({ config, categories, nav, video, related, buildTime }
 export function followPage({ config, categories, nav, buildTime }) {
   const socials = SOCIAL_ORDER
     .filter(([key]) => key !== 'youtube')
-    .map(([key, label]) => [config.social?.[key], label])
+    .map(([key, label]) => [config.social?.[key], label, key])
     .filter(([href]) => href);
 
   const content = `
@@ -605,7 +639,7 @@ export function followPage({ config, categories, nav, buildTime }) {
     <h2>Les réseaux sociaux</h2>
     <p>Nos comptes officiels, où l'on relaie les publications et où l'on échange avec vous.</p>
     <ul class="social social-inline">
-      ${socials.map(([href, label]) => `<li><a href="${escapeHtml(href)}" target="_blank" rel="noopener">${escapeHtml(label)}</a></li>`).join('')}
+      ${socials.map(([href, label, key]) => `<li><a href="${escapeHtml(href)}" target="_blank" rel="noopener">${socialIcon(key)}<span>${escapeHtml(label)}</span></a></li>`).join('')}
     </ul>
   </section>` : ''}
 </div>`;

@@ -40,6 +40,10 @@ Le site est hébergé par GitHub, Inc. Comme tout serveur web, celui-ci enregist
 
 Ce site n'utilise **aucune police chargée depuis un serveur tiers**. Il s'appuie sur les polices déjà présentes sur votre appareil. Aucune donnée n'est donc transmise à ce titre.
 
+## Ce qui reste sur votre appareil
+
+Pour vous proposer de reprendre une vidéo là où vous l'aviez laissée, le site mémorise **sur votre propre appareil** la position de lecture des dernières vidéos commencées. Cette information ne quitte jamais votre navigateur : elle ne nous est pas transmise et nous n'y avons aucun accès. Vider les données de navigation l'efface entièrement.
+
 ## Statistiques de fréquentation
 
 {{analytics}}
