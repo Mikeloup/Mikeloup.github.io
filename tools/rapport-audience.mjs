@@ -89,11 +89,39 @@ function tableau(titre, colonne, lignes, transforme = (x) => x) {
   return `**${titre}**\n\n| ${colonne} | Pages vues |\n|---|---:|\n${corps}\n`;
 }
 
+/** Nom de pays en français à partir du code ISO (IL → Israël). */
+const PAYS = (() => {
+  try {
+    const dn = new Intl.DisplayNames(['fr'], { type: 'region' });
+    return (code) => {
+      if (!code || code === 'XX') return 'Inconnu';
+      try { return dn.of(code) || code; } catch { return code; }
+    };
+  } catch {
+    return (code) => code || 'Inconnu';
+  }
+})();
+
+const APPAREILS = { desktop: 'Ordinateur', mobile: 'Mobile', tablet: 'Tablette', other: 'Autre' };
+const jolieAppareil = (t) => APPAREILS[String(t).toLowerCase()] || t || 'Inconnu';
+
+/** Domaines qui sont les nôtres : une visite venant de là n'est pas une source. */
+function estInterne(host, siteUrl) {
+  if (!host) return false;
+  const nu = String(host).replace(/^www\./, '').toLowerCase();
+  const propre = String(siteUrl).replace(/^https?:\/\//, '').replace(/^www\./, '').replace(/\/$/, '').toLowerCase();
+  const racine = propre.replace(/\.[a-z]+$/, ''); // tandemtv.net → tandemtv
+  return nu === propre || nu.startsWith(`${racine}.`) || nu.endsWith(`.${propre}`);
+}
+
 const jolieSource = (h) => {
   if (!h || h === '' || h === 'none') return 'Accès direct';
   return h
     .replace(/^www\./, '')
-    .replace(/^com\.google\.android\.googlequicksearchbox$/, 'Google (application Android)');
+    .replace(/^com\.google\.android\.googlequicksearchbox$/, 'Google (application Android)')
+    .replace(/^l\.facebook\.com$/, 'Facebook')
+    .replace(/^lm\.facebook\.com$/, 'Facebook')
+    .replace(/^t\.co$/, 'X (Twitter)');
 };
 
 async function main() {
@@ -126,6 +154,15 @@ async function main() {
   const vuesPrec = data.precedent?.[0]?.count ?? 0;
   const visitesPrec = data.precedent?.[0]?.sum?.visits ?? 0;
 
+  // Une visite venant de nos propres pages n'est pas une provenance : c'est de
+  // la navigation interne. On la compte à part plutôt que de la laisser
+  // truster le classement des sources.
+  const sources = data.sources || [];
+  const externes = sources.filter((l) => !estInterne(l.dimensions.refererHost, config.siteUrl));
+  const internes = sources
+    .filter((l) => estInterne(l.dimensions.refererHost, config.siteUrl))
+    .reduce((n, l) => n + l.count, 0);
+
   const titre = `Audience du ${jour(debut)}`;
   const corps = `## ${titre}
 
@@ -133,9 +170,9 @@ async function main() {
 **${vues} page${vues > 1 ? 's' : ''} vue${vues > 1 ? 's' : ''}** ${evolution(vues, vuesPrec)}
 
 ${tableau('Pages les plus consultées', 'Page', data.pages)}
-${tableau("D'où viennent les visiteurs", 'Source', data.sources, jolieSource)}
-${tableau('Pays', 'Pays', data.pays)}
-${tableau('Appareils', 'Type', data.appareils)}
+${tableau("D'où viennent les visiteurs", 'Source', externes, jolieSource)}${internes ? `\n*(${internes} page${internes > 1 ? 's' : ''} vue${internes > 1 ? 's' : ''} en navigation interne, non comptée${internes > 1 ? 's' : ''} ci-dessus.)*\n` : ''}
+${tableau('Pays', 'Pays', data.pays, PAYS)}
+${tableau('Appareils', 'Type', data.appareils, jolieAppareil)}
 ---
 
 *Rapport automatique — source : Cloudflare Web Analytics. Journée du ${jour(debut)}, heure UTC.*
