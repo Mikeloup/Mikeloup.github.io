@@ -2,7 +2,7 @@ name: Publier le site Tandem TV
 
 on:
   schedule:
-    - cron: '0 6,10,14,18 * * *'
+    - cron: '0 */2 * * *'
   push:
     branches: [main]
   workflow_dispatch:
