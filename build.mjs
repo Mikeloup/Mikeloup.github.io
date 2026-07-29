@@ -426,6 +426,10 @@ async function main() {
     urls.push({ loc: `/${pg.slug}/`, freq: 'monthly', priority: '0.5' });
   }
 
+  // Page « Suivre » : tous les canaux d'abonnement au même endroit
+  await writePage('/suivre/', R.followPage(ctx));
+  urls.push({ loc: '/suivre/', freq: 'monthly', priority: '0.6' });
+
   // Recherche (index JSON + page cliente)
   await writePage('/recherche/', R.searchPage(ctx));
   await writeFile('search.json', JSON.stringify(allVideos.map((v) => ({
@@ -452,6 +456,23 @@ async function main() {
     + `Sitemap: ${config.siteUrl}/sitemap.xml\n`
     + `Sitemap: ${config.siteUrl}/sitemap-video.xml\n`);
   await writeFile('.nojekyll', '');
+
+  // Manifeste : permet l'ajout à l'écran d'accueil (et les notifications sur iOS).
+  await writeFile('manifest.webmanifest', JSON.stringify({
+    name: config.siteName,
+    short_name: config.siteName,
+    description: config.description,
+    start_url: '/',
+    scope: '/',
+    display: 'standalone',
+    background_color: '#ffffff',
+    theme_color: '#180058',
+    lang: config.lang,
+    icons: [
+      { src: '/favicon.png', sizes: '512x512', type: 'image/png', purpose: 'any' },
+      { src: '/favicon.png', sizes: '512x512', type: 'image/png', purpose: 'maskable' },
+    ],
+  }, null, 2));
 
   // Agent de service OneSignal : doit être servi à la racine du domaine.
   if (config.push?.oneSignalAppId) {

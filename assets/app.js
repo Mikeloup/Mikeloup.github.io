@@ -79,6 +79,75 @@
     });
   }
 
+  // --- Alertes du navigateur (page « Suivre ») ------------------------------
+  var pushBtn = document.getElementById('push-optin');
+  if (pushBtn) {
+    var pushStatus = document.getElementById('push-status');
+    var pushIos = document.getElementById('push-ios');
+    var say = function (msg) { if (pushStatus) pushStatus.textContent = msg; };
+
+    var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent)
+      || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    var standalone = window.navigator.standalone === true
+      || (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches);
+    var supported = ('Notification' in window) && ('serviceWorker' in navigator) && ('PushManager' in window);
+
+    if (isIOS && !standalone) {
+      // Sur iPhone hors écran d'accueil : on explique au lieu de proposer l'impossible.
+      if (pushIos) { pushIos.hidden = false; pushIos.open = true; }
+      say('Les alertes ne sont pas disponibles depuis un onglet Safari.');
+    } else if (!supported) {
+      say("Votre navigateur ne gère pas les alertes. Le flux RSS ou la chaîne YouTube prennent le relais.");
+    } else if (typeof Notification !== 'undefined' && Notification.permission === 'denied') {
+      say("Les notifications sont actuellement bloquées pour ce site dans votre navigateur. Pour les autoriser : cliquez sur l'icône à gauche de l'adresse, puis activez les notifications.");
+    } else {
+      pushBtn.hidden = false;
+      if (isIOS) { if (pushIos) pushIos.hidden = false; }
+
+      var refresh = function (OneSignal) {
+        try {
+          if (OneSignal.User.PushSubscription.optedIn) {
+            pushBtn.textContent = 'Ne plus recevoir les alertes';
+            pushBtn.dataset.state = 'on';
+            say('Vous recevez les alertes sur cet appareil.');
+          } else {
+            pushBtn.textContent = 'Recevoir les alertes';
+            pushBtn.dataset.state = 'off';
+            say('');
+          }
+        } catch (e) { /* SDK pas encore prêt */ }
+      };
+
+      window.OneSignalDeferred = window.OneSignalDeferred || [];
+      window.OneSignalDeferred.push(function (OneSignal) {
+        refresh(OneSignal);
+        try {
+          OneSignal.User.PushSubscription.addEventListener('change', function () { refresh(OneSignal); });
+        } catch (e) { /* selon version du SDK */ }
+      });
+
+      pushBtn.addEventListener('click', function () {
+        pushBtn.disabled = true;
+        say('Un instant…');
+        window.OneSignalDeferred = window.OneSignalDeferred || [];
+        window.OneSignalDeferred.push(async function (OneSignal) {
+          try {
+            if (pushBtn.dataset.state === 'on') {
+              await OneSignal.User.PushSubscription.optOut();
+              say('Vous ne recevez plus les alertes.');
+            } else {
+              await OneSignal.User.PushSubscription.optIn();
+            }
+          } catch (e) {
+            say("La demande n'a pas abouti. Vérifiez que votre navigateur n'a pas bloqué les notifications pour ce site.");
+          }
+          pushBtn.disabled = false;
+          refresh(OneSignal);
+        });
+      });
+    }
+  }
+
   // --- Recherche -----------------------------------------------------------
   var results = document.getElementById('search-results');
   if (!results) return;

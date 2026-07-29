@@ -192,6 +192,10 @@ ${image ? `<meta property="og:image" content="${escapeHtml(image)}">` : ''}
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://i.ytimg.com" crossorigin>
 <link rel="alternate" type="application/rss+xml" title="${escapeHtml(config.siteName)}" href="/rss.xml">
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="${escapeHtml(config.siteName)}">
 <link rel="icon" href="/favicon.png" type="image/png">
 <link rel="apple-touch-icon" href="/favicon.png">
 <link rel="stylesheet" href="/assets/style.css">
@@ -219,7 +223,10 @@ ${push}
       <button type="submit" aria-label="Lancer la recherche">⌕</button>
     </form>
 
-    <a class="btn btn-yt" href="${escapeHtml(config.channelUrl)}" target="_blank" rel="noopener">S'abonner</a>
+    <a class="btn btn-yt" href="${escapeHtml(config.channelUrl)}" target="_blank" rel="noopener">
+      <svg width="17" height="12" viewBox="0 0 24 17" aria-hidden="true" focusable="false"><path fill="currentColor" d="M23.5 2.7A3 3 0 0 0 21.4.6C19.5 0 12 0 12 0S4.5 0 2.6.6A3 3 0 0 0 .5 2.7C0 4.6 0 8.5 0 8.5s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1c.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8ZM9.6 12.1V4.9l6.3 3.6-6.3 3.6Z"/></svg>
+      S'abonner sur YouTube
+    </a>
 
     <button class="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button>
   </div>
@@ -230,6 +237,7 @@ ${push}
       ${menuPanel('menu-emissions', config.groups?.shows?.label || 'Émissions', menuShows, '/emissions/', 'Voir toutes les émissions')}
       ${menuPanel('menu-themes', config.groups?.themes?.label || 'Thèmes', menuThemes, '/themes/', 'Voir tous les thèmes')}
       <a href="/emissions/">Tout le catalogue</a>
+      <a class="nav-follow" href="/suivre/">Suivre</a>
       <span class="nav-only-mobile-sep" aria-hidden="true"></span>
       ${navPages.map((pg) => `<a class="nav-alt" href="/${pg.slug}/">${escapeHtml(pg.title)}</a>`).join('')}
     </div>
@@ -537,6 +545,78 @@ export function videoPage({ config, categories, nav, video, related, buildTime }
         })),
       } : {}),
     },
+  });
+}
+
+export function followPage({ config, categories, nav, buildTime }) {
+  const socials = SOCIAL_ORDER
+    .filter(([key]) => key !== 'youtube')
+    .map(([key, label]) => [config.social?.[key], label])
+    .filter(([href]) => href);
+
+  const content = `
+<div class="wrap narrow">
+  <nav class="breadcrumb"><a href="/">Accueil</a> <span>›</span> <span>Suivre</span></nav>
+
+  <header class="page-head">
+    <p class="kicker">Ne rien manquer</p>
+    <h1>Suivre Tandem TV</h1>
+    <p class="lede">Plusieurs façons de rester au courant de nos publications. Choisissez celle qui vous convient — elles fonctionnent toutes ensemble.</p>
+  </header>
+
+  <section class="follow-card">
+    <h2>La chaîne YouTube</h2>
+    <p>C'est là que tout est publié en premier. S'abonner à la chaîne vous place dans le fil d'accueil de YouTube et vous donne accès aux commentaires et aux directs.</p>
+    <p class="muted small">Fonctionne partout · nécessite un compte Google</p>
+    <a class="btn btn-yt" href="${escapeHtml(config.channelUrl)}" target="_blank" rel="noopener">S'abonner sur YouTube</a>
+  </section>
+
+  <section class="follow-card" id="alertes">
+    <h2>Les alertes du navigateur</h2>
+    <p>Une notification sur votre appareil dès la mise en ligne d'une vidéo, même quand vous n'êtes pas sur le site. Aucun compte, aucune adresse e-mail à donner, et vous pouvez vous désabonner d'un clic.</p>
+    <p class="muted small">Fonctionne sur Android, Windows et Mac · sur iPhone, voir ci-dessous</p>
+
+    <div id="push-zone">
+      <button class="btn btn-primary" id="push-optin" type="button" hidden>Recevoir les alertes</button>
+      <p class="push-status muted small" id="push-status" role="status"></p>
+
+      <details class="push-ios" id="push-ios" hidden>
+        <summary>Sur iPhone et iPad, une manipulation est nécessaire</summary>
+        <p>Apple n'autorise pas les notifications depuis un onglet de navigateur. Il faut d'abord installer le site sur votre écran d'accueil — ce qui vous donne au passage une icône Tandem TV et une ouverture en plein écran, sans barre d'adresse :</p>
+        <ol>
+          <li>Touchez le bouton <strong>Partager</strong> en bas de l'écran (le carré avec une flèche vers le haut).</li>
+          <li>Faites défiler et choisissez <strong>« Sur l'écran d'accueil »</strong>.</li>
+          <li>Ouvrez Tandem TV depuis cette nouvelle icône — pas depuis Safari.</li>
+          <li>Revenez sur cette page et touchez « Recevoir les alertes ».</li>
+        </ol>
+      </details>
+    </div>
+  </section>
+
+  <section class="follow-card">
+    <h2>Le flux RSS</h2>
+    <p>Pour ceux qui utilisent un lecteur de flux — Feedly, NetNewsWire, Thunderbird et les autres. Toutes les publications y arrivent automatiquement, sans intermédiaire et sans que personne ne sache ce que vous lisez.</p>
+    <p class="muted small">Fonctionne partout · nécessite une application de lecture</p>
+    <a class="btn" href="/rss.xml">Ouvrir le flux</a>
+  </section>
+
+  ${socials.length ? `
+  <section class="follow-card">
+    <h2>Les réseaux sociaux</h2>
+    <p>Nos comptes officiels, où l'on relaie les publications et où l'on échange avec vous.</p>
+    <ul class="social social-inline">
+      ${socials.map(([href, label]) => `<li><a href="${escapeHtml(href)}" target="_blank" rel="noopener">${escapeHtml(label)}</a></li>`).join('')}
+    </ul>
+  </section>` : ''}
+</div>`;
+
+  return layout({
+    config, categories, nav, buildTime,
+    title: 'Suivre Tandem TV',
+    description: "Toutes les façons de suivre Tandem TV : chaîne YouTube, alertes du navigateur, flux RSS et réseaux sociaux.",
+    canonical: '/suivre/',
+    bodyClass: 'page-follow',
+    content,
   });
 }
 

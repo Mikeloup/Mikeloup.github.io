@@ -417,6 +417,32 @@ p { margin: 0 0 1em; }
 }
 .chapters-label { flex: 1 1 auto; }
 
+
+/* L'attribut hidden doit l'emporter sur les display: des classes (.btn, .social…). */
+[hidden] { display: none !important; }
+
+/* Page « Suivre » */
+.follow-card {
+  border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 1.6rem 1.75rem; margin-bottom: 1.25rem; background: #fff;
+  box-shadow: var(--shadow);
+}
+.follow-card h2 { font-size: 1.2rem; margin-bottom: .5rem; }
+.follow-card p { margin-bottom: .75rem; }
+.follow-card .btn { margin-top: .35rem; }
+.follow-card .muted.small { margin-bottom: 1rem; }
+.push-status { margin: .85rem 0 0; min-height: 1.2em; }
+.push-ios { margin-top: 1rem; border-top: 1px solid var(--line); padding-top: .9rem; }
+.push-ios summary { cursor: pointer; font-weight: 650; color: var(--brand); }
+.push-ios ol { margin: .8rem 0 0; padding-left: 1.2rem; }
+.push-ios li { margin-bottom: .4rem; }
+.social-inline { margin-top: .25rem; }
+.social-inline a { border-color: var(--line); color: var(--brand); }
+.social-inline a:hover { background: var(--surface-2); border-color: var(--accent); color: var(--accent); }
+.lede { font-size: 1.06rem; color: var(--muted); }
+.nav-follow { margin-left: auto; }
+.btn-yt svg { flex: 0 0 auto; }
+
 @media (max-width: 780px) {
   .grid { grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr)); gap: 1.5rem 1rem; }
   .row { padding-top: 1.9rem; margin-top: 1.5rem; }
