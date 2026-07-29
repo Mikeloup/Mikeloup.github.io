@@ -99,10 +99,10 @@ const jolieSource = (h) => {
 async function main() {
   const config = JSON.parse(await fs.readFile(path.join(ROOT, 'site.config.json'), 'utf8'));
   const accountTag = config.analytics?.cloudflareAccountId;
-  const siteTag = config.analytics?.cloudflareToken;
+  const siteTag = config.analytics?.cloudflareSiteTag;
   const token = process.env.CLOUDFLARE_API_TOKEN;
 
-  if (!accountTag || !siteTag) throw new Error('cloudflareAccountId ou cloudflareToken manquant dans site.config.json.');
+  if (!accountTag || !siteTag) throw new Error('cloudflareAccountId ou cloudflareSiteTag manquant dans site.config.json.');
   if (!token) throw new Error('CLOUDFLARE_API_TOKEN absent.');
 
   // Journée écoulée, en UTC : de minuit à minuit.

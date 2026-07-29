@@ -47,10 +47,11 @@
     "titleTemplate": "Nouvelle vidéo · {emission}",
     "bodyTemplate": "{titre}"
   },
-  "_comment_analytics": "Mesure d'audience. Recommandé : 'cloudflareToken' — Cloudflare Web Analytics, gratuit, sans cookie, sans bandeau de consentement. Collez uniquement la valeur du token (la longue suite de caractères qui suit 'token\": ' dans l'extrait fourni par Cloudflare). Les deux autres champs restent disponibles si vous préférez Plausible (payant) ou Google Analytics (gratuit mais soumis au consentement). Laissez tout vide pour ne rien mesurer : la politique de confidentialité s'adapte automatiquement. 'cloudflareAccountId' sert au rapport d'audience quotidien (identifiant de compte Cloudflare, visible dans l'adresse du tableau de bord) ; il n'est pas secret et n'apparaît pas sur le site.",
+  "_comment_analytics": "Mesure d'audience. Recommandé : 'cloudflareToken' — Cloudflare Web Analytics, gratuit, sans cookie, sans bandeau de consentement. Collez uniquement la valeur du token (la longue suite de caractères qui suit 'token\": ' dans l'extrait fourni par Cloudflare). Les deux autres champs restent disponibles si vous préférez Plausible (payant) ou Google Analytics (gratuit mais soumis au consentement). Laissez tout vide pour ne rien mesurer : la politique de confidentialité s'adapte automatiquement. Le rapport d'audience quotidien a besoin de deux identifiants supplémentaires, ni secrets ni publiés sur le site : 'cloudflareAccountId' (dans l'adresse du tableau de bord) et 'cloudflareSiteTag' (paramètre siteTag de l'adresse, lorsqu'on ouvre les statistiques du site). ATTENTION : le siteTag n'est PAS le jeton de la balise, ce sont deux valeurs différentes.",
   "analytics": {
     "cloudflareToken": "85d2424ba23b4b2681237b9f0b254312",
     "cloudflareAccountId": "142f2cc560c8cd8d44673aeb94fd0af6",
+    "cloudflareSiteTag": "f63e35fcda3c43b7bdc9b38cb11c8e8c",
     "plausibleDomain": "",
     "gaMeasurementId": ""
   },
