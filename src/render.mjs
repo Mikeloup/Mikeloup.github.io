@@ -868,9 +868,14 @@ export function notFoundPage({ config, categories, nav, buildTime }) {
   <header class="page-head center">
     <p class="kicker">Erreur 404</p>
     <h1>Cette page n'existe pas (ou plus)</h1>
-    <p class="lede">La vidéo a peut-être été retirée, ou le lien est incorrect.</p>
-    <p><a class="btn btn-primary" href="/">Retour à l'accueil</a> <a class="btn" href="/emissions/">Voir toutes les émissions</a></p>
+    <p class="lede" id="e404-lede">La vidéo a peut-être été retirée, ou le lien est incorrect.</p>
+    <p id="e404-actions"><a class="btn btn-primary" href="/">Retour à l'accueil</a> <a class="btn" href="/emissions/">Voir toutes les émissions</a></p>
   </header>
+
+  <section id="e404-rescue" hidden>
+    <h2 class="row-title" id="e404-rescue-title">Vous cherchiez peut-être</h2>
+    <div class="grid" id="e404-results"></div>
+  </section>
 </div>`;
   return layout({
     config, categories, nav, buildTime,

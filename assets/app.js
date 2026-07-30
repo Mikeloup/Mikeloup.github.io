@@ -377,3 +377,126 @@
     });
   }
 })();
+
+/* ---------------------------------------------------------------------------
+ * Rattrapage des anciennes adresses (page 404)
+ *
+ * Le site a remplacé un blog Wix dont les adresses (/post/mon-titre) restent
+ * dans l'index de Google, dans les partages Facebook et dans les marque-pages
+ * des visiteurs. Plutôt que de leur opposer un mur, la page d'erreur lit
+ * l'adresse demandée, la compare aux titres du catalogue et propose — ou
+ * ouvre directement — la vidéo correspondante.
+ * ------------------------------------------------------------------------- */
+(function () {
+  var box = document.getElementById('e404-rescue');
+  if (!box) return;
+
+  var results = document.getElementById('e404-results');
+  var lede = document.getElementById('e404-lede');
+  var title = document.getElementById('e404-rescue-title');
+
+  var normalize = function (s) {
+    return String(s || '')
+      .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+      .toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+  };
+
+  // Mots sans valeur discriminante : ils feraient correspondre n'importe quoi.
+  var STOP = ' le la les un une des du de d l au aux et ou en dans sur pour par avec sans '
+    + 'post posts blog article page video videos emission emissions fr en index html php '
+    + 'a as at the of to is it ce ces cet cette qui que quoi son sa ses nos vos leur ';
+
+  var words = function (s) {
+    return normalize(s).split(' ').filter(function (w) {
+      return w.length > 2 && STOP.indexOf(' ' + w + ' ') === -1;
+    });
+  };
+
+  var asked = words(decodeURIComponent(location.pathname));
+  if (asked.length === 0) return;
+
+  var card = function (v) {
+    var thumb = v.n || ('https://i.ytimg.com/vi/' + v.i + '/hqdefault.jpg');
+    var el = document.createElement('article');
+    el.className = 'card';
+    el.innerHTML =
+      '<a class="card-thumb" href="/video/' + v.i + '/">'
+      + '<img src="' + thumb + '" alt="" loading="lazy" decoding="async" width="480" height="270">'
+      + '<span class="card-play" aria-hidden="true"></span></a>'
+      + '<div class="card-body">'
+      + (v.c ? '<a class="card-cat" href="/emissions/' + v.s + '/">' + v.c + '</a>' : '')
+      + '<h3 class="card-title"><a href="/video/' + v.i + '/"></a></h3>'
+      + '</div>';
+    el.querySelector('.card-title a').textContent = v.t;
+    return el;
+  };
+
+  fetch('/search.json').then(function (r) { return r.json(); }).then(function (index) {
+    var scored = index.map(function (v) {
+      var have = words(v.t + ' ' + (v.c || ''));
+      var hits = 0;
+      asked.forEach(function (w) {
+        for (var i = 0; i < have.length; i++) {
+          // Correspondance souple : « antisemitisme » retrouve « antisemitismes ».
+          if (have[i] === w || have[i].indexOf(w) === 0 || w.indexOf(have[i]) === 0) { hits++; return; }
+        }
+      });
+      return { v: v, score: hits / asked.length, hits: hits };
+    }).filter(function (r) { return r.score > 0.34; })
+      .sort(function (a, b) { return b.score - a.score; });
+
+    if (scored.length === 0) {
+      // Aucune piste : au moins emmener le visiteur vers la recherche.
+      var q = asked.join(' ');
+      var p = document.getElementById('e404-actions');
+      if (p) {
+        var a = document.createElement('a');
+        a.className = 'btn';
+        a.href = '/recherche/?q=' + encodeURIComponent(q);
+        a.textContent = 'Chercher « ' + q + ' »';
+        p.appendChild(document.createTextNode(' '));
+        p.appendChild(a);
+      }
+      return;
+    }
+
+    // Une ancienne adresse de rubrique doit conduire à la rubrique, pas à
+    // l'une de ses vidéos : on teste d'abord les noms d'émissions et de thèmes.
+    var seen = {};
+    var cats = [];
+    index.forEach(function (v) {
+      if (v.s && !seen[v.s]) { seen[v.s] = 1; cats.push({ t: v.c, s: v.s }); }
+    });
+    var catHit = cats.map(function (c) {
+      var have = words(c.t);
+      var hits = 0;
+      asked.forEach(function (w) {
+        for (var i = 0; i < have.length; i++) {
+          if (have[i] === w || have[i].indexOf(w) === 0 || w.indexOf(have[i]) === 0) { hits++; return; }
+        }
+      });
+      return { c: c, score: hits / asked.length, hits: hits };
+    }).sort(function (a, b) { return b.score - a.score; })[0];
+
+    if (catHit && catHit.score >= 0.8 && catHit.hits >= 2) {
+      location.replace('/emissions/' + catHit.c.s + '/');
+      return;
+    }
+
+    var best = scored[0];
+    var second = scored[1] ? scored[1].score : 0;
+
+    // Correspondance franche et sans rivale : on y conduit directement.
+    // replace() et non assign() : le bouton « retour » ne doit pas ramener
+    // le visiteur sur la page d'erreur.
+    if (best.score >= 0.8 && best.hits >= 3 && best.score - second >= 0.2) {
+      location.replace('/video/' + best.v.i + '/');
+      return;
+    }
+
+    if (lede) lede.textContent = 'Cette adresse date de l’ancien site. Voici ce qui s’en rapproche le plus.';
+    if (title) title.textContent = scored.length === 1 ? 'Vous cherchiez peut-être' : 'Vous cherchiez peut-être l’une de ces vidéos';
+    scored.slice(0, 4).forEach(function (r) { results.appendChild(card(r.v)); });
+    box.hidden = false;
+  }).catch(function () { /* silence : la page d'erreur reste utilisable */ });
+})();

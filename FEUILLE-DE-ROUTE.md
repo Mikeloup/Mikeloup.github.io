@@ -38,7 +38,7 @@ site, en service payant.*
 
 | Sujet | Ce qu'il faut |
 |---|---|
-| Soutien financier | Le lien PayPal.me (choix arrêté : PayPal) |
+| Soutien financier | Le lien PayPal.me (choix arrêté : PayPal). **Urgent : `/dons` est encore demandé par des visiteurs.** |
 | Partenaires | Deux listes séparées : partenaires de la chaîne / chaînes et programmes diffusés |
 | Télévision | Canal 14 Annatel : est-ce le seul ? horaires ? lien d'abonnement au bouquet ? |
 | Sponsoring | Formats acceptés, adresse de contact à afficher |
@@ -57,6 +57,7 @@ Ne dépend de rien :
 - [x] **Page « Sponsoring »** — `/sponsoring/`, chiffres relevés à chaque synchronisation.
 - [x] **Appel à proposer un sujet ou un invité** — dans le bloc « Réagir » de chaque page vidéo.
 - [x] **Lettre d'information** : Kit (ex-ConvertKit) — 10 000 abonnés, envois illimités, gratuit. Formulaire en HTML pur (accueil + page « Suivre »), envoi automatique à chaque nouvelle vidéo via l'API v4, mêmes garde-fous que les notifications. **Reste à faire côté Michael** : créer le compte Kit, créer un formulaire, coller son numéro dans `newsletter.formId`, déposer la clé API dans le secret GitHub `KIT_API_KEY`.
+- [x] **Rattrapage des anciennes adresses Wix** — la page 404 lit l'adresse demandée, la compare aux titres du catalogue et conduit à la vidéo (ou propose les plus proches). Découvert grâce au rapport d'audience : `/post/...` et `/dons` reçoivent encore des visites réelles.
 - [x] **Rapport d'audience quotidien** — script `tools/rapport-audience.mjs` + workflow `.github/workflows/rapport.yml`. Interroge Cloudflare, publie un ticket GitHub assigné à Michael (qui déclenche l'e-mail). Nécessite le secret `CLOUDFLARE_API_TOKEN`.
 
 Dépend des informations ci-dessus :
@@ -102,4 +103,5 @@ Dépend des informations ci-dessus :
 - **Kit n'a pas d'envoi immédiat par l'API** : une diffusion sans `send_at` reste un brouillon. Le site programme donc l'envoi deux minutes plus tard.
 - **Kit : l'adresse d'inscription est `https://app.kit.com/forms/<id>/subscriptions`**, relevée dans leur propre code d'intégration. L'ancienne adresse `app.convertkit.com` fonctionne encore par redirection, mais une redirection sur un envoi de formulaire perd les données saisies. Formulaire : `9743928`, uid `ebd0a7a53d`. Inscription à double confirmation (l'abonné doit valider un courriel).
 - **Le fichier `deploy.yml` ne transmettait que `YOUTUBE_API_KEY`** : pendant plusieurs jours, les notifications automatiques n'ont jamais pu partir, sans autre trace qu'une ligne dans le journal. Corrigé le 30 juillet 2026. À vérifier après tout ajout d'un nouveau secret.
+- **Les tâches planifiées de GitHub aux heures rondes (`:00`, `:30`) sont retardées ou ignorées.** Le premier rapport ne s'est jamais déclenché à 5 h 30 UTC. Horaire déplacé à `17 6 * * *`.
 - **Cloudflare : le « site tag » n'est PAS le jeton de la balise.** Le jeton (`85d2424b…`) sert à la mesure sur les pages ; le site tag (`f63e35fc…`, visible dans l'adresse du tableau de bord) sert aux requêtes GraphQL. Les confondre renvoie zéro, sans aucune erreur.

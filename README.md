@@ -402,3 +402,29 @@ battement.
 ### Envoyer une lettre exceptionnelle
 
 Passez par Kit → **Broadcasts → New broadcast**. Le site n'intervient pas.
+
+---
+
+## Rattrapage des anciennes adresses (version 24)
+
+Le site a remplacé un blog Wix dont les adresses (`/post/mon-titre`, `/dons`)
+restent dans l'index de Google, dans les partages Facebook et dans les
+marque-pages des visiteurs. Ces visiteurs existent : le rapport d'audience du
+29 juillet 2026 en comptait une dizaine en une seule journée.
+
+La page d'erreur ne se contente donc plus de s'excuser. Elle :
+
+1. lit l'adresse demandée et en extrait les mots significatifs ;
+2. les compare aux titres des rubriques, puis à ceux des vidéos ;
+3. **conduit directement** à la rubrique ou à la vidéo quand la correspondance
+   est franche et sans rivale ;
+4. **propose les quatre plus proches** quand le doute subsiste ;
+5. propose une recherche sur ces mots quand rien ne ressort.
+
+Aucun fichier de correspondances à maintenir : tout repose sur `search.json`,
+régénéré à chaque synchronisation. Une vidéo renommée reste donc retrouvable.
+
+Les seuils sont dans `assets/app.js` (section « Rattrapage des anciennes
+adresses ») : correspondance d'au moins 80 % des mots, au moins trois mots en
+commun, et vingt points d'avance sur la deuxième — trois conditions réunies
+pour éviter d'envoyer quelqu'un vers la mauvaise vidéo.
