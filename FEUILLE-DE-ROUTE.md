@@ -114,13 +114,13 @@ peut récupérer cette audience.
 - [ ] **Application dans les magasins (App Store / Play Store).** Décision différée à froid : 99 $/an chez Apple, 25 $ une fois chez Google. Une application n'apporte **pas** de nouveaux visiteurs — elle sert la fidélité. Seul gain net : les notifications sur iPhone. Risque : Apple refuse les simples emballages de site (règle 4.2). À rouvrir seulement si l'installation sur l'écran d'accueil rencontre son public.
 - [ ] **Refonte graphique.** Michael n'est pas satisfait de la mise en page générale. Pistes : police de titre à caractère (auto-hébergée), grille éditoriale réellement hiérarchisée, bleu marine du logo utilisé ailleurs que dans les barres, mode sombre.
 - [ ] **Transcriptions** — le plus gros levier de trafic. Une heure d'entretien = ~9 000 mots que Google ne voit pas aujourd'hui. Chantier lourd, à évaluer techniquement (récupération des sous-titres).
-- [ ] **Pages « Invités »** — une fiche par personne reçue. Se positionne sur les noms propres.
+- [x] **Pages « Invités »** — `/invites/` + une fiche par personne (`src/personnes.mjs`). Les noms sont repérés dans les titres de vidéos et dans les noms d'émissions ; `data/personnes.json` corrige (exclusions, alias, inclusions forcées, fonction et texte écrits à la main). Signature d'auteur (`author`) posée sur les pages vidéo au passage — le point qui bloquait Google Actualités.
 - [ ] **Pages d'émission enrichies** — bandeau, présentateur, pitch, périodicité, pour les 10-15 principales.
 - [ ] **Google Actualités / Discover.** Rappel : **l'inclusion est automatique depuis décembre 2019**, il n'y a rien à soumettre — le Publisher Center ne sert plus qu'à gérer l'apparence d'une publication déjà reprise. Ce qui compte, ce sont les signaux.
   - [x] Mentions légales, éditeur identifié, directeur de la publication.
   - [x] Sitemap Actualités (`sitemap-news.xml`), moins de 48 h, régénéré à chaque synchronisation.
   - [x] Dates de publication visibles et structurées.
-  - [ ] **Signature des vidéos** par le présentateur (nécessite la correspondance émission → présentateur).
+  - [x] **Signature des vidéos** par le présentateur — déduite automatiquement du nom de l'émission (« L'invité de William Zerbib » → William Zerbib), avec `author` dans les données structurées.
   - [ ] **Du vrai texte sur les pages** : c'est le point bloquant. Une page qui n'affiche qu'une vidéo et trois lignes de description ne ressemble pas à un article. Les transcriptions sont la condition véritable.
 - [x] **Flux RSS par émission et par thème** — `/emissions/<slug>/rss.xml`, lien en haut de chaque page de rubrique.
 - [ ] **Miniatures hébergées sur le site** (aujourd'hui servies par YouTube). Mesure d'attente en v25 : `referrerpolicy="no-referrer"` sur toutes les miniatures — Google reçoit toujours l'adresse IP du visiteur, mais plus la page consultée.

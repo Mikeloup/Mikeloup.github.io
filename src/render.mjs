@@ -5,7 +5,7 @@
 
 import {
   escapeHtml, formatDate, formatDateTime, formatDuration, formatCount, formatNumber, truncate,
-  excerpt, descriptionToHtml, extractChapters, removeChapterLines,
+  excerpt, descriptionToHtml, extractChapters, removeChapterLines, slugify as slugifyNom,
 } from './util.mjs';
 
 const YT_THUMB = (id) => `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
@@ -432,6 +432,7 @@ ${content}
       <h4>Le site</h4>
       <ul>
         ${pages.map((pg) => `<li><a href="/${pg.slug}/">${escapeHtml(pg.title)}</a></li>`).join('')}
+        <li><a href="/invites/">Invités et intervenants</a></li>
         <li><a href="/suivre/">Suivre Tandem TV</a></li>
         <li><a href="/installer/">Installer l'application</a></li>
         <li><a href="/sponsoring/">Sponsoring</a></li>
@@ -617,8 +618,16 @@ export function categoryPage({ config, categories, nav, category, videos, page, 
   });
 }
 
-export function videoPage({ config, categories, nav, video, related, buildTime }) {
+export function videoPage({
+  config, categories, nav, video, related, buildTime,
+  personnesParVideo = new Map(), presentateurParRubrique = new Map(),
+}) {
   const cat = video.playlists?.[0];
+  const gens = personnesParVideo.get(video.id) || [];
+  const presentateur = cat ? presentateurParRubrique.get(cat.slug) : null;
+  // Le présentateur figure déjà dans le nom de l'émission : sous la vidéo, on
+  // met en avant les autres personnes citées, et le présentateur en dernier.
+  const invites = gens.filter((p) => p.nom !== presentateur);
   const chapters = extractChapters(video.description);
   const desc = descriptionToHtml(removeChapterLines(video.description, chapters), video.id);
   const summary = chapters.length ? `
@@ -646,6 +655,9 @@ export function videoPage({ config, categories, nav, video, related, buildTime }
         ${video.duration ? `<span class="dot">·</span>${formatDuration(video.duration)}` : ''}
         ${video.views ? `<span class="dot">·</span>${formatCount(video.views)} vues` : ''}
       </p>
+      ${gens.length ? `<p class="article-gens">${presentateur && gens.some((p) => p.nom === presentateur)
+        ? `Présenté par <a href="/invites/${gens.find((p) => p.nom === presentateur).slug}/">${escapeHtml(presentateur)}</a>${invites.length ? ' · ' : ''}` : ''}${
+        invites.length ? `Avec ${invites.map((p) => `<a href="/invites/${p.slug}/">${escapeHtml(p.nom)}</a>`).join(', ')}` : ''}</p>` : ''}
     </header>
 
     <div class="resume-bar" id="resume-bar" hidden>
@@ -731,6 +743,13 @@ export function videoPage({ config, categories, nav, video, related, buildTime }
       embedUrl: `https://www.youtube.com/embed/${video.id}`,
       url: `${config.siteUrl}/video/${video.id}/`,
       publisher: { '@type': 'Organization', name: config.siteName, url: config.siteUrl },
+      ...(presentateur ? {
+        author: {
+          '@type': 'Person',
+          name: presentateur,
+          url: `${config.siteUrl.replace(/\/$/, '')}/invites/${slugifyNom(presentateur)}/`,
+        },
+      } : {}),
       inLanguage: config.lang,
       isFamilyFriendly: true,
       ...(video.views ? {
@@ -940,6 +959,123 @@ export function installPage({ config, categories, nav, buildTime }) {
     canonical: '/installer/',
     bodyClass: 'page-installer',
     content,
+  });
+}
+
+/**
+ * Fiche d'une personne : ce qu'elle a dit sur Tandem TV, et quand.
+ *
+ * Principe de prudence : la page n'affirme rien sur la personne qui ne soit
+ * déductible du catalogue. Une fonction ou un texte de présentation ne
+ * s'affichent que s'ils ont été écrits à la main dans data/personnes.json.
+ */
+export function personPage({ config, categories, nav, personne, buildTime }) {
+  const n = personne.videos.length;
+  const dates = personne.videos.map((v) => v.publishedAt).filter(Boolean).sort();
+  const annee = (d) => (d ? new Date(d).getFullYear() : null);
+  const de = annee(dates[0]);
+  const a = annee(dates[dates.length - 1]);
+  const periode = de && a ? (de === a ? `en ${de}` : `entre ${de} et ${a}`) : '';
+
+  const resume = personne.presente.length
+    ? `${escapeHtml(personne.nom)} présente ${personne.presente.length > 1 ? 'les émissions' : "l'émission"} ${personne.presente.map((t) => escapeHtml(t)).join(', ')} sur ${escapeHtml(config.siteName)}.`
+    : `${escapeHtml(personne.nom)} est intervenu${n > 1 ? ' à ' + n + ' reprises' : ''} sur ${escapeHtml(config.siteName)}${periode ? ` ${periode}` : ''}.`;
+
+  const content = `
+<div class="wrap">
+  <nav class="breadcrumb"><a href="/">Accueil</a> <span>›</span> <a href="/invites/">Invités et intervenants</a> <span>›</span> <span>${escapeHtml(personne.nom)}</span></nav>
+
+  <header class="page-head">
+    <p class="kicker">${personne.presente.length ? 'Présentateur' : 'Invité'}</p>
+    <h1>${escapeHtml(personne.nom)}</h1>
+    ${personne.fiche?.role ? `<p class="lede">${escapeHtml(personne.fiche.role)}</p>` : ''}
+    <p class="muted">${resume}</p>
+    ${personne.fiche?.texte ? `<div class="personne-texte">${descriptionToHtml(personne.fiche.texte)}</div>` : ''}
+    ${personne.rubriques.length ? `<p class="muted small">Rubriques : ${personne.rubriques.map((t) => escapeHtml(t)).join(' · ')}</p>` : ''}
+  </header>
+
+  <section class="row">
+    <div class="row-head"><h2 class="row-title">${n > 1 ? `Ses ${n} passages` : 'Son passage'} sur ${escapeHtml(config.siteName)}</h2></div>
+    ${grid(personne.videos)}
+  </section>
+</div>`;
+
+  return layout({
+    config, categories, nav, buildTime,
+    title: personne.nom,
+    description: `${personne.nom} sur ${config.siteName} : ${n} vidéo${n > 1 ? 's' : ''}${periode ? `, ${periode}` : ''}. ${personne.fiche?.role || ''}`.trim(),
+    canonical: `/invites/${personne.slug}/`,
+    image: personne.videos[0]?.thumbnail,
+    bodyClass: 'page-personne',
+    content,
+    jsonLd: [
+      breadcrumbLd(config, [
+        { name: 'Accueil', path: '/' },
+        { name: 'Invités et intervenants', path: '/invites/' },
+        { name: personne.nom, path: `/invites/${personne.slug}/` },
+      ]),
+      {
+        '@context': 'https://schema.org',
+        '@type': 'ProfilePage',
+        mainEntity: {
+          '@type': 'Person',
+          name: personne.nom,
+          url: `${config.siteUrl.replace(/\/$/, '')}/invites/${personne.slug}/`,
+          ...(personne.fiche?.role ? { jobTitle: personne.fiche.role } : {}),
+          ...(personne.presente.length
+            ? { worksFor: { '@type': 'Organization', name: config.siteName, url: config.siteUrl } }
+            : {}),
+          subjectOf: personne.videos.slice(0, 25).map((v) => ({
+            '@type': 'VideoObject',
+            name: v.title,
+            url: `${config.siteUrl.replace(/\/$/, '')}/video/${v.id}/`,
+            uploadDate: v.publishedAt,
+          })),
+        },
+      },
+    ],
+  });
+}
+
+/** Index alphabétique des personnes reçues ou présentes à l'antenne. */
+export function personIndexPage({ config, categories, nav, personnes, buildTime }) {
+  const parLettre = new Map();
+  [...personnes].sort((x, y) => x.nom.localeCompare(y.nom, 'fr')).forEach((p) => {
+    const l = p.nom.normalize('NFD').replace(/[\u0300-\u036f]/g, '')[0].toUpperCase();
+    if (!parLettre.has(l)) parLettre.set(l, []);
+    parLettre.get(l).push(p);
+  });
+
+  const content = `
+<div class="wrap">
+  <nav class="breadcrumb"><a href="/">Accueil</a> <span>›</span> <span>Invités et intervenants</span></nav>
+
+  <header class="page-head">
+    <p class="kicker">Les visages de la chaîne</p>
+    <h1>Invités et intervenants</h1>
+    <p class="lede">Les ${personnes.length} personnes que l'on retrouve le plus souvent à l'antenne de ${escapeHtml(config.siteName)} — présentateurs et invités. Chaque fiche rassemble leurs passages.</p>
+  </header>
+
+  ${[...parLettre.entries()].map(([lettre, gens]) => `
+  <section class="personnes-lettre">
+    <h2 class="row-title">${lettre}</h2>
+    <ul class="personnes-liste">
+      ${gens.map((p) => `<li><a href="/invites/${p.slug}/"><span>${escapeHtml(p.nom)}</span> <span class="muted small">${p.videos.length} vidéo${p.videos.length > 1 ? 's' : ''}</span></a></li>`).join('')}
+    </ul>
+  </section>`).join('')}
+</div>`;
+
+  return layout({
+    config, categories, nav, buildTime,
+    title: 'Invités et intervenants',
+    description: `Toutes les personnes reçues ou présentes à l'antenne de ${config.siteName} : présentateurs, invités, spécialistes. Une fiche par personne, avec l'ensemble de ses passages.`,
+    canonical: '/invites/',
+    bodyClass: 'page-invites',
+    content,
+    jsonLd: [breadcrumbLd(config, [
+      { name: 'Accueil', path: '/' },
+      { name: 'Invités et intervenants', path: '/invites/' },
+    ])],
   });
 }
 

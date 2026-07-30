@@ -563,3 +563,47 @@ découvertes, seulement à être retrouvées par Google là où il les connaît 
 
 Search Console → **Performances** → onglet **Pages** → 3 mois → relever les
 adresses qui ne commencent pas par `/video/`, `/emissions/` ou `/themes/`.
+
+---
+
+## Fiches des invités et des présentateurs (version 29)
+
+Search Console a montré que l'essentiel des recherches qui mènent à Tandem TV
+sont des recherches de **noms de personnes** — « samuel madar wikipédia »,
+« stephan zeev goldin biographie », « justine varin » — et qu'aucune page du
+site n'y répondait. Ces fiches comblent ce manque à partir de ce que la chaîne
+publie déjà.
+
+**Ce qui est repéré automatiquement** (`src/personnes.mjs`) :
+
+- le **présentateur**, déduit du nom de l'émission : « L'invité de William
+  Zerbib » → William Zerbib, « Cafe Daat - Rony Akrich » → Rony Akrich ;
+- les **invités**, déduits des titres de vidéos, selon trois motifs : après la
+  dernière barre verticale, avant les deux-points, ou après « interview de » /
+  « entretien avec ».
+
+Un candidat n'est retenu que s'il ressemble à un nom : deux à quatre mots,
+majuscules initiales, aucun chiffre, et aucun mot de lieu ou de thème — la liste
+`PAS_UN_NOM` écarte « Judée-Samarie », « Proche Orient », « Actu Israël »…
+
+**Ce qui se règle à la main** (`data/personnes.json`) :
+
+| Champ | Rôle |
+|---|---|
+| `minVideos` | Nombre de passages à partir duquel une fiche est créée (2 par défaut) |
+| `exclure` | Retire un faux nom : une marque, un partenaire, un segment |
+| `alias` | Fusionne deux orthographes d'une même personne |
+| `inclure` | Force une fiche pour quelqu'un qui n'a qu'un seul passage |
+| `presentateurs` | Impose le présentateur d'une émission |
+| `fiches` | Ajoute une **fonction** et un **texte de présentation** |
+
+**Le site n'invente rien sur les personnes.** Une fiche n'affirme que ce qui se
+déduit du catalogue : combien de passages, dans quelles émissions, sur quelle
+période. La fonction et le texte de présentation ne s'affichent que s'ils ont
+été écrits à la main dans `fiches`.
+
+**Effet secondaire important :** chaque page vidéo porte désormais une
+**signature d'auteur** (`author` dans les données structurées, « Présenté par… »
+sous le titre). C'était le dernier point bloquant identifié pour Google
+Actualités, et il ne demandait finalement aucune information supplémentaire —
+le nom des émissions le contenait déjà.

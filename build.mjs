@@ -17,6 +17,7 @@ import {
   slugify, escapeHtml, truncate, excerpt, paginate, cleanDescription, smartTitle,
 } from './src/util.mjs';
 import * as R from './src/render.mjs';
+import { collecterPersonnes } from './src/personnes.mjs';
 
 const ROOT = path.dirname(fileURLToPath(import.meta.url));
 const DIST = path.join(ROOT, 'dist');
@@ -382,6 +383,38 @@ async function main() {
 
   const ctx = { config, categories, nav, buildTime, channel };
   const urls = [];
+
+  // Fiches des invités et des présentateurs. Les données de Search Console
+  // montrent que l'essentiel des recherches menant au site sont des recherches
+  // de noms : ce sont ces pages qui leur répondent.
+  const fichesManuelles = await readJson(path.join(ROOT, 'data', 'personnes.json'), {});
+  const { personnes, presentateurParRubrique } = collecterPersonnes(categories, allVideos, fichesManuelles);
+  ctx.presentateurParRubrique = presentateurParRubrique;
+
+  const personnesParVideo = new Map();
+  for (const p of personnes) {
+    for (const v of p.videos) {
+      if (!personnesParVideo.has(v.id)) personnesParVideo.set(v.id, []);
+      personnesParVideo.get(v.id).push(p);
+    }
+  }
+  ctx.personnesParVideo = personnesParVideo;
+
+  if (personnes.length) {
+    await writePage('/invites/', R.personIndexPage({ ...ctx, personnes }));
+    urls.push({ loc: '/invites/', freq: 'weekly', priority: '0.6' });
+    for (const personne of personnes) {
+      await writePage(`/invites/${personne.slug}/`, R.personPage({ ...ctx, personne }));
+      urls.push({
+        loc: `/invites/${personne.slug}/`,
+        freq: 'monthly',
+        priority: '0.6',
+        lastmod: personne.videos[0]?.publishedAt,
+      });
+    }
+    log(`${personnes.length} fiche(s) d'invités ou de présentateurs : ${personnes.slice(0, 6).map((p) => `${p.nom} (${p.videos.length})`).join(', ')}…`);
+  }
+
 
   // Accueil
   await writePage('/', R.homePage({ ...ctx, latest: allVideos }));
