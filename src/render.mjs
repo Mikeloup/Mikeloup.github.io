@@ -23,7 +23,7 @@ export function videoCard(video, { showCategory = true, eager = false, lead = fa
   return `
 <article class="card${lead ? ' card--lead' : ''}" data-video-id="${escapeHtml(video.id)}">
   <a class="card-thumb" href="/video/${video.id}/" aria-label="${escapeHtml(video.title)}">
-    <img src="${escapeHtml(video.thumbnail || YT_THUMB(video.id))}" alt="" loading="${eager ? 'eager' : 'lazy'}" decoding="async" width="480" height="270">
+    <img src="${escapeHtml(video.thumbnail || YT_THUMB(video.id))}" alt="" loading="${eager ? 'eager' : 'lazy'}" decoding="async" referrerpolicy="no-referrer" width="480" height="270">
     ${isFresh(video) ? '<span class="badge-new">Nouveau</span>' : ''}
     ${video.duration ? `<span class="badge-duration">${formatDuration(video.duration)}</span>` : ''}
     <span class="card-progress" hidden><span></span></span>
@@ -66,7 +66,7 @@ function hero(video, category, { pinned = false } = {}) {
   return `
 <section class="hero">
   <a class="hero-media" href="/video/${video.id}/">
-    <img src="${escapeHtml(video.thumbnail || YT_THUMB(video.id))}" alt="" fetchpriority="high" decoding="async" width="1280" height="720">
+    <img src="${escapeHtml(video.thumbnail || YT_THUMB(video.id))}" alt="" fetchpriority="high" decoding="async" referrerpolicy="no-referrer" width="1280" height="720">
     <span class="hero-play" aria-hidden="true"></span>
   </a>
   <div class="hero-body">
@@ -232,7 +232,7 @@ export function newsletterEmail(config, video, { intro = '' } = {}) {
 
 export function layout({
   config, categories, nav = {}, title, description, canonical, image, ogType = 'website', bodyClass = '',
-  content, jsonLd = null, buildTime,
+  content, jsonLd = null, buildTime, feed = null, robots = null,
 }) {
   const fullTitle = title === config.siteName ? `${config.siteName} — ${config.tagline}` : `${title} | ${config.siteName}`;
   const url = config.siteUrl.replace(/\/$/, '') + canonical;
@@ -294,8 +294,10 @@ OneSignalDeferred.push(async function (OneSignal) {
 <meta property="og:url" content="${escapeHtml(url)}">
 ${image ? `<meta property="og:image" content="${escapeHtml(image)}">` : ''}
 <meta name="twitter:card" content="summary_large_image">
+${robots ? `<meta name="robots" content="${escapeHtml(robots)}">` : ''}
 <link rel="preconnect" href="https://i.ytimg.com" crossorigin>
 <link rel="alternate" type="application/rss+xml" title="${escapeHtml(config.siteName)}" href="/rss.xml">
+${feed ? `<link rel="alternate" type="application/rss+xml" title="${escapeHtml(feed.title)}" href="${escapeHtml(feed.href)}">` : ''}
 <link rel="manifest" href="/manifest.webmanifest">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -529,7 +531,8 @@ export function categoryPage({ config, categories, nav, category, videos, page, 
     <p class="kicker">${category.group === 'themes' ? 'Thème' : 'Émission'}</p>
     <h1>${escapeHtml(category.title)}</h1>
     ${category.description ? `<p class="lede">${escapeHtml(truncate(category.description, 400))}</p>` : ''}
-    <p class="muted small">${category.videos.length} vidéo${category.videos.length > 1 ? 's' : ''}${page > 1 ? ` · page ${page} sur ${totalPages}` : ''}</p>
+    <p class="muted small">${category.videos.length} vidéo${category.videos.length > 1 ? 's' : ''}${page > 1 ? ` · page ${page} sur ${totalPages}` : ''}
+      <span class="dot">·</span> <a class="feed-link" href="${base}rss.xml">S'abonner au flux de cette rubrique</a></p>
   </header>
   ${grid(videos, { showCategory: false })}
   ${pagination(base, page, totalPages)}
@@ -537,6 +540,7 @@ export function categoryPage({ config, categories, nav, category, videos, page, 
 
   return layout({
     config, categories, nav, buildTime,
+    feed: { title: `${config.siteName} — ${category.title}`, href: `${base}rss.xml` },
     title: page > 1 ? `${category.title} — page ${page}` : category.title,
     description: category.description || `Toutes les vidéos de l'émission ${category.title} sur ${config.siteName}.`,
     canonical: page > 1 ? `${base}page/${page}/` : base,
@@ -732,6 +736,7 @@ export function followPage({ config, categories, nav, buildTime }) {
     <p>Pour ceux qui utilisent un lecteur de flux — Feedly, NetNewsWire, Thunderbird et les autres. Toutes les publications y arrivent automatiquement, sans intermédiaire et sans que personne ne sache ce que vous lisez.</p>
     <p class="muted small">Fonctionne partout · nécessite une application de lecture</p>
     <a class="btn" href="/rss.xml">Ouvrir le flux</a>
+    <p class="muted small">Il existe aussi <strong>un flux par rubrique</strong> : le lien se trouve en haut de chaque page d'émission ou de thème. Pratique pour ne suivre qu'un rendez-vous précis.</p>
   </section>
 
   ${socials.length ? `
@@ -750,6 +755,43 @@ export function followPage({ config, categories, nav, buildTime }) {
     description: "Toutes les façons de suivre Tandem TV : chaîne YouTube, alertes du navigateur, flux RSS et réseaux sociaux.",
     canonical: '/suivre/',
     bodyClass: 'page-follow',
+    content,
+  });
+}
+
+/**
+ * Page d'arrivée après inscription à la lettre. Kit affiche sinon sa propre
+ * page, en anglais : autant accueillir le nouvel abonné chez nous, en français,
+ * et lui proposer immédiatement quelque chose à regarder.
+ */
+export function thanksPage({ config, categories, nav, latest = [], buildTime }) {
+  const content = `
+<div class="wrap narrow">
+  <header class="page-head center">
+    <p class="kicker">Inscription enregistrée</p>
+    <h1>Merci, vous êtes des nôtres</h1>
+    <p class="lede">Vous recevrez un message à chaque nouvelle vidéo — rien d'autre. Pour vous désinscrire, un lien est présent au bas de chaque envoi.</p>
+    <p><a class="btn btn-primary" href="/">Voir les dernières vidéos</a> <a class="btn" href="${escapeHtml(config.channelUrl)}" target="_blank" rel="noopener">S'abonner sur YouTube</a></p>
+  </header>
+
+  ${config.tv?.enabled && config.tv?.channelNumber ? `
+  <p class="center muted">Retrouvez aussi Tandem TV à la télévision, sur le <strong>canal ${escapeHtml(config.tv.channelNumber)}${config.tv.operator ? ` du bouquet ${escapeHtml(config.tv.operator)}` : ''}</strong>.</p>` : ''}
+</div>
+
+${latest.length ? `<div class="wrap">
+  <section class="row">
+    <div class="row-head"><h2 class="row-title">En attendant, les dernières publications</h2></div>
+    ${grid(latest)}
+  </section>
+</div>` : ''}`;
+
+  return layout({
+    config, categories, nav, buildTime,
+    title: 'Merci',
+    description: `Votre inscription à la lettre d'information de ${config.siteName} est enregistrée.`,
+    canonical: '/merci/',
+    robots: 'noindex, follow',
+    bodyClass: 'page-merci',
     content,
   });
 }

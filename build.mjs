@@ -259,7 +259,7 @@ function buildModel(config, data) {
 
 // --- Fichiers annexes --------------------------------------------------------
 
-function rssFeed(config, videos) {
+function rssFeed(config, videos, { title = config.siteName, path = '/rss.xml', description = config.description } = {}) {
   const items = videos.slice(0, 50).map((v) => `
   <item>
     <title>${escapeHtml(v.title)}</title>
@@ -273,10 +273,10 @@ function rssFeed(config, videos) {
   return `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
-  <title>${escapeHtml(config.siteName)}</title>
+  <title>${escapeHtml(title)}</title>
   <link>${config.siteUrl}/</link>
-  <atom:link href="${config.siteUrl}/rss.xml" rel="self" type="application/rss+xml"/>
-  <description>${escapeHtml(config.description)}</description>
+  <atom:link href="${config.siteUrl}${path}" rel="self" type="application/rss+xml"/>
+  <description>${escapeHtml(description)}</description>
   <language>${config.lang}</language>
   <lastBuildDate>${new Date(buildTime).toUTCString()}</lastBuildDate>
 ${items}
@@ -406,6 +406,16 @@ async function main() {
 
   // Une page (paginée) par rubrique
   for (const category of categories) {
+    // Un flux par rubrique : on suit un rendez-vous précis sans recevoir toute
+    // la chaîne. Coût nul, et c'est un canal que personne ne peut nous couper.
+    await writeFile(`emissions/${category.slug}/rss.xml`, rssFeed(config, category.videos, {
+      title: `${config.siteName} — ${category.title}`,
+      path: `/emissions/${category.slug}/rss.xml`,
+      description: category.description
+        ? truncate(category.description, 400)
+        : `Toutes les vidéos de la rubrique « ${category.title} » sur ${config.siteName}.`,
+    }));
+
     const pages = paginate(category.videos, PER_PAGE);
     for (const [i, pageVideos] of pages.entries()) {
       const page = i + 1;
@@ -465,6 +475,11 @@ async function main() {
     ...ctx, videoCount: allVideos.length, showCount: nav.shows.length,
   }));
   urls.push({ loc: '/sponsoring/', freq: 'monthly', priority: '0.5' });
+
+  // Page d'arrivée après inscription à la lettre (Kit y renvoie l'abonné)
+  if (config.newsletter?.formId) {
+    await writePage('/merci/', R.thanksPage({ ...ctx, latest: allVideos.slice(0, 4) }));
+  }
 
   // Page « Suivre » : tous les canaux d'abonnement au même endroit
   await writePage('/suivre/', R.followPage(ctx));

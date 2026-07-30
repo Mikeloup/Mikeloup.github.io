@@ -428,3 +428,25 @@ Les seuils sont dans `assets/app.js` (section « Rattrapage des anciennes
 adresses ») : correspondance d'au moins 80 % des mots, au moins trois mots en
 commun, et vingt points d'avance sur la deuxième — trois conditions réunies
 pour éviter d'envoyer quelqu'un vers la mauvaise vidéo.
+
+---
+
+## Améliorations de la version 25
+
+**Page « Merci ».** `/merci/` accueille en français l'internaute qui vient de
+s'inscrire à la lettre, avec les quatre dernières vidéos et un rappel de la
+diffusion télévisée. Elle n'apparaît que si `newsletter.formId` est renseigné,
+et porte `noindex` : elle n'a pas vocation à être trouvée par Google.
+Pour que Kit y renvoie : formulaire → **Settings** → **General** → *Redirect to
+an external page* → `https://www.tandemtv.net/merci/`.
+
+**Un flux RSS par rubrique.** `/emissions/<slug>/rss.xml` pour chaque émission
+et chaque thème, annoncé dans l'en-tête de la page correspondante et proposé
+sous son titre. Permet de suivre un seul rendez-vous plutôt que toute la chaîne.
+
+**Miniatures : moins de données transmises à Google.** Toutes les vignettes
+portent désormais `referrerpolicy="no-referrer"`. Les serveurs de YouTube
+continuent de voir l'adresse IP des visiteurs — c'est inhérent au chargement
+d'une image distante — mais ne savent plus *quelle page* était consultée. Le
+seul moyen de supprimer entièrement cette dépendance reste d'héberger les
+miniatures sur le site ; c'est toujours au programme.

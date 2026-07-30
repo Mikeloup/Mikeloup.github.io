@@ -64,7 +64,7 @@ Dépend des informations ci-dessus :
 
 - [ ] **Page « Soutenir la chaîne »** (PayPal).
 - [ ] **Page « Partenaires »** refondue en deux sections.
-- [ ] **Module de vote / sondage** sous les vidéos de débat.
+- [ ] **Module de vote / sondage** sous les vidéos de débat. Point dur : sans serveur, il faut un service tiers pour stocker les votes. À arbitrer avant de construire.
 
 ---
 
@@ -80,8 +80,8 @@ Dépend des informations ci-dessus :
   - [x] Dates de publication visibles et structurées.
   - [ ] **Signature des vidéos** par le présentateur (nécessite la correspondance émission → présentateur).
   - [ ] **Du vrai texte sur les pages** : c'est le point bloquant. Une page qui n'affiche qu'une vidéo et trois lignes de description ne ressemble pas à un article. Les transcriptions sont la condition véritable.
-- [ ] **Flux RSS par émission.**
-- [ ] **Miniatures hébergées sur le site** (aujourd'hui servies par YouTube).
+- [x] **Flux RSS par émission et par thème** — `/emissions/<slug>/rss.xml`, lien en haut de chaque page de rubrique.
+- [ ] **Miniatures hébergées sur le site** (aujourd'hui servies par YouTube). Mesure d'attente en v25 : `referrerpolicy="no-referrer"` sur toutes les miniatures — Google reçoit toujours l'adresse IP du visiteur, mais plus la page consultée.
 
 ---
 

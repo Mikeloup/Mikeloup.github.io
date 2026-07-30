@@ -583,3 +583,7 @@ p { margin: 0 0 1em; }
 /* Rattrapage des anciennes adresses sur la page 404 */
 #e404-rescue { margin-top: 2.5rem; }
 #e404-rescue .row-title { margin-bottom: 1.25rem; text-align: center; }
+
+/* Lien vers le flux d'une rubrique */
+.feed-link { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+.feed-link:hover { color: var(--brand, #180058); }
