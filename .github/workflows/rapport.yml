@@ -2,7 +2,7 @@ name: Rapport d'audience quotidien
 
 on:
   schedule:
-    - cron: '30 5 * * *'
+    - cron: '17 6 * * *'
   workflow_dispatch:
 
 permissions:
