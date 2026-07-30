@@ -976,6 +976,13 @@ export function installPage({ config, categories, nav, buildTime }) {
   });
 }
 
+/** Illustration d'une personne : sa photo imposée, sinon sa vidéo la plus récente. */
+function photoDe(personne) {
+  if (personne.fiche?.photo) return personne.fiche.photo;
+  const v = personne.videos[0];
+  return v ? (v.thumbnail || YT_THUMB(v.id)) : '/assets/logo.png';
+}
+
 /**
  * Fiche d'une personne : ce qu'elle a dit sur Tandem TV, et quand.
  *
@@ -999,13 +1006,18 @@ export function personPage({ config, categories, nav, personne, buildTime }) {
 <div class="wrap">
   <nav class="breadcrumb"><a href="/">Accueil</a> <span>›</span> <a href="/invites/">Invités et intervenants</a> <span>›</span> <span>${escapeHtml(personne.nom)}</span></nav>
 
-  <header class="page-head">
+  <header class="page-head personne-tete">
+    <div class="personne-portrait">
+      <img src="${escapeHtml(photoDe(personne))}" alt="" loading="eager" decoding="async" referrerpolicy="no-referrer" width="480" height="270">
+    </div>
+    <div class="personne-intro">
     <p class="kicker">${personne.presente.length ? 'Présentateur' : 'Invité'}</p>
     <h1>${escapeHtml(personne.nom)}</h1>
     ${personne.fiche?.role ? `<p class="lede">${escapeHtml(personne.fiche.role)}</p>` : ''}
     <p class="muted">${resume}</p>
     ${personne.fiche?.texte ? `<div class="personne-texte">${descriptionToHtml(personne.fiche.texte)}</div>` : ''}
     ${personne.rubriques.length ? `<p class="muted small">Rubriques : ${personne.rubriques.map((t) => escapeHtml(t)).join(' · ')}</p>` : ''}
+    </div>
   </header>
 
   <section class="row">
@@ -1053,12 +1065,7 @@ export function personPage({ config, categories, nav, personne, buildTime }) {
 
 /** Index alphabétique des personnes reçues ou présentes à l'antenne. */
 export function personIndexPage({ config, categories, nav, personnes, buildTime }) {
-  const parLettre = new Map();
-  [...personnes].sort((x, y) => x.nom.localeCompare(y.nom, 'fr')).forEach((p) => {
-    const l = p.nom.normalize('NFD').replace(/[\u0300-\u036f]/g, '')[0].toUpperCase();
-    if (!parLettre.has(l)) parLettre.set(l, []);
-    parLettre.get(l).push(p);
-  });
+  const tries = [...personnes].sort((x, y) => x.nom.localeCompare(y.nom, 'fr'));
 
   const content = `
 <div class="wrap">
@@ -1070,13 +1077,13 @@ export function personIndexPage({ config, categories, nav, personnes, buildTime 
     <p class="lede">Les ${personnes.length} personnes que l'on retrouve le plus souvent à l'antenne de ${escapeHtml(config.siteName)} — présentateurs et invités. Chaque fiche rassemble leurs passages.</p>
   </header>
 
-  ${[...parLettre.entries()].map(([lettre, gens]) => `
-  <section class="personnes-lettre">
-    <h2 class="row-title">${lettre}</h2>
-    <ul class="personnes-liste">
-      ${gens.map((p) => `<li><a href="/invites/${p.slug}/"><span>${escapeHtml(p.nom)}</span> <span class="muted small">${p.videos.length} vidéo${p.videos.length > 1 ? 's' : ''}</span></a></li>`).join('')}
-    </ul>
-  </section>`).join('')}
+  <ul class="personnes-liste">
+    ${tries.map((p) => `<li><a class="personne-carte" href="/invites/${p.slug}/">
+      <span class="personne-photo"><img src="${escapeHtml(photoDe(p))}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" width="480" height="270"></span>
+      <span class="personne-nom">${escapeHtml(p.nom)}</span>
+      <span class="muted small">${p.videos.length} vidéo${p.videos.length > 1 ? 's' : ''}</span>
+    </a></li>`).join('')}
+  </ul>
 </div>`;
 
   return layout({
@@ -1086,10 +1093,27 @@ export function personIndexPage({ config, categories, nav, personnes, buildTime 
     canonical: '/invites/',
     bodyClass: 'page-invites',
     content,
-    jsonLd: [breadcrumbLd(config, [
-      { name: 'Accueil', path: '/' },
-      { name: 'Invités et intervenants', path: '/invites/' },
-    ])],
+    jsonLd: [
+      breadcrumbLd(config, [
+        { name: 'Accueil', path: '/' },
+        { name: 'Invités et intervenants', path: '/invites/' },
+      ]),
+      {
+        '@context': 'https://schema.org',
+        '@type': 'CollectionPage',
+        url: `${config.siteUrl.replace(/\/$/, '')}/invites/`,
+        mainEntity: {
+          '@type': 'ItemList',
+          numberOfItems: tries.length,
+          itemListElement: tries.map((p, i) => ({
+            '@type': 'ListItem',
+            position: i + 1,
+            url: `${config.siteUrl.replace(/\/$/, '')}/invites/${p.slug}/`,
+            name: p.nom,
+          })),
+        },
+      },
+    ],
   });
 }
 

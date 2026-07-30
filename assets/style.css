@@ -676,14 +676,32 @@ body.share-natif .share-label { display: none; }
 .article-gens { margin: .35rem 0 0; font-size: .92rem; color: var(--muted); }
 .article-gens a { color: var(--accent); font-weight: 600; }
 .personne-texte { margin-top: 1rem; }
-.personnes-lettre { margin-bottom: 2rem; }
-.personnes-lettre .row-title { margin-bottom: .6rem; color: var(--accent); }
-.personnes-liste { list-style: none; margin: 0; padding: 0; display: grid; gap: .1rem; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
-.personnes-liste a {
-  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
-  padding: .6rem .75rem; margin-inline: -.75rem; border-radius: 8px; color: inherit; text-decoration: none;
+.personnes-liste {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; gap: 1.5rem 1.2rem;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
 }
-.personnes-liste a:hover { background: var(--surface-2); color: var(--brand); }
+.personne-carte { display: block; color: inherit; text-decoration: none; }
+.personne-photo {
+  display: block; overflow: hidden; border-radius: 10px;
+  background: var(--surface-2); box-shadow: var(--shadow);
+}
+.personne-photo img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
+.personne-nom { display: block; margin-top: .55rem; font-weight: 650; line-height: 1.25; }
+.personne-carte:hover .personne-nom { color: var(--accent); }
+.personne-carte .small { display: block; margin-top: .1rem; }
+
+.personne-tete { display: grid; grid-template-columns: 260px 1fr; gap: 1.6rem; align-items: start; }
+.personne-portrait { overflow: hidden; border-radius: 12px; box-shadow: var(--shadow); background: var(--surface-2); }
+.personne-portrait img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
+@media (max-width: 700px) {
+  .personne-tete { grid-template-columns: 1fr; gap: 1rem; }
+  .personne-portrait { max-width: 320px; }
+}
+@media (max-width: 640px) {
+  .personnes-liste { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.2rem .8rem; }
+  .personne-nom { font-size: .95rem; }
+}
 
 @media (max-width: 900px) {
   /* Dans le menu du téléphone, « Suivre la chaîne » reste un bouton. */

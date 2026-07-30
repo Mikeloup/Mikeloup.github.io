@@ -607,3 +607,29 @@ période. La fonction et le texte de présentation ne s'affichent que s'ils ont
 sous le titre). C'était le dernier point bloquant identifié pour Google
 Actualités, et il ne demandait finalement aucune information supplémentaire —
 le nom des émissions le contenait déjà.
+
+---
+
+## Fiches d'invités : mise en page et portraits (version 31)
+
+La première version affichait une liste à deux colonnes où le nombre de vidéos
+se retrouvait collé au nom suivant — illisible. Remplacée par une **grille de
+cartes illustrées**, six colonnes sur ordinateur, deux sur téléphone.
+
+**Les portraits** sont la miniature de la vidéo la plus récente de la personne :
+sur cette chaîne, l'invité y figure presque toujours. Aucune photo à collecter,
+aucun droit à négocier, et l'illustration se met à jour toute seule à chaque
+nouveau passage. Pour imposer une autre image :
+
+```json
+"fiches": { "Stéphane Goldin": { "photo": "https://…", "role": "…" } }
+```
+
+Le **regroupement par lettre a été retiré** : utile pour des centaines de noms,
+il gaspillait de la place pour quarante.
+
+**Attention aux faux noms.** Le repérage automatique a produit trois erreurs sur
+quarante-deux — « Beit Halochem » (une association), « Feel Good » et
+« Underground Music » (des segments d'émission). Ils sont dans `exclure`. À
+vérifier de temps en temps sur `/invites/` : tout ce qui n'est pas une personne
+se retire en une ligne.

@@ -6,12 +6,16 @@
   "Archi Design",
   "Geek High Tech Gaming",
   "Bari Food",
-  "Coup De Coeur"
+  "Coup De Coeur",
+  "Beit Halochem",
+  "Feel Good",
+  "Underground Music"
  ],
  "alias": {},
  "inclure": [
   "Samuel Madar"
  ],
  "presentateurs": {},
- "fiches": {}
+ "fiches": {},
+ "_comment_photo": "Chaque fiche illustre la personne avec la miniature de sa vidéo la plus récente. Pour imposer une autre image, ajoutez \"photo\": \"https://…\" dans l'entrée correspondante de 'fiches'."
 }

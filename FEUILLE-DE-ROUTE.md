@@ -115,6 +115,12 @@ peut récupérer cette audience.
 - [x] **« À propos » et « Contact » ne disparaissent plus à 1 180 px** — une règle les masquait sur la plupart des portables. La recherche rétrécit à la place.
 - [x] **Pied de page réorganisé** en quatre colonnes : identité, émissions, « Découvrir » + « Rester au courant », « Le site ». Les mentions légales restent en bas : c'est leur place.
 
+## Fiches d'invités — corrections du 30 juillet 2026 (v31)
+
+- [x] **Mise en page refaite** : grille de cartes illustrées au lieu d'une liste à deux colonnes, où le nombre de vidéos se collait au nom suivant. Plus de regroupement par lettre : avec 42 fiches, une grille dense se parcourt mieux.
+- [x] **Illustration automatique** : chaque personne est illustrée par la miniature de sa vidéo la plus récente. `fiches.<nom>.photo` permet d'imposer une autre image.
+- [x] **Trois faux noms écartés** : Beit Halochem (association), Feel Good et Underground Music (segments d'émission). À surveiller à chaque nouvelle salve de vidéos.
+
 ## À faire — ensuite
 
 - [x] **Application sur l'écran d'accueil** — page `/installer/` (Android, iPhone, ordinateur), bandeau proposé à partir de la troisième page consultée et jamais réaffiché s'il est écarté, raccourcis dans le manifeste, gestionnaire « fetch » dans l'agent de service (condition d'installabilité chez Chrome + message hors connexion).
