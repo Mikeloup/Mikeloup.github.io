@@ -487,3 +487,79 @@ une chaîne — elle fidélise ceux qui la connaissent déjà. Le seul gain net 
 les notifications sur iPhone. Et Apple rejette les applications qui ne sont
 qu'un site web emballé (règle 4.2 « minimum functionality »). À rouvrir si, et
 seulement si, l'installation sur l'écran d'accueil rencontre son public.
+
+---
+
+## Vague 1 de l'audit (version 27)
+
+**Données structurées.** Chaque page vidéo et chaque page de rubrique porte
+désormais un fil d'Ariane balisé (`BreadcrumbList`) : Google remplace l'adresse
+brute par « Accueil › Émission › Titre » sous le résultat. Les pages de rubrique
+déclarent en plus leur contenu comme une collection (`CollectionPage` +
+`ItemList`). Le gabarit `layout` accepte maintenant **plusieurs fiches** par page :
+passer un tableau à `jsonLd` suffit.
+
+**Image de partage.** À défaut de visuel propre, une page utilise le logo
+(`/assets/logo.png`). Plus aucune page partagée sur Facebook ou WhatsApp
+n'apparaît sans image.
+
+**Descriptions nettoyées.** `cleanDescription` retire désormais la queue
+promotionnelle des descriptions YouTube — appels à l'abonnement, liens vers les
+réseaux, chapelets de mots-dièse. Le nettoyage ne mord que sur la **fin** du
+texte, pour ne jamais supprimer un lien cité au milieu d'un propos éditorial ; et
+si la description est *entièrement* promotionnelle, le texte d'origine est
+conservé plutôt que rien.
+
+**Téléphone.** Mesures avant / après sur écran d'iPhone (390 × 844) :
+
+| | v26 | v27 |
+|---|---|---|
+| Hauteur de l'en-tête | 114 px | **55 px** |
+| Colonnes de vignettes | 1 | **2** |
+| Vignettes visibles en deux écrans | 3 | **7** |
+| Zones tactiles sous 24 px | 53 | **0** |
+
+Le champ de recherche se replie derrière une loupe, la une est resserrée (son
+résumé est retiré — il figure de toute façon sur la page de la vidéo), et le
+bouton de partage utilise le **panneau natif du système** quand il existe
+(`navigator.share`), la liste des cinq réseaux restant affichée sur ordinateur.
+
+Rien n'a changé sur ordinateur : quatre colonnes, recherche visible, cinq
+réseaux — vérifié.
+
+---
+
+## Transfert des anciennes adresses Wix (version 28)
+
+Le site a remplacé un blog Wix. Trois mois après la migration, **l'essentiel du
+trafic Google arrive encore sur les anciennes adresses** : environ 500 des
+706 clics du trimestre. Elles renvoient une erreur 404, que la page d'erreur
+rattrape pour les visiteurs — mais Google, lui, se contente de supprimer ces
+pages de son index, et l'ancienneté accumulée est perdue.
+
+`data/anciennes-adresses.json` contient les 228 adresses relevées dans Search
+Console. À chaque génération, `transfererAnciennesAdresses()` :
+
+1. écrit les destinations **imposées** (`manuel`) — sections du vieux site, et
+   articles dont la vidéo a été renommée depuis ;
+2. pour les autres (`auto`), tente d'abord un rapprochement avec une **rubrique**,
+   puis avec une **vidéo** ;
+3. n'écrit un transfert que si le rapprochement est certain : 80 % des mots
+   retrouvés, au moins trois mots en commun, vingt points d'avance sur la
+   deuxième candidate ;
+4. laisse les autres en 404 — le rattrapage côté navigateur prend le relais — et
+   les **liste dans le journal de build**, pour qu'on puisse les traiter à la main.
+
+GitHub Pages ne sait pas produire de redirection 301. Chaque page de transfert
+porte donc une **adresse canonique** (c'est elle que Google suit pour transmettre
+l'ancienneté), un rafraîchissement immédiat, un `location.replace` et un lien
+visible. Surtout **pas de `noindex`** : il empêcherait la consolidation
+recherchée.
+
+Ces pages ne figurent pas dans le plan du site : elles n'ont pas à être
+découvertes, seulement à être retrouvées par Google là où il les connaît déjà.
+
+### Pour mettre la liste à jour
+
+Search Console → **Performances** → onglet **Pages** → 3 mois → relever les
+adresses qui ne commencent pas par `/video/`, `/emissions/` ou `/themes/`.

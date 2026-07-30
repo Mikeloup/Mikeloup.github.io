@@ -568,6 +568,9 @@ async function main() {
 `;
   await writeFile(config.push?.oneSignalAppId ? 'OneSignalSDKWorker.js' : 'sw.js', swBody);
 
+  // Anciennes adresses Wix : elles reçoivent encore l'essentiel du trafic Google
+  await transfererAnciennesAdresses(config, categories, allVideos);
+
   const domain = config.siteUrl.replace(/^https?:\/\//, '').replace(/\/$/, '');
   if (domain && !domain.includes('github.io')) await writeFile('CNAME', `${domain}\n`);
 
@@ -643,6 +646,122 @@ async function annonceNouveautes(config, allVideos) {
 
   if (push) await notifyNewVideos(config, allVideos, known);
   if (lettre) await sendNewsletter(config, allVideos, known);
+}
+
+
+// --- Transfert des anciennes adresses Wix ------------------------------------
+
+const MOTS_VIDES = new Set(('le la les un une des du de d l au aux et ou en dans sur pour par avec sans '
+  + 'post posts blog article articles page video videos emission emissions les fr en index html php '
+  + 'ce ces cet cette qui que quoi son sa ses nos vos leur est sont ont ils elles nous vous mais donc '
+  + 'car ne pas plus tout tous').split(' '));
+
+function motsUtiles(str) {
+  return String(str || '')
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim()
+    .split(' ')
+    .filter((w) => w.length > 2 && !MOTS_VIDES.has(w));
+}
+
+/** Score de recouvrement entre les mots demandés et ceux d'un titre. */
+function recouvrement(demandes, disponibles) {
+  let hits = 0;
+  for (const w of demandes) {
+    for (const h of disponibles) {
+      if (h === w || (w.length >= 4 && h.startsWith(w)) || (h.length >= 4 && w.startsWith(h))) { hits++; break; }
+    }
+  }
+  return { hits, score: demandes.length ? hits / demandes.length : 0 };
+}
+
+/**
+ * Page de transfert vers une adresse du nouveau site.
+ *
+ * GitHub Pages ne sait pas produire de redirection 301. On écrit donc une page
+ * qui porte une adresse canonique (c'est elle que Google suit pour transmettre
+ * l'ancienneté), un rafraîchissement immédiat, et un lien visible pour le cas
+ * où le navigateur n'exécute rien. Surtout pas de `noindex` : il empêcherait
+ * justement la consolidation qu'on recherche.
+ */
+function pageDeTransfert(config, cible, libelle) {
+  const abs = `${config.siteUrl.replace(/\/$/, '')}${cible}`;
+  return `<!doctype html>
+<html lang="${config.lang}">
+<head>
+<meta charset="utf-8">
+<title>${escapeHtml(libelle)} — ${escapeHtml(config.siteName)}</title>
+<link rel="canonical" href="${escapeHtml(abs)}">
+<meta http-equiv="refresh" content="0; url=${escapeHtml(abs)}">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body style="font-family:system-ui,sans-serif;max-width:36rem;margin:20vh auto;padding:0 1.5rem;text-align:center;color:#180058">
+<p>Cette page a déménagé.</p>
+<p><a href="${escapeHtml(abs)}" style="color:#180058;font-weight:600">${escapeHtml(libelle)}</a></p>
+<script>location.replace(${JSON.stringify(abs)});</script>
+</body>
+</html>`;
+}
+
+async function transfererAnciennesAdresses(config, categories, allVideos) {
+  const carte = await readJson(path.join(ROOT, 'data', 'anciennes-adresses.json'));
+  if (!carte) return [];
+
+  const ecrire = async (ancien, cible, libelle) => {
+    const rel = ancien.replace(/^\//, '').replace(/\/$/, '');
+    await writeFile(path.join(rel, 'index.html'), pageDeTransfert(config, cible, libelle));
+  };
+
+  const urls = [];
+  for (const [ancien, cible] of Object.entries(carte.manuel || {})) {
+    await ecrire(ancien, cible, 'Continuer sur Tandem TV');
+    urls.push(ancien);
+  }
+
+  const rubriques = categories.map((c) => ({ c, mots: motsUtiles(c.title) }));
+  const videos = allVideos.map((v) => ({ v, mots: motsUtiles(`${v.title} ${v.playlists?.[0]?.title || ''}`) }));
+
+  let versVideo = 0; let versRubrique = 0; const sansSuite = [];
+
+  for (const ancien of carte.auto || []) {
+    const demandes = motsUtiles(decodeURIComponent(ancien).replace(/^\/post\//, ''));
+    if (demandes.length < 2) { sansSuite.push(ancien); continue; }
+
+    // Une ancienne adresse de rubrique doit conduire à la rubrique.
+    let meilleureRubrique = null;
+    for (const r of rubriques) {
+      const { hits, score } = recouvrement(demandes, r.mots);
+      if (!meilleureRubrique || score > meilleureRubrique.score) meilleureRubrique = { r, score, hits };
+    }
+    if (meilleureRubrique && meilleureRubrique.score >= 0.8 && meilleureRubrique.hits >= 2) {
+      await ecrire(ancien, `/emissions/${meilleureRubrique.r.c.slug}/`, meilleureRubrique.r.c.title);
+      urls.push(ancien); versRubrique++;
+      continue;
+    }
+
+    let best = null; let second = 0;
+    for (const item of videos) {
+      const { hits, score } = recouvrement(demandes, item.mots);
+      if (!best || score > best.score) { second = best ? best.score : 0; best = { item, score, hits }; }
+      else if (score > second) second = score;
+    }
+
+    // Trois conditions cumulées, comme pour le rattrapage côté navigateur :
+    // mieux vaut laisser une erreur 404 qu'envoyer Google sur la mauvaise page.
+    if (best && best.score >= 0.8 && best.hits >= 3 && best.score - second >= 0.2) {
+      await ecrire(ancien, `/video/${best.item.v.id}/`, best.item.v.title);
+      urls.push(ancien); versVideo++;
+    } else {
+      sansSuite.push(ancien);
+    }
+  }
+
+  log(`Anciennes adresses : ${urls.length} transfert(s) écrit(s) — ${Object.keys(carte.manuel || {}).length} imposé(s), ${versRubrique} vers une rubrique, ${versVideo} vers une vidéo.`);
+  if (sansSuite.length) {
+    warn(`Anciennes adresses : ${sansSuite.length} sans correspondance certaine, laissées en 404 (le rattrapage du navigateur prend le relais) :`);
+    sansSuite.forEach((u) => warn(`   ${u}`));
+  }
+  return urls;
 }
 
 // --- Notifications navigateur ------------------------------------------------

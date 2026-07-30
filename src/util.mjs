@@ -195,11 +195,58 @@ export function paginate(arr, perPage) {
  * Nettoie une description YouTube : supprime la répétition du titre en tête
  * et les lignes vides superflues.
  */
+// Lignes de fin de description YouTube : appels à l'abonnement, liens vers les
+// réseaux, mentions légales de la chaîne, chapelets de mots-dièse. Elles se
+// répètent à l'identique sur des centaines de vidéos : pour un moteur de
+// recherche, c'est du texte dupliqué qui dilue le contenu réel de la page.
+const PROMO = [
+  /abonn(ez|e)[- ]?vous/i,
+  /s'abonner/i,
+  /rejoignez[- ]nous/i,
+  /suivez[- ]nous/i,
+  /retrouvez[- ]nous sur/i,
+  /(notre|nos) (site|réseaux|chaîne)/i,
+  /soutenir la chaîne|soutenez[- ]nous|faire un don/i,
+  /^\s*(https?:\/\/|www\.)/i,
+  /(facebook|instagram|twitter|tiktok|telegram|linkedin|whatsapp|paypal)\.(com|me)/i,
+  /youtube\.com\/(@|channel|c\/)/i,
+  /#\w+\s*#\w+/,
+  /^\s*[-—=*_•▬►👉🔔📲📱🔴💙]+\s*$/,
+  /copyright|tous droits réservés/i,
+];
+
+/** Une ligne qui n'est faite que de mots-dièse n'apporte rien à lire. */
+function estQueDesDieses(line) {
+  const t = line.trim();
+  return t.length > 0 && /^#/.test(t) && t.replace(/#\w+/g, '').trim().length === 0;
+}
+
+function estPromo(line) {
+  const t = line.trim();
+  if (!t) return false;
+  if (estQueDesDieses(t)) return true;
+  return PROMO.some((re) => re.test(t));
+}
+
+/**
+ * Nettoie une description YouTube : retire le titre répété en tête, puis la
+ * queue promotionnelle. Le nettoyage ne mord que sur la FIN du texte — on
+ * remonte tant qu'on rencontre des lignes promotionnelles ou vides — pour ne
+ * jamais supprimer un lien cité au milieu d'un propos éditorial.
+ */
 export function cleanDescription(desc = '', title = '') {
   const norm = (x) => x.replace(/\s+/g, ' ').trim().toLowerCase();
   const lines = String(desc).replace(/\r\n?/g, '\n').split('\n');
   while (lines.length && (!lines[0].trim() || norm(lines[0]) === norm(title))) lines.shift();
-  return lines.join('\n').replace(/\n{3,}/g, '\n\n').trim();
+
+  while (lines.length && (!lines[lines.length - 1].trim() || estPromo(lines[lines.length - 1]))) {
+    lines.pop();
+  }
+
+  // Sécurité : si le nettoyage a tout emporté (description entièrement
+  // promotionnelle), mieux vaut garder le texte d'origine que rien du tout.
+  const out = lines.join('\n').replace(/\n{3,}/g, '\n\n').trim();
+  return out || String(desc).trim();
 }
 
 /**

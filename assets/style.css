@@ -603,3 +603,63 @@ p { margin: 0 0 1em; }
 @media (max-width: 640px) {
   .install-bar-inner { flex-direction: column; align-items: flex-start; }
 }
+
+/* --- Vague 1 : confort sur téléphone ------------------------------------- */
+
+/* Le bouton loupe n'existe que sur petit écran. */
+.search-toggle { display: none; background: none; border: 0; color: var(--brand); cursor: pointer; padding: .6rem; border-radius: 8px; }
+.search-toggle:hover { background: var(--surface-2); }
+
+/* Partage : le bouton natif remplace la liste de réseaux là où il existe. */
+.share-native { font-size: .875rem; padding: .55rem 1.3rem; }
+body.share-natif .share-net,
+body.share-natif .share-label { display: none; }
+
+@media (max-width: 900px) {
+  /* La recherche ne mange plus une ligne entière : elle se déplie à la demande. */
+  .search-toggle { display: inline-flex; align-items: center; order: 1; margin-left: auto; }
+  .burger { margin-left: 0; }
+  .search { display: none; }
+  .search.open { display: flex; }
+
+  /* Zones tactiles : 44 px, la taille d'un doigt. */
+  .menu-grid a { min-height: 44px; align-items: center; display: flex; justify-content: space-between; }
+  .nav a, .menu-btn { min-height: 44px; display: flex; align-items: center; }
+  .row-more { padding: .5rem 0; min-height: 44px; display: inline-flex; align-items: center; }
+  .card-cat { display: inline-flex; align-items: center; min-height: 28px; }
+  .footer-col a { display: inline-flex; align-items: center; min-height: 40px; }
+  .share a, .share button { min-height: 40px; display: inline-flex; align-items: center; }
+}
+
+@media (max-width: 640px) {
+  /* Deux colonnes : on voit deux fois plus de vidéos sans faire défiler. */
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.35rem .8rem; }
+  .card-title { font-size: .95rem; line-height: 1.3; }
+  .card-cat { font-size: .72rem; }
+  .card-meta { font-size: .78rem; }
+  /* La carte mise en avant reste sur toute la largeur. */
+  .grid-lead .card--lead { grid-column: 1 / -1; }
+  .grid-lead .card--lead .card-title { font-size: 1.15rem; }
+}
+
+@media (max-width: 640px) {
+  /* La une mange tout l'écran d'un téléphone : on resserre, et on retire le
+     résumé — il est de toute façon repris sur la page de la vidéo. */
+  .hero { gap: .9rem; padding-top: 1rem; }
+  .hero-desc { display: none; }
+  .hero-title { font-size: 1.5rem; line-height: 1.2; }
+  .hero-body { gap: .5rem; }
+  .tv-banner { padding: .8rem 1rem; font-size: .9rem; }
+}
+
+@media (max-width: 640px) {
+  /* Le titre de rangée et le lien « Tout voir » se disputaient la ligne. */
+  .row-head { gap: .5rem; align-items: center; }
+  .row-title { font-size: 1.15rem; }
+  .row-more { font-size: .82rem; white-space: nowrap; }
+}
+
+@media (max-width: 900px) {
+  /* Les liens de titre restaient sous la hauteur minimale recommandée. */
+  .row-title a, .kicker a, .breadcrumb a { display: inline-block; padding-block: .25rem; }
+}

@@ -230,6 +230,46 @@ export function newsletterEmail(config, video, { intro = '' } = {}) {
 </div>`;
 }
 
+
+/**
+ * Fil d'Ariane balisé pour Google. Il est déjà affiché sur les pages ; sans
+ * cette fiche, le moteur ne le reconnaît pas comme tel et continue d'afficher
+ * l'adresse brute sous le titre du résultat.
+ */
+function breadcrumbLd(config, items) {
+  const base = config.siteUrl.replace(/\/$/, '');
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: items.map((it, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: it.name,
+      item: `${base}${it.path}`,
+    })),
+  };
+}
+
+/** Liste de vidéos balisée : Google comprend qu'une page de rubrique est une collection. */
+function itemListLd(config, videos, path) {
+  const base = config.siteUrl.replace(/\/$/, '');
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    url: `${base}${path}`,
+    mainEntity: {
+      '@type': 'ItemList',
+      numberOfItems: videos.length,
+      itemListElement: videos.map((v, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        url: `${base}/video/${v.id}/`,
+        name: v.title,
+      })),
+    },
+  };
+}
+
 export function layout({
   config, categories, nav = {}, title, description, canonical, image, ogType = 'website', bodyClass = '',
   content, jsonLd = null, buildTime, feed = null, robots = null,
@@ -292,7 +332,7 @@ OneSignalDeferred.push(async function (OneSignal) {
 <meta property="og:title" content="${escapeHtml(fullTitle)}">
 <meta property="og:description" content="${escapeHtml(truncate(description, 300))}">
 <meta property="og:url" content="${escapeHtml(url)}">
-${image ? `<meta property="og:image" content="${escapeHtml(image)}">` : ''}
+<meta property="og:image" content="${escapeHtml(image || `${config.siteUrl.replace(/\/$/, '')}/assets/logo.png`)}">
 <meta name="twitter:card" content="summary_large_image">
 ${robots ? `<meta name="robots" content="${escapeHtml(robots)}">` : ''}
 <link rel="preconnect" href="https://i.ytimg.com" crossorigin>
@@ -307,7 +347,8 @@ ${feed ? `<link rel="alternate" type="application/rss+xml" title="${escapeHtml(f
 <link rel="stylesheet" href="/assets/style.css">
 ${config.googleSiteVerification ? `<meta name="google-site-verification" content="${escapeHtml(config.googleSiteVerification)}">` : ''}
 <script type="application/ld+json">${JSON.stringify(orgLd)}</script>
-${jsonLd ? `<script type="application/ld+json">${JSON.stringify(jsonLd)}</script>` : ''}
+${(Array.isArray(jsonLd) ? jsonLd : [jsonLd]).filter(Boolean)
+  .map((o) => `<script type="application/ld+json">${JSON.stringify(o)}</script>`).join('\n')}
 ${analytics}
 ${push}
 </head>
@@ -335,7 +376,7 @@ ${push}
       ${navPages.map((pg) => `<a href="/${pg.slug}/">${escapeHtml(pg.title)}</a>`).join('')}
     </nav>
 
-    <form class="search" action="/recherche/" method="get" role="search">
+    <form class="search" id="site-search" action="/recherche/" method="get" role="search">
       <input type="search" name="q" placeholder="Rechercher une vidéo…" aria-label="Rechercher une vidéo">
       <button type="submit" aria-label="Lancer la recherche">⌕</button>
     </form>
@@ -344,6 +385,10 @@ ${push}
       <svg width="17" height="12" viewBox="0 0 24 17" aria-hidden="true" focusable="false"><path fill="currentColor" d="M23.5 2.7A3 3 0 0 0 21.4.6C19.5 0 12 0 12 0S4.5 0 2.6.6A3 3 0 0 0 .5 2.7C0 4.6 0 8.5 0 8.5s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1c.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8ZM9.6 12.1V4.9l6.3 3.6-6.3 3.6Z"/></svg>
       S'abonner sur YouTube
     </a>
+
+    <button class="search-toggle" type="button" aria-label="Rechercher" aria-expanded="false" aria-controls="site-search">
+      <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M10.5 3a7.5 7.5 0 1 0 0 15 7.5 7.5 0 0 0 0-15Zm5.3 12.8L21 21"/></svg>
+    </button>
 
     <button class="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button>
   </div>
@@ -553,6 +598,16 @@ export function categoryPage({ config, categories, nav, category, videos, page, 
   return layout({
     config, categories, nav, buildTime,
     feed: { title: `${config.siteName} — ${category.title}`, href: `${base}rss.xml` },
+    jsonLd: [
+      breadcrumbLd(config, [
+        { name: 'Accueil', path: '/' },
+        category.group === 'themes'
+          ? { name: config.groups?.themes?.label || 'Thèmes', path: '/themes/' }
+          : { name: config.groups?.shows?.label || 'Émissions', path: '/emissions/' },
+        { name: category.title, path: base },
+      ]),
+      itemListLd(config, videos, page > 1 ? `${base}page/${page}/` : base),
+    ],
     title: page > 1 ? `${category.title} — page ${page}` : category.title,
     description: category.description || `Toutes les vidéos de l'émission ${category.title} sur ${config.siteName}.`,
     canonical: page > 1 ? `${base}page/${page}/` : base,
@@ -611,12 +666,15 @@ export function videoPage({ config, categories, nav, video, related, buildTime }
     </div>
 
     <div class="share">
-      <span class="muted small">Partager :</span>
-      <a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(`${config.siteUrl}/video/${video.id}/`)}" target="_blank" rel="noopener">Facebook</a>
-      <a href="https://x.com/intent/tweet?url=${encodeURIComponent(`${config.siteUrl}/video/${video.id}/`)}&text=${encodeURIComponent(video.title)}" target="_blank" rel="noopener">X</a>
-      <a href="https://wa.me/?text=${encodeURIComponent(`${video.title} ${config.siteUrl}/video/${video.id}/`)}" target="_blank" rel="noopener">WhatsApp</a>
-      <a href="https://t.me/share/url?url=${encodeURIComponent(`${config.siteUrl}/video/${video.id}/`)}&text=${encodeURIComponent(video.title)}" target="_blank" rel="noopener">Telegram</a>
-      <a href="mailto:?subject=${encodeURIComponent(video.title)}&body=${encodeURIComponent(`${config.siteUrl}/video/${video.id}/`)}">E-mail</a>
+      <button class="btn btn-primary share-native" id="share-native" type="button" hidden
+              data-title="${escapeHtml(video.title)}"
+              data-url="${escapeHtml(`${config.siteUrl}/video/${video.id}/`)}">Partager</button>
+      <span class="muted small share-label">Partager :</span>
+      <a class="share-net" href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(`${config.siteUrl}/video/${video.id}/`)}" target="_blank" rel="noopener">Facebook</a>
+      <a class="share-net" href="https://x.com/intent/tweet?url=${encodeURIComponent(`${config.siteUrl}/video/${video.id}/`)}&text=${encodeURIComponent(video.title)}" target="_blank" rel="noopener">X</a>
+      <a class="share-net" href="https://wa.me/?text=${encodeURIComponent(`${video.title} ${config.siteUrl}/video/${video.id}/`)}" target="_blank" rel="noopener">WhatsApp</a>
+      <a class="share-net" href="https://t.me/share/url?url=${encodeURIComponent(`${config.siteUrl}/video/${video.id}/`)}&text=${encodeURIComponent(video.title)}" target="_blank" rel="noopener">Telegram</a>
+      <a class="share-net" href="mailto:?subject=${encodeURIComponent(video.title)}&body=${encodeURIComponent(`${config.siteUrl}/video/${video.id}/`)}">E-mail</a>
       <button class="share-time" id="share-at-time" type="button" hidden>Copier le lien à cet instant</button>
       <a class="right" href="https://www.youtube.com/watch?v=${video.id}" target="_blank" rel="noopener">Voir sur YouTube ↗</a>
     </div>
@@ -656,7 +714,13 @@ export function videoPage({ config, categories, nav, video, related, buildTime }
     ogType: 'video.other',
     bodyClass: 'page-video',
     content,
-    jsonLd: {
+    jsonLd: [breadcrumbLd(config, [
+      { name: 'Accueil', path: '/' },
+      ...(video.playlists?.[0]
+        ? [{ name: video.playlists[0].title, path: `/emissions/${video.playlists[0].slug}/` }]
+        : []),
+      { name: video.title, path: `/video/${video.id}/` },
+    ]), {
       '@context': 'https://schema.org',
       '@type': 'VideoObject',
       name: video.title,
@@ -688,7 +752,7 @@ export function videoPage({ config, categories, nav, video, related, buildTime }
           url: `${config.siteUrl}/video/${video.id}/?t=${ch.seconds}`,
         })),
       } : {}),
-    },
+    }],
   });
 }
 

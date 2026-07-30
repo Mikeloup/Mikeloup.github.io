@@ -68,6 +68,46 @@ Dépend des informations ci-dessus :
 
 ---
 
+## Vague 1 de l'audit du 30 juillet 2026
+
+- [x] **Fil d'Ariane balisé** (`BreadcrumbList`) sur les pages vidéo et rubrique.
+- [x] **Listes balisées** (`CollectionPage` + `ItemList`) sur les pages de rubrique.
+- [x] **Image de partage par défaut** (le logo) sur toutes les pages : plus aucune page partagée sans visuel.
+- [x] **Nettoyage des descriptions YouTube** : la queue promotionnelle (abonnement, liens réseaux, mots-dièse) est retirée. Sécurité : si tout est promotionnel, on garde le texte d'origine.
+- [x] **Mobile** : grille à deux colonnes, recherche repliée derrière une loupe, une du haut resserrée, zones tactiles ≥ 24 px (53 → 0), partage natif du système.
+- [x] **Transfert des anciennes adresses Wix** — 228 adresses relevées dans Search Console, `data/anciennes-adresses.json`. Le générateur écrit une page de transfert (canonique + rafraîchissement) quand le rapprochement est certain ; sinon il laisse la 404 et le rattrapage du navigateur prend le relais.
+
+## Ce que Search Console a révélé le 30 juillet 2026 — à ne pas oublier
+
+*Sur trois mois : 706 clics, 28 000 impressions, position moyenne 8,1.*
+
+**Environ 500 des 706 clics arrivent encore sur des adresses Wix mortes.** Les trois
+premières pages du site sont des `/post/...` qui n'existent plus :
+
+| Ancienne adresse | Clics | Impressions |
+|---|---|---|
+| `/post/qui-est-le-nouveau-chef-d-état-major-de-tsahal-stéphane-goldin` | 148 | 5 508 |
+| `/post/interview-de-samuel-madar-combattre-l-antisémitisme-chez-les-jeunes` | 104 | 4 095 |
+| `/post/le-7-octobre-vécu-par-stephan-zeev-goldin` | 83 | 5 846 |
+
+**Les requêtes sont massivement identitaires.** Les gens ne cherchent pas des sujets,
+ils cherchent *des personnes* :
+
+`samuel madar wikipédia` (1 281 impressions) · `stephan zeev goldin origine parents`
+(2 568) · `stephan zeev goldin biographie` (1 034) · `stephan zeev goldin tsahal âge`
+(1 620) · `stephan zeev goldin date de naissance` (1 255) · `stephan zeev goldin
+nationalité` (1 102) · `justine varin` (250)
+
+**Environ 8 300 impressions en trois mois portent sur l'identité d'une seule
+personne**, et aucune page du site n'y répond. C'est la démonstration chiffrée que
+les **pages « Invités » sont la priorité éditoriale numéro un**, avant même les
+transcriptions.
+
+**Point noir à traiter :** aucune vidéo du catalogue ne correspond à
+`le-7-octobre-vécu-par-stephan-zeev-goldin` (83 clics, 5 846 impressions). L'article
+Wix n'a pas d'équivalent en vidéo. Seule une page éditoriale — une fiche « invité » —
+peut récupérer cette audience.
+
 ## À faire — ensuite
 
 - [x] **Application sur l'écran d'accueil** — page `/installer/` (Android, iPhone, ordinateur), bandeau proposé à partir de la troisième page consultée et jamais réaffiché s'il est écarté, raccourcis dans le manifeste, gestionnaire « fetch » dans l'agent de service (condition d'installabilité chez Chrome + message hors connexion).

@@ -601,3 +601,39 @@
     offer();
   }
 })();
+
+
+/* ---------------------------------------------------------------------------
+ * Confort sur téléphone : recherche repliée et partage natif
+ * ------------------------------------------------------------------------- */
+(function () {
+  // La loupe déplie le champ de recherche au lieu de lui laisser une ligne
+  // entière sous l'en-tête, sur un écran déjà court.
+  var toggle = document.querySelector('.search-toggle');
+  var form = document.getElementById('site-search');
+  if (toggle && form) {
+    toggle.addEventListener('click', function () {
+      var open = form.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', String(open));
+      if (open) {
+        var input = form.querySelector('input');
+        if (input) input.focus();
+      }
+    });
+  }
+
+  // Partage : là où le système en propose un (tous les téléphones récents),
+  // un seul bouton ouvre WhatsApp, Messages, AirDrop… C'est ce que les gens
+  // utilisent réellement. La liste de réseaux reste sur ordinateur.
+  var btn = document.getElementById('share-native');
+  if (btn && navigator.share) {
+    document.body.classList.add('share-natif');
+    btn.hidden = false;
+    btn.addEventListener('click', function () {
+      navigator.share({
+        title: btn.getAttribute('data-title') || document.title,
+        url: btn.getAttribute('data-url') || location.href,
+      }).catch(function () { /* partage annulé */ });
+    });
+  }
+})();
