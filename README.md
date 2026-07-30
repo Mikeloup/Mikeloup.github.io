@@ -633,3 +633,27 @@ quarante-deux — « Beit Halochem » (une association), « Feel Good » et
 « Underground Music » (des segments d'émission). Ils sont dans `exclure`. À
 vérifier de temps en temps sur `/invites/` : tout ce qui n'est pas une personne
 se retire en une ligne.
+
+---
+
+## Rattrapage des intervenants par les descriptions (version 32)
+
+Les fiches ne lisaient que les titres et les noms d'émissions. Insuffisant :
+« Benjamin Netanyahu bientôt en prison ? » est un épisode de Galith Benzimra, et
+seule la description le dit. Résultat, sa fiche affichait 12 vidéos là où la
+recherche du site en trouvait 66.
+
+Une troisième passe de `collecterPersonnes()` lit donc les descriptions. Elle
+n'est pas naïve pour autant :
+
+1. **Aucun nom nouveau.** Elle ne cherche que les personnes déjà identifiées par
+   un titre ou par un nom d'émission. Sans cette règle, toute personnalité citée
+   en passant — un ministre, un auteur — deviendrait « intervenante de la chaîne ».
+2. **Bornes de mot.** « Bruno Dray » ne correspond pas à « Bruno Draye ».
+3. **Seuil de vraisemblance.** Un nom présent dans plus de la moitié du catalogue
+   n'est pas un intervenant : c'est une mention de pied de description. Le seuil
+   ne s'applique qu'au-delà de 40 vidéos, pour ne pas gêner une petite chaîne.
+
+Comparaison insensible à la casse et aux accents, sur la description **nettoyée**
+— donc après retrait de la queue promotionnelle, ce qui écarte au passage les
+noms cités dans les crédits de fin.

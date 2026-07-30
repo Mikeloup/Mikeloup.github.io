@@ -117,6 +117,43 @@ export function collecterPersonnes(categories, allVideos, manuel = {}) {
     }
   }
 
+  // 3. Rattrapage par les descriptions.
+  //
+  // Le titre ne cite pas toujours la personne : « Benjamin Netanyahu bientôt en
+  // prison ? » est un épisode de Galith Benzimra, et seule la description le dit
+  // (« Dans cet épisode, Galith Benzimra revient sur… »). Sans cette passe, sa
+  // fiche affichait 12 vidéos là où la recherche du site en trouvait 66.
+  //
+  // On ne cherche que les personnes DÉJÀ identifiées par un titre ou par le nom
+  // d'une émission : jamais un nom nouveau, pour ne pas transformer chaque
+  // personnalité citée en passant en intervenante de la chaîne.
+  const sansAccents = (x) => String(x || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+  const descriptions = allVideos.map((v) => ({ v, d: sansAccents(v.description) }));
+
+  for (const p of gens.values()) {
+    const cle = sansAccents(p.nom);
+    if (cle.length < 6) continue;
+    const trouves = descriptions.filter(({ d }) => {
+      const i = d.indexOf(cle);
+      if (i === -1) return false;
+      // Bornes de mot : « Bruno Dray » ne doit pas correspondre à « Bruno Draye ».
+      const avant = i === 0 ? ' ' : d[i - 1];
+      const apres = d[i + cle.length] || ' ';
+      return !/[a-z0-9]/.test(avant) && !/[a-z0-9]/.test(apres);
+    });
+
+    // Garde-fou : un nom présent dans plus de la moitié d'un catalogue déjà
+    // fourni n'est pas un intervenant, c'est une mention de pied de
+    // description. Le seuil ne s'applique pas aux petits catalogues, où une
+    // même personne peut légitimement être partout.
+    if (allVideos.length > 40 && trouves.length > allVideos.length * 0.5) continue;
+
+    for (const { v } of trouves) {
+      if (!p.videos.some((x) => x.id === v.id)) p.videos.push(v);
+      if (v.playlists?.[0]?.title) p.rubriques.add(v.playlists[0].title);
+    }
+  }
+
   const retenues = [...gens.values()]
     .filter((p) => p.videos.length >= seuil || inclure.has(p.nom.toLowerCase()))
     .map((p) => ({

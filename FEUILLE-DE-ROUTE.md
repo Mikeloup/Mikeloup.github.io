@@ -121,6 +121,22 @@ peut récupérer cette audience.
 - [x] **Illustration automatique** : chaque personne est illustrée par la miniature de sa vidéo la plus récente. `fiches.<nom>.photo` permet d'imposer une autre image.
 - [x] **Trois faux noms écartés** : Beit Halochem (association), Feel Good et Underground Music (segments d'émission). À surveiller à chaque nouvelle salve de vidéos.
 
+## Fiches d'invités — rattrapage par les descriptions (v32)
+
+Michael a repéré que la recherche du site trouvait **66 vidéos** pour Galith Benzimra
+quand sa fiche n'en affichait que **12**. Cause : les fiches ne lisaient que les
+titres et les noms d'émissions. Or « Benjamin Netanyahu bientôt en prison ? » est un
+de ses épisodes, et seule la description le dit.
+
+Une troisième passe lit donc les descriptions, avec trois garde-fous :
+
+- elle ne cherche **que des personnes déjà identifiées** par un titre ou par le nom
+  d'une émission — jamais un nom nouveau, sinon toute personnalité citée en passant
+  deviendrait une intervenante de la chaîne ;
+- **bornes de mot** : « Bruno Dray » ne correspond pas à « Bruno Draye » ;
+- **seuil de vraisemblance** : un nom présent dans plus de la moitié d'un catalogue
+  de plus de 40 vidéos est une mention de pied de description, pas un intervenant.
+
 ## À faire — ensuite
 
 - [x] **Application sur l'écran d'accueil** — page `/installer/` (Android, iPhone, ordinateur), bandeau proposé à partir de la troisième page consultée et jamais réaffiché s'il est écarté, raccourcis dans le manifeste, gestionnaire « fetch » dans l'agent de service (condition d'installabilité chez Chrome + message hors connexion).
