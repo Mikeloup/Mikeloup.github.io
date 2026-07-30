@@ -29,6 +29,8 @@ jobs:
       - name: Generer le site depuis YouTube
         env:
           YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+          ONESIGNAL_API_KEY: ${{ secrets.ONESIGNAL_API_KEY }}
+          KIT_API_KEY: ${{ secrets.KIT_API_KEY }}
         run: node build.mjs
 
       - uses: actions/configure-pages@v5
