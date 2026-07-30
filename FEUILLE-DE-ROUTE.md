@@ -108,6 +108,13 @@ transcriptions.
 Wix n'a pas d'équivalent en vidéo. Seule une page éditoriale — une fiche « invité » —
 peut récupérer cette audience.
 
+## Navigation revue le 30 juillet 2026
+
+- [x] **« Invités » remonte dans la barre de navigation** — c'est du contenu, et les données de recherche en font le plus demandé.
+- [x] **« Suivre la chaîne » devient un bouton blanc** (pastille + cloche) au lieu d'un lien noyé dans la barre. Attention à la spécificité CSS : `.nav a` bat `.nav-follow`, il faut écrire `.nav a.nav-follow`.
+- [x] **« À propos » et « Contact » ne disparaissent plus à 1 180 px** — une règle les masquait sur la plupart des portables. La recherche rétrécit à la place.
+- [x] **Pied de page réorganisé** en quatre colonnes : identité, émissions, « Découvrir » + « Rester au courant », « Le site ». Les mentions légales restent en bas : c'est leur place.
+
 ## À faire — ensuite
 
 - [x] **Application sur l'écran d'accueil** — page `/installer/` (Android, iPhone, ordinateur), bandeau proposé à partir de la troisième page consultée et jamais réaffiché s'il est écarté, raccourcis dans le manifeste, gestionnaire « fetch » dans l'agent de service (condition d'installabilité chez Chrome + message hors connexion).

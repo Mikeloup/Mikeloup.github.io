@@ -398,8 +398,12 @@ ${push}
       <a href="/">Accueil</a>
       ${menuPanel('menu-emissions', config.groups?.shows?.label || 'Émissions', menuShows, '/emissions/', 'Voir toutes les émissions')}
       ${menuPanel('menu-themes', config.groups?.themes?.label || 'Thèmes', menuThemes, '/themes/', 'Voir tous les thèmes')}
+      <a href="/invites/">Invités</a>
       <a href="/emissions/">Tout le catalogue</a>
-      <a class="nav-follow" href="/suivre/">Suivre</a>
+      <a class="nav-follow" href="/suivre/">
+        <svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 22a2.2 2.2 0 0 0 2.2-2.2H9.8A2.2 2.2 0 0 0 12 22Zm7-5.3V11a7 7 0 0 0-5.2-6.8V3.5a1.8 1.8 0 1 0-3.6 0v.7A7 7 0 0 0 5 11v5.7L3 18.7v.6h18v-.6l-2-2Z"/></svg>
+        Suivre la chaîne
+      </a>
       <span class="nav-only-mobile-sep" aria-hidden="true"></span>
       ${navPages.map((pg) => `<a class="nav-alt" href="/${pg.slug}/">${escapeHtml(pg.title)}</a>`).join('')}
     </div>
@@ -425,18 +429,28 @@ ${content}
     </div>
     <div class="footer-col">
       <h4>Émissions</h4>
-      <ul>${footerCats.map((c) => `<li><a href="/emissions/${c.slug}/">${escapeHtml(c.title)}</a></li>`).join('')}
-        <li><a href="/emissions/">Tout le catalogue</a></li></ul>
+      <ul>${footerCats.map((c) => `<li><a href="/emissions/${c.slug}/">${escapeHtml(c.title)}</a></li>`).join('')}</ul>
+    </div>
+    <div class="footer-col">
+      <h4>Découvrir</h4>
+      <ul>
+        <li><a href="/emissions/">Toutes les émissions</a></li>
+        <li><a href="/themes/">${escapeHtml(config.groups?.themes?.label || 'Thèmes')}</a></li>
+        <li><a href="/invites/">Invités et intervenants</a></li>
+        <li><a href="/recherche/">Rechercher une vidéo</a></li>
+      </ul>
+      <h4>Rester au courant</h4>
+      <ul>
+        <li><a href="/suivre/">Suivre Tandem TV</a></li>
+        <li><a href="/installer/">Installer l'application</a></li>
+        <li><a href="/rss.xml">Flux RSS</a></li>
+      </ul>
     </div>
     <div class="footer-col">
       <h4>Le site</h4>
       <ul>
         ${pages.map((pg) => `<li><a href="/${pg.slug}/">${escapeHtml(pg.title)}</a></li>`).join('')}
-        <li><a href="/invites/">Invités et intervenants</a></li>
-        <li><a href="/suivre/">Suivre Tandem TV</a></li>
-        <li><a href="/installer/">Installer l'application</a></li>
         <li><a href="/sponsoring/">Sponsoring</a></li>
-        <li><a href="/rss.xml">Flux RSS</a></li>
       </ul>
     </div>
   </div>
