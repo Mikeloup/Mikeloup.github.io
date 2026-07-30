@@ -314,6 +314,17 @@ ${push}
 <body class="${bodyClass}">
 <a class="skip" href="#main">Aller au contenu</a>
 
+<div class="install-bar" id="install-bar" hidden>
+  <div class="wrap install-bar-inner">
+    <p>Installez Tandem TV sur votre écran d'accueil — les vidéos en un geste, et les alertes des nouvelles publications.</p>
+    <span class="install-bar-actions">
+      <button class="btn btn-primary" type="button" id="install-go">Installer</button>
+      <a class="btn" href="/installer/">Comment faire</a>
+      <button class="install-bar-close" type="button" id="install-close" aria-label="Masquer">×</button>
+    </span>
+  </div>
+</div>
+
 <header class="site-header">
   <div class="wrap header-inner">
     <a class="brand" href="/" aria-label="${escapeHtml(config.siteName)} — accueil">
@@ -377,6 +388,7 @@ ${content}
       <ul>
         ${pages.map((pg) => `<li><a href="/${pg.slug}/">${escapeHtml(pg.title)}</a></li>`).join('')}
         <li><a href="/suivre/">Suivre Tandem TV</a></li>
+        <li><a href="/installer/">Installer l'application</a></li>
         <li><a href="/sponsoring/">Sponsoring</a></li>
         <li><a href="/rss.xml">Flux RSS</a></li>
       </ul>
@@ -732,6 +744,12 @@ export function followPage({ config, categories, nav, buildTime }) {
   </section>
 
   <section class="follow-card">
+    <h2>L'application</h2>
+    <p>Tandem TV s'installe sur votre écran d'accueil sans passer par aucun magasin : une icône, l'ouverture en plein écran, et — sur iPhone — la seule façon de recevoir les alertes.</p>
+    <a class="btn" href="/installer/">Comment l'installer</a>
+  </section>
+
+  <section class="follow-card">
     <h2>Le flux RSS</h2>
     <p>Pour ceux qui utilisent un lecteur de flux — Feedly, NetNewsWire, Thunderbird et les autres. Toutes les publications y arrivent automatiquement, sans intermédiaire et sans que personne ne sache ce que vous lisez.</p>
     <p class="muted small">Fonctionne partout · nécessite une application de lecture</p>
@@ -792,6 +810,71 @@ ${latest.length ? `<div class="wrap">
     canonical: '/merci/',
     robots: 'noindex, follow',
     bodyClass: 'page-merci',
+    content,
+  });
+}
+
+/**
+ * Page « Installer l'application ». Le site est déjà une application installable
+ * (manifeste + agent de service) ; il manquait seulement de le dire. Les trois
+ * marches à suivre sont affichées côte à côte, et le script met en avant celle
+ * qui correspond à l'appareil du visiteur.
+ */
+export function installPage({ config, categories, nav, buildTime }) {
+  const content = `
+<div class="wrap narrow">
+  <nav class="breadcrumb"><a href="/">Accueil</a> <span>›</span> <span>Installer</span></nav>
+
+  <header class="page-head">
+    <p class="kicker">Sur votre écran d'accueil</p>
+    <h1>Installer Tandem TV</h1>
+    <p class="lede">Tandem TV s'installe comme une application, sans passer par aucun magasin : une icône sur votre écran d'accueil, l'ouverture en plein écran, et rien à mettre à jour — c'est toujours la dernière version.</p>
+    <p id="install-cta" hidden><button class="btn btn-primary" type="button" id="install-now">Installer maintenant</button></p>
+    <p class="install-done" id="install-done" hidden>✓ Vous utilisez déjà Tandem TV en application. Rien à faire.</p>
+  </header>
+
+  <section class="follow-card" id="how-android">
+    <h2>Sur Android</h2>
+    <ol>
+      <li>Ouvrez <strong>tandemtv.net</strong> dans Chrome.</li>
+      <li>Touchez le menu <strong>⋮</strong> en haut à droite.</li>
+      <li>Choisissez <strong>Ajouter à l'écran d'accueil</strong> (ou <strong>Installer l'application</strong>).</li>
+    </ol>
+    <p class="muted small">Les notifications de nouvelles vidéos fonctionnent ensuite comme dans n'importe quelle application.</p>
+  </section>
+
+  <section class="follow-card" id="how-ios">
+    <h2>Sur iPhone et iPad</h2>
+    <ol>
+      <li>Ouvrez <strong>tandemtv.net</strong> dans <strong>Safari</strong> — cette manipulation n'existe pas dans Chrome sur iPhone.</li>
+      <li>Touchez le bouton <strong>Partager</strong> (le carré avec une flèche vers le haut, en bas de l'écran).</li>
+      <li>Faites défiler et choisissez <strong>Sur l'écran d'accueil</strong>, puis <strong>Ajouter</strong>.</li>
+    </ol>
+    <p class="muted small">Sur iPhone, c'est aussi la <strong>seule façon</strong> de recevoir les alertes des nouvelles vidéos : Apple les interdit depuis un simple onglet. Une fois l'icône installée, ouvrez-la et rendez-vous sur <a href="/suivre/">Suivre Tandem TV</a> pour les activer.</p>
+  </section>
+
+  <section class="follow-card" id="how-desktop">
+    <h2>Sur ordinateur</h2>
+    <ol>
+      <li>Ouvrez <strong>tandemtv.net</strong> dans Chrome ou Edge.</li>
+      <li>Cliquez sur l'icône d'installation à droite de la barre d'adresse (un écran avec une flèche).</li>
+      <li>Confirmez : Tandem TV s'ouvre alors dans sa propre fenêtre.</li>
+    </ol>
+    <p class="muted small">Sur Safari (Mac) : menu <strong>Fichier</strong> → <strong>Ajouter au Dock</strong>.</p>
+  </section>
+
+  <section class="follow-card">
+    <h2>Faut-il installer quoi que ce soit ?</h2>
+    <p>Non. Il n'y a rien à télécharger dans un magasin d'applications, aucun compte à créer, et l'espace occupé sur votre appareil est négligeable. Le site reste évidemment accessible normalement dans votre navigateur — l'installation ne fait qu'ajouter un raccourci et le plein écran.</p>
+  </section>
+</div>`;
+
+  return layout({
+    config, categories, nav, buildTime,
+    title: "Installer l'application",
+    description: `Installer ${config.siteName} sur l'écran d'accueil d'un iPhone, d'un téléphone Android ou d'un ordinateur, sans passer par un magasin d'applications.`,
+    canonical: '/installer/',
+    bodyClass: 'page-installer',
     content,
   });
 }

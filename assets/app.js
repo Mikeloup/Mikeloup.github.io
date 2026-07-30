@@ -438,7 +438,11 @@
       asked.forEach(function (w) {
         for (var i = 0; i < have.length; i++) {
           // Correspondance souple : « antisemitisme » retrouve « antisemitismes ».
-          if (have[i] === w || have[i].indexOf(w) === 0 || w.indexOf(have[i]) === 0) { hits++; return; }
+          // Le préfixe doit faire au moins quatre lettres, sinon « mer » (Mer
+          // Morte) accrocherait « merci » et l'on proposerait n'importe quoi.
+          if (have[i] === w
+            || (w.length >= 4 && have[i].indexOf(w) === 0)
+            || (have[i].length >= 4 && w.indexOf(have[i]) === 0)) { hits++; return; }
         }
       });
       return { v: v, score: hits / asked.length, hits: hits };
@@ -472,7 +476,9 @@
       var hits = 0;
       asked.forEach(function (w) {
         for (var i = 0; i < have.length; i++) {
-          if (have[i] === w || have[i].indexOf(w) === 0 || w.indexOf(have[i]) === 0) { hits++; return; }
+          if (have[i] === w
+            || (w.length >= 4 && have[i].indexOf(w) === 0)
+            || (have[i].length >= 4 && w.indexOf(have[i]) === 0)) { hits++; return; }
         }
       });
       return { c: c, score: hits / asked.length, hits: hits };
@@ -499,4 +505,99 @@
     scored.slice(0, 4).forEach(function (r) { results.appendChild(card(r.v)); });
     box.hidden = false;
   }).catch(function () { /* silence : la page d'erreur reste utilisable */ });
+})();
+
+/* ---------------------------------------------------------------------------
+ * Installation sur l'écran d'accueil
+ *
+ * Le site est installable depuis la v13 (manifeste + agent de service), mais
+ * rien ne le disait. Ici : le bouton d'installation natif quand le navigateur
+ * le permet, et un bandeau proposé aux visiteurs qui reviennent — jamais à la
+ * première visite, jamais deux fois s'il a été écarté.
+ * ------------------------------------------------------------------------- */
+(function () {
+  var KEY = 'ttv-install';
+  var read = function () {
+    try { return JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (e) { return {}; }
+  };
+  var write = function (d) {
+    try { localStorage.setItem(KEY, JSON.stringify(d)); } catch (e) { /* navigation privée */ }
+  };
+
+  var installed = window.matchMedia('(display-mode: standalone)').matches
+    || window.navigator.standalone === true;
+
+  var state = read();
+  state.visits = (state.visits || 0) + 1;
+  write(state);
+
+  var done = document.getElementById('install-done');
+  if (installed) {
+    if (done) done.hidden = false;
+    ['how-android', 'how-ios', 'how-desktop'].forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el) el.hidden = true;
+    });
+    return;
+  }
+
+  // Chrome et Edge préviennent quand l'installation est possible : on garde
+  // l'événement sous le coude pour déclencher la vraie fenêtre du navigateur.
+  var prompt = null;
+  var cta = document.getElementById('install-cta');
+  var bar = document.getElementById('install-bar');
+
+  var offer = function () {
+    if (cta) cta.hidden = false;
+    // Le bandeau n'apparaît qu'à partir de la troisième visite, et jamais s'il
+    // a déjà été écarté : proposer trop tôt, c'est se faire refuser une fois
+    // pour toutes.
+    if (bar && !state.dismissed && (state.visits || 0) >= 3
+      && location.pathname !== '/installer/') {
+      bar.hidden = false;
+    }
+  };
+
+  window.addEventListener('beforeinstallprompt', function (e) {
+    e.preventDefault();
+    prompt = e;
+    offer();
+  });
+
+  var launch = function () {
+    if (!prompt) { location.href = '/installer/'; return; }
+    prompt.prompt();
+    prompt.userChoice.then(function (choice) {
+      if (choice && choice.outcome === 'accepted') {
+        state.dismissed = true;
+        write(state);
+        if (bar) bar.hidden = true;
+      }
+      prompt = null;
+    });
+  };
+
+  ['install-now', 'install-go'].forEach(function (id) {
+    var btn = document.getElementById(id);
+    if (btn) btn.addEventListener('click', launch);
+  });
+
+  var close = document.getElementById('install-close');
+  if (close) {
+    close.addEventListener('click', function () {
+      state.dismissed = true;
+      write(state);
+      if (bar) bar.hidden = true;
+    });
+  }
+
+  // iPhone et iPad n'émettent jamais « beforeinstallprompt » : Safari n'a pas
+  // d'installation programmatique. On propose donc le mode d'emploi.
+  var ios = /iPad|iPhone|iPod/.test(navigator.userAgent)
+    || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  if (ios) {
+    var go = document.getElementById('install-go');
+    if (go) go.hidden = true;
+    offer();
+  }
 })();

@@ -70,6 +70,8 @@ Dépend des informations ci-dessus :
 
 ## À faire — ensuite
 
+- [x] **Application sur l'écran d'accueil** — page `/installer/` (Android, iPhone, ordinateur), bandeau proposé à partir de la troisième page consultée et jamais réaffiché s'il est écarté, raccourcis dans le manifeste, gestionnaire « fetch » dans l'agent de service (condition d'installabilité chez Chrome + message hors connexion).
+- [ ] **Application dans les magasins (App Store / Play Store).** Décision différée à froid : 99 $/an chez Apple, 25 $ une fois chez Google. Une application n'apporte **pas** de nouveaux visiteurs — elle sert la fidélité. Seul gain net : les notifications sur iPhone. Risque : Apple refuse les simples emballages de site (règle 4.2). À rouvrir seulement si l'installation sur l'écran d'accueil rencontre son public.
 - [ ] **Refonte graphique.** Michael n'est pas satisfait de la mise en page générale. Pistes : police de titre à caractère (auto-hébergée), grille éditoriale réellement hiérarchisée, bleu marine du logo utilisé ailleurs que dans les barres, mode sombre.
 - [ ] **Transcriptions** — le plus gros levier de trafic. Une heure d'entretien = ~9 000 mots que Google ne voit pas aujourd'hui. Chantier lourd, à évaluer techniquement (récupération des sous-titres).
 - [ ] **Pages « Invités »** — une fiche par personne reçue. Se positionne sur les noms propres.

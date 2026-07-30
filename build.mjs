@@ -481,6 +481,10 @@ async function main() {
     await writePage('/merci/', R.thanksPage({ ...ctx, latest: allVideos.slice(0, 4) }));
   }
 
+  // Page « Installer » : le site est déjà une application, encore faut-il le dire
+  await writePage('/installer/', R.installPage(ctx));
+  urls.push({ loc: '/installer/', freq: 'monthly', priority: '0.5' });
+
   // Page « Suivre » : tous les canaux d'abonnement au même endroit
   await writePage('/suivre/', R.followPage(ctx));
   urls.push({ loc: '/suivre/', freq: 'monthly', priority: '0.6' });
@@ -525,17 +529,44 @@ async function main() {
     background_color: '#ffffff',
     theme_color: '#180058',
     lang: config.lang,
+    shortcuts: [
+      { name: 'Dernières vidéos', url: '/' },
+      { name: 'Toutes les émissions', url: '/emissions/' },
+      { name: 'Rechercher', url: '/recherche/' },
+    ],
     icons: [
       { src: '/favicon.png', sizes: '512x512', type: 'image/png', purpose: 'any' },
       { src: '/favicon.png', sizes: '512x512', type: 'image/png', purpose: 'maskable' },
     ],
   }, null, 2));
 
-  // Agent de service OneSignal : doit être servi à la racine du domaine.
-  if (config.push?.oneSignalAppId) {
-    await writeFile('OneSignalSDKWorker.js',
-      'importScripts("https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.sw.js");\n');
-  }
+  // Agent de service : doit être servi à la racine du domaine.
+  //
+  // Un seul agent peut contrôler la racine d'un site. Celui de OneSignal occupe
+  // déjà la place, on lui ajoute donc ici le gestionnaire « fetch » que Chrome
+  // exige pour considérer le site comme installable — et qui sert au passage à
+  // afficher un message correct en cas de coupure réseau. Rien n'est mis en
+  // cache : le site reste toujours à jour.
+  const swBody = `${config.push?.oneSignalAppId
+    ? 'importScripts("https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.sw.js");\n\n'
+    : ''}self.addEventListener('fetch', function (event) {
+  if (event.request.mode !== 'navigate') return;
+  event.respondWith(fetch(event.request).catch(function () {
+    return new Response(
+      '<!doctype html><html lang="fr"><meta charset="utf-8">'
+      + '<meta name="viewport" content="width=device-width, initial-scale=1">'
+      + '<title>Hors connexion — ${escapeHtml(config.siteName)}</title>'
+      + '<body style="font-family:system-ui,sans-serif;max-width:34rem;margin:20vh auto;padding:0 1.5rem;text-align:center;color:#180058">'
+      + '<h1>Pas de connexion</h1>'
+      + '<p>Impossible de joindre ${escapeHtml(config.siteName)} pour le moment. '
+      + 'Vérifiez votre connexion, puis réessayez.</p>'
+      + '<p><button onclick="location.reload()" style="padding:.7rem 1.4rem;border:0;border-radius:6px;background:#180058;color:#fff;font-size:1rem;cursor:pointer">Réessayer</button></p>',
+      { headers: { 'Content-Type': 'text/html; charset=utf-8' }, status: 503 },
+    );
+  }));
+});
+`;
+  await writeFile(config.push?.oneSignalAppId ? 'OneSignalSDKWorker.js' : 'sw.js', swBody);
 
   const domain = config.siteUrl.replace(/^https?:\/\//, '').replace(/\/$/, '');
   if (domain && !domain.includes('github.io')) await writeFile('CNAME', `${domain}\n`);

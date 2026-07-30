@@ -450,3 +450,40 @@ continuent de voir l'adresse IP des visiteurs — c'est inhérent au chargement
 d'une image distante — mais ne savent plus *quelle page* était consultée. Le
 seul moyen de supprimer entièrement cette dépendance reste d'héberger les
 miniatures sur le site ; c'est toujours au programme.
+
+---
+
+## L'application, sans magasin d'applications (version 26)
+
+Le site est installable depuis la version 13 — manifeste, icône, plein écran —
+mais rien ne le disait aux visiteurs. La version 26 corrige cela.
+
+**Page `/installer/`.** Le mode d'emploi pour Android, iPhone/iPad et
+ordinateur. Sur les navigateurs qui le permettent (Chrome, Edge), un bouton
+« Installer maintenant » déclenche la vraie fenêtre du navigateur. Si le site
+est déjà installé, la page le dit et masque les modes d'emploi.
+
+**Bandeau discret.** Il n'apparaît qu'à partir de la **troisième page
+consultée**, jamais sur la page `/installer/` elle-même, et plus jamais s'il a
+été écarté une fois — le refus est mémorisé sur l'appareil du visiteur.
+Proposer trop tôt, c'est se faire refuser définitivement.
+
+**Agent de service.** Chrome n'accepte d'installer un site que s'il possède un
+agent de service muni d'un gestionnaire `fetch`. Comme un seul agent peut
+contrôler la racine du domaine et que celui de OneSignal y est déjà, le
+gestionnaire a été ajouté **dans ce même fichier** (`OneSignalSDKWorker.js`,
+généré à chaque build). Il ne met **rien** en cache — le site reste toujours à
+jour — et se contente d'afficher une page « Pas de connexion » en français
+lorsque le réseau est coupé.
+
+**Raccourcis.** Le manifeste déclare trois raccourcis (dernières vidéos,
+catalogue, recherche), accessibles par appui long sur l'icône.
+
+### Et les magasins d'applications ?
+
+Décision différée, volontairement. Rappel des ordres de grandeur : **99 $ par an**
+chez Apple, **25 $ une fois** chez Google. Une application ne fait pas découvrir
+une chaîne — elle fidélise ceux qui la connaissent déjà. Le seul gain net serait
+les notifications sur iPhone. Et Apple rejette les applications qui ne sont
+qu'un site web emballé (règle 4.2 « minimum functionality »). À rouvrir si, et
+seulement si, l'installation sur l'écran d'accueil rencontre son public.
