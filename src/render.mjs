@@ -179,7 +179,7 @@ function newsletterForm(config, { compact = false } = {}) {
   if (!n?.formId) return '';
   return `
 <form class="newsletter${compact ? ' newsletter--compact' : ''}"
-      action="https://app.convertkit.com/forms/${escapeHtml(n.formId)}/subscriptions"
+      action="https://app.kit.com/forms/${escapeHtml(n.formId)}/subscriptions"
       method="post" target="_blank">
   <div class="newsletter-text">
     <h2 class="newsletter-title">La lettre de Tandem TV</h2>
@@ -191,7 +191,7 @@ function newsletterForm(config, { compact = false } = {}) {
            autocomplete="email" placeholder="votre@adresse.fr">
     <button class="btn btn-primary" type="submit">Je m'inscris</button>
   </div>
-  <p class="newsletter-note muted small">Votre adresse ne sert qu'à cet envoi et n'est transmise à personne d'autre que notre prestataire d'expédition.</p>
+  <p class="newsletter-note muted small">Un message de confirmation vous sera envoyé : votre inscription ne devient effective qu'après y avoir répondu. Votre adresse ne sert qu'à cet envoi et n'est transmise à personne d'autre que notre prestataire d'expédition.</p>
 </form>`;
 }
 

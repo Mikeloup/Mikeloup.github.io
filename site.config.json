@@ -57,8 +57,8 @@
   },
   "_comment_newsletter": "Lettre d'information (Kit, ex-ConvertKit — gratuit jusqu'à 10 000 abonnés, envois illimités). 'formId' est le numéro visible dans l'adresse quand vous éditez le formulaire chez Kit ; il n'est pas secret, le formulaire du site pointe dessus. 'uid' est l'identifiant affiché dans le code d'intégration fourni par Kit. Laisser 'formId' vide fait disparaître le formulaire du site ET coupe les envois. 'sendOnNewVideos' déclenche l'envoi automatique à chaque nouvelle vidéo (nécessite le secret GitHub KIT_API_KEY). 'maxPerRun' limite le nombre d'envois par synchronisation et 'maxAgeHours' ignore les vidéos plus anciennes : deux garde-fous contre un envoi massif accidentel. Variables des modèles : {titre}, {emission}, {site}.",
   "newsletter": {
-    "formId": "",
-    "uid": "",
+    "formId": "9743928",
+    "uid": "ebd0a7a53d",
     "sendOnNewVideos": true,
     "maxPerRun": 2,
     "maxAgeHours": 72,
