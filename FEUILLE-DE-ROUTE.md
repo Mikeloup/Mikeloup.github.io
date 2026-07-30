@@ -56,7 +56,7 @@ Ne dépend de rien :
 - [x] **Mise en évidence de la télévision** — bandeau sur l'accueil + mention en pied de page. Réglé par le bloc `tv` de la configuration (horaires et lien encore vides).
 - [x] **Page « Sponsoring »** — `/sponsoring/`, chiffres relevés à chaque synchronisation.
 - [x] **Appel à proposer un sujet ou un invité** — dans le bloc « Réagir » de chaque page vidéo.
-- [ ] **Lettre d'information** : Kit (ex-ConvertKit) — 10 000 abonnés, envois illimités, gratuit. Formulaire sur le site + envoi déclenché par le site à chaque nouvelle vidéo, comme les notifications.
+- [x] **Lettre d'information** : Kit (ex-ConvertKit) — 10 000 abonnés, envois illimités, gratuit. Formulaire en HTML pur (accueil + page « Suivre »), envoi automatique à chaque nouvelle vidéo via l'API v4, mêmes garde-fous que les notifications. **Reste à faire côté Michael** : créer le compte Kit, créer un formulaire, coller son numéro dans `newsletter.formId`, déposer la clé API dans le secret GitHub `KIT_API_KEY`.
 - [x] **Rapport d'audience quotidien** — script `tools/rapport-audience.mjs` + workflow `.github/workflows/rapport.yml`. Interroge Cloudflare, publie un ticket GitHub assigné à Michael (qui déclenche l'e-mail). Nécessite le secret `CLOUDFLARE_API_TOKEN`.
 
 Dépend des informations ci-dessus :
@@ -73,7 +73,12 @@ Dépend des informations ci-dessus :
 - [ ] **Transcriptions** — le plus gros levier de trafic. Une heure d'entretien = ~9 000 mots que Google ne voit pas aujourd'hui. Chantier lourd, à évaluer techniquement (récupération des sous-titres).
 - [ ] **Pages « Invités »** — une fiche par personne reçue. Se positionne sur les noms propres.
 - [ ] **Pages d'émission enrichies** — bandeau, présentateur, pitch, périodicité, pour les 10-15 principales.
-- [ ] **Google Actualités / Discover** — les mentions légales en étaient la condition d'entrée.
+- [ ] **Google Actualités / Discover.** Rappel : **l'inclusion est automatique depuis décembre 2019**, il n'y a rien à soumettre — le Publisher Center ne sert plus qu'à gérer l'apparence d'une publication déjà reprise. Ce qui compte, ce sont les signaux.
+  - [x] Mentions légales, éditeur identifié, directeur de la publication.
+  - [x] Sitemap Actualités (`sitemap-news.xml`), moins de 48 h, régénéré à chaque synchronisation.
+  - [x] Dates de publication visibles et structurées.
+  - [ ] **Signature des vidéos** par le présentateur (nécessite la correspondance émission → présentateur).
+  - [ ] **Du vrai texte sur les pages** : c'est le point bloquant. Une page qui n'affiche qu'une vidéo et trois lignes de description ne ressemble pas à un article. Les transcriptions sont la condition véritable.
 - [ ] **Flux RSS par émission.**
 - [ ] **Miniatures hébergées sur le site** (aujourd'hui servies par YouTube).
 
@@ -93,5 +98,6 @@ Dépend des informations ci-dessus :
 - **Chrome ignore silencieusement le dossier `.github`** lors d'un dépôt par glisser-déposer. Toute modification du fichier `deploy.yml` doit être faite à la main dans l'éditeur GitHub.
 - **OneSignal refuse d'enregistrer sa configuration Web si le champ « Default Icon URL » est vide**, sans afficher la moindre erreur. Trois heures perdues sur ce point.
 - **Les notifications ne fonctionnent pas sur iPhone** depuis un onglet : Apple exige l'ajout à l'écran d'accueil. C'est une limite d'Apple, pas du site.
-- Clés et secrets : `YOUTUBE_API_KEY` et `ONESIGNAL_API_KEY` vivent dans les secrets GitHub. Aucune clé ne doit transiter en clair.
+- Clés et secrets : `YOUTUBE_API_KEY`, `ONESIGNAL_API_KEY`, `CLOUDFLARE_API_TOKEN` et `KIT_API_KEY` vivent dans les secrets GitHub. Aucune clé ne doit transiter en clair, ni par la conversation.
+- **Kit n'a pas d'envoi immédiat par l'API** : une diffusion sans `send_at` reste un brouillon. Le site programme donc l'envoi deux minutes plus tard.
 - **Cloudflare : le « site tag » n'est PAS le jeton de la balise.** Le jeton (`85d2424b…`) sert à la mesure sur les pages ; le site tag (`f63e35fc…`, visible dans l'adresse du tableau de bord) sert aux requêtes GraphQL. Les confondre renvoie zéro, sans aucune erreur.

@@ -169,6 +169,67 @@ function tvBanner(config) {
 </aside>`;
 }
 
+/**
+ * Formulaire d'inscription à la lettre d'information.
+ * Simple HTML qui poste chez Kit : aucun script tiers, aucune clé exposée,
+ * et cela fonctionne même si le visiteur a désactivé JavaScript.
+ */
+function newsletterForm(config, { compact = false } = {}) {
+  const n = config.newsletter;
+  if (!n?.formId) return '';
+  return `
+<form class="newsletter${compact ? ' newsletter--compact' : ''}"
+      action="https://app.convertkit.com/forms/${escapeHtml(n.formId)}/subscriptions"
+      method="post" target="_blank">
+  <div class="newsletter-text">
+    <h2 class="newsletter-title">La lettre de Tandem TV</h2>
+    <p>Les nouvelles vidéos dans votre boîte mail, dès leur mise en ligne. Rien d'autre, et vous pouvez vous désinscrire en un clic.</p>
+  </div>
+  <div class="newsletter-fields">
+    <label class="visually-hidden" for="nl-email">Votre adresse e-mail</label>
+    <input id="nl-email" type="email" name="email_address" required
+           autocomplete="email" placeholder="votre@adresse.fr">
+    <button class="btn btn-primary" type="submit">Je m'inscris</button>
+  </div>
+  <p class="newsletter-note muted small">Votre adresse ne sert qu'à cet envoi et n'est transmise à personne d'autre que notre prestataire d'expédition.</p>
+</form>`;
+}
+
+/**
+ * Corps HTML d'un envoi de la lettre d'information. Volontairement rustique :
+ * tableaux et styles en ligne, parce que les logiciels de messagerie ignorent
+ * une bonne partie du CSS moderne. Pas d'image de fond, pas de police externe.
+ */
+export function newsletterEmail(config, video, { intro = '' } = {}) {
+  const url = `${config.siteUrl.replace(/\/$/, '')}/video/${video.id}/`;
+  const emission = video.playlists?.[0]?.title || config.siteName;
+  const resume = excerpt(video.description || '', 320);
+  const thumb = video.thumbnail || YT_THUMB(video.id);
+  const P = 'margin:0 0 16px;font-size:16px;line-height:1.55;color:#1a1a1a;';
+
+  return `<div style="max-width:600px;margin:0 auto;padding:8px 16px;font-family:Georgia,'Times New Roman',serif;">
+  <p style="margin:0 0 20px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#180058;">${escapeHtml(config.siteName)} · ${escapeHtml(emission)}</p>
+  <h1 style="margin:0 0 16px;font-size:26px;line-height:1.25;color:#180058;">
+    <a href="${escapeHtml(url)}" style="color:#180058;text-decoration:none;">${escapeHtml(video.title)}</a>
+  </h1>
+  ${intro ? `<p style="${P}">${escapeHtml(intro)}</p>` : ''}
+  <p style="margin:0 0 20px;">
+    <a href="${escapeHtml(url)}"><img src="${escapeHtml(thumb)}" alt="" width="568" style="width:100%;max-width:568px;height:auto;display:block;border:0;border-radius:6px;"></a>
+  </p>
+  ${resume ? `<p style="${P}">${escapeHtml(resume)}</p>` : ''}
+  <p style="margin:0 0 24px;">
+    <a href="${escapeHtml(url)}" style="display:inline-block;padding:13px 26px;background:#180058;color:#ffffff;text-decoration:none;border-radius:6px;font-size:16px;font-family:Helvetica,Arial,sans-serif;">Regarder la vidéo</a>
+  </p>
+  <p style="margin:0 0 8px;font-size:14px;line-height:1.5;color:#555;">
+    Vous recevez ce message parce que vous vous êtes inscrit à la lettre de ${escapeHtml(config.siteName)}.
+    ${config.tv?.enabled && config.tv?.channelNumber ? `Retrouvez-nous aussi à la télévision, canal ${escapeHtml(config.tv.channelNumber)} d'${escapeHtml(config.tv.operator || '')}.` : ''}
+  </p>
+  <p style="margin:0;font-size:14px;color:#555;">
+    <a href="${escapeHtml(config.siteUrl)}" style="color:#180058;">${escapeHtml(config.siteUrl.replace(/^https?:\/\//, ''))}</a>
+  </p>
+</div>`;
+}
+
 export function layout({
   config, categories, nav = {}, title, description, canonical, image, ogType = 'website', bodyClass = '',
   content, jsonLd = null, buildTime,
@@ -386,6 +447,8 @@ export function homePage({ config, categories, nav, latest, buildTime }) {
   </section>` : ''}
 
   ${showRows.map((c) => row(c.title, `/emissions/${c.slug}/`, c.videos.slice(0, rowSize))).join('')}
+
+  ${newsletterForm(config)}
 </div>`;
 
   return layout({
@@ -628,6 +691,12 @@ export function followPage({ config, categories, nav, buildTime }) {
     <h1>Suivre Tandem TV</h1>
     <p class="lede">Plusieurs façons de rester au courant de nos publications. Choisissez celle qui vous convient — elles fonctionnent toutes ensemble.</p>
   </header>
+
+  ${config.newsletter?.formId ? `
+  <section class="follow-card follow-card--first">
+    ${newsletterForm(config, { compact: true })}
+    <p class="muted small">Fonctionne partout, y compris sur iPhone · un envoi par nouvelle vidéo</p>
+  </section>` : ''}
 
   <section class="follow-card">
     <h2>La chaîne YouTube</h2>

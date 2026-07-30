@@ -52,6 +52,10 @@ Pour vous proposer de reprendre une vidéo là où vous l'aviez laissée, le sit
 
 {{push}}
 
+## La lettre d'information
+
+{{newsletter}}
+
 ## Si vous nous écrivez
 
 Lorsque vous nous écrivez à l'adresse de contact, votre message et votre adresse électronique sont conservés le temps nécessaire au traitement de votre demande et à d'éventuels échanges de suivi. Ils ne servent à aucune autre finalité et ne sont transmis à personne. La messagerie est opérée par Google Workspace.

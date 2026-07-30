@@ -320,6 +320,36 @@ ${items}
 </urlset>`;
 }
 
+/**
+ * Sitemap Google Actualités. Google exige des articles de moins de 48 heures,
+ * mille au maximum — au-delà, le fichier est ignoré. Le nôtre est donc
+ * volontairement minuscule : uniquement ce qui vient de paraître.
+ */
+function newsSitemap(config, videos) {
+  const limite = Date.now() - 48 * 3600 * 1000;
+  const recentes = videos
+    .filter((v) => v.publishedAt && new Date(v.publishedAt).getTime() >= limite)
+    .slice(0, 1000);
+
+  const corps = recentes.map((v) => `  <url>
+    <loc>${config.siteUrl}/video/${v.id}/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>${escapeHtml(config.siteName)}</news:name>
+        <news:language>${config.lang || 'fr'}</news:language>
+      </news:publication>
+      <news:publication_date>${new Date(v.publishedAt).toISOString()}</news:publication_date>
+      <news:title>${escapeHtml(v.title)}</news:title>
+    </news:news>
+  </url>`).join('\n');
+
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
+${corps}
+</urlset>`;
+}
+
 function sitemapIndex(config, files) {
   return `<?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -412,10 +442,14 @@ async function main() {
     const pushNote = config.push?.oneSignalAppId
       ? "Le site propose de vous prévenir des nouvelles vidéos par notification du navigateur. **Rien ne se déclenche sans votre accord explicite** : tant que vous n'avez pas accepté, aucun identifiant n'est créé. Si vous acceptez, votre navigateur génère un identifiant technique anonyme, confié à notre prestataire **OneSignal**, qui achemine les notifications. Cet identifiant n'est associé ni à votre nom, ni à votre adresse électronique — nous ne les connaissons pas. Vous pouvez retirer cette autorisation à tout moment dans les réglages de votre navigateur, sans avoir à nous en informer. Voir la [politique de confidentialité de OneSignal](https://onesignal.com/privacy_policy)."
       : "Le site n'envoie aucune notification.";
+    const newsletterNote = config.newsletter?.formId
+      ? "Le site propose de recevoir les nouvelles vidéos par courrier électronique. **L'inscription est volontaire** : seule l'adresse que vous saisissez vous-même est enregistrée, et rien d'autre — ni nom, ni suivi de navigation. Elle est confiée à notre prestataire d'expédition **Kit** (Kit.com, ex-ConvertKit), qui l'utilise uniquement pour acheminer ces envois. Nous ne la cédons, ne la louons et ne la vendons à personne. Chaque message contient un lien de désinscription qui prend effet immédiatement ; vous pouvez aussi nous écrire pour être retiré de la liste. Voir la [politique de confidentialité de Kit](https://kit.com/privacy)."
+      : "Le site ne propose pas de lettre d'information et ne collecte aucune adresse électronique.";
     const html = markdownToHtml(md
       .replace(/\{\{email\}\}/g, config.contactEmail)
       .replace(/\{\{analytics\}\}/g, analyticsNote)
-      .replace(/\{\{push\}\}/g, pushNote));
+      .replace(/\{\{push\}\}/g, pushNote)
+      .replace(/\{\{newsletter\}\}/g, newsletterNote));
     await writePage(`/${pg.slug}/`, R.contentPage({
       ...ctx,
       title: pg.title,
@@ -455,12 +489,14 @@ async function main() {
   await writeFile('rss.xml', rssFeed(config, allVideos));
   await writeFile('sitemap.xml', sitemap(config, urls));
   await writeFile('sitemap-video.xml', videoSitemap(config, allVideos));
-  await writeFile('sitemap-index.xml', sitemapIndex(config, ['sitemap.xml', 'sitemap-video.xml']));
+  await writeFile('sitemap-news.xml', newsSitemap(config, allVideos));
+  await writeFile('sitemap-index.xml', sitemapIndex(config, ['sitemap.xml', 'sitemap-video.xml', 'sitemap-news.xml']));
   await writeFile('robots.txt',
     `User-agent: *\nAllow: /\n\n`
     + `Sitemap: ${config.siteUrl}/sitemap-index.xml\n`
     + `Sitemap: ${config.siteUrl}/sitemap.xml\n`
-    + `Sitemap: ${config.siteUrl}/sitemap-video.xml\n`);
+    + `Sitemap: ${config.siteUrl}/sitemap-video.xml\n`
+    + `Sitemap: ${config.siteUrl}/sitemap-news.xml\n`);
   await writeFile('.nojekyll', '');
 
   // Manifeste : permet l'ajout à l'écran d'accueil (et les notifications sur iOS).
@@ -498,48 +534,82 @@ async function main() {
 
   log(`✅ ${urls.length} pages générées dans dist/ en ${((Date.now() - t0) / 1000).toFixed(1)}s`);
 
-  await notifyNewVideos(config, allVideos);
+  await annonceNouveautes(config, allVideos);
+}
+
+// --- Détection des nouveautés ------------------------------------------------
+
+/**
+ * Remplit un modèle de texte : {emission}, {titre}, {site}.
+ */
+function fillTemplate(tpl, video, config) {
+  return String(tpl || '')
+    .replace(/\{emission\}/g, video.playlists?.[0]?.title || config.siteName)
+    .replace(/\{titre\}/g, video.title)
+    .replace(/\{site\}/g, config.siteName);
+}
+
+/**
+ * Identifiants des vidéos déjà en ligne, lus dans le search.json publié.
+ * Aucun état n'est stocké dans le dépôt : la version en ligne fait foi.
+ * Renvoie null si la liste est illisible ou vide — dans ce cas on n'envoie
+ * rien du tout : une annonce manquée vaut mieux qu'un envoi en double à
+ * toute l'audience.
+ */
+async function fetchPublishedIds(config) {
+  try {
+    const res = await fetch(`${config.siteUrl}/search.json`, { cache: 'no-store' });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const published = await res.json();
+    if (!Array.isArray(published) || published.length === 0) {
+      warn('Nouveautés : liste publiée vide ou inattendue. Aucun envoi par sécurité.');
+      return null;
+    }
+    return new Set(published.map((v) => v.i));
+  } catch (err) {
+    warn(`Nouveautés : liste publiée illisible (${err.message}). Aucun envoi.`);
+    return null;
+  }
+}
+
+/** Vidéos absentes de la version en ligne et publiées depuis moins de N heures. */
+function freshVideos(allVideos, known, maxAgeHours) {
+  const maxAgeMs = maxAgeHours * 3600 * 1000;
+  return allVideos
+    .filter((v) => !known.has(v.id))
+    .filter((v) => v.publishedAt && (buildTime - new Date(v.publishedAt).getTime()) < maxAgeMs)
+    .sort((a, b) => new Date(a.publishedAt) - new Date(b.publishedAt));
+}
+
+/**
+ * Chef d'orchestre des annonces : la liste publiée n'est lue qu'une fois,
+ * puis servie aux deux canaux (notifications navigateur, lettre d'information).
+ */
+async function annonceNouveautes(config, allVideos) {
+  if (DEMO) return;
+
+  const push = Boolean(config.push?.oneSignalAppId) && config.push?.notifyOnNewVideos !== false;
+  const lettre = Boolean(config.newsletter?.formId) && config.newsletter?.sendOnNewVideos !== false;
+  if (!push && !lettre) return;
+
+  const known = await fetchPublishedIds(config);
+  if (!known) return;
+
+  if (push) await notifyNewVideos(config, allVideos, known);
+  if (lettre) await sendNewsletter(config, allVideos, known);
 }
 
 // --- Notifications navigateur ------------------------------------------------
 
-/**
- * Envoie une notification pour chaque vidéo absente de la version actuellement
- * publiée. L'état n'est pas stocké : la référence est le search.json en ligne.
- * En cas de doute (fichier illisible, réponse vide), on n'envoie rien —
- * une notification manquée vaut mieux qu'un envoi en double à toute l'audience.
- */
-async function notifyNewVideos(config, allVideos) {
-  const appId = config.push?.oneSignalAppId;
+async function notifyNewVideos(config, allVideos, known) {
+  const appId = config.push.oneSignalAppId;
   const apiKey = process.env.ONESIGNAL_API_KEY;
-
-  if (DEMO || !appId || config.push?.notifyOnNewVideos === false) return;
   if (!apiKey) {
     warn('Notifications : secret ONESIGNAL_API_KEY absent, aucun envoi.');
     return;
   }
 
-  let published;
-  try {
-    const res = await fetch(`${config.siteUrl}/search.json`, { cache: 'no-store' });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    published = await res.json();
-  } catch (err) {
-    warn(`Notifications : liste publiée illisible (${err.message}). Aucun envoi.`);
-    return;
-  }
-
-  if (!Array.isArray(published) || published.length === 0) {
-    warn('Notifications : liste publiée vide ou inattendue. Aucun envoi par sécurité.');
-    return;
-  }
-
-  const known = new Set(published.map((v) => v.i));
-  const maxAgeMs = (config.push?.maxAgeHours ?? 72) * 3600 * 1000;
-  const fresh = allVideos
-    .filter((v) => !known.has(v.id))
-    .filter((v) => v.publishedAt && (buildTime - new Date(v.publishedAt).getTime()) < maxAgeMs)
-    .sort((a, b) => new Date(a.publishedAt) - new Date(b.publishedAt));
+  const fresh = freshVideos(allVideos, known, config.push?.maxAgeHours ?? 72);
 
   if (fresh.length === 0) {
     log('Notifications : aucune nouvelle vidéo à annoncer.');
@@ -552,10 +622,7 @@ async function notifyNewVideos(config, allVideos) {
   }
   const toSend = fresh.slice(-max);
 
-  const fill = (tpl, video) => String(tpl || '')
-    .replace(/\{emission\}/g, video.playlists?.[0]?.title || config.siteName)
-    .replace(/\{titre\}/g, video.title)
-    .replace(/\{site\}/g, config.siteName);
+  const fill = (tpl, video) => fillTemplate(tpl, video, config);
 
   for (const video of toSend) {
     const payload = {
@@ -585,6 +652,79 @@ async function notifyNewVideos(config, allVideos) {
       }
     } catch (err) {
       warn(`Notification impossible pour « ${video.title} » : ${err.message}`);
+    }
+  }
+}
+
+// --- Lettre d'information (Kit) ----------------------------------------------
+
+/**
+ * Crée chez Kit une diffusion par nouvelle vidéo et la programme deux minutes
+ * plus tard. On programme au lieu d'envoyer sur-le-champ parce que l'API ne
+ * propose pas d'envoi immédiat : sans `send_at`, la diffusion resterait un
+ * brouillon dans le tableau de bord.
+ *
+ * Mêmes garde-fous que les notifications : rien n'est envoyé si la liste
+ * publiée est illisible, si la vidéo est trop ancienne, ou au-delà de
+ * `maxPerRun` envois par synchronisation.
+ */
+async function sendNewsletter(config, allVideos, known) {
+  const apiKey = process.env.KIT_API_KEY;
+  const n = config.newsletter;
+
+  if (!apiKey) {
+    warn("Lettre d'information : secret KIT_API_KEY absent, aucun envoi.");
+    return;
+  }
+
+  const fresh = freshVideos(allVideos, known, n.maxAgeHours ?? 72);
+  if (fresh.length === 0) {
+    log("Lettre d'information : aucune nouvelle vidéo à annoncer.");
+    return;
+  }
+
+  const max = n.maxPerRun ?? 2;
+  if (fresh.length > max) {
+    warn(`Lettre d'information : ${fresh.length} nouveautés détectées, seules les ${max} plus récentes seront envoyées.`);
+  }
+  const toSend = fresh.slice(-max);
+
+  // Deux minutes de battement : le temps que la page de la vidéo soit en ligne
+  // sur GitHub Pages avant que le premier abonné ne clique.
+  const sendAt = new Date(buildTime + 2 * 60 * 1000).toISOString();
+
+  for (const video of toSend) {
+    const subject = fillTemplate(n.subjectTemplate || '{emission} — {titre}', video, config);
+    const intro = fillTemplate(n.introTemplate || '', video, config);
+    const payload = {
+      subject,
+      preview_text: intro || video.title,
+      description: `Envoi automatique — ${video.title}`,
+      content: R.newsletterEmail(config, video, { intro }),
+      public: false,
+      published_at: null,
+      send_at: sendAt,
+      subscriber_filter: null,
+    };
+
+    try {
+      const res = await fetch('https://api.kit.com/v4/broadcasts', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+          'X-Kit-Api-Key': apiKey,
+        },
+        body: JSON.stringify(payload),
+      });
+      const body = await res.text();
+      if (res.ok) {
+        log(`Lettre d'information programmée : ${video.title}`);
+      } else {
+        warn(`Lettre d'information refusée pour « ${video.title} » — HTTP ${res.status} ${body.slice(0, 300)}`);
+      }
+    } catch (err) {
+      warn(`Lettre d'information impossible pour « ${video.title} » : ${err.message}`);
     }
   }
 }

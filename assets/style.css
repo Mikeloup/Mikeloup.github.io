@@ -508,6 +508,36 @@ p { margin: 0 0 1em; }
 .page-sponsoring .follow-card ul { margin: .6rem 0 0; padding-left: 1.15rem; }
 .page-sponsoring .follow-card li { margin-bottom: .5rem; }
 
+/* Lettre d'information */
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+.newsletter {
+  margin: 3.5rem 0 1rem; padding: 2rem 2.25rem;
+  background: var(--brand); color: rgb(255 255 255 / 88%);
+  border-radius: var(--radius);
+}
+.newsletter-title { color: #fff; margin-bottom: .4rem; }
+.newsletter p { margin: 0 0 1.1rem; max-width: 58ch; }
+.newsletter-fields { display: flex; flex-wrap: wrap; gap: .6rem; }
+.newsletter-fields input {
+  flex: 1 1 260px; min-width: 0; padding: .7rem 1.05rem;
+  font: inherit; font-size: .95rem; color: var(--text);
+  background: #fff; border: 1px solid transparent; border-radius: 999px;
+}
+.newsletter-fields input:focus { outline: 2px solid var(--sky); outline-offset: 2px; }
+.newsletter-fields .btn-primary {
+  background: #fff; border-color: #fff; color: var(--brand);
+  box-shadow: none; flex: 0 0 auto;
+}
+.newsletter-fields .btn-primary:hover { background: var(--sky); border-color: var(--sky); color: var(--brand); }
+.newsletter-note { margin: .9rem 0 0; color: rgb(255 255 255 / 60%); }
+
+.newsletter--compact { margin: 0; padding: 1.6rem 1.75rem; }
+.follow-card--first { padding: 0; border: 0; background: none; box-shadow: none; }
+.follow-card--first .muted { padding: .75rem 1.75rem 0; margin: 0; }
+
 /* Page « Suivre » */
 .follow-card {
   border: 1px solid var(--line); border-radius: var(--radius);

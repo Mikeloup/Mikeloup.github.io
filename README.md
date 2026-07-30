@@ -331,3 +331,74 @@ Après une synchronisation, l'onglet **Actions** de GitHub affiche l'une de ces 
 ### En cas de problème
 
 Le fichier `OneSignalSDKWorker.js` est généré automatiquement à la racine du site. Si les notifications ne s'activent pas côté navigateur, remplacez-le par celui proposé au téléchargement dans le tableau de bord OneSignal : son contenu peut évoluer avec les versions du SDK.
+
+---
+
+## Lettre d'information (version 22)
+
+Le canal universel : contrairement aux notifications, il fonctionne **partout, y
+compris sur iPhone**, et la liste d'adresses vous appartient — vous la gardez
+même si vous changez un jour de prestataire.
+
+### Ce qui est nécessaire
+
+1. Un compte **Kit** (kit.com, ex-ConvertKit) — gratuit jusqu'à 10 000 abonnés,
+   envois illimités.
+2. Un **formulaire** créé chez Kit. Son numéro (visible dans l'adresse quand
+   vous l'éditez) se colle dans `site.config.json`, section `newsletter`, champ
+   `formId`. Ce numéro n'est pas secret : le formulaire du site pointe dessus.
+3. Un secret GitHub nommé **`KIT_API_KEY`** contenant la clé API v4 de Kit
+   (Kit → Settings → Developer → API Keys).
+
+Tant que `formId` est vide, le formulaire n'apparaît nulle part sur le site et
+aucun envoi n'est tenté. Si le secret est absent, le formulaire reste actif et
+recueille les inscriptions ; seul l'envoi automatique est suspendu.
+
+### Où le formulaire apparaît
+
+- en bas de la page d'accueil ;
+- en tête de la page **« Suivre Tandem TV »**, avant les notifications.
+
+Le formulaire est du HTML pur : il envoie l'adresse directement à Kit, sans
+JavaScript et sans qu'aucune clé ne circule dans les pages.
+
+### Comment l'envoi automatique fonctionne
+
+Exactement comme les notifications, et à partir de la **même détection** : le
+générateur compare le `search.json` publié à la liste récupérée sur YouTube.
+Pour chaque nouveauté, il crée chez Kit une diffusion programmée **deux minutes
+plus tard** — le temps que la page de la vidéo soit effectivement en ligne.
+
+Mêmes garde-fous : `maxPerRun` (2 par défaut), `maxAgeHours` (72 par défaut), et
+silence complet en cas de doute sur la liste publiée.
+
+### Modifier le texte des envois
+
+Dans `site.config.json` :
+
+```json
+"subjectTemplate": "{emission} — {titre}",
+"introTemplate": "Une nouvelle vidéo vient d'être mise en ligne sur Tandem TV."
+```
+
+Mêmes variables que les notifications : `{emission}`, `{titre}`, `{site}`.
+
+La mise en page du message (bandeau, miniature cliquable, bouton « Regarder la
+vidéo », rappel de la diffusion télévisée) est produite par la fonction
+`newsletterEmail` de `src/render.mjs`.
+
+### Vérifier que tout fonctionne
+
+Dans l'onglet **Actions** de GitHub, après une synchronisation :
+
+- `Lettre d'information : aucune nouvelle vidéo à annoncer.` — cas normal ;
+- `Lettre d'information programmée : <titre>` — c'est parti ;
+- `Lettre d'information refusée ... HTTP 401` — la clé API est absente ou erronée.
+
+Côté Kit, l'envoi apparaît dans **Broadcasts**, d'abord comme programmé puis
+comme envoyé. Vous pouvez l'y modifier ou l'annuler pendant les deux minutes de
+battement.
+
+### Envoyer une lettre exceptionnelle
+
+Passez par Kit → **Broadcasts → New broadcast**. Le site n'intervient pas.
