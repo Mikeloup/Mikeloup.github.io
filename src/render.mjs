@@ -807,6 +807,9 @@ export function videoPage({
   personnesParVideo = new Map(), presentateurParRubrique = new Map(),
 }) {
   const cat = video.playlists?.[0];
+  // L'entrée rangée dans la vidéo ne porte que le titre et l'identifiant ; la
+  // présentation de la rubrique vit dans l'objet complet, chargé au build.
+  const rubrique = cat ? categories.find((c) => c.slug === cat.slug) : null;
   const gens = personnesParVideo.get(video.id) || [];
   const presentateur = cat ? presentateurParRubrique.get(cat.slug) : null;
   // Le présentateur figure déjà dans le nom de l'émission : sous la vidéo, on
@@ -890,6 +893,13 @@ export function videoPage({
 
     ${video.playlists?.length > 1 ? `<p class="tags">Aussi dans : ${video.playlists.slice(1).map((p) => `<a class="chip small" href="/emissions/${p.slug}/">${escapeHtml(p.title)}</a>`).join(' ')}</p>` : ''}
   </article>
+
+  ${rubrique?.description ? `
+  <aside class="rubrique-note">
+    <h2>À propos de « ${escapeHtml(cat.title)} »</h2>
+    <p>${escapeHtml(truncate(rubrique.description, 320))}</p>
+    <p><a href="/emissions/${cat.slug}/">Tous les épisodes de cette rubrique <span aria-hidden="true">→</span></a></p>
+  </aside>` : ''}
 
   ${related.length ? `
   <section class="row">

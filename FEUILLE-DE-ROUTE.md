@@ -34,6 +34,37 @@ site, en service payant.*
 
 ---
 
+## Transcriptions : verdict mesuré, et ce qu'on fait à la place — v43 (31 juillet 2026)
+
+**Test réel, pas une opinion.** Michael a téléchargé la transcription automatique YouTube
+d'un édito de Stéphane Goldin (2 min 31). J'ai écrit un nettoyeur — retrait des « euh »,
+des bégaiements, dictionnaire de corrections, rapprochement flou avec un lexique — et je l'ai
+mesuré sur ce texte.
+
+*Corrigé* : Teran → Téhéran, golf → Golfe, minucies → minuties, à l'ord du jour, elle tise.
+*Non corrigé* : **« activités de sal »** (Tsahal), **« caches du Hbola »**, **« le resbola »**,
+**« la question du trbola »** (Hezbollah, trois orthographes différentes dans un même texte),
+« suprémessie », « frontalié », « elle éta parler ».
+*Introduit par le correcteur* : « l'ÉÉgypte ».
+
+**Conclusion : inexploitable.** Les mots que la reconnaissance vocale massacre sont exactement
+le vocabulaire central de la chaîne. Un dictionnaire ne suit pas des orthographes
+imprévisibles, et plus on force le correcteur, plus il fabrique ses propres fautes.
+Whisper, avec un amorçage de vocabulaire, ferait nettement mieux — mais il faut les fichiers
+audio, plusieurs jours de calcul sur une machine à Michael, et une relecture malgré tout.
+Chantier à part entière, pas une case à cocher. **À ne pas relancer sans ces trois conditions.**
+
+**Ce qu'on a fait à la place.** Vérification faite : les descriptions YouTube de Michael sont
+excellentes — rédigées, denses, noms propres corrects (« Recep Tayyip Erdogan », « pays du
+Golfe », « F-35 ») — et la page vidéo les affiche **en entier**, sans troncature ni
+« voir plus ». Rien n'était perdu de ce côté.
+
+Ajout v43 : un bloc **« À propos de "<rubrique>" »** en bas de chaque page vidéo, alimenté par
+`data/rubriques.json`. Une quarantaine de mots justes, écrits à la main, sur ~1 000 pages qui
+n'avaient que le titre et la description — et un lien de plus vers la rubrique.
+
+---
+
 ## Le rapport de transferts, premier usage — v42 (31 juillet 2026)
 
 Le fichier `rapport-transferts.json` publié en v40 a livré les vrais chiffres de production :
