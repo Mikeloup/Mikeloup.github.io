@@ -222,7 +222,21 @@ const PROMO = [
   /(activez|cliquez sur) la cloche/i,
   /n'hésitez pas à (vous abonner|liker|partager|commenter)/i,
   /mettre un pouce|pouce bleu/i,
+  /like(z|r)?\s+(la|cette|notre)\s+(vidéo|émission)/i,
+  /diffuse(z|r)\s+(cette|la|notre)/i,
 ];
+
+/**
+ * Les formules d'appel à l'action changent d'une vidéo à l'autre — « Likez »,
+ * « Diffusez », « Pensez à aimer »… Une liste de tournures sera toujours en
+ * retard d'une formulation. Mais elles ont toutes le même signe extérieur :
+ * elles commencent par un pictogramme. 👉 🔔 👍 📢
+ *
+ * On ne s'en sert que pour les lignes de FIN de description, jamais au milieu :
+ * un paragraphe éditorial peut légitimement commencer par un emoji, mais pas la
+ * dernière ligne d'un texte de présentation.
+ */
+const COMMENCE_PAR_PICTO = /^\s*(?:\p{Extended_Pictographic}|\p{So})[\p{Emoji_Modifier}\uFE0F\u200D\p{Extended_Pictographic}]*\s*\S/u;
 
 /** Une ligne qui n'est faite que de mots-dièse n'apporte rien à lire. */
 function estQueDesDieses(line) {
@@ -230,11 +244,23 @@ function estQueDesDieses(line) {
   return t.length > 0 && /^#/.test(t) && t.replace(/#\w+/g, '').trim().length === 0;
 }
 
-function estPromo(line) {
+/** Formule explicitement reconnue comme promotionnelle. */
+function estPromoFranche(line) {
   const t = line.trim();
   if (!t) return false;
   if (estQueDesDieses(t)) return true;
   return PROMO.some((re) => re.test(t));
+}
+
+/** Ligne qui *pourrait* appartenir au bloc promotionnel de fin. */
+function estPromoProbable(line) {
+  const t = line.trim();
+  if (!t) return true;
+  return estPromoFranche(t) || COMMENCE_PAR_PICTO.test(t);
+}
+
+function estPromo(line) {
+  return estPromoFranche(line);
 }
 
 /**
@@ -248,9 +274,17 @@ export function cleanDescription(desc = '', title = '') {
   const lines = String(desc).replace(/\r\n?/g, '\n').split('\n');
   while (lines.length && (!lines[0].trim() || norm(lines[0]) === norm(title))) lines.shift();
 
-  while (lines.length && (!lines[lines.length - 1].trim() || estPromo(lines[lines.length - 1]))) {
-    lines.pop();
+  // Retrait du bloc promotionnel de fin. On remonte tant que les lignes
+  // *pourraient* en faire partie (formule reconnue, ou ligne ouverte par un
+  // pictogramme), puis on ne coupe que si ce bloc contient au moins une formule
+  // franchement promotionnelle. Un paragraphe éditorial qui commencerait par un
+  // drapeau, seul en fin de texte, est ainsi préservé.
+  let debutBloc = lines.length;
+  while (debutBloc > 0 && estPromoProbable(lines[debutBloc - 1])) debutBloc--;
+  if (debutBloc < lines.length && lines.slice(debutBloc).some(estPromoFranche)) {
+    lines.length = debutBloc;
   }
+  while (lines.length && !lines[lines.length - 1].trim()) lines.pop();
 
   // Sécurité : si le nettoyage a tout emporté (description entièrement
   // promotionnelle), mieux vaut garder le texte d'origine que rien du tout.

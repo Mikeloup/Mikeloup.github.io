@@ -34,6 +34,31 @@ site, en service payant.*
 
 ---
 
+## Appels à l'action : corriger la méthode, pas la liste — v45 (31 juillet 2026)
+
+v44 était **insuffisante**, et l'erreur était de méthode. J'avais ajouté sept tournures à une
+liste ; une autre vidéo en utilisait trois autres :
+
+> 🔔 Abonnez-vous à la chaîne Tandem TV
+> 👍 Likez la vidéo
+> 📢 Diffusez cette émission autour de vous
+
+« Likez » et « Diffusez » n'étaient pas dans la liste, la dernière ligne n'était donc pas
+reconnue, et tout le bloc survivait — **exactement le même mécanisme d'échec qu'en v43.**
+Une liste de formulations sera toujours en retard d'une formulation.
+
+**Nouveau principe, structurel.** Les appels à l'action de fin de description ont tous le même
+signe extérieur : ils s'ouvrent par un pictogramme. On remonte donc depuis la fin tant que les
+lignes *pourraient* appartenir au bloc (formule reconnue **ou** ligne ouverte par un
+pictogramme), et **on ne coupe que si ce bloc contient au moins une formule franchement
+reconnue**. Un paragraphe éditorial commençant par 🇮🇱, seul en fin de texte, est donc préservé :
+sans « Abonnez-vous » ou équivalent à côté de lui, rien n'est coupé.
+
+Cinq cas vérifiés : les deux blocs réels de Michael sont retirés ; un paragraphe éditorial à
+emoji en fin de texte est conservé ; idem au milieu ; et une promo sans emoji reste détectée.
+
+---
+
 ## Nettoyage des appels à l'action — v44 (31 juillet 2026)
 
 Repéré sur la page en ligne de l'édito du 30 juillet : la description se terminait par
