@@ -34,6 +34,32 @@ site, en service payant.*
 
 ---
 
+## Du texte réel dans le site — v39 (31 juillet 2026)
+
+Michael : « as-tu d'autres idées pour ajouter du contenu texte dans la page d'accueil ». Le
+vrai trou n'était pas seulement l'accueil : **les pages de rubrique n'avaient aucun texte
+non plus**. Le gabarit prévoit une phrase de présentation, mais il va la chercher dans la
+description de la playlist YouTube — vide pour une quarantaine de rubriques sur soixante et une.
+
+- **`data/rubriques.json`** : une à deux phrases par rubrique, écrites à partir des vidéos
+  réellement publiées (relevé fait sur le site en ligne, rien d'inventé). Un texte écrit ici
+  l'emporte sur celui de YouTube ; une rubrique absente du fichier garde le sien. 38 entrées
+  au départ. Le texte s'affiche **sous le titre de la rangée sur l'accueil**, **en tête de la
+  page de la rubrique**, et alimente la **balise description** de cette page — qui était
+  jusque-là identique pour toutes.
+- Le build **journalise les rubriques encore sans texte** (`⚠ Rubriques sans présentation :
+  …`) : la liste se réduit à mesure que Michael complète le fichier.
+- **Accroche sous les vidéos mises en avant** : première phrase de la description sous la
+  grande vignette des « Dernières vidéos » et sous les deux sujets secondaires de la une.
+  Automatique, différent chaque jour, rien à rédiger.
+- **Chiffres de la chaîne** en bas de la une : nombre de vidéos, d'émissions et
+  d'intervenants, recalculés à chaque synchronisation.
+
+Michael a écarté le bloc « Questions fréquentes » (balisage FAQPage, résultats enrichis
+Google) — à reproposer plus tard si le référencement stagne.
+
+---
+
 ## Accueil — texte et hiérarchie, v37/v38 (31 juillet 2026)
 
 **Corrections demandées par Michael après la première version (v38).**

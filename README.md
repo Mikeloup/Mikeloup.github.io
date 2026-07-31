@@ -179,6 +179,19 @@ présentation affiché en haut de l'accueil. C'est le seul texte rédigé que Go
 cette page — mieux vaut le garder court, exact et à jour. Le supprimer fait disparaître le
 bloc, sans rien casser.
 
+### Présenter les émissions et les thèmes
+Le fichier `data/rubriques.json` contient une à deux phrases par rubrique. Elles s'affichent
+sous le titre de la rangée sur la page d'accueil, en tête de la page de la rubrique, et dans
+le résumé que Google montre dans ses résultats.
+
+La clé est l'identifiant de l'adresse : pour `/emissions/art-connexion/`, la clé est
+`art-connexion`. Ajoutez une ligne pour présenter une rubrique de plus, modifiez-en une pour
+corriger un texte. Une rubrique absente du fichier reprend la description de la playlist
+YouTube — et n'affiche rien si celle-ci est vide.
+
+À chaque synchronisation, le journal du build indique les rubriques encore sans texte :
+onglet **Actions** sur GitHub, dernière exécution, ligne `⚠ Rubriques sans présentation`.
+
 La liste des pages affichées est pilotée par le bloc `pages` de `site.config.json` : retirez une ligne et la page disparaît du site et de tous les menus ; ajoutez-en une (avec le fichier `content/<slug>.md` correspondant) et elle apparaît partout.
 
 Modifiez-les directement sur GitHub (clic sur le fichier → icône crayon → **Commit changes**). Le site se régénère tout seul après chaque enregistrement. Le format est du Markdown : `#` pour un titre, `-` pour une puce, `[texte](lien)` pour un lien.

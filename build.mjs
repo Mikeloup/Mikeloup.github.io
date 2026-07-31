@@ -386,6 +386,20 @@ async function main() {
   if (!allVideos.length) throw new Error('Aucune vidéo récupérée : build interrompu.');
   log(`${allVideos.length} vidéos, ${categories.length} rubriques (${nav.shows.length} émissions, ${nav.themes.length} thèmes).`);
 
+  // Présentation des rubriques. La plupart des playlists YouTube n'ont pas de
+  // description : sans ce fichier, les pages de rubrique n'affichent aucun
+  // texte, ni pour le visiteur ni pour Google. Un texte écrit à la main
+  // l'emporte sur celui venu de YouTube.
+  const textesRubriques = await readJson(path.join(ROOT, 'data', 'rubriques.json'), {});
+  let ecrites = 0;
+  for (const c of categories) {
+    const t = textesRubriques[c.slug];
+    if (typeof t === 'string' && t.trim()) { c.description = t.trim(); ecrites++; }
+  }
+  const muettes = categories.filter((c) => !(c.description || '').trim());
+  log(`Présentations de rubriques : ${ecrites} écrites à la main, ${categories.length - ecrites - muettes.length} venues de YouTube, ${muettes.length} sans texte.`);
+  if (muettes.length) warn(`Rubriques sans présentation : ${muettes.map((c) => c.slug).join(', ')}`);
+
   await fs.rm(DIST, { recursive: true, force: true });
   await fs.mkdir(DIST, { recursive: true });
 

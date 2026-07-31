@@ -1,0 +1,79 @@
+{
+  "_comment": "Phrase de présentation de chaque rubrique. Elle s'affiche sous le titre de la rangée sur la page d'accueil ET en tête de la page de la rubrique. La clé est l'identifiant de l'adresse : pour /emissions/art-connexion/, la clé est \"art-connexion\". Un texte écrit ici l'emporte sur la description de la playlist YouTube. Les rubriques absentes de ce fichier gardent la description venue de YouTube — ou n'affichent rien si elle est vide. Deux phrases suffisent : c'est un résumé, pas une page.",
+
+  "les-rencontres-du-rav-saadia-morali": "Le Rav Saadia Morali reçoit penseurs, juristes et universitaires pour confronter le texte juif aux questions du temps : identité, morale, légitimité d'Israël et devoir de transmission.",
+
+  "art-connexion": "Une rencontre avec un artiste à chaque épisode — peintres, plasticiens, créateurs. Leur parcours, leur atelier, et la place de la mémoire juive dans leur œuvre.",
+
+  "les-cours-du-rav-yoel-benharrouche": "Les cours du Rav Yoel Benharrouche suivent le calendrier juif — Roch Hachana, Yom Kippour, Hannouka, la Techouva. Une lecture intérieure des fêtes et du temps.",
+
+  "des-aventures-de-l-histoire-des-juifs": "Des épisodes méconnus de l'histoire juive, de la Judée romaine au réseau d'espionnage NILI, de Bonaparte à la poupée Barbie. Un récit par vidéo, mené comme une enquête.",
+
+  "haolam-hamedoubar": "L'histoire militaire et diplomatique d'Israël : la naissance de Tsahal, les guerres, les coulisses du renseignement — avec des historiens, des journalistes et d'anciens diplomates.",
+
+  "feel-good": "Le rendez-vous bien-être de Tandem TV, avec Carole Karat : stress, estime de soi, résilience, alimentation. Des conseils simples pour aller mieux au quotidien.",
+
+  "l-histoire-en-perspective": "Rony Akrich relit les institutions et l'actualité à la lumière du texte biblique : la justice, le pouvoir, la prière, la responsabilité collective.",
+
+  "50-nuances-d-antisemitisme-tandem-2-0": "Un état des lieux de l'antisémitisme contemporain, en France et ailleurs : ses formes, ses relais, ses zones grises. Historiens, journalistes et témoins viennent en détailler les nuances.",
+
+  "coup-de-coeur-litteraire-tandem-2-0": "Un auteur, un livre, un entretien. Romanciers et essayistes viennent parler de leur dernier ouvrage et de ce qui les a poussés à l'écrire.",
+
+  "cote-cuisine": "La cuisine à l'écran : gastronomie israélienne, recettes de fête et techniques expliquées pas à pas, de l'entrée au dessert.",
+
+  "entre-nous-soit-dit": "Un face-à-face sans détour sur les fractures de la société israélienne : réforme judiciaire, Cour suprême, clivages communautaires, questions de mœurs.",
+
+  "bari-food": "La nutrition expliquée simplement : protéines, sucres, cholestérol, produits laitiers. Ce que l'on met dans son assiette, et pourquoi cela compte.",
+
+  "pause-beaute": "Le rendez-vous beauté : maquillage, coiffure, soins et tendances, avec les professionnels qui les pratiquent.",
+
+  "le-fabuleux-destin-de": "Le portrait d'une figure qui a marqué son siècle — Louis de Funès, Édith Piaf, Charlie Chaplin, Mike Brant, les Rothschild. Une vie racontée, ses zones d'ombre comprises.",
+
+  "les-grands-proces-de-l-histoire-d-israel": "Les procès qui ont marqué Israël, du procès Eichmann aux affaires criminelles qui ont bouleversé le pays. Les faits, le droit, et ce que chaque verdict dit de la société israélienne.",
+
+  "succes-serie-movie": "Cinéma et séries passés au crible, souvent relus à la lumière du texte juif : ce que racontent vraiment les grands succès du moment.",
+
+  "hasbara-en-tandem": "Un pays ou une organisation par épisode — la Chine, le Maroc, le Liban, l'OTAN. Comprendre le monde qui entoure Israël, et la place qu'il y tient.",
+
+  "atout-coeur": "À la rencontre des associations israéliennes qui viennent en aide aux plus fragiles : Magen David Adom, Zichron Menachem, Paamonim et bien d'autres. Ce qu'elles font, et comment les soutenir.",
+
+  "jo-hanna-healthy": "Des recettes légères et faciles, avec Jo Hanna : pâtisseries allégées, salades, plats du quotidien et douceurs de fête, sans renoncer au goût.",
+
+  "petit-deviendra-grand": "Le rendez-vous des parents : angoisse de séparation, autorité partagée, éducation positive, rentrée scolaire. Des situations concrètes et des réponses posées.",
+
+  "jewish-story": "Les racines lointaines de l'antijudaïsme et les épisodes oubliés de l'histoire juive, d'Apion à Pétain, racontés en quelques minutes.",
+
+  "archidesign": "Architecture et décoration en Israël : les architectes qui ont dessiné le pays, les bâtiments emblématiques, et les tendances d'aménagement saison après saison.",
+
+  "5-sur-5": "Cinq minutes, cinq sujets : le tour des vidéos et des histoires qui ont fait le buzz du mois.",
+
+  "guide-en-tandem": "Une visite guidée par épisode — synagogues de Jérusalem, Megiddo, Tsipori, Zikhron Yaakov, Rosh Hanikra. L'histoire d'un lieu, racontée sur place.",
+
+  "geopolitique-tandem-2-0": "Les entretiens géopolitiques des débuts de la chaîne : Alexandre Del Valle, Marc Touati, Frank Melloul et d'autres, sur les grands équilibres du Proche-Orient.",
+
+  "live-musical-tandem": "Les sessions musicales de Tandem TV : reprises et compositions jouées en plateau par des artistes israéliens et francophones.",
+
+  "projet-ado": "L'alya vue du côté des adolescents : choisir sa ville, préparer l'intégration, comprendre ce que traverse un jeune olé.",
+
+  "le-journal-de-l-ado": "Le journal tenu par les adolescents de Tandem TV : leurs sujets, leurs enthousiasmes, leur regard sur l'actualité et la culture.",
+
+  "actu-israel": "Ce qui se passe en Israël, au fil des jours : décisions politiques, sécurité, société — et les analyses qui les accompagnent.",
+
+  "iran": "Le régime iranien, son programme nucléaire, ses relais régionaux et son affrontement avec Israël : analyses, entretiens et décryptages.",
+
+  "gaza": "La bande de Gaza, le Hamas et la guerre : le terrain militaire, les otages, les enjeux humanitaires et diplomatiques.",
+
+  "liban": "Le Liban, le Hezbollah et la frontière nord d'Israël : histoire, rapports de force et actualité du conflit.",
+
+  "syrie": "La Syrie et ses recompositions : les acteurs en présence, les puissances étrangères et les conséquences pour la sécurité d'Israël.",
+
+  "antisemitisme": "L'antisémitisme d'hier et d'aujourd'hui : ses formes anciennes, ses expressions contemporaines, en France, en Europe et ailleurs. Témoignages, analyses et travaux d'historiens.",
+
+  "geopolitique-du-proche-orient": "Les rapports de force au Proche-Orient : alliances, accords, rivalités régionales et implication des grandes puissances.",
+
+  "politique-israelienne": "La vie politique israélienne : Knesset, coalitions, justice, réforme judiciaire et débats institutionnels.",
+
+  "societe": "La société israélienne au quotidien : éducation, santé, économie, religion, immigration et débats de société.",
+
+  "people": "Portraits et rencontres : artistes, écrivains, sportifs et personnalités du monde juif et israélien."
+}

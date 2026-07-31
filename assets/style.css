@@ -835,8 +835,21 @@ body.share-natif .share-label { display: none; }
   display: block; margin-bottom: .3rem; font-size: .72rem; font-weight: 750;
   letter-spacing: .05em; color: rgb(255 255 255 / 68%);
 }
-.une2-title { font-family: var(--font-titre); font-size: 1.05rem; font-weight: 600; line-height: 1.25; }
+.une2-title { display: block; font-family: var(--font-titre); font-size: 1.05rem; font-weight: 600; line-height: 1.25; }
 .une2:hover .une2-title { text-decoration: underline; text-underline-offset: 3px; }
+.une2-desc {
+  display: block; margin-top: .3rem; font-size: .82rem; line-height: 1.45;
+  color: rgb(255 255 255 / 62%);
+}
+
+/* Chiffres de la chaîne, en bas de la une. */
+.une-chiffres {
+  margin: 1.5rem 0 0; padding-top: 1.1rem;
+  border-top: 1px solid rgb(255 255 255 / 15%);
+  font-size: .82rem; font-weight: 650; letter-spacing: .04em;
+  color: rgb(255 255 255 / 68%);
+}
+.une-chiffres .dot { margin: 0 .45rem; color: rgb(255 255 255 / 35%); }
 
 /* Bloc de présentation en fin de page : l'ourlet éditorial du site. Bande
    pleine largeur, juste au-dessus du pied de page marine. */
@@ -907,7 +920,19 @@ body:has(.apropos-bas) .site-footer { margin-top: 0; }
 }
 .row-avatar img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 28%; }
 .row-avatar:hover { border-color: var(--rouge); }
-.row-chapo { margin: -.55rem 0 1.1rem; font-size: .875rem; color: var(--muted); }
+.row-chapo { margin: -.55rem 0 .5rem; font-size: .875rem; color: var(--muted); }
+/* Présentation de la rubrique : le seul texte rédigé de ces rangées. */
+.row-desc {
+  max-width: 78ch; margin: 0 0 1.15rem;
+  font-family: var(--font-titre); font-size: .98rem; line-height: 1.55; color: #4a453b;
+}
+.row--dense .row-desc { margin-top: -.35rem; font-size: .93rem; }
+/* Accroche sous la grande vignette de tête. */
+.card-accroche {
+  margin: .1rem 0 .45rem; max-width: 62ch;
+  font-family: var(--font-titre); font-size: 1rem; line-height: 1.5; color: #4a453b;
+}
+.grid:not(.grid-lead) .card-accroche { display: none; }
 .row-chapo a { color: var(--rouge); font-weight: 650; }
 .row-chapo a:hover { text-decoration: underline; }
 

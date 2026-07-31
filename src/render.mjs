@@ -18,8 +18,11 @@ export function isFresh(video, hours = 48) {
   return (Date.now() - new Date(video.publishedAt).getTime()) < hours * 3600 * 1000;
 }
 
-export function videoCard(video, { showCategory = true, eager = false, lead = false } = {}) {
+export function videoCard(video, { showCategory = true, eager = false, lead = false, accroche = false } = {}) {
   const cat = showCategory && video.playlists?.[0];
+  // Accroche : la première phrase de la description. Sur les vignettes mises
+  // en avant seulement — partout ailleurs, elle noierait la grille.
+  const texte = accroche ? excerpt(video.description, 165) : '';
   return `
 <article class="card${lead ? ' card--lead' : ''}" data-video-id="${escapeHtml(video.id)}">
   <a class="card-thumb" href="/video/${video.id}/" aria-label="${escapeHtml(video.title)}">
@@ -32,6 +35,7 @@ export function videoCard(video, { showCategory = true, eager = false, lead = fa
   <div class="card-body">
     ${cat ? `<a class="card-cat" href="/emissions/${cat.slug}/">${escapeHtml(cat.title)}</a>` : ''}
     <h3 class="card-title"><a href="/video/${video.id}/">${escapeHtml(video.title)}</a></h3>
+    ${texte ? `<p class="card-accroche">${escapeHtml(texte)}</p>` : ''}
     <p class="card-meta">
       <time datetime="${video.publishedAt || ''}">${formatDate(video.publishedAt)}</time>
       ${video.views ? `<span class="dot">·</span><span>${formatCount(video.views)} vues</span>` : ''}
@@ -45,13 +49,15 @@ function grid(videos, opts = {}) {
   const { lead = false, ...cardOpts } = opts;
   const cls = lead && videos.length > 2 ? 'grid grid-lead' : 'grid';
   return `<div class="${cls}">${videos.map((v, i) => videoCard(v, {
-    ...cardOpts, eager: i < 4, lead: lead && i === 0 && videos.length > 2,
+    ...cardOpts, eager: i < 4,
+    lead: lead && i === 0 && videos.length > 2,
+    accroche: lead && i === 0 && videos.length > 2,
   })).join('')}</div>`;
 }
 
 function row(title, href, videos, opts = {}) {
   if (!videos.length) return '';
-  const { dense = false, chapo = '', avant = '' } = opts;
+  const { dense = false, chapo = '', avant = '', desc = '' } = opts;
   return `
 <section class="row${dense ? ' row--dense' : ''}">
   <div class="row-head">
@@ -60,6 +66,7 @@ function row(title, href, videos, opts = {}) {
     <a class="row-more" href="${href}">Tout voir <span aria-hidden="true">→</span></a>
   </div>
   ${chapo ? `<p class="row-chapo">${chapo}</p>` : ''}
+  ${desc ? `<p class="row-desc">${escapeHtml(truncate(desc, 210))}</p>` : ''}
   ${grid(videos, { showCategory: false })}
 </section>`;
 }
@@ -79,7 +86,7 @@ function rowEmission(cat, personne, videos) {
   const chapo = personne
     ? `Présenté par <a href="/invites/${personne.slug}/">${escapeHtml(personne.nom)}</a> · ${total} épisode${total > 1 ? 's' : ''}`
     : `${total} épisode${total > 1 ? 's' : ''}`;
-  return row(cat.title, href, videos, { avant, chapo });
+  return row(cat.title, href, videos, { avant, chapo, desc: cat.description || '' });
 }
 
 /** Un des deux sujets secondaires de la une. */
@@ -91,6 +98,7 @@ function uneSecondaire(video) {
   <span class="une2-body">
     ${cat ? `<span class="une2-cat">${escapeHtml(cat.title)}</span>` : ''}
     <span class="une2-title">${escapeHtml(video.title)}</span>
+    ${(() => { const t = excerpt(video.description, 110); return t ? `<span class="une2-desc">${escapeHtml(t)}</span>` : ''; })()}
   </span>
 </a>`;
 }
@@ -188,7 +196,7 @@ function hero(video, category, { pinned = false } = {}) {
  * C'est le premier palier de hiérarchie de la page — sans lui, toutes les
  * rangées avaient le même poids et l'œil n'avait aucun parcours.
  */
-function uneZone(video, category, secondaires, { pinned = false } = {}) {
+function uneZone(video, category, secondaires, { pinned = false, chiffres = '' } = {}) {
   if (!video) return '';
   return `
 <div class="une-zone">
@@ -198,6 +206,7 @@ function uneZone(video, category, secondaires, { pinned = false } = {}) {
     <h2 class="une-plus-titre">À suivre également</h2>
     <div class="une-plus-liste">${secondaires.map(uneSecondaire).join('')}</div>
   </div>` : ''}
+  ${chiffres ? `<p class="une-chiffres">${chiffres}</p>` : ''}
 </div>`;
 }
 
@@ -627,9 +636,17 @@ export function homePage({
   const themeRows = themes.slice(0, config.home?.themeRows ?? 3);
   const showRows = shows.slice(0, config.home?.showRows ?? 3);
 
+  // Chiffres de la chaîne : recalculés à chaque synchronisation, ils disent en
+  // une ligne l'ampleur du fonds — ce qu'une grille de vignettes ne montre pas.
+  const chiffres = [
+    `${formatNumber(latest.length)} vidéos`,
+    shows.length ? `${formatNumber(shows.length)} émissions` : '',
+    personnes.length ? `${formatNumber(personnes.length)} intervenants` : '',
+  ].filter(Boolean).join(' <span class="dot">·</span> ');
+
   const content = `
 <div class="wrap">
-  ${uneZone(featured, featuredCat, secondaires, { pinned: Boolean(pinned) })}
+  ${uneZone(featured, featuredCat, secondaires, { pinned: Boolean(pinned), chiffres })}
 
   ${tvBanner(config)}
 
@@ -669,7 +686,9 @@ export function homePage({
     ${chips(nav.menuThemes?.length ? nav.menuThemes : themes)}
   </section>` : ''}
 
-  ${themeRows.map((c) => row(c.title, `/emissions/${c.slug}/`, c.videos.slice(0, DENSE), { dense: true })).join('')}
+  ${themeRows.map((c) => row(c.title, `/emissions/${c.slug}/`, c.videos.slice(0, DENSE), {
+    dense: true, desc: c.description || '',
+  })).join('')}
 
   ${plusVues.length >= 4 ? row('Les plus regardées', '/emissions/', plusVues, { dense: true }) : ''}
 </div>
