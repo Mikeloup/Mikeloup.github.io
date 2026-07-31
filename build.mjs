@@ -669,6 +669,24 @@ async function main() {
     } catch { /* facultatif */ }
   }
 
+  // Garde-fou : une redirection imposée à la main qui pointe vers une page
+  // inexistante envoie le visiteur — et Google — sur une erreur. Silencieux
+  // tant que tout va bien, bruyant dès qu'une destination disparaît.
+  const carteVerif = DEMO ? {} : await readJson(path.join(ROOT, 'data', 'anciennes-adresses.json'), {});
+  const cassees = [];
+  for (const [source, cible] of Object.entries(carteVerif.manuel || {})) {
+    const rel = cible.replace(/^\//, '').replace(/\/$/, '');
+    try {
+      await fs.access(path.join(DIST, rel, 'index.html'));
+    } catch {
+      cassees.push(`${source} → ${cible}`);
+    }
+  }
+  if (cassees.length) {
+    warn(`${cassees.length} redirection(s) imposée(s) pointent vers une page inexistante :`);
+    cassees.forEach((c) => warn(`   ${c}`));
+  }
+
   log(`✅ ${urls.length} pages générées dans dist/ en ${((Date.now() - t0) / 1000).toFixed(1)}s`);
 
   await annonceNouveautes(config, allVideos);

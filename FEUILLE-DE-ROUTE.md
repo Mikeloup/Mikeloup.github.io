@@ -34,6 +34,39 @@ site, en service payant.*
 
 ---
 
+## Le rapport de transferts, premier usage — v42 (31 juillet 2026)
+
+Le fichier `rapport-transferts.json` publié en v40 a livré les vrais chiffres de production :
+**145 redirections actives** (18 imposées, 127 vers une vidéo) et **121 anciennes adresses
+encore en erreur**. Sur ces 121 :
+
+- **36 récupérées à la main.** Vingt anciennes pages de catégorie Wix
+  (`/blog/categories/…`, `/les-emissions-de-television/…`) mènent désormais à la rubrique
+  correspondante ; neuf articles nommément consacrés à une personne mènent à sa fiche
+  (Céline Pina, Gilles-William Goldnadel, Philippe Torreton, Florence Bergeaud-Blackler,
+  Pierre Martinet, Dov Maimon, Bruno Dray, Rony Akrich) ; sept articles dont le sujet
+  correspond sans ambiguïté à une rubrique (Barbie, Chaplin, Rothschild → « Le fabuleux
+  destin de… » ; Rose Pizem, Vanunu → « Les grands procès »).
+- **85 laissées en 404 volontairement.** Aucune correspondance certaine : mieux vaut une
+  erreur, rattrapée côté navigateur, qu'un renvoi vers la mauvaise page. Elles restent
+  listées dans le rapport à chaque synchronisation.
+
+**Garde-fou ajouté** : le build vérifie que chaque redirection imposée pointe vers une page
+qui existe réellement, et le signale sinon. Désactivé en mode démonstration, où les
+destinations de production n'existent pas.
+
+**Fiches d'invités : six fausses fiches et deux doublons.** En relisant `/invites/` :
+« Duo de Doc », « Pause Beaute », « Plateau Santé », « Sciences Po » ne sont pas des
+personnes ; « Rosh Hashana » et « Yom HaZikaron » sont des fêtes. « Dr Elie Botbol » et
+« Elie Botbol », « Dr Eric Setton » et « Eric Setton » faisaient chacun deux fiches.
+Corrigé par `exclure` et `alias` dans `data/personnes.json`.
+**Benjamin Netanyahu et Donald Trump** ont aussi été retirés : ils n'ont jamais été à
+l'antenne de Tandem TV, la page annonce « les personnes que l'on retrouve le plus souvent
+à l'antenne ». Si Michael préfère les garder pour capter les recherches sur leur nom, il
+suffit de retirer leur ligne de `exclure` — mais la page perdrait en exactitude.
+
+---
+
 ## Ce que Google voit encore — v41 (31 juillet 2026)
 
 Michael : « non on y est pas » (Google Actualités). En cherchant pourquoi, découverte plus

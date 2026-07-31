@@ -2,18 +2,28 @@
   "_comment": "Fiches des personnes citées dans le catalogue. Le site repère automatiquement les noms dans les titres de vidéos et dans les noms d'émissions. Ce fichier permet de corriger : 'exclure' retire un faux nom (une marque, un partenaire), 'alias' fusionne deux orthographes, 'inclure' force la création d'une fiche pour quelqu'un qui n'a qu'une seule vidéo, 'presentateurs' impose le présentateur d'une émission, 'fiches' ajoute une fonction et un texte de présentation — écrits à la main, car le site n'invente rien sur les personnes. 'minVideos' est le nombre de passages à partir duquel une fiche est créée automatiquement.",
   "minVideos": 2,
   "exclure": [
-    "Tandem TV",
     "Archi Design",
-    "Geek High Tech Gaming",
     "Bari Food",
-    "Coup De Coeur",
     "Beit Halochem",
+    "Benjamin Netanyahu",
+    "Coup De Coeur",
+    "Donald Trump",
+    "Duo de Doc",
     "Feel Good",
-    "Underground Music"
+    "Geek High Tech Gaming",
+    "Pause Beaute",
+    "Plateau Santé",
+    "Rosh Hashana",
+    "Sciences Po",
+    "Tandem TV",
+    "Underground Music",
+    "Yom HaZikaron"
   ],
   "alias": {
     "Stephan Zeev Goldin": "Stéphane Goldin",
-    "Stephane Goldin": "Stéphane Goldin"
+    "Stephane Goldin": "Stéphane Goldin",
+    "Dr Elie Botbol": "Elie Botbol",
+    "Dr Eric Setton": "Eric Setton"
   },
   "inclure": [
     "Samuel Madar"
