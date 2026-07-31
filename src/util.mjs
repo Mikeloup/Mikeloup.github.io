@@ -252,11 +252,18 @@ function estPromoFranche(line) {
   return PROMO.some((re) => re.test(t));
 }
 
-/** Ligne qui *pourrait* appartenir au bloc promotionnel de fin. */
+/**
+ * Ligne de chapitre (« 00:20 Israël répond à l'Iran »). Elle doit pouvoir être
+ * TRAVERSÉE lors du repérage du bloc promotionnel, sans être supprimée : le
+ * sommaire est construit plus tard à partir de ces lignes.
+ */
+const LIGNE_CHAPITRE = /^\s*(?:\d{1,2}:)?\d{1,2}:\d{2}\s*[-–—:.)\]|]?\s*\S/;
+
+/** Ligne qui *pourrait* appartenir au bloc de fin — promo ou chapitre. */
 function estPromoProbable(line) {
   const t = line.trim();
   if (!t) return true;
-  return estPromoFranche(t) || COMMENCE_PAR_PICTO.test(t);
+  return estPromoFranche(t) || COMMENCE_PAR_PICTO.test(t) || LIGNE_CHAPITRE.test(t);
 }
 
 function estPromo(line) {
@@ -282,7 +289,10 @@ export function cleanDescription(desc = '', title = '') {
   let debutBloc = lines.length;
   while (debutBloc > 0 && estPromoProbable(lines[debutBloc - 1])) debutBloc--;
   if (debutBloc < lines.length && lines.slice(debutBloc).some(estPromoFranche)) {
-    lines.length = debutBloc;
+    // On retire les lignes promotionnelles du bloc, mais on garde les lignes de
+    // chapitre : le sommaire de la page vidéo est bâti à partir d'elles.
+    const queue = lines.splice(debutBloc).filter((l) => LIGNE_CHAPITRE.test(l.trim()));
+    lines.push(...queue);
   }
   while (lines.length && !lines[lines.length - 1].trim()) lines.pop();
 

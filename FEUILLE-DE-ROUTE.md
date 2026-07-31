@@ -34,6 +34,35 @@ site, en service payant.*
 
 ---
 
+## Le vrai coupable : les lignes de chapitre — v46 (31 juillet 2026)
+
+v45 déposée, publication à 20:30 — **les quatre lignes étaient toujours là**. Mon code
+fonctionnait pourtant sur le texte exact recopié de la page. La différence tenait à ce que la
+page ne montre pas : **l'ordre réel de la description YouTube.**
+
+Le sommaire est affiché en haut de la page vidéo, mais dans la description d'origine les
+lignes de chapitre (`00:00 Introduction`…) se trouvent **après** le bloc promotionnel. Le
+repérage remontait donc depuis la fin, tombait immédiatement sur une ligne de chapitre —
+ni promo, ni pictogramme — et s'arrêtait là. Tout le bloc survivait. Les lignes de chapitre
+étaient ensuite retirées du corps au moment du rendu, ce qui laissait les appels à l'action
+en dernière position sur la page : le symptôme masquait sa propre cause.
+
+**Correction.** Une ligne de chapitre est désormais *traversée* lors du repérage du bloc de
+fin, mais **jamais supprimée** — le sommaire et les données `Clip` de Google sont bâtis à
+partir d'elle. Le bloc identifié est filtré : les lignes promotionnelles partent, les lignes
+de chapitre restent.
+
+Vérifié dans les deux ordres possibles (chapitres puis promo, promo puis chapitres) : dans les
+deux cas la promo disparaît et les cinq chapitres sont conservés. Les quatre cas de garde
+tiennent toujours.
+
+**Trois tentatives pour une correction.** v44 allongeait une liste ; v45 changeait de méthode
+mais testait sur un texte recopié de l'écran, pas sur la donnée réelle ; v46 corrige la cause.
+**Leçon : ne jamais valider un nettoyage de description sur le texte affiché — l'affichage a
+déjà réordonné et retiré des lignes. Reconstituer la source.**
+
+---
+
 ## Appels à l'action : corriger la méthode, pas la liste — v45 (31 juillet 2026)
 
 v44 était **insuffisante**, et l'erreur était de méthode. J'avais ajouté sept tournures à une
