@@ -84,16 +84,24 @@ export function collecterPersonnes(categories, allVideos, manuel = {}) {
 
   const canonique = (nom) => alias.get(nom.toLowerCase()) || nom;
 
+  // Clé de regroupement : sans accents ni casse. « Jérôme Haas », « Jérome Haas »
+  // et « Jerome Haas » sont la même personne — le repérage automatique lisait
+  // les trois orthographes dans les titres et créait trois fiches.
+  const clef = (nom) => nom.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/\s+/g, ' ').trim();
+
   /** @type {Map<string, {nom:string, slug:string, videos:any[], rubriques:Set<string>, presente:Set<string>}>} */
   const gens = new Map();
   const ajouter = (nomBrut, video, rubriqueTitre) => {
     const nom = canonique(nomBrut);
-    if (exclure.has(nom.toLowerCase())) return;
-    const cle = nom.toLowerCase();
+    if (exclure.has(nom.toLowerCase()) || exclure.has(clef(nom))) return;
+    const cle = clef(nom);
     if (!gens.has(cle)) {
-      gens.set(cle, { nom, slug: slugify(nom), videos: [], rubriques: new Set(), presente: new Set() });
+      gens.set(cle, { nom, slug: slugify(nom), videos: [], rubriques: new Set(), presente: new Set(), graphies: new Map() });
     }
     const p = gens.get(cle);
+    // On mémorise chaque orthographe rencontrée : la plus fréquente sera
+    // retenue pour l'affichage, à égalité celle qui porte des accents.
+    p.graphies.set(nom, (p.graphies.get(nom) || 0) + 1);
     if (video && !p.videos.some((v) => v.id === video.id)) p.videos.push(video);
     if (rubriqueTitre) p.rubriques.add(rubriqueTitre);
   };
@@ -105,7 +113,7 @@ export function collecterPersonnes(categories, allVideos, manuel = {}) {
     if (!nom || exclure.has(canonique(nom).toLowerCase())) continue;
     presentateurParRubrique.set(cat.slug, canonique(nom));
     for (const v of cat.videos) ajouter(nom, v, cat.title);
-    const p = gens.get(canonique(nom).toLowerCase());
+    const p = gens.get(clef(canonique(nom)));
     if (p) p.presente.add(cat.title);
   }
 
@@ -152,6 +160,15 @@ export function collecterPersonnes(categories, allVideos, manuel = {}) {
       if (!p.videos.some((x) => x.id === v.id)) p.videos.push(v);
       if (v.playlists?.[0]?.title) p.rubriques.add(v.playlists[0].title);
     }
+  }
+
+  // Orthographe d'affichage : la plus fréquente ; à égalité, celle qui porte
+  // des accents (« Jérôme » plutôt que « Jerome »).
+  const accents = (x) => (x.normalize('NFD').match(/[\u0300-\u036f]/g) || []).length;
+  for (const p of gens.values()) {
+    p.nom = [...p.graphies.entries()]
+      .sort((a, b) => b[1] - a[1] || accents(b[0]) - accents(a[0]))[0][0];
+    p.slug = slugify(p.nom);
   }
 
   const retenues = [...gens.values()]

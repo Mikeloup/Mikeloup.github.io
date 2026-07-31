@@ -137,6 +137,14 @@ Une troisième passe lit donc les descriptions, avec trois garde-fous :
 - **seuil de vraisemblance** : un nom présent dans plus de la moitié d'un catalogue
   de plus de 40 vidéos est une mention de pied de description, pas un intervenant.
 
+## État réel au 31 juillet 2026 (relevé sur le site en ligne)
+
+- **79 fiches** d'invités et de présentateurs, 812 participations recensées.
+- **Galith Benzimra : 12 → 75 vidéos** après le rattrapage par les descriptions. Correction validée.
+- **Transferts Wix opérationnels** : `/post/qui-est-le-nouveau-chef-d-état-major…` → `/video/_GkDLFNOJ-A/`, `/post/interview-de-samuel-madar…` → `/video/3yLVJ1HIqLg/`, `/qui-sommes-nous` → `/a-propos/`.
+- **Reste en 404** : `/post/le-7-octobre-vécu-par-stephan-zeev-goldin` — aucune vidéo correspondante. Seule une fiche rédigée à la main récupérera ces 83 clics.
+- **Corrigé en v33** : six personnes avaient deux fiches, une par orthographe (« Jérôme Haas » 108 / « Jérome Haas » 100, Céline Pina, Haïm Musicant, Hervé Ghannad, Guy Millière, Pierre Lurçat). Le regroupement se fait désormais sans accents ni casse, et l'orthographe affichée est la plus fréquente — à égalité, celle qui porte les accents.
+
 ## À faire — ensuite
 
 - [x] **Application sur l'écran d'accueil** — page `/installer/` (Android, iPhone, ordinateur), bandeau proposé à partir de la troisième page consultée et jamais réaffiché s'il est écarté, raccourcis dans le manifeste, gestionnaire « fetch » dans l'agent de service (condition d'installabilité chez Chrome + message hors connexion).

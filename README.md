@@ -657,3 +657,15 @@ n'est pas naïve pour autant :
 Comparaison insensible à la casse et aux accents, sur la description **nettoyée**
 — donc après retrait de la queue promotionnelle, ce qui écarte au passage les
 noms cités dans les crédits de fin.
+
+---
+
+## Fusion des orthographes (version 33)
+
+Six personnes avaient deux fiches, une par orthographe : « Jérôme Haas » et
+« Jérome Haas », « Céline Pina » et « Celine Pina »… Les titres de vidéos ne sont
+pas accentués de façon constante, et le repérage regroupait sur le nom exact.
+
+Le regroupement se fait maintenant sur une clé **sans accents ni casse**. Chaque
+orthographe rencontrée est comptée ; celle qui s'affiche est la plus fréquente,
+et à égalité celle qui porte des accents — « Jérôme » plutôt que « Jerome ».
