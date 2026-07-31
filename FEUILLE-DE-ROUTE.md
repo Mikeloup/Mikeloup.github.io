@@ -34,6 +34,55 @@ site, en service payant.*
 
 ---
 
+## Accueil — texte et hiérarchie, v37/v38 (31 juillet 2026)
+
+**Corrections demandées par Michael après la première version (v38).**
+
+- La bande des visages coupait la page entre la une et les dernières vidéos : elle est
+  descendue **après les rangées d'émissions**.
+- Elle affichait des chroniqueurs partis depuis longtemps. Elle est désormais **dynamique** :
+  seules les personnes ayant publié dans les trois derniers mois, et au moins deux fois
+  (une seule suffit pour un présentateur — sinon un invité de passage figurerait parmi les
+  chroniqueurs). Si la chaîne traverse une période creuse, la fenêtre s'élargit d'elle-même
+  à 6 puis 12 mois ; sous quatre personnes, la bande disparaît. Réglable par
+  `home.chroniqueursMois` et `home.chroniqueursMax`.
+- Le texte de présentation tombait « comme un cheveu dans la soupe » sous la une : il forme
+  maintenant le bloc **« Qui sommes-nous ? »** en fin de page, bande pleine largeur collée
+  au pied de page. Texte fourni par Michael, dans `content/accueil.md`.
+- Au passage : la mention « un message de confirmation vous sera envoyé » sous le formulaire
+  d'inscription était **fausse depuis le passage en inscription immédiate**. Corrigée.
+
+## Accueil — texte et hiérarchie, première version, v37 (31 juillet 2026)
+
+Deux manques identifiés avec Michael le 31 juillet : **aucune phrase rédigée** sur la page
+d'accueil (muette pour un visiteur venu de Google, quasi vide pour Google lui-même), et
+**aucune hiérarchie** — six rangées strictement identiques après la une.
+
+Quatre paliers désormais, du plus fort au plus discret :
+
+1. **La une élargie** : un sujet principal + deux sujets secondaires (« À suivre également »),
+   le tout sur le fond marine. Les deux secondaires sont retirés du flux qui suit pour ne pas
+   apparaître deux fois à quelques centimètres d'intervalle.
+2. **Chapeau éditorial** : `content/accueil.md`. C'est un fichier texte ordinaire, Michael peut
+   le modifier directement sur GitHub. Le supprimer fait simplement disparaître le bloc.
+3. **Bande des visages** : dix portraits ronds vers les fiches `/invites/`. Maillage interne
+   pour le référencement, et entrée directe pour le spectateur qui cherche une personne.
+4. **Rangées à trois niveaux** :
+   - *Dernières vidéos* — grande vignette de tête (`grid-lead`) ;
+   - *Émissions* — quatre colonnes, en-tête incarné (portrait du présentateur, « Présenté
+     par X · N épisodes ») ;
+   - *Thèmes* et *Les plus regardées* — cinq colonnes sur une seule ligne, titres réduits.
+
+Le bloc d'inscription à la lettre d'information est remonté en milieu de page (il n'était
+visible qu'en pied de page).
+
+**Points techniques.** `.row-title { margin-right: auto }` : sans cela, le `space-between`
+du `.row-head` séparait le portrait de son titre d'un bout à l'autre de la page. Le
+rapprochement présentateur ↔ fiche se fait sans accents : le nom d'affichage retenu
+(« Jérôme Haas ») n'est pas toujours celui lu dans le titre de la rubrique.
+
+---
+
 ## Habillage — v35 (31 juillet 2026)
 
 - **Bandeau télévision** : l'aplat rouge pleine largeur criait « BREAKING NEWS » alors qu'il

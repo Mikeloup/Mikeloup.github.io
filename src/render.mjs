@@ -49,15 +49,115 @@ function grid(videos, opts = {}) {
   })).join('')}</div>`;
 }
 
-function row(title, href, videos) {
+function row(title, href, videos, opts = {}) {
   if (!videos.length) return '';
+  const { dense = false, chapo = '', avant = '' } = opts;
   return `
-<section class="row">
+<section class="row${dense ? ' row--dense' : ''}">
   <div class="row-head">
+    ${avant}
     <h2 class="row-title"><a href="${href}">${escapeHtml(title)}</a></h2>
     <a class="row-more" href="${href}">Tout voir <span aria-hidden="true">→</span></a>
   </div>
+  ${chapo ? `<p class="row-chapo">${chapo}</p>` : ''}
   ${grid(videos, { showCategory: false })}
+</section>`;
+}
+
+/**
+ * Rangée d'émission « incarnée » : le portrait et le nom du présentateur
+ * en tête. Une émission n'est pas un thème — elle a un visage, et c'est ce
+ * visage que le spectateur reconnaît.
+ */
+function rowEmission(cat, personne, videos) {
+  if (!videos.length) return '';
+  const href = `/emissions/${cat.slug}/`;
+  const total = cat.videos?.length || videos.length;
+  const avant = personne
+    ? `<a class="row-avatar" href="/invites/${personne.slug}/" aria-label="${escapeHtml(personne.nom)}"><img src="${escapeHtml(photoDe(personne))}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" width="480" height="270"></a>`
+    : '';
+  const chapo = personne
+    ? `Présenté par <a href="/invites/${personne.slug}/">${escapeHtml(personne.nom)}</a> · ${total} épisode${total > 1 ? 's' : ''}`
+    : `${total} épisode${total > 1 ? 's' : ''}`;
+  return row(cat.title, href, videos, { avant, chapo });
+}
+
+/** Un des deux sujets secondaires de la une. */
+function uneSecondaire(video) {
+  const cat = video.playlists?.[0];
+  return `
+<a class="une2" href="/video/${video.id}/">
+  <span class="une2-thumb"><img src="${escapeHtml(video.thumbnail || YT_THUMB(video.id))}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" width="480" height="270"></span>
+  <span class="une2-body">
+    ${cat ? `<span class="une2-cat">${escapeHtml(cat.title)}</span>` : ''}
+    <span class="une2-title">${escapeHtml(video.title)}</span>
+  </span>
+</a>`;
+}
+
+/**
+ * Bande de portraits : les chroniqueurs réellement à l'antenne en ce moment.
+ *
+ * Une liste triée sur l'ensemble du catalogue remonte des visages qui ont
+ * quitté la chaîne depuis longtemps. On ne retient donc que les personnes qui
+ * ont publié dans la fenêtre récente, et au moins deux fois — sans quoi un
+ * invité de passage figurerait parmi les chroniqueurs.
+ */
+function bandeVisages(personnes, { maintenant, mois = 3, max = 10 } = {}) {
+  const choisir = (m) => {
+    const limite = maintenant - m * 30.44 * 864e5;
+    return personnes
+      .map((p) => {
+        const recents = p.videos.filter((v) => new Date(v.publishedAt).getTime() >= limite);
+        return { p, n: recents.length, dernier: new Date(p.videos[0]?.publishedAt || 0).getTime() };
+      })
+      .filter((x) => x.n >= (x.p.presente?.length ? 1 : 2))
+      .sort((a, b) => (b.p.presente?.length ? 1 : 0) - (a.p.presente?.length ? 1 : 0)
+        || b.n - a.n || b.dernier - a.dernier)
+      .slice(0, max);
+  };
+
+  // Une chaîne peut traverser une période creuse : on élargit la fenêtre
+  // plutôt que d'afficher une bande à trois portraits.
+  let fenetre = mois;
+  let gens = choisir(fenetre);
+  for (const m of [mois * 2, mois * 4]) {
+    if (gens.length >= 5) break;
+    fenetre = m;
+    gens = choisir(fenetre);
+  }
+  if (gens.length < 4) return '';
+
+  const periode = fenetre >= 12 ? "de l'année écoulée" : `des ${Math.round(fenetre)} derniers mois`;
+  return `
+<section class="visages">
+  <div class="row-head">
+    <h2 class="row-title"><a href="/invites/">Les chroniqueurs</a></h2>
+    <a class="row-more" href="/invites/">Tous les intervenants <span aria-hidden="true">→</span></a>
+  </div>
+  <p class="row-chapo">À l'antenne ${periode}.</p>
+  <ul class="visages-liste">
+    ${gens.map(({ p }) => `<li><a href="/invites/${p.slug}/">
+      <span class="visage-photo"><img src="${escapeHtml(photoDe(p))}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" width="480" height="270"></span>
+      <span class="visage-nom">${escapeHtml(p.nom)}</span>
+    </a></li>`).join('')}
+  </ul>
+</section>`;
+}
+
+/**
+ * Bloc de présentation en fin de page. Le texte vient de content/accueil.md.
+ * Placé là, il ne coupe pas le flux des vidéos tout en restant lu par Google.
+ */
+function blocQuiSommesNous(introHtml) {
+  if (!introHtml) return '';
+  return `
+<section class="apropos-bas">
+  <div class="wrap apropos-inner">
+    <h2>Qui sommes-nous ?</h2>
+    <div class="apropos-texte">${introHtml}</div>
+    <a class="apropos-lien" href="/a-propos/">En savoir plus sur Tandem TV <span aria-hidden="true">→</span></a>
+  </div>
 </section>`;
 }
 
@@ -81,6 +181,24 @@ function hero(video, category, { pinned = false } = {}) {
     <a class="btn btn-primary" href="/video/${video.id}/">Regarder</a>
   </div>
 </section>`;
+}
+
+/**
+ * La une : un sujet principal et deux sujets secondaires, sur fond sombre.
+ * C'est le premier palier de hiérarchie de la page — sans lui, toutes les
+ * rangées avaient le même poids et l'œil n'avait aucun parcours.
+ */
+function uneZone(video, category, secondaires, { pinned = false } = {}) {
+  if (!video) return '';
+  return `
+<div class="une-zone">
+  ${hero(video, category, { pinned })}
+  ${secondaires.length ? `
+  <div class="une-plus">
+    <h2 class="une-plus-titre">À suivre également</h2>
+    <div class="une-plus-liste">${secondaires.map(uneSecondaire).join('')}</div>
+  </div>` : ''}
+</div>`;
 }
 
 function pagination(baseHref, page, totalPages) {
@@ -195,7 +313,7 @@ function newsletterForm(config, { compact = false } = {}) {
            autocomplete="email" placeholder="votre@adresse.fr">
     <button class="btn btn-primary" type="submit">Je m'inscris</button>
   </div>
-  <p class="newsletter-note muted small">Un message de confirmation vous sera envoyé : votre inscription ne devient effective qu'après y avoir répondu. Votre adresse ne sert qu'à cet envoi et n'est transmise à personne d'autre que notre prestataire d'expédition.</p>
+  <p class="newsletter-note muted small">Inscription immédiate, sans courriel de confirmation à valider. Votre adresse ne sert qu'à cet envoi et n'est transmise à personne d'autre que notre prestataire d'expédition ; un lien de désinscription figure dans chaque message.</p>
 </form>`;
 }
 
@@ -477,15 +595,32 @@ function chips(items) {
   return `<div class="cat-chips">${items.map((c) => `<a class="chip" href="/emissions/${c.slug}/">${escapeHtml(c.title)} <span>${c.videos.length}</span></a>`).join('')}</div>`;
 }
 
-export function homePage({ config, categories, nav, latest, buildTime }) {
+export function homePage({
+  config, categories, nav, latest, buildTime,
+  personnes = [], personneParRubrique = new Map(), introHtml = '',
+}) {
   const pinnedId = String(config.home?.featured || '').trim();
   const pinned = pinnedId ? latest.find((v) => v.id === pinnedId) : null;
   const featured = pinned || latest[0];
   const featuredCat = featured?.playlists?.[0];
-  const rest = latest
-    .filter((v) => v.id !== featured?.id)
-    .slice(0, config.home?.latestCount ?? 8);
+
+  // Deux sujets secondaires en une, retirés ensuite du flux pour ne pas
+  // apparaître deux fois à quelques centimètres d'intervalle.
+  const suite = latest.filter((v) => v.id !== featured?.id);
+  const secondaires = suite.slice(0, 2);
+  const dejaVus = new Set([featured?.id, ...secondaires.map((v) => v.id)]);
+  const rest = suite.slice(2, 2 + (config.home?.latestCount ?? 8));
   const rowSize = config.home?.rowSize ?? 8;
+
+  // Les plus regardées : le fonds de catalogue, invisible autrement. On écarte
+  // ce qui est déjà en haut de page et on exige un compteur réel.
+  // Les rangées secondaires tiennent sur une seule ligne de cinq : c'est ce
+  // qui les distingue au premier coup d'œil des rangées d'émission.
+  const DENSE = 5;
+  const plusVues = [...latest]
+    .filter((v) => Number(v.views) > 0 && !dejaVus.has(v.id))
+    .sort((a, b) => Number(b.views) - Number(a.views))
+    .slice(0, DENSE);
 
   const themes = nav.themes || [];
   const shows = nav.shows || [];
@@ -494,7 +629,7 @@ export function homePage({ config, categories, nav, latest, buildTime }) {
 
   const content = `
 <div class="wrap">
-  ${hero(featured, featuredCat, { pinned: Boolean(pinned) })}
+  ${uneZone(featured, featuredCat, secondaires, { pinned: Boolean(pinned) })}
 
   ${tvBanner(config)}
 
@@ -506,17 +641,6 @@ export function homePage({ config, categories, nav, latest, buildTime }) {
     ${grid(rest, { lead: true })}
   </section>
 
-  ${themes.length ? `
-  <section class="cats">
-    <div class="row-head">
-      <h2 class="row-title"><a href="/themes/">${escapeHtml(config.groups?.themes?.label || 'Thèmes')}</a></h2>
-      <a class="row-more" href="/themes/">Tous les thèmes <span aria-hidden="true">→</span></a>
-    </div>
-    ${chips(nav.menuThemes?.length ? nav.menuThemes : themes)}
-  </section>` : ''}
-
-  ${themeRows.map((c) => row(c.title, `/emissions/${c.slug}/`, c.videos.slice(0, rowSize))).join('')}
-
   ${shows.length ? `
   <section class="cats">
     <div class="row-head">
@@ -526,10 +650,31 @@ export function homePage({ config, categories, nav, latest, buildTime }) {
     ${chips((nav.menuShows?.length ? nav.menuShows : shows).slice(0, 24))}
   </section>` : ''}
 
-  ${showRows.map((c) => row(c.title, `/emissions/${c.slug}/`, c.videos.slice(0, rowSize))).join('')}
+  ${showRows.map((c) => rowEmission(c, personneParRubrique.get(c.slug), c.videos.slice(0, rowSize))).join('')}
+
+  ${bandeVisages(personnes, {
+    maintenant: new Date(buildTime).getTime(),
+    mois: config.home?.chroniqueursMois ?? 3,
+    max: config.home?.chroniqueursMax ?? 10,
+  })}
 
   ${newsletterForm(config)}
-</div>`;
+
+  ${themes.length ? `
+  <section class="cats">
+    <div class="row-head">
+      <h2 class="row-title"><a href="/themes/">${escapeHtml(config.groups?.themes?.label || 'Thèmes')}</a></h2>
+      <a class="row-more" href="/themes/">Tous les thèmes <span aria-hidden="true">→</span></a>
+    </div>
+    ${chips(nav.menuThemes?.length ? nav.menuThemes : themes)}
+  </section>` : ''}
+
+  ${themeRows.map((c) => row(c.title, `/emissions/${c.slug}/`, c.videos.slice(0, DENSE), { dense: true })).join('')}
+
+  ${plusVues.length >= 4 ? row('Les plus regardées', '/emissions/', plusVues, { dense: true }) : ''}
+</div>
+
+${blocQuiSommesNous(introHtml)}`;
 
   return layout({
     config, categories, nav, buildTime,

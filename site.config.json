@@ -43,7 +43,7 @@
     "enabled": true,
     "channelNumber": "14",
     "operator": "Annatel TV",
-    "operatorLogo": "",
+    "operatorLogo": "/assets/annatel.png",
     "url": "",
     "schedule": ""
   },

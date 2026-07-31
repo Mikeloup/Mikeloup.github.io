@@ -172,6 +172,12 @@ Les quatre pages rédactionnelles sont dans le dossier `content/` :
 | `content/a-propos.md` | À propos |
 | `content/partenaires.md` | Partenaires |
 | `content/contact.md` | Contact |
+| `content/accueil.md` | Le texte de présentation de la **page d'accueil**, sous la une |
+
+`content/accueil.md` est un cas à part : ce n'est pas une page, c'est le paragraphe de
+présentation affiché en haut de l'accueil. C'est le seul texte rédigé que Google trouve sur
+cette page — mieux vaut le garder court, exact et à jour. Le supprimer fait disparaître le
+bloc, sans rien casser.
 
 La liste des pages affichées est pilotée par le bloc `pages` de `site.config.json` : retirez une ligne et la page disparaît du site et de tous les menus ; ajoutez-en une (avec le fichier `content/<slug>.md` correspondant) et elle apparaît partout.
 

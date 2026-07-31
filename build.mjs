@@ -62,6 +62,14 @@ async function readJson(p, fallback = null) {
   }
 }
 
+async function readText(p, fallback = '') {
+  try {
+    return await fs.readFile(p, 'utf8');
+  } catch {
+    return fallback;
+  }
+}
+
 // --- Récupération des données ------------------------------------------------
 
 async function collectFromApi(config) {
@@ -416,8 +424,30 @@ async function main() {
   }
 
 
-  // Accueil
-  await writePage('/', R.homePage({ ...ctx, latest: allVideos }));
+  // Accueil.
+  //
+  // Le chapeau vient de content/accueil.md : la page d'accueil ne contenait
+  // aucune phrase rédigée, ce qui la rendait muette pour un visiteur qui
+  // arrive de Google sans connaître la chaîne — et quasi vide pour Google
+  // lui-même. Supprimer le fichier fait simplement disparaître le bloc.
+  let introHtml = '';
+  const introMd = await readText(path.join(ROOT, 'content', 'accueil.md'));
+  if (introMd && introMd.trim()) introHtml = markdownToHtml(introMd.trim());
+
+  // Portrait du présentateur en tête de chaque rangée d'émission.
+  // Rapprochement insensible aux accents : le nom retenu pour l'affichage
+  // (« Jérôme Haas ») n'est pas toujours celui lu dans le titre de la rubrique.
+  const sansAccents = (x) => String(x || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim();
+  const parNom = new Map(personnes.map((p) => [sansAccents(p.nom), p]));
+  const personneParRubrique = new Map();
+  for (const [slug, nom] of presentateurParRubrique) {
+    const p = parNom.get(sansAccents(nom));
+    if (p) personneParRubrique.set(slug, p);
+  }
+
+  await writePage('/', R.homePage({
+    ...ctx, latest: allVideos, personnes, personneParRubrique, introHtml,
+  }));
   urls.push({ loc: '/', freq: 'daily', priority: '1.0', lastmod: allVideos[0]?.publishedAt });
 
   // Catalogue complet (sous /emissions/), paginé

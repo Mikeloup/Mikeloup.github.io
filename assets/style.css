@@ -775,8 +775,8 @@ body.share-natif .share-label { display: none; }
   min-width: 0; font-size: .68rem; letter-spacing: .1em; padding: .2rem .5rem;
   border-radius: var(--radius-sm);
 }
-.tv-logo { flex: 0 0 auto; height: 24px; width: auto; display: block; }
-.tv-footer .tv-logo { height: 18px; }
+.tv-logo { flex: 0 0 auto; height: 22px; width: auto; display: block; }
+.tv-footer .tv-logo { height: 16px; }
 .tv-footer .tv-canal { color: var(--rouge); font-weight: 650; }
 @media (max-width: 640px) {
   /* La marque reste à gauche et le texte coule à côté : empilé, le bandeau
@@ -784,6 +784,7 @@ body.share-natif .share-label { display: none; }
   .tv-banner { align-items: flex-start; gap: .65rem; padding: .7rem .9rem; }
   .tv-banner p { font-size: .88rem; }
   .tv-badge { margin-top: .1rem; }
+  .tv-logo { height: 17px; margin-top: .15rem; }
 }
 
 /* --- La une sur fond sombre, reprise de la direction « chaîne d'information ».
@@ -791,15 +792,15 @@ body.share-natif .share-label { display: none; }
    bords de l'écran : c'est la barre de shadow étalée sur 100vmax, puis
    découpée verticalement, ce qui évite la barre de défilement horizontale
    qu'entraînerait une largeur de 100vw. ---------------------------------- */
-.hero {
+.une-zone {
   position: relative;
   background: var(--brand); color: #fff;
   padding: 2.25rem 0 2.5rem;
-  margin-top: 0;
   box-shadow: 0 0 0 100vmax var(--brand);
   clip-path: inset(0 -100vmax);
   border-top: 1px solid rgb(255 255 255 / 12%);
 }
+.une-zone .hero { padding: 0; margin: 0; }
 /* Le séparateur reste collé au nom de l'émission quand la ligne se coupe. */
 .hero .kicker-cat { white-space: nowrap; }
 .hero-title a { color: #fff; }
@@ -817,10 +818,125 @@ body.share-natif .share-label { display: none; }
 }
 .hero .btn-primary:hover { background: var(--bg-soft); border-color: var(--bg-soft); color: var(--brand); }
 .hero-media { box-shadow: 0 18px 40px rgb(0 0 0 / 35%); }
+
+/* Les deux sujets secondaires de la une : deuxième palier de hiérarchie. */
+.une-plus { margin-top: 1.9rem; padding-top: 1.3rem; border-top: 1px solid rgb(255 255 255 / 15%); }
+.une-plus-titre {
+  font-family: var(--font-corps, inherit); font-size: .78rem; font-weight: 750;
+  letter-spacing: .09em; text-transform: uppercase;
+  color: rgb(255 255 255 / 62%); margin: 0 0 .9rem;
+}
+.une-plus-liste { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+.une2 { display: grid; grid-template-columns: 150px 1fr; gap: .95rem; align-items: start; color: #fff; }
+.une2-thumb { display: block; overflow: hidden; border-radius: var(--radius-sm); background: rgb(255 255 255 / 10%); }
+.une2-thumb img { display: block; width: 100%; aspect-ratio: 16/9; object-fit: cover; transition: transform .35s ease; }
+.une2:hover .une2-thumb img { transform: scale(1.04); }
+.une2-cat {
+  display: block; margin-bottom: .3rem; font-size: .72rem; font-weight: 750;
+  letter-spacing: .05em; color: rgb(255 255 255 / 68%);
+}
+.une2-title { font-family: var(--font-titre); font-size: 1.05rem; font-weight: 600; line-height: 1.25; }
+.une2:hover .une2-title { text-decoration: underline; text-underline-offset: 3px; }
+
+/* Bloc de présentation en fin de page : l'ourlet éditorial du site. Bande
+   pleine largeur, juste au-dessus du pied de page marine. */
+.apropos-bas {
+  margin-top: 3.5rem; padding: 3rem 0 3.25rem;
+  background: var(--surface-2); border-top: 1px solid var(--line);
+}
+.apropos-inner { max-width: 78ch; }
+.apropos-bas h2 {
+  position: relative; padding-left: .9rem; margin: 0 0 1rem; font-size: 1.45rem;
+}
+.apropos-bas h2::before {
+  content: ""; position: absolute; left: 0; top: .16em; bottom: .16em;
+  width: 5px; border-radius: 4px; background: var(--rouge);
+}
+.apropos-texte {
+  font-family: var(--font-titre); font-size: 1.1rem; line-height: 1.65; color: #3c3830;
+}
+.apropos-texte p { margin: 0 0 .85rem; }
+.apropos-texte p:last-child { margin-bottom: 0; }
+.apropos-texte strong { color: var(--text); }
+.apropos-lien {
+  display: inline-block; margin-top: 1.1rem;
+  color: var(--rouge); font-weight: 700; font-size: .95rem;
+}
+.apropos-lien:hover { text-decoration: underline; text-underline-offset: 3px; }
+/* Le bloc touche le pied de page : les deux bandes s'enchaînent sans blanc. */
+.page-home .apropos-bas + * , .apropos-bas ~ .site-footer { margin-top: 0; }
+body:has(.apropos-bas) .site-footer { margin-top: 0; }
+
+/* Bande des visages : portraits ronds vers les fiches. */
+.visages { padding-top: 2.25rem; margin-top: 1.75rem; border-top: 1px solid var(--line); }
+.visages-liste {
+  display: grid; grid-template-columns: repeat(10, minmax(0, 1fr));
+  gap: 1rem; list-style: none; margin: 1.1rem 0 0; padding: 0;
+}
+.visages-liste a { display: block; text-align: center; color: var(--text); }
+.visage-photo {
+  display: block; width: 100%; aspect-ratio: 1/1; overflow: hidden;
+  border-radius: 50%; background: var(--surface-2); border: 1px solid var(--line);
+}
+.visage-photo img {
+  width: 100%; height: 100%; object-fit: cover; object-position: 50% 28%;
+  transition: transform .35s ease;
+}
+.visages-liste a:hover .visage-photo { border-color: var(--rouge); }
+.visages-liste a:hover .visage-photo img { transform: scale(1.06); }
+.visage-nom {
+  display: block; margin-top: .5rem; font-size: .78rem; font-weight: 650; line-height: 1.25;
+}
+
+/* Troisième palier : les rangées thématiques, sur une seule ligne de cinq,
+   vignettes et titres plus petits que ceux des émissions. */
+.row--dense { padding-top: 2rem; }
+.row--dense .grid { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1.1rem; }
+.row--dense .card-title { font-size: .9rem; line-height: 1.3; }
+.row--dense .card-meta { font-size: .76rem; }
+.row--dense .row-title { font-size: 1.25rem; }
+
+/* En-tête incarné des rangées d'émission. Le titre pousse « Tout voir » vers
+   la droite : sans cela, l'espacement automatique séparait le portrait de
+   son titre d'un bout à l'autre de la page. */
+.row-head { align-items: center; gap: .8rem; }
+.row-title { margin-right: auto; }
+.row-avatar {
+  flex: 0 0 auto; width: 46px; height: 46px; overflow: hidden; border-radius: 50%;
+  border: 1px solid var(--line); background: var(--surface-2);
+}
+.row-avatar img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 28%; }
+.row-avatar:hover { border-color: var(--rouge); }
+.row-chapo { margin: -.55rem 0 1.1rem; font-size: .875rem; color: var(--muted); }
+.row-chapo a { color: var(--rouge); font-weight: 650; }
+.row-chapo a:hover { text-decoration: underline; }
+
 /* Le bandeau télévision se cale juste sous la une. */
-.tv-banner { margin-top: 1.25rem; }
+.tv-banner { margin-top: 1.5rem; }
+
+@media (max-width: 1100px) {
+  .visages-liste { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+  .visages-liste li:nth-child(n+7) { display: none; }
+  .row--dense .grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .row--dense .grid .card:nth-child(5) { display: none; }
+}
 @media (max-width: 900px) {
-  .hero { padding: 1.5rem 0 1.75rem; }
+  .une-zone { padding: 1.5rem 0 1.75rem; }
+  .une-plus { margin-top: 1.4rem; padding-top: 1rem; }
+  .une-plus-liste { grid-template-columns: 1fr; gap: .9rem; }
+  .une2 { grid-template-columns: 128px 1fr; gap: .8rem; }
+  .une2-title { font-size: .98rem; }
+  .apropos-bas { margin-top: 2.5rem; padding: 2.25rem 0 2.5rem; }
+  .apropos-bas h2 { font-size: 1.3rem; }
+  .apropos-texte { font-size: 1rem; }
+  .visages { padding-top: 1.75rem; }
+  .visages-liste { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .8rem; }
+  .visages-liste li:nth-child(n+5) { display: none; }
+  .visage-nom { font-size: .72rem; }
+  .row--dense .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .row-avatar { width: 36px; height: 36px; }
+  /* Cible tactile : le nom du présentateur faisait 16 px de haut. */
+  .row-chapo a { display: inline-block; padding-block: .25rem; }
 }
 
 @media (max-width: 900px) {
