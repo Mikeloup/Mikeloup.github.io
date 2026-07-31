@@ -34,6 +34,42 @@ site, en service payant.*
 
 ---
 
+## Récupérer le trafic perdu — v40 (31 juillet 2026)
+
+**L'adresse Wix la plus lue.** `/post/le-7-octobre-vécu-par-stephan-zeev-goldin` — 83 clics et
+5 846 impressions dans Search Console — n'avait aucune vidéo correspondante et restait en 404.
+Elle est désormais **imposée** dans `data/anciennes-adresses.json` vers `/invites/stephane-goldin/`,
+et cette fiche a reçu un texte : rôle, sujets traités, et la mention explicite que l'entretien
+d'origine n'est plus en ligne. Le visiteur qui cherche « stephan zeev goldin » trouve donc une
+page qui parle de lui et rassemble ses 53 vidéos, au lieu d'une erreur.
+Alias ajoutés : « Stephan Zeev Goldin » et « Stephane Goldin » → « Stéphane Goldin ».
+
+**Titres illisibles par Google.** `titreLisible()` dans `src/util.mjs` ramène en lettres
+ordinaires les titres écrits en faux gras mathématique (𝗚𝗮𝘇𝗮), en pleine chasse ou en lettres
+entourées — pour Google, « 𝗚𝗮𝘇𝗮 » et « Gaza » sont deux chaînes sans rapport. La normalisation
+NFKC n'est appliquée qu'aux titres concernés, et le build les journalise (avant → après).
+Vérification faite le 31 juillet sur les vidéos récentes : aucune n'était touchée. Le journal
+de la prochaine synchronisation dira ce qu'il en est sur l'ensemble du catalogue.
+
+**Mesure des transferts.** Le build publie `rapport-transferts.json` à la racine du site :
+nombre de transferts écrits et **liste des anciennes adresses encore sans correspondance**.
+Il devient possible de contrôler l'état des redirections depuis l'extérieur, sans ouvrir le
+journal des Actions GitHub (interdit aux robots). À relire à chaque passage.
+
+**Fausse alerte à ne pas refaire.** En vérifiant l'ancienne adresse, l'outil de lecture de
+pages a renvoyé le contenu Wix d'origine, avec `Wix.com Website Builder` dans le code : de
+quoi croire que l'ancien site était encore servi sur le domaine. Vérifications faites — DNS
+(quatre adresses GitHub Pages, rien d'autre), page rechargée avec un paramètre différent
+(404 franc) — **c'était un cache de l'outil, pas le site**. Toujours refaire le test avec un
+paramètre d'URL différent avant de conclure.
+
+**Google Actualités.** Le nécessaire technique existe déjà : `sitemap-news.xml` (48 dernières
+heures, format `news:`), fiche `Organization`, dates de publication, auteurs, pages
+éditoriales. Le reste est manuel et n'appartient qu'à Michael — inscription du site dans
+Publisher Center. Marche à suivre transmise le 31 juillet.
+
+---
+
 ## Du texte réel dans le site — v39 (31 juillet 2026)
 
 Michael : « as-tu d'autres idées pour ajouter du contenu texte dans la page d'accueil ». Le

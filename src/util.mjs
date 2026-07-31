@@ -297,3 +297,26 @@ export function smartTitle(title = '', properNouns = []) {
   // Majuscule initiale (uniquement si le titre commence par une lettre).
   return out.replace(/^\p{L}/u, (c) => c.toLocaleUpperCase('fr'));
 }
+
+/**
+ * Rend lisible un titre écrit avec des caractères décoratifs Unicode.
+ *
+ * Certains titres YouTube utilisent le « faux gras » mathématique
+ * (𝗟'𝗮𝗳𝗳𝗮𝗶𝗿𝗲 au lieu de L'affaire), des lettres pleine chasse ou entourées.
+ * L'œil humain lit sans peine ; les moteurs de recherche, non : pour eux
+ * « 𝗚𝗮𝘇𝗮 » et « Gaza » sont deux chaînes sans rapport, et le titre devient
+ * introuvable. La normalisation NFKC ramène ces variantes à leurs lettres
+ * ordinaires. On ne l'applique qu'aux titres concernés, pour ne pas toucher
+ * inutilement à tout le catalogue.
+ */
+const DECORATIF = /[\u{1D400}-\u{1D7FF}\u{FF01}-\u{FF5E}\u{2460}-\u{24FF}\u{1F110}-\u{1F189}\u{2100}-\u{214F}]/u;
+
+export function titreDecoratif(titre = '') {
+  return DECORATIF.test(String(titre));
+}
+
+export function titreLisible(titre = '') {
+  const s = String(titre);
+  if (!DECORATIF.test(s)) return s;
+  return s.normalize('NFKC').replace(/\s+/g, ' ').trim();
+}

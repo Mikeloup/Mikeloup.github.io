@@ -15,6 +15,7 @@ import * as yt from './src/youtube.mjs';
 import { markdownToHtml } from './src/markdown.mjs';
 import {
   slugify, escapeHtml, truncate, excerpt, paginate, cleanDescription, smartTitle,
+  titreLisible, titreDecoratif,
 } from './src/util.mjs';
 import * as R from './src/render.mjs';
 import { collecterPersonnes } from './src/personnes.mjs';
@@ -145,10 +146,20 @@ function normKey(str = '') {
 }
 
 function buildModel(config, data) {
-  const byId = new Map(data.videos.map((v) => [
-    v.id,
-    { ...v, description: cleanDescription(v.description, v.title), playlists: [] },
-  ]));
+  // Titres écrits en caractères décoratifs Unicode : illisibles pour Google.
+  // On les ramène à des lettres ordinaires et on garde la liste pour le journal.
+  const titresCorriges = [];
+  const byId = new Map(data.videos.map((v) => {
+    const titre = titreLisible(v.title);
+    if (titreDecoratif(v.title)) titresCorriges.push({ id: v.id, avant: v.title, apres: titre });
+    return [v.id, {
+      ...v, title: titre, description: cleanDescription(v.description, titre), playlists: [],
+    }];
+  }));
+  if (titresCorriges.length) {
+    log(`${titresCorriges.length} titre(s) en caractères décoratifs normalisé(s) pour Google :`);
+    for (const t of titresCorriges.slice(0, 10)) log(`   ${t.avant}  →  ${t.apres}`);
+  }
 
   // 1. Playlists exclues par la configuration (titre ou identifiant).
   const excluded = new Set((config.playlists?.exclude || []).map(normKey));
@@ -834,6 +845,19 @@ async function transfererAnciennesAdresses(config, categories, allVideos) {
   }
 
   log(`Anciennes adresses : ${urls.length} transfert(s) écrit(s) — ${Object.keys(carte.manuel || {}).length} imposé(s), ${versRubrique} vers une rubrique, ${versVideo} vers une vidéo.`);
+
+  // Rapport publié : il permet de contrôler l'état des transferts depuis
+  // l'extérieur, sans avoir à ouvrir le journal des Actions GitHub. Ce n'est
+  // pas une page : rien n'y renvoie, et le fichier n'apparaît pas au sitemap.
+  await writeFile('rapport-transferts.json', JSON.stringify({
+    genere: buildTime,
+    transferts: urls.length,
+    imposes: Object.keys(carte.manuel || {}).length,
+    versRubrique,
+    versVideo,
+    sansCorrespondance: sansSuite,
+  }, null, 1));
+
   if (sansSuite.length) {
     warn(`Anciennes adresses : ${sansSuite.length} sans correspondance certaine, laissées en 404 (le rattrapage du navigateur prend le relais) :`);
     sansSuite.forEach((u) => warn(`   ${u}`));
