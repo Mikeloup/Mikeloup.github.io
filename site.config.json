@@ -38,11 +38,12 @@
     "linkedin": "https://www.linkedin.com/company/tandem-tv/",
     "tiktok": ""
   },
-  "_comment_tv": "Diffusion télévisée. 'enabled' à false fait disparaître entièrement le bandeau et le bloc de pied de page. 'url' est facultatif (lien vers l'opérateur) ; 'schedule' aussi (ex. « tous les soirs à 20h »). Ce bloc est ce qui distingue Tandem TV d'une simple chaîne YouTube : il mérite d'être exact.",
+  "_comment_tv": "Diffusion télévisée. 'enabled' à false fait disparaître entièrement le bandeau et le bloc de pied de page. 'operatorLogo' affiche le logo de l'opérateur à la place de la pastille « TV » : déposez le fichier dans assets/ et indiquez /assets/nom-du-fichier.png (laisser vide si vous ne l'avez pas). 'url' est facultatif (lien vers l'opérateur) ; 'schedule' aussi (ex. « tous les soirs à 20h »). Ce bloc est ce qui distingue Tandem TV d'une simple chaîne YouTube : il mérite d'être exact.",
   "tv": {
     "enabled": true,
     "channelNumber": "14",
     "operator": "Annatel TV",
+    "operatorLogo": "",
     "url": "",
     "schedule": ""
   },

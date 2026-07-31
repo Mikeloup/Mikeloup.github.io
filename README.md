@@ -669,3 +669,43 @@ pas accentués de façon constante, et le repérage regroupait sur le nom exact.
 Le regroupement se fait maintenant sur une clé **sans accents ni casse**. Chaque
 orthographe rencontrée est comptée ; celle qui s'affiche est la plus fréquente,
 et à égalité celle qui porte des accents — « Jérôme » plutôt que « Jerome ».
+
+---
+
+## Direction visuelle « Magazine » (version 34)
+
+Choisie sur maquettes après comparaison de trois directions. L'intention : que le
+site se lise comme une **rédaction**, pas comme une plateforme vidéo — Tandem TV
+est déjà une plateforme vidéo sur YouTube ; ce qu'il lui manque, c'est d'exister
+comme média.
+
+**Ce qui change dans `assets/style.css`** (tout est piloté par les variables du
+bloc `:root`) :
+
+| Variable | Avant | Après |
+|---|---|---|
+| `--bg` | `#ffffff` | `#fbfaf7` (crème) |
+| `--radius` | `14px` | `3px` |
+| `--rouge` | — | `#c8102e` |
+| `--font-titre` | — | pile à empattements |
+
+**La police de titre n'est pas téléchargée.** Elle est prise sur l'appareil du
+visiteur — Iowan Old Style sur Mac et iPhone, Palatino Linotype sur Windows,
+Noto Serif sur Android, Georgia en dernier recours. Zéro octet à charger, zéro
+requête vers un serveur tiers, donc aucune conséquence sur le RGPD ni sur la
+vitesse. Si vous voulez un jour une police exclusive, il faudra en acheter la
+licence et l'héberger : c'est le seul cas où cela coûterait quelque chose.
+
+**Le filet rouge** (`.row-title::before`) devant chaque titre de rangée est la
+signature du thème. Le rouge est réservé à l'éditorial — surtitres, filets,
+bandeau télévision. Le bleu marine reste la couleur des actions.
+
+**Le bandeau télévision** est repris de la direction « chaîne d'information » :
+fond rouge, pleine largeur, formulation affirmative — « Tandem TV **est** une
+chaîne de télévision — canal 14 du bouquet Annatel TV ». Le mot « aussi » a été
+retiré volontairement : il rétrogradait la télévision au rang d'accessoire.
+
+**Logo de l'opérateur.** `tv.operatorLogo` remplace la pastille « TV » par le
+logo du bouquet. Déposez le fichier dans `assets/` et indiquez
+`/assets/annatel.png`. Tant que le champ est vide, la pastille reste affichée —
+mieux vaut ça qu'une image cassée.

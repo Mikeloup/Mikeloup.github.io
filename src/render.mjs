@@ -159,12 +159,16 @@ function tvBanner(config) {
   const lien = tv.url
     ? ` <a href="${escapeHtml(tv.url)}" target="_blank" rel="noopener">En savoir plus</a>`
     : '';
+  // Le logo de l'opérateur, s'il a été fourni, remplace la pastille « TV » :
+  // une marque connue vaut mieux qu'un mot générique.
+  const marque = tv.operatorLogo
+    ? `<img class="tv-logo" src="${escapeHtml(tv.operatorLogo)}" alt="${escapeHtml(tv.operator || '')}" height="26">`
+    : '<span class="tv-badge" aria-hidden="true">TV</span>';
   return `
 <aside class="tv-banner">
-  <span class="tv-badge" aria-hidden="true">TV</span>
+  ${marque}
   <p>
-    <strong>Tandem TV est une chaîne de télévision.</strong>
-    Retrouvez-nous sur le <strong>canal ${escapeHtml(tv.channelNumber)}</strong>${tv.operator ? ` du bouquet <strong>${escapeHtml(tv.operator)}</strong>` : ''}${tv.schedule ? `, ${escapeHtml(tv.schedule)}` : ''}.${lien}
+    <strong>Tandem TV est une chaîne de télévision</strong> — <strong>canal ${escapeHtml(tv.channelNumber)}</strong>${tv.operator ? ` du bouquet <strong>${escapeHtml(tv.operator)}</strong>` : ''}${tv.schedule ? `, ${escapeHtml(tv.schedule)}` : ''}.${lien}
   </p>
 </aside>`;
 }
@@ -422,7 +426,9 @@ ${content}
       </a>
       <p class="muted">${escapeHtml(config.tagline)}</p>
       <p class="muted small">Toutes les vidéos sont publiées sur <a href="${escapeHtml(config.channelUrl)}" target="_blank" rel="noopener">la chaîne YouTube Tandem TV</a>.</p>
-      ${config.tv?.enabled && config.tv.channelNumber ? `<p class="muted small tv-footer"><span class="tv-badge" aria-hidden="true">TV</span> Canal ${escapeHtml(config.tv.channelNumber)}${config.tv.operator ? ` du bouquet ${escapeHtml(config.tv.operator)}` : ''}</p>` : ''}
+      ${config.tv?.enabled && config.tv.channelNumber ? `<p class="muted small tv-footer">${config.tv.operatorLogo
+        ? `<img class="tv-logo" src="${escapeHtml(config.tv.operatorLogo)}" alt="${escapeHtml(config.tv.operator || '')}" height="20">`
+        : '<span class="tv-badge" aria-hidden="true">TV</span>'} Chaîne de télévision — canal ${escapeHtml(config.tv.channelNumber)}${config.tv.operator ? ` du bouquet ${escapeHtml(config.tv.operator)}` : ''}</p>` : ''}
       ${socialLinks.length ? `<ul class="social" aria-label="Tandem TV sur les réseaux sociaux">
         ${socialLinks.map(([href, label, key]) => `<li><a href="${escapeHtml(href)}" target="_blank" rel="noopener">${socialIcon(key)}<span>${escapeHtml(label)}</span></a></li>`).join('')}
       </ul>` : ''}

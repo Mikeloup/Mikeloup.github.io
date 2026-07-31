@@ -10,21 +10,29 @@
   --accent:     #2b5fd9;  /* bleu d'accentuation, lisible sur blanc */
   --accent-dk:  #1d47ab;
   --sky:        #68a0f8;  /* bleu ciel du logo */
+  --rouge:      #c8102e;  /* filet éditorial : rubriques, à la une, télévision */
+  --rouge-dk:   #a10c25;
 
-  --bg:        #ffffff;
-  --bg-soft:   #f5f7fc;
+  --bg:        #fbfaf7;  /* crème : le blanc pur faisait « plateforme », pas « rédaction » */
+  --bg-soft:   #f4f1ea;
   --surface:   #ffffff;
-  --surface-2: #eef2fb;
-  --line:      #e2e7f2;
+  --surface-2: #f2efe7;
+  --line:      #e4dfd3;
   --text:      #15123a;
-  --muted:     #5d6480;
+  --muted:     #6a6455;
 
-  --radius:    14px;
-  --radius-sm: 10px;
+  --radius:    3px;      /* angles presque droits : tenue de journal */
+  --radius-sm: 2px;
   --wrap:      1240px;
 
-  --font: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+  --font: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
           "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  /* Police de titre à empattements, prise sur l'appareil du visiteur : aucune
+     requête vers un serveur tiers, aucun fichier à charger, et une tenue
+     éditoriale immédiate. Ordre choisi pour que macOS et iOS reçoivent Iowan,
+     Windows Palatino, Android Noto Serif. */
+  --font-titre: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua",
+          "Noto Serif", Georgia, "Times New Roman", serif;
   --shadow:    0 1px 2px rgb(21 18 58 / 6%), 0 8px 24px rgb(21 18 58 / 8%);
   --shadow-lg: 0 12px 40px rgb(21 18 58 / 14%);
 }
@@ -48,7 +56,11 @@ body {
 
 img { max-width: 100%; height: auto; display: block; }
 a { color: inherit; text-decoration: none; }
-h1, h2, h3, h4 { line-height: 1.18; letter-spacing: -0.022em; margin: 0 0 .5em; font-weight: 750; color: var(--brand); }
+h1, h2, h3, h4 {
+  font-family: var(--font-titre);
+  line-height: 1.16; letter-spacing: -0.008em; margin: 0 0 .5em;
+  font-weight: 700; color: var(--brand);
+}
 h1 { font-size: clamp(1.75rem, 1.2rem + 2.2vw, 2.85rem); }
 h2 { font-size: clamp(1.25rem, 1rem + 1vw, 1.6rem); }
 p { margin: 0 0 1em; }
@@ -706,4 +718,69 @@ body.share-natif .share-label { display: none; }
 @media (max-width: 900px) {
   /* Dans le menu du téléphone, « Suivre la chaîne » reste un bouton. */
   .nav a.nav-follow { margin: .6rem 0 .3rem; justify-content: center; border-bottom: 0; }
+}
+
+/* =============================================================================
+   Direction « Magazine » (v34)
+   Titres à empattements, fond crème, filet rouge éditorial. Le site doit se
+   lire comme une rédaction, pas comme une plateforme vidéo.
+   ========================================================================== */
+
+/* Les titres de cartes et de rangées suivent la police de titre. */
+.card-title, .hero-title, .row-title, .chapters-title, .personne-nom,
+.newsletter-title, .react-title { font-family: var(--font-titre); }
+.card-title { font-weight: 700; letter-spacing: -.005em; line-height: 1.26; }
+.personne-nom { font-weight: 700; }
+
+/* Filet rouge devant les titres de rangée : la marque éditoriale du site. */
+.row-title { position: relative; padding-left: .85rem; }
+.row-title::before {
+  content: ""; position: absolute; left: 0; top: .12em; bottom: .12em;
+  width: 4px; background: var(--rouge); border-radius: 1px;
+}
+.row-title a { color: inherit; }
+
+/* Les surtitres passent au rouge : « À la une », « Émission », « Invité »… */
+.kicker { color: var(--rouge); }
+.kicker.link, .kicker a { color: var(--rouge); }
+.card-cat { color: var(--muted); text-transform: uppercase; letter-spacing: .06em; font-size: .7rem; }
+
+/* Vignettes : angles droits, comme une photo de presse. */
+.card-thumb, .hero-media, .personne-photo, .personne-portrait,
+.card-thumb img, .hero-media img { border-radius: var(--radius-sm); }
+
+/* Le bouton d'action reste bleu marine ; le rouge est réservé à l'éditorial. */
+.btn-primary { background: var(--brand); }
+.btn-primary:hover { background: var(--brand-soft); }
+
+/* Un filet fin sous l'en-tête, à la place de l'ombre. */
+.site-header { border-bottom: 1px solid var(--line); box-shadow: none; }
+
+/* Bandeau télévision, repris de la direction « chaîne d'information ». */
+.tv-banner {
+  gap: .9rem; padding: .75rem 1.15rem; margin-top: 1.5rem;
+  background: var(--rouge); color: #fff; border-radius: var(--radius-sm);
+}
+.tv-banner p { font-size: .95rem; }
+.tv-banner strong { color: #fff; }
+.tv-banner a { color: #fff; text-decoration: underline; }
+.tv-badge {
+  background: #fff; color: var(--rouge);
+  font-size: .7rem; letter-spacing: .09em; padding: .22rem .55rem;
+}
+.tv-logo { flex: 0 0 auto; height: 26px; width: auto; display: block; border-radius: 2px; background: #fff; padding: 2px 5px; }
+.tv-footer .tv-logo { height: 20px; }
+@media (max-width: 640px) {
+  .tv-banner { flex-wrap: wrap; gap: .6rem; }
+}
+
+@media (max-width: 900px) {
+  /* Le filet rouge décale les titres de rangée : on rétablit la cible tactile. */
+  .row-title a { padding-block: .3rem; }
+  .card-cat { min-height: 26px; }
+}
+
+@media (max-width: 900px) {
+  /* Les titres de vignette sur une seule ligne restaient sous 24 px. */
+  .card-title a { display: inline-block; padding-block: .2rem; }
 }
