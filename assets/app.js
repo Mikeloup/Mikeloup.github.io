@@ -182,6 +182,18 @@
       if ((e.key === 'Enter' || e.key === ' ') && !ytPlayer) { e.preventDefault(); start(urlStart); }
     });
 
+    // Transcription : dépliage. Le texte est toujours entièrement présent dans
+    // la page — on ne masque que sa hauteur, pour ne pas noyer le reste.
+    var plus = document.querySelector('[data-deplier]');
+    var corps = document.querySelector('.transcription-corps');
+    if (plus && corps) {
+      plus.addEventListener('click', function () {
+        var ouvert = corps.classList.toggle('ouvert');
+        plus.textContent = ouvert ? 'Replier la transcription' : 'Afficher toute la transcription';
+        if (!ouvert) corps.scrollIntoView({ block: 'start' });
+      });
+    }
+
     // Liens du sommaire : lecture sur place, au chapitre choisi.
     document.addEventListener('click', function (e) {
       var link = e.target.closest ? e.target.closest('[data-seek]') : null;

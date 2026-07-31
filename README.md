@@ -179,6 +179,19 @@ présentation affiché en haut de l'accueil. C'est le seul texte rédigé que Go
 cette page — mieux vaut le garder court, exact et à jour. Le supprimer fait disparaître le
 bloc, sans rien casser.
 
+### Publier la transcription d'une vidéo
+Déposez un fichier `.srt`, `.vtt` ou `.txt` dans `data/transcriptions/`. Nommez-le avec
+l'identifiant YouTube de la vidéo (les 11 caractères après `watch?v=`) **ou tout simplement
+avec son titre** : le site fait le rapprochement tout seul. La transcription apparaît alors en
+bas de la page vidéo, repliée, avec des horodatages cliquables si le fichier en contient.
+
+Une vidéo sans fichier n'affiche rien. Les fautes récurrentes de la reconnaissance vocale se
+corrigent une fois pour toutes dans `data/lexique-transcription.json`.
+
+Pour produire ces fichiers sur votre Mac, sans rien payer : double-cliquez sur
+`tools/transcrire.command`. Le journal du build signale les fichiers qui ne correspondent à
+aucune vidéo.
+
 ### Présenter les émissions et les thèmes
 Le fichier `data/rubriques.json` contient une à deux phrases par rubrique. Elles s'affichent
 sous le titre de la rangée sur la page d'accueil, en tête de la page de la rubrique, et dans

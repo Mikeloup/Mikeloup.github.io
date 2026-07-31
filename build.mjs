@@ -19,6 +19,7 @@ import {
 } from './src/util.mjs';
 import * as R from './src/render.mjs';
 import { collecterPersonnes } from './src/personnes.mjs';
+import { lireTranscription } from './src/transcriptions.mjs';
 
 const ROOT = path.dirname(fileURLToPath(import.meta.url));
 const DIST = path.join(ROOT, 'dist');
@@ -515,12 +516,50 @@ async function main() {
     }
   }
 
+  // Transcriptions déposées à la main dans data/transcriptions/<id>.<srt|vtt|txt>.
+  // Elles ne sont ni produites ni devinées ici : sans fichier, pas de bloc.
+  const lexique = await readJson(path.join(ROOT, 'data', 'lexique-transcription.json'), {});
+  const transcriptions = new Map();
+  const sansVideo = [];
+  try {
+    const dossier = path.join(ROOT, 'data', 'transcriptions');
+    for (const nom of await fs.readdir(dossier)) {
+      const ext = path.extname(nom).toLowerCase();
+      if (!['.srt', '.vtt', '.txt'].includes(ext)) continue;
+      const base = path.basename(nom, ext);
+      // Le fichier peut être nommé par l'identifiant de la vidéo, ou tout
+      // simplement par son titre : les outils de transcription reprennent le
+      // titre, et renommer mille fichiers à la main n'a pas de sens.
+      const id = allVideos.some((v) => v.id === base)
+        ? base
+        : (allVideos.find((v) => normKey(v.title) === normKey(base))
+          || (normKey(base).length > 20
+            ? allVideos.find((v) => normKey(v.title).startsWith(normKey(base)))
+            : null))?.id;
+      if (!id) { sansVideo.push(nom); continue; }
+      const t = lireTranscription(await readText(path.join(dossier, nom)), {
+        corrections: lexique.corrections || {}, extension: ext,
+      });
+      if (t) transcriptions.set(id, t);
+    }
+  } catch { /* dossier absent : rien à faire */ }
+  if (sansVideo.length) {
+    warn(`${sansVideo.length} fichier(s) de transcription sans vidéo correspondante — renommez-les avec l'identifiant YouTube ou le titre exact :`);
+    sansVideo.forEach((n) => warn(`   ${n}`));
+  }
+  if (transcriptions.size) {
+    const mots = [...transcriptions.values()].reduce((n, t) => n + t.mots, 0);
+    log(`${transcriptions.size} transcription(s) chargée(s), ${mots.toLocaleString('fr-FR')} mots au total.`);
+  }
+
   // Une page par vidéo
   for (const video of allVideos) {
     const cat = video.playlists?.[0];
     const pool = cat ? categories.find((c) => c.slug === cat.slug).videos : allVideos;
     const related = pool.filter((v) => v.id !== video.id).slice(0, 8);
-    await writePage(`/video/${video.id}/`, R.videoPage({ ...ctx, video, related }));
+    await writePage(`/video/${video.id}/`, R.videoPage({
+      ...ctx, video, related, transcription: transcriptions.get(video.id) || null,
+    }));
     urls.push({ loc: `/video/${video.id}/`, freq: 'monthly', priority: '0.7', lastmod: video.publishedAt });
   }
 

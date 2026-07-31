@@ -991,3 +991,37 @@ body:has(.apropos-bas) .site-footer { margin-top: 0; }
 @media (max-width: 640px) {
   .rubrique-note { padding: 1.1rem 1.15rem; }
 }
+
+/* --- Transcription -------------------------------------------------------- */
+.transcription {
+  margin: 2rem 0 0; padding: 1.5rem 1.6rem 1.25rem;
+  background: #fff; border: 1px solid var(--line);
+  border-left: 3px solid var(--brand); border-radius: var(--radius-sm);
+}
+.transcription-tete h2 { font-size: 1.15rem; margin: 0 0 .3rem; }
+.transcription-tete p { margin: 0 0 1rem; }
+.transcription-corps { font-size: 1rem; line-height: 1.75; color: #33302a; }
+.transcription-corps p { margin: 0 0 1rem; }
+.transcription-t {
+  color: var(--accent); font-weight: 650; font-size: .85rem;
+  font-variant-numeric: tabular-nums; white-space: nowrap;
+  padding: .1rem .3rem; margin-right: .2rem;
+  background: var(--surface-2); border-radius: var(--radius-sm);
+}
+.transcription-t:hover { background: var(--accent); color: #fff; }
+/* Replié par défaut : le texte reste entièrement dans la page — donc lisible
+   par Google — mais ne noie pas le reste sous trois mille mots. */
+.transcription-corps[data-repliable] {
+  max-height: 22rem; overflow: hidden; position: relative;
+}
+.transcription-corps[data-repliable]::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 5rem;
+  background: linear-gradient(rgb(255 255 255 / 0%), #fff);
+}
+.transcription-corps.ouvert { max-height: none; }
+.transcription-corps.ouvert::after { display: none; }
+.transcription-plus { margin-top: .35rem; }
+@media (max-width: 640px) {
+  .transcription { padding: 1.15rem 1.15rem 1rem; }
+  .transcription-corps { font-size: .97rem; }
+}

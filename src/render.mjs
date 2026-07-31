@@ -7,6 +7,7 @@ import {
   escapeHtml, formatDate, formatDateTime, formatDuration, formatCount, formatNumber, truncate,
   excerpt, descriptionToHtml, extractChapters, removeChapterLines, slugify as slugifyNom,
 } from './util.mjs';
+import { mmss } from './transcriptions.mjs';
 
 const YT_THUMB = (id) => `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
 
@@ -805,6 +806,7 @@ export function categoryPage({ config, categories, nav, category, videos, page, 
 export function videoPage({
   config, categories, nav, video, related, buildTime,
   personnesParVideo = new Map(), presentateurParRubrique = new Map(),
+  transcription = null,
 }) {
   const cat = video.playlists?.[0];
   // L'entrée rangée dans la vidéo ne porte que le titre et l'identifiant ; la
@@ -894,6 +896,20 @@ export function videoPage({
     ${video.playlists?.length > 1 ? `<p class="tags">Aussi dans : ${video.playlists.slice(1).map((p) => `<a class="chip small" href="/emissions/${p.slug}/">${escapeHtml(p.title)}</a>`).join(' ')}</p>` : ''}
   </article>
 
+  ${transcription ? `
+  <section class="transcription" id="transcription">
+    <div class="transcription-tete">
+      <h2>Transcription de l'émission</h2>
+      <p class="muted small">Transcription automatique de la bande son, non relue mot à mot.
+        ${transcription.mots.toLocaleString('fr-FR')} mots${transcription.blocs[0]?.debut !== null ? ' — cliquez sur un horodatage pour lancer la vidéo à cet endroit' : ''}.</p>
+    </div>
+    <div class="transcription-corps" data-repliable>
+      ${transcription.blocs.map((b) => `<p>${b.debut !== null
+        ? `<a class="transcription-t" href="https://www.youtube.com/watch?v=${video.id}&amp;t=${Math.floor(b.debut)}s" data-seek="${Math.floor(b.debut)}">${escapeHtml(mmss(b.debut))}</a> ` : ''}${escapeHtml(b.texte)}</p>`).join('\n      ')}
+    </div>
+    <button class="btn transcription-plus" type="button" data-deplier>Afficher toute la transcription</button>
+  </section>` : ''}
+
   ${rubrique?.description ? `
   <aside class="rubrique-note">
     <h2>À propos de « ${escapeHtml(cat.title)} »</h2>
@@ -937,6 +953,9 @@ export function videoPage({
       embedUrl: `https://www.youtube.com/embed/${video.id}`,
       url: `${config.siteUrl}/video/${video.id}/`,
       publisher: { '@type': 'Organization', name: config.siteName, url: config.siteUrl },
+      // Schema.org prévoit un champ pour le texte intégral d'une vidéo : c'est
+      // ce qui permet à Google de savoir que la page contient la parole même.
+      ...(transcription ? { transcript: transcription.blocs.map((b) => b.texte).join('\n\n') } : {}),
       ...(presentateur ? {
         author: {
           '@type': 'Person',

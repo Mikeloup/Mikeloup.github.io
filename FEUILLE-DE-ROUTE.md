@@ -34,6 +34,43 @@ site, en service payant.*
 
 ---
 
+## Transcriptions : la moitié qui dépend de moi — v47 (31 juillet 2026)
+
+Michael : « occupe-toi des transcriptions ». Vérifié d'abord ce que je peux faire moi-même :
+**rien du calcul**. Aucun paquet Whisper n'est disponible dans mon environnement
+(`openai-whisper`, `faster-whisper`, `ctranslate2`, `torch`, `transformers`, `huggingface_hub`
+— tous absents de l'index), et l'accès à GitHub y est refusé. Le calcul se fera sur son Mac,
+pas ici. **Ne pas reproposer de transcrire côté serveur.**
+
+Construit en revanche tout ce qui ne dépend pas du calcul :
+
+- **`src/transcriptions.mjs`** : lecture de `.srt`, `.vtt` et `.txt`. Les sous-titres sont
+  regroupés en paragraphes lisibles (Whisper découpe par respiration, une ligne toutes les
+  trois secondes — publié tel quel, c'est illisible). Un paragraphe se ferme sur une fin de
+  phrase, après 55 mots au moins.
+- **Rapprochement fichier ↔ vidéo par l'identifiant *ou par le titre*.** Les outils de
+  transcription nomment leurs sorties d'après le titre ; renommer mille fichiers à la main
+  n'avait pas de sens.
+- **Affichage** en bas de page vidéo : replié à 22 rem avec un dégradé, bouton pour déplier.
+  Le texte reste **entièrement dans le HTML** — masquer la hauteur, jamais le contenu, sinon
+  c'est du cloaking. Horodatages cliquables qui pilotent le lecteur (`data-seek`, mécanique
+  déjà en place pour le sommaire).
+- **`transcript` dans le `VideoObject`** : le champ prévu par schema.org pour le texte intégral.
+- **`data/lexique-transcription.json`** : un fichier, deux usages. `amorce` = les mots soufflés
+  à Whisper avant transcription (limité à ~220 mots, donc uniquement ceux qu'il écorche :
+  Tsahal, Hezbollah, Houthis, les chroniqueurs — pas « Jérusalem », qu'il connaît).
+  `corrections` = les réparations après coup, amorcées avec les fautes réellement observées.
+- **`tools/transcrire.command`** : script macOS double-cliquable. Homebrew → `whisper-cpp` +
+  `ffmpeg` → modèle `large-v3` → boucle sur un dossier, reprend où il s'était arrêté, sort des
+  `.srt`. Gratuit, hors ligne, rien n'est envoyé sur Internet.
+
+**Reste à trancher avec Michael** : d'où vient le son. Ses masters, ou MacWhisper Pro (59 €
+une fois) qui transcrit directement depuis une adresse YouTube et évite tout téléchargement.
+La version gratuite de MacWhisper ne sert à rien ici : modèles Tiny/Base seulement, pas de
+traitement par lot, pas d'export SRT.
+
+---
+
 ## Le vrai coupable : les lignes de chapitre — v46 (31 juillet 2026)
 
 v45 déposée, publication à 20:30 — **les quatre lignes étaient toujours là**. Mon code
