@@ -34,6 +34,22 @@ site, en service payant.*
 
 ---
 
+## Habillage — v35 (31 juillet 2026)
+
+- **Bandeau télévision** : l'aplat rouge pleine largeur criait « BREAKING NEWS » alors qu'il
+  annonce une information permanente. Remplacé par un bandeau crème à filet rouge à gauche
+  (le même filet que les titres de rangée), rouge réservé au seul « canal 14 ».
+- **La une sur fond marine**, reprise de la direction B « chaîne d'information » : le fond
+  déborde jusqu'aux bords de l'écran (`box-shadow: 0 0 0 100vmax` + `clip-path: inset(0 -100vmax)`,
+  et non `100vw`, qui provoquerait une barre de défilement horizontale). Titre, chapeau et
+  méta en blanc ; bouton « Regarder » inversé en blanc sur marine ; pastille de la une en rouge.
+- **Logo Annatel** : le fichier envoyé le 31 juillet n'est jamais arrivé dans l'espace de
+  travail — `tv.operatorLogo` reste vide et la pastille « TV » s'affiche à la place. Dès que
+  le fichier est déposé dans `assets/annatel.png`, renseigner `/assets/annatel.png` dans
+  `site.config.json` : le bandeau et le pied de page le prennent automatiquement.
+
+---
+
 ## En attente d'informations de Michael
 
 | Sujet | Ce qu'il faut |

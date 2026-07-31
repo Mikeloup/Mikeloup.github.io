@@ -756,22 +756,71 @@ body.share-natif .share-label { display: none; }
 /* Un filet fin sous l'en-tête, à la place de l'ombre. */
 .site-header { border-bottom: 1px solid var(--line); box-shadow: none; }
 
-/* Bandeau télévision, repris de la direction « chaîne d'information ». */
+/* Bandeau télévision.
+   Volontairement sobre : un aplat rouge pleine largeur criait « BREAKING NEWS »
+   alors qu'il s'agit d'une information permanente, pas d'une alerte. On garde
+   le filet rouge du reste de la maquette et on réserve la couleur au canal. */
 .tv-banner {
-  gap: .9rem; padding: .75rem 1.15rem; margin-top: 1.5rem;
-  background: var(--rouge); color: #fff; border-radius: var(--radius-sm);
+  gap: .85rem; padding: .8rem 1.1rem; margin-top: 1.5rem;
+  background: var(--surface-2); color: var(--text);
+  border: 1px solid var(--line); border-left: 3px solid var(--rouge);
+  border-radius: var(--radius-sm);
 }
-.tv-banner p { font-size: .95rem; }
-.tv-banner strong { color: #fff; }
-.tv-banner a { color: #fff; text-decoration: underline; }
+.tv-banner p { font-size: .95rem; color: var(--text); }
+.tv-banner strong { color: var(--text); font-weight: 650; }
+.tv-banner .tv-canal { color: var(--rouge); font-weight: 700; white-space: nowrap; }
+.tv-banner a { color: var(--rouge); font-weight: 650; text-decoration: underline; }
 .tv-badge {
-  background: #fff; color: var(--rouge);
-  font-size: .7rem; letter-spacing: .09em; padding: .22rem .55rem;
+  background: transparent; color: var(--rouge); border: 1px solid var(--rouge);
+  min-width: 0; font-size: .68rem; letter-spacing: .1em; padding: .2rem .5rem;
+  border-radius: var(--radius-sm);
 }
-.tv-logo { flex: 0 0 auto; height: 26px; width: auto; display: block; border-radius: 2px; background: #fff; padding: 2px 5px; }
-.tv-footer .tv-logo { height: 20px; }
+.tv-logo { flex: 0 0 auto; height: 24px; width: auto; display: block; }
+.tv-footer .tv-logo { height: 18px; }
+.tv-footer .tv-canal { color: var(--rouge); font-weight: 650; }
 @media (max-width: 640px) {
-  .tv-banner { flex-wrap: wrap; gap: .6rem; }
+  /* La marque reste à gauche et le texte coule à côté : empilé, le bandeau
+     prenait trois fois la hauteur nécessaire. */
+  .tv-banner { align-items: flex-start; gap: .65rem; padding: .7rem .9rem; }
+  .tv-banner p { font-size: .88rem; }
+  .tv-badge { margin-top: .1rem; }
+}
+
+/* --- La une sur fond sombre, reprise de la direction « chaîne d'information ».
+   Le bloc reste dans la colonne de texte, mais son fond déborde jusqu'aux
+   bords de l'écran : c'est la barre de shadow étalée sur 100vmax, puis
+   découpée verticalement, ce qui évite la barre de défilement horizontale
+   qu'entraînerait une largeur de 100vw. ---------------------------------- */
+.hero {
+  position: relative;
+  background: var(--brand); color: #fff;
+  padding: 2.25rem 0 2.5rem;
+  margin-top: 0;
+  box-shadow: 0 0 0 100vmax var(--brand);
+  clip-path: inset(0 -100vmax);
+  border-top: 1px solid rgb(255 255 255 / 12%);
+}
+/* Le séparateur reste collé au nom de l'émission quand la ligne se coupe. */
+.hero .kicker-cat { white-space: nowrap; }
+.hero-title a { color: #fff; }
+.hero-title a:hover { color: #fff; text-decoration: underline; text-underline-offset: 4px; }
+.hero .kicker { color: #fff; }
+.hero .kicker a { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
+.hero .live-dot { background: var(--rouge); box-shadow: 0 0 0 0 rgb(200 16 46 / 60%); }
+@keyframes pulse { 70% { box-shadow: 0 0 0 9px rgb(200 16 46 / 0%); } 100% { box-shadow: 0 0 0 0 rgb(200 16 46 / 0%); } }
+.hero-desc { color: rgb(255 255 255 / 78%); }
+.hero-meta { color: rgb(255 255 255 / 65%); }
+/* Sur ce fond, le bouton marine disparaîtrait : on l'inverse. */
+.hero .btn-primary {
+  background: #fff; border-color: #fff; color: var(--brand);
+  box-shadow: none; font-weight: 700;
+}
+.hero .btn-primary:hover { background: var(--bg-soft); border-color: var(--bg-soft); color: var(--brand); }
+.hero-media { box-shadow: 0 18px 40px rgb(0 0 0 / 35%); }
+/* Le bandeau télévision se cale juste sous la une. */
+.tv-banner { margin-top: 1.25rem; }
+@media (max-width: 900px) {
+  .hero { padding: 1.5rem 0 1.75rem; }
 }
 
 @media (max-width: 900px) {
