@@ -34,6 +34,39 @@ site, en service payant.*
 
 ---
 
+## Ce que Google voit encore — v41 (31 juillet 2026)
+
+Michael : « non on y est pas » (Google Actualités). En cherchant pourquoi, découverte plus
+importante que la question posée : **l'index de Google contient encore l'ancien site Wix**.
+Les résultats qui remontent pour tandemtv.net sont `ISRAEL | Tandem TV la chaine de
+télévision`, `LES EMISSIONS DE TELEVISION`, `QUI SOMMES-NOUS`, `NOS INVITES`, `/tandem2-0` —
+titres et adresses Wix. Aucune page du nouveau site (`/video/`, `/invites/`, `/emissions/`)
+n'apparaît. Cela explique à la fois l'absence de Google Actualités et la faiblesse du trafic.
+
+Cinq adresses Wix qui **ranquent encore** n'étaient pas dans notre liste de transferts —
+elles renvoyaient une erreur :
+
+| Ancienne adresse | Destination |
+|---|---|
+| `/tandem2-0` | `/emissions/` |
+| `/les-emissions-de-television` | `/emissions/` |
+| `/les-emissions-de-television/guerre-israel-hamas` | `/emissions/gaza/` |
+| `/nos-invtes` (faute d'origine sur Wix) | `/invites/` |
+| `/nos-invites` | `/invites/` |
+
+**Limite structurelle à garder en tête** : GitHub Pages ne sait pas émettre de redirection
+301. Nos pages de transfert (canonique + rafraîchissement + `location.replace`) fonctionnent
+pour les visiteurs, mais Google les traite plus lentement et moins fermement qu'un vrai 301.
+La réindexation prendra des semaines. Si elle traîne, la seule solution radicale serait de
+placer le site derrière un service capable d'émettre des 301 (Cloudflare Pages, Netlify) —
+tous deux gratuits, mais cela change l'hébergement.
+
+**Google Actualités** : plus rien à soumettre depuis mars 2025, l'admission est automatique.
+Tant que Google sert l'ancien site, la question ne se pose même pas. À reprendre une fois la
+réindexation faite.
+
+---
+
 ## Récupérer le trafic perdu — v40 (31 juillet 2026)
 
 **L'adresse Wix la plus lue.** `/post/le-7-octobre-vécu-par-stephan-zeev-goldin` — 83 clics et
