@@ -34,6 +34,32 @@ site, en service payant.*
 
 ---
 
+## Nettoyage des appels à l'action — v44 (31 juillet 2026)
+
+Repéré sur la page en ligne de l'édito du 30 juillet : la description se terminait par
+
+> 👉 Abonnez-vous à Tandem TV pour retrouver nos analyses…
+> 👍 Pensez à aimer la vidéo, à laisser votre analyse en commentaire et à partager cette émission…
+
+**Pourquoi elles passaient.** `cleanDescription()` retire les lignes promotionnelles *par la
+fin*, et s'arrête à la première ligne non reconnue. La toute dernière (« Pensez à aimer la
+vidéo… ») ne correspondait à aucun motif : la boucle s'arrêtait aussitôt, et la ligne
+« Abonnez-vous », pourtant reconnue, survivait juste au-dessus. Une seule formule manquante
+suffisait à laisser passer tout le bloc.
+
+Sept motifs ajoutés (pensez à aimer/liker, aimer la vidéo, laissez un commentaire, partagez
+cette vidéo, activez la cloche, n'hésitez pas à…, pouce bleu). Vérifié sans faux positif sur
+des phrases éditoriales voisines : « commentaire de texte biblique », « le partage des terres
+en Judée-Samarie », « la vidéo surveillance » sont conservées.
+
+**Leçon de méthode, à retenir.** Mon outil de lecture de pages m'a servi pendant vingt minutes
+une copie en cache datant de 17:11, ce qui m'a fait croire que v43 n'était pas publiée alors
+qu'elle l'était. Le paramètre d'URL ne suffit pas toujours à contourner ce cache.
+**En cas de doute sur une mise en ligne : demander une capture au navigateur de Michael,
+c'est le seul juge fiable.**
+
+---
+
 ## Transcriptions : verdict mesuré, et ce qu'on fait à la place — v43 (31 juillet 2026)
 
 **Test réel, pas une opinion.** Michael a téléchargé la transcription automatique YouTube

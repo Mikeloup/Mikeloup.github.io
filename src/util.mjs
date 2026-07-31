@@ -213,6 +213,15 @@ const PROMO = [
   /#\w+\s*#\w+/,
   /^\s*[-—=*_•▬►👉🔔📲📱🔴💙]+\s*$/,
   /copyright|tous droits réservés/i,
+  // Formules d'appel à l'action de fin de description YouTube. Sans elles, la
+  // dernière ligne n'étant pas reconnue, tout le bloc promotionnel survivait.
+  /pensez à (aimer|liker|vous abonner|partager|commenter)/i,
+  /aimer (la|cette) (vidéo|émission)/i,
+  /(laissez|laisser) (un|votre) (commentaire|avis|analyse)/i,
+  /partage(z|r) (cette|la|notre) (vidéo|émission|analyse)/i,
+  /(activez|cliquez sur) la cloche/i,
+  /n'hésitez pas à (vous abonner|liker|partager|commenter)/i,
+  /mettre un pouce|pouce bleu/i,
 ];
 
 /** Une ligne qui n'est faite que de mots-dièse n'apporte rien à lire. */
