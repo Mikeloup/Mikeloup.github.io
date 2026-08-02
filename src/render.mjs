@@ -743,6 +743,9 @@ export function grillePage({ config, categories, nav, grille, buildTime }) {
     const titre = p.videoId
       ? `<a href="/video/${p.videoId}/">${escapeHtml(p.titre)}</a>`
       : escapeHtml(p.titre);
+    // Un titre vide n'est pas une anomalie : certaines émissions n'ont pas de
+    // sujet du jour dans l'export. La ligne se réduit alors à son nom.
+    const corpsTitre = p.titre ? `<span class="g-titre">${titre}</span>` : '';
     const emission = p.rubrique
       ? `<a href="/emissions/${p.rubrique}/">${escapeHtml(p.emission)}</a>`
       : escapeHtml(p.emission);
@@ -750,7 +753,7 @@ export function grillePage({ config, categories, nav, grille, buildTime }) {
       <span class="g-heure${p.fixe ? '' : ' g-approx'}">${escapeHtml(p.heure)}</span>
       <span class="g-corps">
         <span class="g-emission">${emission}</span>
-        <span class="g-titre">${titre}</span>
+        ${corpsTitre}
       </span>
       ${p.videoId ? '<span class="g-replay">Replay</span>' : ''}
     </li>`;

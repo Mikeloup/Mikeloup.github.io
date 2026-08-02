@@ -460,6 +460,7 @@ async function main() {
       index: indexerVideos(allVideos),
       aujourdhui: jourIsrael(new Date(buildTime)),
       arrondi: config.tv?.arrondiMinutes ?? 5,
+      smartTitre: (t) => smartTitle(t, config.display?.properNouns || []),
     })
     : null;
   ctx.grille = grille;
