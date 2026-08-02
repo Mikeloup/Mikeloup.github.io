@@ -1,5 +1,5 @@
 {
-  "exported_at": "2026-08-02T13:59:28.263715",
+  "exported_at": "2026-08-02T14:10:00.472579",
   "window_days": 3,
   "rows": [
     {
@@ -405,6 +405,22 @@
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
       "channel_id": "KFIR_ALMAGOR"
+    },
+    {
+      "date_diffusion": "2026-08-02",
+      "heure_debut": "20:00",
+      "type": "ANCRE",
+      "heure_fixe": true,
+      "channel_id": "OROT_VEKELIM",
+      "title": "Israel en feu, Iran, Oslo : face à l'actu avec le rav Fiszon"
+    },
+    {
+      "date_diffusion": "2026-08-02",
+      "heure_debut": "22:00",
+      "type": "ANCRE",
+      "heure_fixe": true,
+      "channel_id": "JEROME_HAAS_L_INTERVIEW",
+      "title": "Marjan Abadie | Iran : répression, exécutions et révolte contre le régime"
     },
     {
       "date_diffusion": "2026-08-03",
@@ -824,6 +840,22 @@
       "channel_id": "TSAHAL_FR"
     },
     {
+      "date_diffusion": "2026-08-03",
+      "heure_debut": "19:54",
+      "type": "ANCRE",
+      "heure_fixe": true,
+      "channel_id": "LES_ISRAELIENNES",
+      "title": "Élections israéliennes 2026 : le mode d'emploi complet"
+    },
+    {
+      "date_diffusion": "2026-08-03",
+      "heure_debut": "22:00",
+      "type": "ANCRE",
+      "heure_fixe": true,
+      "channel_id": "SHALOM_SALAM",
+      "title": "Fracture dans la gauche française"
+    },
+    {
       "date_diffusion": "2026-08-04",
       "heure_debut": "08:00",
       "type": "ANCRE",
@@ -1205,6 +1237,22 @@
       "heure_fixe": false,
       "channel_id": "RONY_HAYOT",
       "title": "De Jérusalem a Saint denis: quand l'histoire se répète."
+    },
+    {
+      "date_diffusion": "2026-08-04",
+      "heure_debut": "19:11",
+      "type": "ANCRE",
+      "heure_fixe": true,
+      "channel_id": "OROT_VEKELIM",
+      "title": "Vos petits-enfants ne vivront pas en France » — Dov Maïmon"
+    },
+    {
+      "date_diffusion": "2026-08-04",
+      "heure_debut": "21:55",
+      "type": "ANCRE",
+      "heure_fixe": true,
+      "channel_id": "RADIO_SHALOM_SZWARC",
+      "title": "REMY BESSON ET EMMANUEL LEVINE"
     }
   ]
 }
