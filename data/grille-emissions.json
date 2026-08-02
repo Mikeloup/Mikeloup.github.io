@@ -3,10 +3,10 @@
 
   "JEROME_HAAS_L_INTERVIEW":     { "nom": "L'invité de Jérôme Haas", "site": "l-invite-de-jerome-haas" },
   "WILLIAM_ZERBIB_L_INTERVIEW":  { "nom": "L'invité de William Zerbib", "site": "l-invite-de-william-zerbib" },
-  "STEPHANE_GOLDIN":             { "nom": "L'analyse de Stéphane Goldin", "site": "l-analyse-de-stephane-goldin" },
+  "STEPHANE_GOLDIN":             { "nom": "L'édito de Stéphane Goldin", "site": "l-analyse-de-stephane-goldin" },
   "RONY_HAYOT":                  { "nom": "L'édito de Rony Hayot", "site": "l-edito-de-rony-hayot" },
   "MYRIAM_DANAN":                { "nom": "L'édito de Myriam Danan", "site": "l-edito-de-myriam-danan" },
-  "RONY_AKRICH":                 { "nom": "Café Daat — Rony Akrich", "site": "cafe-daat-rony-akrich" },
+  "RONY_AKRICH":                 { "nom": "Les passions d'un Hébreu par Rony Akrich", "site": "cafe-daat-rony-akrich" },
   "TOUR_D_ISRAEL":               { "nom": "Tour d'Israël", "site": "tour-d-israel" },
   "UN_JOUR_UNE_HISTOIRE":        { "nom": "Un jour, une histoire", "site": "" },
   "TEL_AVIV_NEW_YORK":           { "nom": "Tel Aviv-New York", "site": "" },
