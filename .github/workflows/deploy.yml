@@ -26,6 +26,13 @@ jobs:
         with:
           node-version: 22
 
+      - name: Catalogue YouTube mis de cote
+        uses: actions/cache@v4
+        with:
+          path: data/cache.json
+          key: catalogue-youtube-${{ github.run_id }}
+          restore-keys: catalogue-youtube-
+
       - name: Generer le site depuis YouTube
         env:
           YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
