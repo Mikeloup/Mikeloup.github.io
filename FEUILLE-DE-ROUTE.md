@@ -34,6 +34,29 @@ site, en service payant.*
 
 ---
 
+## Données structurées vidéo : l'alerte de Google — v50 (1er août 2026)
+
+Search Console a signalé deux problèmes sur les données structurées vidéo :
+**« Champ thumbnailUrl manquant »** (critique) et **« Vous devez indiquer contentUrl ou
+embedUrl »**. Les pages vidéo n'y étaient pour rien — elles sont complètes.
+
+**La cause : les fiches d'invités.** Chaque fiche `/invites/<nom>/` déclarait jusqu'à
+**25 `VideoObject`** dans `subjectOf`, réduits à `name`, `url` et `uploadDate`. Ni vignette,
+ni adresse de lecture : exactement les deux reproches. Multiplié par 82 fiches.
+
+**Correction.** Ces `VideoObject` sont remplacés par un simple **`ItemList`** de `ListItem`.
+Une vidéo n'a qu'une fiche technique légitime — celle de sa propre page, complète. En répéter
+une version tronquée ailleurs n'apprenait rien à Google, brouillait la page canonique de la
+vidéo, et déclenchait ces avertissements.
+
+Audit passé sur l'ensemble du site après correction : **1 100 `VideoObject`, zéro incomplet.**
+
+**Règle à retenir** : ne jamais déclarer un `VideoObject` ailleurs que sur la page de la
+vidéo. Pour lier une personne, une rubrique ou une grille à des vidéos, un `ItemList` de
+liens suffit.
+
+---
+
 ## Grille des programmes — v49 (1er août 2026)
 
 Michael a apporté un export de son planning de diffusion, produit dans une autre conversation

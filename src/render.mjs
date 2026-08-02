@@ -1337,13 +1337,24 @@ export function personPage({ config, categories, nav, personne, buildTime }) {
           ...(personne.presente.length
             ? { worksFor: { '@type': 'Organization', name: config.siteName, url: config.siteUrl } }
             : {}),
-          subjectOf: personne.videos.slice(0, 25).map((v) => ({
-            '@type': 'VideoObject',
-            name: v.title,
-            url: `${config.siteUrl.replace(/\/$/, '')}/video/${v.id}/`,
-            uploadDate: v.publishedAt,
-          })),
         },
+      },
+      // Liste des passages, en simples entrées de liste et non en « VideoObject ».
+      // Une vidéo n'a qu'une fiche technique légitime : celle de sa propre page,
+      // complète (vignette, lecteur, durée). En répéter une version tronquée ici
+      // faisait remonter deux avertissements de Google — vignette manquante,
+      // adresse de lecture manquante — sans rien lui apprendre de plus.
+      {
+        '@context': 'https://schema.org',
+        '@type': 'ItemList',
+        name: `Passages de ${personne.nom} sur ${config.siteName}`,
+        numberOfItems: personne.videos.length,
+        itemListElement: personne.videos.slice(0, 50).map((v, i) => ({
+          '@type': 'ListItem',
+          position: i + 1,
+          url: `${config.siteUrl.replace(/\/$/, '')}/video/${v.id}/`,
+          name: v.title,
+        })),
       },
     ],
   });
