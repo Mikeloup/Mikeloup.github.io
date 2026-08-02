@@ -34,6 +34,31 @@ site, en service payant.*
 
 ---
 
+## Horaires arrondis à l'affichage — v51 (2 août 2026)
+
+Michael, pour pouvoir donner rendez-vous : arrondir les horaires de la grille au pas de
+cinq minutes. Précision apportée aussitôt et qui commande tout : **« je ne parle que de
+l'affichage, pas de la grille réelle lue par OBS »**.
+
+`data/grille.json` n'est donc jamais modifié, et rien de ce que produit le site ne remonte
+vers la régie. L'arrondi se fait à la lecture, dans `prepareGrille()`, et l'heure exacte
+d'origine reste disponible dans le champ `heureExacte`.
+
+**Toujours vers le bas**, jamais au plus proche — 9h04 devient 9h00, pas 9h05. Le sens
+compte : un spectateur qui arrive à l'heure annoncée et attend deux minutes n'a rien perdu ;
+celui qui arrive après le début a manqué l'ouverture. Décalage moyen mesuré sur l'export :
+1,6 minute, 4 au maximum.
+
+**Les rendez-vous à heure fixe ne sont jamais touchés** — ils sont exacts par nature, et
+c'est leur exactitude qui structure la journée.
+
+Réglable par `tv.arrondiMinutes` dans `site.config.json` ; `0` rétablit les horaires exacts.
+Deux collisions sur 91 programmes (deux émissions tombant dans la même tranche de cinq
+minutes) : laissées telles quelles, c'est la réalité à cinq minutes près, et inventer un
+horaire pour les séparer aurait annoncé une diffusion en retard sur la vraie.
+
+---
+
 ## Données structurées vidéo : l'alerte de Google — v50 (1er août 2026)
 
 Search Console a signalé deux problèmes sur les données structurées vidéo :

@@ -459,6 +459,7 @@ async function main() {
       emissions: grilleEmissions,
       index: indexerVideos(allVideos),
       aujourdhui: jourIsrael(new Date(buildTime)),
+      arrondi: config.tv?.arrondiMinutes ?? 5,
     })
     : null;
   ctx.grille = grille;

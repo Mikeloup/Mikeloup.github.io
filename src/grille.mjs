@@ -52,7 +52,33 @@ export function indexerVideos(allVideos) {
  * discrète — dans l'export ils se répètent, et affichés tels quels ils
  * noieraient les vraies émissions.
  */
-export function prepareGrille(donnees, { emissions = {}, index = new Map(), aujourdhui } = {}) {
+/**
+ * Arrondit une heure au pas de temps demandé. Affichage uniquement : la grille
+ * réelle lue par la régie n'est jamais modifiée.
+ *
+ * Deux sens, et le choix n'est pas cosmétique :
+ *
+ * - `bas` pour les horaires approximatifs. Un spectateur qui arrive à l'heure
+ *   annoncée et attend deux minutes n'a rien perdu ; celui qui arrive après le
+ *   début a manqué l'ouverture. On ne promet donc jamais plus tard que la
+ *   diffusion réelle.
+ * - `proche` pour les rendez-vous à heure fixe. Ceux-là visent une heure ronde
+ *   et la manquent de peu dans l'export (13:59 pour 14:00, 12:01 pour 12:00) :
+ *   les arrondir vers le bas afficherait 13:55, soit plus faux que la valeur
+ *   d'origine. L'écart introduit reste inférieur à la moitié du pas.
+ */
+function arrondirHeure(heure, pas, sens = 'bas') {
+  if (!pas || !heure) return heure;
+  const [h, m] = heure.split(':').map(Number);
+  if (Number.isNaN(h) || Number.isNaN(m)) return heure;
+  const total = sens === 'proche'
+    ? Math.round((h * 60 + m) / pas) * pas
+    : Math.floor((h * 60 + m) / pas) * pas;
+  const minuit = total % 1440;                    // 23:59 arrondi au plus proche → 00:00
+  return `${String(Math.floor(minuit / 60)).padStart(2, '0')}:${String(minuit % 60).padStart(2, '0')}`;
+}
+
+export function prepareGrille(donnees, { emissions = {}, index = new Map(), aujourdhui, arrondi = 0 } = {}) {
   const lignes = Array.isArray(donnees?.rows) ? donnees.rows : [];
   if (!lignes.length) return null;
 
@@ -79,7 +105,8 @@ export function prepareGrille(donnees, { emissions = {}, index = new Map(), aujo
     const video = l.title ? trouverVideo(l.title, index) : null;
     liste.push({
       type: 'programme',
-      heure: l.heure_debut || '',
+      heure: arrondirHeure(l.heure_debut || '', arrondi, l.heure_fixe ? 'proche' : 'bas'),
+      heureExacte: l.heure_debut || '',
       fixe: Boolean(l.heure_fixe),
       ancre: l.type === 'ANCRE',
       emission: nomDe(l.channel_id),
@@ -106,6 +133,7 @@ export function prepareGrille(donnees, { emissions = {}, index = new Map(), aujo
     exporteLe: donnees.exported_at || null,
     fuseau: FUSEAU,
     total: jours.reduce((n, j) => n + j.nbProgrammes, 0),
+    arrondi,
     // Version compacte pour le calcul « en ce moment », côté navigateur.
     pourNavigateur: jours.flatMap((j) => j.programmes
       .filter((p) => p.type === 'programme' && p.heure)

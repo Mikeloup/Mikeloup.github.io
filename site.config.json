@@ -38,14 +38,15 @@
     "linkedin": "https://www.linkedin.com/company/tandem-tv/",
     "tiktok": ""
   },
-  "_comment_tv": "Diffusion télévisée. 'enabled' à false fait disparaître entièrement le bandeau et le bloc de pied de page. 'operatorLogo' affiche le logo de l'opérateur à la place de la pastille « TV » : déposez le fichier dans assets/ et indiquez /assets/nom-du-fichier.png (laisser vide si vous ne l'avez pas). 'url' est facultatif (lien vers l'opérateur) ; 'schedule' aussi (ex. « tous les soirs à 20h »). Ce bloc est ce qui distingue Tandem TV d'une simple chaîne YouTube : il mérite d'être exact.",
+  "_comment_tv": "Diffusion télévisée. 'enabled' à false fait disparaître entièrement le bandeau et le bloc de pied de page. 'operatorLogo' affiche le logo de l'opérateur à la place de la pastille « TV » : déposez le fichier dans assets/ et indiquez /assets/nom-du-fichier.png (laisser vide si vous ne l'avez pas). 'url' est facultatif (lien vers l'opérateur) ; 'schedule' aussi (ex. « tous les soirs à 20h »). 'arrondiMinutes' arrondit les horaires AFFICHÉS de la grille — la grille réelle lue par la régie n'est jamais modifiée. Les horaires approximatifs (marqués ≈) sont arrondis vers le bas (9h02 et 9h04 deviennent 9h00, 9h06 devient 9h05) : on ne promet jamais plus tard que la diffusion réelle. Les rendez-vous à heure fixe sont arrondis au plus proche (13h59 devient 14h00, 12h01 devient 12h00) : ils visent une heure ronde et la manquent de peu dans l'export. Mettre 0 pour afficher les horaires exacts. Ce bloc est ce qui distingue Tandem TV d'une simple chaîne YouTube : il mérite d'être exact.",
   "tv": {
     "enabled": true,
     "channelNumber": "14",
     "operator": "Annatel TV",
     "operatorLogo": "/assets/annatel.png",
     "url": "",
-    "schedule": ""
+    "schedule": "",
+    "arrondiMinutes": 5
   },
   "_comment_push": "Notifications navigateur (OneSignal). 'oneSignalAppId' vide = fonction désactivée, rien n'est injecté dans les pages. 'notifyOnNewVideos' déclenche l'envoi automatique à chaque nouvelle vidéo détectée (nécessite le secret GitHub ONESIGNAL_API_KEY). 'maxPerRun' limite le nombre d'envois par synchronisation, 'maxAgeHours' ignore les vidéos plus anciennes : deux garde-fous contre un envoi massif accidentel. Dans les modèles de texte : {emission} = nom de la rubrique, {titre} = titre de la vidéo, {site} = nom du site.",
   "push": {
