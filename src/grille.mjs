@@ -319,6 +319,11 @@ export function prepareGrille(donnees, {
     pourNavigateur: jours.flatMap((j) => j.programmes
       .filter((p) => p.type === 'programme' && p.heure)
       .map((p) => [j.date, p.heure, p.emission, p.titre, p.videoId || ''])),
+    // Idem, réduit aux deux premières journées : c'est tout ce dont la page
+    // d'accueil a besoin, et cela lui évite de porter la grille entière.
+    pourNavigateurCourt: jours.slice(0, 2).flatMap((j) => j.programmes
+      .filter((p) => p.type === 'programme' && p.heure)
+      .map((p) => [j.date, p.heure, p.emission, p.titre, p.videoId || ''])),
   };
 }
 

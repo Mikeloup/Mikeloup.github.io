@@ -281,7 +281,19 @@ const SOCIAL_ORDER = [
 ];
 
 /** Bandeau « Tandem TV, c'est aussi une chaîne de télévision ». */
-function tvBanner(config, { grille = false } = {}) {
+/**
+ * Bandeau « chaîne de télévision », en tête de la page d'accueil.
+ *
+ * Il annonçait un fait permanent : Tandem TV est sur le canal 14. Vrai, mais
+ * immobile — un visiteur qui l'a lu une fois n'a aucune raison d'y revenir.
+ * Le même bandeau porte désormais ce qui passe à l'antenne à la seconde où on
+ * le regarde. C'est la seule information du site qui change toutes les heures,
+ * et c'est elle qui transforme une plaque en rendez-vous.
+ *
+ * La ligne est masquée tant que le navigateur n'a pas calculé : mieux vaut un
+ * bandeau qui ne dit rien qu'un bandeau qui annonce une émission terminée.
+ */
+function tvBanner(config, { grille = false, direct = false } = {}) {
   const tv = config.tv;
   if (!tv?.enabled || !tv.channelNumber) return '';
   // La grille, quand elle existe, est la suite naturelle de cette phrase.
@@ -294,11 +306,19 @@ function tvBanner(config, { grille = false } = {}) {
     ? `<img class="tv-logo" src="${escapeHtml(tv.operatorLogo)}" alt="${escapeHtml(tv.operator || '')}" height="24">`
     : '<span class="tv-badge" aria-hidden="true">TV</span>';
   return `
-<aside class="tv-banner">
+<aside class="tv-banner${direct ? ' tv-banner--direct' : ''}">
   ${marque}
-  <p>
-    <strong>Tandem TV est une chaîne de télévision</strong> — <span class="tv-canal">canal ${escapeHtml(tv.channelNumber)}</span>${tv.operator ? ` du bouquet <strong>${escapeHtml(tv.operator)}</strong>` : ''}${tv.schedule ? `, ${escapeHtml(tv.schedule)}` : ''}.${lien}
-  </p>
+  <div class="tv-corps">
+    <p>
+      <strong>Tandem TV est une chaîne de télévision</strong> — <span class="tv-canal">canal ${escapeHtml(tv.channelNumber)}</span>${tv.operator ? ` du bouquet <strong>${escapeHtml(tv.operator)}</strong>` : ''}${tv.schedule ? `, ${escapeHtml(tv.schedule)}` : ''}.${lien}
+    </p>
+    ${direct ? `<p class="tv-direct" id="tv-direct" hidden>
+      <span class="live-dot" aria-hidden="true"></span>
+      <span class="tv-direct-label">En ce moment</span>
+      <span class="tv-direct-corps" id="tv-direct-corps"></span>
+      <span class="tv-direct-suite" id="tv-direct-suite"></span>
+    </p>` : ''}
+  </div>
 </aside>`;
 }
 
@@ -613,7 +633,7 @@ function chips(items) {
 }
 
 export function homePage({
-  config, categories, nav, latest, buildTime,
+  config, categories, nav, latest, buildTime, grille = null,
   personnes = [], personneParRubrique = new Map(), introHtml = '',
 }) {
   const pinnedId = String(config.home?.featured || '').trim();
@@ -656,7 +676,7 @@ export function homePage({
 <div class="wrap">
   ${uneZone(featured, featuredCat, secondaires, { pinned: Boolean(pinned), chiffres })}
 
-  ${tvBanner(config, { grille: Boolean(nav.grille) })}
+  ${tvBanner(config, { grille: Boolean(nav.grille), direct: Boolean(grille?.pourNavigateurCourt?.length) })}
 
   <section class="row">
     <div class="row-head">
@@ -701,7 +721,10 @@ export function homePage({
   ${plusVues.length >= 4 ? row('Les plus regardées', '/emissions/', plusVues, { dense: true }) : ''}
 </div>
 
-${blocQuiSommesNous(introHtml)}`;
+${blocQuiSommesNous(introHtml)}
+${grille?.pourNavigateurCourt?.length
+    ? `<script id="g-donnees" type="application/json">${JSON.stringify(grille.pourNavigateurCourt)}</script>`
+    : ''}`;
 
   return layout({
     config, categories, nav, buildTime,

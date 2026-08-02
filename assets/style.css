@@ -775,6 +775,27 @@ body.share-natif .share-label { display: none; }
   min-width: 0; font-size: .68rem; letter-spacing: .1em; padding: .2rem .5rem;
   border-radius: var(--radius-sm);
 }
+.tv-corps { flex: 1 1 auto; min-width: 0; }
+
+/* Ligne vivante du bandeau : ce qui passe a l'antenne maintenant.
+   Elle est masquee tant que le navigateur n'a pas calcule l'heure d'Israel —
+   un bandeau muet vaut mieux qu'un bandeau qui annonce une emission finie. */
+.tv-direct {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: .45rem;
+  margin: .45rem 0 0; padding-top: .45rem;
+  border-top: 1px solid var(--line);
+  font-size: .9rem;
+}
+.tv-direct[hidden] { display: none; }
+.tv-direct .live-dot { align-self: center; background: var(--rouge); }
+.tv-direct-label {
+  color: var(--rouge); font-size: .7rem; font-weight: 700;
+  letter-spacing: .08em; text-transform: uppercase;
+}
+.tv-direct-corps b { font-weight: 650; }
+.tv-direct-corps a { font-size: .85em; }
+.tv-direct-suite { color: var(--muted); font-size: .85rem; }
+
 .tv-logo { flex: 0 0 auto; height: 22px; width: auto; display: block; }
 .tv-footer .tv-logo { height: 16px; }
 .tv-footer .tv-canal { color: var(--rouge); font-weight: 650; }
@@ -787,6 +808,9 @@ body.share-natif .share-label { display: none; }
   .tv-banner p { font-size: .88rem; }
   .tv-badge { margin-top: .1rem; }
   .tv-logo { height: 17px; margin-top: .15rem; }
+  /* Sur telephone la ligne vivante passe dessous plutot que de serrer le texte. */
+  .tv-direct { font-size: .85rem; gap: .35rem; }
+  .tv-direct-suite { flex-basis: 100%; }
 }
 
 /* --- La une sur fond sombre, reprise de la direction « chaîne d'information ».

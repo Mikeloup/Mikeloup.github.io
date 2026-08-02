@@ -660,9 +660,13 @@
     b.addEventListener('click', function () { choisirJour(b); });
   });
 
+  // Les memes donnees servent deux affichages : le grand encart de la page
+  // grille, et la ligne vivante du bandeau de la page d'accueil. L'un ou
+  // l'autre peut etre absent — on ne s'arrete que si les deux le sont.
   var src = document.getElementById('g-donnees');
   var encart = document.getElementById('g-direct');
-  if (!src || !encart) return;
+  var bandeau = document.getElementById('tv-direct');
+  if (!src || (!encart && !bandeau)) return;
 
   var lignes = [];
   try { lignes = JSON.parse(src.textContent) || []; } catch (e) { return; }
@@ -706,7 +710,11 @@
         m: parseInt(hm[0], 10) * 60 + parseInt(hm[1], 10),
       });
     }
-    if (!duJour.length) { encart.hidden = true; return; }
+    if (!duJour.length) {
+      if (encart) encart.hidden = true;
+      if (bandeau) bandeau.hidden = true;
+      return;
+    }
     duJour.sort(function (a, b) { return a.m - b.m; });
 
     var courant = null, suivant = null;
@@ -714,6 +722,10 @@
       if (duJour[j].m <= now.minutes) { courant = duJour[j]; suivant = duJour[j + 1] || null; }
     }
     if (!courant) suivant = duJour[0];
+
+    majBandeau(courant, suivant);
+
+    if (!encart) { marquerEnCours(now.jour, courant); return; }
 
     var t = document.getElementById('g-direct-titre');
     var sT = document.getElementById('g-direct-sous');
@@ -733,6 +745,27 @@
     encart.hidden = false;
 
     marquerEnCours(now.jour, courant);
+  };
+
+  /* Ligne vivante du bandeau, sur la page d'accueil.
+     Format volontairement court : le bandeau tient sur une ligne, y compris sur
+     un telephone. Le titre de l'episode y est superflu — c'est le rendez-vous
+     qui donne envie d'allumer, pas le sujet du jour. */
+  var majBandeau = function (courant, suivant) {
+    if (!bandeau) return;
+    var corps = document.getElementById('tv-direct-corps');
+    var suite = document.getElementById('tv-direct-suite');
+    if (!courant && !suivant) { bandeau.hidden = true; return; }
+    if (courant) {
+      corps.innerHTML = '<b>' + esc(courant.nom) + '</b>'
+        + (courant.id ? ' <a href="/video/' + esc(courant.id) + '/">revoir</a>' : '');
+    } else {
+      corps.innerHTML = '<b>Clips et bandes-annonces</b>';
+    }
+    suite.textContent = suivant
+      ? '· à suivre ' + suivant.h + ' — ' + suivant.nom
+      : '· fin des programmes annoncés pour aujourd’hui';
+    bandeau.hidden = false;
   };
 
   /* L'encart en haut de page dit ce qui passe ; la liste, elle, ne le disait pas.
