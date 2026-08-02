@@ -139,7 +139,27 @@ export function nettoyerTitre(brut, { emission = '', smart = (x) => x } = {}) {
   // Un titre qui ne fait que répéter le nom de l'émission n'apprend rien.
   const cle = (x) => sansAccents(x).replace(/[^a-z0-9]+/g, '');
   if (emission && cle(t) === cle(emission)) return '';
-  return t;
+  return retirerSignature(t, emission);
+}
+
+/**
+ * Retire la signature du présentateur en fin de titre quand elle fait double
+ * emploi avec le nom de l'émission.
+ *
+ * Sur YouTube, « … | Rony Hayot » est utile : le titre voyage seul dans un flux
+ * où rien n'indique la provenance. Sur la grille, le nom de l'émission est écrit
+ * juste au-dessus — la signature ne fait plus qu'allonger la ligne et repousser
+ * l'information utile hors de l'écran sur un téléphone.
+ */
+function retirerSignature(titre, emission) {
+  if (!emission || !titre.includes('|')) return titre;
+  const cle = (x) => sansAccents(x).replace(/[^a-z0-9]+/g, '');
+  const morceaux = titre.split('|');
+  const queue = morceaux[morceaux.length - 1].trim();
+  const c = cle(queue);
+  if (c.length < 6 || !cle(emission).includes(c)) return titre;
+  const reste = morceaux.slice(0, -1).join('|').trim().replace(/\s*[|·\-–—:]\s*$/, '');
+  return reste || titre;
 }
 
 export function indexerVideos(allVideos) {
@@ -213,7 +233,7 @@ export function prepareGrille(donnees, {
     const nomEmission = nomDe(l.channel_id);
     // Le titre YouTube fait autorité quand il existe : il a été écrit pour être lu.
     const titre = video?.title
-      ? String(video.title).normalize('NFKC').replace(/\s+/g, ' ').trim()
+      ? retirerSignature(String(video.title).normalize('NFKC').replace(/\s+/g, ' ').trim(), nomEmission)
       : nettoyerTitre(l.title, { emission: nomEmission, smart: smartTitre });
     liste.push({
       type: 'programme',
@@ -229,15 +249,35 @@ export function prepareGrille(donnees, {
     });
   }
 
-  const jours = [...parJour.keys()].sort().map((date) => ({
-    date,
-    programmes: parJour.get(date),
-    nbProgrammes: parJour.get(date).filter((x) => x.type === 'programme').length,
-  }));
+  const tous = [...parJour.keys()].sort().map((date) => {
+    const programmes = parJour.get(date);
+    const avecHeure = programmes.filter((x) => x.type === 'programme' && x.heure);
+    return {
+      date,
+      programmes,
+      nbProgrammes: programmes.filter((x) => x.type === 'programme').length,
+      debut: avecHeure[0]?.heure || '',
+      fin: avecHeure[avecHeure.length - 1]?.heure || '',
+      // La journée se termine-t-elle sur des clips sans horaire ?
+      finEnClips: programmes[programmes.length - 1]?.type === 'clips',
+    };
+  });
+
+  // L'heure de reprise, le lendemain : sans elle, « clips jusqu'au lendemain »
+  // laisse le lecteur devant une question sans réponse.
+  for (let i = 0; i < tous.length; i++) tous[i].repriseLendemain = tous[i + 1]?.debut || '';
+
+  // Une journée révolue n'a plus rien à dire à personne : le 1er août affiché
+  // le 2 donne l'impression d'un site abandonné, ce qui est exactement l'inverse
+  // de ce que prouve une grille tenue à jour. On les retire — sauf si TOUTES
+  // sont passées, auquel cas mieux vaut une grille visiblement ancienne, avec
+  // son avertissement, qu'une page vide sans explication.
+  const aVenir = aujourdhui ? tous.filter((j) => j.date >= aujourdhui) : tous;
+  const jours = aVenir.length ? aVenir : tous;
 
   // Les journées déjà passées ne sont pas retirées : l'export peut dater, et
   // mieux vaut une grille visiblement ancienne qu'une page vide sans explication.
-  const derniere = jours[jours.length - 1]?.date;
+  const derniere = tous[tous.length - 1]?.date;
   const perimee = Boolean(aujourdhui && derniere && derniere < aujourdhui);
 
   return {

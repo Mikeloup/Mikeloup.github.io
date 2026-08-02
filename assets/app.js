@@ -645,8 +645,7 @@
    l'émission d'il y a une heure.                                            */
 (function () {
   var jours = document.querySelectorAll('.g-jour');
-  Array.prototype.forEach.call(jours, function (b) {
-    b.addEventListener('click', function () {
+  var choisirJour = function (b) {
       Array.prototype.forEach.call(document.querySelectorAll('.g-jour'), function (x) {
         x.classList.remove('actif'); x.setAttribute('aria-selected', 'false');
       });
@@ -656,7 +655,9 @@
       b.classList.add('actif'); b.setAttribute('aria-selected', 'true');
       var p = document.getElementById('jour-' + b.getAttribute('data-jour'));
       if (p) p.classList.add('actif');
-    });
+  };
+  Array.prototype.forEach.call(jours, function (b) {
+    b.addEventListener('click', function () { choisirJour(b); });
   });
 
   var src = document.getElementById('g-donnees');
@@ -730,7 +731,37 @@
       ? 'À suivre <b>' + esc(suivant.h) + ' — ' + esc(suivant.nom) + '</b>'
       : 'Fin des programmes annoncés pour aujourd’hui.';
     encart.hidden = false;
+
+    marquerEnCours(now.jour, courant);
   };
+
+  /* L'encart en haut de page dit ce qui passe ; la liste, elle, ne le disait pas.
+     Un visiteur qui a fait défiler la grille devait remonter pour se repérer.
+     On marque donc la ligne elle-même — une seule, celle du jour en cours. */
+  var marquerEnCours = function (jour, courant) {
+    Array.prototype.forEach.call(document.querySelectorAll('.g-prog.g-encours'), function (li) {
+      li.classList.remove('g-encours');
+      var b = li.querySelector('.g-badge');
+      if (b) b.hidden = true;
+    });
+    if (!courant) return;
+    var panneau = document.getElementById('jour-' + jour);
+    if (!panneau) return;
+    var lignes = panneau.querySelectorAll('.g-prog[data-heure="' + courant.h + '"]');
+    // En cas d'égalité d'horaire après arrondi, la dernière est celle qui passe.
+    var li = lignes[lignes.length - 1];
+    if (!li) return;
+    li.classList.add('g-encours');
+    var badge = li.querySelector('.g-badge');
+    if (badge) badge.hidden = false;
+  };
+
+  // Ouvrir sur la journée d'aujourd'hui, et non sur la première de la liste.
+  var now0 = maintenantIsrael();
+  if (now0) {
+    var onglet = document.querySelector('.g-jour[data-jour="' + now0.jour + '"]');
+    if (onglet && !onglet.classList.contains('actif')) choisirJour(onglet);
+  }
 
   majDirect();
   setInterval(majDirect, 60000);

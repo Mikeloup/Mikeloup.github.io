@@ -749,13 +749,14 @@ export function grillePage({ config, categories, nav, grille, buildTime }) {
     const emission = p.rubrique
       ? `<a href="/emissions/${p.rubrique}/">${escapeHtml(p.emission)}</a>`
       : escapeHtml(p.emission);
-    return `<li class="g-prog${p.ancre ? ' g-ancre' : ''}" data-heure="${escapeHtml(p.heure)}">
-      <span class="g-heure${p.fixe ? '' : ' g-approx'}">${escapeHtml(p.heure)}</span>
+    return `<li class="g-prog" data-heure="${escapeHtml(p.heure)}">
+      <span class="g-heure${p.fixe ? ' g-fixe' : ' g-approx'}">${escapeHtml(p.heure)}</span>
       <span class="g-corps">
         <span class="g-emission">${emission}</span>
         ${corpsTitre}
       </span>
       ${p.videoId ? '<span class="g-replay">Replay</span>' : ''}
+      <span class="g-badge" hidden>À l'antenne</span>
     </li>`;
   };
 
@@ -777,6 +778,11 @@ export function grillePage({ config, categories, nav, grille, buildTime }) {
     <p class="g-direct-suite" id="g-direct-suite"></p>
   </section>`}
 
+  <p class="g-legende muted small">
+    Heures d'<strong>Israël</strong> — une heure de plus qu'en France métropolitaine.
+    <span class="g-approx-ex">≈</span> horaire approximatif ; sans le signe, c'est un rendez-vous à heure fixe.
+  </p>
+
   <div class="g-jours" role="tablist" aria-label="Journées">
     ${grille.jours.map((j, i) => `<button type="button" role="tab" class="g-jour${i === 0 ? ' actif' : ''}" aria-selected="${i === 0}" aria-controls="jour-${j.date}" data-jour="${j.date}">${escapeHtml(jourFr(j.date))}</button>`).join('')}
   </div>
@@ -784,12 +790,15 @@ export function grillePage({ config, categories, nav, grille, buildTime }) {
   ${grille.jours.map((j, i) => `
   <section class="g-panneau${i === 0 ? ' actif' : ''}" id="jour-${j.date}" role="tabpanel" aria-label="${escapeHtml(jourFr(j.date))}">
     <ul class="g-liste">${j.programmes.map(ligne).join('')}</ul>
+    ${j.finEnClips && j.fin ? `<p class="g-fin muted small">
+      Les rendez-vous de la journée s'achèvent à <strong>${escapeHtml(j.fin)}</strong>. L'antenne enchaîne ensuite
+      clips et bandes-annonces${j.repriseLendemain ? `, jusqu'aux programmes du lendemain à partir de <strong>${escapeHtml(j.repriseLendemain)}</strong>` : ''}.
+    </p>` : ''}
   </section>`).join('')}
 
   <p class="g-note muted small">
-    Toutes les heures sont des <strong>heures d'Israël</strong> — une heure de plus qu'en France métropolitaine.
-    Les horaires marqués <span class="g-approx-ex">≈</span> sont approximatifs : seuls les rendez-vous en gras sont à heure fixe.
-    Le direct fait toujours foi.
+    Les horaires approximatifs sont arrondis aux 5 minutes et peuvent varier de quelques minutes
+    selon la durée réelle des programmes. Le direct fait toujours foi.
   </p>
 </div>
 

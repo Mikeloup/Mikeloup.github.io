@@ -1089,8 +1089,34 @@ body:has(.apropos-bas) .site-footer { margin-top: 0; }
 .g-titre { display: block; font-family: var(--font-titre); font-size: 1.05rem; line-height: 1.35; }
 .g-titre a:hover { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
 /* Rendez-vous à heure fixe : ce sont eux qui structurent la journée. */
-.g-ancre { background: #fff; box-shadow: inset 3px 0 0 var(--brand); padding-left: .9rem; }
-.g-ancre .g-titre { font-weight: 700; }
+/* Les rendez-vous à heure fixe ne sont pas des programmes plus importants que
+   les autres : la distinction porte sur l'heure, pas sur l'émission. Elle est
+   donc marquée dans la colonne des horaires, et nulle part ailleurs. */
+.g-fixe { font-weight: 700; color: var(--texte); }
+
+/* Le programme en cours. Seul élément coloré de la liste : s'il y en avait deux,
+   il n'y en aurait plus aucun. */
+.g-prog.g-encours {
+  background: color-mix(in srgb, var(--brand) 7%, #fff);
+  box-shadow: inset 3px 0 0 var(--rouge);
+  padding-left: .9rem;
+}
+.g-prog.g-encours .g-heure { color: var(--rouge); }
+.g-prog.g-encours .g-titre { font-weight: 650; }
+.g-badge {
+  align-self: center; flex: none;
+  display: inline-flex; align-items: center; gap: .35rem;
+  padding: .2rem .55rem; border-radius: 999px;
+  background: var(--rouge); color: #fff;
+  font-size: .7rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase;
+  white-space: nowrap;
+}
+.g-badge[hidden] { display: none; }
+.g-legende { margin: 0 0 1rem; }
+.g-fin {
+  margin: 0; padding: .9rem .2rem 0;
+  border-top: 1px dashed var(--line);
+}
 .g-replay {
   flex: 0 0 auto; align-self: center;
   font-size: .7rem; font-weight: 750; letter-spacing: .07em; text-transform: uppercase;
@@ -1114,5 +1140,6 @@ body:has(.apropos-bas) .site-footer { margin-top: 0; }
   .g-titre { font-size: .98rem; }
   .g-replay { display: none; }
   .g-clips { padding-left: 5.2rem; font-size: .8rem; }
+  .g-badge { font-size: .62rem; padding: .15rem .4rem; }
   .g-jour { padding: .5rem .85rem; font-size: .85rem; }
 }
