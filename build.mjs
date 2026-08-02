@@ -461,6 +461,7 @@ async function main() {
       aujourdhui: jourIsrael(new Date(buildTime)),
       arrondi: config.tv?.arrondiMinutes ?? 5,
       smartTitre: (t) => smartTitle(t, config.display?.properNouns || []),
+      rubriques: categories.map((c) => ({ slug: c.slug, title: c.title })),
     })
     : null;
   ctx.grille = grille;
@@ -468,6 +469,10 @@ async function main() {
   if (grille) {
     const relies = grille.jours.flatMap((j) => j.programmes).filter((p) => p.videoId).length;
     log(`Grille TV : ${grille.jours.length} journée(s), ${grille.total} programme(s), ${relies} relié(s) à une vidéo du site.`);
+    if (grille.orphelines.length) {
+      warn(`${grille.orphelines.length} rubrique(s) de la grille pointent vers une adresse qui n'existe plus (playlist renommée ?). Le rattachement s'est fait par le nom de l'émission ; corrigez le champ « site » dans data/grille-emissions.json :`);
+      for (const o of grille.orphelines) warn(`   ${o}`);
+    }
     if (grille.perimee) warn("Grille TV périmée : l'export ne couvre plus aucune journée à venir.");
     const inconnus = [...new Set(grilleBrute.rows.map((r) => r.channel_id))].filter((id) => !grilleEmissions[id]);
     if (inconnus.length) warn(`Programmes sans nom d'affichage dans data/grille-emissions.json : ${inconnus.join(', ')}`);
@@ -887,6 +892,30 @@ async function transfererAnciennesAdresses(config, categories, allVideos) {
     await ecrire(ancien, cible, 'Continuer sur Tandem TV');
     urls.push(ancien);
   }
+
+  // Rubriques renommées sur YouTube.
+  //
+  // L'adresse d'une rubrique dérive du titre de sa playlist : la renommer
+  // déplace la page, et tout ce que Google savait d'elle tombe dans le vide.
+  // On garde donc un pont depuis l'ancienne adresse. La cible est désignée par
+  // le NOUVEAU TITRE, pas par la nouvelle adresse — un accent ou une majuscule
+  // qui diffère de ce qu'on avait prévu ne casse alors rien.
+  const cleNom = (x) => String(x || '').normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '');
+  const parNomRubrique = new Map(categories.map((c) => [cleNom(c.title), c]));
+  let renommees = 0;
+  for (const [ancienSlug, nouveauTitre] of Object.entries(carte.renommees || {})) {
+    const c = parNomRubrique.get(cleNom(nouveauTitre));
+    if (!c) {
+      warn(`Rubrique renommée introuvable : « ${nouveauTitre} ». L'ancienne adresse /emissions/${ancienSlug}/ reste orpheline — vérifiez l'orthographe exacte du titre de la playlist sur YouTube.`);
+      continue;
+    }
+    if (c.slug === ancienSlug) continue;      // renommage pas encore visible côté YouTube
+    await ecrire(`/emissions/${ancienSlug}/`, `/emissions/${c.slug}/`, c.title);
+    urls.push(`/emissions/${ancienSlug}/`);
+    renommees++;
+  }
+  if (renommees) log(`${renommees} rubrique(s) renommée(s) : ancienne adresse redirigée.`);
 
   const rubriques = categories.map((c) => ({ c, mots: motsUtiles(c.title) }));
   const videos = allVideos.map((v) => ({ v, mots: motsUtiles(`${v.title} ${v.playlists?.[0]?.title || ''}`) }));

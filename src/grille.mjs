@@ -205,12 +205,35 @@ function arrondirHeure(heure, pas, sens = 'bas') {
 
 export function prepareGrille(donnees, {
   emissions = {}, index = new Map(), aujourdhui, arrondi = 0, smartTitre = (x) => x,
+  rubriques = [],
 } = {}) {
   const lignes = Array.isArray(donnees?.rows) ? donnees.rows : [];
   if (!lignes.length) return null;
 
   const nomDe = (id) => emissions[id]?.nom || String(id || '').replace(/_/g, ' ');
-  const rubriqueDe = (id) => emissions[id]?.site || '';
+
+  // Rattachement d'un programme à sa rubrique du site.
+  //
+  // Le champ 'site' contient une adresse, or cette adresse est dérivée du titre
+  // de la playlist YouTube : renommer la playlist déplace la page, et le lien
+  // écrit ici tombe dans le vide. Plutôt que d'exiger une correction manuelle à
+  // chaque renommage — qui n'arrivera jamais au bon moment — on retombe sur le
+  // NOM de l'émission, qui lui est stable. Le site se répare donc tout seul.
+  const parSlug = new Set(rubriques.map((r) => r.slug));
+  const parNom = new Map();
+  for (const r of rubriques) {
+    const k = sansAccents(r.title).replace(/[^a-z0-9]+/g, '');
+    if (k && !parNom.has(k)) parNom.set(k, r.slug);
+  }
+  const orphelines = new Set();
+  const rubriqueDe = (id) => {
+    const e = emissions[id];
+    if (!e) return '';
+    if (e.site && parSlug.has(e.site)) return e.site;
+    if (e.site && rubriques.length) orphelines.add(`${id} → « ${e.site} »`);
+    const secours = parNom.get(sansAccents(e.nom || '').replace(/[^a-z0-9]+/g, ''));
+    return secours || (rubriques.length ? '' : e.site || '');
+  };
 
   const parJour = new Map();
   for (const l of lignes) {
@@ -283,6 +306,7 @@ export function prepareGrille(donnees, {
   return {
     jours,
     perimee,
+    orphelines: [...orphelines],
     exporteLe: donnees.exported_at || null,
     fuseau: FUSEAU,
     total: jours.reduce((n, j) => n + j.nbProgrammes, 0),
