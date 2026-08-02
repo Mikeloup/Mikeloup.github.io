@@ -104,8 +104,25 @@ async function collectFromApi(config) {
   return { channel, playlists, videos, fetchedAt: buildTime };
 }
 
+/**
+ * Récupère le catalogue, en évitant d'appeler YouTube quand ce n'est pas utile.
+ *
+ * Le site se reconstruit à chaque envoi sur la branche principale — y compris
+ * lorsque seule la grille de diffusion a bougé, ce qui arrive plusieurs fois
+ * par heure. Or une synchronisation complète coûte plus de cent unités de
+ * quota, et YouTube n'en accorde que dix mille par jour : à ce rythme, la
+ * chaîne cesserait purement et simplement de se mettre à jour, un matin, sans
+ * prévenir.
+ *
+ * On garde donc le catalogue en mémoire d'une exécution à l'autre. En deçà de
+ * 'cacheMinutes', on le réutilise tel quel — zéro appel réseau. Au-delà, on
+ * resynchronise. Les reconstructions déclenchées par la grille deviennent
+ * gratuites, et les synchronisations programmées continuent d'apporter les
+ * nouvelles vidéos au rythme prévu.
+ */
 async function collectData(config) {
   const cachePath = path.join(ROOT, 'data', 'cache.json');
+  const cacheMinutes = Number(process.env.CACHE_MINUTES ?? config.youtube?.cacheMinutes ?? 100);
 
   if (!DEMO && !process.env.YOUTUBE_API_KEY) {
     throw new Error(
@@ -120,6 +137,18 @@ async function collectData(config) {
     if (!demo) throw new Error('data/demo.json introuvable.');
     log('Mode démonstration : données fictives.');
     return demo;
+  }
+
+  // Catalogue encore frais : on ne dérange pas YouTube.
+  if (cacheMinutes > 0 && !process.env.FORCE_SYNC) {
+    const cached = await readJson(cachePath);
+    const age = cached?.fetchedAt
+      ? (Date.parse(buildTime) - Date.parse(cached.fetchedAt)) / 60000
+      : Infinity;
+    if (cached?.videos?.length && age >= 0 && age < cacheMinutes) {
+      log(`Catalogue repris du cache (${Math.round(age)} min, seuil ${cacheMinutes} min) — aucun appel à YouTube.`);
+      return cached;
+    }
   }
 
   try {
