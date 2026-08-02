@@ -230,8 +230,12 @@ export function prepareGrille(donnees, {
     const e = emissions[id];
     if (!e) return '';
     if (e.site && parSlug.has(e.site)) return e.site;
-    if (e.site && rubriques.length) orphelines.add(`${id} → « ${e.site} »`);
     const secours = parNom.get(sansAccents(e.nom || '').replace(/[^a-z0-9]+/g, ''));
+    if (e.site && rubriques.length) {
+      orphelines.add(secours
+        ? `${id} : « ${e.site} » n'existe plus → rattaché par le nom à « ${secours} »`
+        : `${id} : « ${e.site} » n'existe plus, et aucune rubrique ne s'appelle « ${e.nom} » → pas de lien replay`);
+    }
     return secours || (rubriques.length ? '' : e.site || '');
   };
 

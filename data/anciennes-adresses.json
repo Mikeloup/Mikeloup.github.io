@@ -2,8 +2,10 @@
   "_comment": "Anciennes adresses du site Wix, relevées dans Google Search Console le 30 juillet 2026 (249 pages ayant reçu des impressions sur 3 mois). À chaque génération, le site tente de retrouver la page correspondante et écrit une page de transfert : Google y lit une adresse canonique et transmet l'ancienneté accumulée. 'manuel' impose une destination ; 'auto' laisse le rapprochement automatique décider, et ne transfère que s'il est certain. Les adresses non résolues restent en erreur 404, où le rattrapage côté navigateur prend le relais pour les visiteurs.",
   "_comment_renommees": "Rubriques renommees sur YouTube. L'adresse d'une rubrique est fabriquee a partir du titre de sa playlist : renommer la playlist deplace la page, et Google perd la trace de l'ancienne. Notez ici l'ANCIENNE adresse (la partie apres /emissions/) et le NOUVEAU TITRE exact de la playlist. Le site retrouve tout seul la nouvelle adresse et ecrit le pont. Une entree dont le titre ne correspond a aucune playlist est signalee a la construction.",
   "renommees": {
-    "cafe-daat-rony-akrich": "Les passions d'un Hebreu par Rony Akrich",
-    "l-analyse-de-stephane-goldin": "L'edito de Stephane Goldin"
+    "cafe-daat-rony-akrich": "Les passions d'un Hebreu - Rony Akrich",
+    "l-analyse-de-stephane-goldin": "L'edito de Stephane Goldin",
+    "l-invite-de-jerome-haas": "L'interview de Jerome Haas",
+    "l-invite-de-william-zerbib": "L'interview de William Zerbib"
   },
   "manuel": {
     "/qui-sommes-nous": "/a-propos/",
@@ -24,8 +26,8 @@
     "/nos-invtes": "/invites/",
     "/nos-invites": "/invites/",
     "/les-emissions-de-television/guerre-israel-hamas": "/emissions/gaza/",
-    "/blog/categories/l-invité-de-william-zerbib": "/emissions/l-invite-de-william-zerbib/",
-    "/blog/categories/l-invité-de-jérome-haas": "/emissions/l-invite-de-jerome-haas/",
+    "/blog/categories/l-invité-de-william-zerbib": "/emissions/l-interview-de-william-zerbib/",
+    "/blog/categories/l-invité-de-jérome-haas": "/emissions/l-interview-de-jerome-haas/",
     "/blog/categories/50-nuances-d-antisémitisme": "/emissions/50-nuances-d-antisemitisme-tandem-2-0/",
     "/blog/categories/a-vos-cas": "/emissions/a-vos-cas/",
     "/blog/categories/atout-coeur": "/emissions/atout-coeur/",
