@@ -281,12 +281,13 @@ const SOCIAL_ORDER = [
 ];
 
 /** Bandeau « Tandem TV, c'est aussi une chaîne de télévision ». */
-function tvBanner(config) {
+function tvBanner(config, { grille = false } = {}) {
   const tv = config.tv;
   if (!tv?.enabled || !tv.channelNumber) return '';
-  const lien = tv.url
-    ? ` <a href="${escapeHtml(tv.url)}" target="_blank" rel="noopener">En savoir plus</a>`
-    : '';
+  // La grille, quand elle existe, est la suite naturelle de cette phrase.
+  const lien = grille
+    ? ' <a href="/grille/">Voir la grille des programmes <span aria-hidden="true">→</span></a>'
+    : (tv.url ? ` <a href="${escapeHtml(tv.url)}" target="_blank" rel="noopener">En savoir plus</a>` : '');
   // Le logo de l'opérateur, s'il a été fourni, remplace la pastille « TV » :
   // une marque connue vaut mieux qu'un mot générique.
   const marque = tv.operatorLogo
@@ -506,6 +507,9 @@ ${push}
 
     <nav class="utility" aria-label="Pages du site">
       ${navPages.map((pg) => `<a href="/${pg.slug}/">${escapeHtml(pg.title)}</a>`).join('')}
+      <!-- Sponsoring : seule page du site qui puisse rapporter de l'argent. Elle
+           n'était atteignable qu'en déroulant toute la page jusqu'au pied. -->
+      <a class="utility-fort" href="/sponsoring/">Sponsoring</a>
     </nav>
 
     <form class="search" id="site-search" action="/recherche/" method="get" role="search">
@@ -531,6 +535,7 @@ ${push}
       ${menuPanel('menu-emissions', config.groups?.shows?.label || 'Émissions', menuShows, '/emissions/', 'Voir toutes les émissions')}
       ${menuPanel('menu-themes', config.groups?.themes?.label || 'Thèmes', menuThemes, '/themes/', 'Voir tous les thèmes')}
       <a href="/invites/">Invités</a>
+      ${nav.grille ? '<a href="/grille/">Grille TV</a>' : ''}
       <a href="/emissions/">Tout le catalogue</a>
       <a class="nav-follow" href="/suivre/">
         <svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 22a2.2 2.2 0 0 0 2.2-2.2H9.8A2.2 2.2 0 0 0 12 22Zm7-5.3V11a7 7 0 0 0-5.2-6.8V3.5a1.8 1.8 0 1 0-3.6 0v.7A7 7 0 0 0 5 11v5.7L3 18.7v.6h18v-.6l-2-2Z"/></svg>
@@ -538,6 +543,7 @@ ${push}
       </a>
       <span class="nav-only-mobile-sep" aria-hidden="true"></span>
       ${navPages.map((pg) => `<a class="nav-alt" href="/${pg.slug}/">${escapeHtml(pg.title)}</a>`).join('')}
+      <a class="nav-alt" href="/sponsoring/">Sponsoring</a>
     </div>
   </nav>
 </header>
@@ -571,6 +577,7 @@ ${content}
         <li><a href="/emissions/">Toutes les émissions</a></li>
         <li><a href="/themes/">${escapeHtml(config.groups?.themes?.label || 'Thèmes')}</a></li>
         <li><a href="/invites/">Invités et intervenants</a></li>
+        ${nav.grille ? '<li><a href="/grille/">Grille des programmes</a></li>' : ''}
         <li><a href="/recherche/">Rechercher une vidéo</a></li>
       </ul>
       <h4>Rester au courant</h4>
@@ -649,7 +656,7 @@ export function homePage({
 <div class="wrap">
   ${uneZone(featured, featuredCat, secondaires, { pinned: Boolean(pinned), chiffres })}
 
-  ${tvBanner(config)}
+  ${tvBanner(config, { grille: Boolean(nav.grille) })}
 
   <section class="row">
     <div class="row-head">
@@ -716,6 +723,86 @@ ${blocQuiSommesNous(introHtml)}`;
         'query-input': 'required name=search_term_string',
       },
     },
+  });
+}
+
+/** Grille des programmes du canal télévisé. */
+export function grillePage({ config, categories, nav, grille, buildTime }) {
+  const tv = config.tv || {};
+  const jourFr = (d) => {
+    const dt = new Date(`${d}T12:00:00Z`);
+    const j = dt.toLocaleDateString('fr-FR', { weekday: 'long', timeZone: 'UTC' });
+    const q = dt.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', timeZone: 'UTC' });
+    return `${j.charAt(0).toUpperCase()}${j.slice(1)} ${q}`;
+  };
+
+  const ligne = (p) => {
+    if (p.type === 'clips') {
+      return `<li class="g-clips"><span>Clips et bandes-annonces</span><span class="muted small">${escapeHtml(p.sources.join(' · '))}</span></li>`;
+    }
+    const titre = p.videoId
+      ? `<a href="/video/${p.videoId}/">${escapeHtml(p.titre)}</a>`
+      : escapeHtml(p.titre);
+    const emission = p.rubrique
+      ? `<a href="/emissions/${p.rubrique}/">${escapeHtml(p.emission)}</a>`
+      : escapeHtml(p.emission);
+    return `<li class="g-prog${p.ancre ? ' g-ancre' : ''}" data-heure="${escapeHtml(p.heure)}">
+      <span class="g-heure${p.fixe ? '' : ' g-approx'}">${escapeHtml(p.heure)}</span>
+      <span class="g-corps">
+        <span class="g-emission">${emission}</span>
+        <span class="g-titre">${titre}</span>
+      </span>
+      ${p.videoId ? '<span class="g-replay">Replay</span>' : ''}
+    </li>`;
+  };
+
+  const content = `
+<div class="wrap">
+  <nav class="breadcrumb"><a href="/">Accueil</a> <span>›</span> <span>Grille TV</span></nav>
+
+  <header class="page-head">
+    <p class="kicker"><span class="live-dot" aria-hidden="true"></span>Canal ${escapeHtml(tv.channelNumber || '14')}${tv.operator ? ` · ${escapeHtml(tv.operator)}` : ''}</p>
+    <h1>Grille des programmes</h1>
+    <p class="lede">Ce qui passe à l'antenne de ${escapeHtml(config.siteName)} sur le canal ${escapeHtml(tv.channelNumber || '14')}. Quand l'émission est disponible en ligne, un clic mène au replay.</p>
+  </header>
+
+  ${grille.perimee ? `<p class="g-avis">Cette grille date du ${escapeHtml(grille.exporteLe ? grille.exporteLe.slice(0, 10) : '')} et n'a pas été renouvelée depuis. Les horaires ci-dessous sont donc passés.</p>` : `
+  <section class="g-direct" id="g-direct" hidden>
+    <p class="g-direct-label"><span class="live-dot" aria-hidden="true"></span>En ce moment à l'antenne</p>
+    <p class="g-direct-titre" id="g-direct-titre"></p>
+    <p class="g-direct-sous" id="g-direct-sous"></p>
+    <p class="g-direct-suite" id="g-direct-suite"></p>
+  </section>`}
+
+  <div class="g-jours" role="tablist" aria-label="Journées">
+    ${grille.jours.map((j, i) => `<button type="button" role="tab" class="g-jour${i === 0 ? ' actif' : ''}" aria-selected="${i === 0}" aria-controls="jour-${j.date}" data-jour="${j.date}">${escapeHtml(jourFr(j.date))}</button>`).join('')}
+  </div>
+
+  ${grille.jours.map((j, i) => `
+  <section class="g-panneau${i === 0 ? ' actif' : ''}" id="jour-${j.date}" role="tabpanel" aria-label="${escapeHtml(jourFr(j.date))}">
+    <ul class="g-liste">${j.programmes.map(ligne).join('')}</ul>
+  </section>`).join('')}
+
+  <p class="g-note muted small">
+    Toutes les heures sont des <strong>heures d'Israël</strong> — une heure de plus qu'en France métropolitaine.
+    Les horaires marqués <span class="g-approx-ex">≈</span> sont approximatifs : seuls les rendez-vous en gras sont à heure fixe.
+    Le direct fait toujours foi.
+  </p>
+</div>
+
+<script id="g-donnees" type="application/json">${JSON.stringify(grille.pourNavigateur)}</script>`;
+
+  return layout({
+    config, categories, nav, buildTime,
+    title: `Grille des programmes — canal ${tv.channelNumber || '14'}`,
+    description: `Les programmes de ${config.siteName} sur le canal ${tv.channelNumber || '14'}${tv.operator ? ` du bouquet ${tv.operator}` : ''} : horaires des émissions, jour par jour, avec accès au replay.`,
+    canonical: '/grille/',
+    bodyClass: 'page-grille',
+    content,
+    jsonLd: breadcrumbLd(config, [
+      { name: 'Accueil', path: '/' },
+      { name: 'Grille des programmes', path: '/grille/' },
+    ]),
   });
 }
 

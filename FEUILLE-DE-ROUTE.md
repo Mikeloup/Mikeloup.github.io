@@ -34,6 +34,56 @@ site, en service payant.*
 
 ---
 
+## Grille des programmes — v49 (1er août 2026)
+
+Michael a apporté un export de son planning de diffusion, produit dans une autre conversation
+(rappel : je n'ai aucune mémoire d'un chat à l'autre — la feuille de route est la seule
+mémoire du projet). Intégré au site, dans son propre langage graphique, pas celui de la
+maquette d'origine.
+
+- **`data/grille.json`** : l'export, remplacé tel quel à chaque mise à jour.
+  **`data/grille-emissions.json`** : nom d'affichage de chaque programme et rubrique du site
+  correspondante. Le build signale les identifiants inconnus.
+- **Page `/grille/`**, entrée « Grille TV » dans le menu principal et dans le pied de page,
+  et le bandeau télévision de l'accueil y renvoie désormais. Tout cela disparaît si le
+  fichier d'export est retiré.
+- **Rapprochement automatique grille ↔ catalogue** : quand le titre d'un programme
+  correspond à une vidéo publiée, la ligne devient cliquable et porte la mention « Replay ».
+  23 programmes sur 91 dans le premier export. C'est le lien avec la chaîne que Michael
+  demandait depuis le début.
+- **Encart « en ce moment à l'antenne »**, calculé dans le navigateur, rafraîchi chaque minute.
+- **Fuseau horaire** : tout est en heure d'Israël, la page le dit, et le calcul passe par
+  `Intl.DateTimeFormat` sur `Asia/Jerusalem` — un spectateur en France a une heure de moins.
+- **Grille périmée** : si l'export ne couvre plus aucune journée à venir, la page affiche un
+  avertissement daté au lieu d'une grille vide, et le build alerte.
+
+**Deux pièges rencontrés, à ne pas refaire.**
+`Intl.DateTimeFormat('fr-CA', {hour, minute})` renvoie **« 08 h 32 »**, pas « 08:32 » :
+découper la chaîne donnait `NaN`. Lire `formatToParts` plutôt qu'une chaîne formatée.
+Et le script de la grille avait été placé **dans le bloc du lecteur vidéo** (`if (player)`),
+donc jamais exécuté sur `/grille/`. Vérifier la portée avant de conclure qu'un code ne
+marche pas.
+
+---
+
+## Sponsoring remonté, rapport quotidien réparé — v48 (31 juillet 2026)
+
+**Comparaison menu du haut / pied de page.** Cinq liens n'existaient qu'en bas : `Sponsoring`,
+`Installer l'application`, `Flux RSS`, `Mentions légales`, `Politique de confidentialité`.
+Les deux derniers sont à leur place ; le flux RSS ne concerne qu'une poignée d'initiés ;
+`Installer l'application` fait déjà l'objet d'un bandeau automatique au bout de trois pages
+vues. **`Sponsoring` remonte** dans la barre de service du haut (et dans le menu déroulant
+sur téléphone) : c'est la seule page qui puisse rapporter de l'argent, et un annonceur devait
+jusqu'ici dérouler toute la page d'accueil pour la trouver. Pas dans le menu principal, qui
+reste éditorial.
+
+**Régression réparée.** `rapport.yml` était revenu à `cron: '30 5 * * *'` alors que la feuille
+de route note le passage à `'17 6'` — GitHub retarde ou annule les tâches programmées aux
+heures rondes ou presque. Correction reposée, avec le commentaire qui explique pourquoi, pour
+qu'elle ne se reperde pas. **À vérifier après chaque gros remaniement.**
+
+---
+
 ## Transcriptions : la moitié qui dépend de moi — v47 (31 juillet 2026)
 
 Michael : « occupe-toi des transcriptions ». Vérifié d'abord ce que je peux faire moi-même :

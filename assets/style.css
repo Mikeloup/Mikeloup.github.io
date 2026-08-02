@@ -782,6 +782,8 @@ body.share-natif .share-label { display: none; }
   /* La marque reste à gauche et le texte coule à côté : empilé, le bandeau
      prenait trois fois la hauteur nécessaire. */
   .tv-banner { align-items: flex-start; gap: .65rem; padding: .7rem .9rem; }
+  /* Cible tactile : le lien vers la grille faisait 16 px de haut. */
+  .tv-banner a { display: inline-block; padding-block: .25rem; }
   .tv-banner p { font-size: .88rem; }
   .tv-badge { margin-top: .1rem; }
   .tv-logo { height: 17px; margin-top: .15rem; }
@@ -1024,4 +1026,93 @@ body:has(.apropos-bas) .site-footer { margin-top: 0; }
 @media (max-width: 640px) {
   .transcription { padding: 1.15rem 1.15rem 1rem; }
   .transcription-corps { font-size: .97rem; }
+}
+
+/* Le lien Sponsoring se distingue des pages de service sans crier. */
+.utility a.utility-fort { color: var(--brand); font-weight: 650; }
+.utility a.utility-fort:hover { color: var(--rouge); background: var(--surface-2); }
+
+/* --- Grille des programmes ------------------------------------------------ */
+.g-avis {
+  margin: 0 0 1.5rem; padding: .9rem 1.15rem;
+  background: var(--surface-2); border-left: 3px solid var(--rouge);
+  border-radius: var(--radius-sm); font-size: .95rem;
+}
+
+/* Ce qui passe en ce moment : le seul bloc qui bouge tout seul. */
+.g-direct {
+  margin: 0 0 1.75rem; padding: 1.4rem 1.6rem;
+  background: var(--brand); color: #fff; border-radius: var(--radius-sm);
+}
+.g-direct-label {
+  display: flex; align-items: center; gap: .5rem; margin: 0 0 .5rem;
+  font-size: .78rem; font-weight: 750; letter-spacing: .09em; text-transform: uppercase;
+  color: rgb(255 255 255 / 70%);
+}
+.g-direct .live-dot { background: var(--rouge); box-shadow: 0 0 0 0 rgb(200 16 46 / 60%); }
+.g-direct-titre { margin: 0 0 .2rem; font-family: var(--font-titre); font-size: 1.4rem; font-weight: 700; }
+.g-direct-sous { margin: 0; color: rgb(255 255 255 / 80%); font-size: .97rem; }
+.g-direct-suite { margin: .9rem 0 0; padding-top: .8rem; border-top: 1px solid rgb(255 255 255 / 15%); font-size: .9rem; color: rgb(255 255 255 / 72%); }
+.g-direct-suite b { color: #fff; font-weight: 650; }
+.g-direct a { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
+
+.g-jours { display: flex; flex-wrap: wrap; gap: .5rem; margin: 0 0 1.25rem; }
+.g-jour {
+  font: inherit; font-size: .9rem; font-weight: 650; cursor: pointer;
+  padding: .55rem 1.05rem; border-radius: 999px;
+  border: 1px solid var(--line); background: #fff; color: var(--brand);
+}
+.g-jour:hover { background: var(--surface-2); }
+.g-jour.actif { background: var(--brand); border-color: var(--brand); color: #fff; }
+
+.g-panneau { display: none; }
+.g-panneau.actif { display: block; }
+
+.g-liste { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+.g-prog {
+  display: flex; align-items: baseline; gap: 1rem;
+  padding: .8rem .4rem; border-bottom: 1px solid var(--line);
+}
+.g-prog:hover { background: var(--surface-2); }
+.g-heure {
+  flex: 0 0 4.9rem; font-weight: 700; font-variant-numeric: tabular-nums;
+  color: var(--brand); font-size: .95rem; white-space: nowrap;
+}
+.g-approx::before { content: "≈ "; color: var(--muted); font-weight: 400; }
+.g-corps { flex: 1; min-width: 0; }
+.g-emission {
+  display: block; font-size: .76rem; font-weight: 750; letter-spacing: .05em;
+  text-transform: uppercase; color: var(--rouge); margin-bottom: .15rem;
+}
+.g-emission a { color: inherit; }
+.g-emission a:hover { text-decoration: underline; }
+.g-titre { display: block; font-family: var(--font-titre); font-size: 1.05rem; line-height: 1.35; }
+.g-titre a:hover { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+/* Rendez-vous à heure fixe : ce sont eux qui structurent la journée. */
+.g-ancre { background: #fff; box-shadow: inset 3px 0 0 var(--brand); padding-left: .9rem; }
+.g-ancre .g-titre { font-weight: 700; }
+.g-replay {
+  flex: 0 0 auto; align-self: center;
+  font-size: .7rem; font-weight: 750; letter-spacing: .07em; text-transform: uppercase;
+  color: var(--accent); border: 1px solid var(--accent); border-radius: var(--radius-sm);
+  padding: .12rem .45rem;
+}
+.g-clips {
+  display: flex; align-items: baseline; gap: 1rem; flex-wrap: wrap;
+  padding: .45rem .4rem .45rem 5.9rem; border-bottom: 1px solid var(--line);
+  font-size: .85rem; color: var(--muted); gap: .5rem 1rem;
+}
+.g-note { margin: 1.5rem 0 0; max-width: 70ch; line-height: 1.6; }
+.g-note strong { color: var(--text); }
+.g-approx-ex { font-weight: 700; color: var(--brand); }
+
+@media (max-width: 640px) {
+  .g-direct { padding: 1.15rem 1.15rem; }
+  .g-direct-titre { font-size: 1.2rem; }
+  .g-prog { gap: .75rem; padding: .7rem .2rem; }
+  .g-heure { flex-basis: 4.5rem; font-size: .88rem; }
+  .g-titre { font-size: .98rem; }
+  .g-replay { display: none; }
+  .g-clips { padding-left: 5.2rem; font-size: .8rem; }
+  .g-jour { padding: .5rem .85rem; font-size: .85rem; }
 }

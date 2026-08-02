@@ -182,18 +182,6 @@
       if ((e.key === 'Enter' || e.key === ' ') && !ytPlayer) { e.preventDefault(); start(urlStart); }
     });
 
-    // Transcription : dépliage. Le texte est toujours entièrement présent dans
-    // la page — on ne masque que sa hauteur, pour ne pas noyer le reste.
-    var plus = document.querySelector('[data-deplier]');
-    var corps = document.querySelector('.transcription-corps');
-    if (plus && corps) {
-      plus.addEventListener('click', function () {
-        var ouvert = corps.classList.toggle('ouvert');
-        plus.textContent = ouvert ? 'Replier la transcription' : 'Afficher toute la transcription';
-        if (!ouvert) corps.scrollIntoView({ block: 'start' });
-      });
-    }
-
     // Liens du sommaire : lecture sur place, au chapitre choisi.
     document.addEventListener('click', function (e) {
       var link = e.target.closest ? e.target.closest('[data-seek]') : null;
@@ -648,4 +636,102 @@
       }).catch(function () { /* partage annulé */ });
     });
   }
+})();
+
+/* --- Grille des programmes ------------------------------------------------
+   Onglets des journées et encart « en ce moment à l'antenne ».
+   L'antenne vit à l'heure d'Israël : tout se calcule sur ce fuseau, quel que
+   soit celui du visiteur — sans quoi un spectateur en France verrait
+   l'émission d'il y a une heure.                                            */
+(function () {
+  var jours = document.querySelectorAll('.g-jour');
+  Array.prototype.forEach.call(jours, function (b) {
+    b.addEventListener('click', function () {
+      Array.prototype.forEach.call(document.querySelectorAll('.g-jour'), function (x) {
+        x.classList.remove('actif'); x.setAttribute('aria-selected', 'false');
+      });
+      Array.prototype.forEach.call(document.querySelectorAll('.g-panneau'), function (x) {
+        x.classList.remove('actif');
+      });
+      b.classList.add('actif'); b.setAttribute('aria-selected', 'true');
+      var p = document.getElementById('jour-' + b.getAttribute('data-jour'));
+      if (p) p.classList.add('actif');
+    });
+  });
+
+  var src = document.getElementById('g-donnees');
+  var encart = document.getElementById('g-direct');
+  if (!src || !encart) return;
+
+  var lignes = [];
+  try { lignes = JSON.parse(src.textContent) || []; } catch (e) { return; }
+  if (!lignes.length) return;
+
+  var esc = function (x) {
+    return String(x == null ? '' : x)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+  };
+
+  // Les formats localisés varient (« 08:32 » ici, « 08 h 32 » là) : on lit les
+  // morceaux plutôt que de découper une chaîne dont on ne maîtrise pas la forme.
+  var maintenantIsrael = function () {
+    try {
+      var parts = new Intl.DateTimeFormat('fr-FR', {
+        timeZone: 'Asia/Jerusalem', year: 'numeric', month: '2-digit', day: '2-digit',
+        hour: '2-digit', minute: '2-digit', hour12: false,
+      }).formatToParts(new Date());
+      var v = {};
+      for (var i = 0; i < parts.length; i++) v[parts[i].type] = parts[i].value;
+      if (!v.year || !v.hour) return null;
+      return {
+        jour: v.year + '-' + v.month + '-' + v.day,
+        minutes: parseInt(v.hour, 10) * 60 + parseInt(v.minute, 10),
+      };
+    } catch (e) { return null; }
+  };
+
+  var majDirect = function () {
+    var now = maintenantIsrael();
+    if (!now) return;
+
+    var duJour = [];
+    for (var i = 0; i < lignes.length; i++) {
+      var l = lignes[i];
+      if (l[0] !== now.jour) continue;
+      var hm = String(l[1]).split(':');
+      duJour.push({
+        h: l[1], nom: l[2], titre: l[3], id: l[4],
+        m: parseInt(hm[0], 10) * 60 + parseInt(hm[1], 10),
+      });
+    }
+    if (!duJour.length) { encart.hidden = true; return; }
+    duJour.sort(function (a, b) { return a.m - b.m; });
+
+    var courant = null, suivant = null;
+    for (var j = 0; j < duJour.length; j++) {
+      if (duJour[j].m <= now.minutes) { courant = duJour[j]; suivant = duJour[j + 1] || null; }
+    }
+    if (!courant) suivant = duJour[0];
+
+    var t = document.getElementById('g-direct-titre');
+    var sT = document.getElementById('g-direct-sous');
+    var sU = document.getElementById('g-direct-suite');
+    if (courant) {
+      t.textContent = courant.nom;
+      sT.innerHTML = (courant.id
+        ? '<a href="/video/' + esc(courant.id) + '/">' + esc(courant.titre) + '</a>'
+        : esc(courant.titre)) + ' <span class="muted">· depuis ' + esc(courant.h) + '</span>';
+    } else {
+      t.textContent = 'Programmes du jour à venir';
+      sT.textContent = 'Clips et bandes-annonces en attendant le premier rendez-vous.';
+    }
+    sU.innerHTML = suivant
+      ? 'À suivre <b>' + esc(suivant.h) + ' — ' + esc(suivant.nom) + '</b>'
+      : 'Fin des programmes annoncés pour aujourd’hui.';
+    encart.hidden = false;
+  };
+
+  majDirect();
+  setInterval(majDirect, 60000);
 })();

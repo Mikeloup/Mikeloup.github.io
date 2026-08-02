@@ -179,6 +179,20 @@ présentation affiché en haut de l'accueil. C'est le seul texte rédigé que Go
 cette page — mieux vaut le garder court, exact et à jour. Le supprimer fait disparaître le
 bloc, sans rien casser.
 
+### Mettre à jour la grille des programmes
+Remplacez `data/grille.json` par le nouvel export de votre planning de diffusion. La page
+**Grille TV** se reconstruit toute seule, l'entrée apparaît dans le menu, et le bandeau
+télévision de la page d'accueil pointe dessus. Retirez le fichier et tout cela disparaît.
+
+Les noms d'émission affichés se règlent dans `data/grille-emissions.json` : pour chaque
+identifiant technique, le nom lu par le visiteur et, si l'émission existe sur le site, la
+rubrique correspondante. Le journal du build signale les identifiants absents de ce fichier.
+
+**Deux choses à savoir.** Les heures sont des **heures d'Israël** — la page le dit, et
+l'encart « en ce moment » calcule sur ce fuseau quel que soit le pays du visiteur. Et si
+l'export n'est pas renouvelé, la page reste en ligne mais affiche un avertissement daté
+plutôt qu'une grille vide.
+
 ### Publier la transcription d'une vidéo
 Déposez un fichier `.srt`, `.vtt` ou `.txt` dans `data/transcriptions/`. Nommez-le avec
 l'identifiant YouTube de la vidéo (les 11 caractères après `watch?v=`) **ou tout simplement

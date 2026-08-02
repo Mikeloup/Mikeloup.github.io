@@ -20,6 +20,7 @@ import {
 import * as R from './src/render.mjs';
 import { collecterPersonnes } from './src/personnes.mjs';
 import { lireTranscription } from './src/transcriptions.mjs';
+import { prepareGrille, indexerVideos, jourIsrael } from './src/grille.mjs';
 
 const ROOT = path.dirname(fileURLToPath(import.meta.url));
 const DIST = path.join(ROOT, 'dist');
@@ -449,6 +450,28 @@ async function main() {
     log(`${personnes.length} fiche(s) d'invités ou de présentateurs : ${personnes.slice(0, 6).map((p) => `${p.nom} (${p.videos.length})`).join(', ')}…`);
   }
 
+
+  // Grille des programmes du canal 14, si un export est présent.
+  const grilleBrute = await readJson(path.join(ROOT, 'data', 'grille.json'), null);
+  const grilleEmissions = await readJson(path.join(ROOT, 'data', 'grille-emissions.json'), {});
+  const grille = grilleBrute
+    ? prepareGrille(grilleBrute, {
+      emissions: grilleEmissions,
+      index: indexerVideos(allVideos),
+      aujourdhui: jourIsrael(new Date(buildTime)),
+    })
+    : null;
+  ctx.grille = grille;
+  if (grille) nav.grille = true;   // fait apparaître l'entrée « Grille TV » dans le menu
+  if (grille) {
+    const relies = grille.jours.flatMap((j) => j.programmes).filter((p) => p.videoId).length;
+    log(`Grille TV : ${grille.jours.length} journée(s), ${grille.total} programme(s), ${relies} relié(s) à une vidéo du site.`);
+    if (grille.perimee) warn("Grille TV périmée : l'export ne couvre plus aucune journée à venir.");
+    const inconnus = [...new Set(grilleBrute.rows.map((r) => r.channel_id))].filter((id) => !grilleEmissions[id]);
+    if (inconnus.length) warn(`Programmes sans nom d'affichage dans data/grille-emissions.json : ${inconnus.join(', ')}`);
+    await writePage('/grille/', R.grillePage({ ...ctx, grille }));
+    urls.push({ loc: '/grille/', freq: 'daily', priority: '0.8' });
+  }
 
   // Accueil.
   //
