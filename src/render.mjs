@@ -556,7 +556,8 @@ ${push}
       ${menuPanel('menu-themes', config.groups?.themes?.label || 'Thèmes', menuThemes, '/themes/', 'Voir tous les thèmes')}
       <a href="/invites/">Invités</a>
       ${nav.grille ? '<a href="/grille/">Grille TV</a>' : ''}
-      <a href="/emissions/">Tout le catalogue</a>
+      ${nav.partenaires ? '<a href="/autres-programmes/">Autres programmes</a>' : ''}
+      ${nav.partenaires ? '' : '<a href="/emissions/">Tout le catalogue</a>'}
       <a class="nav-follow" href="/suivre/">
         <svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 22a2.2 2.2 0 0 0 2.2-2.2H9.8A2.2 2.2 0 0 0 12 22Zm7-5.3V11a7 7 0 0 0-5.2-6.8V3.5a1.8 1.8 0 1 0-3.6 0v.7A7 7 0 0 0 5 11v5.7L3 18.7v.6h18v-.6l-2-2Z"/></svg>
         Suivre la chaîne
@@ -751,7 +752,7 @@ ${grille?.pourNavigateurCourt?.length
 }
 
 /** Grille des programmes du canal télévisé. */
-export function grillePage({ config, categories, nav, grille, buildTime }) {
+export function grillePage({ config, categories, nav, grille, buildTime, externes = new Map() }) {
   const tv = config.tv || {};
   const jourFr = (d) => {
     const dt = new Date(`${d}T12:00:00Z`);
@@ -762,7 +763,25 @@ export function grillePage({ config, categories, nav, grille, buildTime }) {
 
   const ligne = (p) => {
     if (p.type === 'clips') {
-      return `<li class="g-clips"><span>Clips et bandes-annonces</span><span class="muted small">${escapeHtml(p.sources.join(' · '))}</span></li>`;
+      // Chaque source de clips renvoie vers sa fiche : c'est le seul endroit du
+      // site où ces comptes, très présents à l'antenne, deviennent cliquables.
+      const vus = new Set();
+      const sources = (p.ids || []).map((id, i) => {
+        if (vus.has(id)) return '';
+        vus.add(id);
+        const f = externes.get(id);
+        const nom = escapeHtml(p.sources[i] ?? f?.nom ?? '');
+        if (!f) return `<span class="g-src">${nom}</span>`;
+        const logo = f.avatar
+          ? `<img class="g-logo" src="${escapeHtml(f.avatar)}" alt="" width="20" height="20" loading="lazy" referrerpolicy="no-referrer">`
+          : '';
+        return `<a class="g-src" href="/autres-programmes/#${escapeHtml(f.cle)}">${logo}${escapeHtml(f.nom)}</a>`;
+      }).filter(Boolean).join(' ');
+      return `<li class="g-clips"${p.heure ? ` data-heure="${escapeHtml(p.heure)}"` : ''}>
+        <span class="g-heure g-approx">${escapeHtml(p.heure || '')}</span>
+        <span class="g-corps"><span class="g-clips-titre">Clips et bandes-annonces</span>
+        <span class="g-clips-src">${sources}</span></span>
+      </li>`;
     }
     const titre = p.videoId
       ? `<a href="/video/${p.videoId}/">${escapeHtml(p.titre)}</a>`
@@ -770,13 +789,19 @@ export function grillePage({ config, categories, nav, grille, buildTime }) {
     // Un titre vide n'est pas une anomalie : certaines émissions n'ont pas de
     // sujet du jour dans l'export. La ligne se réduit alors à son nom.
     const corpsTitre = p.titre ? `<span class="g-titre">${titre}</span>` : '';
+    const ext = p.rubrique ? null : externes.get(p.id);
     const emission = p.rubrique
       ? `<a href="/emissions/${p.rubrique}/">${escapeHtml(p.emission)}</a>`
-      : escapeHtml(p.emission);
+      : (ext
+        ? `<a href="/autres-programmes/#${escapeHtml(ext.cle)}">${escapeHtml(p.emission)}</a>`
+        : escapeHtml(p.emission));
+    const logo = ext?.avatar
+      ? `<img class="g-logo" src="${escapeHtml(ext.avatar)}" alt="" width="20" height="20" loading="lazy" referrerpolicy="no-referrer">`
+      : '';
     return `<li class="g-prog" data-heure="${escapeHtml(p.heure)}">
       <span class="g-heure${p.fixe ? ' g-fixe' : ' g-approx'}">${escapeHtml(p.heure)}</span>
       <span class="g-corps">
-        <span class="g-emission">${emission}</span>
+        <span class="g-emission">${logo}${emission}</span>
         ${corpsTitre}
       </span>
       ${p.videoId ? `<a class="g-replay" href="/video/${p.videoId}/"><span class="g-replay-mot">Replay</span><span class="g-replay-ico" aria-hidden="true">▶</span></a>` : ''}
@@ -1615,23 +1640,19 @@ export function partenairesPage({ config, categories, nav, partenaires = [], gri
 
     // Rythme : la grille sait combien de fois par jour le programme passe.
     // Pour les formats courts, c'est plus parlant qu'une heure précise.
-    const rythme = p.parJour >= 3
-      ? `<span class="pa-rythme">environ ${Math.round(p.parJour)} passages par jour</span>`
-      : '';
 
     const prochains = p.prochains?.length
       ? ` data-prochains="${escapeHtml(JSON.stringify(p.prochains))}"`
       : '';
 
     return `
-<article class="pa-carte"${prochains}>
+<article class="pa-carte" id="${escapeHtml(p.cle)}"${prochains}>
   ${vignette}
   <div class="pa-corps">
     <h2 class="pa-nom">${p.url ? `<a href="${escapeHtml(p.url)}" target="_blank" rel="noopener">${escapeHtml(p.nom)}</a>` : escapeHtml(p.nom)}</h2>
     <p class="pa-meta">
       ${p.url ? `<span class="pa-reseau pa-reseau--${escapeHtml(p.reseau)}">${escapeHtml(reseauNom[p.reseau] || 'Lien')}</span>` : ''}
       ${p.abonnes ? `<span class="muted">${formatCount(p.abonnes)} abonnés</span>` : ''}
-      ${rythme}
     </p>
     ${p.description ? `<p class="pa-desc">${escapeHtml(p.description)}</p>` : ''}
     <p class="pa-emissions"><span class="pa-etiquette">Sur Tandem TV</span> ${emissions}</p>

@@ -535,7 +535,7 @@ async function main() {
       for (const j of grille.jours) {
         for (const p of j.programmes) {
           if (p.type === 'programme') ajouter(p.id, j.date, p.heure);
-          else if (p.type === 'clips') for (const id of p.ids || []) ajouter(id, j.date, '');
+          else if (p.type === 'clips') for (const id of p.ids || []) ajouter(id, j.date, p.heure || '');
         }
       }
     }
@@ -579,6 +579,13 @@ async function main() {
     partenaires.sort((a, b) => b.passages - a.passages || a.nom.localeCompare(b.nom, 'fr'));
   }
   ctx.partenaires = partenaires;
+  // Index programme → source, pour que la grille puisse nommer, illustrer et
+  // relier ce qu'elle diffuse sans le produire.
+  const externes = new Map();
+  for (const p of partenaires) {
+    for (const e of p.programmes) externes.set(e.id, { cle: p.cle, nom: p.nom, avatar: p.avatar });
+  }
+  ctx.externes = externes;
   if (partenaires.length) nav.partenaires = true;
   if (grille) {
     const relies = grille.jours.flatMap((j) => j.programmes).filter((p) => p.videoId).length;

@@ -347,6 +347,43 @@ export function prepareGrille(donnees, {
     });
   }
 
+  // --- Heure estimée des blocs de clips --------------------------------------
+  //
+  // L'export ne donne aucun horaire aux clips : ils sont simplement intercalés
+  // entre deux émissions, dans l'ordre de diffusion. Leur position dans la liste
+  // suffit donc à les situer — un bloc coincé entre 09:02 et 09:07 passe
+  // forcément dans cet intervalle. On retient le milieu, arrondi comme le reste.
+  //
+  // C'est une estimation, jamais une promesse : elle porte la même marque « ≈ »
+  // que les autres horaires approximatifs de la grille.
+  const enMinutes = (h) => {
+    const [a, b] = String(h).split(':').map(Number);
+    return Number.isNaN(a) || Number.isNaN(b) ? null : a * 60 + b;
+  };
+  for (const liste of parJour.values()) {
+    for (let i = 0; i < liste.length; i++) {
+      const bloc = liste[i];
+      if (bloc.type !== 'clips') continue;
+
+      let ma = null; let mb = null;
+      for (let k = i - 1; k >= 0; k--) {
+        if (liste[k].type === 'programme' && liste[k].heureExacte) { ma = enMinutes(liste[k].heureExacte); break; }
+      }
+      for (let k = i + 1; k < liste.length; k++) {
+        if (liste[k].type === 'programme' && liste[k].heureExacte) { mb = enMinutes(liste[k].heureExacte); break; }
+      }
+      let m = null;
+      if (ma !== null && mb !== null && mb > ma) m = Math.round((ma + mb) / 2);
+      else if (ma !== null) m = ma + 5;
+      else if (mb !== null) m = Math.max(0, mb - 5);
+      if (m === null) continue;
+
+      const hh = `${String(Math.floor((m % 1440) / 60)).padStart(2, '0')}:${String((m % 1440) % 60).padStart(2, '0')}`;
+      bloc.heure = arrondirHeure(hh, arrondi, 'bas');
+      bloc.estimee = true;
+    }
+  }
+
   const tous = [...parJour.keys()].sort().map((date) => {
     const programmes = parJour.get(date);
     const avecHeure = programmes.filter((x) => x.type === 'programme' && x.heure);
