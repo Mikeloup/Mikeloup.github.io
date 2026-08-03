@@ -799,3 +799,57 @@
   majDirect();
   setInterval(majDirect, 60000);
 })();
+
+/* --- Prochaine diffusion des programmes exterieurs ------------------------
+   Chaque fiche porte la liste de ses passages a venir, telle que la grille les
+   connait. Le navigateur choisit le premier encore devant nous, a l'heure
+   d'Israel — une page statique reconstruite douze fois par jour ne peut pas
+   s'en charger sans risquer d'annoncer un horaire deja passe.               */
+(function () {
+  var cartes = document.querySelectorAll('.pa-carte[data-prochains]');
+  if (!cartes.length) return;
+
+  var maintenant = function () {
+    try {
+      var parts = new Intl.DateTimeFormat('fr-FR', {
+        timeZone: 'Asia/Jerusalem', year: 'numeric', month: '2-digit', day: '2-digit',
+        hour: '2-digit', minute: '2-digit', hour12: false,
+      }).formatToParts(new Date());
+      var v = {};
+      for (var i = 0; i < parts.length; i++) v[parts[i].type] = parts[i].value;
+      if (!v.year || !v.hour) return null;
+      return { jour: v.year + '-' + v.month + '-' + v.day, hm: v.hour + ':' + v.minute };
+    } catch (e) { return null; }
+  };
+
+  var JOURS = ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'];
+  var libelleJour = function (date, aujourdhui) {
+    if (date === aujourdhui) return "aujourd'hui";
+    var d = new Date(date + 'T12:00:00Z');
+    var veille = new Date(aujourdhui + 'T12:00:00Z');
+    if ((d - veille) / 86400000 === 1) return 'demain';
+    return JOURS[d.getUTCDay()];
+  };
+
+  var maj = function () {
+    var now = maintenant();
+    if (!now) return;
+    Array.prototype.forEach.call(cartes, function (carte) {
+      var liste;
+      try { liste = JSON.parse(carte.getAttribute('data-prochains')) || []; } catch (e) { return; }
+      var cible = null;
+      for (var i = 0; i < liste.length; i++) {
+        var d = liste[i][0], h = liste[i][1];
+        if (d > now.jour || (d === now.jour && h > now.hm)) { cible = liste[i]; break; }
+      }
+      var ligne = carte.querySelector('.pa-prochain');
+      if (!ligne) return;
+      if (!cible) { ligne.hidden = true; return; }
+      ligne.textContent = 'Prochaine diffusion ' + libelleJour(cible[0], now.jour) + ' vers ' + cible[1];
+      ligne.hidden = false;
+    });
+  };
+
+  maj();
+  setInterval(maj, 60000);
+})();

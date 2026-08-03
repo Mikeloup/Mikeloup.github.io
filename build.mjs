@@ -100,8 +100,25 @@ async function collectFromApi(config) {
   log(`Détail de ${allIds.length} vidéo(s)…`);
   const videos = await yt.fetchVideos(allIds);
 
+  // Fiches publiques des chaînes tierces dont Tandem TV diffuse les programmes.
+  // Une unité de quota chacune, et seulement lors d'une vraie synchronisation.
+  const partenaires = {};
+  const dossierPart = await readJson(path.join(ROOT, 'data', 'partenaires.json'), null);
+  const sources = dossierPart?.sources || {};
+  const aLire = Object.entries(sources)
+    .map(([cle, s]) => [cle, /youtube\.com\/@([^/?#\s]+)/i.exec(s.url || '')?.[1]])
+    .filter(([, h]) => h);
+  if (aLire.length) {
+    log(`Programmes extérieurs : ${aLire.length} chaîne(s) YouTube à lire…`);
+    for (const [cle, handle] of aLire) {
+      const fiche = await yt.fetchChaineTierce(handle);
+      if (fiche) partenaires[cle] = fiche;
+      else warn(`Chaîne tierce introuvable : @${handle} (${cle}). La fiche s'affichera avec les seules informations saisies à la main.`);
+    }
+  }
+
   log(`Quota API consommé : ~${yt.getQuotaUsed()} unités (limite quotidienne : 10 000)`);
-  return { channel, playlists, videos, fetchedAt: buildTime };
+  return { channel, playlists, videos, partenaires, fetchedAt: buildTime };
 }
 
 /**
@@ -495,6 +512,74 @@ async function main() {
     : null;
   ctx.grille = grille;
   if (grille) nav.grille = true;   // fait apparaître l'entrée « Grille TV » dans le menu
+
+  // --- Programmes diffusés mais non produits par Tandem TV -------------------
+  //
+  // Ils n'ont aucune vidéo dans le catalogue : sans cette page, ils occupent
+  // l'antenne plusieurs fois par jour et n'existent nulle part sur le site.
+  // On les regroupe par source — une chaîne peut fournir plusieurs émissions —
+  // et on lit dans la grille leur rythme réel de diffusion.
+  const dossierPart = await readJson(path.join(ROOT, 'data', 'partenaires.json'), null);
+  const partenaires = [];
+  if (dossierPart?.sources) {
+    const fiches = data.partenaires || {};
+
+    // Occurrences par identifiant de programme, horaires et clips confondus.
+    const passages = new Map();
+    const ajouter = (id, date, heure) => {
+      if (!id) return;
+      if (!passages.has(id)) passages.set(id, []);
+      passages.get(id).push([date, heure]);
+    };
+    if (grille) {
+      for (const j of grille.jours) {
+        for (const p of j.programmes) {
+          if (p.type === 'programme') ajouter(p.id, j.date, p.heure);
+          else if (p.type === 'clips') for (const id of p.ids || []) ajouter(id, j.date, '');
+        }
+      }
+    }
+    const nbJours = grille?.jours?.length || 1;
+
+    for (const [cle, src] of Object.entries(dossierPart.sources)) {
+      const fiche = fiches[cle] || null;
+      const reseau = /instagram\.com/i.test(src.url || '') ? 'instagram'
+        : (/youtube\.com/i.test(src.url || '') ? 'youtube' : 'web');
+
+      const programmes = (src.programmes || []).map((id) => ({
+        id,
+        nom: grilleEmissions[id]?.nom || String(id).replace(/_/g, ' '),
+        passages: (passages.get(id) || []).length,
+      }));
+
+      const tous = (src.programmes || []).flatMap((id) => passages.get(id) || []);
+      const avecHeure = tous.filter(([, h]) => h).sort((a, b) => (a[0] + a[1] < b[0] + b[1] ? -1 : 1));
+
+      partenaires.push({
+        cle,
+        // Ce qui est saisi à la main l'emporte : Michael connaît ses partenaires
+        // mieux que la fiche YouTube, qui est parfois vide ou mal tenue.
+        // Dernier recours si YouTube n'a rien rendu : le nom de l'émission
+        // elle-même, toujours plus parlant qu'un identifiant technique.
+        nom: src.nom || fiche?.title || programmes[0]?.nom || cle,
+        url: src.url || '',
+        reseau,
+        avatar: src.image || fiche?.avatar || '',
+        description: src.description || excerpt(fiche?.description || '', 240),
+        abonnes: fiche?.subscribers || 0,
+        programmes,
+        passages: tous.length,
+        parJour: tous.length / nbJours,
+        prochains: avecHeure.slice(0, 40),
+      });
+    }
+
+    // Les plus présents à l'antenne d'abord : c'est l'ordre que produirait un
+    // téléspectateur à qui on demanderait qui il voit le plus souvent.
+    partenaires.sort((a, b) => b.passages - a.passages || a.nom.localeCompare(b.nom, 'fr'));
+  }
+  ctx.partenaires = partenaires;
+  if (partenaires.length) nav.partenaires = true;
   if (grille) {
     const relies = grille.jours.flatMap((j) => j.programmes).filter((p) => p.videoId).length;
     const a = grille.apparies;
@@ -533,6 +618,14 @@ async function main() {
   for (const [slug, nom] of presentateurParRubrique) {
     const p = parNom.get(sansAccents(nom));
     if (p) personneParRubrique.set(slug, p);
+  }
+
+  if (partenaires.length) {
+    await writePage('/autres-programmes/', R.partenairesPage({ ...ctx }));
+    urls.push({ loc: '/autres-programmes/', freq: 'weekly', priority: '0.7' });
+    const sansTexte = partenaires.filter((p) => !p.description).map((p) => p.nom);
+    log(`Autres programmes : ${partenaires.length} source(s), ${partenaires.reduce((n, p) => n + p.programmes.length, 0)} émission(s), ${partenaires.reduce((n, p) => n + p.passages, 0)} passage(s) dans la grille.`);
+    if (sansTexte.length) warn(`${sansTexte.length} source(s) sans texte de présentation : ${sansTexte.join(', ')}`);
   }
 
   await writePage('/', R.homePage({

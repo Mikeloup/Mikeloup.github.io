@@ -135,6 +135,38 @@ export async function fetchChannel(channelId, handle) {
   };
 }
 
+/**
+ * Fiche publique d'une chaîne tierce, à partir de son identifiant @handle.
+ *
+ * Sert aux programmes que Tandem TV diffuse sans les produire : plutôt que de
+ * faire recopier à la main un nom, un texte et une vignette pour chacun, on les
+ * lit à la source. Le partenaire change son avatar, le site suit.
+ *
+ * Une unité de quota par chaîne, une fois toutes les 100 minutes grâce au cache.
+ * Une chaîne introuvable ne fait pas échouer la construction : elle rend null,
+ * et la page se contente de ce qui a été saisi à la main.
+ */
+export async function fetchChaineTierce(handle) {
+  const h = String(handle || '').replace(/^@/, '');
+  if (!h) return null;
+  try {
+    const data = await api('channels', { part: 'snippet,statistics', forHandle: h });
+    const c = data?.items?.[0];
+    if (!c) return null;
+    return {
+      id: c.id,
+      title: c.snippet.title,
+      description: c.snippet.description || '',
+      customUrl: c.snippet.customUrl || `@${h}`,
+      avatar: bestThumb(c.snippet.thumbnails),
+      subscribers: Number(c.statistics?.subscriberCount || 0),
+      videoCount: Number(c.statistics?.videoCount || 0),
+    };
+  } catch {
+    return null;
+  }
+}
+
 export async function fetchPlaylists(channelId) {
   const items = await apiAll('playlists', { part: 'snippet,contentDetails', channelId });
   return items.map((p) => ({

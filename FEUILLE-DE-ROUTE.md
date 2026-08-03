@@ -605,6 +605,23 @@ Une troisième passe lit donc les descriptions, avec trois garde-fous :
 
 ---
 
+## Demandes de Michael en attente (2 août 2026)
+
+Notées ici pour survivre à la fin d'une conversation : l'espace de travail de
+l'assistant est effacé, ce fichier non.
+
+- [ ] **Erreurs dans « Émissions » et « Thèmes ».** Michael signale des rubriques mal classées ou mal nommées dans les deux menus. En attente de captures d'écran de sa part pour savoir précisément lesquelles.
+- [ ] **Les « visages » de la chaîne.** Erreurs signalées sur les fiches d'intervenants. Un défaut est déjà visible dans le journal de construction : les fiches écrivent **« Jérome Haas »** sans accent circonflexe alors que la rubrique écrit « Jérôme Haas ». À corriger dans `data/personnes.json`, et à vérifier pour les autres noms.
+- [ ] **18 rubriques sans aucun texte de présentation** — `rencontre-avec-sylvie-zerbib`, `l-invite-de-dana`, `le-grand-debat`, `26-nuances-2-vannes`, `l-instant-musique-de-nathalie`, `objectif-entreprendre`, `puissance-s`, `scalpel`, `avec-vous`, `scale-up-nation`, `knesset-et-match`, `hanna-network`, `jo-hanna-fitness`, `sport-tandem`, `culture-en-tandem`, `la-france-en-tandem`, `tech-break`, `le-laboratoire-de-l-apres`.
+- [ ] **52 anciennes adresses Wix** sans destination certaine, laissées en 404 (liste complète dans le journal de construction).
+- [ ] **Lignes de clips de la grille** : elles affichent des noms internes (« Betsarfatit · Dover Tsahal · Solal Israel »), du bruit pour un visiteur. Décision de Michael en attente : les garder ou ne laisser que « Clips et bandes-annonces ».
+- [ ] **Avertissement Node.js 20 déprécié** sur les trois automatismes GitHub. Sans effet aujourd'hui, à corriger quand ça n'interrompra rien.
+- [ ] **La soirée n'est pas programmée dans l'export de grille** : les journées à venir s'arrêtent vers 18 h 20 alors que le relevé du 1er août allait jusqu'à 19 h 57. À voir avec la régie — la soirée est-elle réellement vide, ou l'export ne la décrit-il pas ?
+- [ ] **Informations attendues de Michael** : lien PayPal.me pour la page dons, lien Telegram public, mentions légales (société, année de création, équipe).
+- [ ] **Transcriptions** — chantier en pause. Michael avait choisi « ses fichiers + le script gratuit », « les nouvelles vidéos seulement », « guidé ligne par ligne ». Le script `tools/transcrire.command` est prêt ; il manque la sortie de `which brew ffmpeg whisper-cpp`.
+
+---
+
 ## Intendance à ne pas oublier
 
 - [ ] **Résilier le forfait Premium Wix — le plan seul.** Les domaines et la boîte `contact@tandemtv.org` sont des abonnements séparés et doivent être conservés. Plus rien ne dépend du forfait : le site est entièrement hébergé chez GitHub.

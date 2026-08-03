@@ -1,0 +1,66 @@
+{
+  "_comment": "Programmes diffuses sur le canal 14 mais produits par d'autres. Chaque entree est une SOURCE (une chaine YouTube, un compte Instagram, une radio), et non un programme : ECUJE fournit deux emissions, Radio Shalom aussi. 'programmes' liste les identifiants tels qu'ils apparaissent dans data/grille-emissions.json — c'est ce qui permet de calculer la prochaine diffusion depuis la grille. Pour une chaine YouTube, il suffit de l'adresse : le nom, le texte de presentation, la vignette et le nombre d'abonnes sont lus directement chez YouTube a chaque synchronisation. Pour Instagram, aucun acces automatique n'existe : renseignez 'nom', 'description', et deposez une image dans assets/partenaires/ puis indiquez /assets/partenaires/nom-du-fichier.jpg dans 'image'. Les champs saisis a la main l'emportent toujours sur ce qui vient de YouTube.",
+
+  "sources": {
+    "ecuje": {
+      "url": "https://www.youtube.com/@ECUJE",
+      "programmes": ["UN_JOUR_UNE_HISTOIRE", "ECUJE"]
+    },
+    "tel-aviv-new-york": {
+      "url": "https://www.youtube.com/@sebastienlevi5233",
+      "programmes": ["TEL_AVIV_NEW_YORK"]
+    },
+    "les-israeliennes": {
+      "url": "https://www.youtube.com/@Israeliennes",
+      "programmes": ["LES_ISRAELIENNES"]
+    },
+    "radio-shalom": {
+      "url": "https://www.youtube.com/@radioshalom94.89",
+      "programmes": ["RADIO_SHALOM_BOCHURBERG", "RADIO_SHALOM_SZWARC"]
+    },
+    "shalom-salam": {
+      "url": "https://www.youtube.com/@ShalomSalam_FR",
+      "programmes": ["SHALOM_SALAM"]
+    },
+    "orot-vekelim": {
+      "url": "https://www.youtube.com/@OrotVeKelim",
+      "programmes": ["OROT_VEKELIM"]
+    },
+    "yinon-show": {
+      "url": "https://www.youtube.com/@YinonShow",
+      "programmes": ["YINON_SHOW"]
+    },
+    "katava": {
+      "url": "https://www.youtube.com/@ava_mergy",
+      "programmes": ["KATAVA"]
+    },
+    "israel-en-francais": {
+      "url": "https://www.instagram.com/israelenfrancais/",
+      "nom": "Israël en français",
+      "description": "",
+      "image": "",
+      "programmes": ["ISRAEL_EN_FRANCAIS"]
+    },
+    "dover-tsahal": {
+      "url": "https://www.instagram.com/tsahal_fr/",
+      "nom": "Tsahal FR — Dover Tsahal",
+      "description": "",
+      "image": "",
+      "programmes": ["TSAHAL_FR"]
+    },
+    "kfir-almagor": {
+      "url": "https://www.instagram.com/kfiralmagor/",
+      "nom": "Kfir Almagor",
+      "description": "",
+      "image": "",
+      "programmes": ["KFIR_ALMAGOR"]
+    },
+    "solal-israel": {
+      "url": "https://www.instagram.com/solal_israel/",
+      "nom": "Solal Fakiel",
+      "description": "",
+      "image": "",
+      "programmes": ["SOLAL_ISRAEL"]
+    }
+  }
+}

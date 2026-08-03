@@ -311,8 +311,9 @@ export function prepareGrille(donnees, {
       const dernier = liste[liste.length - 1];
       if (dernier?.type === 'clips') {
         if (!dernier.sources.includes(nomDe(l.channel_id))) dernier.sources.push(nomDe(l.channel_id));
+        dernier.ids.push(l.channel_id || '');
       } else {
-        liste.push({ type: 'clips', sources: [nomDe(l.channel_id)] });
+        liste.push({ type: 'clips', sources: [nomDe(l.channel_id)], ids: [l.channel_id || ''] });
       }
       continue;
     }
@@ -336,6 +337,7 @@ export function prepareGrille(donnees, {
       heureExacte: l.heure_debut || '',
       fixe: Boolean(l.heure_fixe),
       ancre: l.type === 'ANCRE',
+      id: l.channel_id || '',
       emission: nomEmission,
       rubrique,
       titre,

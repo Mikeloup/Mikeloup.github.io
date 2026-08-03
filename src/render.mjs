@@ -598,6 +598,7 @@ ${content}
         <li><a href="/themes/">${escapeHtml(config.groups?.themes?.label || 'Thèmes')}</a></li>
         <li><a href="/invites/">Invités et intervenants</a></li>
         ${nav.grille ? '<li><a href="/grille/">Grille des programmes</a></li>' : ''}
+        ${nav.partenaires ? '<li><a href="/autres-programmes/">Autres programmes de l\'antenne</a></li>' : ''}
         <li><a href="/recherche/">Rechercher une vidéo</a></li>
       </ul>
       <h4>Rester au courant</h4>
@@ -822,6 +823,7 @@ export function grillePage({ config, categories, nav, grille, buildTime }) {
   <p class="g-note muted small">
     Les horaires approximatifs sont arrondis aux 5 minutes et peuvent varier de quelques minutes
     selon la durée réelle des programmes. Le direct fait toujours foi.
+    ${nav.partenaires ? 'Certains programmes ne sont pas produits par Tandem TV : <a href="/autres-programmes/">voir qui les réalise</a>.' : ''}
   </p>
 </div>
 
@@ -1579,5 +1581,101 @@ export function notFoundPage({ config, categories, nav, buildTime }) {
     canonical: '/404.html',
     bodyClass: 'page-404',
     content,
+  });
+}
+
+/**
+ * Les programmes que Tandem TV diffuse sans les produire.
+ *
+ * Une chaîne de télévision n'est pas seulement un catalogue de productions
+ * maison : c'est aussi une grille où d'autres voix trouvent une antenne. Ces
+ * programmes-là étaient jusqu'ici invisibles sur le site — présents plusieurs
+ * fois par jour au canal 14, absents de toutes les pages, faute d'une vidéo
+ * Tandem TV à laquelle les rattacher.
+ *
+ * La page les regroupe par SOURCE et non par programme : l'ECUJE fournit deux
+ * émissions, Radio Shalom aussi. Un visiteur qui découvre « Du côté de chez
+ * Szwarc » a intérêt à savoir que « Mémoire et vigilance » vient de la même
+ * maison, et surtout où retrouver le reste de leur travail.
+ */
+export function partenairesPage({ config, categories, nav, partenaires = [], grille, buildTime }) {
+  const tv = config.tv || {};
+  const canal = escapeHtml(tv.channelNumber || '14');
+
+  const reseauNom = { youtube: 'YouTube', instagram: 'Instagram', web: 'Site' };
+
+  const carte = (p) => {
+    // Le monogramme évite l'image cassée quand aucune vignette n'est fournie —
+    // le cas de tous les comptes Instagram, qui n'ont aucun accès automatique.
+    const vignette = p.avatar
+      ? `<img class="pa-vignette" src="${escapeHtml(p.avatar)}" alt="" width="72" height="72" loading="lazy" referrerpolicy="no-referrer">`
+      : `<span class="pa-vignette pa-mono" aria-hidden="true">${escapeHtml((p.nom || '?').trim().charAt(0).toUpperCase())}</span>`;
+
+    const emissions = p.programmes.map((e) => escapeHtml(e.nom)).join(' <span class="dot">·</span> ');
+
+    // Rythme : la grille sait combien de fois par jour le programme passe.
+    // Pour les formats courts, c'est plus parlant qu'une heure précise.
+    const rythme = p.parJour >= 3
+      ? `<span class="pa-rythme">environ ${Math.round(p.parJour)} passages par jour</span>`
+      : '';
+
+    const prochains = p.prochains?.length
+      ? ` data-prochains="${escapeHtml(JSON.stringify(p.prochains))}"`
+      : '';
+
+    return `
+<article class="pa-carte"${prochains}>
+  ${vignette}
+  <div class="pa-corps">
+    <h2 class="pa-nom">${p.url ? `<a href="${escapeHtml(p.url)}" target="_blank" rel="noopener">${escapeHtml(p.nom)}</a>` : escapeHtml(p.nom)}</h2>
+    <p class="pa-meta">
+      ${p.url ? `<span class="pa-reseau pa-reseau--${escapeHtml(p.reseau)}">${escapeHtml(reseauNom[p.reseau] || 'Lien')}</span>` : ''}
+      ${p.abonnes ? `<span class="muted">${formatCount(p.abonnes)} abonnés</span>` : ''}
+      ${rythme}
+    </p>
+    ${p.description ? `<p class="pa-desc">${escapeHtml(p.description)}</p>` : ''}
+    <p class="pa-emissions"><span class="pa-etiquette">Sur Tandem TV</span> ${emissions}</p>
+    <p class="pa-prochain" hidden></p>
+  </div>
+</article>`;
+  };
+
+  const content = `
+<div class="wrap">
+  <nav class="breadcrumb"><a href="/">Accueil</a> <span>›</span> <span>Autres programmes</span></nav>
+
+  <header class="page-head">
+    <p class="kicker">Canal ${canal}${tv.operator ? ` · ${escapeHtml(tv.operator)}` : ''}</p>
+    <h1>Les autres programmes de l'antenne</h1>
+    <p class="lede">Tandem TV ne diffuse pas que ses propres productions. Chaînes, radios, magazines et
+    créateurs trouvent aussi une place sur le canal ${canal}. Voici où les retrouver, et quand ils passent.</p>
+  </header>
+
+  ${partenaires.length ? `<div class="pa-liste">${partenaires.map(carte).join('')}</div>` : `
+  <p class="g-avis">Aucun programme extérieur n'est encore renseigné.</p>`}
+
+  <p class="g-note muted small">
+    Les horaires annoncés sont ceux de la grille du canal ${canal}, en <strong>heures d'Israël</strong>.
+    ${nav.grille ? '<a href="/grille/">Voir la grille complète</a>.' : ''}
+  </p>
+</div>
+${grille?.pourNavigateur?.length
+    ? `<script id="g-donnees" type="application/json">${JSON.stringify(grille.pourNavigateur)}</script>`
+    : ''}`;
+
+  return layout({
+    config,
+    categories,
+    nav,
+    buildTime,
+    title: 'Les autres programmes de l\'antenne',
+    description: `Les chaînes, radios et créateurs dont ${config.siteName} diffuse les programmes sur le canal ${tv.channelNumber || '14'}${tv.operator ? ` du bouquet ${tv.operator}` : ''} : où les retrouver et quand ils passent à l'antenne.`,
+    canonical: '/autres-programmes/',
+    bodyClass: 'page-partenaires',
+    content,
+    jsonLd: breadcrumbLd(config, [
+      { name: 'Accueil', path: '/' },
+      { name: 'Les autres programmes de l\'antenne', path: '/autres-programmes/' },
+    ]),
   });
 }
