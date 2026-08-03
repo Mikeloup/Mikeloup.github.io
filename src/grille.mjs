@@ -26,15 +26,65 @@ function clefTitre(t) {
     .trim();
 }
 
-/** Le programme correspond-il à une vidéo publiée sur le site ? */
-function trouverVideo(titre, index) {
-  const c = clefTitre(titre);
-  if (c.length < 12) return null;    // trop court pour être sûr
-  if (index.has(c)) return index.get(c);
-  for (const [cle, v] of index) {
-    if (cle.startsWith(c) || c.startsWith(cle)) return v;
+/** Mots d'un titre, sans accents ni ponctuation, séparés par une espace. */
+function motsCles(t) {
+  return ` ${sansAccents(t).replace(/[^a-z0-9]+/g, ' ').replace(/\s+/g, ' ').trim()} `;
+}
+
+/**
+ * Le programme correspond-il à une vidéo publiée sur le site ?
+ *
+ * Deux mondes se rencontrent ici, et ils ne nomment pas les choses pareil. La
+ * régie écrit « ANDRÉ DARMON » ; la vidéo s'appelle « France - Espagne : André
+ * Darmon démonte les choix de Deschamps ». Comparer les deux titres en entier
+ * ne donne rien, alors que l'un est manifestement l'autre.
+ *
+ * D'où deux passes, de la plus sûre à la plus permissive :
+ *
+ *   1. Par le titre. Identique ou préfixe de l'autre — aucun doute possible,
+ *      on peut chercher dans tout le catalogue.
+ *   2. Par la rubrique. On ne regarde que les vidéos de l'émission concernée,
+ *      et on demande que le titre de régie s'y retrouve mot pour mot. Dans un
+ *      ensemble de trente vidéos d'un même rendez-vous, « André Darmon » ne
+ *      peut désigner qu'une chose. Chercher la même bribe dans les mille cent
+ *      vidéos du catalogue, en revanche, produirait des liens faux.
+ *
+ * Un lien faux coûte plus cher qu'un lien manquant : le visiteur clique sur
+ * « Replay » et tombe sur une autre émission. En cas d'ambiguïté persistante,
+ * on tranche par la date de publication la plus récente.
+ */
+function trouverVideo(brut, propre, rubrique, index) {
+  const parClef = index?.parClef;
+  if (!parClef) return null;
+
+  const plusRecent = (liste) => [...liste]
+    .sort((a, b) => new Date(b.publishedAt || 0) - new Date(a.publishedAt || 0))[0];
+
+  const c = clefTitre(brut);
+  if (c.length >= 12) {
+    if (parClef.has(c)) return { video: parClef.get(c), methode: 'titre' };
+    // Plusieurs épisodes peuvent commencer par le même nom d'invité : on prend
+    // le plus récent, qui est presque toujours celui que la régie rediffuse.
+    const proches = [];
+    for (const [cle, v] of parClef) {
+      if (cle.startsWith(c) || c.startsWith(cle)) proches.push(v);
+    }
+    if (proches.length) return { video: plusRecent(proches), methode: 'titre' };
   }
-  return null;
+
+  const candidats = rubrique ? (index.parRubrique?.get(rubrique) || []) : [];
+  if (!candidats.length) return null;
+
+  const aiguille = motsCles(propre || brut);
+  const mots = aiguille.trim().split(' ').filter((m) => m.length > 2);
+  // Deux mots significatifs au minimum : « Iran » seul rattacherait n'importe quoi.
+  if (aiguille.trim().length < 8 || mots.length < 2) return null;
+
+  const trouves = candidats.filter((v) => motsCles(v.title).includes(aiguille));
+  if (!trouves.length) return null;
+  if (trouves.length === 1) return { video: trouves[0], methode: 'rubrique' };
+
+  return { video: plusRecent(trouves), methode: 'rubrique' };
 }
 
 // -----------------------------------------------------------------------------
@@ -162,13 +212,24 @@ function retirerSignature(titre, emission) {
   return reste || titre;
 }
 
+/**
+ * Prépare les deux index dont le rapprochement a besoin : l'un par titre, pour
+ * la correspondance exacte ; l'autre par rubrique, pour reconnaître un invité
+ * cité seul dans le planning de diffusion.
+ */
 export function indexerVideos(allVideos) {
-  const index = new Map();
-  for (const v of allVideos) {
+  const parClef = new Map();
+  const parRubrique = new Map();
+  for (const v of allVideos || []) {
     const c = clefTitre(v.title);
-    if (c.length >= 12 && !index.has(c)) index.set(c, v);
+    if (c.length >= 12 && !parClef.has(c)) parClef.set(c, v);
+    for (const pl of v.playlists || []) {
+      if (!pl?.slug) continue;
+      if (!parRubrique.has(pl.slug)) parRubrique.set(pl.slug, []);
+      parRubrique.get(pl.slug).push(v);
+    }
   }
-  return index;
+  return { parClef, parRubrique };
 }
 
 /**
@@ -204,7 +265,7 @@ function arrondirHeure(heure, pas, sens = 'bas') {
 }
 
 export function prepareGrille(donnees, {
-  emissions = {}, index = new Map(), aujourdhui, arrondi = 0, smartTitre = (x) => x,
+  emissions = {}, index = null, aujourdhui, arrondi = 0, smartTitre = (x) => x,
   rubriques = [],
 } = {}) {
   const lignes = Array.isArray(donnees?.rows) ? donnees.rows : [];
@@ -256,12 +317,19 @@ export function prepareGrille(donnees, {
       continue;
     }
 
-    const video = l.title ? trouverVideo(l.title, index) : null;
     const nomEmission = nomDe(l.channel_id);
+    const rubrique = rubriqueDe(l.channel_id);
+
+    // On nettoie AVANT de chercher : « INVITE : BRUNO DRAY » ne ressemble à
+    // rien dans le catalogue, « Bruno Dray » s'y retrouve immédiatement.
+    const propre = nettoyerTitre(l.title, { emission: nomEmission, smart: smartTitre });
+    const trouve = l.title ? trouverVideo(l.title, propre, rubrique, index) : null;
+    const video = trouve?.video || null;
+
     // Le titre YouTube fait autorité quand il existe : il a été écrit pour être lu.
     const titre = video?.title
       ? retirerSignature(String(video.title).normalize('NFKC').replace(/\s+/g, ' ').trim(), nomEmission)
-      : nettoyerTitre(l.title, { emission: nomEmission, smart: smartTitre });
+      : propre;
     liste.push({
       type: 'programme',
       heure: arrondirHeure(l.heure_debut || '', arrondi, l.heure_fixe ? 'proche' : 'bas'),
@@ -269,10 +337,11 @@ export function prepareGrille(donnees, {
       fixe: Boolean(l.heure_fixe),
       ancre: l.type === 'ANCRE',
       emission: nomEmission,
-      rubrique: rubriqueDe(l.channel_id),
+      rubrique,
       titre,
       titreRegie: l.title || '',
       videoId: video?.id || null,
+      methode: trouve?.methode || null,
     });
   }
 
@@ -304,6 +373,20 @@ export function prepareGrille(donnees, {
 
   // Les journées déjà passées ne sont pas retirées : l'export peut dater, et
   // mieux vaut une grille visiblement ancienne qu'une page vide sans explication.
+  // Compteurs de rapprochement : ils disent, à chaque construction, si le lien
+  // entre la grille et le catalogue progresse ou se dégrade. Ils portent sur ce
+  // qui est réellement affiché, sinon ils raconteraient une autre grille que
+  // celle que voit le visiteur.
+  const apparies = { titre: 0, rubrique: 0 };
+  const nonApparies = [];
+  for (const j of jours) {
+    for (const p of j.programmes) {
+      if (p.type !== 'programme' || !p.titreRegie) continue;
+      if (p.methode) apparies[p.methode] += 1;
+      else nonApparies.push(`${p.emission} — ${p.titreRegie}`);
+    }
+  }
+
   const derniere = tous[tous.length - 1]?.date;
   const perimee = Boolean(aujourdhui && derniere && derniere < aujourdhui);
 
@@ -311,6 +394,8 @@ export function prepareGrille(donnees, {
     jours,
     perimee,
     orphelines: [...orphelines],
+    apparies,
+    nonApparies,
     exporteLe: donnees.exported_at || null,
     fuseau: FUSEAU,
     total: jours.reduce((n, j) => n + j.nbProgrammes, 0),

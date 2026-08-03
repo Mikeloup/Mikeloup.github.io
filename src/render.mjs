@@ -778,7 +778,7 @@ export function grillePage({ config, categories, nav, grille, buildTime }) {
         <span class="g-emission">${emission}</span>
         ${corpsTitre}
       </span>
-      ${p.videoId ? '<span class="g-replay">Replay</span>' : ''}
+      ${p.videoId ? `<a class="g-replay" href="/video/${p.videoId}/"><span class="g-replay-mot">Replay</span><span class="g-replay-ico" aria-hidden="true">▶</span></a>` : ''}
       <span class="g-badge" hidden>À l'antenne</span>
     </li>`;
   };

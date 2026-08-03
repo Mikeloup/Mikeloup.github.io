@@ -497,7 +497,12 @@ async function main() {
   if (grille) nav.grille = true;   // fait apparaître l'entrée « Grille TV » dans le menu
   if (grille) {
     const relies = grille.jours.flatMap((j) => j.programmes).filter((p) => p.videoId).length;
-    log(`Grille TV : ${grille.jours.length} journée(s), ${grille.total} programme(s), ${relies} relié(s) à une vidéo du site.`);
+    const a = grille.apparies;
+    log(`Grille TV : ${grille.jours.length} journée(s), ${grille.total} programme(s), ${relies} relié(s) à une vidéo du site (${a.titre} par le titre, ${a.rubrique} par la rubrique).`);
+    if (grille.nonApparies.length) {
+      log(`${grille.nonApparies.length} programme(s) sans replay — les 12 premiers, pour comprendre ce qui bloque :`);
+      for (const x of grille.nonApparies.slice(0, 12)) log(`   ${x}`);
+    }
     if (grille.orphelines.length) {
       warn(`${grille.orphelines.length} rubrique(s) de la grille pointent vers une adresse qui n'existe plus (playlist renommée ?). Le rattachement s'est fait par le nom de l'émission ; corrigez le champ « site » dans data/grille-emissions.json :`);
       for (const o of grille.orphelines) warn(`   ${o}`);

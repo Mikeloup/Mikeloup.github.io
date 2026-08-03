@@ -1141,12 +1141,19 @@ body:has(.apropos-bas) .site-footer { margin-top: 0; }
   margin: 0; padding: .9rem .2rem 0;
   border-top: 1px dashed var(--line);
 }
+/* Le seul element de la grille qui transforme un telespectateur en visiteur du
+   site. Il etait masque sous 640 px, c'est-a-dire precisement la ou se trouve
+   la majorite des lecteurs : il devient un vrai lien, et garde sa place sur
+   telephone sous forme d'icone. */
 .g-replay {
   flex: 0 0 auto; align-self: center;
+  display: inline-flex; align-items: center; justify-content: center;
   font-size: .7rem; font-weight: 750; letter-spacing: .07em; text-transform: uppercase;
   color: var(--accent); border: 1px solid var(--accent); border-radius: var(--radius-sm);
-  padding: .12rem .45rem;
+  padding: .12rem .45rem; text-decoration: none;
 }
+.g-replay:hover { background: var(--accent); color: #fff; }
+.g-replay-ico { display: none; }
 .g-clips {
   display: flex; align-items: baseline; gap: 1rem; flex-wrap: wrap;
   padding: .45rem .4rem .45rem 5.9rem; border-bottom: 1px solid var(--line);
@@ -1162,7 +1169,13 @@ body:has(.apropos-bas) .site-footer { margin-top: 0; }
   .g-prog { gap: .75rem; padding: .7rem .2rem; }
   .g-heure { flex-basis: 4.5rem; font-size: .88rem; }
   .g-titre { font-size: .98rem; }
-  .g-replay { display: none; }
+  /* Cible tactile de 32 px : l'icone seule tient dans la largeur restante. */
+  .g-replay {
+    display: inline-flex; min-width: 2rem; min-height: 2rem;
+    padding: 0; letter-spacing: 0; font-size: .8rem;
+  }
+  .g-replay-mot { display: none; }
+  .g-replay-ico { display: inline; }
   .g-clips { padding-left: 5.2rem; font-size: .8rem; }
   .g-badge { font-size: .62rem; padding: .15rem .4rem; }
   .g-jour { padding: .5rem .85rem; font-size: .85rem; }
