@@ -1656,6 +1656,7 @@ export function partenairesPage({ config, categories, nav, partenaires = [], gri
     </p>
     ${p.description ? `<p class="pa-desc">${escapeHtml(p.description)}</p>` : ''}
     <p class="pa-emissions"><span class="pa-etiquette">Sur Tandem TV</span> ${emissions}</p>
+    ${p.source ? `<p class="pa-source muted small">Une production ${escapeHtml(p.source)}</p>` : ''}
     <p class="pa-prochain" hidden></p>
   </div>
 </article>`;

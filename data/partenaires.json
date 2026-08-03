@@ -4,19 +4,27 @@
   "sources": {
     "ecuje": {
       "url": "https://www.youtube.com/@ECUJE",
+      "nom": "ECUJE",
       "programmes": ["UN_JOUR_UNE_HISTOIRE", "ECUJE"]
     },
     "tel-aviv-new-york": {
       "url": "https://www.youtube.com/@sebastienlevi5233",
+      "nom": "Tel Aviv - New York",
       "programmes": ["TEL_AVIV_NEW_YORK"]
     },
     "les-israeliennes": {
       "url": "https://www.youtube.com/@Israeliennes",
       "programmes": ["LES_ISRAELIENNES"]
     },
-    "radio-shalom": {
+    "du-cote-de-chez-szwarc": {
       "url": "https://www.youtube.com/@radioshalom94.89",
-      "programmes": ["RADIO_SHALOM_BOCHURBERG", "RADIO_SHALOM_SZWARC"]
+      "nom": "Du côté de chez Szwarc",
+      "programmes": ["RADIO_SHALOM_SZWARC"]
+    },
+    "memoire-et-vigilance": {
+      "url": "https://www.youtube.com/@radioshalom94.89",
+      "nom": "Mémoire et vigilance",
+      "programmes": ["RADIO_SHALOM_BOCHURBERG"]
     },
     "shalom-salam": {
       "url": "https://www.youtube.com/@ShalomSalam_FR",
@@ -24,6 +32,7 @@
     },
     "orot-vekelim": {
       "url": "https://www.youtube.com/@OrotVeKelim",
+      "description": "Une yechiva, un oulpan, des studios — et bientôt un beit midrash à Jérusalem. L'écosystème de la Torah et de Sion.",
       "programmes": ["OROT_VEKELIM"]
     },
     "yinon-show": {
@@ -34,32 +43,32 @@
       "url": "https://www.youtube.com/@ava_mergy",
       "programmes": ["KATAVA"]
     },
-    "israel-en-francais": {
+    "betsarfatit": {
       "url": "https://www.instagram.com/israelenfrancais/",
-      "nom": "Israël en français",
-      "description": "",
-      "image": "",
+      "nom": "Betsarfatit",
+      "description": "Le média des curieux de l'hébreu et de la culture israélienne. Betsarfatit aide les francophones à apprendre l'hébreu et à découvrir Israël autrement.",
+      "image": "/assets/partenaires/betsarfatit.jpg",
       "programmes": ["ISRAEL_EN_FRANCAIS"]
     },
     "dover-tsahal": {
       "url": "https://www.instagram.com/tsahal_fr/",
-      "nom": "Tsahal FR — Dover Tsahal",
-      "description": "",
-      "image": "",
+      "nom": "Dover Tsahal — Tsahal FR",
+      "description": "Le compte Instagram officiel de Tsahal en français. L'armée de défense d'Israël, depuis 1948.",
+      "image": "/assets/partenaires/dover-tsahal.jpg",
       "programmes": ["TSAHAL_FR"]
     },
     "kfir-almagor": {
       "url": "https://www.instagram.com/kfiralmagor/",
       "nom": "Kfir Almagor",
       "description": "",
-      "image": "",
+      "image": "/assets/partenaires/kfir-almagor.jpg",
       "programmes": ["KFIR_ALMAGOR"]
     },
     "solal-israel": {
       "url": "https://www.instagram.com/solal_israel/",
       "nom": "Solal Fakiel",
-      "description": "",
-      "image": "",
+      "description": "Sous le nom de Bne Israel, Solal Fakiel humanise le judaïsme et les religions et décrypte le sens des prénoms. Guide indépendant à Jérusalem, il explore aussi les rapports entre écho-logie et langage.",
+      "image": "/assets/partenaires/solal-fakiel.jpg",
       "programmes": ["SOLAL_ISRAEL"]
     }
   }

@@ -109,11 +109,17 @@ async function collectFromApi(config) {
     .map(([cle, s]) => [cle, /youtube\.com\/@([^/?#\s]+)/i.exec(s.url || '')?.[1]])
     .filter(([, h]) => h);
   if (aLire.length) {
-    log(`Programmes extérieurs : ${aLire.length} chaîne(s) YouTube à lire…`);
-    for (const [cle, handle] of aLire) {
+    // Radio Shalom alimente deux fiches : une seule interrogation suffit.
+    const parHandle = new Map();
+    const uniques = [...new Set(aLire.map(([, h]) => h))];
+    log(`Programmes extérieurs : ${uniques.length} chaîne(s) YouTube à lire pour ${aLire.length} fiche(s)…`);
+    for (const handle of uniques) {
       const fiche = await yt.fetchChaineTierce(handle);
-      if (fiche) partenaires[cle] = fiche;
-      else warn(`Chaîne tierce introuvable : @${handle} (${cle}). La fiche s'affichera avec les seules informations saisies à la main.`);
+      if (fiche) parHandle.set(handle, fiche);
+      else warn(`Chaîne tierce introuvable : @${handle}. Les fiches concernées s'afficheront avec les seules informations saisies à la main.`);
+    }
+    for (const [cle, handle] of aLire) {
+      if (parHandle.has(handle)) partenaires[cle] = parHandle.get(handle);
     }
   }
 
@@ -562,6 +568,11 @@ async function main() {
         // Dernier recours si YouTube n'a rien rendu : le nom de l'émission
         // elle-même, toujours plus parlant qu'un identifiant technique.
         nom: src.nom || fiche?.title || programmes[0]?.nom || cle,
+        // Quand le nom affiché n'est pas celui de la chaîne d'origine — deux
+        // émissions de Radio Shalom présentées séparément, par exemple — on dit
+        // d'où elles viennent, sinon le texte repris de YouTube parle d'une
+        // maison que rien ne nomme sur la fiche.
+        source: (src.nom && fiche?.title && src.nom !== fiche.title) ? fiche.title : '',
         url: src.url || '',
         reseau,
         avatar: src.image || fiche?.avatar || '',

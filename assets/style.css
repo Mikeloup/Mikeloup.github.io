@@ -1245,6 +1245,7 @@ a.g-src:hover { color: var(--accent); text-decoration: underline; text-underline
 /* Prochaine diffusion : calculee par le navigateur, sur l'heure d'Israel.
    Masquee tant qu'elle n'est pas connue — une page statique ne peut pas
    promettre un horaire qu'elle ne saurait pas tenir a jour. */
+.pa-source { margin: .2rem 0 0; }
 .pa-prochain { margin: .5rem 0 0; font-size: .88rem; font-weight: 650; color: var(--brand); }
 .pa-prochain[hidden] { display: none; }
 @media (max-width: 640px) {
