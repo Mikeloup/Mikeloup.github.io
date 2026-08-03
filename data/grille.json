@@ -1,5 +1,5 @@
 {
-  "exported_at": "2026-08-03T13:51:58.823555",
+  "exported_at": "2026-08-03T20:21:51.031489",
   "window_days": 3,
   "rows": [
     {
@@ -1038,7 +1038,7 @@
     },
     {
       "date_diffusion": "2026-08-05",
-      "heure_debut": "08:23",
+      "heure_debut": "08:24",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "RICHARD_DARMON",
@@ -1046,7 +1046,7 @@
     },
     {
       "date_diffusion": "2026-08-05",
-      "heure_debut": "08:30",
+      "heure_debut": "08:32",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "STEPHANE_GOLDIN",
@@ -1054,7 +1054,7 @@
     },
     {
       "date_diffusion": "2026-08-05",
-      "heure_debut": "08:33",
+      "heure_debut": "08:35",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "RONY_AKRICH",
@@ -1062,7 +1062,7 @@
     },
     {
       "date_diffusion": "2026-08-05",
-      "heure_debut": "08:45",
+      "heure_debut": "08:48",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "RONY_HAYOT",
@@ -1070,21 +1070,7 @@
     },
     {
       "date_diffusion": "2026-08-05",
-      "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
-    },
-    {
-      "date_diffusion": "2026-08-05",
-      "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL"
-    },
-    {
-      "date_diffusion": "2026-08-05",
-      "heure_debut": "09:01",
+      "heure_debut": "08:59",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "OROT_VEKELIM",
@@ -1092,7 +1078,7 @@
     },
     {
       "date_diffusion": "2026-08-05",
-      "heure_debut": "10:03",
+      "heure_debut": "10:02",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "RONY_AKRICH",
@@ -1107,7 +1093,7 @@
     },
     {
       "date_diffusion": "2026-08-05",
-      "heure_debut": "10:15",
+      "heure_debut": "10:13",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "RONY_HAYOT",
@@ -1115,23 +1101,7 @@
     },
     {
       "date_diffusion": "2026-08-05",
-      "heure_debut": "10:26",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "KATAVA",
-      "title": "Israël : la version disparue de Sesame Street (1998)"
-    },
-    {
-      "date_diffusion": "2026-08-05",
-      "heure_debut": "10:30",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "Ein Gedi"
-    },
-    {
-      "date_diffusion": "2026-08-05",
-      "heure_debut": "10:35",
+      "heure_debut": "10:24",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "RONY_HAYOT",
@@ -1149,14 +1119,14 @@
       "bloc_apres": "OROT_VEKELIM",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
+      "channel_id": "SOLAL_ISRAEL"
     },
     {
       "date_diffusion": "2026-08-05",
       "bloc_apres": "OROT_VEKELIM",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL"
+      "channel_id": "KFIR_ALMAGOR"
     },
     {
       "date_diffusion": "2026-08-05",
@@ -1189,13 +1159,6 @@
     },
     {
       "date_diffusion": "2026-08-05",
-      "bloc_apres": "WILLIAM_ZERBIB_L_INTERVIEW",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "ISRAEL_EN_FRANCAIS"
-    },
-    {
-      "date_diffusion": "2026-08-05",
       "heure_debut": "12:00",
       "type": "ANCRE",
       "heure_fixe": true,
@@ -1204,7 +1167,7 @@
     },
     {
       "date_diffusion": "2026-08-05",
-      "heure_debut": "12:49",
+      "heure_debut": "12:48",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "MYRIAM_DANAN",
@@ -1219,7 +1182,7 @@
     },
     {
       "date_diffusion": "2026-08-05",
-      "heure_debut": "12:54",
+      "heure_debut": "12:55",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "STEPHANE_GOLDIN",
@@ -1238,13 +1201,6 @@
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
       "channel_id": "TSAHAL_FR"
-    },
-    {
-      "date_diffusion": "2026-08-05",
-      "bloc_apres": "RADIO_SHALOM_BOCHURBERG",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
     },
     {
       "date_diffusion": "2026-08-05",
@@ -1279,7 +1235,7 @@
     },
     {
       "date_diffusion": "2026-08-05",
-      "heure_debut": "13:48",
+      "heure_debut": "13:49",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "RONY_HAYOT",
@@ -1287,7 +1243,7 @@
     },
     {
       "date_diffusion": "2026-08-05",
-      "heure_debut": "13:59",
+      "heure_debut": "14:00",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "YINON_SHOW",
@@ -1295,7 +1251,7 @@
     },
     {
       "date_diffusion": "2026-08-05",
-      "heure_debut": "14:44",
+      "heure_debut": "14:45",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "RONY_AKRICH",
@@ -1321,13 +1277,6 @@
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
       "channel_id": "KFIR_ALMAGOR"
-    },
-    {
-      "date_diffusion": "2026-08-05",
-      "bloc_apres": "YINON_SHOW",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
     },
     {
       "date_diffusion": "2026-08-05",
@@ -1357,14 +1306,14 @@
       "bloc_apres": "RADIO_SHALOM_SZWARC",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL"
+      "channel_id": "TSAHAL_FR"
     },
     {
       "date_diffusion": "2026-08-05",
       "bloc_apres": "RADIO_SHALOM_SZWARC",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
+      "channel_id": "SOLAL_ISRAEL"
     },
     {
       "date_diffusion": "2026-08-05",
@@ -1375,7 +1324,7 @@
     },
     {
       "date_diffusion": "2026-08-05",
-      "heure_debut": "15:59",
+      "heure_debut": "16:00",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "ECUJE",
@@ -1383,7 +1332,7 @@
     },
     {
       "date_diffusion": "2026-08-05",
-      "heure_debut": "17:27",
+      "heure_debut": "17:28",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "MYRIAM_DANAN",
@@ -1406,7 +1355,7 @@
     },
     {
       "date_diffusion": "2026-08-05",
-      "heure_debut": "17:42",
+      "heure_debut": "17:41",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "STEPHANE_GOLDIN",
@@ -1432,7 +1381,7 @@
       "bloc_apres": "ECUJE",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
+      "channel_id": "TSAHAL_FR"
     },
     {
       "date_diffusion": "2026-08-05",
@@ -1441,6 +1390,13 @@
       "heure_fixe": true,
       "channel_id": "TOUR_D_ISRAEL",
       "title": "20230618 Tour d Israel Jeru Musulmane"
+    },
+    {
+      "date_diffusion": "2026-08-05",
+      "bloc_apres": "TOUR_D_ISRAEL",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "SOLAL_ISRAEL"
     },
     {
       "date_diffusion": "2026-08-05",
@@ -1461,18 +1417,11 @@
       "bloc_apres": "TOUR_D_ISRAEL",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL"
-    },
-    {
-      "date_diffusion": "2026-08-05",
-      "bloc_apres": "TOUR_D_ISRAEL",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
       "channel_id": "ISRAEL_EN_FRANCAIS"
     },
     {
       "date_diffusion": "2026-08-05",
-      "heure_debut": "18:43",
+      "heure_debut": "18:41",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "RONY_HAYOT",
@@ -1480,7 +1429,7 @@
     },
     {
       "date_diffusion": "2026-08-05",
-      "heure_debut": "18:54",
+      "heure_debut": "18:52",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "RONY_AKRICH",
@@ -1488,7 +1437,15 @@
     },
     {
       "date_diffusion": "2026-08-05",
-      "heure_debut": "19:05",
+      "heure_debut": "19:03",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "ujuh211225"
+    },
+    {
+      "date_diffusion": "2026-08-05",
+      "heure_debut": "19:12",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "RICHARD_DARMON",
@@ -1496,15 +1453,7 @@
     },
     {
       "date_diffusion": "2026-08-05",
-      "heure_debut": "19:11",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 130725"
-    },
-    {
-      "date_diffusion": "2026-08-05",
-      "heure_debut": "19:17",
+      "heure_debut": "19:19",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "MYRIAM_DANAN",
@@ -1512,23 +1461,15 @@
     },
     {
       "date_diffusion": "2026-08-05",
-      "heure_debut": "19:22",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "KATAVA",
-      "title": "Quand Superman faisait la paix entre Israël et les Palestiniens"
-    },
-    {
-      "date_diffusion": "2026-08-05",
-      "heure_debut": "19:25",
+      "heure_debut": "19:24",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
-      "title": "Ein Hod"
+      "title": "tiberiad"
     },
     {
       "date_diffusion": "2026-08-05",
-      "heure_debut": "19:29",
+      "heure_debut": "19:27",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "STEPHANE_GOLDIN",
@@ -1540,6 +1481,14 @@
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
       "channel_id": "LEON_LE_MEDIA"
+    },
+    {
+      "date_diffusion": "2026-08-05",
+      "heure_debut": "19:32",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "KATAVA",
+      "title": "La folie Kpop Demon Hunters, en Israël aussi ! (reportage)"
     },
     {
       "date_diffusion": "2026-08-05",
@@ -1555,15 +1504,23 @@
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une hsitoire 290625"
+      "title": "ujuh141225"
     },
     {
       "date_diffusion": "2026-08-05",
-      "heure_debut": "19:52",
+      "heure_debut": "19:50",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "KATAVA",
+      "title": "Les 4 Fantastiques : Ben Grimm / La Chose est juif ?"
+    },
+    {
+      "date_diffusion": "2026-08-05",
+      "heure_debut": "19:56",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
-      "title": "Grotte de sédécias"
+      "title": "zichron yaakov"
     },
     {
       "date_diffusion": "2026-08-05",
@@ -1575,7 +1532,7 @@
     },
     {
       "date_diffusion": "2026-08-05",
-      "heure_debut": "21:59",
+      "heure_debut": "22:00",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "YINON_SHOW",
