@@ -100,28 +100,7 @@ async function collectFromApi(config) {
   log(`Détail de ${allIds.length} vidéo(s)…`);
   const videos = await yt.fetchVideos(allIds);
 
-  // Fiches publiques des chaînes tierces dont Tandem TV diffuse les programmes.
-  // Une unité de quota chacune, et seulement lors d'une vraie synchronisation.
-  const partenaires = {};
-  const dossierPart = await readJson(path.join(ROOT, 'data', 'partenaires.json'), null);
-  const sources = dossierPart?.sources || {};
-  const aLire = Object.entries(sources)
-    .map(([cle, s]) => [cle, /youtube\.com\/@([^/?#\s]+)/i.exec(s.url || '')?.[1]])
-    .filter(([, h]) => h);
-  if (aLire.length) {
-    // Radio Shalom alimente deux fiches : une seule interrogation suffit.
-    const parHandle = new Map();
-    const uniques = [...new Set(aLire.map(([, h]) => h))];
-    log(`Programmes extérieurs : ${uniques.length} chaîne(s) YouTube à lire pour ${aLire.length} fiche(s)…`);
-    for (const handle of uniques) {
-      const fiche = await yt.fetchChaineTierce(handle);
-      if (fiche) parHandle.set(handle, fiche);
-      else warn(`Chaîne tierce introuvable : @${handle}. Les fiches concernées s'afficheront avec les seules informations saisies à la main.`);
-    }
-    for (const [cle, handle] of aLire) {
-      if (parHandle.has(handle)) partenaires[cle] = parHandle.get(handle);
-    }
-  }
+  const partenaires = await collecterPartenaires();
 
   log(`Quota API consommé : ~${yt.getQuotaUsed()} unités (limite quotidienne : 10 000)`);
   return { channel, playlists, videos, partenaires, fetchedAt: buildTime };
@@ -143,6 +122,38 @@ async function collectFromApi(config) {
  * gratuites, et les synchronisations programmées continuent d'apporter les
  * nouvelles vidéos au rythme prévu.
  */
+/**
+ * Fiches publiques des chaînes tierces dont Tandem TV diffuse les programmes.
+ *
+ * Isolé du reste de la collecte pour une raison précise : le catalogue peut
+ * venir du cache, écrit avant que cette fonction n'existe ou avant l'ajout
+ * d'une nouvelle source. Dans ce cas le cache ne contient rien pour elles, et
+ * la page afficherait des fiches nues sans que rien ne l'explique. On peut donc
+ * l'appeler séparément — huit unités de quota, sur dix mille.
+ */
+async function collecterPartenaires() {
+  const partenaires = {};
+  const dossier = await readJson(path.join(ROOT, 'data', 'partenaires.json'), null);
+  const aLire = Object.entries(dossier?.sources || {})
+    .map(([cle, s]) => [cle, /youtube\.com\/@([^/?#\s]+)/i.exec(s.url || '')?.[1]])
+    .filter(([, h]) => h);
+  if (!aLire.length) return partenaires;
+
+  // Radio Shalom alimente deux fiches : une seule interrogation suffit.
+  const parHandle = new Map();
+  const uniques = [...new Set(aLire.map(([, h]) => h))];
+  log(`Programmes extérieurs : ${uniques.length} chaîne(s) YouTube à lire pour ${aLire.length} fiche(s)…`);
+  for (const handle of uniques) {
+    const fiche = await yt.fetchChaineTierce(handle);
+    if (fiche) parHandle.set(handle, fiche);
+    else warn(`Chaîne tierce introuvable : @${handle}. Les fiches concernées s'afficheront avec les seules informations saisies à la main.`);
+  }
+  for (const [cle, handle] of aLire) {
+    if (parHandle.has(handle)) partenaires[cle] = parHandle.get(handle);
+  }
+  return partenaires;
+}
+
 async function collectData(config) {
   const cachePath = path.join(ROOT, 'data', 'cache.json');
   const cacheMinutes = Number(process.env.CACHE_MINUTES ?? config.youtube?.cacheMinutes ?? 100);
@@ -170,6 +181,14 @@ async function collectData(config) {
       : Infinity;
     if (cached?.videos?.length && age >= 0 && age < cacheMinutes) {
       log(`Catalogue repris du cache (${Math.round(age)} min, seuil ${cacheMinutes} min) — aucun appel à YouTube.`);
+      // Le cache peut être antérieur à l'ajout d'une source extérieure : on
+      // comble le manque plutôt que de publier des fiches vides pendant deux
+      // heures, sans que personne comprenne pourquoi.
+      if (!cached.partenaires) {
+        yt.setApiKey(process.env.YOUTUBE_API_KEY);
+        cached.partenaires = await collecterPartenaires();
+        await fs.writeFile(cachePath, JSON.stringify(cached), 'utf8');
+      }
       return cached;
     }
   }
