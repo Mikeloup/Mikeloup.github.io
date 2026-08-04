@@ -20,6 +20,8 @@
     "Yom HaZikaron"
   ],
   "alias": {
+    "Jérome Haas": "Jérôme Haas",
+    "Jerome Haas": "Jérôme Haas",
     "Stephan Zeev Goldin": "Stéphane Goldin",
     "Stephane Goldin": "Stéphane Goldin",
     "Dr Elie Botbol": "Elie Botbol",
@@ -30,7 +32,26 @@
   ],
   "presentateurs": {},
   "fiches": {
+    "William Zerbib": {
+      "photo": "/assets/visages/william-zerbib.jpg"
+    },
+    "Jérôme Haas": {
+      "photo": "/assets/visages/jerome-haas.jpg"
+    },
+    "Rony Akrich": {
+      "photo": "/assets/visages/rony-akrich.jpg"
+    },
+    "Myriam Danan": {
+      "photo": "/assets/visages/myriam-danan.jpg"
+    },
+    "Rony Hayot": {
+      "photo": "/assets/visages/rony-hayot.jpg"
+    },
+    "Richard Darmon": {
+      "photo": "/assets/visages/richard-darmon.jpg"
+    },
     "Stéphane Goldin": {
+      "photo": "/assets/visages/stephane-goldin.jpg",
       "role": "Chroniqueur de Tandem TV",
       "texte": "Stéphane Zeev Goldin tient sur Tandem TV le rendez-vous « L'analyse de Stéphane Goldin », consacré à la sécurité d'Israël et aux fronts régionaux : Tsahal et son commandement, Gaza, la Judée-Samarie, l'Iran, le Liban, les Houthis. L'entretien « Le 7 octobre vécu par Stephan Zeev Goldin », publié sur l'ancien site de la chaîne, n'est plus en ligne ; ses analyses en vidéo sont rassemblées ci-dessous."
     }
