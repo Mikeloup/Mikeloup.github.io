@@ -620,6 +620,41 @@ async function main() {
     for (const e of p.programmes) externes.set(e.id, { cle: p.cle, nom: p.nom, avatar: p.avatar });
   }
   ctx.externes = externes;
+
+  // --- Prochaines diffusions ------------------------------------------------
+  //
+  // La grille sait quand chaque programme repasse. Jusqu'ici cette information
+  // ne vivait que sur la page grille ; elle a bien plus de valeur là où le
+  // visiteur se trouve déjà — sur la page d'une vidéo qu'il vient de regarder,
+  // ou sur celle d'une émission qu'il suit. C'est ce qui distingue un catalogue
+  // d'un programme de télévision : savoir quand ça repasse.
+  //
+  // On ne pose sur chaque page que les créneaux qui la concernent : quelques
+  // dizaines d'octets, là où embarquer la grille entière coûterait 5 ko par page.
+  const diffusionsVideo = new Map();
+  const diffusionsRubrique = new Map();
+  if (grille) {
+    for (const j of grille.jours) {
+      for (const p of j.programmes) {
+        if (p.type !== 'programme' || !p.heure) continue;
+        const creneau = [j.date, p.heure, p.fixe ? 1 : 0];
+        if (p.videoId) {
+          if (!diffusionsVideo.has(p.videoId)) diffusionsVideo.set(p.videoId, []);
+          diffusionsVideo.get(p.videoId).push(creneau);
+        }
+        if (p.rubrique) {
+          if (!diffusionsRubrique.has(p.rubrique)) diffusionsRubrique.set(p.rubrique, []);
+          diffusionsRubrique.get(p.rubrique).push([...creneau, p.titre || '']);
+        }
+      }
+    }
+    const tri = (a, b) => (a[0] + a[1] < b[0] + b[1] ? -1 : 1);
+    for (const v of diffusionsVideo.values()) v.sort(tri);
+    for (const v of diffusionsRubrique.values()) v.sort(tri);
+    log(`Prochaines diffusions : ${diffusionsVideo.size} vidéo(s) et ${diffusionsRubrique.size} rubrique(s) annoncent leur passage à l'antenne.`);
+  }
+  ctx.diffusionsVideo = diffusionsVideo;
+  ctx.diffusionsRubrique = diffusionsRubrique;
   if (partenaires.length) nav.partenaires = true;
   if (grille) {
     const relies = grille.jours.flatMap((j) => j.programmes).filter((p) => p.videoId).length;

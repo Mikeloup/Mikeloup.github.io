@@ -1254,3 +1254,35 @@ a.g-src:hover { color: var(--accent); text-decoration: underline; text-underline
   .pa-mono { font-size: 1.5rem; }
   .pa-nom { font-size: 1.05rem; }
 }
+
+
+/* --- Prochain passage a l'antenne, sur une page video ou une emission ------
+   Une ligne, pas un encart : l'information est precieuse mais secondaire, elle
+   ne doit pas concurrencer le titre. Masquee tant que le navigateur n'a pas
+   choisi le creneau — une page statique ne promet pas un horaire. */
+.tv-diff {
+  display: flex; flex-wrap: wrap; align-items: center; gap: .5rem .7rem;
+  margin: .8rem 0 0; padding: .55rem .8rem;
+  background: var(--surface-2); border-left: 3px solid var(--rouge);
+  border-radius: var(--radius-sm);
+  font-size: .9rem;
+}
+.tv-diff[hidden] { display: none; }
+.tv-diff-label {
+  display: inline-flex; align-items: center; gap: .35rem;
+  color: var(--rouge); font-size: .7rem; font-weight: 750;
+  letter-spacing: .08em; text-transform: uppercase; white-space: nowrap;
+}
+.tv-diff-texte { font-weight: 650; }
+.tv-diff-agenda {
+  margin-left: auto; padding: .25rem .6rem;
+  font: inherit; font-size: .78rem; font-weight: 650;
+  color: var(--brand); background: transparent;
+  border: 1px solid var(--brand); border-radius: var(--radius-sm); cursor: pointer;
+}
+.tv-diff-agenda:hover { background: var(--brand); color: #fff; }
+.tv-diff-agenda[hidden] { display: none; }
+@media (max-width: 640px) {
+  .tv-diff { font-size: .85rem; }
+  .tv-diff-agenda { margin-left: 0; }
+}

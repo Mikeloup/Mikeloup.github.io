@@ -914,7 +914,35 @@ export function groupIndexPage({
   });
 }
 
-export function categoryPage({ config, categories, nav, category, videos, page, totalPages, buildTime }) {
+/**
+ * Annonce du prochain passage à l'antenne.
+ *
+ * Le créneau exact est choisi par le navigateur, pas ici : une page statique
+ * reconstruite douze fois par jour annoncerait sinon des horaires déjà passés.
+ * On lui transmet seulement les créneaux à venir que la grille connaît, et il
+ * retient le premier encore devant nous, à l'heure de Jérusalem.
+ *
+ * Le bouton d'agenda n'apparaît que sur les rendez-vous à heure fixe : poser un
+ * rappel sur un horaire approximatif ferait manquer le début de l'émission.
+ */
+function blocDiffusion(config, creneaux, titre) {
+  if (!creneaux?.length) return '';
+  const tv = config.tv || {};
+  return `<p class="tv-diff" hidden
+    data-diff="${escapeHtml(JSON.stringify(creneaux.map((c) => c.slice(0, 3))))}"
+    data-titre="${escapeHtml(titre || '')}"
+    data-canal="${escapeHtml(tv.channelNumber || '14')}"
+    data-operateur="${escapeHtml(tv.operator || '')}">
+    <span class="tv-diff-label"><span class="live-dot" aria-hidden="true"></span>À l'antenne</span>
+    <span class="tv-diff-texte"></span>
+    <button type="button" class="tv-diff-agenda" hidden>Ajouter à mon agenda</button>
+  </p>`;
+}
+
+export function categoryPage({
+  config, categories, nav, category, videos, page, totalPages, buildTime,
+  diffusionsRubrique = new Map(),
+}) {
   const base = `/emissions/${category.slug}/`;
   const content = `
 <div class="wrap">
@@ -925,6 +953,7 @@ export function categoryPage({ config, categories, nav, category, videos, page, 
     ${category.description ? `<p class="lede">${escapeHtml(truncate(category.description, 400))}</p>` : ''}
     <p class="muted small">${category.videos.length} vidéo${category.videos.length > 1 ? 's' : ''}${page > 1 ? ` · page ${page} sur ${totalPages}` : ''}
       <span class="dot">·</span> <a class="feed-link" href="${base}rss.xml">S'abonner au flux de cette rubrique</a></p>
+    ${blocDiffusion(config, diffusionsRubrique.get(category.slug), category.title)}
   </header>
   ${grid(videos, { showCategory: false })}
   ${pagination(base, page, totalPages)}
@@ -955,7 +984,7 @@ export function categoryPage({ config, categories, nav, category, videos, page, 
 export function videoPage({
   config, categories, nav, video, related, buildTime,
   personnesParVideo = new Map(), presentateurParRubrique = new Map(),
-  transcription = null,
+  transcription = null, diffusionsVideo = new Map(),
 }) {
   const cat = video.playlists?.[0];
   // L'entrée rangée dans la vidéo ne porte que le titre et l'identifiant ; la
@@ -996,6 +1025,7 @@ export function videoPage({
       ${gens.length ? `<p class="article-gens">${presentateur && gens.some((p) => p.nom === presentateur)
         ? `Présenté par <a href="/invites/${gens.find((p) => p.nom === presentateur).slug}/">${escapeHtml(presentateur)}</a>${invites.length ? ' · ' : ''}` : ''}${
         invites.length ? `Avec ${invites.map((p) => `<a href="/invites/${p.slug}/">${escapeHtml(p.nom)}</a>`).join(', ')}` : ''}</p>` : ''}
+      ${blocDiffusion(config, diffusionsVideo.get(video.id), video.title)}
     </header>
 
     <div class="resume-bar" id="resume-bar" hidden>

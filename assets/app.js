@@ -853,3 +853,129 @@
   maj();
   setInterval(maj, 60000);
 })();
+
+/* --- Prochain passage a l'antenne, et rappel dans l'agenda -----------------
+   Pose sur les pages video et les pages d'emission. Le serveur ne donne que
+   les creneaux connus de la grille ; c'est le navigateur qui choisit le
+   premier encore a venir, a l'heure de Jerusalem — une page statique ne peut
+   pas s'en charger sans risquer d'annoncer une diffusion deja passee.        */
+(function () {
+  var blocs = document.querySelectorAll('.tv-diff[data-diff]');
+  if (!blocs.length) return;
+
+  var JOURS = ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'];
+
+  var maintenantIsrael = function () {
+    try {
+      var p = new Intl.DateTimeFormat('fr-FR', {
+        timeZone: 'Asia/Jerusalem', year: 'numeric', month: '2-digit', day: '2-digit',
+        hour: '2-digit', minute: '2-digit', hour12: false,
+      }).formatToParts(new Date());
+      var v = {};
+      for (var i = 0; i < p.length; i++) v[p[i].type] = p[i].value;
+      if (!v.year || !v.hour) return null;
+      return { jour: v.year + '-' + v.month + '-' + v.day, hm: v.hour + ':' + v.minute };
+    } catch (e) { return null; }
+  };
+
+  /* Instant UTC correspondant a une heure de pendule israelienne.
+     Israel passe de UTC+2 a UTC+3 selon la saison : on ne peut pas coder le
+     decalage en dur. On part d'une hypothese, on regarde ce qu'elle donne une
+     fois relue en heure d'Israel, et on corrige de l'ecart constate.         */
+  var versUTC = function (date, heure) {
+    var a = date.split('-'), b = heure.split(':');
+    var vise = Date.UTC(+a[0], +a[1] - 1, +a[2], +b[0], +b[1]);
+    var t = vise;
+    for (var k = 0; k < 3; k++) {
+      var p = new Intl.DateTimeFormat('fr-FR', {
+        timeZone: 'Asia/Jerusalem', year: 'numeric', month: '2-digit', day: '2-digit',
+        hour: '2-digit', minute: '2-digit', hour12: false,
+      }).formatToParts(new Date(t));
+      var v = {};
+      for (var i = 0; i < p.length; i++) v[p[i].type] = p[i].value;
+      // Ce que donne l'instant t une fois relu a l'heure d'Israel.
+      var vu = Date.UTC(+v.year, +v.month - 1, +v.day, +v.hour, +v.minute);
+      if (vu === vise) break;          // la pendule affiche bien l'heure voulue
+      t += vise - vu;
+    }
+    return new Date(t);
+  };
+
+  var deuxChiffres = function (n) { return (n < 10 ? '0' : '') + n; };
+  var horodatage = function (d) {
+    return d.getUTCFullYear() + deuxChiffres(d.getUTCMonth() + 1) + deuxChiffres(d.getUTCDate())
+      + 'T' + deuxChiffres(d.getUTCHours()) + deuxChiffres(d.getUTCMinutes()) + '00Z';
+  };
+  var echapper = function (t) {
+    return String(t).replace(/\\/g, '\\\\').replace(/;/g, '\\;').replace(/,/g, '\\,').replace(/\n/g, '\\n');
+  };
+
+  var libelleJour = function (date, aujourdhui) {
+    if (date === aujourdhui) return "aujourd'hui";
+    var d = new Date(date + 'T12:00:00Z');
+    if ((d - new Date(aujourdhui + 'T12:00:00Z')) / 86400000 === 1) return 'demain';
+    return JOURS[d.getUTCDay()] + ' ' + d.getUTCDate();
+  };
+
+  var maj = function () {
+    var now = maintenantIsrael();
+    if (!now) return;
+    Array.prototype.forEach.call(blocs, function (bloc) {
+      var liste;
+      try { liste = JSON.parse(bloc.getAttribute('data-diff')) || []; } catch (e) { return; }
+      var cible = null;
+      for (var i = 0; i < liste.length; i++) {
+        var d = liste[i][0], h = liste[i][1];
+        if (d > now.jour || (d === now.jour && h > now.hm)) { cible = liste[i]; break; }
+      }
+      if (!cible) { bloc.hidden = true; return; }
+
+      var fixe = cible[2] === 1;
+      var canal = bloc.getAttribute('data-canal');
+      var texte = bloc.querySelector('.tv-diff-texte');
+      texte.textContent = 'Diffusion ' + libelleJour(cible[0], now.jour)
+        + (fixe ? ' à ' : ' vers ') + cible[1] + ' sur le canal ' + canal
+        + ' (heure d’Israël)';
+
+      // L'agenda n'est propose que sur un rendez-vous a heure fixe : caler un
+      // rappel sur un horaire approximatif ferait manquer l'ouverture.
+      var bouton = bloc.querySelector('.tv-diff-agenda');
+      if (bouton) {
+        bouton.hidden = !fixe;
+        if (fixe && !bouton.dataset.pret) {
+          bouton.dataset.pret = '1';
+          bouton.addEventListener('click', function () {
+            var debut = versUTC(cible[0], cible[1]);
+            var fin = new Date(debut.getTime() + 3600000);
+            var titre = bloc.getAttribute('data-titre') || 'Tandem TV';
+            var op = bloc.getAttribute('data-operateur');
+            var ics = [
+              'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Tandem TV//FR',
+              'BEGIN:VEVENT',
+              'UID:' + horodatage(debut) + '-tandemtv@' + location.hostname,
+              'DTSTAMP:' + horodatage(new Date()),
+              'DTSTART:' + horodatage(debut),
+              'DTEND:' + horodatage(fin),
+              'SUMMARY:' + echapper(titre),
+              'LOCATION:' + echapper('Tandem TV — canal ' + canal + (op ? ' du bouquet ' + op : '')),
+              'DESCRIPTION:' + echapper('Diffusion sur Tandem TV, canal ' + canal + '.\n' + location.href),
+              'URL:' + location.href,
+              'BEGIN:VALARM', 'TRIGGER:-PT10M', 'ACTION:DISPLAY',
+              'DESCRIPTION:' + echapper(titre), 'END:VALARM',
+              'END:VEVENT', 'END:VCALENDAR',
+            ].join('\r\n');
+            var url = URL.createObjectURL(new Blob([ics], { type: 'text/calendar;charset=utf-8' }));
+            var a = document.createElement('a');
+            a.href = url; a.download = 'tandem-tv.ics';
+            document.body.appendChild(a); a.click(); a.remove();
+            setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+          });
+        }
+      }
+      bloc.hidden = false;
+    });
+  };
+
+  maj();
+  setInterval(maj, 60000);
+})();
