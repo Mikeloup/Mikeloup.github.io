@@ -57,10 +57,18 @@
       "image": "/assets/partenaires/dover-tsahal.jpg",
       "programmes": ["TSAHAL_FR"]
     },
+    "leon-le-media": {
+      "url": "https://www.instagram.com/leonlemedia/",
+      "nom": "Léon le média",
+      "description": "",
+      "image": "",
+      "programmes": ["LEON_LE_MEDIA"]
+    },
     "kfir-almagor": {
       "url": "https://www.instagram.com/kfiralmagor/",
       "nom": "Kfir Almagor",
       "description": "",
+      "texteFacultatif": true,
       "image": "/assets/partenaires/kfir-almagor.jpg",
       "programmes": ["KFIR_ALMAGOR"]
     },

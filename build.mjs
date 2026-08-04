@@ -601,6 +601,10 @@ async function main() {
         passages: tous.length,
         parJour: tous.length / nbJours,
         prochains: avecHeure.slice(0, 40),
+        // Certaines sources n'ont volontairement pas de texte : inutile de le
+        // rappeler à chaque construction, un avertissement qu'on ignore finit
+        // par masquer ceux qui comptent.
+        texteFacultatif: Boolean(src.texteFacultatif),
       });
     }
 
@@ -621,9 +625,12 @@ async function main() {
     const relies = grille.jours.flatMap((j) => j.programmes).filter((p) => p.videoId).length;
     const a = grille.apparies;
     log(`Grille TV : ${grille.jours.length} journée(s), ${grille.total} programme(s), ${relies} relié(s) à une vidéo du site (${a.titre} par le titre, ${a.rubrique} par la rubrique).`);
+    if (grille.sansCatalogue.length) {
+      log(`${grille.sansCatalogue.length} programme(s) extérieur(s) sans replay, ce qui est normal : ${grille.sansCatalogue.join(', ')}`);
+    }
     if (grille.nonApparies.length) {
-      log(`${grille.nonApparies.length} programme(s) sans replay — les 12 premiers, pour comprendre ce qui bloque :`);
-      for (const x of grille.nonApparies.slice(0, 12)) log(`   ${x}`);
+      warn(`${grille.nonApparies.length} diffusion(s) d'une production Tandem TV sans vidéo correspondante — les 12 premières :`);
+      for (const x of grille.nonApparies.slice(0, 12)) warn(`   ${x}`);
     }
     if (grille.orphelines.length) {
       warn(`${grille.orphelines.length} rubrique(s) de la grille pointent vers une adresse qui n'existe plus (playlist renommée ?). Le rattachement s'est fait par le nom de l'émission ; corrigez le champ « site » dans data/grille-emissions.json :`);
@@ -660,7 +667,7 @@ async function main() {
   if (partenaires.length) {
     await writePage('/autres-programmes/', R.partenairesPage({ ...ctx }));
     urls.push({ loc: '/autres-programmes/', freq: 'weekly', priority: '0.7' });
-    const sansTexte = partenaires.filter((p) => !p.description).map((p) => p.nom);
+    const sansTexte = partenaires.filter((p) => !p.description && !p.texteFacultatif).map((p) => p.nom);
     log(`Autres programmes : ${partenaires.length} source(s), ${partenaires.reduce((n, p) => n + p.programmes.length, 0)} émission(s), ${partenaires.reduce((n, p) => n + p.passages, 0)} passage(s) dans la grille.`);
     if (sansTexte.length) warn(`${sansTexte.length} source(s) sans texte de présentation : ${sansTexte.join(', ')}`);
   }

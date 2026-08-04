@@ -617,6 +617,8 @@ l'assistant est effacé, ce fichier non.
 - [ ] **Lignes de clips de la grille** : elles affichent des noms internes (« Betsarfatit · Dover Tsahal · Solal Israel »), du bruit pour un visiteur. Décision de Michael en attente : les garder ou ne laisser que « Clips et bandes-annonces ».
 - [ ] **Avertissement Node.js 20 déprécié** sur les trois automatismes GitHub. Sans effet aujourd'hui, à corriger quand ça n'interrompra rien.
 - [ ] **La soirée n'est pas programmée dans l'export de grille** : les journées à venir s'arrêtent vers 18 h 20 alors que le relevé du 1er août allait jusqu'à 19 h 57. À voir avec la régie — la soirée est-elle réellement vide, ou l'export ne la décrit-il pas ?
+- [ ] **Texte de présentation de « Tel Aviv - New York »** — Michael doit l'envoyer, sa chaîne YouTube n'en a pas. Champ `description` de la source `tel-aviv-new-york` dans `data/partenaires.json`.
+- [ ] **Logo de « Léon le média »** — compte Instagram, donc aucune récupération automatique possible. En attendant, la fiche affiche un monogramme.
 - [ ] **Informations attendues de Michael** : lien PayPal.me pour la page dons, lien Telegram public, mentions légales (société, année de création, équipe).
 - [ ] **Transcriptions** — chantier en pause. Michael avait choisi « ses fichiers + le script gratuit », « les nouvelles vidéos seulement », « guidé ligne par ligne ». Le script `tools/transcrire.command` est prêt ; il manque la sortie de `which brew ffmpeg whisper-cpp`.
 

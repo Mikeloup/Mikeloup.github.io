@@ -417,12 +417,14 @@ export function prepareGrille(donnees, {
   // qui est réellement affiché, sinon ils raconteraient une autre grille que
   // celle que voit le visiteur.
   const apparies = { titre: 0, rubrique: 0 };
-  const nonApparies = [];
+  const nonApparies = [];      // productions Tandem TV dont la vidéo reste introuvable
+  const sansCatalogue = [];    // programmes extérieurs : aucune vidéo n'existe, c'est normal
   for (const j of jours) {
     for (const p of j.programmes) {
       if (p.type !== 'programme' || !p.titreRegie) continue;
       if (p.methode) apparies[p.methode] += 1;
-      else nonApparies.push(`${p.emission} — ${p.titreRegie}`);
+      else if (p.rubrique) nonApparies.push(`${p.emission} — ${p.titreRegie}`);
+      else sansCatalogue.push(p.emission);
     }
   }
 
@@ -435,6 +437,7 @@ export function prepareGrille(donnees, {
     orphelines: [...orphelines],
     apparies,
     nonApparies,
+    sansCatalogue: [...new Set(sansCatalogue)],
     exporteLe: donnees.exported_at || null,
     fuseau: FUSEAU,
     total: jours.reduce((n, j) => n + j.nbProgrammes, 0),
