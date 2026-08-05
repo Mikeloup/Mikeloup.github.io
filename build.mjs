@@ -483,7 +483,20 @@ async function main() {
   }
   const muettes = categories.filter((c) => !(c.description || '').trim());
   log(`Présentations de rubriques : ${ecrites} écrites à la main, ${categories.length - ecrites - muettes.length} venues de YouTube, ${muettes.length} sans texte.`);
-  if (muettes.length) warn(`Rubriques sans présentation : ${muettes.map((c) => c.slug).join(', ')}`);
+  if (muettes.length) {
+    warn(`Rubriques sans présentation : ${muettes.map((c) => c.slug).join(', ')}`);
+    // Une rubrique sans texte est invisible pour Google et muette pour le
+    // visiteur. Pour en écrire la présentation il faut savoir de quoi elle
+    // parle : le journal livre donc, pour chacune, son présentateur supposé et
+    // ses titres les plus récents. C'est la matière qui manque, et elle n'est
+    // nulle part ailleurs.
+    log('Matière pour rédiger ces présentations — présentateur, nombre de vidéos, derniers titres :');
+    for (const c of muettes) {
+      const titres = c.videos.slice(0, 5).map((v) => `« ${truncate(v.title, 80)} »`).join(' · ');
+      log(`   [${c.slug}] ${c.title} — ${c.videos.length} vidéo(s)`);
+      log(`      ${titres}`);
+    }
+  }
 
   await fs.rm(DIST, { recursive: true, force: true });
   await fs.mkdir(DIST, { recursive: true });
