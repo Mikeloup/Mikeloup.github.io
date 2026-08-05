@@ -1684,7 +1684,7 @@ export function partenairesPage({ config, categories, nav, partenaires = [], gri
       ${p.url ? `<span class="pa-reseau pa-reseau--${escapeHtml(p.reseau)}">${escapeHtml(reseauNom[p.reseau] || 'Lien')}</span>` : ''}
       ${p.abonnes ? `<span class="muted">${formatCount(p.abonnes)} abonnés</span>` : ''}
     </p>
-    ${p.description ? `<p class="pa-desc">${escapeHtml(p.description)}</p>` : ''}
+    ${p.description ? `<p class="pa-desc">${escapeHtml(p.description).replace(/\n+/g, '<br>')}</p>` : ''}
     <p class="pa-emissions"><span class="pa-etiquette">Sur Tandem TV</span> ${emissions}</p>
     ${p.source ? `<p class="pa-source muted small">Une production ${escapeHtml(p.source)}</p>` : ''}
     <p class="pa-prochain" hidden></p>
