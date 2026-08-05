@@ -428,7 +428,14 @@ export function layout({
   content, jsonLd = null, buildTime, feed = null, robots = null,
 }) {
   const fullTitle = title === config.siteName ? `${config.siteName} — ${config.tagline}` : `${title} | ${config.siteName}`;
-  const url = config.siteUrl.replace(/\/$/, '') + canonical;
+  const racine = config.siteUrl.replace(/\/$/, '');
+  const url = racine + canonical;
+  // Facebook, WhatsApp et LinkedIn exigent une adresse complète : une image
+  // désignée par un chemin relatif est purement et simplement ignorée, et
+  // l'aperçu se retrouve sans visuel.
+  const partage = image
+    ? (/^https?:\/\//.test(image) ? image : racine + (image.startsWith('/') ? '' : '/') + image)
+    : `${racine}/assets/partage.png`;
   const pages = config.pages || [];
   const navPages = pages.filter((pg) => !pg.footerOnly);
   const socialLinks = SOCIAL_ORDER
@@ -485,7 +492,10 @@ OneSignalDeferred.push(async function (OneSignal) {
 <meta property="og:title" content="${escapeHtml(fullTitle)}">
 <meta property="og:description" content="${escapeHtml(truncate(description, 300))}">
 <meta property="og:url" content="${escapeHtml(url)}">
-<meta property="og:image" content="${escapeHtml(image || `${config.siteUrl.replace(/\/$/, '')}/assets/logo.png`)}">
+<meta property="og:image" content="${escapeHtml(partage)}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="${escapeHtml(config.siteName)} — ${escapeHtml(config.tagline)}">
 <meta name="twitter:card" content="summary_large_image">
 ${robots ? `<meta name="robots" content="${escapeHtml(robots)}">` : ''}
 <link rel="preconnect" href="https://i.ytimg.com" crossorigin>
@@ -733,7 +743,10 @@ ${grille?.pourNavigateurCourt?.length
     title: config.siteName,
     description: config.description,
     canonical: '/',
-    image: featured?.thumbnail,
+    // Partagée sur WhatsApp ou Facebook, la page d'accueil montrait la vignette
+    // de la dernière vidéo : le lien changeait d'apparence chaque jour et ne
+    // disait rien de la chaîne. Elle porte désormais une carte de marque fixe.
+    image: `${config.siteUrl.replace(/\/$/, '')}/assets/partage.png`,
     bodyClass: 'page-home',
     content,
     jsonLd: {
