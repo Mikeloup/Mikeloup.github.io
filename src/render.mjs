@@ -952,9 +952,40 @@ function blocDiffusion(config, creneaux, titre) {
   </p>`;
 }
 
+/** Date courte pour l'historique : « 3 août », sans l'année si c'est l'année en cours. */
+function jourCourt(iso, anneeCourante) {
+  const d = new Date(`${iso}T12:00:00Z`);
+  const j = d.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', timeZone: 'UTC' });
+  return d.getUTCFullYear() === anneeCourante ? j : `${j} ${d.getUTCFullYear()}`;
+}
+
+/**
+ * Ce qui est déjà passé à l'antenne.
+ *
+ * Une vidéo de catalogue ne peut rien dire d'elle-même au-delà de sa date de
+ * publication ; une émission de télévision, si : elle a été diffusée, tel jour,
+ * à telle heure. C'est une information qu'aucune chaîne YouTube ne possède, et
+ * qui ne s'invente pas après coup — elle n'existe que parce que le site archive
+ * sa grille chaque nuit.
+ *
+ * On n'affiche que le DERNIER passage, jamais leur nombre. Compter les
+ * rediffusions se retourne contre la chaîne : là où un annonceur lirait de
+ * l'exposition, un téléspectateur lit un catalogue trop court qui tourne en
+ * boucle. Or c'est le téléspectateur qui est sur cette page. Le décompte reste
+ * dans l'archive, disponible pour un usage interne.
+ */
+function blocHistorique(config, passages, buildTime) {
+  if (!passages?.length) return '';
+  const tv = config.tv || {};
+  const [date, heure] = passages[0];
+  return `<p class="tv-hist muted small">
+    Diffusé sur le canal ${escapeHtml(tv.channelNumber || '14')} le ${escapeHtml(jourCourt(date, new Date(buildTime).getUTCFullYear()))} à ${escapeHtml(heure)}.
+  </p>`;
+}
+
 export function categoryPage({
   config, categories, nav, category, videos, page, totalPages, buildTime,
-  diffusionsRubrique = new Map(),
+  diffusionsRubrique = new Map(), archive = null,
 }) {
   const base = `/emissions/${category.slug}/`;
   const content = `
@@ -997,7 +1028,7 @@ export function categoryPage({
 export function videoPage({
   config, categories, nav, video, related, buildTime,
   personnesParVideo = new Map(), presentateurParRubrique = new Map(),
-  transcription = null, diffusionsVideo = new Map(),
+  transcription = null, diffusionsVideo = new Map(), archive = null,
 }) {
   const cat = video.playlists?.[0];
   // L'entrée rangée dans la vidéo ne porte que le titre et l'identifiant ; la
@@ -1039,6 +1070,7 @@ export function videoPage({
         ? `Présenté par <a href="/invites/${gens.find((p) => p.nom === presentateur).slug}/">${escapeHtml(presentateur)}</a>${invites.length ? ' · ' : ''}` : ''}${
         invites.length ? `Avec ${invites.map((p) => `<a href="/invites/${p.slug}/">${escapeHtml(p.nom)}</a>`).join(', ')}` : ''}</p>` : ''}
       ${blocDiffusion(config, diffusionsVideo.get(video.id), video.title)}
+      ${blocHistorique(config, archive?.parVideo?.get(video.id), buildTime)}
     </header>
 
     <div class="resume-bar" id="resume-bar" hidden>

@@ -38,7 +38,7 @@
     "linkedin": "https://www.linkedin.com/company/tandem-tv/",
     "tiktok": ""
   },
-  "_comment_tv": "Diffusion télévisée. 'enabled' à false fait disparaître entièrement le bandeau et le bloc de pied de page. 'operatorLogo' affiche le logo de l'opérateur à la place de la pastille « TV » : déposez le fichier dans assets/ et indiquez /assets/nom-du-fichier.png (laisser vide si vous ne l'avez pas). 'url' est facultatif (lien vers l'opérateur) ; 'schedule' aussi (ex. « tous les soirs à 20h »). 'arrondiMinutes' arrondit les horaires AFFICHÉS de la grille — la grille réelle lue par la régie n'est jamais modifiée. Les horaires approximatifs (marqués ≈) sont arrondis vers le bas (9h02 et 9h04 deviennent 9h00, 9h06 devient 9h05) : on ne promet jamais plus tard que la diffusion réelle. Les rendez-vous à heure fixe sont arrondis au plus proche (13h59 devient 14h00, 12h01 devient 12h00) : ils visent une heure ronde et la manquent de peu dans l'export. Mettre 0 pour afficher les horaires exacts. Ce bloc est ce qui distingue Tandem TV d'une simple chaîne YouTube : il mérite d'être exact.",
+  "_comment_tv": "Diffusion télévisée. 'enabled' à false fait disparaître entièrement le bandeau et le bloc de pied de page. 'operatorLogo' affiche le logo de l'opérateur à la place de la pastille « TV » : déposez le fichier dans assets/ et indiquez /assets/nom-du-fichier.png (laisser vide si vous ne l'avez pas). 'url' est facultatif (lien vers l'opérateur) ; 'schedule' aussi (ex. « tous les soirs à 20h »). 'arrondiMinutes' arrondit les horaires AFFICHÉS de la grille — la grille réelle lue par la régie n'est jamais modifiée. Les horaires approximatifs (marqués ≈) sont arrondis vers le bas (9h02 et 9h04 deviennent 9h00, 9h06 devient 9h05) : on ne promet jamais plus tard que la diffusion réelle. Les rendez-vous à heure fixe sont arrondis au plus proche (13h59 devient 14h00, 12h01 devient 12h00) : ils visent une heure ronde et la manquent de peu dans l'export. Mettre 0 pour afficher les horaires exacts. 'historiqueJours' est le nombre de journees archivees relues pour afficher l'historique de diffusion sur les pages video et les pages d'emission : au-dela, les passages les plus anciens ne sont plus comptes, ce qui evite que la construction du site s'alourdisse d'annee en annee. Ce bloc est ce qui distingue Tandem TV d'une simple chaîne YouTube : il mérite d'être exact.",
   "tv": {
     "enabled": true,
     "channelNumber": "14",
@@ -46,7 +46,8 @@
     "operatorLogo": "/assets/annatel.png",
     "url": "",
     "schedule": "",
-    "arrondiMinutes": 5
+    "arrondiMinutes": 5,
+    "historiqueJours": 120
   },
   "_comment_youtube": "Synchronisation avec YouTube. 'cacheMinutes' est la duree pendant laquelle le catalogue deja recupere est reutilise sans rappeler YouTube. Le site se reconstruit a chaque envoi sur GitHub, y compris quand seule la grille de diffusion a bouge : sans ce delai, chaque mise a jour de grille consommerait une synchronisation complete (plus de cent unites de quota, sur les dix mille accordees par jour). A 100 minutes, les reconstructions declenchees par la grille sont gratuites et les synchronisations programmees toutes les 2 heures continuent d'apporter les nouvelles videos. Mettre 0 pour resynchroniser a chaque construction (deconseille).",
   "youtube": {

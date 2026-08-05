@@ -21,6 +21,7 @@ import * as R from './src/render.mjs';
 import { collecterPersonnes } from './src/personnes.mjs';
 import { lireTranscription } from './src/transcriptions.mjs';
 import { prepareGrille, indexerVideos, jourIsrael } from './src/grille.mjs';
+import { lireArchive } from './src/archive.mjs';
 
 const ROOT = path.dirname(fileURLToPath(import.meta.url));
 const DIST = path.join(ROOT, 'dist');
@@ -655,6 +656,24 @@ async function main() {
   }
   ctx.diffusionsVideo = diffusionsVideo;
   ctx.diffusionsRubrique = diffusionsRubrique;
+
+  // --- Historique de diffusion ---------------------------------------------
+  //
+  // Ce que la chaîne a réellement diffusé, relu dans l'archive nocturne. À la
+  // différence de tout le reste du site, cette information ne peut pas être
+  // reconstituée après coup : elle n'existe que parce qu'on la conserve depuis
+  // le 2 août 2026.
+  const archive = await lireArchive(path.join(ROOT, 'data', 'grille-archive'), {
+    emissions: grilleEmissions,
+    index: indexerVideos(allVideos),
+    smartTitre: (t) => smartTitle(t, config.display?.properNouns || []),
+    rubriques: categories.map((c) => ({ slug: c.slug, title: c.title })),
+    joursMax: config.tv?.historiqueJours ?? 120,
+  });
+  ctx.archive = archive;
+  if (archive.jours) {
+    log(`Historique de diffusion : ${archive.jours} journée(s) archivée(s) du ${archive.premier} au ${archive.dernier} — ${archive.parVideo.size} vidéo(s) avec un passage daté.`);
+  }
   if (partenaires.length) nav.partenaires = true;
   if (grille) {
     const relies = grille.jours.flatMap((j) => j.programmes).filter((p) => p.videoId).length;

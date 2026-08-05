@@ -1286,3 +1286,10 @@ a.g-src:hover { color: var(--accent); text-decoration: underline; text-underline
   .tv-diff { font-size: .85rem; }
   .tv-diff-agenda { margin-left: 0; }
 }
+
+/* Historique de diffusion : discret par nature. C'est une preuve, pas une
+   accroche — elle rassure le visiteur et parle aux annonceurs, sans disputer
+   la place au titre ni au lecteur. */
+.tv-hist { margin: .5rem 0 0; }
+.tv-hist strong { color: var(--text); }
+.tv-hist-plus { white-space: nowrap; }
