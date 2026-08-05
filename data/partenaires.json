@@ -2,10 +2,17 @@
   "_comment": "Programmes diffuses sur le canal 14 mais produits par d'autres. Chaque entree est une SOURCE (une chaine YouTube, un compte Instagram, une radio), et non un programme : ECUJE fournit deux emissions, Radio Shalom aussi. 'programmes' liste les identifiants tels qu'ils apparaissent dans data/grille-emissions.json — c'est ce qui permet de calculer la prochaine diffusion depuis la grille. Pour une chaine YouTube, il suffit de l'adresse : le nom, le texte de presentation, la vignette et le nombre d'abonnes sont lus directement chez YouTube a chaque synchronisation. Pour Instagram, aucun acces automatique n'existe : renseignez 'nom', 'description', et deposez une image dans assets/partenaires/ puis indiquez /assets/partenaires/nom-du-fichier.jpg dans 'image'. Les champs saisis a la main l'emportent toujours sur ce qui vient de YouTube.",
 
   "sources": {
-    "ecuje": {
+    "un-jour-une-histoire": {
       "url": "https://www.youtube.com/@ECUJE",
-      "nom": "ECUJE",
-      "programmes": ["UN_JOUR_UNE_HISTOIRE", "ECUJE"]
+      "nom": "Un jour, une histoire",
+      "description": "Chaque dimanche à 18h sur les ondes de Radio Shalom (94.8) et avec l'ECUJE, Haïm Musicant raconte une histoire du monde juif.",
+      "image": "/assets/partenaires/un-jour-une-histoire.jpg",
+      "programmes": ["UN_JOUR_UNE_HISTOIRE"]
+    },
+    "interview-ecuje": {
+      "url": "https://www.youtube.com/@ECUJE",
+      "nom": "Interview de l'ECUJE",
+      "programmes": ["ECUJE"]
     },
     "tel-aviv-new-york": {
       "url": "https://www.youtube.com/@sebastienlevi5233",
