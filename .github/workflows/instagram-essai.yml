@@ -1,0 +1,35 @@
+name: Essai de publication Instagram
+
+on:
+  workflow_dispatch:
+    inputs:
+      video:
+        description: "Identifiant ou adresse YouTube (vide = derniere video)"
+        required: false
+        default: ""
+      publier:
+        description: "Publier reellement ? (non = simple apercu)"
+        required: true
+        default: "non"
+        type: choice
+        options:
+          - "non"
+          - "oui"
+
+jobs:
+  essai:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Essai
+        env:
+          INSTAGRAM_TOKEN: ${{ secrets.INSTAGRAM_TOKEN }}
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+          VIDEO_ID: ${{ inputs.video }}
+          PUBLIER: ${{ inputs.publier }}
+        run: node tools/instagram-essai.mjs
