@@ -56,7 +56,7 @@
   "_comment_instagram": "Publication automatique sur Instagram. 'enabled' a false coupe tout. 'userId' est l'identifiant du compte Instagram professionnel (un long nombre, fourni par Meta) ; il n'est pas secret. Le jeton d'acces, lui, vit dans le secret GitHub INSTAGRAM_TOKEN et ne doit jamais etre ecrit ici. 'publishOnNewVideos' declenche une publication a chaque nouvelle video detectee. 'maxPerRun' limite le nombre de publications par synchronisation et 'maxAgeHours' ignore les videos plus anciennes : ces deux garde-fous sont essentiels, sans eux une premiere execution publierait tout le catalogue. Variables de la legende : {titre}, {emission}, {invites}, {site}, {canal}. Les collaborateurs invites se declarent dans data/instagram-collaborateurs.json.",
   "instagram": {
     "enabled": false,
-    "userId": "17841402039676876",
+    "userId": "27954556280895113",
     "publishOnNewVideos": true,
     "maxPerRun": 1,
     "maxAgeHours": 48,
