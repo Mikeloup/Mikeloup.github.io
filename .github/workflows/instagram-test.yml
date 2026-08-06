@@ -1,0 +1,39 @@
+name: Verifier le jeton Instagram
+
+on:
+  workflow_dispatch:
+
+jobs:
+  verifier:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Interroger Instagram
+        env:
+          INSTAGRAM_TOKEN: ${{ secrets.INSTAGRAM_TOKEN }}
+        run: |
+          if [ -z "$INSTAGRAM_TOKEN" ]; then
+            echo "ECHEC : le secret INSTAGRAM_TOKEN est absent ou vide."
+            exit 1
+          fi
+
+          reponse=$(curl -s -G \
+            --data-urlencode "fields=id,username,account_type" \
+            -H "Authorization: Bearer $INSTAGRAM_TOKEN" \
+            "https://graph.instagram.com/v21.0/me")
+
+          echo "Reponse d'Instagram :"
+          echo "$reponse"
+
+          case "$reponse" in
+            *'"error"'*)
+              echo "ECHEC : Instagram refuse ce jeton."
+              exit 1
+              ;;
+            *'"username"'*)
+              echo "SUCCES : le jeton est valide."
+              ;;
+            *)
+              echo "Reponse inattendue."
+              exit 1
+              ;;
+          esac
