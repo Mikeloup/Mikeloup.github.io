@@ -60,7 +60,7 @@
     "publishOnNewVideos": true,
     "maxPerRun": 1,
     "maxAgeHours": 48,
-    "captionTemplate": "{titre}\n\n{emission} — a revoir sur {site}, et a l\u2019antenne sur le canal {canal} du bouquet Annatel TV.",
+    "captionTemplate": "{titre}\n\n{emission} — à revoir sur {site}, et à l\u2019antenne sur le canal {canal} du bouquet Annatel TV.\n\nLien dans la bio \u2191",
     "hashtags": ["TandemTV", "Israel", "Actualite", "MondeJuif"]
   },
   "_comment_push": "Notifications navigateur (OneSignal). 'oneSignalAppId' vide = fonction désactivée, rien n'est injecté dans les pages. 'notifyOnNewVideos' déclenche l'envoi automatique à chaque nouvelle vidéo détectée (nécessite le secret GitHub ONESIGNAL_API_KEY). 'maxPerRun' limite le nombre d'envois par synchronisation, 'maxAgeHours' ignore les vidéos plus anciennes : deux garde-fous contre un envoi massif accidentel. Dans les modèles de texte : {emission} = nom de la rubrique, {titre} = titre de la vidéo, {site} = nom du site.",

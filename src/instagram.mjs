@@ -56,12 +56,18 @@ async function api(chemin, params, token) {
 export function legende(video, { config, emission = '', invites = [] } = {}) {
   const i = config.instagram || {};
   const tv = config.tv || {};
-  const modele = i.captionTemplate
+  let modele = i.captionTemplate
     || '{titre}\n\n{emission} — à revoir sur {site}, et à l\'antenne sur le canal {canal}.';
+
+  // Une vidéo hors rubrique donnerait « Tandem TV — à revoir sur Tandem TV » :
+  // le nom deux fois dans la même phrase, ce qui sonne faux. Sans rubrique, on
+  // retire proprement la mention et le tiret qui la suit.
+  const rubrique = emission && emission !== config.siteName ? emission : '';
+  if (!rubrique) modele = modele.replace(/\{emission\}\s*[—–-]\s*/g, '');
 
   const texte = modele
     .replace(/\{titre\}/g, video.title || '')
-    .replace(/\{emission\}/g, emission || config.siteName)
+    .replace(/\{emission\}/g, rubrique)
     .replace(/\{invites\}/g, invites.join(', '))
     .replace(/\{site\}/g, config.siteName)
     .replace(/\{canal\}/g, tv.channelNumber || '14');
