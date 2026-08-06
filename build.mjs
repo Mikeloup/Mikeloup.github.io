@@ -22,6 +22,7 @@ import { collecterPersonnes } from './src/personnes.mjs';
 import { lireTranscription } from './src/transcriptions.mjs';
 import { prepareGrille, indexerVideos, jourIsrael } from './src/grille.mjs';
 import { lireArchive } from './src/archive.mjs';
+import * as insta from './src/instagram.mjs';
 
 const ROOT = path.dirname(fileURLToPath(import.meta.url));
 const DIST = path.join(ROOT, 'dist');
@@ -996,7 +997,7 @@ async function main() {
 
   log(`✅ ${urls.length} pages générées dans dist/ en ${((Date.now() - t0) / 1000).toFixed(1)}s`);
 
-  await annonceNouveautes(config, allVideos);
+  await annonceNouveautes(config, allVideos, personnesParVideo);
 }
 
 // --- Détection des nouveautés ------------------------------------------------
@@ -1047,18 +1048,72 @@ function freshVideos(allVideos, known, maxAgeHours) {
  * Chef d'orchestre des annonces : la liste publiée n'est lue qu'une fois,
  * puis servie aux deux canaux (notifications navigateur, lettre d'information).
  */
-async function annonceNouveautes(config, allVideos) {
+async function annonceNouveautes(config, allVideos, personnesParVideo = new Map()) {
   if (DEMO) return;
 
   const push = Boolean(config.push?.oneSignalAppId) && config.push?.notifyOnNewVideos !== false;
   const lettre = Boolean(config.newsletter?.formId) && config.newsletter?.sendOnNewVideos !== false;
-  if (!push && !lettre) return;
+  const gram = Boolean(config.instagram?.enabled) && config.instagram?.publishOnNewVideos !== false;
+  if (!push && !lettre && !gram) return;
 
   const known = await fetchPublishedIds(config);
   if (!known) return;
 
   if (push) await notifyNewVideos(config, allVideos, known);
   if (lettre) await sendNewsletter(config, allVideos, known);
+  if (gram) await publierInstagram(config, allVideos, known, personnesParVideo);
+}
+
+// --- Instagram ---------------------------------------------------------------
+
+/**
+ * Publie les nouvelles vidéos sur Instagram, en invitant les comptes concernés
+ * à collaborer.
+ *
+ * Publier est irréversible : on ne se contente pas de vérifier la clé, on
+ * refuse de démarrer si un seul des garde-fous manque. Un compte Instagram
+ * inondé de mille publications ne se rattrape pas.
+ */
+async function publierInstagram(config, allVideos, known, personnesParVideo = new Map()) {
+  const token = process.env.INSTAGRAM_TOKEN;
+  const userId = config.instagram?.userId;
+  if (!token) { warn('Instagram : secret INSTAGRAM_TOKEN absent, aucune publication.'); return; }
+  if (!userId) { warn('Instagram : « userId » absent de site.config.json, aucune publication.'); return; }
+
+  const fresh = freshVideos(allVideos, known, config.instagram?.maxAgeHours ?? 48);
+  if (!fresh.length) { log('Instagram : aucune nouvelle vidéo à publier.'); return; }
+
+  const max = config.instagram?.maxPerRun ?? 1;
+  if (fresh.length > max) {
+    warn(`Instagram : ${fresh.length} nouveautés détectées, seules les ${max} plus récentes seront publiées.`);
+  }
+  const aPublier = fresh.slice(-max);
+
+  const carnet = await readJson(path.join(ROOT, 'data', 'instagram-collaborateurs.json'), {});
+
+  for (const video of aPublier) {
+    const cat = video.playlists?.[0];
+    const invites = (personnesParVideo.get(video.id) || []).map((p) => p.nom);
+    const collaborateurs = insta.collaborateursDe(video, {
+      emissionSlug: cat?.slug || '', invites, carnet,
+    });
+
+    const resultat = await insta.publier({
+      token,
+      userId,
+      // La miniature YouTube fait 16/9, soit 1,78:1 : Instagram accepte
+      // jusqu'à 1,91:1. Aucune image sur mesure n'est donc nécessaire.
+      imageUrl: video.thumbnail || `https://i.ytimg.com/vi/${video.id}/maxresdefault.jpg`,
+      caption: insta.legende(video, { config, emission: cat?.title || '', invites }),
+      collaborateurs,
+    });
+
+    if (resultat.ok) {
+      log(`Instagram : « ${truncate(video.title, 60)} » publiée${collaborateurs.length ? ` — collaboration proposée à ${collaborateurs.map((c) => `@${c}`).join(', ')}` : ''}.`);
+    } else {
+      warn(`Instagram : publication refusée pour « ${truncate(video.title, 60)} » — ${resultat.erreur}`);
+    }
+  }
 }
 
 

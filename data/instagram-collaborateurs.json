@@ -1,0 +1,17 @@
+{
+  "_comment": "Comptes Instagram invites en collaboration lors d'une publication automatique. C'est le coeur du dispositif : une publication collaborative apparait aussi dans le fil du partenaire, donc devant SON audience. L'invitation part toute seule, mais le partenaire doit l'accepter — l'API ne peut pas l'imposer, et c'est ce qui rend la relation saine. Trois comptes au maximum par publication (limite de Meta) : les personnes citees dans la video passent avant la rubrique. Ecrivez le nom exactement comme il apparait sur le site (page Invites), et le compte avec ou sans @.",
+
+  "personnes": {
+    "William Zerbib": "",
+    "Jérôme Haas": "",
+    "Stéphane Goldin": "",
+    "Rony Akrich": "",
+    "Rony Hayot": "",
+    "Myriam Danan": "",
+    "Richard Darmon": ""
+  },
+
+  "_comment_rubriques": "Compte a inviter pour toute video d'une rubrique donnee. La cle est l'identifiant d'adresse de la rubrique, celui qui apparait dans /emissions/<identifiant>/.",
+  "rubriques": {
+  }
+}

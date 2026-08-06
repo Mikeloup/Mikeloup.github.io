@@ -1,0 +1,123 @@
+// -----------------------------------------------------------------------------
+// Publication automatique sur Instagram.
+//
+// Chaque nouvelle vidéo donne lieu à une publication : la miniature, une
+// légende construite depuis le titre et l'émission, et — c'est là que se joue
+// l'audience — une invitation à collaborer envoyée aux comptes concernés.
+//
+// Trois choses méritent d'être sues avant de lire le code :
+//
+//   1. Meta ne téléverse rien. On lui donne l'ADRESSE d'une image publique,
+//      qu'il va chercher lui-même. D'où deux appels : créer un conteneur, puis
+//      le publier.
+//   2. Une collaboration se propose, elle ne s'impose pas. L'invitation part
+//      automatiquement ; la publication n'apparaît chez le partenaire que s'il
+//      l'accepte. L'API ne peut pas faire mieux, et c'est très bien ainsi.
+//   3. Publier est irréversible. Les garde-fous (nombre par exécution, âge
+//      maximal des vidéos) ne sont pas décoratifs : sans eux, une première
+//      synchronisation publierait mille cent vidéos d'un coup.
+// -----------------------------------------------------------------------------
+
+const API = 'https://graph.facebook.com/v21.0';
+
+/** Appel à l'API Meta. Rend { ok, data } plutôt que de lever : un échec de
+ *  publication ne doit jamais faire échouer la construction du site. */
+async function api(chemin, params, token) {
+  const url = new URL(`${API}/${chemin}`);
+  const corps = new URLSearchParams({ ...params, access_token: token });
+  try {
+    const res = await fetch(url, {
+      method: 'POST',
+      headers: { 'content-type': 'application/x-www-form-urlencoded' },
+      body: corps,
+    });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok) {
+      return { ok: false, erreur: data?.error?.message || `HTTP ${res.status}` };
+    }
+    return { ok: true, data };
+  } catch (err) {
+    return { ok: false, erreur: err.message };
+  }
+}
+
+/**
+ * Légende d'une publication.
+ *
+ * Instagram ne rend cliquable aucun lien dans une légende : inutile d'y coller
+ * une adresse, elle resterait du texte mort. On renvoie donc vers le lien du
+ * profil, qui lui est cliquable, et on garde la légende courte — les premières
+ * lignes sont les seules lues avant le « plus ».
+ */
+export function legende(video, { config, emission = '', invites = [] } = {}) {
+  const i = config.instagram || {};
+  const tv = config.tv || {};
+  const modele = i.captionTemplate
+    || '{titre}\n\n{emission} — à revoir sur {site}, et à l\'antenne sur le canal {canal}.';
+
+  const texte = modele
+    .replace(/\{titre\}/g, video.title || '')
+    .replace(/\{emission\}/g, emission || config.siteName)
+    .replace(/\{invites\}/g, invites.join(', '))
+    .replace(/\{site\}/g, config.siteName)
+    .replace(/\{canal\}/g, tv.channelNumber || '14');
+
+  const mots = Array.isArray(i.hashtags) ? i.hashtags.filter(Boolean) : [];
+  return mots.length ? `${texte}\n\n${mots.map((m) => (m.startsWith('#') ? m : `#${m}`)).join(' ')}` : texte;
+}
+
+/**
+ * Comptes à inviter en collaboration pour une vidéo donnée.
+ *
+ * Deux sources : le nom des personnes citées dans la vidéo, et la rubrique
+ * dont elle relève. Trois au maximum, c'est la limite de Meta — on privilégie
+ * les personnes, dont l'audience est la plus proche du sujet.
+ */
+export function collaborateursDe(video, { emissionSlug = '', invites = [], carnet = {} } = {}) {
+  const parNom = carnet.personnes || {};
+  const parRubrique = carnet.rubriques || {};
+  const clef = (x) => String(x || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().trim();
+
+  const index = new Map(Object.entries(parNom).map(([k, v]) => [clef(k), v]));
+  const trouves = [];
+  for (const nom of invites) {
+    const compte = index.get(clef(nom));
+    if (compte && !trouves.includes(compte)) trouves.push(compte);
+  }
+  const rub = parRubrique[emissionSlug];
+  if (rub && !trouves.includes(rub)) trouves.push(rub);
+
+  return trouves.slice(0, 3).map((c) => String(c).replace(/^@/, ''));
+}
+
+/**
+ * Publie une vidéo. Rend { ok, id } ou { ok: false, erreur }.
+ *
+ * L'image doit être un JPEG ou un PNG accessible publiquement, dans un rapport
+ * compris entre 4:5 et 1,91:1. Une miniature YouTube (16:9, soit 1,78:1) entre
+ * dans cette fourchette — c'est ce qui permet de démarrer sans fabriquer
+ * d'images sur mesure.
+ */
+export async function publier({
+  token, userId, imageUrl, caption, collaborateurs = [],
+}) {
+  if (!token || !userId) return { ok: false, erreur: 'jeton ou identifiant de compte manquant' };
+  if (!imageUrl) return { ok: false, erreur: 'aucune image' };
+
+  const params = { image_url: imageUrl, caption };
+  if (collaborateurs.length) params.collaborators = JSON.stringify(collaborateurs);
+
+  const conteneur = await api(`${userId}/media`, params, token);
+  if (!conteneur.ok) return { ok: false, erreur: `conteneur refusé : ${conteneur.erreur}` };
+
+  const id = conteneur.data?.id;
+  if (!id) return { ok: false, erreur: 'conteneur sans identifiant' };
+
+  // Meta télécharge l'image de façon asynchrone : publier trop tôt échoue.
+  await new Promise((r) => setTimeout(r, 4000));
+
+  const publication = await api(`${userId}/media_publish`, { creation_id: id }, token);
+  if (!publication.ok) return { ok: false, erreur: `publication refusée : ${publication.erreur}` };
+
+  return { ok: true, id: publication.data?.id || id };
+}

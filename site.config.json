@@ -53,6 +53,16 @@
   "youtube": {
     "cacheMinutes": 100
   },
+  "_comment_instagram": "Publication automatique sur Instagram. 'enabled' a false coupe tout. 'userId' est l'identifiant du compte Instagram professionnel (un long nombre, fourni par Meta) ; il n'est pas secret. Le jeton d'acces, lui, vit dans le secret GitHub INSTAGRAM_TOKEN et ne doit jamais etre ecrit ici. 'publishOnNewVideos' declenche une publication a chaque nouvelle video detectee. 'maxPerRun' limite le nombre de publications par synchronisation et 'maxAgeHours' ignore les videos plus anciennes : ces deux garde-fous sont essentiels, sans eux une premiere execution publierait tout le catalogue. Variables de la legende : {titre}, {emission}, {invites}, {site}, {canal}. Les collaborateurs invites se declarent dans data/instagram-collaborateurs.json.",
+  "instagram": {
+    "enabled": false,
+    "userId": "",
+    "publishOnNewVideos": true,
+    "maxPerRun": 1,
+    "maxAgeHours": 48,
+    "captionTemplate": "{titre}\n\n{emission} — a revoir sur {site}, et a l\u2019antenne sur le canal {canal} du bouquet Annatel TV.",
+    "hashtags": ["TandemTV", "Israel", "Actualite", "MondeJuif"]
+  },
   "_comment_push": "Notifications navigateur (OneSignal). 'oneSignalAppId' vide = fonction désactivée, rien n'est injecté dans les pages. 'notifyOnNewVideos' déclenche l'envoi automatique à chaque nouvelle vidéo détectée (nécessite le secret GitHub ONESIGNAL_API_KEY). 'maxPerRun' limite le nombre d'envois par synchronisation, 'maxAgeHours' ignore les vidéos plus anciennes : deux garde-fous contre un envoi massif accidentel. Dans les modèles de texte : {emission} = nom de la rubrique, {titre} = titre de la vidéo, {site} = nom du site.",
   "push": {
     "oneSignalAppId": "89a3a773-175a-47aa-95a3-b7fddb28a462",

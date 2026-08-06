@@ -605,6 +605,25 @@ Une troisième passe lit donc les descriptions, avec trois garde-fous :
 
 ---
 
+## Chantier Instagram (6 août 2026)
+
+Publication automatique d'une image par nouvelle vidéo, avec invitation à
+collaborer. Objectif de Michael : vues et abonnés, via les collaborations.
+
+- [x] `src/instagram.mjs` — création du conteneur puis publication, champ `collaborators`, garde-fous.
+- [x] `data/instagram-collaborateurs.json` — carnet des comptes à inviter, par personne et par rubrique.
+- [x] Bloc `instagram` dans `site.config.json`, **désactivé par défaut**.
+- [x] `INSTAGRAM_TOKEN` transmis par `deploy.yml`.
+- [ ] **Michael : compte Instagram professionnel relié à une page Facebook.**
+- [ ] **Michael : application Meta, jeton longue durée → secret GitHub `INSTAGRAM_TOKEN`.** Ne doit jamais transiter par la conversation.
+- [ ] **Michael : renseigner `instagram.userId` et passer `enabled` à true.**
+- [ ] Renouvellement du jeton : il expire au bout de 60 jours. Prévoir une tâche planifiée qui le rafraîchit, sinon la publication s'arrête sans bruit au bout de deux mois.
+- [ ] Carnet des collaborateurs à remplir (comptes des chroniqueurs et des invités récurrents).
+
+**Faits vérifiés le 6 août 2026 :** compte professionnel + page Facebook obligatoires ; permissions `instagram_business_basic` et `instagram_business_content_publish` soumises à revue de Meta pour la production (2 à 4 semaines), contournables en gardant l'application en mode développement ; jusqu'à 3 collaborateurs par publication, images et Reels seulement ; **le collaborateur doit accepter l'invitation** ; l'image doit être à une adresse publique, rapport entre 4:5 et 1,91:1 (une miniature YouTube en 16/9 convient) ; jeton longue durée valable 60 jours.
+
+---
+
 ## Demandes de Michael en attente (2 août 2026)
 
 Notées ici pour survivre à la fin d'une conversation : l'espace de travail de
