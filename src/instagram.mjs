@@ -18,7 +18,11 @@
 //      synchronisation publierait mille cent vidéos d'un coup.
 // -----------------------------------------------------------------------------
 
-const API = 'https://graph.facebook.com/v21.0';
+// Voie « Instagram Login » : l'hôte est graph.instagram.com, et non
+// graph.facebook.com qui sert la voie « Facebook Login » (celle qui exige une
+// page Facebook). Se tromper d'hôte donne une erreur d'authentification
+// incompréhensible : le jeton est valide, mais pas pour ce domaine.
+const API = 'https://graph.instagram.com/v21.0';
 
 /** Appel à l'API Meta. Rend { ok, data } plutôt que de lever : un échec de
  *  publication ne doit jamais faire échouer la construction du site. */
@@ -107,7 +111,16 @@ export async function publier({
   const params = { image_url: imageUrl, caption };
   if (collaborateurs.length) params.collaborators = JSON.stringify(collaborateurs);
 
-  const conteneur = await api(`${userId}/media`, params, token);
+  let conteneur = await api(`${userId}/media`, params, token);
+
+  // Une invitation à collaborer est un bonus, jamais une condition. Si Meta la
+  // refuse — compte inexistant, renommé, ou champ indisponible sur ce type de
+  // jeton —, on republie sans elle plutôt que de perdre la publication.
+  if (!conteneur.ok && collaborateurs.length) {
+    const sansAmis = { image_url: imageUrl, caption };
+    const secours = await api(`${userId}/media`, sansAmis, token);
+    if (secours.ok) conteneur = secours;
+  }
   if (!conteneur.ok) return { ok: false, erreur: `conteneur refusé : ${conteneur.erreur}` };
 
   const id = conteneur.data?.id;
