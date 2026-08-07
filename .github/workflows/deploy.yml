@@ -38,7 +38,14 @@ jobs:
           YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
           ONESIGNAL_API_KEY: ${{ secrets.ONESIGNAL_API_KEY }}
           KIT_API_KEY: ${{ secrets.KIT_API_KEY }}
+          INSTAGRAM_TOKEN: ${{ secrets.INSTAGRAM_TOKEN }}
+          
         run: node build.mjs
+
+      - name: Vignettes Instagram
+        run: |
+          python3 -m pip install --quiet --disable-pip-version-check pillow
+          python3 tools/vignette-insta.py
 
       - uses: actions/configure-pages@v5
 
