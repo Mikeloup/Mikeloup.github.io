@@ -51,7 +51,7 @@
   },
   "_comment_youtube": "Synchronisation avec YouTube. 'cacheMinutes' est la duree pendant laquelle le catalogue deja recupere est reutilise sans rappeler YouTube. Le site se reconstruit a chaque envoi sur GitHub, y compris quand seule la grille de diffusion a bouge : sans ce delai, chaque mise a jour de grille consommerait une synchronisation complete (plus de cent unites de quota, sur les dix mille accordees par jour). A 100 minutes, les reconstructions declenchees par la grille sont gratuites et les synchronisations programmees toutes les 2 heures continuent d'apporter les nouvelles videos. Mettre 0 pour resynchroniser a chaque construction (deconseille).",
   "youtube": {
-    "cacheMinutes": 0
+    "cacheMinutes": 100
   },
   "_comment_instagram": "Publication automatique sur Instagram. 'enabled' a false coupe tout. 'userId' est l'identifiant du compte Instagram professionnel (un long nombre, fourni par Meta) ; il n'est pas secret. Le jeton d'acces, lui, vit dans le secret GitHub INSTAGRAM_TOKEN et ne doit jamais etre ecrit ici. 'publishOnNewVideos' declenche une publication a chaque nouvelle video detectee. 'maxPerRun' limite le nombre de publications par synchronisation, 'minMinutesBetween' impose un delai minimal entre deux publications, et 'maxAgeHours' ignore les videos plus anciennes : ces deux garde-fous sont essentiels, sans eux une premiere execution publierait tout le catalogue. Variables de la legende : {titre}, {emission}, {invites}, {site}, {canal}. Les collaborateurs invites se declarent dans data/instagram-collaborateurs.json.",
   "instagram": {

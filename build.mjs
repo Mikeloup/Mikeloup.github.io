@@ -30,6 +30,13 @@ const PER_PAGE = 24;
 
 const DEMO = process.argv.includes('--demo') || process.env.DEMO === '1';
 const buildTime = process.env.SOURCE_DATE || new Date().toISOString();
+// `buildTime` est une CHAINE ISO. Toute soustraction directe avec un nombre
+// de millisecondes rend NaN — et `NaN < seuil` vaut false, silencieusement.
+// C'est ainsi que la detection des nouveautes n'a jamais rien detecte :
+// aucune erreur, aucun avertissement, juste « aucune nouvelle video » a
+// chaque execution. D'ou cette horloge numerique, a utiliser pour tout
+// calcul de duree.
+const buildMs = Date.parse(buildTime);
 
 const log = (...a) => console.log('▸', ...a);
 const warn = (...a) => console.warn('⚠', ...a);
@@ -156,6 +163,45 @@ async function collecterPartenaires() {
   return partenaires;
 }
 
+/**
+ * Date a laquelle chaque video est apparue pour la premiere fois dans notre
+ * catalogue.
+ *
+ * Pourquoi ne pas se fier a `publishedAt` : Michael televerse ses videos en
+ * prive, parfois des semaines a l'avance, et les rend publiques quand il le
+ * decide. YouTube est cense mettre `publishedAt` a jour a ce moment-la ; dans
+ * les faits, on a constate le 7 aout 2026 qu'une video passee en public depuis
+ * moins de 48 h portait encore une date bien anterieure. Toute logique de
+ * « nouveaute » fondee sur cette date rate donc precisement les videos qui
+ * comptent.
+ *
+ * Cette empreinte-ci ne peut pas mentir : une video n'entre dans le catalogue
+ * qu'une fois publique, puisque l'API n'expose rien d'autre. Le jour ou nous la
+ * voyons pour la premiere fois EST le jour de sa publication.
+ *
+ * Deux precautions contre l'inondation :
+ *   - au tout premier passage (aucun cache), tout le catalogue est date de sa
+ *     publication YouTube — sinon mille cent videos paraitraient nouvelles ;
+ *   - une video deja presente dans l'ancien cache mais sans empreinte (cas de
+ *     la migration) herite de sa date YouTube, pas de l'instant present.
+ */
+function marquerPremiereVue(data, ancien) {
+  const videos = data?.videos || [];
+  const anciennes = ancien?.videos || [];
+  const idsConnus = new Set(anciennes.map((v) => v.id));
+  const empreintes = new Map(anciennes.filter((v) => v.vuLe).map((v) => [v.id, v.vuLe]));
+  const premierPassage = idsConnus.size === 0;
+
+  let nouvelles = 0;
+  for (const v of videos) {
+    if (empreintes.has(v.id)) { v.vuLe = empreintes.get(v.id); continue; }
+    if (premierPassage || idsConnus.has(v.id)) { v.vuLe = v.publishedAt || buildTime; continue; }
+    v.vuLe = buildTime;
+    nouvelles += 1;
+  }
+  if (nouvelles) log(`${nouvelles} vidéo(s) apparue(s) dans le catalogue à cette synchronisation.`);
+}
+
 async function collectData(config) {
   const cachePath = path.join(ROOT, 'data', 'cache.json');
   const cacheMinutes = Number(process.env.CACHE_MINUTES ?? config.youtube?.cacheMinutes ?? 100);
@@ -179,7 +225,7 @@ async function collectData(config) {
   if (cacheMinutes > 0 && !process.env.FORCE_SYNC) {
     const cached = await readJson(cachePath);
     const age = cached?.fetchedAt
-      ? (Date.parse(buildTime) - Date.parse(cached.fetchedAt)) / 60000
+      ? (buildMs - Date.parse(cached.fetchedAt)) / 60000
       : Infinity;
     if (cached?.videos?.length && age >= 0 && age < cacheMinutes) {
       log(`Catalogue repris du cache (${Math.round(age)} min, seuil ${cacheMinutes} min) — aucun appel à YouTube.`);
@@ -197,6 +243,7 @@ async function collectData(config) {
 
   try {
     const data = await collectFromApi(config);
+    marquerPremiereVue(data, await readJson(cachePath));
     await fs.mkdir(path.dirname(cachePath), { recursive: true });
     await fs.writeFile(cachePath, JSON.stringify(data), 'utf8');
     return data;
@@ -317,7 +364,7 @@ function buildModel(config, data) {
   // Une rubrique sort des menus quand elle n'a rien publié depuis N mois.
   const maxAgeMonths = config.playlists?.menuMaxAgeMonths ?? 0;
   const cutoff = maxAgeMonths > 0
-    ? new Date(new Date(buildTime).getTime() - maxAgeMonths * 30.44 * 86_400_000)
+    ? new Date(buildMs - maxAgeMonths * 30.44 * 86_400_000)
     : null;
   // Règle mixte : une rubrique reste au menu si elle a publié récemment
   // OU si son catalogue dépasse un certain volume.
@@ -1041,7 +1088,7 @@ function freshVideos(allVideos, known, maxAgeHours) {
   const maxAgeMs = maxAgeHours * 3600 * 1000;
   return allVideos
     .filter((v) => !known.has(v.id))
-    .filter((v) => v.publishedAt && (buildTime - new Date(v.publishedAt).getTime()) < maxAgeMs)
+    .filter((v) => v.publishedAt && (buildMs - Date.parse(v.publishedAt)) < maxAgeMs)
     .sort((a, b) => new Date(a.publishedAt) - new Date(b.publishedAt));
 }
 
@@ -1098,13 +1145,16 @@ async function ecrireManifesteInsta(config, allVideos) {
   // simples images sur le site, sans effet de bord. Les fabriquer avant
   // d'activer la publication permet de les regarder en vrai — et de corriger
   // la maquette — sans rien publier.
-  const jours = 4;
+  // Volontairement genereux : les huit dernieres videos publiques, sans
+  // condition d'age. Une vignette est une simple image sur le site — la
+  // fabriquer pour rien ne coute rien, tandis qu'une vignette manquante fait
+  // reporter la publication d'un tour. La severite est du cote de la
+  // publication, pas de l'illustration.
   const recentes = allVideos
     .filter((v) => v.privacy === 'public')
-    .filter((v) => v.publishedAt && (buildTime - new Date(v.publishedAt).getTime()) < jours * 86400000)
-    .sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt))
+    .sort((a, b) => Date.parse(b.vuLe || b.publishedAt || 0) - Date.parse(a.vuLe || a.publishedAt || 0))
     .slice(0, 8);
-  if (!recentes.length) return;
+  if (!recentes.length) { log('Instagram : aucune vidéo publique, aucune vignette à fabriquer.'); return; }
 
   const tv = config.tv || {};
   const pied = `À revoir sur ${String(config.siteUrl || '').replace(/^https?:\/\/(www\.)?/, '')}`
@@ -1147,8 +1197,8 @@ async function publierInstagram(config, allVideos, known, personnesParVideo = ne
   // coup fait fuir, et fait chuter la moyenne de vues par publication.
   const espacement = (config.instagram?.minMinutesBetween ?? 180) * 60000;
   const derniere = Math.max(0, ...recentes.map((m) => m.date || 0));
-  if (derniere && buildTime - derniere < espacement) {
-    const reste = Math.ceil((espacement - (buildTime - derniere)) / 60000);
+  if (derniere && buildMs - derniere < espacement) {
+    const reste = Math.ceil((espacement - (buildMs - derniere)) / 60000);
     log(`Instagram : publication précédente trop récente, prochaine dans ~${reste} min.`);
     return;
   }
@@ -1162,8 +1212,8 @@ async function publierInstagram(config, allVideos, known, personnesParVideo = ne
     // publie quand il le décide : annoncer plus tôt enverrait les curieux vers
     // une vidéo qui n'existe pas encore pour eux.
     .filter((v) => v.privacy === 'public')
-    .filter((v) => v.publishedAt && (buildTime - new Date(v.publishedAt).getTime()) < heures * 3600 * 1000)
-    .sort((a, b) => new Date(a.publishedAt) - new Date(b.publishedAt))
+    .filter((v) => v.vuLe && (buildMs - Date.parse(v.vuLe)) < heures * 3600 * 1000)
+    .sort((a, b) => new Date(a.vuLe) - new Date(b.vuLe))
     .filter((v) => !dejaPublie(v.title));
 
   if (!candidates.length) { log('Instagram : aucune nouvelle vidéo à publier.'); return; }
@@ -1456,7 +1506,7 @@ async function sendNewsletter(config, allVideos, known) {
 
   // Deux minutes de battement : le temps que la page de la vidéo soit en ligne
   // sur GitHub Pages avant que le premier abonné ne clique.
-  const sendAt = new Date(buildTime + 2 * 60 * 1000).toISOString();
+  const sendAt = new Date(buildMs + 2 * 60 * 1000).toISOString();
 
   for (const video of toSend) {
     const subject = fillTemplate(n.subjectTemplate || '{emission} — {titre}', video, config);
