@@ -7,12 +7,13 @@ on:
   workflow_dispatch:
     inputs:
       envoyer:
-        description: "Envoyer reellement ? (non = simple apercu)"
+        description: "non = apercu | brouillon = depose chez Kit sans envoyer | oui = envoi"
         required: true
         default: "non"
         type: choice
         options:
           - "non"
+          - "brouillon"
           - "oui"
       forcer:
         description: "Ignorer le controle de l'heure locale"
