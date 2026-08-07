@@ -15,9 +15,15 @@
 // Puis il programme UN envoi chez Kit. Un seul, jamais plus : si l'exécution
 // échouait à mi-chemin, mieux vaut une lettre manquée qu'une lettre en double.
 //
-// Variables : KIT_API_KEY (obligatoire), ENVOYER=oui pour envoyer réellement
-// (sinon, simple aperçu dans le journal), FORCER=oui pour ignorer le contrôle
-// de l'heure locale.
+// Trois modes, par la variable ENVOYER :
+//   absent ou « non »  : aperçu dans le journal, rien n'est créé nulle part ;
+//   « brouillon »      : la lettre est déposée chez Kit SANS date d'envoi. On
+//                        peut alors l'ouvrir, voir la mise en page réelle, et
+//                        décider d'envoyer depuis Kit — ou de la jeter ;
+//   « oui »            : programmée, départ dans cinq minutes.
+//
+// Autres variables : KIT_API_KEY (obligatoire hors aperçu), FORCER=oui pour
+// ignorer le contrôle de l'heure locale.
 // -----------------------------------------------------------------------------
 
 import fs from 'node:fs/promises';
@@ -30,7 +36,9 @@ const config = JSON.parse(await fs.readFile(path.join(ROOT, 'site.config.json'),
 const n = config.newsletter || {};
 const hebdo = n.hebdomadaire || {};
 
-const envoyer = String(process.env.ENVOYER || '').toLowerCase() === 'oui';
+const mode = String(process.env.ENVOYER || 'non').toLowerCase();
+const brouillon = mode === 'brouillon';
+const envoyer = mode === 'oui' || brouillon;
 const forcer = String(process.env.FORCER || '').toLowerCase() === 'oui';
 
 // --- L'heure locale ----------------------------------------------------------
@@ -108,7 +116,8 @@ aRevoir.forEach((v) => console.log(`À revoir: ${v.t} (${v.v} vues)`));
 console.log('------------------------------------------------------------------');
 
 if (!envoyer) {
-  console.log("Aperçu seulement : rien n'a été envoyé. Relancer avec ENVOYER=oui.");
+  console.log("Aperçu seulement : rien n'a été créé. Relancer avec ENVOYER=brouillon pour "
+    + "déposer la lettre chez Kit et en voir la mise en page, ou ENVOYER=oui pour l'envoyer.");
   process.exit(0);
 }
 
@@ -129,7 +138,10 @@ const envoi = await fetch('https://api.kit.com/v4/broadcasts', {
     content: contenu,
     public: false,
     published_at: null,
-    send_at: new Date(Date.now() + 5 * 60 * 1000).toISOString(),
+    // Un brouillon n'a pas de date : Kit le garde tel quel, et c'est Michael
+    // qui déclenche l'envoi depuis son tableau de bord, après avoir vu la
+    // mise en page réelle.
+    send_at: brouillon ? null : new Date(Date.now() + 5 * 60 * 1000).toISOString(),
     subscriber_filter: null,
   }),
 });
@@ -139,4 +151,6 @@ if (!envoi.ok) {
   console.error(`ECHEC : Kit a refusé la lettre — HTTP ${envoi.status} ${corps.slice(0, 400)}`);
   process.exit(1);
 }
-console.log('SUCCES : lettre programmée, envoi dans cinq minutes.');
+console.log(brouillon
+  ? 'SUCCES : brouillon déposé chez Kit. À relire et à envoyer depuis https://app.kit.com/broadcasts'
+  : 'SUCCES : lettre programmée, envoi dans cinq minutes.');
