@@ -943,6 +943,8 @@ async function main() {
     s: v.playlists?.[0]?.slug || '',
     u: v.duration,
     n: v.thumbnail,
+    v: v.views || 0,
+    f: v.vuLe || v.publishedAt || null,
   }))));
   urls.push({ loc: '/recherche/', freq: 'monthly', priority: '0.3' });
 

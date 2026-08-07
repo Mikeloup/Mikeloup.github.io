@@ -1775,3 +1775,76 @@ ${grille?.pourNavigateur?.length
     ]),
   });
 }
+
+
+/**
+ * Lettre hebdomadaire.
+ *
+ * Un e-mail par vidéo était le réglage initial. Michael a objecté, à juste
+ * titre, le 7 août 2026 : sur une liste qui n'a jamais rien reçu, quatre
+ * messages par semaine récoltent des désabonnements et des signalements avant
+ * de récolter des lecteurs. Le risque d'indésirable ne tient pas au nombre
+ * d'envois mais à l'engagement : moins d'envois, mieux ouverts, valent mieux
+ * qu'un flux régulier qu'on n'ouvre plus.
+ *
+ * D'où trois blocs, et le troisième est celui qui justifie l'abonnement :
+ *   - la vidéo de tête, en grand ;
+ *   - les autres de la semaine, en lignes compactes ;
+ *   - « À revoir », des vidéos plus anciennes parmi les plus vues, qu'un
+ *     abonné récent n'a jamais croisées. Sans ce bloc, la lettre n'est qu'une
+ *     liste de nouveautés — quelque chose qu'un flux RSS fait mieux.
+ */
+export function lettreHebdo(config, { une, autres = [], aRevoir = [], intro = '' } = {}) {
+  const base = String(config.siteUrl || '').replace(/\/$/, '');
+  const lien = (v) => `${base}/video/${v.i}/`;
+  const P = 'margin:0 0 16px;font-size:16px;line-height:1.55;color:#1a1a1a;';
+  const MARINE = '#180058';
+
+  const ligne = (v) => `
+  <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin:0 0 14px;">
+    <tr>
+      <td width="180" valign="top" style="padding-right:14px;">
+        <a href="${escapeHtml(lien(v))}"><img src="${escapeHtml(v.n || '')}" alt="" width="180"
+           style="width:180px;height:auto;display:block;border:0;border-radius:4px;"></a>
+      </td>
+      <td valign="top">
+        ${v.c ? `<p style="margin:0 0 4px;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#6a6455;">${escapeHtml(v.c)}</p>` : ''}
+        <p style="margin:0;font-size:16px;line-height:1.35;">
+          <a href="${escapeHtml(lien(v))}" style="color:${MARINE};text-decoration:none;font-weight:bold;">${escapeHtml(v.t || '')}</a>
+        </p>
+      </td>
+    </tr>
+  </table>`;
+
+  const bloc = (titre, liste) => (liste.length ? `
+  <p style="margin:32px 0 14px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:${MARINE};border-top:1px solid #e4dfd3;padding-top:18px;">${escapeHtml(titre)}</p>
+  ${liste.map(ligne).join('')}` : '');
+
+  const tete = une ? `
+  ${une.c ? `<p style="margin:0 0 10px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:${MARINE};">${escapeHtml(une.c)}</p>` : ''}
+  <h1 style="margin:0 0 16px;font-size:26px;line-height:1.25;color:${MARINE};">
+    <a href="${escapeHtml(lien(une))}" style="color:${MARINE};text-decoration:none;">${escapeHtml(une.t || '')}</a>
+  </h1>
+  <p style="margin:0 0 20px;">
+    <a href="${escapeHtml(lien(une))}"><img src="${escapeHtml(une.n || '')}" alt="" width="568"
+       style="width:100%;max-width:568px;height:auto;display:block;border:0;border-radius:6px;"></a>
+  </p>
+  ${une.d ? `<p style="${P}">${escapeHtml(une.d)}</p>` : ''}
+  <p style="margin:0 0 8px;">
+    <a href="${escapeHtml(lien(une))}" style="display:inline-block;padding:13px 26px;background:${MARINE};color:#ffffff;text-decoration:none;border-radius:6px;font-size:16px;font-family:Helvetica,Arial,sans-serif;">Regarder la vidéo</a>
+  </p>` : '';
+
+  return `<div style="max-width:600px;margin:0 auto;padding:8px 16px;font-family:Georgia,'Times New Roman',serif;">
+  ${intro ? `<p style="${P}">${escapeHtml(intro)}</p>` : ''}
+  ${tete}
+  ${bloc('Aussi cette semaine', autres)}
+  ${bloc('À revoir', aRevoir)}
+  <p style="margin:32px 0 8px;font-size:14px;line-height:1.5;color:#555;border-top:1px solid #e4dfd3;padding-top:18px;">
+    Vous recevez cette lettre parce que vous vous êtes inscrit sur ${escapeHtml(config.siteName)}.
+    ${config.tv?.channelNumber ? `Retrouvez-nous aussi à la télévision, canal ${escapeHtml(config.tv.channelNumber)} du bouquet ${escapeHtml(config.tv.operator || 'Annatel TV')}.` : ''}
+  </p>
+  <p style="margin:0;font-size:14px;color:#555;">
+    <a href="${escapeHtml(base)}" style="color:${MARINE};">${escapeHtml(base.replace(/^https?:\/\//, ''))}</a>
+  </p>
+</div>`;
+}

@@ -55,7 +55,7 @@
   },
   "_comment_instagram": "Publication automatique sur Instagram. 'enabled' a false coupe tout. 'userId' est l'identifiant du compte Instagram professionnel (un long nombre, fourni par Meta) ; il n'est pas secret. Le jeton d'acces, lui, vit dans le secret GitHub INSTAGRAM_TOKEN et ne doit jamais etre ecrit ici. 'publishOnNewVideos' declenche une publication a chaque nouvelle video detectee. 'maxPerRun' limite le nombre de publications par synchronisation, 'minMinutesBetween' impose un delai minimal entre deux publications, et 'maxAgeHours' ignore les videos plus anciennes : ces deux garde-fous sont essentiels, sans eux une premiere execution publierait tout le catalogue. Variables de la legende : {titre}, {emission}, {invites}, {site}, {canal}. Les collaborateurs invites se declarent dans data/instagram-collaborateurs.json.",
   "instagram": {
-    "enabled": true,
+    "enabled": false,
     "userId": "27954556280895113",
     "publishOnNewVideos": true,
     "maxPerRun": 1,
@@ -77,11 +77,20 @@
   "newsletter": {
     "formId": "9743928",
     "uid": "ebd0a7a53d",
-    "sendOnNewVideos": true,
+    "sendOnNewVideos": false,
     "maxPerRun": 2,
     "maxAgeHours": 72,
     "subjectTemplate": "{emission} — {titre}",
-    "introTemplate": "Une nouvelle vidéo vient d'être mise en ligne sur Tandem TV."
+    "introTemplate": "Une nouvelle vidéo vient d'être mise en ligne sur Tandem TV.",
+    "hebdomadaire": {
+      "heureLocale": 10,
+      "jours": 8,
+      "autres": 4,
+      "aRevoir": 2,
+      "moisRetour": 18,
+      "sujet": "Tandem TV — {titre}",
+      "intro": ""
+    }
   },
   "_comment_analytics": "Mesure d'audience. Recommandé : 'cloudflareToken' — Cloudflare Web Analytics, gratuit, sans cookie, sans bandeau de consentement. Collez uniquement la valeur du token (la longue suite de caractères qui suit 'token\": ' dans l'extrait fourni par Cloudflare). Les deux autres champs restent disponibles si vous préférez Plausible (payant) ou Google Analytics (gratuit mais soumis au consentement). Laissez tout vide pour ne rien mesurer : la politique de confidentialité s'adapte automatiquement. Le rapport d'audience quotidien a besoin de deux identifiants supplémentaires, ni secrets ni publiés sur le site : 'cloudflareAccountId' (dans l'adresse du tableau de bord) et 'cloudflareSiteTag' (paramètre siteTag de l'adresse, lorsqu'on ouvre les statistiques du site). ATTENTION : le siteTag n'est PAS le jeton de la balise, ce sont deux valeurs différentes.",
   "analytics": {
