@@ -171,3 +171,75 @@ export async function publier({
 
   return { ok: true, id: publication.data?.id || id };
 }
+
+
+/**
+ * Publie un Reel. Rend { ok, id } ou { ok: false, erreur }.
+ *
+ * Trois differences avec une image, et chacune peut faire echouer la
+ * publication si on l'ignore :
+ *
+ *   1. `media_type: 'REELS'` — sans quoi Meta refuse une video.
+ *   2. Le traitement est ASYNCHRONE. Meta telecharge la video, la reencode,
+ *      en extrait une couverture : cela prend de quelques secondes a
+ *      plusieurs minutes selon le poids. Publier avant la fin echoue avec un
+ *      message peu clair. On interroge donc l'etat du conteneur jusqu'a
+ *      « FINISHED ».
+ *   3. `share_to_feed` decide si le Reel apparait aussi dans la grille du
+ *      profil. Sans lui, il n'existe que dans l'onglet Reels — et la grille
+ *      est la premiere chose que voit un visiteur qui decouvre le compte.
+ */
+export async function publierReel({
+  token, userId, videoUrl, caption, collaborateurs = [],
+  attenteMax = 300, partagerAuFil = true,
+}) {
+  if (!token || !userId) return { ok: false, erreur: 'jeton ou identifiant de compte manquant' };
+  if (!videoUrl) return { ok: false, erreur: 'aucune vidéo' };
+
+  const params = {
+    media_type: 'REELS',
+    video_url: videoUrl,
+    caption,
+    share_to_feed: partagerAuFil ? 'true' : 'false',
+  };
+  if (collaborateurs.length) params.collaborators = JSON.stringify(collaborateurs);
+
+  let conteneur = await api(`${userId}/media`, params, token);
+  if (!conteneur.ok && collaborateurs.length) {
+    delete params.collaborators;
+    const secours = await api(`${userId}/media`, params, token);
+    if (secours.ok) conteneur = secours;
+  }
+  if (!conteneur.ok) return { ok: false, erreur: `conteneur refusé : ${conteneur.erreur}` };
+
+  const id = conteneur.data?.id;
+  if (!id) return { ok: false, erreur: 'conteneur sans identifiant' };
+
+  // Attente du traitement. On interroge toutes les cinq secondes plutôt que
+  // d'attendre une durée fixe : une vidéo de vingt mégaoctets peut être prête
+  // en quinze secondes comme en trois minutes, selon la charge de Meta.
+  const debut = Date.now();
+  let etat = '';
+  while ((Date.now() - debut) / 1000 < attenteMax) {
+    await new Promise((r) => setTimeout(r, 5000));
+    const url = new URL(`${API}/${id}`);
+    url.searchParams.set('fields', 'status_code,status');
+    url.searchParams.set('access_token', token);
+    try {
+      const res = await fetch(url);
+      const data = await res.json().catch(() => ({}));
+      etat = data?.status_code || '';
+      if (etat === 'FINISHED') break;
+      if (etat === 'ERROR') {
+        return { ok: false, erreur: `Meta a rejeté la vidéo : ${data?.status || 'sans détail'}` };
+      }
+    } catch { /* réseau instable : on retente au tour suivant */ }
+  }
+  if (etat !== 'FINISHED') {
+    return { ok: false, erreur: `traitement inachevé après ${attenteMax} s (état « ${etat || 'inconnu'} »)` };
+  }
+
+  const publication = await api(`${userId}/media_publish`, { creation_id: id }, token);
+  if (!publication.ok) return { ok: false, erreur: `publication refusée : ${publication.erreur}` };
+  return { ok: true, id: publication.data?.id || id };
+}
