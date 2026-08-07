@@ -1166,6 +1166,7 @@ async function ecrireManifesteInsta(config, allVideos) {
     recentes.map((v) => ({
       id: v.id,
       titre: v.title,
+      rubrique: v.playlists?.[0]?.title || '',
       pied,
       image: v.thumbnail || `https://i.ytimg.com/vi/${v.id}/maxresdefault.jpg`,
     })), null, 2), 'utf8');

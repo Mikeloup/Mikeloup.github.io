@@ -78,7 +78,7 @@ def telecharger(url):
     return None
 
 
-def vignette(source, titre, sous_titre, logo):
+def vignette(source, titre, sous_titre, logo, rubrique=''):
     # Fond : la miniature elle-meme, agrandie, floutee, assombrie.
     r = max(L / source.width, H / source.height) * 1.15
     fond = source.resize((int(source.width * r), int(source.height * r)), Image.LANCZOS)
@@ -90,21 +90,30 @@ def vignette(source, titre, sous_titre, logo):
     img = fond
     d = ImageDraw.Draw(img)
 
-    # La miniature, entiere, jamais recadree.
+    # La miniature, entiere, jamais recadree. Posee haut : le bandeau superieur
+    # n'est qu'une signature, pas un decor — un grand aplat flou au-dessus de
+    # l'image faisait « vide » plutot que « respiration ».
     vh = int(L * source.height / source.width)
-    vy = 330
+    vy = 215
     img.paste(source.resize((L, vh), Image.LANCZOS), (0, vy))
     d.rectangle([0, vy + vh, L, vy + vh + 7], fill=ROUGE)
 
     if logo is not None:
-        lw = 260
+        lw = 250
         lg = logo.resize((lw, int(logo.height * lw / logo.width)), Image.LANCZOS)
-        img.paste(lg, (60, 110), lg)
+        img.paste(lg, (60, 48), lg)
+
+    # Nom de l'emission, en surtitre. Il n'est jamais ecrit sur la miniature —
+    # c'est donc la seule information reellement ajoutee par cette vignette.
+    y_titre = vy + vh + 60
+    if rubrique:
+        d.text((62, y_titre), rubrique.upper(), font=police(30), fill=BLEU_PIED)
+        y_titre += 52
 
     # Titre : la police retrecit jusqu'a ce que le bloc tienne dans la place
     # disponible, plutot que de tronquer — un titre coupe au milieu d'un mot
     # fait amateur, et deborder sur le pied de page fait pire encore.
-    haut = vy + vh + 60
+    haut = y_titre
     dispo = (H - 150) - haut
     lignes, f, interligne = [titre], police(62), 79
     for taille in (62, 56, 50, 44, 38):
@@ -164,8 +173,8 @@ def main():
             ratees += 1
             print(f"vignette-insta : miniature introuvable pour {e['id']}")
             continue
-        vignette(source, e.get('titre', ''), e.get('pied', ''), logo).save(
-            sortie, quality=88, optimize=True)
+        vignette(source, e.get('titre', ''), e.get('pied', ''), logo,
+                 e.get('rubrique', '')).save(sortie, quality=88, optimize=True)
         faites += 1
 
     print(f'vignette-insta : {faites} vignette(s) produite(s)'
