@@ -1,0 +1,43 @@
+name: Publier un Reel Instagram
+
+on:
+  workflow_dispatch:
+    inputs:
+      video_url:
+        description: "Adresse publique du fichier .mp4"
+        required: true
+      legende:
+        description: "Legende du Reel"
+        required: false
+        default: ""
+      collaborateurs:
+        description: "Comptes a inviter, separes par des virgules (max 3)"
+        required: false
+        default: ""
+      publier:
+        description: "Publier reellement ? (non = simple apercu)"
+        required: true
+        default: "non"
+        type: choice
+        options:
+          - "non"
+          - "oui"
+
+jobs:
+  reel:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Publier
+        env:
+          INSTAGRAM_TOKEN: ${{ secrets.INSTAGRAM_TOKEN }}
+          VIDEO_URL: ${{ inputs.video_url }}
+          LEGENDE: ${{ inputs.legende }}
+          COLLABORATEURS: ${{ inputs.collaborateurs }}
+          PUBLIER: ${{ inputs.publier }}
+        run: node tools/instagram-reel.mjs
