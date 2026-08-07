@@ -336,7 +336,7 @@ function newsletterForm(config, { compact = false } = {}) {
       method="post" target="_blank">
   <div class="newsletter-text">
     <h2 class="newsletter-title">La lettre de Tandem TV</h2>
-    <p>Les nouvelles vidéos dans votre boîte mail, dès leur mise en ligne. Rien d'autre, et vous pouvez vous désinscrire en un clic.</p>
+    <p>Un courriel par semaine, le vendredi : les vidéos des sept derniers jours, et une plus ancienne à redécouvrir. Rien d'autre, et vous pouvez vous désinscrire en un clic.</p>
   </div>
   <div class="newsletter-fields">
     <label class="visually-hidden" for="nl-email">Votre adresse e-mail</label>
@@ -1001,6 +1001,7 @@ export function categoryPage({
   </header>
   ${grid(videos, { showCategory: false })}
   ${pagination(base, page, totalPages)}
+  ${page === 1 ? newsletterForm(config, { compact: true }) : ''}
 </div>`;
 
   return layout({
@@ -1141,6 +1142,8 @@ export function videoPage({
     <p><a href="/emissions/${cat.slug}/">Tous les épisodes de cette rubrique <span aria-hidden="true">→</span></a></p>
   </aside>` : ''}
 
+  ${newsletterForm(config, { compact: true })}
+
   ${related.length ? `
   <section class="row">
     <div class="row-head">
@@ -1231,7 +1234,7 @@ export function followPage({ config, categories, nav, buildTime }) {
   ${config.newsletter?.formId ? `
   <section class="follow-card follow-card--first">
     ${newsletterForm(config, { compact: true })}
-    <p class="muted small">Fonctionne partout, y compris sur iPhone · un envoi par nouvelle vidéo</p>
+    <p class="muted small">Fonctionne partout, y compris sur iPhone · un envoi par semaine, le vendredi</p>
   </section>` : ''}
 
   <section class="follow-card">

@@ -549,10 +549,10 @@
 
   var offer = function () {
     if (cta) cta.hidden = false;
-    // Le bandeau n'apparaît qu'à partir de la troisième visite, et jamais s'il
+    // Le bandeau n'apparaît qu'à partir de la deuxième visite, et jamais s'il
     // a déjà été écarté : proposer trop tôt, c'est se faire refuser une fois
     // pour toutes.
-    if (bar && !state.dismissed && (state.visits || 0) >= 3
+    if (bar && !state.dismissed && (state.visits || 0) >= 2
       && location.pathname !== '/installer/') {
       bar.hidden = false;
     }
