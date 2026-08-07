@@ -46,6 +46,37 @@ async function api(chemin, params, token) {
 }
 
 /**
+ * Légendes des dernières publications du compte.
+ *
+ * C'est notre mémoire, et elle a l'avantage d'être la seule qui ne puisse pas
+ * mentir : plutôt que de tenir un fichier « déjà publié » qui dériverait du
+ * réel, on demande à Instagram ce qu'il a réellement. Un fichier d'état perdu,
+ * un site reconstruit de zéro, une exécution interrompue — rien de tout cela
+ * ne peut provoquer un doublon.
+ *
+ * Rend un tableau de textes (vide en cas d'échec — l'appelant décidera alors
+ * de s'abstenir plutôt que de risquer une republication).
+ */
+export async function legendesRecentes({ token, userId, limite = 25 } = {}) {
+  if (!token || !userId) return null;
+  const url = new URL(`${API}/${userId}/media`);
+  url.searchParams.set('fields', 'caption,timestamp');
+  url.searchParams.set('limit', String(limite));
+  url.searchParams.set('access_token', token);
+  try {
+    const res = await fetch(url);
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok) return null;
+    return (data?.data || []).map((m) => ({
+      texte: String(m.caption || ''),
+      date: m.timestamp ? Date.parse(m.timestamp) : 0,
+    }));
+  } catch {
+    return null;
+  }
+}
+
+/**
  * Légende d'une publication.
  *
  * Instagram ne rend cliquable aucun lien dans une légende : inutile d'y coller

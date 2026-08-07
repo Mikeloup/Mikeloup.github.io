@@ -997,6 +997,7 @@ async function main() {
 
   log(`✅ ${urls.length} pages générées dans dist/ en ${((Date.now() - t0) / 1000).toFixed(1)}s`);
 
+  await ecrireManifesteInsta(config, allVideos);
   await annonceNouveautes(config, allVideos, personnesParVideo);
 }
 
@@ -1074,36 +1075,130 @@ async function annonceNouveautes(config, allVideos, personnesParVideo = new Map(
  * refuse de démarrer si un seul des garde-fous manque. Un compte Instagram
  * inondé de mille publications ne se rattrape pas.
  */
+/** Une adresse répond-elle ? Sert à savoir si une vignette est déjà en ligne. */
+async function enLigne(url) {
+  try {
+    const res = await fetch(url, { method: 'HEAD', cache: 'no-store' });
+    return res.ok;
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * Liste des vignettes 4:5 à fabriquer, déposée dans dist/insta/manifest.json.
+ *
+ * C'est `tools/vignette-insta.py` qui les dessine, juste après cette
+ * construction : Node sait assembler un site, pas composer une image, et
+ * ajouter une dépendance de traitement d'image au projet pour cela seul
+ * serait payer cher un besoin marginal.
+ */
+async function ecrireManifesteInsta(config, allVideos) {
+  // Volontairement independant de `instagram.enabled` : les vignettes sont de
+  // simples images sur le site, sans effet de bord. Les fabriquer avant
+  // d'activer la publication permet de les regarder en vrai — et de corriger
+  // la maquette — sans rien publier.
+  const jours = 4;
+  const recentes = allVideos
+    .filter((v) => v.privacy === 'public')
+    .filter((v) => v.publishedAt && (buildTime - new Date(v.publishedAt).getTime()) < jours * 86400000)
+    .sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt))
+    .slice(0, 8);
+  if (!recentes.length) return;
+
+  const tv = config.tv || {};
+  const pied = `À revoir sur ${String(config.siteUrl || '').replace(/^https?:\/\/(www\.)?/, '')}`
+    + `  ·  canal ${tv.channelNumber || '14'} du bouquet Annatel TV`;
+
+  const dossier = path.join(DIST, 'insta');
+  await fs.mkdir(dossier, { recursive: true });
+  await fs.writeFile(path.join(dossier, 'manifest.json'), JSON.stringify(
+    recentes.map((v) => ({
+      id: v.id,
+      titre: v.title,
+      pied,
+      image: v.thumbnail || `https://i.ytimg.com/vi/${v.id}/maxresdefault.jpg`,
+    })), null, 2), 'utf8');
+  log(`Instagram : ${recentes.length} vignette(s) 4:5 à fabriquer.`);
+}
+
 async function publierInstagram(config, allVideos, known, personnesParVideo = new Map()) {
   const token = process.env.INSTAGRAM_TOKEN;
   const userId = config.instagram?.userId;
   if (!token) { warn('Instagram : secret INSTAGRAM_TOKEN absent, aucune publication.'); return; }
   if (!userId) { warn('Instagram : « userId » absent de site.config.json, aucune publication.'); return; }
 
-  const fresh = freshVideos(allVideos, known, config.instagram?.maxAgeHours ?? 48);
-  if (!fresh.length) { log('Instagram : aucune nouvelle vidéo à publier.'); return; }
+  // Mémoire : ce qu'Instagram a réellement publié, et non ce que nous croyons
+  // avoir publié. En cas d'échec de lecture, on s'abstient — republier une
+  // vidéo devant toute l'audience coûte plus cher que sauter un tour.
+  const recentes = await insta.legendesRecentes({ token, userId });
+  if (recentes === null) {
+    warn('Instagram : impossible de relire les publications récentes. Aucune publication ce tour-ci.');
+    return;
+  }
+  const dejaPublie = (titre) => {
+    const t = String(titre || '').trim();
+    return t.length > 8 && recentes.some((m) => m.texte.includes(t));
+  };
+
+  // Espacement minimal entre deux publications. Le site se reconstruit toutes
+  // les quinze minutes : sans ce frein, l'activation initiale déverserait
+  // quarante-huit heures de vidéos en une matinée. Un fil qui se remplit d'un
+  // coup fait fuir, et fait chuter la moyenne de vues par publication.
+  const espacement = (config.instagram?.minMinutesBetween ?? 180) * 60000;
+  const derniere = Math.max(0, ...recentes.map((m) => m.date || 0));
+  if (derniere && buildTime - derniere < espacement) {
+    const reste = Math.ceil((espacement - (buildTime - derniere)) / 60000);
+    log(`Instagram : publication précédente trop récente, prochaine dans ~${reste} min.`);
+    return;
+  }
+
+  // Candidates : les vidéos parues récemment, qu'elles soient déjà en ligne
+  // sur le site ou non — car leur vignette 4:5 n'est mise en ligne qu'à la
+  // construction suivante (voir plus bas).
+  const heures = config.instagram?.maxAgeHours ?? 48;
+  const candidates = allVideos
+    // Seules les vidéos réellement publiques. Michael téléverse en privé puis
+    // publie quand il le décide : annoncer plus tôt enverrait les curieux vers
+    // une vidéo qui n'existe pas encore pour eux.
+    .filter((v) => v.privacy === 'public')
+    .filter((v) => v.publishedAt && (buildTime - new Date(v.publishedAt).getTime()) < heures * 3600 * 1000)
+    .sort((a, b) => new Date(a.publishedAt) - new Date(b.publishedAt))
+    .filter((v) => !dejaPublie(v.title));
+
+  if (!candidates.length) { log('Instagram : aucune nouvelle vidéo à publier.'); return; }
 
   const max = config.instagram?.maxPerRun ?? 1;
-  if (fresh.length > max) {
-    warn(`Instagram : ${fresh.length} nouveautés détectées, seules les ${max} plus récentes seront publiées.`);
-  }
-  const aPublier = fresh.slice(-max);
-
   const carnet = await readJson(path.join(ROOT, 'data', 'instagram-collaborateurs.json'), {});
+  let publiees = 0;
 
-  for (const video of aPublier) {
+  for (const video of candidates) {
+    if (publiees >= max) {
+      log(`Instagram : ${candidates.length - publiees} vidéo(s) en attente, publiées aux prochains tours.`);
+      break;
+    }
+
+    // La vignette 4:5 est fabriquée pendant CETTE construction, mais elle ne
+    // sera en ligne qu'après le déploiement. Instagram, lui, va chercher
+    // l'image à son adresse publique : on ne publie donc que si elle y est
+    // déjà. Une vidéo trop fraîche attend simplement le tour suivant.
+    const imageUrl = `${config.siteUrl}/insta/${video.id}.jpg`;
+    if (!(await enLigne(imageUrl))) {
+      log(`Instagram : vignette pas encore en ligne pour « ${truncate(video.title, 50)} », publication reportée.`);
+      continue;
+    }
+
     const cat = video.playlists?.[0];
     const invites = (personnesParVideo.get(video.id) || []).map((p) => p.nom);
     const collaborateurs = insta.collaborateursDe(video, {
       emissionSlug: cat?.slug || '', invites, carnet,
     });
 
+    publiees += 1;
     const resultat = await insta.publier({
       token,
       userId,
-      // La miniature YouTube fait 16/9, soit 1,78:1 : Instagram accepte
-      // jusqu'à 1,91:1. Aucune image sur mesure n'est donc nécessaire.
-      imageUrl: video.thumbnail || `https://i.ytimg.com/vi/${video.id}/maxresdefault.jpg`,
+      imageUrl,
       caption: insta.legende(video, { config, emission: cat?.title || '', invites }),
       collaborateurs,
     });

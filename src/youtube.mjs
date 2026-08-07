@@ -91,6 +91,11 @@ function normalizeVideo(v) {
     title: sn.title || '',
     description: sn.description || '',
     publishedAt: sn.publishedAt || v.contentDetails?.videoPublishedAt || null,
+    // « public », « unlisted » ou « private ». Michael televerse ses videos en
+    // prive et les publie quand il le decide : annoncer sur Instagram une
+    // video que personne ne peut encore voir enverrait les curieux vers une
+    // page vide. Cette valeur est le seul garde-fou fiable.
+    privacy: v.status?.privacyStatus || '',
     thumbnail: bestThumb(sn.thumbnails),
     tags: sn.tags || [],
     duration,
