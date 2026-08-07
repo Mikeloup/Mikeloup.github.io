@@ -1794,7 +1794,9 @@ ${grille?.pourNavigateur?.length
  *     abonné récent n'a jamais croisées. Sans ce bloc, la lettre n'est qu'une
  *     liste de nouveautés — quelque chose qu'un flux RSS fait mieux.
  */
-export function lettreHebdo(config, { une, autres = [], aRevoir = [], intro = '' } = {}) {
+export function lettreHebdo(config, {
+  une, autres = [], aRevoir = [], intro = '', date = '',
+} = {}) {
   const base = String(config.siteUrl || '').replace(/\/$/, '');
   const lien = (v) => `${base}/video/${v.i}/`;
   const P = 'margin:0 0 16px;font-size:16px;line-height:1.55;color:#1a1a1a;';
@@ -1829,12 +1831,13 @@ export function lettreHebdo(config, { une, autres = [], aRevoir = [], intro = ''
     <a href="${escapeHtml(lien(une))}"><img src="${escapeHtml(une.n || '')}" alt="" width="568"
        style="width:100%;max-width:568px;height:auto;display:block;border:0;border-radius:6px;"></a>
   </p>
-  ${une.d ? `<p style="${P}">${escapeHtml(une.d)}</p>` : ''}
+  ${une.d ? `<p style="${P}">${escapeHtml(phrasesEntieres(une.d))}</p>` : ''}
   <p style="margin:0 0 8px;">
     <a href="${escapeHtml(lien(une))}" style="display:inline-block;padding:13px 26px;background:${MARINE};color:#ffffff;text-decoration:none;border-radius:6px;font-size:16px;font-family:Helvetica,Arial,sans-serif;">Regarder la vidéo</a>
   </p>` : '';
 
   return `<div style="max-width:600px;margin:0 auto;padding:8px 16px;font-family:Georgia,'Times New Roman',serif;">
+  ${date ? `<p style="margin:0 0 6px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#6a6455;">${escapeHtml(date)}</p>` : ''}
   ${intro ? `<p style="${P}">${escapeHtml(intro)}</p>` : ''}
   ${tete}
   ${bloc('Aussi cette semaine', autres)}
@@ -1847,4 +1850,20 @@ export function lettreHebdo(config, { une, autres = [], aRevoir = [], intro = ''
     <a href="${escapeHtml(base)}" style="color:${MARINE};">${escapeHtml(base.replace(/^https?:\/\//, ''))}</a>
   </p>
 </div>`;
+}
+
+
+/**
+ * Coupe un resume a la fin de sa derniere phrase complete.
+ *
+ * « … Rony Hayot deconstruit les… » : une phrase tranchee au milieu d'un mot
+ * signale une machine. Si aucune ponctuation forte n'apparait dans les deux
+ * premiers tiers, on garde le texte tel quel — mieux vaut un extrait long
+ * qu'un extrait vide.
+ */
+function phrasesEntieres(texte) {
+  const t = String(texte || '').trim();
+  const fin = Math.max(t.lastIndexOf('. '), t.lastIndexOf('? '), t.lastIndexOf('! '),
+    t.endsWith('.') || t.endsWith('?') || t.endsWith('!') ? t.length - 1 : -1);
+  return fin > t.length * 0.35 ? t.slice(0, fin + 1).trim() : t;
 }

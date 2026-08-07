@@ -99,17 +99,30 @@ const aRevoir = toutes
 
 // --- La lettre ---------------------------------------------------------------
 
+// Introduction : ecrite par le contenu lui-meme plutot que figee dans la
+// configuration. Une phrase fixe vieillit ; un decompte reste juste chaque
+// semaine, et dit a l'abonne, en une ligne, ce qu'il va trouver.
+const nb = 1 + autres.length;
+const introAuto = `${nb === 1 ? 'Une nouvelle vidéo' : `${nb} nouvelles vidéos`} cette semaine sur `
+  + `${config.siteName}${aRevoir.length ? `, et ${aRevoir.length === 1 ? 'une' : aRevoir.length} à revoir` : ''}.`;
+const intro = hebdo.intro || introAuto;
+
+const dateLettre = new Intl.DateTimeFormat('fr-FR', {
+  timeZone: 'Asia/Jerusalem', weekday: 'long', day: 'numeric', month: 'long', year: 'numeric',
+}).format(new Date());
+
 const sujet = (hebdo.sujet || '{titre}')
   .replace(/\{titre\}/g, une.t || '')
   .replace(/\{emission\}/g, une.c || config.siteName)
   .replace(/\{site\}/g, config.siteName);
 
 const contenu = R.lettreHebdo(config, {
-  une, autres, aRevoir, intro: hebdo.intro || '',
+  une, autres, aRevoir, intro, date: dateLettre,
 });
 
 console.log('--- Lettre hebdomadaire ------------------------------------------');
 console.log(`Sujet   : ${sujet}`);
+console.log(`Intro   : ${intro}`);
 console.log(`En tête : ${une.t}`);
 autres.forEach((v) => console.log(`Aussi   : ${v.t}`));
 aRevoir.forEach((v) => console.log(`À revoir: ${v.t} (${v.v} vues)`));
@@ -133,7 +146,10 @@ const envoi = await fetch('https://api.kit.com/v4/broadcasts', {
   },
   body: JSON.stringify({
     subject: sujet,
-    preview_text: hebdo.intro || une.t,
+    // Le texte d'apercu ne doit pas repeter l'objet : c'est la seule ligne
+    // supplementaire visible dans la boite de reception, et elle decide de
+    // l'ouverture autant que l'objet lui-meme.
+    preview_text: intro,
     description: `Lettre hebdomadaire — ${une.t}`,
     content: contenu,
     public: false,
