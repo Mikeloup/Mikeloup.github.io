@@ -1,0 +1,41 @@
+name: Lettre hebdomadaire
+
+on:
+  schedule:
+    - cron: '23 7 * * 5'
+    - cron: '23 8 * * 5'
+  workflow_dispatch:
+    inputs:
+      envoyer:
+        description: "Envoyer reellement ? (non = simple apercu)"
+        required: true
+        default: "non"
+        type: choice
+        options:
+          - "non"
+          - "oui"
+      forcer:
+        description: "Ignorer le controle de l'heure locale"
+        required: true
+        default: "oui"
+        type: choice
+        options:
+          - "oui"
+          - "non"
+
+jobs:
+  lettre:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Composer et envoyer
+        env:
+          KIT_API_KEY: ${{ secrets.KIT_API_KEY }}
+          ENVOYER: ${{ inputs.envoyer || 'oui' }}
+          FORCER: ${{ inputs.forcer || 'non' }}
+        run: node tools/lettre-hebdo.mjs
