@@ -38,14 +38,16 @@
       "nom": "Du côté de chez Szwarc",
       "programmes": [
         "RADIO_SHALOM_SZWARC"
-      ]
+      ],
+      "image": "/assets/partenaires/du-cote-de-chez-szwarc.jpg"
     },
     "memoire-et-vigilance": {
       "url": "https://www.youtube.com/@radioshalom94.89",
       "nom": "Mémoire et vigilance",
       "programmes": [
         "RADIO_SHALOM_BOCHURBERG"
-      ]
+      ],
+      "image": "/assets/partenaires/memoire-et-vigilance.jpg"
     },
     "shalom-salam": {
       "url": "https://www.youtube.com/@ShalomSalam_FR",
@@ -98,7 +100,7 @@
       "url": "https://www.instagram.com/leonlemedia/",
       "nom": "Léon le média",
       "description": "",
-      "image": "",
+      "image": "/assets/partenaires/leon-le-media.jpg",
       "programmes": [
         "LEON_LE_MEDIA"
       ]

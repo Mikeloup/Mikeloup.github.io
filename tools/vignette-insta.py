@@ -155,14 +155,94 @@ def decouper(texte, fonte, dessin, largeur_max):
 
 FICHE = os.path.join(DOSSIER, 'ce-soir.json')
 BRAND = (24, 0, 88)
+DISQUE = 170                    # diametre du logo de chaque emission
+COLONNE = 60 + DISQUE + 40      # ou commence le texte, a droite du logo
+
+
+def _rond(image, taille):
+    """Decoupe une image en disque, avec un bord net.
+
+    Le masque est dessine quatre fois trop grand puis reduit : PIL ne lisse pas
+    les ellipses, et un cercle trace a la taille finale a des escaliers visibles
+    sur un fond sombre.
+    """
+    r = max(taille / image.width, taille / image.height)
+    im = image.convert('RGB').resize(
+        (max(1, int(image.width * r)), max(1, int(image.height * r))), Image.LANCZOS)
+    gx, gy = (im.width - taille) // 2, (im.height - taille) // 2
+    im = im.crop((gx, gy, gx + taille, gy + taille))
+
+    masque = Image.new('L', (taille * 4, taille * 4), 0)
+    ImageDraw.Draw(masque).ellipse([0, 0, taille * 4 - 1, taille * 4 - 1], fill=255)
+    im.putalpha(masque.resize((taille, taille), Image.LANCZOS))
+    return im
+
+
+def _logo_maison(logo, taille):
+    """Le logo de la chaine, pose sur un disque blanc.
+
+    Sur fond blanc plutot que sur le bleu de l'affiche : le mot « TANDEM » est
+    ecrit en bleu nuit dans le logo, il disparaitrait sur un disque sombre.
+    """
+    fond = Image.new('RGB', (taille, taille), (255, 255, 255))
+    if logo is not None:
+        w = int(taille * 0.80)
+        petit = logo.resize((w, max(1, int(logo.height * w / logo.width))), Image.LANCZOS)
+        fond.paste(petit, ((taille - w) // 2, (taille - petit.height) // 2), petit)
+    return _rond(fond, taille)
+
+
+# Les logos distants ne changent pas d'une execution a l'autre : on ne les
+# telecharge qu'une fois par construction.
+_cache_logos = {}
+
+
+def _initiales(nom, taille):
+    """Pastille de repli pour un programme dont on n'a aucun logo.
+
+    Surtout pas le logo Tandem TV : poser notre marque sur l'emission d'un
+    partenaire reviendrait a nous l'attribuer. Deux lettres neutres disent la
+    meme chose sans rien affirmer de faux.
+    """
+    mots = [m for m in str(nom or '').replace('-', ' ').split() if len(m) > 2]
+    texte = ''.join(m[0] for m in mots[:2]).upper() or '·'
+    fond = Image.new('RGB', (taille, taille), (58, 34, 130))
+    d = ImageDraw.Draw(fond)
+    f = police(int(taille * 0.42))
+    b = d.textbbox((0, 0), texte, font=f)
+    d.text(((taille - b[2] + b[0]) / 2 - b[0], (taille - b[3] + b[1]) / 2 - b[1]),
+           texte, font=f, fill=(190, 200, 240))
+    return _rond(fond, taille)
+
+
+def logo_emission(adresse, logo, taille=DISQUE, maison=True, nom=''):
+    """Le logo d'un programme : avatar YouTube, image du site, ou repli."""
+    adresse = (adresse or '').strip()
+    if not adresse:
+        return _logo_maison(logo, taille) if maison else _initiales(nom, taille)
+    if adresse in _cache_logos:
+        source = _cache_logos[adresse]
+    elif adresse.startswith('http'):
+        source = telecharger(adresse)
+        _cache_logos[adresse] = source
+    else:
+        chemin = os.path.join(RACINE, adresse.lstrip('/'))
+        source = Image.open(chemin).convert('RGB') if os.path.exists(chemin) else None
+        _cache_logos[adresse] = source
+    if source is None:
+        return _logo_maison(logo, taille) if maison else _initiales(nom, taille)
+    return _rond(source, taille)
 
 
 def dessiner_ce_soir(fiche, logo):
     """L'affiche du soir : ce qui passe a 20 h et a 22 h sur le canal 14.
 
-    Volontairement sobre et sans image de programme : on annonce un horaire,
-    on ne reprend le contenu de personne. C'est ce qui permet d'y faire figurer
-    les emissions des partenaires sans leur demander quoi que ce soit.
+    Aucune image du programme lui-meme : on annonce un horaire, on ne reprend
+    le contenu de personne. C'est ce qui permet d'y faire figurer les emissions
+    des partenaires sans leur demander quoi que ce soit. En revanche chaque
+    ligne porte le LOGO de l'emission — l'avatar public de la chaine, ou le
+    portrait de celui qui la tient : c'est une identification, pas une reprise,
+    et c'est ce qui rend l'affiche lisible d'un coup d'oeil dans un fil.
     """
     img = Image.new('RGB', (L, H), BRAND)
     d = ImageDraw.Draw(img)
@@ -177,23 +257,56 @@ def dessiner_ce_soir(fiche, logo):
     d.text((62, 268), jour, font=police(30, gras=False), fill=BLEU_PIED)
     d.rectangle([60, 325, L - 60, 332], fill=ROUGE)
 
-    y = 400
-    for n, ligne in enumerate(fiche.get('lignes', [])[:3]):
+    lignes = fiche.get('lignes', [])[:3]
+    haut, bas = 400, H - 150
+    largeur = L - COLONNE - 60
+
+    # Deux passes : on mesure d'abord la hauteur de chaque bloc, puis on repartit
+    # l'espace restant entre eux. Un titre long ne doit pas pousser la derniere
+    # emission hors de l'image — c'est arrive avec l'ancienne mise en page, qui
+    # empilait a l'aveugle.
+    f_heure, f_rubrique, f_titre, f_adresse = police(50), police(42), police(30, gras=False), police(28)
+    blocs, total = [], 0
+    for essai in (2, 1, 0):
+        blocs, total = [], 0
+        for ligne in lignes:
+            noms = decouper(ligne.get('rubrique', ''), f_rubrique, d, largeur)[:2]
+            titre = (ligne.get('titre') or '').strip()
+            morceaux = decouper(titre, f_titre, d, largeur)[:essai] if (titre and essai) else []
+            adresse = ('@' + ligne['compte']) if ligne.get('compte') else ligne.get('url', '')
+            hauteur = max(DISQUE,
+                          58 + len(noms) * 50 + len(morceaux) * 40 + (44 if adresse else 0))
+            blocs.append((ligne, noms, morceaux, adresse, hauteur))
+            total += hauteur
+        if total + 70 * max(0, len(blocs) - 1) <= bas - haut:
+            break
+
+    # Un soir a deux programmes laisserait sans cela un tiers d'image vide en
+    # bas : on aere les blocs, puis on centre l'ensemble dans la zone libre.
+    reste = (bas - haut) - total
+    ecart = int(max(60, min(160, reste / (len(blocs) - 1)))) if len(blocs) > 1 else 0
+    hauteur_totale = total + ecart * max(0, len(blocs) - 1)
+    y = haut + max(0, (bas - haut - hauteur_totale)) // 2
+    for n, (ligne, noms, morceaux, adresse, hauteur) in enumerate(blocs):
         if n:
-            d.rectangle([60, y - 40, L - 60, y - 38], fill=(70, 55, 130))
-        d.text((60, y), ligne.get('heure', ''), font=police(66), fill=BLEU_PIED)
-        d.text((250, y + 8), ligne.get('rubrique', ''), font=police(40), fill=(255, 255, 255))
-        yy = y + 70
-        titre = (ligne.get('titre') or '').strip()
-        if titre:
-            for texte in decouper(titre, police(32, gras=False), d, L - 310)[:3]:
-                d.text((250, yy), texte, font=police(32, gras=False), fill=(226, 222, 240))
-                yy += 44
-        adresse = ligne.get('compte') and '@' + ligne['compte'] or ligne.get('url', '')
+            d.rectangle([60, y - ecart // 2, L - 60, y - ecart // 2 + 2], fill=(70, 55, 130))
+
+        rond = logo_emission(ligne.get('image', ''), logo,
+                             maison=bool(ligne.get('maison', True)),
+                             nom=ligne.get('rubrique', ''))
+        img.paste(rond, (60, y), rond)
+
+        d.text((COLONNE, y - 4), ligne.get('heure', ''), font=f_heure, fill=BLEU_PIED)
+        yy = y + 58
+        for texte in noms:
+            d.text((COLONNE, yy), texte, font=f_rubrique, fill=(255, 255, 255))
+            yy += 50
+        for texte in morceaux:
+            d.text((COLONNE, yy), texte, font=f_titre, fill=(226, 222, 240))
+            yy += 40
         if adresse:
-            d.text((250, yy + 4), adresse, font=police(28), fill=BLEU_PIED)
-            yy += 46
-        y = yy + 90
+            d.text((COLONNE, yy + 4), adresse, font=f_adresse, fill=BLEU_PIED)
+        y += hauteur + ecart
 
     d.text((60, H - 115), 'Bouquet Annatel TV  ·  tandemtv.net',
            font=police(30, gras=False), fill=BLEU_PIED)

@@ -1048,7 +1048,7 @@ async function main() {
   log(`✅ ${urls.length} pages générées dans dist/ en ${((Date.now() - t0) / 1000).toFixed(1)}s`);
 
   await ecrireManifesteInsta(config, allVideos);
-  await ecrireFicheDuSoir(config, grilleBrute);
+  await ecrireFicheDuSoir(config, grilleBrute, externes);
   await annonceNouveautes(config, allVideos, personnesParVideo);
 }
 
@@ -1186,15 +1186,21 @@ async function ecrireManifesteInsta(config, allVideos) {
  * ligne. C'est le workflow du soir qui decide quand publier — ici on ne fait
  * que preparer.
  */
-async function ecrireFicheDuSoir(config, grilleBrute) {
+async function ecrireFicheDuSoir(config, grilleBrute, externes = new Map()) {
   if (!grilleBrute) return;
   const jour = jourIsrael(new Date(buildTime));
+  // Logo de chaque programme extérieur : l'image saisie à la main si elle
+  // existe, sinon l'avatar de la chaîne YouTube relevé à la synchronisation.
+  const avatars = {};
+  for (const [id, e] of externes) if (e?.avatar) avatars[id] = e.avatar;
   const fiche = ficheDuSoir({
     grilleBrute,
     jour,
     emissions: await readJson(path.join(ROOT, 'data', 'grille-emissions.json'), {}),
     partenaires: await readJson(path.join(ROOT, 'data', 'partenaires.json'), {}),
     carnet: await readJson(path.join(ROOT, 'data', 'instagram-collaborateurs.json'), {}),
+    personnes: await readJson(path.join(ROOT, 'data', 'personnes.json'), {}),
+    avatars,
     config,
   });
   if (!fiche) { log('Ce soir : aucun programme à heure fixe ce soir, pas de fiche.'); return; }

@@ -35,6 +35,43 @@ export function soiree(grilleBrute, jour, { depuis = '19:00' } = {}) {
   return lignes.filter((r) => !vus.has(r.heure_debut) && vus.add(r.heure_debut));
 }
 
+/** Sans accents ni ponctuation : « Jérôme Haas » et « JEROME HAAS » doivent se
+ *  reconnaître. */
+function clef(x) {
+  return String(x || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+}
+
+/**
+ * L'illustration d'un programme.
+ *
+ * Trois sources, dans cet ordre — de la plus juste à la plus générale :
+ *
+ *   1. Un partenaire a son propre logo : l'image déposée dans partenaires.json,
+ *      ou à défaut l'avatar de sa chaîne YouTube, relevé automatiquement.
+ *   2. Un programme maison porte le nom de celui qui le tient : « L'édito de
+ *      Rony Hayot » donne le portrait de Rony Hayot. Le rapprochement se fait
+ *      sur le nom écrit dans grille-emissions.json, sans table supplémentaire à
+ *      tenir à jour — ajouter une photo dans personnes.json suffit.
+ *   3. Rien de tout cela : le logo de la chaîne. C'est vrai et c'est neutre.
+ *
+ * Rend une adresse (absolue pour YouTube, commençant par / pour le site) ou
+ * une chaîne vide, que l'outil d'image remplace par le logo.
+ */
+function personneDe(nomEmission, personnes = {}, carnet = {}) {
+  const nom = clef(nomEmission);
+  if (!nom) return null;
+  // Le nom le plus long d'abord : « Rony Akrich » avant « Rony », si un jour
+  // les deux coexistent.
+  const connus = new Set([
+    ...Object.keys(personnes.fiches || {}),
+    ...Object.keys(carnet.personnes || {}),
+  ]);
+  for (const personne of [...connus].sort((a, b) => b.length - a.length)) {
+    if (nom.includes(clef(personne))) return personne;
+  }
+  return null;
+}
+
 /**
  * Fiche complète du soir : ce qui sera dessiné, et ce qui sera écrit.
  *
@@ -45,33 +82,53 @@ export function soiree(grilleBrute, jour, { depuis = '19:00' } = {}) {
  */
 export function ficheDuSoir({
   grilleBrute, jour, emissions = {}, partenaires = {}, carnet = {}, config = {},
+  avatars = {}, personnes = {},
 }) {
   const rows = soiree(grilleBrute, jour);
   if (!rows.length) return null;
 
   const sources = partenaires.sources || {};
   const parRubrique = carnet.rubriques || {};
+  const parNom = carnet.personnes || {};
+  const fiches = personnes.fiches || {};
 
-  // channel_id -> { nom, url, compte }
+  // channel_id -> { nom, url, compte, image }
   const tiers = {};
   for (const [slug, p] of Object.entries(sources)) {
     const url = p.url || '';
     const insta = url.match(/instagram\.com\/([^/?#]+)/);
     const compte = insta ? insta[1] : String(parRubrique[slug] || '').replace(/^@/, '');
     for (const id of (p.programmes || [])) {
-      tiers[id] = { nom: p.nom || slug.replace(/-/g, ' '), url, compte };
+      tiers[id] = { nom: p.nom || slug.replace(/-/g, ' '), url, compte, image: p.image || '' };
     }
   }
 
   const lignes = rows.map((r) => {
     const t = tiers[r.channel_id];
     const emission = emissions[r.channel_id] || {};
+    const nom = t?.nom || emission.nom || r.channel_id;
+
+    // Un programme maison porte le nom de celui qui le tient : « L'édito de
+    // Rony Hayot » donne le portrait ET le compte de Rony Hayot. Aucune table
+    // supplémentaire à tenir : renseigner personnes.json et le carnet suffit.
+    const personne = t ? null : personneDe(nom, personnes, carnet);
+    const compteMaison = personne && parNom[personne] ? String(parNom[personne]).replace(/^@/, '') : '';
+
     return {
       heure: heureLisible(r.heure_debut),
-      rubrique: t?.nom || emission.nom || r.channel_id,
+      rubrique: nom,
       titre: String(r.title || '').trim(),
       url: (t?.url || '').replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, ''),
-      compte: t?.compte || '',
+      compte: t?.compte || compteMaison,
+      // Production maison ou programme d'un tiers. L'affiche s'en sert pour
+      // choisir quoi mettre a defaut de logo : le logo Tandem est exact pour
+      // « Tour d'Israël », il serait mensonger pour « Mémoire et vigilance ».
+      maison: !t,
+      // Logo : l'avatar relevé chez YouTube, l'image saisie à la main, le
+      // portrait du présentateur, ou rien — l'affiche mettra alors le logo de
+      // la chaîne, ce qui est exact pour une production maison.
+      image: avatars[r.channel_id] || t?.image
+        || (personne && fiches[personne]?.photo) || '',
     };
   });
 
