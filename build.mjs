@@ -1066,7 +1066,7 @@ async function main() {
 
   log(`✅ ${urls.length} pages générées dans dist/ en ${((Date.now() - t0) / 1000).toFixed(1)}s`);
 
-  await ecrireManifesteInsta(config, allVideos, await presentateursParRubrique(categories));
+  await ecrireManifesteInsta(config, allVideos, await presentateursParRubrique(categories), personnesParVideo);
   await ecrireFicheDuSoir(config, grilleBrute, externes);
   await annonceNouveautes(config, allVideos, personnesParVideo);
 }
@@ -1193,7 +1193,7 @@ async function presentateursParRubrique(categories) {
   return parSlug;
 }
 
-async function ecrireManifesteInsta(config, allVideos, presentateurs = new Map()) {
+async function ecrireManifesteInsta(config, allVideos, presentateurs = new Map(), personnesParVideo = new Map()) {
   // Volontairement independant de `instagram.enabled` : les vignettes sont de
   // simples images sur le site, sans effet de bord. Les fabriquer avant
   // d'activer la publication permet de les regarder en vrai — et de corriger
@@ -1213,17 +1213,34 @@ async function ecrireManifesteInsta(config, allVideos, presentateurs = new Map()
   const pied = `À revoir sur ${String(config.siteUrl || '').replace(/^https?:\/\/(www\.)?/, '')}`
     + `  ·  canal ${tv.channelNumber || '14'} du bouquet Annatel TV`;
 
+  // La legende et les collaborations sont calculees ICI, et deposees dans le
+  // manifeste. Raison : la publication ne peut pas avoir lieu pendant cette
+  // construction — la vignette n'est en ligne qu'apres le deploiement. Un
+  // workflow separe, declenche des que le deploiement reussit, reprend ce
+  // manifeste et publie. Sans ces deux champs il lui faudrait refaire tout le
+  // travail du site (rubriques, invites, carnet) pour reconstituer une phrase.
+  const carnet = await readJson(path.join(ROOT, 'data', 'instagram-collaborateurs.json'), {});
+
   const dossier = path.join(DIST, 'insta');
   await fs.mkdir(dossier, { recursive: true });
   await fs.writeFile(path.join(dossier, 'manifest.json'), JSON.stringify(
-    recentes.map((v) => ({
-      id: v.id,
-      titre: v.title,
-      rubrique: v.playlists?.[0]?.title || '',
-      presentateur: presentateurs.get(v.playlists?.[0]?.slug) || '',
-      pied,
-      image: v.thumbnail || `https://i.ytimg.com/vi/${v.id}/maxresdefault.jpg`,
-    })), null, 2), 'utf8');
+    recentes.map((v) => {
+      const cat = v.playlists?.[0];
+      const invites = (personnesParVideo.get(v.id) || []).map((p) => p.nom);
+      return {
+        id: v.id,
+        titre: v.title,
+        rubrique: cat?.title || '',
+        presentateur: presentateurs.get(cat?.slug) || '',
+        pied,
+        image: v.thumbnail || `https://i.ytimg.com/vi/${v.id}/maxresdefault.jpg`,
+        vuLe: v.vuLe || v.publishedAt || '',
+        legende: insta.legende(v, { config, emission: cat?.title || '', invites }),
+        collaborateurs: insta.collaborateursDe(v, {
+          emissionSlug: cat?.slug || '', invites, carnet,
+        }),
+      };
+    }), null, 2), 'utf8');
   log(`Instagram : ${recentes.length} vignette(s) 4:5 à fabriquer.`);
 }
 

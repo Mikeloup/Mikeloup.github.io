@@ -52,9 +52,20 @@ const heureIsrael = Number(new Intl.DateTimeFormat('fr-FR', {
   timeZone: 'Asia/Jerusalem', hour: '2-digit', hour12: false,
 }).format(new Date()));
 
-if (!forcer && heureIsrael !== heureVoulue) {
-  console.log(`Lettre : il est ${heureIsrael} h en Israël, l'envoi est prévu à ${heureVoulue} h. Rien à faire.`);
+// Fenetre, et non heure exacte : GitHub retarde couramment ses taches
+// programmees de dix a trente minutes. Une egalite stricte fait manquer
+// l'envoi de la semaine, en silence. Le doublon reste impossible : Kit refuse
+// deux brouillons portant le meme sujet, et le script verifie l'envoi de la
+// semaine avant d'agir.
+const fenetre = Number(hebdo.fenetreHeures ?? 3);
+if (!forcer && (heureIsrael < heureVoulue || heureIsrael >= heureVoulue + fenetre)) {
+  console.log(`Lettre : il est ${heureIsrael} h en Israël, l'envoi est prévu entre `
+    + `${heureVoulue} h et ${heureVoulue + fenetre} h. Rien à faire.`);
   process.exit(0);
+}
+if (!forcer && heureIsrael !== heureVoulue) {
+  console.log(`Lettre : démarrage tardif (${heureIsrael} h au lieu de ${heureVoulue} h) — `
+    + 'GitHub a retardé la tâche. On envoie quand même.');
 }
 
 // --- Le catalogue en ligne ---------------------------------------------------

@@ -30,9 +30,20 @@ const heureIsrael = Number(new Intl.DateTimeFormat('fr-FR', {
   timeZone: 'Asia/Jerusalem', hour: '2-digit', hour12: false,
 }).format(new Date()));
 
-if (!forcer && heureIsrael !== heureVoulue) {
-  console.log(`Ce soir : il est ${heureIsrael} h en Israël, l'envoi est prévu à ${heureVoulue} h. Rien à faire.`);
+// Fenetre, et non heure exacte. GitHub retarde couramment ses taches
+// programmees de dix a trente minutes quand ses serveurs sont charges : avec
+// une egalite stricte, un demarrage a 17 h 05 concluait « ce n'est pas
+// l'heure » et n'envoyait rien, sans la moindre erreur. Constate le 8 aout
+// 2026. Le doublon reste impossible : la memoire, c'est Instagram lui-meme.
+const fenetre = Number(config.tv?.ceSoirFenetreHeures ?? 3);
+if (!forcer && (heureIsrael < heureVoulue || heureIsrael >= heureVoulue + fenetre)) {
+  console.log(`Ce soir : il est ${heureIsrael} h en Israël, l'envoi est prévu entre `
+    + `${heureVoulue} h et ${heureVoulue + fenetre} h. Rien à faire.`);
   process.exit(0);
+}
+if (!forcer && heureIsrael !== heureVoulue) {
+  console.log(`Ce soir : démarrage tardif (${heureIsrael} h au lieu de ${heureVoulue} h) — `
+    + 'GitHub a retardé la tâche. On publie quand même.');
 }
 
 const base = String(config.siteUrl || '').replace(/\/$/, '');
