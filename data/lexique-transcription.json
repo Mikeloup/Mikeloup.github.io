@@ -1,6 +1,6 @@
 {
   "_comment": "Deux choses en un seul fichier. « amorce » est la liste de mots que l'on souffle à Whisper AVANT qu'il transcrive : il s'en sert pour orthographier correctement les noms qu'il ne connaît pas. Whisper ne lit qu'environ 220 mots d'amorce : au-delà, le reste est ignoré. Mettez donc en tête les mots qu'il écorche le plus, pas ceux qu'il connaît déjà (« Jérusalem » ou « Gaza » ne servent à rien ici). « corrections » répare après coup les fautes récurrentes : la clé est le mot fautif, la valeur le mot juste. La comparaison ignore la casse et respecte les limites de mots. Retirez une ligne si elle corrige à tort, ajoutez-en dès que vous repérez une faute qui revient.",
-  "amorce": "Tandem TV, Tsahal, Hezbollah, Hamas, Houthis, Téhéran, Knesset, Netanyahou, Judée-Samarie, Cisjordanie, Golan, Rafah, Sdérot, Shin Bet, Mossad, alya, olé, Erdogan, Ankara, pays du Golfe, Stéphane Goldin, William Zerbib, Jérôme Haas, Rony Akrich, Rony Hayot, Galith Benzimra, Sophie Bria, Myriam Danan, Rav Mendel Mimoun, Rav Yoel Benharrouche, Michael Wolf.",
+  "amorce": "Tandem TV, Tsahal, Hezbollah, Hamas, Houthis, Téhéran, Knesset, Netanyahou, Judée-Samarie, Cisjordanie, Golan, Rafah, Sdérot, Shin Bet, Mossad, alya, olé, Erdogan, Ankara, pays du Golfe, Stéphane Goldin, William Zerbib, Jérôme Haas, Rony Akrich, Rony Hayot, Galith Benzimra, Sophie Bria, Myriam Danan, Rav Mendel Mimoun, Rav Yoel Benharrouche, Michael Wolf., Mahsa Amini",
   "corrections": {
     "Hbola": "Hezbollah",
     "resbola": "Hezbollah",
@@ -26,6 +26,8 @@
     "Ouhtis": "Houthis",
     "Houtis": "Houthis",
     "horlange": "horloge",
-    "horlanges": "horloges"
+    "horlanges": "horloges",
+    "mars en Arménie": "Mahsa Amini",
+    "Mahsa Amini": "Mahsa Amini"
   }
 }

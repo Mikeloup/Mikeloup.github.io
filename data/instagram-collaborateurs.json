@@ -1,17 +1,20 @@
 {
   "_comment": "Comptes Instagram invites en collaboration lors d'une publication automatique. C'est le coeur du dispositif : une publication collaborative apparait aussi dans le fil du partenaire, donc devant SON audience. L'invitation part toute seule, mais le partenaire doit l'accepter — l'API ne peut pas l'imposer, et c'est ce qui rend la relation saine. Trois comptes au maximum par publication (limite de Meta) : les personnes citees dans la video passent avant la rubrique. Ecrivez le nom exactement comme il apparait sur le site (page Invites), et le compte avec ou sans @.",
-
   "personnes": {
-    "William Zerbib": "",
-    "Jérôme Haas": "",
-    "Stéphane Goldin": "",
-    "Rony Akrich": "",
-    "Rony Hayot": "",
-    "Myriam Danan": "",
-    "Richard Darmon": ""
+    "William Zerbib": "williamzerbib",
+    "Jérôme Haas": "haas.jerome",
+    "Stéphane Goldin": false,
+    "Rony Akrich": "rony_akrich",
+    "Rony Hayot": "hayot_rony",
+    "Myriam Danan": false,
+    "Richard Darmon": false
   },
-
-  "_comment_rubriques": "Compte a inviter pour toute video d'une rubrique donnee. La cle est l'identifiant d'adresse de la rubrique, celui qui apparait dans /emissions/<identifiant>/.",
+  "_comment_rubriques": "Compte Instagram d'un programme, invite en collaboration sur les publications qui l'annoncent. La clef est le slug du programme dans data/partenaires.json. Les partenaires dont la chaine EST un compte Instagram n'ont pas besoin d'y figurer : leur identifiant se deduit de leur adresse.",
   "rubriques": {
-  }
+    "les-israeliennes": "podcastisraeliennes",
+    "orot-vekelim": "orotvekelim26",
+    "yinon-show": "yinonshow",
+    "katava": "ava_mergy"
+  },
+  "_comment_personnes": "Compte Instagram de chaque intervenant, invite en collaboration sur les publications qui le concernent. Une chaine vide signifie « pas encore cherche » ; false signifie « verifie, cette personne n'a pas de compte » — le code cesse alors de chercher. Une collaboration se propose : l'interesse recoit une notification et doit accepter pour que la publication apparaisse dans son fil. Prevenez-le, sans quoi la notification reste ignoree et le mecanisme ne sert a rien."
 }
