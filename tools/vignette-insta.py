@@ -78,7 +78,7 @@ def telecharger(url):
     return None
 
 
-def vignette(source, titre, sous_titre, logo, rubrique=''):
+def vignette(source, titre, sous_titre, logo, rubrique='', presentateur=''):
     # Fond : la miniature elle-meme, agrandie, floutee, assombrie.
     r = max(L / source.width, H / source.height) * 1.15
     fond = source.resize((int(source.width * r), int(source.height * r)), Image.LANCZOS)
@@ -109,6 +109,12 @@ def vignette(source, titre, sous_titre, logo, rubrique=''):
     if rubrique:
         d.text((62, y_titre), rubrique.upper(), font=police(30), fill=BLEU_PIED)
         y_titre += 52
+    # Le chroniqueur, sous le nom de l'emission. Jamais ecrit quand son nom est
+    # deja dans celui de la rubrique : c'est le site qui filtre, pas ce script.
+    if presentateur:
+        d.text((62, y_titre - 8), presentateur, font=police(30, gras=False),
+               fill=(232, 228, 248))
+        y_titre += 44
 
     # Titre : la police retrecit jusqu'a ce que le bloc tienne dans la place
     # disponible, plutot que de tronquer — un titre coupe au milieu d'un mot
@@ -365,7 +371,8 @@ def main():
             print(f"vignette-insta : miniature introuvable pour {e['id']}")
             continue
         vignette(source, e.get('titre', ''), e.get('pied', ''), logo,
-                 e.get('rubrique', '')).save(sortie, quality=88, optimize=True)
+                 e.get('rubrique', ''), e.get('presentateur', '')
+                 ).save(sortie, quality=88, optimize=True)
         faites += 1
 
     fabriquer_ce_soir(logo)

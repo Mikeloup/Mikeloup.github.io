@@ -1047,7 +1047,7 @@ async function main() {
 
   log(`✅ ${urls.length} pages générées dans dist/ en ${((Date.now() - t0) / 1000).toFixed(1)}s`);
 
-  await ecrireManifesteInsta(config, allVideos);
+  await ecrireManifesteInsta(config, allVideos, await presentateursParRubrique(categories));
   await ecrireFicheDuSoir(config, grilleBrute, externes);
   await annonceNouveautes(config, allVideos, personnesParVideo);
 }
@@ -1144,7 +1144,37 @@ async function enLigne(url) {
  * ajouter une dépendance de traitement d'image au projet pour cela seul
  * serait payer cher un besoin marginal.
  */
-async function ecrireManifesteInsta(config, allVideos) {
+/**
+ * Nom du chroniqueur, par rubrique du site.
+ *
+ * Deux sources, la seconde l'emportant : le champ `presentateur` des
+ * programmes de la grille (relié à une rubrique par son champ `site`), et la
+ * table `presentateurs` de personnes.json, qui permet de nommer une rubrique
+ * qui ne passe pas à l'antenne.
+ *
+ * On ecarte le nom quand il figure deja dans le titre de la rubrique :
+ * « L'édito de Rony Hayot » suivi de « Rony Hayot » se lirait comme un
+ * begaiement — arbitrage de Michael, 8 aout 2026.
+ */
+async function presentateursParRubrique(categories) {
+  const emissions = await readJson(path.join(ROOT, 'data', 'grille-emissions.json'), {});
+  const personnes = await readJson(path.join(ROOT, 'data', 'personnes.json'), {});
+  const parSlug = new Map();
+  for (const e of Object.values(emissions)) {
+    if (e && typeof e === 'object' && e.site && e.presentateur) parSlug.set(e.site, e.presentateur);
+  }
+  for (const [titre, nom] of Object.entries(personnes.presentateurs || {})) {
+    const c = categories.find((x) => normKey(x.title) === normKey(titre));
+    if (c && nom) parSlug.set(c.slug, nom);
+  }
+  for (const c of categories) {
+    const nom = parSlug.get(c.slug);
+    if (nom && normKey(c.title).includes(normKey(nom))) parSlug.delete(c.slug);
+  }
+  return parSlug;
+}
+
+async function ecrireManifesteInsta(config, allVideos, presentateurs = new Map()) {
   // Volontairement independant de `instagram.enabled` : les vignettes sont de
   // simples images sur le site, sans effet de bord. Les fabriquer avant
   // d'activer la publication permet de les regarder en vrai — et de corriger
@@ -1171,6 +1201,7 @@ async function ecrireManifesteInsta(config, allVideos) {
       id: v.id,
       titre: v.title,
       rubrique: v.playlists?.[0]?.title || '',
+      presentateur: presentateurs.get(v.playlists?.[0]?.slug) || '',
       pied,
       image: v.thumbnail || `https://i.ytimg.com/vi/${v.id}/maxresdefault.jpg`,
     })), null, 2), 'utf8');
