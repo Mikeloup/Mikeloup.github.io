@@ -23,6 +23,7 @@ import { lireTranscription } from './src/transcriptions.mjs';
 import { prepareGrille, indexerVideos, jourIsrael } from './src/grille.mjs';
 import { lireArchive } from './src/archive.mjs';
 import * as insta from './src/instagram.mjs';
+import { ficheDuSoir } from './tools/ce-soir.mjs';
 
 const ROOT = path.dirname(fileURLToPath(import.meta.url));
 const DIST = path.join(ROOT, 'dist');
@@ -1047,6 +1048,7 @@ async function main() {
   log(`✅ ${urls.length} pages générées dans dist/ en ${((Date.now() - t0) / 1000).toFixed(1)}s`);
 
   await ecrireManifesteInsta(config, allVideos);
+  await ecrireFicheDuSoir(config, grilleBrute);
   await annonceNouveautes(config, allVideos, personnesParVideo);
 }
 
@@ -1173,6 +1175,37 @@ async function ecrireManifesteInsta(config, allVideos) {
       image: v.thumbnail || `https://i.ytimg.com/vi/${v.id}/maxresdefault.jpg`,
     })), null, 2), 'utf8');
   log(`Instagram : ${recentes.length} vignette(s) 4:5 à fabriquer.`);
+}
+
+
+/**
+ * Fiche « ce soir sur le canal 14 », deposee dans dist/insta/.
+ *
+ * Ecrite a chaque construction : la grille peut changer jusqu'a son
+ * verrouillage, et la fiche doit toujours refleter la derniere version en
+ * ligne. C'est le workflow du soir qui decide quand publier — ici on ne fait
+ * que preparer.
+ */
+async function ecrireFicheDuSoir(config, grilleBrute) {
+  if (!grilleBrute) return;
+  const jour = jourIsrael(new Date(buildTime));
+  const fiche = ficheDuSoir({
+    grilleBrute,
+    jour,
+    emissions: await readJson(path.join(ROOT, 'data', 'grille-emissions.json'), {}),
+    partenaires: await readJson(path.join(ROOT, 'data', 'partenaires.json'), {}),
+    carnet: await readJson(path.join(ROOT, 'data', 'instagram-collaborateurs.json'), {}),
+    config,
+  });
+  if (!fiche) { log('Ce soir : aucun programme à heure fixe ce soir, pas de fiche.'); return; }
+
+  const dossier = path.join(DIST, 'insta');
+  await fs.mkdir(dossier, { recursive: true });
+  await fs.writeFile(path.join(dossier, 'ce-soir.json'),
+    JSON.stringify(fiche, null, 2), 'utf8');
+  log(`Ce soir : ${fiche.lignes.length} programme(s) — `
+    + `${fiche.lignes.map((l) => `${l.heure} ${l.rubrique}`).join(' · ')}`
+    + (fiche.collaborateurs.length ? ` — collaborations : @${fiche.collaborateurs.join(', @')}` : ''));
 }
 
 async function publierInstagram(config, allVideos, known, personnesParVideo = new Map()) {

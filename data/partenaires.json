@@ -1,77 +1,107 @@
 {
   "_comment": "Programmes diffuses sur le canal 14 mais produits par d'autres. Chaque entree est une SOURCE (une chaine YouTube, un compte Instagram, une radio), et non un programme : ECUJE fournit deux emissions, Radio Shalom aussi. 'programmes' liste les identifiants tels qu'ils apparaissent dans data/grille-emissions.json — c'est ce qui permet de calculer la prochaine diffusion depuis la grille. Pour une chaine YouTube, il suffit de l'adresse : le nom, le texte de presentation, la vignette et le nombre d'abonnes sont lus directement chez YouTube a chaque synchronisation. Pour Instagram, aucun acces automatique n'existe : renseignez 'nom', 'description', et deposez une image dans assets/partenaires/ puis indiquez /assets/partenaires/nom-du-fichier.jpg dans 'image'. Les champs saisis a la main l'emportent toujours sur ce qui vient de YouTube.",
-
   "sources": {
     "un-jour-une-histoire": {
       "url": "https://www.youtube.com/@ECUJE",
       "nom": "Un jour, une histoire",
       "description": "Chaque dimanche à 18h sur les ondes de Radio Shalom (94.8) et avec l'ECUJE, Haïm Musicant raconte une histoire du monde juif.",
       "image": "/assets/partenaires/un-jour-une-histoire.jpg",
-      "programmes": ["UN_JOUR_UNE_HISTOIRE"]
+      "programmes": [
+        "UN_JOUR_UNE_HISTOIRE"
+      ]
     },
     "interview-ecuje": {
       "url": "https://www.youtube.com/@ECUJE",
       "nom": "Interview de l'ECUJE",
-      "programmes": ["ECUJE"]
+      "programmes": [
+        "ECUJE"
+      ]
     },
     "tel-aviv-new-york": {
       "url": "https://www.youtube.com/@sebastienlevi5233",
       "nom": "Tel Aviv - New York",
       "description": "Chaque semaine, Sébastien Lévi depuis les bords de l'Hudson et Dror Even-Sapir depuis les bords du Yarkon décryptent l'actualité américaine, israélienne, américano-israélienne et israélo-américaine...Il leur arrive aussi de parler de la France, du monde et du reste de l'univers.\nDes échanges passionnants et passionnés entre deux fins connaisseurs des réalités politiques et géopolitiques, auxquels s'ajoutent parfois des entretiens avec des personnalités de premier plan .... ",
       "image": "/assets/partenaires/tel-aviv-new-york.jpg",
-      "programmes": ["TEL_AVIV_NEW_YORK"]
+      "programmes": [
+        "TEL_AVIV_NEW_YORK"
+      ]
     },
     "les-israeliennes": {
       "url": "https://www.youtube.com/@Israeliennes",
-      "programmes": ["LES_ISRAELIENNES"]
+      "programmes": [
+        "LES_ISRAELIENNES"
+      ],
+      "nom": "Les Israéliennes"
     },
     "du-cote-de-chez-szwarc": {
       "url": "https://www.youtube.com/@radioshalom94.89",
       "nom": "Du côté de chez Szwarc",
-      "programmes": ["RADIO_SHALOM_SZWARC"]
+      "programmes": [
+        "RADIO_SHALOM_SZWARC"
+      ]
     },
     "memoire-et-vigilance": {
       "url": "https://www.youtube.com/@radioshalom94.89",
       "nom": "Mémoire et vigilance",
-      "programmes": ["RADIO_SHALOM_BOCHURBERG"]
+      "programmes": [
+        "RADIO_SHALOM_BOCHURBERG"
+      ]
     },
     "shalom-salam": {
       "url": "https://www.youtube.com/@ShalomSalam_FR",
-      "programmes": ["SHALOM_SALAM"]
+      "programmes": [
+        "SHALOM_SALAM"
+      ],
+      "nom": "Shalom Salam"
     },
     "orot-vekelim": {
       "url": "https://www.youtube.com/@OrotVeKelim",
       "description": "Une yechiva, un oulpan, des studios — et bientôt un beit midrash à Jérusalem. L'écosystème de la Torah et de Sion.",
-      "programmes": ["OROT_VEKELIM"]
+      "programmes": [
+        "OROT_VEKELIM"
+      ],
+      "nom": "Orot VeKelim"
     },
     "yinon-show": {
       "url": "https://www.youtube.com/@YinonShow",
-      "programmes": ["YINON_SHOW"]
+      "programmes": [
+        "YINON_SHOW"
+      ],
+      "nom": "Le Ynon Show"
     },
     "katava": {
       "url": "https://www.youtube.com/@ava_mergy",
-      "programmes": ["KATAVA"]
+      "programmes": [
+        "KATAVA"
+      ],
+      "nom": "Katava"
     },
     "betsarfatit": {
       "url": "https://www.instagram.com/israelenfrancais/",
       "nom": "Betsarfatit",
       "description": "Le média des curieux de l'hébreu et de la culture israélienne. Betsarfatit aide les francophones à apprendre l'hébreu et à découvrir Israël autrement.",
       "image": "/assets/partenaires/betsarfatit.jpg",
-      "programmes": ["ISRAEL_EN_FRANCAIS"]
+      "programmes": [
+        "ISRAEL_EN_FRANCAIS"
+      ]
     },
     "dover-tsahal": {
       "url": "https://www.instagram.com/tsahal_fr/",
       "nom": "Dover Tsahal — Tsahal FR",
       "description": "Le compte Instagram officiel de Tsahal en français. L'armée de défense d'Israël, depuis 1948.",
       "image": "/assets/partenaires/dover-tsahal.jpg",
-      "programmes": ["TSAHAL_FR"]
+      "programmes": [
+        "TSAHAL_FR"
+      ]
     },
     "leon-le-media": {
       "url": "https://www.instagram.com/leonlemedia/",
       "nom": "Léon le média",
       "description": "",
       "image": "",
-      "programmes": ["LEON_LE_MEDIA"]
+      "programmes": [
+        "LEON_LE_MEDIA"
+      ]
     },
     "kfir-almagor": {
       "url": "https://www.instagram.com/kfiralmagor/",
@@ -79,14 +109,18 @@
       "description": "",
       "texteFacultatif": true,
       "image": "/assets/partenaires/kfir-almagor.jpg",
-      "programmes": ["KFIR_ALMAGOR"]
+      "programmes": [
+        "KFIR_ALMAGOR"
+      ]
     },
     "solal-israel": {
       "url": "https://www.instagram.com/solal_israel/",
       "nom": "Solal Fakiel",
       "description": "Sous le nom de Bne Israel, Solal Fakiel humanise le judaïsme et les religions et décrypte le sens des prénoms. Guide indépendant à Jérusalem, il explore aussi les rapports entre écho-logie et langage.",
       "image": "/assets/partenaires/solal-fakiel.jpg",
-      "programmes": ["SOLAL_ISRAEL"]
+      "programmes": [
+        "SOLAL_ISRAEL"
+      ]
     }
   }
 }
