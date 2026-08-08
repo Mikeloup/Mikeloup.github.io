@@ -1,0 +1,56 @@
+# -----------------------------------------------------------------------------
+# Publier une nouvelle video sur Instagram, juste apres le deploiement.
+#
+# Pourquoi ce declenchement : Meta va chercher l'image a son adresse publique.
+# La vignette 4:5 n'est en ligne qu'une fois le site deploye. Publier depuis la
+# construction elle-meme arrivait donc toujours un tour trop tot, et reportait
+# de deux heures. Ici, on part quand le deploiement a REUSSI : l'image existe.
+#
+# « workflow_run » ne se declenche que si le workflow appele s'appelle
+# exactement comme ci-dessous. Si vous renommez « Publier le site Tandem TV »,
+# renommez-le ici aussi, sinon ce workflow ne partira plus jamais — en silence.
+#
+# La memoire, c'est Instagram : aucun doublon possible, meme si la construction
+# publie de son cote.
+# -----------------------------------------------------------------------------
+
+name: Instagram - nouvelle video
+
+on:
+  workflow_run:
+    workflows: ["Publier le site Tandem TV"]
+    types: [completed]
+  workflow_dispatch:
+    inputs:
+      publier:
+        description: "Publier reellement ? (non = simple apercu)"
+        required: true
+        default: "non"
+        type: choice
+        options:
+          - "non"
+          - "oui"
+
+jobs:
+  publier:
+    # Un deploiement rate ne met aucune image en ligne : inutile d'essayer.
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      # GitHub Pages met quelques secondes a servir les nouveaux fichiers apres
+      # la fin du deploiement. Publier a la seconde pres ferait echouer la
+      # verification de mise en ligne pour rien.
+      - name: Laisser le temps a la mise en ligne
+        run: sleep 45
+
+      - name: Publier la video
+        env:
+          INSTAGRAM_TOKEN: ${{ secrets.INSTAGRAM_TOKEN }}
+          PUBLIER: ${{ inputs.publier || 'oui' }}
+        run: node tools/instagram-video.mjs
