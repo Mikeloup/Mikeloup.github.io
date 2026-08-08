@@ -50,10 +50,18 @@ async function writeFile(relPath, contents) {
   await fs.writeFile(full, contents, 'utf8');
 }
 
+// Adresses reellement produites par le site. Sert de garde-fou aux pages de
+// transfert : le 8 aout 2026, l'ancienne adresse Wix « /partenaires » a ecrase
+// la toute nouvelle page « Nos partenaires », parce que les transferts sont
+// ecrits APRES les pages. Le menu pointait vers une redirection vers
+// /sponsoring/, sans aucune erreur nulle part.
+const PAGES_ECRITES = new Set();
+
 async function writePage(routePath, html) {
   const rel = routePath.endsWith('.html')
     ? routePath.replace(/^\//, '')
     : path.join(routePath.replace(/^\//, ''), 'index.html');
+  PAGES_ECRITES.add(`/${String(routePath).replace(/^\//, '').replace(/\/$/, '')}`);
   await writeFile(rel, html);
 }
 
@@ -1406,13 +1414,22 @@ async function transfererAnciennesAdresses(config, categories, allVideos) {
 
   const ecrire = async (ancien, cible, libelle) => {
     const rel = ancien.replace(/^\//, '').replace(/\/$/, '');
+    // Jamais par-dessus une vraie page. Une ancienne adresse qui porte
+    // aujourd'hui le nom d'une page du site n'est plus une ancienne adresse :
+    // c'est une collision, et la page vivante l'emporte toujours.
+    if (PAGES_ECRITES.has(`/${rel}`)) {
+      warn(`L'ancienne adresse /${rel}/ porte le nom d'une page existante du site : `
+        + 'le transfert est ignoré, la page est conservée. Retirez cette entrée de '
+        + 'data/anciennes-adresses.json.');
+      return false;
+    }
     await writeFile(path.join(rel, 'index.html'), pageDeTransfert(config, cible, libelle));
+    return true;
   };
 
   const urls = [];
   for (const [ancien, cible] of Object.entries(carte.manuel || {})) {
-    await ecrire(ancien, cible, 'Continuer sur Tandem TV');
-    urls.push(ancien);
+    if (await ecrire(ancien, cible, 'Continuer sur Tandem TV')) urls.push(ancien);
   }
 
   // Rubriques renommées sur YouTube.
@@ -1433,7 +1450,7 @@ async function transfererAnciennesAdresses(config, categories, allVideos) {
       continue;
     }
     if (c.slug === ancienSlug) continue;      // renommage pas encore visible côté YouTube
-    await ecrire(`/emissions/${ancienSlug}/`, `/emissions/${c.slug}/`, c.title);
+    if (!await ecrire(`/emissions/${ancienSlug}/`, `/emissions/${c.slug}/`, c.title)) continue;
     urls.push(`/emissions/${ancienSlug}/`);
     renommees++;
   }
@@ -1455,8 +1472,9 @@ async function transfererAnciennesAdresses(config, categories, allVideos) {
       if (!meilleureRubrique || score > meilleureRubrique.score) meilleureRubrique = { r, score, hits };
     }
     if (meilleureRubrique && meilleureRubrique.score >= 0.8 && meilleureRubrique.hits >= 2) {
-      await ecrire(ancien, `/emissions/${meilleureRubrique.r.c.slug}/`, meilleureRubrique.r.c.title);
-      urls.push(ancien); versRubrique++;
+      if (await ecrire(ancien, `/emissions/${meilleureRubrique.r.c.slug}/`, meilleureRubrique.r.c.title)) {
+        urls.push(ancien); versRubrique++;
+      }
       continue;
     }
 
@@ -1470,8 +1488,9 @@ async function transfererAnciennesAdresses(config, categories, allVideos) {
     // Trois conditions cumulées, comme pour le rattrapage côté navigateur :
     // mieux vaut laisser une erreur 404 qu'envoyer Google sur la mauvaise page.
     if (best && best.score >= 0.8 && best.hits >= 3 && best.score - second >= 0.2) {
-      await ecrire(ancien, `/video/${best.item.v.id}/`, best.item.v.title);
-      urls.push(ancien); versVideo++;
+      if (await ecrire(ancien, `/video/${best.item.v.id}/`, best.item.v.title)) {
+        urls.push(ancien); versVideo++;
+      }
     } else {
       sansSuite.push(ancien);
     }
