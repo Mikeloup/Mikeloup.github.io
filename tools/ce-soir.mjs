@@ -83,13 +83,21 @@ export function ficheDuSoir({
     return `${l.heure} — ${l.rubrique}${titre}${qui ? `\n${qui}` : ''}`;
   }).join('\n\n');
 
-  const legende = `Ce soir sur ${config.siteName || 'Tandem TV'}, canal ${canal} du bouquet `
-    + `${tv.operator || 'Annatel TV'} :\n\n${texte}\n\nToute la grille sur `
+  // La date figure dans la legende : elle situe l'annonce, et elle sert de
+  // signature — c'est elle qui permet de savoir, en relisant les publications
+  // du compte, si la fiche du jour est deja partie.
+  const enFrancais = new Intl.DateTimeFormat('fr-FR', {
+    timeZone: 'Asia/Jerusalem', weekday: 'long', day: 'numeric', month: 'long',
+  }).format(new Date(`${jour}T12:00:00Z`));
+
+  const legende = `Ce soir, ${enFrancais}, sur ${config.siteName || 'Tandem TV'}, `
+    + `canal ${canal} du bouquet ${tv.operator || 'Annatel TV'} :\n\n${texte}\n\nToute la grille sur `
     + `${String(config.siteUrl || '').replace(/^https?:\/\/(www\.)?/, '')}\n\n`
     + '#TandemTV #Israel #CanalTV #MondeJuif';
 
   return {
     date: jour,
+    date_lisible: enFrancais,
     lignes,
     legende,
     // Trois au maximum, c'est la limite de Meta. Les partenaires du soir
