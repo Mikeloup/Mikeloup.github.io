@@ -1,5 +1,5 @@
 {
-  "exported_at": "2026-08-08T19:56:29.781818",
+  "exported_at": "2026-08-08T20:11:36.814746",
   "window_days": 3,
   "rows": [
     {
@@ -1157,12 +1157,12 @@
       "heure_debut": "09:00",
       "type": "ANCRE",
       "heure_fixe": true,
-      "channel_id": "JEROME_HAAS_L_INTERVIEW",
-      "title": "Marjan Abadie | Iran : répression, exécutions et révolte contre le régime"
+      "channel_id": "WILLIAM_ZERBIB_L_INTERVIEW",
+      "title": "7 Octobre : complot ou effondrement systémique ? André Darmon"
     },
     {
       "date_diffusion": "2026-08-10",
-      "heure_debut": "09:18",
+      "heure_debut": "09:44",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "RONY_AKRICH",
@@ -1170,6 +1170,50 @@
     },
     {
       "date_diffusion": "2026-08-10",
+      "bloc_apres": "WILLIAM_ZERBIB_L_INTERVIEW",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "ISRAEL_EN_FRANCAIS"
+    },
+    {
+      "date_diffusion": "2026-08-10",
+      "bloc_apres": "WILLIAM_ZERBIB_L_INTERVIEW",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "SOLAL_ISRAEL"
+    },
+    {
+      "date_diffusion": "2026-08-10",
+      "bloc_apres": "WILLIAM_ZERBIB_L_INTERVIEW",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "TSAHAL_FR"
+    },
+    {
+      "date_diffusion": "2026-08-10",
+      "bloc_apres": "WILLIAM_ZERBIB_L_INTERVIEW",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "KFIR_ALMAGOR"
+    },
+    {
+      "date_diffusion": "2026-08-10",
+      "heure_debut": "09:59",
+      "type": "ANCRE",
+      "heure_fixe": true,
+      "channel_id": "JEROME_HAAS_L_INTERVIEW",
+      "title": "Marjan Abadie | Iran : répression, exécutions et révolte contre le régime"
+    },
+    {
+      "date_diffusion": "2026-08-10",
+      "heure_debut": "10:17",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "RONY_HAYOT",
+      "title": "Qui va payer le prix du départ des Juifs d’Europe ?"
+    },
+    {
+      "date_diffusion": "2026-08-10",
       "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
@@ -1177,52 +1221,15 @@
     },
     {
       "date_diffusion": "2026-08-10",
-      "heure_debut": "09:29",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "RONY_HAYOT",
-      "title": "Ceuta et la censure: l'heure de vérité"
-    },
-    {
-      "date_diffusion": "2026-08-10",
-      "heure_debut": "09:37",
+      "heure_debut": "10:30",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "RONY_AKRICH",
-      "title": "La gauche radicale prépare-t-elle le retour du fascisme ?"
+      "title": "Pluralisme ou domination: le défi israélien"
     },
     {
       "date_diffusion": "2026-08-10",
-      "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL"
-    },
-    {
-      "date_diffusion": "2026-08-10",
-      "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
-    },
-    {
-      "date_diffusion": "2026-08-10",
-      "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
-    },
-    {
-      "date_diffusion": "2026-08-10",
-      "heure_debut": "10:01",
-      "type": "ANCRE",
-      "heure_fixe": true,
-      "channel_id": "WILLIAM_ZERBIB_L_INTERVIEW",
-      "title": "7 Octobre : complot ou effondrement systémique ? André Darmon"
-    },
-    {
-      "date_diffusion": "2026-08-10",
-      "heure_debut": "10:45",
+      "heure_debut": "10:44",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "RONY_HAYOT",
@@ -1230,32 +1237,55 @@
     },
     {
       "date_diffusion": "2026-08-10",
-      "bloc_apres": "WILLIAM_ZERBIB_L_INTERVIEW",
+      "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "ISRAEL_EN_FRANCAIS"
+      "channel_id": "TSAHAL_FR"
     },
     {
       "date_diffusion": "2026-08-10",
-      "bloc_apres": "WILLIAM_ZERBIB_L_INTERVIEW",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
-    },
-    {
-      "date_diffusion": "2026-08-10",
-      "bloc_apres": "WILLIAM_ZERBIB_L_INTERVIEW",
+      "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
       "channel_id": "SOLAL_ISRAEL"
     },
     {
       "date_diffusion": "2026-08-10",
-      "heure_debut": "11:01",
+      "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "KFIR_ALMAGOR"
+    },
+    {
+      "date_diffusion": "2026-08-10",
+      "heure_debut": "11:00",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "OROT_VEKELIM",
       "title": "Vos petits-enfants ne vivront pas en France » — Dov Maïmon"
+    },
+    {
+      "date_diffusion": "2026-08-10",
+      "heure_debut": "12:02",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "RONY_HAYOT",
+      "title": "De Jérusalem a Saint denis: quand l'histoire se répète."
+    },
+    {
+      "date_diffusion": "2026-08-10",
+      "bloc_apres": "OROT_VEKELIM",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "ISRAEL_EN_FRANCAIS"
+    },
+    {
+      "date_diffusion": "2026-08-10",
+      "heure_debut": "12:09",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "RONY_HAYOT",
+      "title": "Ceuta et la censure: l'heure de vérité"
     },
     {
       "date_diffusion": "2026-08-10",
@@ -1269,7 +1299,7 @@
       "bloc_apres": "OROT_VEKELIM",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "ISRAEL_EN_FRANCAIS"
+      "channel_id": "KFIR_ALMAGOR"
     },
     {
       "date_diffusion": "2026-08-10",
@@ -1280,14 +1310,7 @@
     },
     {
       "date_diffusion": "2026-08-10",
-      "bloc_apres": "OROT_VEKELIM",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
-    },
-    {
-      "date_diffusion": "2026-08-10",
-      "heure_debut": "12:43",
+      "heure_debut": "12:39",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "MYRIAM_DANAN",
@@ -1295,11 +1318,19 @@
     },
     {
       "date_diffusion": "2026-08-10",
-      "heure_debut": "12:52",
+      "heure_debut": "12:49",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "RICHARD_DARMON",
       "title": "Président Donald Trump - Seriez-vous tombé dans le piège ?"
+    },
+    {
+      "date_diffusion": "2026-08-10",
+      "heure_debut": "12:55",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "STEPHANE_GOLDIN",
+      "title": "La Turquie d’Erdogan remplace-t-elle l’Iran ?"
     },
     {
       "date_diffusion": "2026-08-10",
@@ -1314,23 +1345,8 @@
       "heure_debut": "13:49",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "STEPHANE_GOLDIN",
-      "title": "La Turquie d’Erdogan remplace-t-elle l’Iran ?"
-    },
-    {
-      "date_diffusion": "2026-08-10",
-      "bloc_apres": "RADIO_SHALOM_BOCHURBERG",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "ISRAEL_EN_FRANCAIS"
-    },
-    {
-      "date_diffusion": "2026-08-10",
-      "heure_debut": "13:53",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "RONY_HAYOT",
-      "title": "Ceuta et la censure: l'heure de vérité"
+      "channel_id": "RONY_AKRICH",
+      "title": "Les prophètes ont-ils vraiment disparu d’Israël ?"
     },
     {
       "date_diffusion": "2026-08-10",
@@ -1352,7 +1368,7 @@
       "bloc_apres": "YINON_SHOW",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
+      "channel_id": "TSAHAL_FR"
     },
     {
       "date_diffusion": "2026-08-10",
@@ -1366,7 +1382,7 @@
       "bloc_apres": "YINON_SHOW",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
+      "channel_id": "KFIR_ALMAGOR"
     },
     {
       "date_diffusion": "2026-08-10",
@@ -1393,7 +1409,7 @@
     },
     {
       "date_diffusion": "2026-08-10",
-      "heure_debut": "16:22",
+      "heure_debut": "16:23",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "RONY_HAYOT",
@@ -1401,19 +1417,10 @@
     },
     {
       "date_diffusion": "2026-08-10",
-      "heure_debut": "16:34",
-      "type": "COURT_NOMME",
+      "bloc_apres": "ECUJE",
+      "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "RONY_AKRICH",
-      "title": "Les prophètes ont-ils vraiment disparu d’Israël ?"
-    },
-    {
-      "date_diffusion": "2026-08-10",
-      "heure_debut": "16:45",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "MYRIAM_DANAN",
-      "title": "Israël-Iran : l’illusion de l’entre-deux-guerres"
+      "channel_id": "SOLAL_ISRAEL"
     },
     {
       "date_diffusion": "2026-08-10",
@@ -1431,14 +1438,23 @@
     },
     {
       "date_diffusion": "2026-08-10",
-      "bloc_apres": "ECUJE",
-      "type": "CLIPS_CHAINE",
+      "heure_debut": "16:40",
+      "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL"
+      "channel_id": "MYRIAM_DANAN",
+      "title": "Israël-Iran : l’illusion de l’entre-deux-guerres"
     },
     {
       "date_diffusion": "2026-08-10",
-      "heure_debut": "17:00",
+      "heure_debut": "16:49",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "RICHARD_DARMON",
+      "title": "Président Donald Trump - Seriez-vous tombé dans le piège ?"
+    },
+    {
+      "date_diffusion": "2026-08-10",
+      "heure_debut": "16:59",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "RADIO_SHALOM_SZWARC",
@@ -1446,11 +1462,11 @@
     },
     {
       "date_diffusion": "2026-08-10",
-      "heure_debut": "17:33",
+      "heure_debut": "17:32",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "RICHARD_DARMON",
-      "title": "Président Donald Trump - Seriez-vous tombé dans le piège ?"
+      "channel_id": "STEPHANE_GOLDIN",
+      "title": "La Turquie d’Erdogan remplace-t-elle l’Iran ?"
     },
     {
       "date_diffusion": "2026-08-10",
@@ -1461,14 +1477,6 @@
     },
     {
       "date_diffusion": "2026-08-10",
-      "heure_debut": "17:41",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "RONY_HAYOT",
-      "title": "De Jérusalem a Saint denis: quand l'histoire se répète."
-    },
-    {
-      "date_diffusion": "2026-08-10",
       "bloc_apres": "RADIO_SHALOM_SZWARC",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
@@ -1490,15 +1498,7 @@
     },
     {
       "date_diffusion": "2026-08-10",
-      "heure_debut": "17:52",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "STEPHANE_GOLDIN",
-      "title": "La Turquie d’Erdogan remplace-t-elle l’Iran ?"
-    },
-    {
-      "date_diffusion": "2026-08-10",
-      "heure_debut": "18:00",
+      "heure_debut": "18:01",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "TOUR_D_ISRAEL",
@@ -1506,6 +1506,21 @@
     },
     {
       "date_diffusion": "2026-08-10",
+      "heure_debut": "18:23",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "RONY_AKRICH",
+      "title": "Les prophètes ont-ils vraiment disparu d’Israël ?"
+    },
+    {
+      "date_diffusion": "2026-08-10",
+      "bloc_apres": "TOUR_D_ISRAEL",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "ISRAEL_EN_FRANCAIS"
+    },
+    {
+      "date_diffusion": "2026-08-10",
       "bloc_apres": "TOUR_D_ISRAEL",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
@@ -1527,15 +1542,23 @@
     },
     {
       "date_diffusion": "2026-08-10",
-      "heure_debut": "18:36",
+      "heure_debut": "18:54",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "RONY_AKRICH",
-      "title": "La gauche radicale prépare-t-elle le retour du fascisme ?"
+      "title": "Pluralisme ou domination: le défi israélien"
     },
     {
       "date_diffusion": "2026-08-10",
-      "heure_debut": "18:48",
+      "heure_debut": "19:07",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "RONY_HAYOT",
+      "title": "Orthodoxes en Israël : Le grand mensonge"
+    },
+    {
+      "date_diffusion": "2026-08-10",
+      "heure_debut": "19:18",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
@@ -1543,15 +1566,7 @@
     },
     {
       "date_diffusion": "2026-08-10",
-      "heure_debut": "18:58",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "RONY_HAYOT",
-      "title": "Ceuta et la censure: l'heure de vérité"
-    },
-    {
-      "date_diffusion": "2026-08-10",
-      "heure_debut": "19:05",
+      "heure_debut": "19:27",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "RICHARD_DARMON",
@@ -1559,7 +1574,7 @@
     },
     {
       "date_diffusion": "2026-08-10",
-      "heure_debut": "19:11",
+      "heure_debut": "19:34",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "MYRIAM_DANAN",
@@ -1567,7 +1582,7 @@
     },
     {
       "date_diffusion": "2026-08-10",
-      "heure_debut": "19:16",
+      "heure_debut": "19:39",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
@@ -1575,7 +1590,7 @@
     },
     {
       "date_diffusion": "2026-08-10",
-      "heure_debut": "19:21",
+      "heure_debut": "19:43",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "STEPHANE_GOLDIN",
@@ -1583,7 +1598,7 @@
     },
     {
       "date_diffusion": "2026-08-10",
-      "heure_debut": "19:23",
+      "heure_debut": "19:46",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "KATAVA",
@@ -1598,31 +1613,15 @@
     },
     {
       "date_diffusion": "2026-08-10",
-      "heure_debut": "19:28",
+      "heure_debut": "19:51",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "RONY_HAYOT",
-      "title": "Qui va payer le prix du départ des Juifs d’Europe ?"
+      "title": "De Jérusalem a Saint denis: quand l'histoire se répète."
     },
     {
       "date_diffusion": "2026-08-10",
-      "heure_debut": "19:39",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "RONY_AKRICH",
-      "title": "Les prophètes ont-ils vraiment disparu d’Israël ?"
-    },
-    {
-      "date_diffusion": "2026-08-10",
-      "heure_debut": "19:50",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "ujuh141225"
-    },
-    {
-      "date_diffusion": "2026-08-10",
-      "heure_debut": "19:57",
+      "heure_debut": "19:56",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
