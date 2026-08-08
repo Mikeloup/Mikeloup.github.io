@@ -1,0 +1,41 @@
+name: Ce soir sur le canal 14
+
+on:
+  schedule:
+    - cron: '17 13 * * *'
+    - cron: '17 14 * * *'
+  workflow_dispatch:
+    inputs:
+      publier:
+        description: "Publier reellement ? (non = simple apercu)"
+        required: true
+        default: "non"
+        type: choice
+        options:
+          - "non"
+          - "oui"
+      forcer:
+        description: "Ignorer le controle de l'heure locale"
+        required: true
+        default: "oui"
+        type: choice
+        options:
+          - "oui"
+          - "non"
+
+jobs:
+  ce-soir:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Publier la fiche du soir
+        env:
+          INSTAGRAM_TOKEN: ${{ secrets.INSTAGRAM_TOKEN }}
+          PUBLIER: ${{ inputs.publier || 'oui' }}
+          FORCER: ${{ inputs.forcer || 'non' }}
+        run: node tools/instagram-ce-soir.mjs
