@@ -111,12 +111,18 @@ export function ficheDuSoir({
     // Un programme maison porte le nom de celui qui le tient : « L'édito de
     // Rony Hayot » donne le portrait ET le compte de Rony Hayot. Aucune table
     // supplémentaire à tenir : renseigner personnes.json et le carnet suffit.
-    const personne = t ? null : personneDe(nom, personnes, carnet);
+    // Le nom du chroniqueur, quand il ne figure pas deja dans celui de
+    // l'emission. C'est aussi une meilleure piste pour retrouver son compte :
+    // « Tour d'Israël » ne dit rien de Jérôme Haas, la fiche du programme si.
+    const presentateur = String(emission.presentateur || '').trim();
+    const personne = t ? null
+      : (personneDe(presentateur, personnes, carnet) || personneDe(nom, personnes, carnet));
     const compteMaison = personne && parNom[personne] ? String(parNom[personne]).replace(/^@/, '') : '';
 
     return {
       heure: heureLisible(r.heure_debut),
       rubrique: nom,
+      presentateur,
       titre: String(r.title || '').trim(),
       url: (t?.url || '').replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, ''),
       compte: t?.compte || compteMaison,
@@ -136,8 +142,9 @@ export function ficheDuSoir({
   const canal = tv.channelNumber || '14';
   const texte = lignes.map((l) => {
     const qui = l.compte ? `@${l.compte}` : (l.url || '');
-    const titre = l.titre ? ` · ${l.titre}` : '';
-    return `${l.heure} — ${l.rubrique}${titre}${qui ? `\n${qui}` : ''}`;
+    const par = l.presentateur ? ` · ${l.presentateur}` : '';
+    return [`${l.heure} — ${l.rubrique}${par}`, l.titre, qui]
+      .filter(Boolean).join('\n');
   }).join('\n\n');
 
   // La date figure dans la legende : elle situe l'annonce, et elle sert de

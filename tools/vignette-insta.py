@@ -265,18 +265,25 @@ def dessiner_ce_soir(fiche, logo):
     # l'espace restant entre eux. Un titre long ne doit pas pousser la derniere
     # emission hors de l'image — c'est arrive avec l'ancienne mise en page, qui
     # empilait a l'aveugle.
-    f_heure, f_rubrique, f_titre, f_adresse = police(50), police(42), police(30, gras=False), police(28)
+    f_heure, f_rubrique = police(50), police(42)
+    f_par = police(32, gras=False)
+    f_titre, f_adresse = police(28, gras=False), police(28)
     blocs, total = [], 0
     for essai in (2, 1, 0):
         blocs, total = [], 0
         for ligne in lignes:
             noms = decouper(ligne.get('rubrique', ''), f_rubrique, d, largeur)[:2]
+            # Le chroniqueur, sous le nom de l'emission : c'est lui que le
+            # public suit, et le nommer est la moindre des choses.
+            par = decouper((ligne.get('presentateur') or '').strip(), f_par, d, largeur)[:2] \
+                if (ligne.get('presentateur') or '').strip() else []
             titre = (ligne.get('titre') or '').strip()
             morceaux = decouper(titre, f_titre, d, largeur)[:essai] if (titre and essai) else []
             adresse = ('@' + ligne['compte']) if ligne.get('compte') else ligne.get('url', '')
             hauteur = max(DISQUE,
-                          58 + len(noms) * 50 + len(morceaux) * 40 + (44 if adresse else 0))
-            blocs.append((ligne, noms, morceaux, adresse, hauteur))
+                          58 + len(noms) * 50 + len(par) * 42
+                          + len(morceaux) * 38 + (44 if adresse else 0))
+            blocs.append((ligne, noms, par, morceaux, adresse, hauteur))
             total += hauteur
         if total + 70 * max(0, len(blocs) - 1) <= bas - haut:
             break
@@ -287,7 +294,7 @@ def dessiner_ce_soir(fiche, logo):
     ecart = int(max(60, min(160, reste / (len(blocs) - 1)))) if len(blocs) > 1 else 0
     hauteur_totale = total + ecart * max(0, len(blocs) - 1)
     y = haut + max(0, (bas - haut - hauteur_totale)) // 2
-    for n, (ligne, noms, morceaux, adresse, hauteur) in enumerate(blocs):
+    for n, (ligne, noms, par, morceaux, adresse, hauteur) in enumerate(blocs):
         if n:
             d.rectangle([60, y - ecart // 2, L - 60, y - ecart // 2 + 2], fill=(70, 55, 130))
 
@@ -301,9 +308,12 @@ def dessiner_ce_soir(fiche, logo):
         for texte in noms:
             d.text((COLONNE, yy), texte, font=f_rubrique, fill=(255, 255, 255))
             yy += 50
+        for texte in par:
+            d.text((COLONNE, yy), texte, font=f_par, fill=(232, 228, 248))
+            yy += 42
         for texte in morceaux:
-            d.text((COLONNE, yy), texte, font=f_titre, fill=(226, 222, 240))
-            yy += 40
+            d.text((COLONNE, yy), texte, font=f_titre, fill=(168, 163, 205))
+            yy += 38
         if adresse:
             d.text((COLONNE, yy + 4), adresse, font=f_adresse, fill=BLEU_PIED)
         y += hauteur + ecart

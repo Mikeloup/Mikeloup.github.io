@@ -1,28 +1,109 @@
 {
   "_comment": "Nom d'affichage de chaque programme de la grille télévisée. La clé est l'identifiant technique tel qu'il sort de votre outil de planning ; la valeur est le nom lu par le visiteur. Un identifiant absent de cette liste s'affiche tel quel, avec les tirets bas remplacés par des espaces — corrigez-le ici dès que vous le voyez apparaître mal écrit. Le champ 'site' relie le programme à une rubrique du site : le visiteur peut alors passer de la grille au replay en un clic. Laissez-le vide quand le programme ne vient pas de Tandem TV. Les TITRES D'ÉPISODE, eux, ne se corrigent pas ici : ils viennent des noms de fichiers de la régie et sont régénérés à chaque export. Le site les nettoie automatiquement (dates de tournage, numéros d'ordre, préfixes « INVITE : », CAPITALES, nom de l'émission répété) et, dès qu'une ligne correspond à une vidéo publiée, affiche le titre YouTube à la place.",
-
-  "JEROME_HAAS_L_INTERVIEW":     { "nom": "L'interview de Jérôme Haas", "site": "l-interview-de-jerome-haas" },
-  "WILLIAM_ZERBIB_L_INTERVIEW":  { "nom": "L'interview de William Zerbib", "site": "l-interview-de-william-zerbib" },
-  "STEPHANE_GOLDIN":             { "nom": "L'édito de Stéphane Goldin", "site": "l-edito-de-stephane-goldin" },
-  "RONY_HAYOT":                  { "nom": "L'édito de Rony Hayot", "site": "l-edito-de-rony-hayot" },
-  "MYRIAM_DANAN":                { "nom": "L'édito de Myriam Danan", "site": "l-edito-de-myriam-danan" },
-  "RONY_AKRICH":                 { "nom": "Les passions d'un Hébreu - Rony Akrich", "site": "les-passions-d-un-hebreu-rony-akrich" },
-  "TOUR_D_ISRAEL":               { "nom": "Tour d'Israël", "site": "tour-d-israel" },
-  "UN_JOUR_UNE_HISTOIRE":        { "nom": "Un jour, une histoire", "site": "" },
-  "TEL_AVIV_NEW_YORK":           { "nom": "Tel Aviv-New York", "site": "" },
-  "LES_ISRAELIENNES":            { "nom": "Les Israéliennes", "site": "" },
-  "RICHARD_DARMON":              { "nom": "L'édito de Richard Darmon", "site": "" },
-  "RADIO_SHALOM_BOCHURBERG":     { "nom": "Mémoire et vigilance", "site": "" },
-  "RADIO_SHALOM_SZWARC":         { "nom": "Du côté de chez Szwarc", "site": "" },
-  "LEON_LE_MEDIA":              { "nom": "Léon le média", "site": "" },
-  "SHALOM_SALAM":               { "nom": "Shalom Salam Jaffa", "site": "" },
-  "OROT_VEKELIM":                { "nom": "Orot Vekelim", "site": "" },
-  "ECUJE":                       { "nom": "Interview de l'ECUJE", "site": "" },
-  "YINON_SHOW":                  { "nom": "The Ynon Show", "site": "" },
-  "CARTES_POSTALES":             { "nom": "Cartes postales", "site": "" },
-  "KATAVA":                      { "nom": "Katava", "site": "" },
-  "ISRAEL_EN_FRANCAIS":          { "nom": "Betsarfatit", "site": "" },
-  "TSAHAL_FR":                   { "nom": "Dover Tsahal", "site": "" },
-  "KFIR_ALMAGOR":                { "nom": "Kfir Almagor", "site": "" },
-  "SOLAL_ISRAEL":                { "nom": "Solal Israel", "site": "" }
+  "JEROME_HAAS_L_INTERVIEW": {
+    "nom": "L'interview de Jérôme Haas",
+    "site": "l-interview-de-jerome-haas"
+  },
+  "WILLIAM_ZERBIB_L_INTERVIEW": {
+    "nom": "L'interview de William Zerbib",
+    "site": "l-interview-de-william-zerbib"
+  },
+  "STEPHANE_GOLDIN": {
+    "nom": "L'édito de Stéphane Goldin",
+    "site": "l-edito-de-stephane-goldin"
+  },
+  "RONY_HAYOT": {
+    "nom": "L'édito de Rony Hayot",
+    "site": "l-edito-de-rony-hayot"
+  },
+  "MYRIAM_DANAN": {
+    "nom": "L'édito de Myriam Danan",
+    "site": "l-edito-de-myriam-danan"
+  },
+  "RONY_AKRICH": {
+    "nom": "Les passions d'un Hébreu - Rony Akrich",
+    "site": "les-passions-d-un-hebreu-rony-akrich"
+  },
+  "TOUR_D_ISRAEL": {
+    "nom": "Tour d'Israël",
+    "site": "tour-d-israel",
+    "presentateur": "Jérôme Haas"
+  },
+  "UN_JOUR_UNE_HISTOIRE": {
+    "nom": "Un jour, une histoire",
+    "site": "",
+    "presentateur": "Haïm Musicant"
+  },
+  "TEL_AVIV_NEW_YORK": {
+    "nom": "Tel Aviv-New York",
+    "site": "",
+    "presentateur": "Sébastien Lévi et Dror Even-Sapir"
+  },
+  "LES_ISRAELIENNES": {
+    "nom": "Les Israéliennes",
+    "site": "",
+    "presentateur": "Eliana Gurfinkiel et Myriam Shermer"
+  },
+  "RICHARD_DARMON": {
+    "nom": "L'édito de Richard Darmon",
+    "site": ""
+  },
+  "RADIO_SHALOM_BOCHURBERG": {
+    "nom": "Mémoire et vigilance",
+    "site": "",
+    "presentateur": "Claude Bochurberg"
+  },
+  "RADIO_SHALOM_SZWARC": {
+    "nom": "Du côté de chez Szwarc",
+    "site": "",
+    "presentateur": "Sandrine Szwarc"
+  },
+  "LEON_LE_MEDIA": {
+    "nom": "Léon le média",
+    "site": ""
+  },
+  "SHALOM_SALAM": {
+    "nom": "Shalom Salam Jaffa",
+    "site": ""
+  },
+  "OROT_VEKELIM": {
+    "nom": "Orot Vekelim",
+    "site": ""
+  },
+  "ECUJE": {
+    "nom": "Interview de l'ECUJE",
+    "site": ""
+  },
+  "YINON_SHOW": {
+    "nom": "The Ynon Show",
+    "site": "",
+    "presentateur": "Jino Wilson"
+  },
+  "CARTES_POSTALES": {
+    "nom": "Cartes postales",
+    "site": "",
+    "presentateur": "Jérôme Haas"
+  },
+  "KATAVA": {
+    "nom": "Katava",
+    "site": "",
+    "presentateur": "Ava Mergy"
+  },
+  "ISRAEL_EN_FRANCAIS": {
+    "nom": "Betsarfatit",
+    "site": ""
+  },
+  "TSAHAL_FR": {
+    "nom": "Dover Tsahal",
+    "site": ""
+  },
+  "KFIR_ALMAGOR": {
+    "nom": "Kfir Almagor",
+    "site": ""
+  },
+  "SOLAL_ISRAEL": {
+    "nom": "Solal Israel",
+    "site": ""
+  },
+  "_comment_presentateur": "Nom du chroniqueur ou du journaliste qui tient l'emission. Il s'affiche sous le nom du programme sur l'affiche « ce soir » et dans la legende Instagram — c'est la maniere de rendre a chacun ce qui lui revient, et cela vaut invitation a partager pour les personnes concernees. Laissez vide quand l'emission n'a pas de figure identifiee, ou quand le nom figure deja dans le titre du programme : « L'edito de Rony Hayot / Rony Hayot » se lirait comme un begaiement."
 }
