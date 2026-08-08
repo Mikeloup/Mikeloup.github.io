@@ -737,6 +737,11 @@ async function main() {
     log(`Historique de diffusion : ${archive.jours} journée(s) archivée(s) du ${archive.premier} au ${archive.dernier} — ${archive.parVideo.size} vidéo(s) avec un passage daté.`);
   }
   if (partenaires.length) nav.partenaires = true;
+
+  // Medias amis (une radio, un groupe Telegram…). Distinct des producteurs
+  // ci-dessus : aucun programme n'est echange, c'est un partenariat editorial.
+  const medias = await readJson(path.join(ROOT, 'data', 'partenaires-medias.json'), null);
+  if (medias?.partenaires?.length) { nav.medias = true; ctx.medias = medias; }
   if (grille) {
     const relies = grille.jours.flatMap((j) => j.programmes).filter((p) => p.videoId).length;
     const a = grille.apparies;
@@ -786,6 +791,12 @@ async function main() {
     const sansTexte = partenaires.filter((p) => !p.description && !p.texteFacultatif).map((p) => p.nom);
     log(`Autres programmes : ${partenaires.length} source(s), ${partenaires.reduce((n, p) => n + p.programmes.length, 0)} émission(s), ${partenaires.reduce((n, p) => n + p.passages, 0)} passage(s) dans la grille.`);
     if (sansTexte.length) warn(`${sansTexte.length} source(s) sans texte de présentation : ${sansTexte.join(', ')}`);
+  }
+
+  if (ctx.medias) {
+    await writePage('/partenaires/', R.partenairesMediasPage({ ...ctx }));
+    urls.push({ loc: '/partenaires/', freq: 'monthly', priority: '0.6' });
+    log(`Partenaires médias : ${ctx.medias.partenaires.length} média(s) présenté(s).`);
   }
 
   await writePage('/', R.homePage({

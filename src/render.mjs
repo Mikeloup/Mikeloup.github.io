@@ -567,6 +567,7 @@ ${push}
       <a href="/invites/">Invités</a>
       ${nav.grille ? '<a href="/grille/">Grille TV</a>' : ''}
       ${nav.partenaires ? '<a href="/autres-programmes/">Autres programmes</a>' : ''}
+      ${nav.medias ? '<a href="/partenaires/">Partenaires</a>' : ''}
       ${nav.partenaires ? '' : '<a href="/emissions/">Tout le catalogue</a>'}
       <a class="nav-follow" href="/suivre/">
         <svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 22a2.2 2.2 0 0 0 2.2-2.2H9.8A2.2 2.2 0 0 0 12 22Zm7-5.3V11a7 7 0 0 0-5.2-6.8V3.5a1.8 1.8 0 1 0-3.6 0v.7A7 7 0 0 0 5 11v5.7L3 18.7v.6h18v-.6l-2-2Z"/></svg>
@@ -610,6 +611,7 @@ ${content}
         <li><a href="/invites/">Invités et intervenants</a></li>
         ${nav.grille ? '<li><a href="/grille/">Grille des programmes</a></li>' : ''}
         ${nav.partenaires ? '<li><a href="/autres-programmes/">Autres programmes de l\'antenne</a></li>' : ''}
+        ${nav.medias ? '<li><a href="/partenaires/">Nos partenaires</a></li>' : ''}
         <li><a href="/recherche/">Rechercher une vidéo</a></li>
       </ul>
       <h4>Rester au courant</h4>
@@ -1869,4 +1871,71 @@ function phrasesEntieres(texte) {
   const fin = Math.max(t.lastIndexOf('. '), t.lastIndexOf('? '), t.lastIndexOf('! '),
     t.endsWith('.') || t.endsWith('?') || t.endsWith('!') ? t.length - 1 : -1);
   return fin > t.length * 0.35 ? t.slice(0, fin + 1).trim() : t;
+}
+
+
+/**
+ * Page « Nos partenaires » : les MÉDIAS amis.
+ *
+ * A ne pas confondre avec /autres-programmes/, qui presente les producteurs
+ * dont la chaine diffuse les emissions. Ici, aucun echange de programmes :
+ * une radio, un groupe Telegram, des medias avec lesquels Tandem TV avance.
+ * La distinction n'est pas administrative — un visiteur qui cherche « qui
+ * produit cette emission ? » et un visiteur qui cherche « qui sont vos amis ? »
+ * ne cherchent pas la meme chose, et melanger les deux les egare tous les deux.
+ */
+export function partenairesMediasPage({ config, categories, nav, medias = {}, buildTime }) {
+  const liste = medias.partenaires || [];
+  const titre = medias.titre || 'Nos partenaires';
+
+  const carte = (p) => `
+<article class="pm-carte" id="${escapeHtml(p.cle || '')}">
+  <div class="pm-tete">
+    ${p.logo ? `<img class="pm-logo" src="${escapeHtml(p.logo)}" alt="${escapeHtml(p.nom || '')}" width="120" height="120" loading="lazy">` : ''}
+    <div>
+      <h2 class="pm-nom">${escapeHtml(p.nom || '')}</h2>
+      ${p.baseline ? `<p class="pm-baseline muted small">${escapeHtml(p.baseline)}</p>` : ''}
+    </div>
+  </div>
+  ${p.description ? `<p class="pm-desc">${escapeHtml(p.description)}</p>` : ''}
+  ${(p.liens || []).length ? `<ul class="pm-liens">${(p.liens || []).map((l) => `
+    <li><a href="${escapeHtml(l.url)}" target="_blank" rel="noopener">${escapeHtml(l.libelle)}</a></li>`).join('')}</ul>` : ''}
+  ${p.visuel ? `<figure class="pm-visuel"><img src="${escapeHtml(p.visuel)}" alt="${escapeHtml(p.visuelAlt || p.nom || '')}" loading="lazy"></figure>` : ''}
+</article>`;
+
+  const content = `
+<div class="wrap">
+  <nav class="breadcrumb"><a href="/">Accueil</a> <span>›</span> <span>${escapeHtml(titre)}</span></nav>
+
+  <header class="page-head">
+    <p class="kicker">Médias amis</p>
+    <h1>${escapeHtml(titre)}</h1>
+    ${medias.chapeau ? `<p class="lede">${escapeHtml(medias.chapeau)}</p>` : ''}
+  </header>
+
+  ${liste.length
+    ? `<div class="pm-liste">${liste.map(carte).join('')}</div>`
+    : '<p class="g-avis">Aucun partenaire n\'est encore renseigné.</p>'}
+
+  ${nav.partenaires ? `<p class="g-note muted small">
+    Vous cherchez plutôt les producteurs dont Tandem TV diffuse les émissions ?
+    <a href="/autres-programmes/">Voir les autres programmes de l'antenne</a>.
+  </p>` : ''}
+</div>`;
+
+  return layout({
+    config,
+    categories,
+    nav,
+    buildTime,
+    title: titre,
+    description: `Les médias avec lesquels ${config.siteName} collabore : ${liste.map((p) => p.nom).join(', ')}.`,
+    canonical: '/partenaires/',
+    bodyClass: 'page-medias',
+    content,
+    jsonLd: breadcrumbLd(config, [
+      { name: 'Accueil', path: '/' },
+      { name: titre, path: '/partenaires/' },
+    ]),
+  });
 }

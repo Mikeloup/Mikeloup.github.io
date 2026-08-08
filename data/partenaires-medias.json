@@ -1,0 +1,30 @@
+{
+  "_comment": "Medias amis. A ne pas confondre avec data/partenaires.json, qui liste les producteurs dont Tandem TV DIFFUSE les programmes sur le canal 14. Ici, il s'agit de medias avec lesquels la chaine collabore sans echange de programmes : une radio, un groupe Telegram, demain un journal. Chaque entree porte un nom, une phrase de presentation, un logo depose dans assets/medias/, et autant de liens que necessaire. L'ordre du tableau est l'ordre d'affichage. Aucun de ces liens n'est verifie automatiquement : si un partenaire change d'adresse, corrigez-la ici.",
+  "titre": "Nos partenaires",
+  "chapeau": "Tandem TV n'avance pas seule. Voici les médias avec lesquels la chaîne collabore — pour informer plus largement, et pour se retrouver ailleurs que devant un écran de télévision.",
+  "partenaires": [
+    {
+      "cle": "enjoy-radio",
+      "nom": "Enjoy Radio",
+      "baseline": "Love Fresh & Cool",
+      "logo": "/assets/medias/enjoy-radio.png",
+      "visuel": "/assets/medias/partenariat-enjoy-radio.jpg",
+      "visuelAlt": "Partenariat officiel entre Tandem TV et Enjoy Radio : la télé et la radio, ensemble pour vous.",
+      "description": "La radio 100 % positive. Tandem TV et Enjoy Radio sont liées par un partenariat officiel : deux médias, une mission — informer, divertir et rapprocher.",
+      "liens": [
+        { "libelle": "L'application sur Android", "url": "https://play.google.com/store/apps/details?id=com.radioking.enjoyradiolovefreshcool6" },
+        { "libelle": "L'application sur iPhone", "url": "https://apps.apple.com/fr/app/enjoy-radio-love-fresh-cool/id6468841634" }
+      ]
+    },
+    {
+      "cle": "israel-infos-by-yma",
+      "nom": "Israël infos by YMA",
+      "baseline": "Groupe Telegram",
+      "logo": "/assets/medias/israel-infos-yma.jpg",
+      "description": "L'actualité d'Israël suivie au fil des heures, sur Telegram.",
+      "liens": [
+        { "libelle": "Rejoindre le groupe Telegram", "url": "https://t.me/israelinfobyYMA" }
+      ]
+    }
+  ]
+}
