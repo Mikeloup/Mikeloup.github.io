@@ -167,6 +167,25 @@ export async function publier({
   await new Promise((r) => setTimeout(r, 4000));
 
   const publication = await api(`${userId}/media_publish`, { creation_id: id }, token);
+
+  // Meta peut accepter le conteneur AVEC l'invitation, puis refuser la
+  // publication a cause d'elle — sans jamais le dire. On refait alors le
+  // chemin complet sans invitation plutot que de perdre la publication.
+  if (!publication.ok && collaborateurs.length) {
+    const nu = await api(`${userId}/media`, { image_url: imageUrl, caption }, token);
+    const idNu = nu.ok ? nu.data?.id : null;
+    if (idNu) {
+      await new Promise((r) => setTimeout(r, 4000));
+      const secours = await api(`${userId}/media_publish`, { creation_id: idNu }, token);
+      if (secours.ok) {
+        return {
+          ok: true,
+          id: secours.data?.id || idNu,
+          avertissement: `collaboration refusée par Meta (@${collaborateurs.join(', @')}) — publié sans elle.`,
+        };
+      }
+    }
+  }
   if (!publication.ok) return { ok: false, erreur: `publication refusée : ${publication.erreur}` };
 
   return { ok: true, id: publication.data?.id || id };
@@ -196,50 +215,72 @@ export async function publierReel({
   if (!token || !userId) return { ok: false, erreur: 'jeton ou identifiant de compte manquant' };
   if (!videoUrl) return { ok: false, erreur: 'aucune vidéo' };
 
-  const params = {
-    media_type: 'REELS',
-    video_url: videoUrl,
-    caption,
-    share_to_feed: partagerAuFil ? 'true' : 'false',
+  /** Un essai complet : conteneur, attente du traitement, publication. */
+  const essai = async (amis) => {
+    const params = {
+      media_type: 'REELS',
+      video_url: videoUrl,
+      caption,
+      share_to_feed: partagerAuFil ? 'true' : 'false',
+    };
+    if (amis.length) params.collaborators = JSON.stringify(amis);
+
+    const conteneur = await api(`${userId}/media`, params, token);
+    if (!conteneur.ok) return { ok: false, erreur: `conteneur refusé : ${conteneur.erreur}` };
+    const id = conteneur.data?.id;
+    if (!id) return { ok: false, erreur: 'conteneur sans identifiant' };
+
+    // Attente du traitement. On interroge toutes les cinq secondes plutôt que
+    // d'attendre une durée fixe : une vidéo de vingt mégaoctets peut être prête
+    // en quinze secondes comme en trois minutes, selon la charge de Meta.
+    const debut = Date.now();
+    let etat = '';
+    while ((Date.now() - debut) / 1000 < attenteMax) {
+      await new Promise((r) => setTimeout(r, 5000));
+      const url = new URL(`${API}/${id}`);
+      url.searchParams.set('fields', 'status_code,status');
+      url.searchParams.set('access_token', token);
+      try {
+        const res = await fetch(url);
+        const data = await res.json().catch(() => ({}));
+        etat = data?.status_code || '';
+        if (etat === 'FINISHED') break;
+        if (etat === 'ERROR') {
+          return { ok: false, erreur: `Meta a rejeté la vidéo : ${data?.status || 'sans détail'}` };
+        }
+      } catch { /* réseau instable : on retente au tour suivant */ }
+    }
+    if (etat !== 'FINISHED') {
+      return { ok: false, erreur: `traitement inachevé après ${attenteMax} s (état « ${etat || 'inconnu'} »)` };
+    }
+
+    const publication = await api(`${userId}/media_publish`, { creation_id: id }, token);
+    if (!publication.ok) return { ok: false, erreur: `publication refusée : ${publication.erreur}` };
+    return { ok: true, id: publication.data?.id || id, amis };
   };
-  if (collaborateurs.length) params.collaborators = JSON.stringify(collaborateurs);
 
-  let conteneur = await api(`${userId}/media`, params, token);
-  if (!conteneur.ok && collaborateurs.length) {
-    delete params.collaborators;
-    const secours = await api(`${userId}/media`, params, token);
-    if (secours.ok) conteneur = secours;
+  const premier = await essai(collaborateurs);
+  if (premier.ok || !collaborateurs.length) return premier;
+
+  // Une collaboration se propose, elle ne s'impose pas — et Meta ne le dit pas
+  // proprement. Le 9 août 2026, un Reel invitant @williamzerbib a été refusé
+  // deux fois de suite par « An unexpected error has occurred », au tout
+  // dernier geste, alors que la vidéo était acceptée et encodée. Le seul Reel
+  // publié jusque-là n'invitait personne. Meta traite l'invitation à part, et
+  // la refuse sans jamais dire pourquoi : compte introuvable, renommé, privé,
+  // ou n'acceptant pas d'être identifié.
+  //
+  // On republie donc sans elle. Perdre l'invitation coûte une audience ; perdre
+  // la publication coûte le travail entier.
+  const secours = await essai([]);
+  if (secours.ok) {
+    return {
+      ...secours,
+      erreur: null,
+      avertissement: `collaboration refusée par Meta (@${collaborateurs.join(', @')}) — `
+        + 'publié sans elle. Vérifiez que le compte existe, est public, et '
+        + "autorise qu'on l'identifie.",
+    };
   }
-  if (!conteneur.ok) return { ok: false, erreur: `conteneur refusé : ${conteneur.erreur}` };
-
-  const id = conteneur.data?.id;
-  if (!id) return { ok: false, erreur: 'conteneur sans identifiant' };
-
-  // Attente du traitement. On interroge toutes les cinq secondes plutôt que
-  // d'attendre une durée fixe : une vidéo de vingt mégaoctets peut être prête
-  // en quinze secondes comme en trois minutes, selon la charge de Meta.
-  const debut = Date.now();
-  let etat = '';
-  while ((Date.now() - debut) / 1000 < attenteMax) {
-    await new Promise((r) => setTimeout(r, 5000));
-    const url = new URL(`${API}/${id}`);
-    url.searchParams.set('fields', 'status_code,status');
-    url.searchParams.set('access_token', token);
-    try {
-      const res = await fetch(url);
-      const data = await res.json().catch(() => ({}));
-      etat = data?.status_code || '';
-      if (etat === 'FINISHED') break;
-      if (etat === 'ERROR') {
-        return { ok: false, erreur: `Meta a rejeté la vidéo : ${data?.status || 'sans détail'}` };
-      }
-    } catch { /* réseau instable : on retente au tour suivant */ }
-  }
-  if (etat !== 'FINISHED') {
-    return { ok: false, erreur: `traitement inachevé après ${attenteMax} s (état « ${etat || 'inconnu'} »)` };
-  }
-
-  const publication = await api(`${userId}/media_publish`, { creation_id: id }, token);
-  if (!publication.ok) return { ok: false, erreur: `publication refusée : ${publication.erreur}` };
-  return { ok: true, id: publication.data?.id || id };
+  return { ok: false, erreur: `${premier.erreur} (et sans collaboration : ${secours.erreur})` };
 }

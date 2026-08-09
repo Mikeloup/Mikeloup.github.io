@@ -81,6 +81,7 @@ const resultat = await insta.publierReel({
 
 if (resultat.ok) {
   console.log(`SUCCES : Reel publié (identifiant ${resultat.id}).`);
+  if (resultat.avertissement) console.log(`ATTENTION : ${resultat.avertissement}`);
   console.log('À vérifier sur le compte Instagram — c\'est le seul juge.');
 } else {
   console.error(`ECHEC : ${resultat.erreur}`);

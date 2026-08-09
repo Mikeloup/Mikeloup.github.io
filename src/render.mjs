@@ -1957,16 +1957,22 @@ export function partenairesMediasPage({ config, categories, nav, medias = {}, bu
  */
 export function storiesPage({ config, categories, nav, stories = [], buildTime }) {
   const carte = (e) => `
-<article class="st-carte">
+<article class="st-carte" data-id="${escapeHtml(e.id)}">
   <img class="st-image" src="/insta/story-${escapeHtml(e.id)}.jpg" alt="" loading="lazy" width="1080" height="1920">
   <div class="st-corps">
     <p class="st-rubrique">${escapeHtml(e.rubrique || '')}</p>
     <h2 class="st-titre">${escapeHtml(e.titre || '')}</h2>
+    <p class="st-actions">
+      <button class="st-partager" type="button" hidden
+        data-image="/insta/story-${escapeHtml(e.id)}.jpg"
+        data-titre="${escapeHtml(e.titre || '')}">Partager vers Instagram</button>
+      <a class="st-telecharger" href="/insta/story-${escapeHtml(e.id)}.jpg" download="story-${escapeHtml(e.id)}.jpg">Enregistrer l'image</a>
+      <button class="st-masquer" type="button">Masquer</button>
+    </p>
     <p class="st-lien">
       <input class="st-champ" type="text" readonly value="${escapeHtml(e.youtube || '')}" aria-label="Adresse YouTube">
       <button class="st-copier" type="button" data-lien="${escapeHtml(e.youtube || '')}">Copier</button>
     </p>
-    <p><a class="st-ouvrir" href="/insta/story-${escapeHtml(e.id)}.jpg" target="_blank" rel="noopener">Ouvrir l'image en grand</a></p>
   </div>
 </article>`;
 
@@ -1975,25 +1981,105 @@ export function storiesPage({ config, categories, nav, stories = [], buildTime }
   <header class="page-head">
     <p class="kicker">Coulisses</p>
     <h1>Stories prêtes à publier</h1>
-    <p class="lede">Sur téléphone : appui long sur l'image pour l'enregistrer, puis « Copier »
-    l'adresse YouTube. Dans Instagram, publiez la story et posez le sticker <strong>Lien</strong>
-    en collant l'adresse. Meta interdit aux outils extérieurs de poser ce sticker — c'est la
-    seule étape qui ne peut pas être automatisée.</p>
+    <p class="lede">Sur téléphone, <strong>Partager vers Instagram</strong> envoie l'image
+    directement dans l'application. Copiez l'adresse YouTube avant, puis posez le sticker
+    <strong>Lien</strong> sur la story et collez-la. Meta interdit aux outils extérieurs de
+    poser ce sticker : c'est le seul geste qui ne peut pas être automatisé.</p>
+    <p class="lede small muted">Le bouton de partage n'apparaît que sur les appareils qui le
+    permettent ; ailleurs, « Enregistrer l'image » fait le même travail en deux temps.
+    <strong>Masquer</strong> écarte une proposition que vous ne publierez pas — sur cet
+    appareil seulement, et sans rien envoyer nulle part.</p>
   </header>
+
+  <p id="st-retablir" class="st-retablir muted small" hidden>
+    Des propositions sont masquées. <button id="st-tout-remontrer" type="button" class="st-lien-bouton">Tout réafficher</button>
+  </p>
 
   ${stories.length
     ? `<div class="st-liste">${stories.map(carte).join('')}</div>`
     : '<p class="g-avis">Aucune story disponible pour le moment.</p>'}
+
+  <p id="st-vide" class="g-avis" hidden>Toutes les propositions sont masquées.</p>
 </div>
 <script>
-document.addEventListener('click', function (ev) {
-  var b = ev.target.closest('.st-copier');
-  if (!b) return;
-  navigator.clipboard.writeText(b.dataset.lien).then(function () {
-    var avant = b.textContent; b.textContent = 'Copié'; b.classList.add('ok');
-    setTimeout(function () { b.textContent = avant; b.classList.remove('ok'); }, 1600);
+(function () {
+  var CLE = 'tandem-stories-masquees';
+
+  function masquees() {
+    try { return JSON.parse(localStorage.getItem(CLE) || '[]'); } catch (e) { return []; }
+  }
+  function enregistrer(liste) {
+    try { localStorage.setItem(CLE, JSON.stringify(liste.slice(-60))); } catch (e) { /* mode privé */ }
+  }
+
+  // Les propositions ecartees restent ecartees, sur CET appareil seulement.
+  // Rien n'est envoye nulle part : le site est fabrique d'avance et ne sait
+  // pas ce que Michael a choisi de publier.
+  function appliquer() {
+    var cachees = masquees(), reste = 0;
+    document.querySelectorAll('.st-carte').forEach(function (c) {
+      var off = cachees.indexOf(c.dataset.id) !== -1;
+      c.hidden = off;
+      if (!off) reste++;
+    });
+    var barre = document.getElementById('st-retablir');
+    if (barre) barre.hidden = cachees.length === 0;
+    var vide = document.getElementById('st-vide');
+    if (vide) vide.hidden = reste !== 0;
+  }
+
+  // Le partage natif accepte-t-il un fichier ? Sur iPhone oui, et la feuille de
+  // partage propose Instagram directement — c'est le chemin le plus court :
+  // un appui, et l'image arrive dans les stories sans passer par les Photos.
+  var partageFichiers = !!(navigator.canShare && navigator.share);
+  if (partageFichiers) {
+    document.querySelectorAll('.st-partager').forEach(function (b) { b.hidden = false; });
+  }
+
+  document.addEventListener('click', function (ev) {
+    var copier = ev.target.closest('.st-copier');
+    if (copier) {
+      navigator.clipboard.writeText(copier.dataset.lien).then(function () {
+        var avant = copier.textContent;
+        copier.textContent = 'Copié'; copier.classList.add('ok');
+        setTimeout(function () { copier.textContent = avant; copier.classList.remove('ok'); }, 1600);
+      });
+      return;
+    }
+
+    var cacher = ev.target.closest('.st-masquer');
+    if (cacher) {
+      var carte = cacher.closest('.st-carte');
+      var liste = masquees();
+      if (liste.indexOf(carte.dataset.id) === -1) liste.push(carte.dataset.id);
+      enregistrer(liste); appliquer();
+      return;
+    }
+
+    if (ev.target.id === 'st-tout-remontrer') {
+      enregistrer([]); appliquer();
+      return;
+    }
+
+    var part = ev.target.closest('.st-partager');
+    if (part) {
+      var avant = part.textContent;
+      part.textContent = 'Préparation…'; part.disabled = true;
+      fetch(part.dataset.image).then(function (r) { return r.blob(); }).then(function (blob) {
+        var f = new File([blob], 'story.jpg', { type: 'image/jpeg' });
+        if (navigator.canShare && !navigator.canShare({ files: [f] })) throw new Error('fichier refusé');
+        return navigator.share({ files: [f], title: part.dataset.titre });
+      }).catch(function () {
+        // Partage refuse ou annule : on ne dit rien, l'utilisateur a toujours
+        // le bouton « Enregistrer l'image » juste a cote.
+      }).then(function () {
+        part.textContent = avant; part.disabled = false;
+      });
+    }
   });
-});
+
+  appliquer();
+})();
 </script>`;
 
   return layout({

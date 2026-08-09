@@ -1372,4 +1372,21 @@ a.g-src:hover { color: var(--accent); text-decoration: underline; text-underline
   background: var(--brand); color: #fff; cursor: pointer;
 }
 .st-copier.ok { background: #1b7a3d; }
-.st-ouvrir { font-size: .82rem; }
+.st-actions { display: flex; flex-wrap: wrap; gap: .4rem; margin: 0 0 .6rem; }
+.st-partager, .st-telecharger, .st-masquer {
+  font: inherit; font-size: .82rem; font-weight: 650; text-decoration: none;
+  padding: .5rem .8rem; border-radius: var(--radius-sm); cursor: pointer;
+  border: 1px solid var(--line); background: var(--bg-soft); color: var(--text);
+}
+/* Le partage natif est le chemin le plus court vers Instagram : c'est lui qui
+   porte la couleur, les deux autres sont des solutions de repli. */
+.st-partager { background: var(--brand); border-color: var(--brand); color: #fff; }
+.st-partager[disabled] { opacity: .6; }
+.st-masquer { color: var(--muted); }
+.st-retablir { margin: 0 0 1rem; }
+.st-lien-bouton {
+  font: inherit; font-size: inherit; font-weight: 650; color: var(--accent);
+  background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.st-carte[hidden] { display: none; }
