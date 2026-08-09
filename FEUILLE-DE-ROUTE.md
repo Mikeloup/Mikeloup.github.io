@@ -664,3 +664,152 @@ l'assistant est effacé, ce fichier non.
 - **Le fichier `deploy.yml` ne transmettait que `YOUTUBE_API_KEY`** : pendant plusieurs jours, les notifications automatiques n'ont jamais pu partir, sans autre trace qu'une ligne dans le journal. Corrigé le 30 juillet 2026. À vérifier après tout ajout d'un nouveau secret.
 - **Les tâches planifiées de GitHub aux heures rondes (`:00`, `:30`) sont retardées ou ignorées.** Le premier rapport ne s'est jamais déclenché à 5 h 30 UTC. Horaire déplacé à `17 6 * * *`.
 - **Cloudflare : le « site tag » n'est PAS le jeton de la balise.** Le jeton (`85d2424b…`) sert à la mesure sur les pages ; le site tag (`f63e35fc…`, visible dans l'adresse du tableau de bord) sert aux requêtes GraphQL. Les confondre renvoie zéro, sans aucune erreur.
+
+---
+
+# Journal des 8 et 9 août 2026
+
+*Deux journées entières. Tout ce qui suit a été fait, vérifié en ligne, et tourne
+seul. Ce qui reste est listé plus bas, dans l'ordre où nous le reprendrons.*
+
+## Fait le 8 août
+
+- **Logos par émission sur l'affiche du soir** : avatar YouTube du partenaire,
+  image déposée à la main, ou portrait du chroniqueur. Jamais le logo Tandem sur
+  l'émission d'un tiers — arbitrage de Michael, à respecter absolument.
+- Logos installés : Mémoire et vigilance, Du côté de chez Szwarc, Léon le média,
+  Enjoy Radio (logo officiel fourni par Michael).
+- **Nom du chroniqueur** sous le nom de l'émission, sur l'affiche du soir, dans la
+  légende Instagram et sur les vignettes 4:5. Jamais répété quand il figure déjà
+  dans le titre de la rubrique (« L'édito de Rony Hayot ») — règle du non-bégaiement.
+- Onze noms de chroniqueurs renseignés dans `data/grille-emissions.json`
+  (champ `presentateur`). Shalom Salam Jaffa reste sans nom.
+- **Page « Nos partenaires »** (`/partenaires/`) : les médias amis, à ne pas
+  confondre avec `/autres-programmes/` (les producteurs diffusés). Enjoy Radio et
+  Israël infos by YMA. Données dans `data/partenaires-medias.json`.
+- **Collision d'adresses corrigée** : l'ancienne adresse Wix `/partenaires`
+  écrasait la nouvelle page, parce que les transferts sont écrits APRÈS les pages.
+  Garde-fou posé : une ancienne adresse ne peut plus recouvrir une page vivante,
+  et la construction le signale.
+- **Publication Instagram après le déploiement** et non pendant la construction
+  (workflow `instagram-video.yml`, déclenché par la réussite de `deploy.yml`).
+  Délai ramené de quatre heures à une minute.
+- `youtube.cacheMinutes` : 100 → 45.
+- **Fenêtre horaire** au lieu d'une égalité stricte pour l'affiche du soir et la
+  lettre hebdomadaire : GitHub retarde ses tâches de dix à trente minutes, et le
+  contrôle « il est exactement 16 h » faisait manquer l'envoi en silence.
+- `instagram.enabled` était sur **false** depuis le début : la publication
+  automatique par vidéo n'avait jamais fonctionné. Corrigé.
+
+## Fait le 9 août
+
+- **Stories 9:16** fabriquées par le site + page de coulisses `/story/`.
+  *Michael a renoncé à s'en servir* : passer par le Reel dans Instagram est plus
+  court. La page reste, sans coût. Meta interdit tout sticker — donc tout lien —
+  sur une story déposée par l'API : c'est une porte murée, pas un contournement.
+- **Chaîne des Reels rendue autonome** : tâche `launchd`
+  `com.tandemstudio.reels`, toutes les heures, une publication au plus, trois
+  heures entre deux.
+- **Quatre défauts corrigés dans la chaîne des Reels :**
+  1. *Bords des sous-titres* — Whisper découpe en respirations, pas en phrases :
+     le premier segment apportait la fin de la phrase précédente (« toujours le
+     cas. »), incrustée dans la vidéo et reprise en tête de légende.
+  2. *Contrôle de publication YouTube* — le pipeline choisissait ses vidéos dans
+     la base de production, qui ignore tout de YouTube. Il consulte désormais
+     l'index du site (`search.json`), qui ne contient jamais de vidéo privée. En
+     cas de doute : non.
+  3. *Titre lu au mauvais endroit* — les requêtes SQL ne sélectionnaient pas
+     `title_override`, donc le contrôle comparait un nom de fichier de tournage à
+     des titres d'émission.
+  4. *Historique menteur* — « publié » était inscrit dès le déclenchement du
+     workflow, pas à sa réussite. Le pipeline attend maintenant le verdict de
+     GitHub.
+- **Repli sur les collaborations Instagram** : si Meta refuse la publication à
+  cause d'une invitation, on republie sans elle. Un compte invité doit être
+  **professionnel** (Business ou Créateur), public, actif depuis 30 jours — sinon
+  Meta refuse la publication entière. C'est le cas de @williamzerbib.
+- **28 anciennes adresses Wix** reçoivent une destination (`manuel` dans
+  `data/anciennes-adresses.json`). 24 restent en 404 : c'étaient des articles du
+  blog, sans équivalent vidéo — décision assumée de Michael.
+- **Dossier `tandemtv-v25` supprimé** du dépôt (36 fichiers, ancienne copie).
+- **Workflows** : `actions/checkout` et `actions/setup-node` en v5 (socle Node 24).
+- **Rubrique Invités remise d'aplomb :**
+  - Onze faux invités écartés (Art Connexion, Atout Cœur, Comedy Web, Côté
+    Cuisine, Coup de cœur littéraire, Guide en Tandem, Haolam Hamedoubar, Hasbara
+    en Tandem, Success Movie, Mont des Oliviers, Mont du Temple, Projet Ado).
+  - **Aucune vidéo de moins de deux minutes** ne peut servir de portrait : les
+    Shorts, toujours les plus récents, défiguraient une dizaine de fiches.
+  - Vingt vignettes imposées à la main (champ `vignette` dans `personnes.json`).
+  - Le rapprochement des fiches ignore accents, casse **et titres de civilité**
+    (Maître, Rav, Dr…). Une fiche orpheline est signalée à la construction.
+
+## Incident du 9 août au soir — À NE PAS REPRODUIRE
+
+Instagram a opposé « Réessayer plus tard » à Michael sur son propre téléphone.
+Aucune restriction de compte (statut intégralement vert), mais un frein de
+fréquence. Cause probable : une demi-douzaine d'opérations chez Meta en quelques
+heures, dont plusieurs terminées en erreur (le Reel a échoué deux fois, chaque
+essai créant un conteneur vidéo complet, et le repli en créait un second).
+
+**`tandem_tv_2` EST le compte principal. Il ne doit jamais être bloqué.**
+
+Protections à poser **en priorité absolue**, avant toute autre chose :
+
+1. Délai d'au moins une heure après un échec, avant toute nouvelle tentative.
+2. Compter les **tentatives**, pas seulement les publications réussies : le
+   garde-fou actuel espace les succès et ignore les échecs.
+3. S'arrêter après deux échecs consécutifs, au lieu de retenter toutes les heures.
+4. Ne plus jamais proposer une collaboration à un compte qui l'a déjà refusée —
+   mémoriser les refus. C'est cette invitation qui a provoqué la cascade.
+
+---
+
+# Analyse du site — 9 août 2026
+
+## Ce qui cloche aujourd'hui
+
+- **Sept textes manquent** : cinq rubriques sans présentation (26 Nuances 2
+  Vannes, Puissance(s), La France en Tandem, Jo Hanna Fitness, Avec vous) et deux
+  partenaires sans texte (Léon le média, Les Israéliennes). Michael doit les
+  dicter, le site n'invente rien.
+- **Onze diffusions de la grille** ne trouvent pas leur vidéo.
+- **La grille ne montre que trois jours** — fenêtre d'export de la régie. Une
+  semaine donnerait une raison de revenir.
+- **39 rubriques sur 74 absentes des menus** (règle : moins de 6 mois OU 15+
+  vidéos). À rediscuter.
+- **Adresse postale de Kit (Seattle)** dans les courriels : la loi impose une
+  adresse identifiable de l'expéditeur.
+- Mentions légales incomplètes, lien PayPal et Telegram absents.
+- Quatre actions GitHub encore sur Node 20 (`cache`, `configure-pages`,
+  `upload-pages-artifact`, `deploy-pages`) — à changer quand leurs versions
+  Node 24 existeront. Suppression annoncée pour l'automne 2026.
+- La clé de cache `catalogue-youtube-${{ github.run_id }}` crée une entrée par
+  exécution.
+- Six comptes Instagram de partenaires manquent : ECUJE, Radio Shalom,
+  Sébastien Lévi, Shalom Salam.
+
+## Idées proposées, par ordre de valeur
+
+1. **Publier les transcriptions.** Mille vidéos, plusieurs centaines d'heures de
+   parole que Google ne voit pas. Le pipeline sait déjà transcrire (12 faites).
+   Publier le texte sous chaque vidéo, replié, avec horodatages cliquables :
+   le site devient une **archive consultable de la parole francophone sur
+   Israël**. Coût : du temps machine la nuit, pas un centime.
+2. **Chercher dans les paroles** — corollaire du premier.
+3. **Un flux podcast audio** : les mp3 existent déjà. Présence sur Apple
+   Podcasts et Spotify, gratuit, audience entièrement neuve.
+4. **Des chapitres** tirés de la transcription, reversés dans la description
+   YouTube.
+5. **Bandeau « en ce moment sur le canal 14 »** — relier enfin la chaîne et le
+   site. Le calcul existe déjà pour « prochaine diffusion ».
+6. **Des dossiers éditoriaux** : 7 octobre, otages, Iran, antisémitisme en
+   France. Travail éditorial de Michael.
+
+## Facebook
+
+Publier dans un **groupe** est impossible : Meta a supprimé l'API des groupes le
+22 avril 2024, permissions comprises, dans toutes les versions. Aucun outil au
+monde ne le peut.
+
+Publier sur une **page** reste possible, comme Instagram. Michael a déjà une
+page. Chantier à ouvrir.
