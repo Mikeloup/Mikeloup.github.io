@@ -425,7 +425,7 @@ function itemListLd(config, videos, path) {
 
 export function layout({
   config, categories, nav = {}, title, description, canonical, image, ogType = 'website', bodyClass = '',
-  content, jsonLd = null, buildTime, feed = null, robots = null,
+  content, jsonLd = null, buildTime, feed = null, robots = null, sansManifeste = false,
 }) {
   const fullTitle = title === config.siteName ? `${config.siteName} — ${config.tagline}` : `${title} | ${config.siteName}`;
   const racine = config.siteUrl.replace(/\/$/, '');
@@ -501,10 +501,10 @@ ${robots ? `<meta name="robots" content="${escapeHtml(robots)}">` : ''}
 <link rel="preconnect" href="https://i.ytimg.com" crossorigin>
 <link rel="alternate" type="application/rss+xml" title="${escapeHtml(config.siteName)}" href="/rss.xml">
 ${feed ? `<link rel="alternate" type="application/rss+xml" title="${escapeHtml(feed.title)}" href="${escapeHtml(feed.href)}">` : ''}
-<link rel="manifest" href="/manifest.webmanifest">
+${sansManifeste ? '' : `<link rel="manifest" href="/manifest.webmanifest">`}
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="apple-mobile-web-app-title" content="${escapeHtml(config.siteName)}">
+<meta name="apple-mobile-web-app-title" content="${escapeHtml(sansManifeste ? 'Stories' : config.siteName)}">
 <link rel="icon" href="/favicon.png" type="image/png">
 <link rel="apple-touch-icon" href="/favicon.png">
 <link rel="stylesheet" href="/assets/style.css">
@@ -2006,6 +2006,11 @@ document.addEventListener('click', function (ev) {
     canonical: '/story/',
     bodyClass: 'page-stories',
     robots: 'noindex, nofollow',
+    // Sans le manifeste de l'application. Sinon « Ajouter a l'ecran d'accueil »
+    // sur iPhone suit le `start_url` du manifeste — la racine du site — et le
+    // raccourci retombe sur l'accueil au lieu de cette page. Constate par
+    // Michael le 9 aout 2026.
+    sansManifeste: true,
     content,
   });
 }
