@@ -171,10 +171,19 @@ export function collecterPersonnes(categories, allVideos, manuel = {}) {
     p.slug = slugify(p.nom);
   }
 
-  // Les fiches ecrites a la main sont retrouvees SANS ACCENTS NI CASSE. Une
-  // clef mal accentuee dans data/personnes.json ne faisait rien du tout, en
-  // silence — et l'on cherchait le defaut dans le code.
-  const fiches = new Map(Object.entries(manuel.fiches || {}).map(([k, v]) => [clef(k), v]));
+  // Les fiches ecrites a la main sont retrouvees SANS ACCENTS, SANS CASSE et
+  // SANS TITRE DE CIVILITE. Une clef mal accentuee — ou un « Maitre » oublie —
+  // ne faisait rien du tout, en silence, et l'on cherchait le defaut dans le
+  // code. « Rav Saadia Morali », « Saadia Morali » et « saadia morali »
+  // designent la meme personne.
+  const sansTitre = (nom) => clef(nom)
+    .replace(/^(maitre|me|rav|rabbin|grand rabbin|dr|docteur|pr|professeur|general|colonel)\s+/, '');
+  const fiches = new Map();
+  for (const [k, v] of Object.entries(manuel.fiches || {})) {
+    fiches.set(clef(k), v);
+    fiches.set(sansTitre(k), v);
+  }
+  const ficheDe = (nom) => fiches.get(clef(nom)) || fiches.get(sansTitre(nom)) || null;
 
   const retenues = [...gens.values()]
     .filter((p) => p.videos.length >= seuil || inclure.has(p.nom.toLowerCase()))
@@ -183,14 +192,15 @@ export function collecterPersonnes(categories, allVideos, manuel = {}) {
       rubriques: [...p.rubriques],
       presente: [...p.presente],
       videos: p.videos.sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt)),
-      fiche: fiches.get(clef(p.nom)) || null,
+      fiche: ficheDe(p.nom),
     }))
     .sort((a, b) => b.videos.length - a.videos.length || a.nom.localeCompare(b.nom, 'fr'));
 
   // Une fiche qui ne correspond a personne est une faute de frappe : on la
   // signale plutot que de la laisser dormir.
-  const vues = new Set(retenues.map((p) => clef(p.nom)));
-  const orphelines = [...fiches.keys()].filter((k) => !vues.has(k));
+  const vues = new Set(retenues.flatMap((p) => [clef(p.nom), sansTitre(p.nom)]));
+  const orphelines = [...new Set(Object.keys(manuel.fiches || {}))]
+    .filter((k) => !vues.has(clef(k)) && !vues.has(sansTitre(k)));
 
   return { personnes: retenues, presentateurParRubrique, fichesOrphelines: orphelines };
 }
