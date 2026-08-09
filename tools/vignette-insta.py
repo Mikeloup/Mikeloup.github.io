@@ -383,8 +383,6 @@ def main():
     return 0
 
 
-if __name__ == '__main__':
-    sys.exit(main())
 
 
 # --- Les stories 9:16 ---------------------------------------------------------
@@ -469,3 +467,8 @@ def fabriquer_stories(entrees, logo):
         faites += 1
     if faites:
         print(f'vignette-insta : {faites} story(s) 9:16 produite(s).')
+
+
+
+if __name__ == '__main__':
+    sys.exit(main())
