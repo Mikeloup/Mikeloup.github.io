@@ -1067,6 +1067,17 @@ async function main() {
   log(`✅ ${urls.length} pages générées dans dist/ en ${((Date.now() - t0) / 1000).toFixed(1)}s`);
 
   await ecrireManifesteInsta(config, allVideos, await presentateursParRubrique(categories), personnesParVideo);
+
+  // Page de coulisses : les stories 9:16 a publier a la main. Volontairement
+  // hors menus, hors plan du site et non indexable — c'est un outil de travail,
+  // pas une page pour le public.
+  {
+    const manif = await readJson(path.join(DIST, 'insta', 'manifest.json'), []);
+    if (Array.isArray(manif) && manif.length) {
+      await writePage('/story/', R.storiesPage({ ...ctx, stories: manif }));
+      log(`Stories : ${manif.length} image(s) 9:16 proposée(s) sur /story/.`);
+    }
+  }
   await ecrireFicheDuSoir(config, grilleBrute, externes);
   await annonceNouveautes(config, allVideos, personnesParVideo);
 }
@@ -1235,6 +1246,7 @@ async function ecrireManifesteInsta(config, allVideos, presentateurs = new Map()
         pied,
         image: v.thumbnail || `https://i.ytimg.com/vi/${v.id}/maxresdefault.jpg`,
         vuLe: v.vuLe || v.publishedAt || '',
+        youtube: `https://www.youtube.com/watch?v=${v.id}`,
         legende: insta.legende(v, { config, emission: cat?.title || '', invites }),
         collaborateurs: insta.collaborateursDe(v, {
           emissionSlug: cat?.slug || '', invites, carnet,

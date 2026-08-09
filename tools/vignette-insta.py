@@ -375,6 +375,7 @@ def main():
                  ).save(sortie, quality=88, optimize=True)
         faites += 1
 
+    fabriquer_stories(entrees, logo)
     fabriquer_ce_soir(logo)
 
     print(f'vignette-insta : {faites} vignette(s) produite(s)'
@@ -384,3 +385,87 @@ def main():
 
 if __name__ == '__main__':
     sys.exit(main())
+
+
+# --- Les stories 9:16 ---------------------------------------------------------
+#
+# Meta n'autorise AUCUN sticker sur une story deposee par l'API : ni lien, ni
+# sondage, ni mention. Une story publiee automatiquement serait donc une image
+# muette, sans rien a toucher — et le lien est precisement ce qui fait l'interet
+# d'une story pour une chaine. Arbitrage de Michael, 9 aout 2026 : le site
+# FABRIQUE l'image, Michael la publie depuis l'application et y pose lui-meme le
+# sticker vers YouTube. Trente secondes, et le lien fonctionne vraiment.
+#
+# D'ou une contrainte de mise en page absente des vignettes 4:5 : la moitie
+# basse doit rester libre. C'est la que se pose le sticker, et c'est aussi la
+# zone que l'interface d'Instagram recouvre (barre de reponse, nom du compte).
+
+LS, HS = 1080, 1920
+STORY_HAUT = 250        # bandeau superieur masque par l'interface d'Instagram
+STORY_BAS = 1560        # sous cette ligne, on ne dessine plus rien : place au sticker
+
+
+def dessiner_story(source, titre, logo, rubrique='', presentateur=''):
+    r = max(LS / source.width, HS / source.height) * 1.1
+    fond = source.resize((int(source.width * r), int(source.height * r)), Image.LANCZOS)
+    fond = fond.filter(ImageFilter.GaussianBlur(46))
+    gx, gy = (fond.width - LS) // 2, (fond.height - HS) // 2
+    fond = fond.crop((gx, gy, gx + LS, gy + HS))
+    img = Image.blend(fond, Image.new('RGB', (LS, HS), (10, 4, 40)), 0.5)
+    d = ImageDraw.Draw(img)
+
+    if logo is not None:
+        lw = 260
+        lg = logo.resize((lw, int(logo.height * lw / logo.width)), Image.LANCZOS)
+        img.paste(lg, (60, STORY_HAUT + 30), lg)
+
+    # La miniature entiere, jamais recadree — meme principe que la vignette 4:5.
+    vh = int(LS * source.height / source.width)
+    vy = STORY_HAUT + 250
+    img.paste(source.resize((LS, vh), Image.LANCZOS), (0, vy))
+    d.rectangle([0, vy + vh, LS, vy + vh + 8], fill=ROUGE)
+
+    y = vy + vh + 60
+    if rubrique:
+        d.text((62, y), rubrique.upper(), font=police(32), fill=BLEU_PIED)
+        y += 54
+    if presentateur:
+        d.text((62, y), presentateur, font=police(32, gras=False), fill=(232, 228, 248))
+        y += 52
+
+    dispo = STORY_BAS - y - 70
+    lignes, f, interligne = [titre], police(64), 82
+    for taille in (64, 58, 52, 46, 40):
+        f = police(taille)
+        interligne = int(taille * 1.28)
+        essai = decouper(titre, f, d, LS - 120)
+        if len(essai) * interligne <= dispo:
+            lignes = essai
+            break
+        lignes = essai[:max(1, dispo // interligne)]
+    for ligne in lignes:
+        d.text((60, y), ligne, font=f, fill=(255, 255, 255))
+        y += interligne
+
+    d.text((60, STORY_BAS - 46), 'tandemtv.net  ·  canal 14 du bouquet Annatel TV',
+           font=police(30, gras=False), fill=BLEU_PIED)
+    return img
+
+
+def fabriquer_stories(entrees, logo):
+    """Une story par entree du manifeste. Silencieux si la miniature manque :
+    la story est un bonus, jamais une condition."""
+    faites = 0
+    for e in entrees:
+        sortie = os.path.join(DOSSIER, f"story-{e['id']}.jpg")
+        if os.path.exists(sortie):
+            continue
+        source = telecharger(e.get('image', ''))
+        if source is None:
+            continue
+        dessiner_story(source, e.get('titre', ''), logo,
+                       e.get('rubrique', ''), e.get('presentateur', '')
+                       ).save(sortie, quality=88, optimize=True)
+        faites += 1
+    if faites:
+        print(f'vignette-insta : {faites} story(s) 9:16 produite(s).')

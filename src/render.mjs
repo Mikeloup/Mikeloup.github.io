@@ -1939,3 +1939,73 @@ export function partenairesMediasPage({ config, categories, nav, medias = {}, bu
     ]),
   });
 }
+
+
+/**
+ * Page « Stories du jour » : les images 9:16 prêtes à publier.
+ *
+ * Pourquoi cette page existe : Meta n'autorise AUCUN sticker sur une story
+ * déposée par l'API — ni lien, ni sondage, ni mention. Une story publiée
+ * automatiquement serait donc muette, sans rien à toucher. Michael a tranché le
+ * 9 août 2026 : le site fabrique l'image, lui la publie depuis l'application et
+ * y pose le lien vers YouTube.
+ *
+ * Cette page est donc un outil, pas une page de site : elle s'ouvre sur un
+ * téléphone, on y enregistre l'image d'un appui long, on copie l'adresse, et
+ * l'on passe dans Instagram. Elle n'est ni dans les menus, ni dans le plan du
+ * site, ni indexable — c'est une page de coulisses.
+ */
+export function storiesPage({ config, categories, nav, stories = [], buildTime }) {
+  const carte = (e) => `
+<article class="st-carte">
+  <img class="st-image" src="/insta/story-${escapeHtml(e.id)}.jpg" alt="" loading="lazy" width="1080" height="1920">
+  <div class="st-corps">
+    <p class="st-rubrique">${escapeHtml(e.rubrique || '')}</p>
+    <h2 class="st-titre">${escapeHtml(e.titre || '')}</h2>
+    <p class="st-lien">
+      <input class="st-champ" type="text" readonly value="${escapeHtml(e.youtube || '')}" aria-label="Adresse YouTube">
+      <button class="st-copier" type="button" data-lien="${escapeHtml(e.youtube || '')}">Copier</button>
+    </p>
+    <p><a class="st-ouvrir" href="/insta/story-${escapeHtml(e.id)}.jpg" target="_blank" rel="noopener">Ouvrir l'image en grand</a></p>
+  </div>
+</article>`;
+
+  const content = `
+<div class="wrap">
+  <header class="page-head">
+    <p class="kicker">Coulisses</p>
+    <h1>Stories prêtes à publier</h1>
+    <p class="lede">Sur téléphone : appui long sur l'image pour l'enregistrer, puis « Copier »
+    l'adresse YouTube. Dans Instagram, publiez la story et posez le sticker <strong>Lien</strong>
+    en collant l'adresse. Meta interdit aux outils extérieurs de poser ce sticker — c'est la
+    seule étape qui ne peut pas être automatisée.</p>
+  </header>
+
+  ${stories.length
+    ? `<div class="st-liste">${stories.map(carte).join('')}</div>`
+    : '<p class="g-avis">Aucune story disponible pour le moment.</p>'}
+</div>
+<script>
+document.addEventListener('click', function (ev) {
+  var b = ev.target.closest('.st-copier');
+  if (!b) return;
+  navigator.clipboard.writeText(b.dataset.lien).then(function () {
+    var avant = b.textContent; b.textContent = 'Copié'; b.classList.add('ok');
+    setTimeout(function () { b.textContent = avant; b.classList.remove('ok'); }, 1600);
+  });
+});
+</script>`;
+
+  return layout({
+    config,
+    categories,
+    nav,
+    buildTime,
+    title: 'Stories prêtes à publier',
+    description: 'Page de coulisses.',
+    canonical: '/story/',
+    bodyClass: 'page-stories',
+    robots: 'noindex, nofollow',
+    content,
+  });
+}
