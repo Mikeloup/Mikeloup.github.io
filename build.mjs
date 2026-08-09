@@ -565,7 +565,12 @@ async function main() {
   // montrent que l'essentiel des recherches menant au site sont des recherches
   // de noms : ce sont ces pages qui leur répondent.
   const fichesManuelles = await readJson(path.join(ROOT, 'data', 'personnes.json'), {});
-  const { personnes, presentateurParRubrique } = collecterPersonnes(categories, allVideos, fichesManuelles);
+  const { personnes, presentateurParRubrique, fichesOrphelines } =
+    collecterPersonnes(categories, allVideos, fichesManuelles);
+  if (fichesOrphelines?.length) {
+    warn(`${fichesOrphelines.length} fiche(s) de personnes.json ne correspondent à personne `
+      + `— orthographe à vérifier : ${fichesOrphelines.join(', ')}`);
+  }
   ctx.presentateurParRubrique = presentateurParRubrique;
 
   const personnesParVideo = new Map();

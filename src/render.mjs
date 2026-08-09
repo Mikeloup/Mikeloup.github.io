@@ -1404,10 +1404,31 @@ export function installPage({ config, categories, nav, buildTime }) {
   });
 }
 
-/** Illustration d'une personne : sa photo imposée, sinon sa vidéo la plus récente. */
+/**
+ * Illustration d'une personne.
+ *
+ * Trois sources, dans cet ordre :
+ *
+ *   1. `vignette` — l'identifiant d'une vidéo choisie à la main. C'est le
+ *      dernier mot : Michael a parfois une préférence que rien ne peut deviner
+ *      (« la photo avec Hersh Goldberg », « le Rosh Hashana »).
+ *   2. `photo` — un portrait déposé dans assets/visages/.
+ *   3. À défaut, la vidéo la plus récente — mais JAMAIS un format court.
+ *
+ * Ce dernier point est la correction du 9 août 2026. Un Short dure moins de
+ * deux minutes, il est filmé à la verticale, et sa miniature recadrée en 16/9
+ * donne un visage coupé. Or les Shorts sont les publications les plus
+ * récentes : ils gagnaient systématiquement. Une dizaine de fiches d'invités
+ * en étaient défigurées — Torreton, Enthoven, Sophia Aram, Nora Bussigny…
+ */
+const DUREE_MINIMALE_VIGNETTE = 120;
+
 function photoDe(personne) {
+  const impose = personne.fiche?.vignette;
+  if (impose) return YT_THUMB(impose);
   if (personne.fiche?.photo) return personne.fiche.photo;
-  const v = personne.videos[0];
+  const v = personne.videos.find((x) => !x.isShort && (x.duration || 0) >= DUREE_MINIMALE_VIGNETTE)
+    || personne.videos[0];
   return v ? (v.thumbnail || YT_THUMB(v.id)) : '/assets/logo.png';
 }
 

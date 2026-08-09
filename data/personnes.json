@@ -1,20 +1,41 @@
 {
-  "_comment": "Fiches des personnes citées dans le catalogue. Le site repère automatiquement les noms dans les titres de vidéos et dans les noms d'émissions. Ce fichier permet de corriger : 'exclure' retire un faux nom (une marque, un partenaire), 'alias' fusionne deux orthographes, 'inclure' force la création d'une fiche pour quelqu'un qui n'a qu'une seule vidéo, 'presentateurs' impose le présentateur d'une émission, 'fiches' ajoute une fonction et un texte de présentation — écrits à la main, car le site n'invente rien sur les personnes. 'minVideos' est le nombre de passages à partir duquel une fiche est créée automatiquement.",
+  "_comment": "Fiches des personnes citées dans le catalogue. Le site repère automatiquement les noms dans les titres de vidéos et dans les noms d'émissions. Ce fichier permet de corriger : 'exclure' retire un faux nom (une marque, un partenaire), 'alias' fusionne deux orthographes, 'inclure' force la création d'une fiche pour quelqu'un qui n'a qu'une seule vidéo, 'presentateurs' impose le présentateur d'une émission, 'fiches' ajoute une fonction, un texte de présentation, un portrait ('photo') et une vignette imposée ('vignette' : l'identifiant YouTube de la vidéo dont on veut la miniature — c'est le dernier mot, il l'emporte sur tout le reste) — écrits à la main, car le site n'invente rien sur les personnes. 'minVideos' est le nombre de passages à partir duquel une fiche est créée automatiquement.",
   "minVideos": 2,
   "exclure": [
     "Archi Design",
+    "Art Connexion",
+    "Art connexion",
+    "Atout Coeur",
+    "Atout coeur",
     "Bari Food",
     "Beit Halochem",
     "Benjamin Netanyahu",
+    "Comedy Web",
+    "Cote Cuisine",
     "Coup De Coeur",
+    "Coup de Coeur Litteraire",
+    "Coup de coeur littéraire",
+    "Côté Cuisine",
     "Donald Trump",
     "Duo de Doc",
     "Feel Good",
     "Geek High Tech Gaming",
+    "Guide en Tandem",
+    "Haolam Hamedoubar",
+    "Hasbara en Tandem",
+    "Le Mont Des Oliviers",
+    "Le Mont Du Temple",
+    "Le mont des oliviers",
+    "Le mont du temple",
+    "Mont Des Oliviers",
+    "Mont Du Temple",
     "Pause Beaute",
     "Plateau Santé",
+    "Projet Ado",
+    "Projet ado",
     "Rosh Hashana",
     "Sciences Po",
+    "Success Movie",
     "Tandem TV",
     "Underground Music",
     "Yom HaZikaron"
@@ -39,13 +60,15 @@
       "photo": "/assets/visages/jerome-haas.jpg"
     },
     "Rony Akrich": {
-      "photo": "/assets/visages/rony-akrich.jpg"
+      "photo": "/assets/visages/rony-akrich.jpg",
+      "vignette": "HEr9E7IqCOI"
     },
     "Myriam Danan": {
       "photo": "/assets/visages/myriam-danan.jpg"
     },
     "Rony Hayot": {
-      "photo": "/assets/visages/rony-hayot.jpg"
+      "photo": "/assets/visages/rony-hayot.jpg",
+      "vignette": "5iRrbCOTEjs"
     },
     "Richard Darmon": {
       "photo": "/assets/visages/richard-darmon.jpg"
@@ -53,7 +76,59 @@
     "Stéphane Goldin": {
       "photo": "/assets/visages/stephane-goldin.jpg",
       "role": "Chroniqueur de Tandem TV",
-      "texte": "Stéphane Zeev Goldin tient sur Tandem TV le rendez-vous « L'analyse de Stéphane Goldin », consacré à la sécurité d'Israël et aux fronts régionaux : Tsahal et son commandement, Gaza, la Judée-Samarie, l'Iran, le Liban, les Houthis. L'entretien « Le 7 octobre vécu par Stephan Zeev Goldin », publié sur l'ancien site de la chaîne, n'est plus en ligne ; ses analyses en vidéo sont rassemblées ci-dessous."
+      "texte": "Stéphane Zeev Goldin tient sur Tandem TV le rendez-vous « L'analyse de Stéphane Goldin », consacré à la sécurité d'Israël et aux fronts régionaux : Tsahal et son commandement, Gaza, la Judée-Samarie, l'Iran, le Liban, les Houthis. L'entretien « Le 7 octobre vécu par Stephan Zeev Goldin », publié sur l'ancien site de la chaîne, n'est plus en ligne ; ses analyses en vidéo sont rassemblées ci-dessous.",
+      "vignette": "rsummxs3NyI"
+    },
+    "Arie Abitbol": {
+      "vignette": "99yguyGaTFc"
+    },
+    "Daniel Shek": {
+      "vignette": "TuzbRqjGjiM"
+    },
+    "Emmanuel Razavi": {
+      "vignette": "bHmb2zewrNA"
+    },
+    "Florence Bergeaud-Blackler": {
+      "vignette": "0Ejo469kCw4"
+    },
+    "Galith Benzimra": {
+      "vignette": "H785F4orlBs"
+    },
+    "Guy Millière": {
+      "vignette": "iDRnaawsN88"
+    },
+    "Haïm Musicant": {
+      "vignette": "KXMt2SVY6K8"
+    },
+    "Jean-Jacques Erbstein": {
+      "vignette": "2qfp6M3LfiQ"
+    },
+    "Lef Forster": {
+      "vignette": "LrtVBkTJ6lU"
+    },
+    "Nora Bussigny": {
+      "vignette": "OsL2IKMGrhA"
+    },
+    "Omar Youssef Souleimane": {
+      "vignette": "FhyV520H0v0"
+    },
+    "Philippe Torreton": {
+      "vignette": "tmzldZlo2Y0"
+    },
+    "Raphaël Becache": {
+      "vignette": "mwD2v8L61NQ"
+    },
+    "Raphaël Enthoven": {
+      "vignette": "oNrTnxc0p7g"
+    },
+    "Saadia Morali": {
+      "vignette": "7_5Ox2LPsiE"
+    },
+    "Richard Rossin": {
+      "vignette": "dWpzq3820VA"
+    },
+    "Sophia Aram": {
+      "vignette": "NgmPbEfEccs"
     }
   },
   "_comment_photo": "Chaque fiche illustre la personne avec la miniature de sa vidéo la plus récente. Pour imposer une autre image, ajoutez \"photo\": \"https://…\" dans l'entrée correspondante de 'fiches'."

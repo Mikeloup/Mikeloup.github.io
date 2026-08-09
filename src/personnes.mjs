@@ -171,6 +171,11 @@ export function collecterPersonnes(categories, allVideos, manuel = {}) {
     p.slug = slugify(p.nom);
   }
 
+  // Les fiches ecrites a la main sont retrouvees SANS ACCENTS NI CASSE. Une
+  // clef mal accentuee dans data/personnes.json ne faisait rien du tout, en
+  // silence — et l'on cherchait le defaut dans le code.
+  const fiches = new Map(Object.entries(manuel.fiches || {}).map(([k, v]) => [clef(k), v]));
+
   const retenues = [...gens.values()]
     .filter((p) => p.videos.length >= seuil || inclure.has(p.nom.toLowerCase()))
     .map((p) => ({
@@ -178,9 +183,14 @@ export function collecterPersonnes(categories, allVideos, manuel = {}) {
       rubriques: [...p.rubriques],
       presente: [...p.presente],
       videos: p.videos.sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt)),
-      fiche: manuel.fiches?.[p.nom] || null,
+      fiche: fiches.get(clef(p.nom)) || null,
     }))
     .sort((a, b) => b.videos.length - a.videos.length || a.nom.localeCompare(b.nom, 'fr'));
 
-  return { personnes: retenues, presentateurParRubrique };
+  // Une fiche qui ne correspond a personne est une faute de frappe : on la
+  // signale plutot que de la laisser dormir.
+  const vues = new Set(retenues.map((p) => clef(p.nom)));
+  const orphelines = [...fiches.keys()].filter((k) => !vues.has(k));
+
+  return { personnes: retenues, presentateurParRubrique, fichesOrphelines: orphelines };
 }
