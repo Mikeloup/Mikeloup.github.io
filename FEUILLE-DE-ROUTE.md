@@ -813,3 +813,27 @@ monde ne le peut.
 
 Publier sur une **page** reste possible, comme Instagram. Michael a déjà une
 page. Chantier à ouvrir.
+
+---
+
+## 10 août 2026 — reprise point par point
+
+**Point 1 — les quatre protections Instagram : FAIT.**
+- Journal des tentatives (`production/reels_tentatives.json`), distinct du
+  journal des publications : c'est le nombre de sollicitations qui fait freiner
+  un compte, pas le nombre de succès.
+- Délai d'une heure après un échec (`--heures-apres-echec`, défaut 1).
+- Arrêt de sécurité après deux échecs consécutifs (`--echecs-max`, défaut 2).
+  Pour repartir : corriger la cause, puis effacer `reels_tentatives.json`.
+- Le frein s'applique AVANT l'examen des vidéos : rien n'est fabriqué ni
+  téléversé. Et en cas d'échec, le pipeline s'arrête au lieu d'enchaîner.
+- Liste `refuses` dans `data/instagram-collaborateurs.json`, honorée par le
+  pipeline ET par le site. `williamzerbib` y figure — à retirer le jour où son
+  compte passe en Créateur.
+
+**Point 2 — les textes de présentation : 5 sur 7 FAIT.**
+Écrits à partir des descriptions YouTube de Michael, validés par lui :
+26 Nuances 2 Vannes, Puissance(s), Jo Hanna Fitness, La France en Tandem,
+Avec vous.
+*En attente des concepteurs* : Léon le média et Les Israéliennes — Michael
+attend leur texte, ne pas inventer.
