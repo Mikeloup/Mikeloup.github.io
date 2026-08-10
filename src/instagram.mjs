@@ -128,7 +128,17 @@ export function collaborateursDe(video, { emissionSlug = '', invites = [], carne
   const rub = parRubrique[emissionSlug];
   if (rub && !trouves.includes(rub)) trouves.push(rub);
 
-  return trouves.slice(0, 3).map((c) => String(c).replace(/^@/, ''));
+  // Un compte que Meta a déjà refusé n'est plus jamais invité. Une invitation
+  // exige un compte professionnel, public, actif depuis trente jours ; sinon
+  // Meta ne l'ignore pas, il refuse la publication entière. Le 9 août 2026,
+  // deux Reels ont été perdus ainsi.
+  const refuses = new Set((carnet.refuses || [])
+    .map((c) => String(c).replace(/^@/, '').toLowerCase()));
+
+  return trouves
+    .map((c) => String(c).replace(/^@/, ''))
+    .filter((c) => !refuses.has(c.toLowerCase()))
+    .slice(0, 3);
 }
 
 /**

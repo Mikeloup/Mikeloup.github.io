@@ -16,5 +16,9 @@
     "yinon-show": "yinonshow",
     "katava": "ava_mergy"
   },
-  "_comment_personnes": "Compte Instagram de chaque intervenant, invite en collaboration sur les publications qui le concernent. Une chaine vide signifie « pas encore cherche » ; false signifie « verifie, cette personne n'a pas de compte » — le code cesse alors de chercher. Une collaboration se propose : l'interesse recoit une notification et doit accepter pour que la publication apparaisse dans son fil. Prevenez-le, sans quoi la notification reste ignoree et le mecanisme ne sert a rien."
+  "_comment_personnes": "Compte Instagram de chaque intervenant, invite en collaboration sur les publications qui le concernent. Une chaine vide signifie « pas encore cherche » ; false signifie « verifie, cette personne n'a pas de compte » — le code cesse alors de chercher. Une collaboration se propose : l'interesse recoit une notification et doit accepter pour que la publication apparaisse dans son fil. Prevenez-le, sans quoi la notification reste ignoree et le mecanisme ne sert a rien.",
+  "_comment_refuses": "Comptes que Meta a refuses comme collaborateurs. Une invitation a collaborer exige un compte PROFESSIONNEL (Business ou Createur), public, actif depuis 30 jours : sinon Meta ne se contente pas d'ignorer l'invitation, il refuse la publication entiere -- avec un message generique qui ne dit rien. Le 9 aout 2026, deux Reels ont ete perdus ainsi, et la cascade de tentatives a fait freiner le compte. Un compte inscrit ici n'est plus jamais invite. Retirez-le de la liste le jour ou son proprietaire passe en compte Createur.",
+  "refuses": [
+    "williamzerbib"
+  ]
 }
