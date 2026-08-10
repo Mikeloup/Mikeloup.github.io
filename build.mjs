@@ -607,6 +607,9 @@ async function main() {
       index: indexerVideos(allVideos),
       aujourdhui: jourIsrael(new Date(buildTime)),
       arrondi: config.tv?.arrondiMinutes ?? 5,
+      // La régie exporte sept jours ; on n'en montre que trois tant que la
+      // fiabilité de J-3 à J-6 n'a pas été mesurée. Voir prepareGrille.
+      joursAffiches: config.tv?.joursAffiches ?? 3,
       smartTitre: (t) => smartTitle(t, config.display?.properNouns || []),
       rubriques: categories.map((c) => ({ slug: c.slug, title: c.title })),
     })

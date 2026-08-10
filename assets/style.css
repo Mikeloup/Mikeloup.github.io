@@ -1088,6 +1088,7 @@ body:has(.apropos-bas) .site-footer { margin-top: 0; }
 }
 .g-jour:hover { background: var(--surface-2); }
 .g-jour.actif { background: var(--brand); border-color: var(--brand); color: #fff; }
+.g-jour-court { display: none; }
 
 .g-panneau { display: none; }
 .g-panneau.actif { display: block; }
@@ -1196,7 +1197,18 @@ a.g-src:hover { color: var(--accent); text-decoration: underline; text-underline
   .g-replay-ico { display: inline; }
   .g-clips { font-size: .8rem; gap: .75rem; }
   .g-badge { font-size: .62rem; padding: .15rem .4rem; }
-  .g-jour { padding: .5rem .85rem; font-size: .85rem; }
+  /* Une seule rangée qui se fait glisser du doigt, plutôt que quatre rangées
+     empilées qui repoussent la grille elle-même hors de l'écran. */
+  .g-jours {
+    flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x proximity; padding-bottom: .2rem;
+    margin-left: -1rem; margin-right: -1rem; padding-left: 1rem; padding-right: 1rem;
+  }
+  .g-jours::-webkit-scrollbar { display: none; }
+  .g-jour { padding: .5rem .85rem; font-size: .85rem; flex: 0 0 auto; scroll-snap-align: start; }
+  .g-jour-long { display: none; }
+  .g-jour-court { display: inline; }
 }
 
 

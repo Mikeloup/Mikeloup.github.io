@@ -837,3 +837,101 @@ page. Chantier à ouvrir.
 Avec vous.
 *En attente des concepteurs* : Léon le média et Les Israéliennes — Michael
 attend leur texte, ne pas inventer.
+
+**Point 3 — les diffusions sans vidéo, et les titres de fichier : FAIT.**
+
+Les « onze diffusions sans vidéo » n'étaient que quatre programmes distincts,
+dont trois se sont résolus seuls (vidéos pas encore publiques sur YouTube). La
+vraie trouvaille est ailleurs : **23 programmes de la grille affichaient un nom
+de fichier de tournage** — parce que `videos.title` contient le nom du rush et
+que le vrai titre vit dans `title_override`, qui était vide.
+
+Leçon de méthode : j'avais commencé par rapprocher ces programmes du catalogue
+YouTube par la date, avec des « probables » et un cas à arbitrer. Inutile. Le
+champ `grille.annatel_filename` de la régie contient déjà la rubrique ET le
+sujet, propres, écrits par Michael lui-même :
+`TOUR_D_ISRAEL__2021-11-05__le-mont-du-temple__LOCAL-…mp4`. **Quand une donnée
+existe déjà quelque part dans le système, il faut la chercher avant de la
+deviner.**
+
+Les 23 titres ont été écrits dans `title_override` le 10 août 2026 :
+19 Tour d'Israël, 2 Cartes postales, 2 Un jour une histoire.
+
+Protocole respecté à la lettre : sauvegarde horodatée
+(`database/sqlite/backups_manual/tandemstudio-AVANT-titres-…db`), copie de
+travail hors base vivante, relecture (`integrity_check`, compteurs de lignes,
+23 titres conformes), bascule atomique. **Un piège découvert au passage** : la
+base est vivante, la régie y ajoute des diffusions confirmées en continu. Une
+bascule naïve écrase ces lignes. D'où le garde-fou ajouté : relire l'empreinte
+de la base juste avant la bascule, et tout reprendre à partir de l'état courant
+si elle a bougé. Elle avait bougé (9 diffusions en deux minutes).
+
+*Reste ouvert* : `TTV00000247` porte comme titre une phrase tirée de sa légende
+Instagram (« Rivarol semble aujourd'hui porter… »), 17 passages en grille. Les
+8 jingles affichent leur nom de fichier mais **ne sortent pas côté visiteur**
+(Michael, 10 août : « jingles seulement dans la régie ») — rien à corriger.
+
+**Point 4 — la grille passe de trois à sept jours : FAIT.**
+
+C'était l'idée la plus rentable du lot : une chaîne dont on ne voit que trois
+jours ne donne aucune raison de revenir ; une semaine, si.
+
+Côté régie — `scripts/playlist_generator.py`, `export_grille_for_website`,
+`window_days` de 3 à 7. Vérifié avant de toucher quoi que ce soit : la base
+contient 15 jours de grille en avance, tous avec leurs 11 ancres. Les 7 jours
+sont donc tous complets, aucun jour tronqué. Sauvegarde
+`playlist_generator.AVANT-7jours-….py.bak`, compilation vérifiée sur place.
+L'export passe de 206 à ~514 lignes (44 ko → 110 ko).
+
+Côté site, un seul vrai problème, trouvé à la capture d'écran : sept boutons
+« Lundi 10 août » sur un téléphone, c'est **quatre rangées** qui repoussent la
+grille elle-même sous la ligne de flottaison. Corrigé sans JavaScript : chaque
+bouton porte les deux libellés (`Lundi 10 août` / `Lun. 10`) et la feuille de
+style choisit — sur téléphone, une seule rangée qui se fait glisser du doigt.
+
+Rien à changer dans l'archivage : `tools/archiver-grille.mjs` n'archive que les
+journées ≤ aujourd'hui, les jours à venir sont ignorés par construction.
+
+**Point 4 (suite) — Michael conteste, il a raison, et on mesure.**
+
+Michael : « on avait proposé que 3 jours pour diminuer le risque de changement
+de programme de dernière minute, qu'en penses-tu ? » Bonne question, et elle se
+mesure au lieu de se discuter : la régie pousse un export toutes les quinze
+minutes et le dépôt en conserve **429**, que l'on peut comparer à
+`data/grille-archive/` — ce qui est réellement passé à l'antenne.
+
+Résultat, le 10 août 2026 :
+
+| horizon | ancres | courts nommés | composition du jour |
+|---|---|---|---|
+| jour même / J-1 | 11/11 | tous | 100 % |
+| **J-2** | **38/55 à la minute, 45/55 à 5 min** | 1/27 à 19/35 | **100 %** |
+| J+7 à J+14 (sauvegarde du 25/07) | la rubrique elle-même change | — | cassée |
+
+Le fait décisif : **à J-2 la composition d'une journée est déjà juste à 100 %
+— c'est l'HEURE qui bouge.** Dix ancres sur 55 se déplacent de 1 h à 11 h
+(Zerbib de 11 h, Tel Aviv-New York de 7 h). La cause est dans la régie :
+`LOCK_BUFFER_HOURS = 8`. Au-delà de huit heures, `prune_beyond_lock` efface et
+régénère à chaque passage ; plus un jour est loin, plus il sera régénéré de
+fois avant d'être diffusé.
+
+Or la page promet « sans le signe ≈, c'est un rendez-vous à heure fixe ». À J-2
+cette promesse est déjà fausse une fois sur cinq. J'avais proposé de l'étendre
+à sept jours : c'était remplacer la prudence mesurée de Michael par une
+supposition. **Décision : l'export reste à 7 jours, le site n'en affiche que 3.**
+
+Parce que l'export à sept jours est lui-même l'instrument de mesure : à partir
+du 10 août, l'historique du dépôt contient enfin des prévisions J-3 à J-6, que
+l'archivage nocturne confrontera au réel. **Vers le 17 août, relancer la même
+comparaison** (historique de `data/grille.json` contre `data/grille-archive/`)
+et décider sur des chiffres.
+
+Le nombre de journées affichées est un réglage, `tv.joursAffiches` dans
+`site.config.json`, pas une valeur en dur : le jour où la mesure tranche, c'est
+un chiffre à changer et rien d'autre. Vérifié dans les deux sens (3 → 3
+journées, 7 → 7 journées) sur un vrai export à sept jours.
+
+Une leçon de méthode, la même qu'au point 3 : **quand la donnée existe déjà
+quelque part dans le système, il faut la chercher avant de deviner.** Au point 3
+c'était `annatel_filename` ; ici, 429 exports versionnés que personne n'avait
+jamais lus comme une série temporelle.

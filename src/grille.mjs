@@ -266,7 +266,7 @@ function arrondirHeure(heure, pas, sens = 'bas') {
 
 export function prepareGrille(donnees, {
   emissions = {}, index = null, aujourdhui, arrondi = 0, smartTitre = (x) => x,
-  rubriques = [],
+  rubriques = [], joursAffiches = 0,
 } = {}) {
   const lignes = Array.isArray(donnees?.rows) ? donnees.rows : [];
   if (!lignes.length) return null;
@@ -408,7 +408,31 @@ export function prepareGrille(donnees, {
   // sont passées, auquel cas mieux vaut une grille visiblement ancienne, avec
   // son avertissement, qu'une page vide sans explication.
   const aVenir = aujourdhui ? tous.filter((j) => j.date >= aujourdhui) : tous;
-  const jours = aVenir.length ? aVenir : tous;
+  const visibles = aVenir.length ? aVenir : tous;
+
+  // Combien de journées on ose montrer.
+  //
+  // L'export de la régie porte sur sept jours depuis le 10 août 2026, mais on
+  // n'en affiche que trois — et c'est une décision de fond, pas un oubli.
+  //
+  // Mesuré le 10 août 2026 sur les 429 exports conservés dans l'historique du
+  // dépôt, comparés à l'archive de ce qui est réellement passé à l'antenne :
+  //   • la veille et le jour même : 11 ancres sur 11, tous les courts, exact ;
+  //   • à J-2 : la COMPOSITION de la journée est encore juste à 100 %, mais
+  //     l'HEURE bouge — 38 ancres exactes sur 55, 45 à cinq minutes près, et
+  //     dix qui se déplacent d'une à onze heures ;
+  //   • à J+7 (sauvegarde du 25 juillet contre le réel) : même la rubrique a
+  //     changé.
+  // La cause est dans la régie : LOCK_BUFFER_HOURS = 8. Au-delà de huit heures,
+  // prune_beyond_lock efface et régénère. Plus un jour est loin, plus il sera
+  // régénéré de fois avant d'être diffusé.
+  //
+  // Or cette page promet « sans le signe ≈, c'est un rendez-vous à heure fixe ».
+  // On ne l'étend pas à des journées sur lesquelles personne n'a jamais mesuré
+  // quoi que ce soit — J-3 à J-6 n'ont jamais été exportés avant aujourd'hui.
+  // L'export à sept jours est justement l'instrument qui produira cette mesure ;
+  // quand elle existera, ce chiffre est le seul à changer.
+  const jours = joursAffiches > 0 ? visibles.slice(0, joursAffiches) : visibles;
 
   // Les journées déjà passées ne sont pas retirées : l'export peut dater, et
   // mieux vaut une grille visiblement ancienne qu'une page vide sans explication.

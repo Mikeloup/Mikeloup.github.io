@@ -1,7 +1,8 @@
 // -----------------------------------------------------------------------------
 // Historique de diffusion.
 //
-// L'export de la régie ne garde que trois jours. Depuis le 2 août 2026, une
+// L'export de la régie ne garde qu'une fenêtre glissante de sept jours.
+// Depuis le 2 août 2026, une
 // tâche nocturne en conserve une copie datée dans data/grille-archive/ — une
 // journée par fichier, définitivement.
 //

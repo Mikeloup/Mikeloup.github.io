@@ -1,7 +1,8 @@
 // -----------------------------------------------------------------------------
 // Archivage de la grille de diffusion.
 //
-// L'export de la régie ne garde que trois jours glissants. Chaque nuit, une
+// L'export de la régie ne garde qu'une fenêtre glissante (sept jours depuis
+// le 10 août 2026, trois auparavant). Chaque nuit, une
 // journée de programmation disparaît définitivement — et avec elle la seule
 // chose qu'une chaîne de télévision possède et qu'une chaîne YouTube n'aura
 // jamais : un historique de diffusion.

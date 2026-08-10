@@ -775,6 +775,16 @@ export function grillePage({ config, categories, nav, grille, buildTime, externe
     const q = dt.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', timeZone: 'UTC' });
     return `${j.charAt(0).toUpperCase()}${j.slice(1)} ${q}`;
   };
+  // Sept onglets au lieu de trois : sur téléphone, « Lundi 10 août » sept fois
+  // repousse la grille sous quatre rangées de boutons. On garde donc les deux
+  // libellés dans le bouton et c'est la feuille de style qui choisit — pas de
+  // JavaScript, pas de dépendance à la largeur mesurée.
+  const jourCourtFr = (d) => {
+    const dt = new Date(`${d}T12:00:00Z`);
+    const j = dt.toLocaleDateString('fr-FR', { weekday: 'short', timeZone: 'UTC' }).replace(/\.$/, '');
+    const q = dt.toLocaleDateString('fr-FR', { day: 'numeric', timeZone: 'UTC' });
+    return `${j.charAt(0).toUpperCase()}${j.slice(1)}. ${q}`;
+  };
 
   const ligne = (p) => {
     if (p.type === 'clips') {
@@ -848,7 +858,7 @@ export function grillePage({ config, categories, nav, grille, buildTime, externe
   </p>
 
   <div class="g-jours" role="tablist" aria-label="Journées">
-    ${grille.jours.map((j, i) => `<button type="button" role="tab" class="g-jour${i === 0 ? ' actif' : ''}" aria-selected="${i === 0}" aria-controls="jour-${j.date}" data-jour="${j.date}">${escapeHtml(jourFr(j.date))}</button>`).join('')}
+    ${grille.jours.map((j, i) => `<button type="button" role="tab" class="g-jour${i === 0 ? ' actif' : ''}" aria-selected="${i === 0}" aria-controls="jour-${j.date}" data-jour="${j.date}"><span class="g-jour-long">${escapeHtml(jourFr(j.date))}</span><span class="g-jour-court">${escapeHtml(jourCourtFr(j.date))}</span></button>`).join('')}
   </div>
 
   ${grille.jours.map((j, i) => `
