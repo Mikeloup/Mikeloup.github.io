@@ -935,3 +935,59 @@ Une leçon de méthode, la même qu'au point 3 : **quand la donnée existe déj�
 quelque part dans le système, il faut la chercher avant de deviner.** Au point 3
 c'était `annatel_filename` ; ici, 429 exports versionnés que personne n'avait
 jamais lus comme une série temporelle.
+
+**Point 5 — les menus : FAIT, après quatre maquettes.**
+
+L'audit disait « 39 rubriques sur 74 absentes des menus ». Vérification faite,
+le diagnostic était mal posé : la page `/emissions/` listait déjà les 76, rien
+n'était inaccessible. Le vrai défaut était ailleurs — la règle « 6 mois OU 15+
+vidéos » n'avait aucune limite d'âge sur le volume, et ressuscitait les
+fossiles : *Live musical Tandem* (dernière vidéo en avril 2021) figurait au
+menu, *Politiquement vôtre* (12 vidéos, février 2025) non.
+
+**Deux propositions refusées, et elles méritaient de l'être.**
+
+1. J'ai proposé de séparer le menu en « À l'antenne » et « Le fonds », avec des
+   « Archives » sur la page d'index. Michael : « je ne veux pas de tris dans
+   emissions ». Il a raison : ranger une émission dans « archives » revient à la
+   déclarer terminée. C'est une décision éditoriale — la sienne — pas le
+   résultat d'un calcul sur une date. Une émission peut reprendre.
+2. J'ai ensuite proposé « diffusées d'abord, puis par nombre de vidéos ».
+   Refusé aussi, au profit d'une règle plus nette.
+
+**Ce qui a été retenu, et qui vient de lui :**
+- Le menu « Émissions » ne montre **que ce qui passe à l'antenne** — lu dans la
+  grille du canal 14, pas dans les dates YouTube. Un fait, pas un jugement.
+- À l'intérieur, **la plus récemment publiée en premier**.
+- La page `/emissions/` liste **tout, par ordre alphabétique**, sous le titre
+  « Toutes les émissions de la chaîne, passées et présentes ».
+- Les **thèmes** gardent l'ancienne règle : ce ne sont pas des rendez-vous
+  d'antenne, leur menu se serait vidé.
+
+**Le risque mesuré avant de coder.** Une émission hebdomadaire pouvait sortir du
+menu les semaines creuses, faisant changer la navigation toute seule. Vérifié
+sur les 15 journées de grille disponibles, en fenêtre glissante de 3 et de 7
+jours : le même ensemble de 7 rubriques à chaque fois, sans une exception.
+
+**Le défaut trouvé en vérifiant la maquette — le plus important de la
+journée.** Le lien « Voir toutes les émissions », au bas du menu déroulant,
+était écrit **en blanc sur fond blanc**, donc invisible, et ce depuis toujours :
+`.nav a` (deux classes) l'emportait sur `.menu-all` (une seule). Personne ne
+pouvait s'en apercevoir tant que le menu listait presque tout — on ne cherche
+pas une porte quand on croit déjà tout voir. Mais avec la nouvelle règle, ce
+lien devient la SEULE porte vers les 69 autres émissions : sans cette
+correction, la décision de Michael aurait enterré les trois quarts du catalogue.
+Corrigé par `.nav .menu-all`.
+
+*Leçon* : une maquette ne sert pas qu'à valider une idée, elle met sous tension
+des chemins que personne n'empruntait. Le défaut existait depuis des mois et
+n'est devenu visible qu'en changeant ce qui l'entourait.
+
+**Garde-fou** : si la grille est absente ou illisible, le menu reprend
+automatiquement l'ancienne règle (vérifié en retirant `data/grille.json`).
+
+*Reste ouvert* : la grille diffuse **12 programmes Tandem**, dont **5 n'ont
+aucune rubrique sur le site**, faute de playlist YouTube à ce nom — *Cartes
+postales, Orot Vekelim, Un jour une histoire, L'édito de Richard Darmon,
+Tel Aviv-New York*. Ils passent à l'antenne et sont absents du menu comme de la
+liste. Ce n'est pas un défaut du tri, c'est un trou dans le catalogue.

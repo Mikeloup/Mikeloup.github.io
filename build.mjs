@@ -384,6 +384,15 @@ function buildModel(config, data) {
     const substantial = menuMin > 0 && c.videos.length >= menuMin;
     return recent || substantial;
   };
+  // Volontairement PAS de sous-familles « à l'antenne » / « archives ».
+  //
+  // Michael, 10 août 2026 : « je ne veux pas de tris dans emissions, juste
+  // toutes les émissions passées et présentes ». Et il a raison : classer une
+  // rubrique en « archives » revient à déclarer l'émission terminée, ce qui est
+  // une décision éditoriale — la sienne — pas le résultat d'un calcul sur une
+  // date de dernière publication. Une émission peut reprendre.
+  // Le menu reste un raccourci vers les rubriques les plus fournies ou les plus
+  // actives ; la page /emissions/ liste tout, sans hiérarchie.
   const shows = categories.filter((c) => c.group === 'shows');
   const themes = categories.filter((c) => c.group === 'themes');
   // Ordre des menus et des index : par activité récente (défaut) ou alphabétique.
@@ -734,6 +743,58 @@ async function main() {
   }
   ctx.diffusionsVideo = diffusionsVideo;
   ctx.diffusionsRubrique = diffusionsRubrique;
+
+  // --- Ordre des rubriques --------------------------------------------------
+  //
+  // Michael, 10 août 2026 : « je trierai d'abord par les émissions
+  // actuellement diffusées, ensuite par nombre de vidéos par émission ».
+  //
+  // « Actuellement diffusée » se lit dans la grille du canal 14, pas dans les
+  // dates de publication YouTube : une émission peut n'avoir rien publié
+  // depuis des mois et passer à l'antenne cette semaine. C'est un fait
+  // vérifiable, pas un jugement sur la vitalité d'une rubrique — d'où le refus,
+  // plus haut, de trier en « archives » et « à l'antenne ».
+  //
+  // Ce tri arrive ici, et pas au moment où `nav` est construit, pour une raison
+  // simple : la grille n'est lue qu'après. On réordonne donc les listes déjà
+  // constituées, sans toucher à leur contenu.
+  const ordreAlpha = (a, b) => a.title.localeCompare(b.title, 'fr', { sensitivity: 'base' });
+  // Les listes exhaustives passent en ordre alphabétique : sur 76 rubriques,
+  // c'est le seul ordre où le visiteur qui cherche « Guide en Tandem » sait
+  // d'avance où regarder. L'ordre par activité n'a de sens que sur une liste
+  // courte, or celle-ci ne l'est pas.
+  nav.showsIndex = [...nav.showsIndex].sort(ordreAlpha);
+  nav.themesIndex = [...nav.themesIndex].sort(ordreAlpha);
+
+  // Le menu déroulant « Émissions » ne garde QUE ce qui passe à l'antenne.
+  //
+  // Michael, 10 août 2026. Le menu cesse d'être un palmarès calculé pour
+  // devenir un fait : voici ce que la chaîne diffuse en ce moment. Tout le
+  // reste est à un clic, sur une page qui s'annonce comme exhaustive.
+  //
+  // Le risque était qu'une émission hebdomadaire sorte du menu les semaines
+  // creuses, faisant changer la navigation toute seule. Vérifié sur les 15
+  // journées de grille disponibles le 10 août, en fenêtre glissante de 3 et de
+  // 7 jours : le même ensemble de 7 rubriques à chaque fois, sans exception.
+  //
+  // Les thèmes (Gaza, Antisémitisme, Iran…) ne sont pas des rendez-vous
+  // d'antenne : leur menu garde la règle d'origine, sans quoi il se viderait.
+  // À l'intérieur, la plus fraîche d'abord — Michael, 10 août : « si la dernière
+  // vidéo publiée est une interview de Jérôme, il vient en première position ».
+  // `categories` trie déjà les vidéos de chaque rubrique du plus récent au plus
+  // ancien : la date à comparer est donc celle de la première.
+  const derniereVideo = (c) => c.videos[0]?.publishedAt || '';
+  const plusRecenteDAbord = (a, b) => (derniereVideo(b) < derniereVideo(a) ? -1
+    : derniereVideo(b) > derniereVideo(a) ? 1 : ordreAlpha(a, b));
+  if (diffusionsRubrique.size) {
+    const aLAntenne = nav.shows.filter((c) => diffusionsRubrique.has(c.slug)).sort(plusRecenteDAbord);
+    if (aLAntenne.length) {
+      nav.menuShows = aLAntenne;
+      log(`Menu « Émissions » : ${aLAntenne.length} rubrique(s) à l'antenne, la plus fraîche d'abord — `
+        + aLAntenne.map((c) => `${c.title} (${derniereVideo(c).slice(0, 10)})`).join(', '));
+    }
+  }
+  nav.menuThemes = [...nav.menuThemes].sort(ordreAlpha);
 
   // --- Historique de diffusion ---------------------------------------------
   //

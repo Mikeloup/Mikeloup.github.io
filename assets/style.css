@@ -168,11 +168,17 @@ p { margin: 0 0 1em; }
 }
 .menu-grid a:hover { background: var(--surface-2); color: var(--accent); }
 .menu-grid a span { color: var(--muted); font-size: .78rem; font-weight: 500; font-variant-numeric: tabular-nums; flex: 0 0 auto; }
-.menu-all {
-  display: inline-block; margin-top: 1.25rem; padding: .5rem .6rem;
-  color: var(--accent); font-size: .9rem; font-weight: 700;
+/* Le lien vers la liste complète, dans un panneau blanc, héritait du blanc de
+   la barre de navigation : `.nav a` (deux classes) l'emportait sur `.menu-all`
+   (une seule). Il était donc écrit en blanc sur blanc — invisible depuis le
+   premier jour. Personne ne s'en apercevait tant que le menu listait presque
+   tout ; il devient la seule porte vers les 69 autres émissions le jour où le
+   menu se limite à ce qui passe à l'antenne. */
+.nav .menu-all {
+  display: inline-flex; margin-top: 1.25rem; padding: .5rem .6rem;
+  color: var(--accent); font-size: .9rem; font-weight: 700; white-space: normal;
 }
-.menu-all:hover { text-decoration: underline; }
+.nav .menu-all:hover { text-decoration: underline; background: none; color: var(--accent); }
 
 .burger { display: none; flex-direction: column; gap: 4px; padding: 8px; background: none; border: 0; cursor: pointer; }
 .burger span { display: block; width: 20px; height: 2px; background: var(--brand); transition: transform .2s ease, opacity .2s ease; }

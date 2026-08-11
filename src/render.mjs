@@ -236,6 +236,12 @@ function pagination(baseHref, page, totalPages) {
 
 function menuPanel(id, label, items, allHref, allLabel) {
   if (!items.length) return `<a href="${allHref}">${escapeHtml(label)}</a>`;
+  // Pas de sous-familles ici : classer une émission en « archives » serait un
+  // jugement éditorial, et il appartient à Michael, pas au calcul. Le menu
+  // raccourcit, il ne tranche pas — la liste exhaustive est à un clic.
+  const corps = `<div class="menu-grid">${items
+    .map((c) => `<a href="/emissions/${c.slug}/">${escapeHtml(c.title)} <span>${c.videos.length}</span></a>`)
+    .join('')}</div>`;
   return `
       <div class="menu">
         <button class="menu-btn" type="button" aria-expanded="false" aria-controls="${id}">
@@ -243,9 +249,7 @@ function menuPanel(id, label, items, allHref, allLabel) {
         </button>
         <div class="menu-panel" id="${id}" hidden>
           <div class="wrap menu-panel-inner">
-            <div class="menu-grid">
-              ${items.map((c) => `<a href="/emissions/${c.slug}/">${escapeHtml(c.title)} <span>${c.videos.length}</span></a>`).join('')}
-            </div>
+            ${corps}
             <a class="menu-all" href="${allHref}">${escapeHtml(allLabel)} <span aria-hidden="true">→</span></a>
           </div>
         </div>
@@ -562,8 +566,8 @@ ${push}
   <nav class="nav" id="nav" aria-label="Rubriques">
     <div class="wrap nav-inner">
       <a href="/">Accueil</a>
-      ${menuPanel('menu-emissions', config.groups?.shows?.label || 'Émissions', menuShows, '/emissions/', 'Voir toutes les émissions')}
-      ${menuPanel('menu-themes', config.groups?.themes?.label || 'Thèmes', menuThemes, '/themes/', 'Voir tous les thèmes')}
+      ${menuPanel('menu-emissions', config.groups?.shows?.label || 'Émissions', menuShows, '/emissions/', 'Toutes les émissions, passées et présentes')}
+      ${menuPanel('menu-themes', config.groups?.themes?.label || 'Thèmes', menuThemes, '/themes/', 'Tous les thèmes, passés et présents')}
       <a href="/invites/">Invités</a>
       ${nav.grille ? '<a href="/grille/">Grille TV</a>' : ''}
       ${nav.partenaires ? '<a href="/autres-programmes/">Autres programmes</a>' : ''}
@@ -904,6 +908,7 @@ export function groupIndexPage({
     ? { href: '/themes/', label: config.groups?.themes?.label || 'Thèmes' }
     : { href: '/emissions/', label: config.groups?.shows?.label || 'Émissions' };
 
+
   const content = `
 <div class="wrap">
   <nav class="breadcrumb"><a href="/">Accueil</a> <span>›</span> <span>${escapeHtml(label)}</span></nav>
@@ -911,8 +916,8 @@ export function groupIndexPage({
     <p class="kicker">${isShows ? 'Nos rendez-vous' : 'Par sujet'}</p>
     <h1>${escapeHtml(label)}</h1>
     <p class="lede">${isShows
-      ? "Chaque émission de la chaîne, avec son présentateur et son rythme de publication."
-      : "Les grands sujets suivis par Tandem TV, toutes émissions confondues."}</p>
+      ? "Toutes les émissions de la chaîne, passées et présentes."
+      : "Tous les thèmes suivis par Tandem TV, passés et présents, toutes émissions confondues."}</p>
     ${chips(items)}
     <p class="muted small" style="margin-top:1.25rem">${items.length} rubrique${items.length > 1 ? 's' : ''} · Voir aussi <a href="${other.href}">${escapeHtml(other.label)}</a>.</p>
   </header>
