@@ -77,6 +77,43 @@ export async function legendesRecentes({ token, userId, limite = 25 } = {}) {
 }
 
 /**
+ * Cette légende est-elle DÉJÀ en ligne sur le compte ?
+ *
+ * Rend true (déjà publiée), false (absente), ou null (impossible de savoir).
+ * Les trois réponses sont distinctes et l'appelant doit traiter null comme un
+ * refus de publier : ne pas savoir n'est pas la même chose que savoir que non.
+ *
+ * POURQUOI CETTE FONCTION EXISTE
+ * ------------------------------
+ * Le 17 août 2026, Michael constate « beaucoup de Reels postés en double ».
+ * Trois chemins menaient au doublon, et ils ont tous la même racine : on
+ * décidait de republier sur la foi de la RÉPONSE de Meta, alors que la seule
+ * chose qui compte est ce qui se trouve RÉELLEMENT sur le compte.
+ *
+ *   - Meta répond « An unexpected error has occurred » à un media_publish qui
+ *     a pourtant publié. Le repli sans collaboration republiait par-dessus.
+ *   - Le Mac cesse d'attendre le verdict de GitHub au bout de dix minutes et
+ *     remet la vidéo dans la file, pendant que GitHub, lui, va au bout.
+ *   - Un fichier d'historique perdu ou réécrit fait oublier une publication.
+ *
+ * Un fichier d'état ne peut pas couvrir les trois : il décrit ce que nous
+ * croyons avoir fait. Instagram, lui, décrit ce qui est. On lui demande.
+ *
+ * L'empreinte est la première ligne non vide de la légende — le titre. C'est
+ * ce qu'il y a de plus stable : les hashtags et la mention du canal sont
+ * identiques d'une publication à l'autre et ne distinguent rien. En dessous de
+ * douze caractères on refuse de conclure : trop court pour identifier.
+ */
+export async function estDejaEnLigne({ token, userId, caption, limite = 25 } = {}) {
+  const empreinte = String(caption || '')
+    .split('\n').map((l) => l.trim()).filter(Boolean)[0] || '';
+  if (empreinte.length < 12) return null;
+  const recentes = await legendesRecentes({ token, userId, limite });
+  if (recentes === null) return null;
+  return recentes.some((m) => m.texte.includes(empreinte));
+}
+
+/**
  * Légende d'une publication.
  *
  * Instagram ne rend cliquable aucun lien dans une légende : inutile d'y coller
@@ -182,6 +219,19 @@ export async function publier({
   // publication a cause d'elle — sans jamais le dire. On refait alors le
   // chemin complet sans invitation plutot que de perdre la publication.
   if (!publication.ok && collaborateurs.length) {
+    // Même précaution que pour les Reels : l'erreur peut arriver APRÈS que la
+    // publication a eu lieu. On regarde le compte avant de refaire le chemin.
+    await new Promise((r) => setTimeout(r, 8000));
+    const deja = await estDejaEnLigne({ token, userId, caption });
+    if (deja === true) {
+      return { ok: true, id, dejaEnLigne: true,
+        avertissement: `Meta a renvoyé une erreur (${publication.erreur}) alors que `
+          + "la publication avait eu lieu. Rien n'a été republié." };
+    }
+    if (deja === null) {
+      return { ok: false, erreur: `${publication.erreur} — et impossible de vérifier `
+        + "si la publication a malgré tout eu lieu : on s'abstient de réessayer." };
+    }
     const nu = await api(`${userId}/media`, { image_url: imageUrl, caption }, token);
     const idNu = nu.ok ? nu.data?.id : null;
     if (idNu) {
@@ -269,6 +319,20 @@ export async function publierReel({
     return { ok: true, id: publication.data?.id || id, amis };
   };
 
+  // Avant de solliciter Meta : ce Reel est-il déjà en ligne ? Le Mac peut
+  // relancer la même vidéo (verdict de GitHub non obtenu, historique perdu) ;
+  // c'est ici, au dernier mètre, qu'on l'arrête. On ne publie pas si l'on ne
+  // sait pas : republier devant toute l'audience coûte plus cher qu'attendre.
+  const avant = await estDejaEnLigne({ token, userId, caption });
+  if (avant === true) {
+    return { ok: true, id: null, dejaEnLigne: true,
+      avertissement: 'ce Reel est déjà en ligne — rien n\'a été republié.' };
+  }
+  if (avant === null) {
+    return { ok: false, erreur: 'impossible de relire les publications récentes '
+      + '— on s\'abstient plutôt que de risquer un doublon.' };
+  }
+
   const premier = await essai(collaborateurs);
   if (premier.ok || !collaborateurs.length) return premier;
 
@@ -282,6 +346,24 @@ export async function publierReel({
   //
   // On republie donc sans elle. Perdre l'invitation coûte une audience ; perdre
   // la publication coûte le travail entier.
+  //
+  // MAIS : une erreur de Meta au dernier geste ne veut pas dire que rien n'a
+  // été publié. Le 17 août 2026, c'est ce repli qui doublait les Reels — il
+  // refaisait tout le chemin par-dessus une publication déjà en ligne. On
+  // vérifie donc avant de repartir, après quelques secondes le temps que la
+  // publication apparaisse dans le fil.
+  await new Promise((r) => setTimeout(r, 8000));
+  const apres = await estDejaEnLigne({ token, userId, caption });
+  if (apres === true) {
+    return { ok: true, id: null, dejaEnLigne: true,
+      avertissement: `Meta a renvoyé une erreur (${premier.erreur}) alors que le `
+        + "Reel était bien publié. Rien n'a été republié." };
+  }
+  if (apres === null) {
+    return { ok: false, erreur: `${premier.erreur} — et impossible de vérifier si `
+      + "la publication a malgré tout eu lieu : on s'abstient de réessayer." };
+  }
+
   const secours = await essai([]);
   if (secours.ok) {
     return {

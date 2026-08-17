@@ -34,6 +34,68 @@ site, en service payant.*
 
 ---
 
+## Reels en double sur Instagram — v126 (17 août 2026)
+
+Michael : **« il y a un problème quelque part car beaucoup de Reels sur insta sont
+postés en double »**. Il les a effacés au fur et à mesure, donc aucune paire n'était
+observable : impossible de dater l'écart entre les deux copies, qui aurait désigné le
+coupable. Sa consigne : **« Efface celui que tu veux je continuerai à surveiller. »**
+
+Choisir un coupable au hasard aurait été un pari. J'ai préféré fermer la porte, parce
+que les trois chemins trouvés dans le code ont **la même racine** : on décidait de
+republier sur la foi de la RÉPONSE de Meta, jamais sur ce qui se trouve réellement sur
+le compte.
+
+1. **Le repli sans collaboration.** `publierReel` refaisait tout le chemin quand
+   `media_publish` renvoyait une erreur. Or Meta répond « An unexpected error has
+   occurred » à des appels qui ont bel et bien publié — constaté le 9 août.
+   Signature : deux Reels à quelques minutes d'écart, l'un avec collaboration.
+2. **Le verdict à dix minutes.** Le Mac cesse d'attendre GitHub au bout de dix
+   minutes, n'inscrit rien dans l'historique et remet la vidéo dans la file —
+   pendant que GitHub va au bout et publie. Signature : deux Reels à une heure d'écart.
+3. **L'historique perdu.** L'Édito de Rony Akrich (TTV00000841) a été publié le 11
+   puis le 12 août : son entrée avait disparu de `reels_publies.json` entre les deux.
+   C'est le seul doublon prouvé par les journaux.
+
+**La correction, une seule pour les trois** : `estDejaEnLigne()` dans
+`src/instagram.mjs` demande à Instagram ce qu'il a réellement publié, et cette
+question est posée à deux moments — avant de publier, et avant tout repli après une
+erreur. Trois réponses distinctes, jamais deux : oui, non, **et « je ne sais pas »**.
+Ne pas savoir vaut refus de publier. Un fichier d'état décrit ce que nous croyons
+avoir fait ; le compte décrit ce qui est.
+
+La même protection a été posée sur le repli du chemin image (`publier()`), qui avait
+exactement le même défaut.
+
+Quatre tests couvrent les cas : déjà en ligne → aucun envoi ; erreur de Meta sur une
+publication réussie → aucun doublon ; vrai échec → un seul repli ; lecture du compte
+impossible → abstention.
+
+Un frein à main a été posé en attendant l'installation : clé `pause` dans
+`production/reels_tentatives.json`, lue par `frein_meta()`. On ne maquille pas le
+compteur d'échecs pour arrêter le pipeline — un journal qui ment est exactement ce
+qui a coûté deux jours en août. **À retirer une fois cette version en ligne.**
+
+---
+
+## Titre de Reel écrit sur la mauvaise vidéo — 17 août 2026
+
+La carte « CE SOIR · CANAL 14 » du dimanche 16 août annonçait Tel Aviv - New York à
+22 h avec le titre d'une interview de William Zerbib. Michael s'en croyait
+responsable (« j'ai dû faire une fausse manipulation dans Premiere ») : ce n'était pas
+le cas. Deux vidéos encodées à quelques minutes d'écart le 15 août, `TTV00000861`
+(Charbit) et `TTV00000864` (Grinberg), portaient **le même `title_override`**.
+L'écriture était partie sur la ligne voisine. Le fichier diffusé, lui, était le bon.
+
+Corrigé en base selon le protocole (sauvegarde horodatée, copie de travail,
+vérification, bascule atomique avec garde md5) : `TTV00000861` →
+« Interview de Denis Charbit », et le teaser `TSR2026081622H` avec lui.
+
+Leçon : quand Michael s'accuse d'une fausse manipulation, vérifier quand même. Il
+avait tort, et le vrai défaut serait passé inaperçu.
+
+---
+
 ## Horaires arrondis à l'affichage — v51 (2 août 2026)
 
 Michael, pour pouvoir donner rendez-vous : arrondir les horaires de la grille au pas de
@@ -991,3 +1053,86 @@ aucune rubrique sur le site**, faute de playlist YouTube à ce nom — *Cartes
 postales, Orot Vekelim, Un jour une histoire, L'édito de Richard Darmon,
 Tel Aviv-New York*. Ils passent à l'antenne et sont absents du menu comme de la
 liste. Ce n'est pas un défaut du tri, c'est un trou dans le catalogue.
+
+**11 août 2026 — le Reel qui n'arrivait jamais : une erreur de conception de ma
+part, corrigée.**
+
+Michael : « pourquoi je n'ai pas de Reel sur la vidéo de Rony Akrich ? » Ma
+première réponse fut fausse : j'ai cru le garde-fou en bon fonctionnement et lui
+ai demandé de publier la vidéo. Il a insisté — « la vidéo est publique depuis
+près de 36 h ». Il avait raison.
+
+`est_publique()` rapprochait la base et le catalogue du site **par le titre**.
+Or Michael réécrit ses titres dans YouTube Studio :
+
+| source | titre |
+|---|---|
+| base de production | Pluralisme ou domination: le défi israélien |
+| site (donc YouTube) | Israël : pluralisme ou domination ? \| Rony Akrich |
+
+Aucun des deux ne contient l'autre — le repli « au cas où Michael retouche le
+titre » supposait une retouche, pas une réécriture. Le contrôle répondait « pas
+encore publique », et il aurait répondu cela **indéfiniment** : le Reel était
+fabriqué, hébergé, sous-titré, et attendait un feu vert qui ne pouvait plus
+venir. Une panne silencieuse, sans erreur, sans alerte — la pire espèce.
+
+La bonne clé existait depuis le début et je ne l'avais pas vue :
+`platform_video_id`, l'identifiant YouTube (`j96UKGs8f2Q`), présent dans la base
+ET dans `search.json`. **Il ne change jamais, quel que soit le titre.**
+
+Corrigé : l'identifiant d'abord, le titre en repli — les vidéos entrées par le
+scan local portent un identifiant `LOCAL-…` et n'ont que leur titre. Les deux
+requêtes SQL rapportent désormais `platform_video_id`.
+
+Vérifié avant de faire lancer quoi que ce soit à Michael, avec un catalogue
+simulé portant le titre réécrit : la vidéo répond OUI ; un identifiant inconnu
+répond NON (pas de faux positif) ; une vidéo `LOCAL-` passe toujours par le
+titre. Sauvegarde `reels_pipeline.AVANT-identifiant-20260811-085513.py.bak`.
+
+*Leçon, la deuxième en deux jours* : **rapprocher deux systèmes par un libellé
+lisible est toujours un piège.** Au point 3 c'était le titre de tournage contre
+le vrai titre ; ici le titre de la base contre celui de YouTube. Il existait à
+chaque fois un identifiant stable, et à chaque fois je ne l'ai cherché qu'après
+la panne. Chercher la clé stable AVANT d'écrire le rapprochement.
+
+*Reste à vérifier* : le journal `logs/launchd_reels.out.log` n'a plus rien écrit
+depuis 3 h 51 le 11 août, alors que la tâche tourne toutes les heures.
+
+**Suite et fin — la bonne clé n'était ni le titre ni l'identifiant.**
+
+La correction par identifiant, plus haut, n'a pas suffi : la vidéo publique
+portait un identifiant DIFFERENT de celui connu de la base (base
+`j96UKGs8f2Q`, site `K_mjSNEunXo`). Michael re-téléverse. Ni le titre ni
+l'identifiant ne relient donc les deux systèmes de façon fiable.
+
+Deux pistes essayées et rejetées **sur mesure, avant tout déploiement** :
+
+1. *Rapprochement par mots-clés du titre.* Testé sur les 25 dernières
+   émissions : « Faire son Alya en Israël » apparié **avec aplomb** à
+   « Délégitimer Israël pour le faire disparaître ». Un Reel sous la mauvaise
+   vidéo coûte plus cher qu'un Reel manquant. Piste morte.
+2. *Rapprochement par durée seule.* 18 ambiguïtés sur 22 : plusieurs émissions
+   partagent la même longueur à la seconde. Piste morte.
+
+**Ce qui a été retenu : la conjonction.** Durée à ±2 s **ET** au moins deux
+mots *rares* communs entre les deux titres, **ET** une seule candidate. Zéro
+ambiguïté sur les 30 dernières émissions. Pour « Mahnaz Shirali », cinq vidéos
+du catalogue ont exactement la même durée — seule la bonne porte son nom.
+
+Le mot « rare » est mesuré, pas deviné : `israel` figure dans **24 %** des
+titres de la chaîne, `tandem` dans 10 %, `akrich` dans 4 %. Un mot présent dans
+plus de 2 % des titres ne prouve rien et est écarté. Les mots qui identifient
+vraiment une émission sont sous 0,5 % : `pluralisme`, `shirali`, `lellouche`,
+`medjebeur`. Ce seuil écarte le faux positif « Faire son Alya » (il ne lui reste
+qu'un mot distinctif) sans faire perdre un seul rapprochement légitime.
+
+L'ordre final : identifiant **ou** titre exact **ou** titre contenu **ou**
+durée+mots-rares. Chaque règle ne peut que confirmer.
+
+**Deux erreurs de ma part dans cette séance, à retenir :**
+- J'ai affirmé à Michael que son site affichait la vidéo sans l'avoir vérifié.
+  Je l'avais déduit. **Ne jamais présenter une déduction comme un fait.**
+- Ma première correction contenait `return vid in ids` : quand une vidéo avait
+  un identifiant YouTube, le code **retournait** au lieu de continuer, et
+  n'atteignait jamais les règles suivantes. Un `return` là où il fallait un
+  `if … : return True`. Trouvé par le test, pas par la relecture.
