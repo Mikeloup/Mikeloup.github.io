@@ -57,6 +57,11 @@ async function writeFile(relPath, contents) {
 // /sponsoring/, sans aucune erreur nulle part.
 const PAGES_ECRITES = new Set();
 
+// Transferts refuses faute de destination. Rempli par transfererAnciennesAdresses,
+// affiche en fin de construction : c'est du contenu qui existait et que Google
+// connait encore, mais dont la page d'arrivee a disparu.
+const TRANSFERTS_SANS_CIBLE = [];
+
 async function writePage(routePath, html) {
   const rel = routePath.endsWith('.html')
     ? routePath.replace(/^\//, '')
@@ -1115,22 +1120,11 @@ async function main() {
     } catch { /* facultatif */ }
   }
 
-  // Garde-fou : une redirection imposée à la main qui pointe vers une page
-  // inexistante envoie le visiteur — et Google — sur une erreur. Silencieux
-  // tant que tout va bien, bruyant dès qu'une destination disparaît.
-  const carteVerif = DEMO ? {} : await readJson(path.join(ROOT, 'data', 'anciennes-adresses.json'), {});
-  const cassees = [];
-  for (const [source, cible] of Object.entries(carteVerif.manuel || {})) {
-    const rel = cible.replace(/^\//, '').replace(/\/$/, '');
-    try {
-      await fs.access(path.join(DIST, rel, 'index.html'));
-    } catch {
-      cassees.push(`${source} → ${cible}`);
-    }
-  }
-  if (cassees.length) {
-    warn(`${cassees.length} redirection(s) imposée(s) pointent vers une page inexistante :`);
-    cassees.forEach((c) => warn(`   ${c}`));
+  if (TRANSFERTS_SANS_CIBLE.length) {
+    warn(`${TRANSFERTS_SANS_CIBLE.length} ancienne(s) adresse(s) sans destination — `
+      + 'aucun transfert écrit, le visiteur recevra le 404 du site :');
+    TRANSFERTS_SANS_CIBLE.forEach((c) => warn(`   ${c}`));
+    warn('   Corrigez la destination dans data/anciennes-adresses.json, ou créez la page.');
   }
 
   log(`✅ ${urls.length} pages générées dans dist/ en ${((Date.now() - t0) / 1000).toFixed(1)}s`);
@@ -1519,6 +1513,26 @@ async function transfererAnciennesAdresses(config, categories, allVideos) {
       warn(`L'ancienne adresse /${rel}/ porte le nom d'une page existante du site : `
         + 'le transfert est ignoré, la page est conservée. Retirez cette entrée de '
         + 'data/anciennes-adresses.json.');
+      return false;
+    }
+
+    // Et surtout : ne JAMAIS transférer vers une page qui n'existe pas.
+    //
+    // Constaté en ligne le 18 août 2026 sur
+    // /post/frères-musulmans-…-florence-bergeaud-blackler : la redirection
+    // partait correctement vers /invites/florence-bergeaud-blackler/ — qui
+    // n'existe pas. Le visiteur atterrissait sur la page d'erreur nue de
+    // GitHub (« Unicorn! »), sans logo, sans menu, sans la moindre issue.
+    //
+    // Un garde-fou existait, mais il se contentait d'un avertissement dans le
+    // journal de construction, que personne ne lit. Un contrôle qui n'empêche
+    // rien ne protège de rien : il est désormais bloquant. Sans transfert, le
+    // visiteur reçoit le 404 du site — celui qui porte le menu et propose la
+    // vidéo la plus proche. Une page d'erreur utile vaut mieux qu'une
+    // redirection vers le vide.
+    const dest = `/${cible.replace(/^\//, '').replace(/\/$/, '')}`;
+    if (!PAGES_ECRITES.has(dest)) {
+      TRANSFERTS_SANS_CIBLE.push(`${ancien} → ${cible}`);
       return false;
     }
     const page = pageDeTransfert(config, cible, libelle);

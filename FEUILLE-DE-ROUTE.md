@@ -97,6 +97,30 @@ c'est lui qui interviewe ces gens.
 explorées » et 111 « explorées, non indexées », le signal habituel de pages trop
 maigres en texte.
 
+### Vérification en ligne, et un second défaut — v128
+
+Les six adresses les plus visitées ont été reprises une par une sur le site
+déployé. Les six fonctionnent, chacune arrivant sur la bonne page. Le colmatage
+tient.
+
+Mais un septième essai, sur une adresse choisie au hasard dans le reste de la
+liste, a révélé un défaut indépendant :
+`/post/frères-musulmans-…-florence-bergeaud-blackler` redirige correctement vers
+`/invites/florence-bergeaud-blackler/` — **qui n'existe pas**. Le visiteur
+tombait sur la page d'erreur nue de GitHub (« Unicorn! »), sans logo, sans menu,
+sans issue.
+
+Un garde-fou existait pour ce cas précis. Il se contentait d'écrire un
+avertissement dans le journal de construction — que personne ne lit. **Un
+contrôle qui n'empêche rien ne protège de rien.** Il est désormais bloquant :
+aucun transfert n'est écrit vers une page absente, et le visiteur reçoit à la
+place le 404 du site, celui qui porte le menu et propose la vidéo la plus
+proche. Une page d'erreur utile vaut mieux qu'une redirection vers le vide.
+
+Leçon de méthode, la même que pour Goldin trois jours plus tôt : vérifier les
+cas qu'on a prédits ne suffit pas. Les six adresses attendues fonctionnaient ;
+c'est la septième, tirée au hasard, qui a appris quelque chose.
+
 ---
 
 ## Reels en double sur Instagram — v126 (17 août 2026)
