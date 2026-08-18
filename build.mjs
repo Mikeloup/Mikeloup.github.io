@@ -1521,7 +1521,33 @@ async function transfererAnciennesAdresses(config, categories, allVideos) {
         + 'data/anciennes-adresses.json.');
       return false;
     }
-    await writeFile(path.join(rel, 'index.html'), pageDeTransfert(config, cible, libelle));
+    const page = pageDeTransfert(config, cible, libelle);
+    await writeFile(path.join(rel, 'index.html'), page);
+
+    // ET le meme contenu en FICHIER, a cote du dossier. Ce doublon repare la
+    // plus grosse fuite de trafic du site, decouverte dans Search Console le
+    // 18 aout 2026 : six des dix pages les plus visitees renvoyaient une
+    // erreur 404, soit plus d'un tiers des clics de trois mois.
+    //
+    // Le defaut ne touchait QUE les adresses accentuees. Demandee sans barre
+    // finale -- la forme exacte que Google a indexee --, une adresse qui
+    // designe un DOSSIER fait repondre a GitHub Pages une redirection vers la
+    // meme adresse suivie d'une barre. Et dans cette redirection, il
+    // ré-encode : « é » (%C3%A9) devient « Ã© » (%C3%83%C2%A9). L'adresse
+    // obtenue ne correspond plus a rien, et c'est un 404.
+    //
+    // Verifie en vrai, les trois cas :
+    //   /post/…-lucas-moulard            (sans accent) -> fonctionne
+    //   /post/le-7-octobre-vécu-…        (accent)      -> 404
+    //   /post/le-7-octobre-vécu-…/index.html           -> fonctionne
+    // Le fichier de transfert etait donc bien en ligne ; seule la resolution
+    // du dossier le rendait inatteignable.
+    //
+    // Un FICHIER, lui, se sert directement : pas de barre a ajouter, donc pas
+    // de redirection, donc rien a ré-encoder. Le dossier reste ecrit pour la
+    // forme avec barre finale, qui marche deja et que des liens exterieurs
+    // peuvent porter.
+    if (!rel.endsWith('.html')) await writeFile(`${rel}.html`, page);
     return true;
   };
 

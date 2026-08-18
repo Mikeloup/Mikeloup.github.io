@@ -34,6 +34,71 @@ site, en service payant.*
 
 ---
 
+## Un tiers du trafic tombait dans un 404 — v127 (18 août 2026)
+
+Michael trouve les performances du site très faibles. Search Console lui donne
+raison, et la cause est mécanique.
+
+**L'état, mesuré le 18 août 2026 :**
+
+| | 3 mois | 28 derniers jours |
+|---|---|---|
+| Clics | 433 | 120 |
+| Impressions | 16 600 | 3 060 |
+| CTR | 2,6 % | 3,9 % |
+| Position moyenne | 10,4 | 18,2 |
+
+La position moyenne s'est dégradée de 10 à 18 : ce n'est pas un problème de
+visibilité, c'est une perte de rang.
+
+**Le défaut.** Sur les dix pages les plus visitées, **six sont d'anciennes
+adresses Wix en `/post/…` qui renvoyaient une erreur 404** — 159 clics sur 433,
+plus d'un tiers du trafic de trois mois arrivant sur une page d'erreur.
+
+Les pages de transfert étaient pourtant bien déployées. Le défaut ne touchait
+que **les adresses contenant un accent**, et il est subtil : demandée sans barre
+finale — la forme exacte que Google a indexée —, une adresse qui désigne un
+DOSSIER fait répondre à GitHub Pages une redirection vers la même adresse suivie
+d'une barre. Dans cette redirection, il ré-encode : `é` (`%C3%A9`) devient `Ã©`
+(`%C3%83%C2%A9`). L'adresse obtenue ne correspond à rien : 404.
+
+Vérifié en vrai, trois cas, et c'est le troisième qui a tranché :
+
+- `/post/…-lucas-moulard` (sans accent) → fonctionne
+- `/post/le-7-octobre-vécu-…` (accent) → 404
+- `/post/le-7-octobre-vécu-…/index.html` → **fonctionne**
+
+Le fichier était donc en ligne ; seule la résolution du dossier le rendait
+inatteignable. Méthode à retenir : le premier test avait été fait en tapant
+l'adresse accentuée dans la barre du navigateur, qui l'a lui-même ré-encodée —
+le 404 obtenu était mon propre artefact. Il a fallu refaire l'essai sur une
+adresse **sans accent** pour isoler la variable. Un test qui confirme ce qu'on
+attend mérite d'être refait autrement.
+
+**La correction** : chaque page de transfert est désormais écrite deux fois, en
+dossier `nom/index.html` ET en fichier `nom.html`. Un fichier se sert
+directement — pas de barre à ajouter, donc pas de redirection, donc rien à
+ré-encoder. 46 anciennes adresses concernées.
+
+**Le second enseignement, non corrigé à ce stade.** Les requêtes les plus fortes
+ne portent pas sur les émissions mais sur les intervenants, et sur un mode
+biographique : « stephan zeev goldin origine parents » (897 impressions),
+« samuel madar wikipédia » (603), « stephan zeev goldin tsahal âge » (511),
+« maxime loth » (700). Les gens cherchent **qui sont ces personnes** ; le site
+répond avec une page vidéo. D'où un CTR de 1,6 à 2 % alors que la visibilité est
+là. Les fiches invités existent et fonctionnent (`/invites/stephane-goldin/`
+capte déjà des clics) mais restent trop maigres face à la demande.
+
+Ce chantier-là ne peut pas être fait sans Michael : écrire la biographie d'une
+personne réelle à partir de rien serait de l'invention. Il faut des faits, et
+c'est lui qui interviewe ces gens.
+
+**Indexation** : 1 230 pages indexées, 448 non — dont 265 « détectées, non
+explorées » et 111 « explorées, non indexées », le signal habituel de pages trop
+maigres en texte.
+
+---
+
 ## Reels en double sur Instagram — v126 (17 août 2026)
 
 Michael : **« il y a un problème quelque part car beaucoup de Reels sur insta sont
