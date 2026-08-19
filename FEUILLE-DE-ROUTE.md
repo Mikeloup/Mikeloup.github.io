@@ -34,6 +34,113 @@ site, en service payant.*
 
 ---
 
+## L'identité des invités, tirée de vos propres textes — v131 (19 août 2026)
+
+Michael : **« peut-on créer des biographies de tous les invités ? »** Non — les
+inventer serait une faute, ce sont des personnes réelles. Mais il n'y en a pas
+besoin : **la chaîne présente déjà chacun de ses invités, à chaque émission**,
+dans la description qu'elle rédige pour YouTube.
+
+> « le géopolitologue **Michel Fayad**, spécialiste du Proche et du Moyen-Orient »
+> « **Stéphane Goldin**, expert militaire et défense »
+> « **Pierre Martinet**, ancien agent du service action de la DGSE »
+
+`src/identite.mjs` extrait cette apposition, avant ou après le nom, et la
+compose : *« linguiste, auteur de nombreux ouvrages consacrés à l'hébreu »* pour
+Bruno Dray, dont les deux moitiés viennent d'une même phrase. La ligne s'affiche
+sous le nom, entre dans le titre de la page, dans la description que Google
+montre, et dans `jobTitle` des données structurées.
+
+**Ce que le module refuse de faire compte autant que ce qu'il fait.** Une
+fonction fausse sur une personne réelle est pire que pas de fonction :
+
+- tout candidat contenant un verbe conjugué est rejeté ;
+- l'apposition est **coupée à la première virgule**, sans exception. Une liste
+  de verbes interdits ne sera jamais complète : « Rony Akrich, historiosophe de
+  la Bible, développe une réflexion sur… » passait au travers parce que
+  « développe » n'y figurait pas, et la fiche affichait une demi-phrase
+  tronquée. La virgule, elle, ferme toujours l'apposition ;
+- les orthographes multiples sont toutes essayées — « Marjan » et « Marjane
+  Abadie » sont la même personne, et c'est la seconde qui porte la présentation ;
+- en cas de doute, rien n'est publié.
+
+Testé sur dix cas réels relevés dans le flux du site : **huit identités
+extraites, deux abstentions justes**. William Zerbib, cité dans presque toutes
+les descriptions comme intervieweur, ne produit aucun faux positif — c'était le
+piège principal.
+
+---
+
+## Une fiche pour tous les invités — v130 (19 août 2026)
+
+Michael, après avoir validé le bloc « Qui est … ? » : **« ça veut dire aussi
+qu'il faut faire des fiches invités pour TOUS les invités »**. Il a raison, et
+les chiffres le disaient déjà sans qu'on l'ait vu.
+
+Le site comptait 71 fiches, réservées aux personnes ayant **au moins deux
+vidéos**. Or les deux requêtes les plus fortes après « tandem tv » sont
+« maxime loth » (700 impressions) et « sarah fainberg » (282) — et **ni l'un ni
+l'autre n'avait de fiche**, faute d'une seconde vidéo. Le site était visible sur
+leur nom sans avoir une seule page à leur consacrer.
+
+Le seuil de deux vidéos existait pour une raison valable : éviter des centaines
+de pages vides, que Google explore puis refuse d'indexer. Mais **ce n'est pas le
+nombre de vidéos qui fait une page vide, c'est l'absence de texte.** Le comptage
+est donc remplacé par la seule question qui vaille : a-t-on quelque chose à dire
+de cette personne ? Une description d'émission substantielle suffit — et c'est
+exactement ce qu'affiche le bloc « Qui est … ? ».
+
+**La règle vit dans un seul fichier.** `extraitPresentation()` dans
+`src/util.mjs` décide deux choses qui doivent rester d'accord : si une personne
+mérite une fiche (`src/personnes.mjs`), et ce que cette fiche affiche
+(`src/render.mjs`). Écrire le seuil aux deux endroits marcherait aujourd'hui et
+divergerait un jour, en silence — c'est précisément le défaut qui a fait échouer
+le Reel de Denis Charbit une semaine plus tôt, un filtre élargi à un endroit et
+pas à l'autre.
+
+À surveiller après mise en ligne : le repérage des noms se fait sur les titres
+et les descriptions, et il peut prendre une marque ou un nom d'émission pour une
+personne. La liste `exclure` de `data/personnes.json` est faite pour ça ; il
+faudra relire la page /invites/ une fois le lot passé.
+
+---
+
+## « Qui est … ? » sur les fiches invités — v129 (18 août 2026)
+
+Suite directe de l'analyse Search Console. La demande est biographique et elle
+est forte ; la fiche invité n'avait aucun texte à lui opposer, seulement une
+grille de vignettes. D'où une visibilité réelle et un taux de clic de 1,6 %.
+
+Michael : **« je ne peux pas faire les bios »**. Et les inventer serait une
+faute — ce sont des personnes réelles.
+
+**La matière existait déjà**, et personne ne l'avait vue : les descriptions que
+la chaîne rédige pour YouTube présentent l'invité, son parcours et son propos.
+Celle de Samuel Madar dit son combat, son format, sa méthode et sa cible, en
+quatre paragraphes. Elles sont téléchargées à chaque construction depuis
+toujours, et n'étaient utilisées que tronquées à 165 signes sous les vignettes.
+
+La fiche porte désormais un bloc **« Qui est … ? »** : pour chacune des cinq
+interventions les plus parlantes, le titre, la date et un extrait de 340 signes
+de la description, nettoyé de son habillage promotionnel par `excerpt()` — qui
+écartait déjà les timecodes, hashtags, liens et appels à l'abonnement.
+
+Trois propriétés qui comptent :
+
+- **Rien n'est inventé.** Chaque phrase vient d'un programme réel de la chaîne.
+- **Rien n'est emprunté.** Pas de reprise de Wikipédia : ce texte est unique,
+  ce que Google valorise et qu'un concurrent ne peut pas copier.
+- **Tout est vérifiable.** Chaque extrait reste rattaché à sa vidéo, à un clic.
+
+Le seuil de 120 signes écarte les descriptions vides : mieux vaut trois extraits
+qui disent quelque chose que six dont la moitié ne dit rien.
+
+À mesurer dans trois semaines sur les fiches Goldin, Madar, Loth et Fainberg :
+c'est le taux de clic qu'il faut regarder, pas la position — la visibilité est
+déjà acquise.
+
+---
+
 ## Un tiers du trafic tombait dans un 404 — v127 (18 août 2026)
 
 Michael trouve les performances du site très faibles. Search Console lui donne

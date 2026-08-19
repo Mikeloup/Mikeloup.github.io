@@ -8,7 +8,8 @@
 // la chaîne publie déjà, sans rien inventer sur les personnes.
 // -----------------------------------------------------------------------------
 
-import { slugify } from './util.mjs';
+import { slugify, extraitPresentation } from './util.mjs';
+import { identiteDe } from './identite.mjs';
 
 // Mots qui, présents dans un candidat, prouvent que ce n'est pas un nom de
 // personne mais un lieu, un thème ou une formule d'émission.
@@ -185,14 +186,39 @@ export function collecterPersonnes(categories, allVideos, manuel = {}) {
   }
   const ficheDe = (nom) => fiches.get(clef(nom)) || fiches.get(sansTitre(nom)) || null;
 
+  // Le seuil, et l'exception qui compte.
+  //
+  // Search Console, 18 aout 2026 : « maxime loth » pese 700 impressions et
+  // « sarah fainberg » 282 — deux des requetes les plus fortes du site. Ni
+  // l'un ni l'autre n'avait de fiche : ils n'ont qu'une seule video, et le
+  // seuil en exigeait deux. Le site etait donc visible sur leur nom sans avoir
+  // une seule page a leur consacrer.
+  //
+  // Le seuil existait pour une bonne raison : eviter des centaines de pages
+  // vides, que Google explore puis refuse d'indexer. Mais ce n'est pas le
+  // NOMBRE DE VIDEOS qui fait une page vide, c'est l'ABSENCE DE TEXTE. On
+  // remplace donc le comptage par la seule question qui vaille : a-t-on
+  // quelque chose a dire de cette personne ? Une description d'emission
+  // substantielle suffit — c'est precisement ce qu'affiche le bloc
+  // « Qui est … ? », et c'est la meme fonction qui en decide.
+  const aQuelqueChoseADire = (p) => p.videos.some((v) => extraitPresentation(v));
+
   const retenues = [...gens.values()]
-    .filter((p) => p.videos.length >= seuil || inclure.has(p.nom.toLowerCase()))
+    .filter((p) => p.videos.length >= seuil
+      || aQuelqueChoseADire(p)
+      || inclure.has(p.nom.toLowerCase()))
     .map((p) => ({
       ...p,
       rubriques: [...p.rubriques],
       presente: [...p.presente],
       videos: p.videos.sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt)),
       fiche: ficheDe(p.nom),
+      // Ce que les descriptions de la chaîne disent de cette personne — sa
+      // fonction, telle qu'elle est présentée à l'antenne. Toutes les
+      // orthographes rencontrées sont passées à l'extracteur : « Marjan » et
+      // « Marjane Abadie » sont la même personne, et c'est la seconde graphie
+      // qui porte la présentation.
+      identite: identiteDe([...p.graphies.keys()], p.videos),
     }))
     .sort((a, b) => b.videos.length - a.videos.length || a.nom.localeCompare(b.nom, 'fr'));
 

@@ -6,6 +6,7 @@
 import {
   escapeHtml, formatDate, formatDateTime, formatDuration, formatCount, formatNumber, truncate,
   excerpt, descriptionToHtml, extractChapters, removeChapterLines, slugify as slugifyNom,
+  extraitPresentation,
 } from './util.mjs';
 import { mmss } from './transcriptions.mjs';
 
@@ -1466,6 +1467,44 @@ export function personPage({ config, categories, nav, personne, buildTime }) {
     ? `${escapeHtml(personne.nom)} présente ${personne.presente.length > 1 ? 'les émissions' : "l'émission"} ${personne.presente.map((t) => escapeHtml(t)).join(', ')} sur ${escapeHtml(config.siteName)}.`
     : `${escapeHtml(personne.nom)} est intervenu${n > 1 ? ' à ' + n + ' reprises' : ''} sur ${escapeHtml(config.siteName)}${periode ? ` ${periode}` : ''}.`;
 
+  // « Qui est … ? » — la question que les gens posent réellement.
+  //
+  // Search Console, 18 août 2026 : les requêtes les plus fortes du site sont
+  // biographiques. « stephan zeev goldin origine parents » pèse à elle seule
+  // 897 impressions, « samuel madar wikipédia » 603, « maxime loth » 700. Les
+  // gens cherchent QUI sont ces personnes. La fiche leur répondait par une
+  // grille de vignettes, sans une ligne de texte : d'où une visibilité réelle
+  // et un taux de clic de 1,6 %.
+  //
+  // Michael ne peut pas écrire cinquante biographies, et les inventer serait
+  // une faute — ce sont des personnes réelles. Mais la matière existe déjà :
+  // les descriptions que la chaîne rédige pour YouTube présentent l'invité,
+  // son parcours et son propos. On les remonte ici, débarrassées de leur
+  // habillage promotionnel par excerpt(), et chacune reste rattachée à la
+  // vidéo dont elle provient. Rien n'est inventé, rien n'est emprunté à un
+  // tiers : chaque phrase vient d'un programme de la chaîne, et le lecteur
+  // peut aller le vérifier d'un clic.
+  //
+  // Le seuil de 120 signes écarte les descriptions vides ou réduites à un
+  // titre : mieux vaut trois extraits qui disent quelque chose que six dont la
+  // moitié ne dit rien.
+  const propos = personne.videos
+    .map((v) => ({ v, texte: extraitPresentation(v) }))
+    .filter((x) => x.texte)
+    .slice(0, 5);
+
+  const blocPropos = propos.length ? `
+  <section class="personne-propos">
+    <h2>Qui est ${escapeHtml(personne.nom)} ?</h2>
+    <p class="muted">${escapeHtml(personne.nom)} ${personne.presente.length ? 'présente' : 'intervient'} sur ${escapeHtml(config.siteName)}${personne.rubriques.length ? ` dans ${personne.rubriques.map((t) => escapeHtml(t)).join(', ')}` : ''}. Ce que ${propos.length > 1 ? 'ses interventions disent' : 'son intervention dit'} de ${personne.presente.length ? 'son travail' : 'lui'} :</p>
+    ${propos.map(({ v, texte }) => `
+    <article class="propos">
+      <h3 class="propos-titre"><a href="/video/${escapeHtml(v.id)}/">${escapeHtml(v.title)}</a></h3>
+      ${v.publishedAt ? `<p class="propos-date">${escapeHtml(formatDate(v.publishedAt))}</p>` : ''}
+      <p class="propos-texte">${escapeHtml(texte)}</p>
+    </article>`).join('')}
+  </section>` : '';
+
   const content = `
 <div class="wrap">
   <nav class="breadcrumb"><a href="/">Accueil</a> <span>›</span> <a href="/invites/">Invités et intervenants</a> <span>›</span> <span>${escapeHtml(personne.nom)}</span></nav>
@@ -1477,12 +1516,14 @@ export function personPage({ config, categories, nav, personne, buildTime }) {
     <div class="personne-intro">
     <p class="kicker">${personne.presente.length ? 'Présentateur' : 'Invité'}</p>
     <h1>${escapeHtml(personne.nom)}</h1>
-    ${personne.fiche?.role ? `<p class="lede">${escapeHtml(personne.fiche.role)}</p>` : ''}
+    ${(personne.fiche?.role || personne.identite) ? `<p class="lede">${escapeHtml(personne.fiche?.role || personne.identite)}</p>` : ''}
     <p class="muted">${resume}</p>
     ${personne.fiche?.texte ? `<div class="personne-texte">${descriptionToHtml(personne.fiche.texte)}</div>` : ''}
     ${personne.rubriques.length ? `<p class="muted small">Rubriques : ${personne.rubriques.map((t) => escapeHtml(t)).join(' · ')}</p>` : ''}
     </div>
   </header>
+
+  ${blocPropos}
 
   <section class="row">
     <div class="row-head"><h2 class="row-title">${n > 1 ? `Ses ${n} passages` : 'Son passage'} sur ${escapeHtml(config.siteName)}</h2></div>
@@ -1493,7 +1534,7 @@ export function personPage({ config, categories, nav, personne, buildTime }) {
   return layout({
     config, categories, nav, buildTime,
     title: personne.nom,
-    description: `${personne.nom} sur ${config.siteName} : ${n} vidéo${n > 1 ? 's' : ''}${periode ? `, ${periode}` : ''}. ${personne.fiche?.role || ''}`.trim(),
+    description: `${personne.nom}${personne.fiche?.role || personne.identite ? ` — ${personne.fiche?.role || personne.identite}` : ''}. ${n} vidéo${n > 1 ? 's' : ''} sur ${config.siteName}${periode ? `, ${periode}` : ''}.`.trim(),
     canonical: `/invites/${personne.slug}/`,
     image: personne.videos[0]?.thumbnail,
     bodyClass: 'page-personne',
@@ -1511,7 +1552,7 @@ export function personPage({ config, categories, nav, personne, buildTime }) {
           '@type': 'Person',
           name: personne.nom,
           url: `${config.siteUrl.replace(/\/$/, '')}/invites/${personne.slug}/`,
-          ...(personne.fiche?.role ? { jobTitle: personne.fiche.role } : {}),
+          ...((personne.fiche?.role || personne.identite) ? { jobTitle: personne.fiche?.role || personne.identite } : {}),
           ...(personne.presente.length
             ? { worksFor: { '@type': 'Organization', name: config.siteName, url: config.siteUrl } }
             : {}),
@@ -1556,6 +1597,7 @@ export function personIndexPage({ config, categories, nav, personnes, buildTime 
     ${tries.map((p) => `<li><a class="personne-carte" href="/invites/${p.slug}/">
       <span class="personne-photo"><img src="${escapeHtml(photoDe(p))}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" width="480" height="270"></span>
       <span class="personne-nom">${escapeHtml(p.nom)}</span>
+      ${(p.fiche?.role || p.identite) ? `<span class="personne-role">${escapeHtml(p.fiche?.role || p.identite)}</span>` : ''}
       <span class="muted small">${p.videos.length} vidéo${p.videos.length > 1 ? 's' : ''}</span>
     </a></li>`).join('')}
   </ul>

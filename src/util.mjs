@@ -373,3 +373,24 @@ export function titreLisible(titre = '') {
   if (!DECORATIF.test(s)) return s;
   return s.normalize('NFKC').replace(/\s+/g, ' ').trim();
 }
+
+/**
+ * Extrait de présentation d'une vidéo : le texte qui sert à dire qui est une
+ * personne, sur sa fiche. Rend '' si la description ne dit rien d'utile.
+ *
+ * CETTE FONCTION EST LA RÈGLE, ET ELLE VIT ICI SEULE. Elle décide deux choses
+ * qui doivent rester d'accord entre elles :
+ *   - si une personne mérite une fiche (src/personnes.mjs) ;
+ *   - ce que cette fiche affiche (src/render.mjs).
+ * Écrire le seuil dans les deux fichiers marcherait aujourd'hui et divergerait
+ * un jour, en silence — c'est exactement le défaut qui a fait échouer le Reel
+ * de Denis Charbit en août 2026, un filtre élargi à un endroit et pas à
+ * l'autre. Une règle partagée vit dans UN seul fichier.
+ */
+export const EXTRAIT_MIN = 120;
+export const EXTRAIT_MAX = 340;
+
+export function extraitPresentation(video) {
+  const texte = excerpt(video?.description, EXTRAIT_MAX);
+  return texte.length >= EXTRAIT_MIN ? texte : '';
+}
