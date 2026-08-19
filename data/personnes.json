@@ -2,6 +2,8 @@
   "_comment": "Fiches des personnes citées dans le catalogue. Le site repère automatiquement les noms dans les titres de vidéos et dans les noms d'émissions. Ce fichier permet de corriger : 'exclure' retire un faux nom (une marque, un partenaire), 'alias' fusionne deux orthographes, 'inclure' force la création d'une fiche pour quelqu'un qui n'a qu'une seule vidéo, 'presentateurs' impose le présentateur d'une émission, 'fiches' ajoute une fonction, un texte de présentation, un portrait ('photo') et une vignette imposée ('vignette' : l'identifiant YouTube de la vidéo dont on veut la miniature — c'est le dernier mot, il l'emporte sur tout le reste) — écrits à la main, car le site n'invente rien sur les personnes. 'minVideos' est le nombre de passages à partir duquel une fiche est créée automatiquement.",
   "minVideos": 2,
   "exclure": [
+    "A NEW MAN",
+    "A New Man",
     "Archi Design",
     "Art Connexion",
     "Art connexion",
@@ -24,8 +26,8 @@
     "Haolam Hamedoubar",
     "Hasbara en Tandem",
     "Le Mont Des Oliviers",
-    "Le Mont Du Temple",
     "Le mont des oliviers",
+    "Le Mont Du Temple",
     "Le mont du temple",
     "Mont Des Oliviers",
     "Mont Du Temple",

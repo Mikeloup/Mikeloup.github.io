@@ -1410,20 +1410,31 @@ a.g-src:hover { color: var(--accent); text-decoration: underline; text-underline
 .st-carte[hidden] { display: none; }
 
 /* Fiche invité : « Qui est … ? »
-   Ajouté le 18 août 2026. Les requêtes qui amènent du monde sur le site sont
-   biographiques ; la fiche n'avait aucun texte à leur opposer. Ce bloc remonte
-   ce que les descriptions des émissions disent de la personne. Il se lit comme
-   un article, pas comme une liste : c'est du texte, et c'est voulu. */
+   Chaque extrait porte sa vignette et le bloc entier est cliquable : le texte
+   dit ce que la personne apporte, l'image donne envie, et l'ensemble mène à la
+   vidéo. Aéré, et sans répéter la grille du bas. */
 .personne-propos { margin: 2.5rem 0 1rem; }
-.personne-propos > h2 { margin: 0 0 .4rem; }
-.personne-propos > .muted { margin: 0 0 1.6rem; max-width: 46rem; }
-.personne-propos .propos { max-width: 46rem; margin: 0 0 1.75rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--trait, #e6e1d8); }
+.personne-propos > h2 { margin: 0 0 1.4rem; }
+.personne-propos .propos { display: grid; grid-template-columns: 260px 1fr; gap: 1.4rem;
+  align-items: start; max-width: 52rem; margin: 0 0 1.5rem; padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--line); color: inherit; text-decoration: none; }
 .personne-propos .propos:last-child { border-bottom: 0; }
-.propos-titre { font-size: 1.05rem; margin: 0 0 .2rem; line-height: 1.3; }
-.propos-titre a { color: inherit; text-decoration: none; }
-.propos-titre a:hover { text-decoration: underline; }
-.propos-date { margin: 0 0 .5rem; font-size: .82rem; color: var(--gris, #6b6560); }
-.propos-texte { margin: 0; line-height: 1.65; }
+.propos-vignette { position: relative; display: block; border-radius: .5rem; overflow: hidden;
+  background: var(--surface-2); aspect-ratio: 16 / 9; }
+.propos-vignette img { width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: transform .25s ease; }
+.propos:hover .propos-vignette img { transform: scale(1.04); }
+.propos-duree { position: absolute; right: .4rem; bottom: .4rem; padding: .1rem .35rem;
+  border-radius: .25rem; background: rgba(0,0,0,.78); color: #fff; font-size: .75rem; font-weight: 600; }
+.propos-corps { display: block; }
+.propos-titre { display: block; font-weight: 700; font-size: 1.05rem; line-height: 1.3; }
+.propos:hover .propos-titre { text-decoration: underline; }
+.propos-date { display: block; margin: .25rem 0 .5rem; font-size: .82rem; color: var(--muted); }
+.propos-texte { display: block; line-height: 1.6; color: var(--text); }
+
+@media (max-width: 640px) {
+  .personne-propos .propos { grid-template-columns: 1fr; gap: .8rem; }
+}
 
 /* Index des invités : la fonction sous le nom.
    Un annuaire de noms nus n'aide personne — ni le visiteur qui cherche « le

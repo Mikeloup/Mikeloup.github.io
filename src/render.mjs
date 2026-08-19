@@ -1493,16 +1493,32 @@ export function personPage({ config, categories, nav, personne, buildTime }) {
     .filter((x) => x.texte)
     .slice(0, 5);
 
+  // Une seule fois chaque vidéo, et toujours cliquable.
+  //
+  // Michael, 19 août 2026 : « il y a de la redondance dans ces nouvelles
+  // fiches, et il faut aérer avec les vignettes cliquables ». C'était exact :
+  // les mêmes vidéos étaient racontées en texte dans « Qui est… », puis
+  // reprises en vignettes dans « Ses passages » — deux fois la même chose, et
+  // le texte n'était pas cliquable. Sur une fiche à deux vidéos, la page se
+  // répétait entièrement.
+  //
+  // Les extraits portent donc leur vignette, le bloc entier est un lien, et la
+  // grille du bas ne montre plus que ce qui n'a pas déjà été détaillé.
+  const detaillees = new Set(propos.map(({ v }) => v.id));
+  const reste = personne.videos.filter((v) => !detaillees.has(v.id));
+
   const blocPropos = propos.length ? `
   <section class="personne-propos">
     <h2>Qui est ${escapeHtml(personne.nom)} ?</h2>
-    <p class="muted">${escapeHtml(personne.nom)} ${personne.presente.length ? 'présente' : 'intervient'} sur ${escapeHtml(config.siteName)}${personne.rubriques.length ? ` dans ${personne.rubriques.map((t) => escapeHtml(t)).join(', ')}` : ''}. Ce que ${propos.length > 1 ? 'ses interventions disent' : 'son intervention dit'} de ${personne.presente.length ? 'son travail' : 'lui'} :</p>
     ${propos.map(({ v, texte }) => `
-    <article class="propos">
-      <h3 class="propos-titre"><a href="/video/${escapeHtml(v.id)}/">${escapeHtml(v.title)}</a></h3>
-      ${v.publishedAt ? `<p class="propos-date">${escapeHtml(formatDate(v.publishedAt))}</p>` : ''}
-      <p class="propos-texte">${escapeHtml(texte)}</p>
-    </article>`).join('')}
+    <a class="propos" href="/video/${escapeHtml(v.id)}/">
+      <span class="propos-vignette"><img src="${escapeHtml(v.thumbnail || '')}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" width="480" height="270">${v.duration ? `<span class="propos-duree">${formatDuration(v.duration)}</span>` : ''}</span>
+      <span class="propos-corps">
+        <span class="propos-titre">${escapeHtml(v.title)}</span>
+        ${v.publishedAt ? `<span class="propos-date">${escapeHtml(formatDate(v.publishedAt))}</span>` : ''}
+        <span class="propos-texte">${escapeHtml(texte)}</span>
+      </span>
+    </a>`).join('')}
   </section>` : '';
 
   const content = `
@@ -1525,10 +1541,12 @@ export function personPage({ config, categories, nav, personne, buildTime }) {
 
   ${blocPropos}
 
-  <section class="row">
-    <div class="row-head"><h2 class="row-title">${n > 1 ? `Ses ${n} passages` : 'Son passage'} sur ${escapeHtml(config.siteName)}</h2></div>
-    ${grid(personne.videos)}
-  </section>
+  ${reste.length ? `<section class="row">
+    <div class="row-head"><h2 class="row-title">${propos.length
+      ? `Ses ${reste.length} autre${reste.length > 1 ? 's' : ''} passage${reste.length > 1 ? 's' : ''}`
+      : (n > 1 ? `Ses ${n} passages` : 'Son passage')} sur ${escapeHtml(config.siteName)}</h2></div>
+    ${grid(reste)}
+  </section>` : ''}
 </div>`;
 
   return layout({
