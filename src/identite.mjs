@@ -54,6 +54,42 @@ const INTERDITS = /\b(dans cette?|dans ce|sur tandem|pour tandem|cette interview
 // Une fonction commence rarement par ces mots — signe qu'on a attrapé autre chose.
 const DEBUTS_DOUTEUX = /^(et|ou|mais|donc|puis|alors|ainsi|aussi|depuis|avec|sans|pour|par|en|au|aux|du|des|de|la|le|les|un|une)\b/i;
 
+// Les métiers, fonctions et qualités par lesquels on présente quelqu'un.
+//
+// POURQUOI UNE LISTE BLANCHE ET NON UNE LISTE NOIRE.
+// Le 19 août 2026, la liste des invités du site en ligne a montré ce que dix
+// cas choisis à la main ne pouvaient pas montrer : « Armand David Hasson,
+// découvrez comment l'Inquisition », « Nathaniel Nabet, cette émission »,
+// « Sophie Bria, l'avocat Maître Lef Forster » — le nom de quelqu'un d'autre.
+// Interdire des tournures ne marche pas : il y en a une infinité. N'autoriser
+// que ce qui commence par un mot de métier est étroit, ferme, et vérifiable.
+// On perdra des fonctions rares ; on n'affichera plus de phrase au hasard sous
+// le nom d'une personne réelle.
+const METIERS = new Set(`
+acteur actrice agronome ambassadeur ambassadrice ancien ancienne anthropologue
+archeologue architecte artiste astrophysicien auteur autrice avocat avocate
+biologiste cardiologue chanteur chanteuse chef chercheur chercheuse chirurgien
+chirurgienne chroniqueur chroniqueuse cineaste co-fondateur cofondateur
+cofondatrice comedien comedienne commandant compositeur conferencier consultant
+correspondant cuisinier depute deputee dessinateur diplomate directeur directrice
+docteur documentariste ecrivain ecrivaine economiste editeur educateur enseignant
+enseignante entrepreneur envoye essayiste expert experte femme fondateur
+fondatrice general geopoliticien geopolitologue guide historien historienne
+historiosophe homme humoriste industriel ingenieur intellectuel journaliste
+juriste linguiste maire medecin militaire militant militante ministre musicien
+neurologue officier ancienne-ministre patron pediatre peintre pedagogue
+philosophe photographe physicien poete politologue porte-parole president
+presidente producteur professeur psychanalyste psychiatre psychologue
+psychotherapeute rabbin rav realisateur realisatrice redacteur redactrice
+reporter representant reserviste responsable romancier romanciere scenariste
+sociologue soldat specialiste survivant survivante theologien traducteur
+universitaire urgentiste veterinaire vice-president
+`.trim().split(/\s+/));
+
+// Un candidat qui se termine par l'un de ces mots est une phrase coupée, pas
+// une fonction : « auteur du », « rencontre de », « médecin généraliste vous ».
+const FINS_TRONQUEES = /\b(de|du|des|d'|au|aux|le|la|les|l'|un|une|et|ou|a|à|en|par|pour|sur|dans|avec|sans|vous|nous|se|ce|cette|ces|son|sa|ses|leur|qui|que|dont|comme|plus|tres|très)$/i;
+
 /** Un candidat est-il un groupe nominal plausible pour une fonction ? */
 function plausible(x) {
   const t = String(x || '').trim().replace(/\s+/g, ' ');
@@ -63,7 +99,17 @@ function plausible(x) {
   if (DEBUTS_DOUTEUX.test(t)) return '';
   if (!/^[a-zà-ÿ]/.test(t)) return '';        // une fonction s'écrit en minuscule
   if ((t.match(/,/g) || []).length > 2) return '';
-  return t.replace(/[\s,;:–—-]+$/, '');
+
+  const propre = t.replace(/[\s,;:–—-]+$/, '');
+
+  // Le premier mot doit être un métier. C'est le filtre qui compte.
+  const tete = nu(propre).split(/[\s'’-]/)[0];
+  if (!METIERS.has(tete)) return '';
+
+  // Et la fin ne doit pas trahir une phrase coupée.
+  if (FINS_TRONQUEES.test(propre)) return '';
+
+  return propre;
 }
 
 /**

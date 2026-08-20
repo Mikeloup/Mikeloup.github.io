@@ -34,6 +34,53 @@ site, en service payant.*
 
 ---
 
+## Deux défauts que dix cas choisis à la main ne pouvaient pas montrer — v133 (19 août 2026)
+
+v132 mise en ligne, Michael regarde la liste des invités : **« tu m'as remis des
+émissions »**. Il avait raison, et il y avait deux défauts distincts.
+
+**1. L'extracteur d'identité produisait des phrases au hasard.** La liste en
+ligne affichait *« Armand David Hasson — découvrez comment l'Inquisition »*,
+*« Nathaniel Nabet — cette émission »*, *« Rav Mendel Mimoun — cours et
+enseignements du »*, et, pire, *« Sophie Bria — l'avocat Maître Lef Forster »* :
+le nom de quelqu'un d'autre sous sa photo.
+
+J'avais testé sur **dix cas choisis à la main**, tous favorables, et j'avais
+livré. Le catalogue réel — 1 100 vidéos, 194 noms — l'a cassé en une lecture.
+
+La correction change de logique : **liste blanche au lieu de liste noire**.
+Interdire des tournures ne marche pas, il y en a une infinité ; on n'accepte
+plus qu'un candidat dont le PREMIER MOT est un métier (`METIERS`, environ 130
+entrées), et qui ne se termine pas par une préposition — signe d'une phrase
+coupée. Testé sur les 19 mauvaises identités relevées en ligne : **19 rejetées**,
+et les 8 bonnes conservées.
+
+**2. Le repérage prenait des lieux et des émissions pour des gens.** LA TOUR DE
+DAVID, LE MONT SION, Les Oranges de Jaffa, Scale Up Nation, VOYAGE DANS
+L'ESPACE, Le Magen David Adom, Kids Comedy Club. Le seuil abaissé en v130 les a
+tous fait entrer.
+
+Deux règles attrapent les familles entières : **un nom de personne ne commence
+pas par un article**, et il ne contient pas de mot d'organisation, de lieu ou
+d'œuvre (radio, network, association, théâtre, prison, mont, procès, voyage…).
+La liste `exclure` complète pour le reste — 82 entrées désormais, dont A NEW MAN
+à la demande de Michael. Vérifié : **15 faux invités écartés, 11 vraies
+personnes conservées**, dont ARIE ABITBOL et MICHAEL JONES, qui sont bien des
+personnes malgré leurs majuscules.
+
+Quatre doublons fusionnés par alias : Alexander/Alexandre Grinberg, Bruno
+Lellouche et son « Dr », Miriam Rosman et son « Dr », Stéphane Goldin et Stéphane
+Zeev Goldin.
+
+**La leçon, et elle est plus large que ce défaut :** un échantillon que l'on
+choisit soi-même ne teste rien. Il confirme. Les dix cas venaient tous du flux
+des dernières semaines, tous des interviews bien rédigées. Les vieux titres, les
+émissions de cuisine, les fiches de lieux — c'est-à-dire la moitié du catalogue —
+n'étaient pas représentés. **Le prochain test se tire au hasard dans le
+catalogue, pas dans ce qui m'arrange.**
+
+---
+
 ## L'identité des invités, tirée de vos propres textes — v131 (19 août 2026)
 
 Michael : **« peut-on créer des biographies de tous les invités ? »** Non — les

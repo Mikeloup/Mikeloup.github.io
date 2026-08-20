@@ -85,6 +85,37 @@ export function collecterPersonnes(categories, allVideos, manuel = {}) {
 
   const canonique = (nom) => alias.get(nom.toLowerCase()) || nom;
 
+  // Est-ce seulement un nom de personne ?
+  //
+  // Le 19 août 2026, l'annuaire en ligne comptait 194 « invités », parmi
+  // lesquels LA TOUR DE DAVID, LE MONT SION, Les Oranges de Jaffa, Scale Up
+  // Nation, VOYAGE DANS L'ESPACE et Le Magen David Adom. Le repérage lit les
+  // titres et les descriptions ; il y trouve des lieux, des œuvres, des
+  // organisations et des noms d'émissions, et il en faisait des gens.
+  //
+  // La liste `exclure` reste indispensable pour les cas particuliers, mais
+  // elle ne peut pas suivre un catalogue de 1 100 vidéos qui grossit de cinq
+  // par semaine. Ces deux règles-ci attrapent les familles entières.
+  const MOTS_NON_PERSONNE = new RegExp('\\b(' + [
+    'radio', 'tv', 'network', 'club', 'association', 'fondation', 'institut',
+    'centre', 'center', 'medical', 'hopital', 'clinique', 'festival', 'magazine',
+    'emission', 'chaine', 'nation', 'tour', 'prison', 'theatre', 'synagogue',
+    'synagogues', 'musee', 'mont', 'affaire', 'proces', 'voyage', 'espace',
+    'comedy', 'culture', 'communication', 'strategies', 'duos', 'livres',
+    'oranges', 'ghetto', 'whale', 'sisters', 'brothers', 'company', 'studio',
+    'projet', 'collectif', 'mouvement', 'agence', 'ecole', 'universite',
+  ].join('|') + ')\\b', 'i');
+
+  const ressembleAUnePersonne = (nom) => {
+    const t = String(nom || '').trim();
+    if (t.length < 3 || /\d/.test(t)) return false;
+    // « La Tour de David », « Les Oranges de Jaffa » : un nom de personne ne
+    // commence pas par un article.
+    if (/^(le|la|les|l['’]|un|une|des|du|the|der|die|das)\b/i.test(t)) return false;
+    if (MOTS_NON_PERSONNE.test(clef(t))) return false;
+    return true;
+  };
+
   // Clé de regroupement : sans accents ni casse. « Jérôme Haas », « Jérome Haas »
   // et « Jerome Haas » sont la même personne — le repérage automatique lisait
   // les trois orthographes dans les titres et créait trois fiches.
@@ -95,6 +126,7 @@ export function collecterPersonnes(categories, allVideos, manuel = {}) {
   const ajouter = (nomBrut, video, rubriqueTitre) => {
     const nom = canonique(nomBrut);
     if (exclure.has(nom.toLowerCase()) || exclure.has(clef(nom))) return;
+    if (!ressembleAUnePersonne(nom)) return;
     const cle = clef(nom);
     if (!gens.has(cle)) {
       gens.set(cle, { nom, slug: slugify(nom), videos: [], rubriques: new Set(), presente: new Set(), graphies: new Map() });
