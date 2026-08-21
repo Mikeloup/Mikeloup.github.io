@@ -54,9 +54,20 @@ const heureIsrael = Number(new Intl.DateTimeFormat('fr-FR', {
 
 // Fenetre, et non heure exacte : GitHub retarde couramment ses taches
 // programmees de dix a trente minutes. Une egalite stricte fait manquer
-// l'envoi de la semaine, en silence. Le doublon reste impossible : Kit refuse
-// deux brouillons portant le meme sujet, et le script verifie l'envoi de la
-// semaine avant d'agir.
+// l'envoi de la semaine, en silence.
+//
+// ATTENTION — C'EST ICI QUE NAISSAIT LE DOUBLON.
+// Les deux declenchements sont a 07h23 et 08h23 UTC. En ete (UTC+3) cela fait
+// 10h23 ET 11h23 en Israel : les DEUX tombent dans la fenetre de trois heures,
+// et les deux envoyaient. Le commentaire qui tenait cette place affirmait
+// « le doublon reste impossible : Kit refuse deux brouillons portant le meme
+// sujet, et le script verifie l'envoi de la semaine avant d'agir ». Les deux
+// affirmations etaient fausses : Kit accepte, et aucune verification
+// n'existait dans ce fichier. Un commentaire qui ment coute plus cher qu'un
+// commentaire absent — on cherche le defaut partout ailleurs.
+//
+// La fenetre est conservee (elle protege des retards de GitHub) et le doublon
+// est empeche plus bas, en demandant a Kit ce qu'il a deja recu.
 const fenetre = Number(hebdo.fenetreHeures ?? 3);
 if (!forcer && (heureIsrael < heureVoulue || heureIsrael >= heureVoulue + fenetre)) {
   console.log(`Lettre : il est ${heureIsrael} h en Israël, l'envoi est prévu entre `
@@ -147,6 +158,51 @@ if (!envoyer) {
 
 const apiKey = process.env.KIT_API_KEY;
 if (!apiKey) { console.error('ECHEC : KIT_API_KEY absente.'); process.exit(1); }
+
+// --- La lettre de la semaine est-elle deja partie ? --------------------------
+//
+// La seule memoire qui ne mente pas est celle de Kit. Un controle d'heure
+// decide de ce qu'on CROIT devoir faire ; cette question-ci porte sur ce qui a
+// REELLEMENT ete fait. Elle rend le doublon impossible quel que soit le nombre
+// de declenchements — les deux crons, une relance manuelle, un « Run workflow »
+// de trop.
+//
+// Trois reponses, jamais deux : oui, non, et « je ne sais pas ». Ne pas savoir
+// vaut refus d'envoyer : une lettre en double part chez tous les abonnes et ne
+// se rattrape pas.
+const enTete = { Accept: 'application/json', 'X-Kit-Api-Key': apiKey };
+let dejaEnvoyee = null;
+try {
+  const r = await fetch('https://api.kit.com/v4/broadcasts?per_page=25', { headers: enTete });
+  if (r.ok) {
+    const data = await r.json().catch(() => null);
+    const liste = Array.isArray(data?.broadcasts) ? data.broadcasts : null;
+    if (liste) {
+      const jour = (x) => {
+        const d = x ? new Date(x) : null;
+        return d && !Number.isNaN(+d)
+          ? new Intl.DateTimeFormat('fr-CA', { timeZone: 'Asia/Jerusalem' }).format(d) : '';
+      };
+      const aujourdhui = new Intl.DateTimeFormat('fr-CA', { timeZone: 'Asia/Jerusalem' }).format(new Date());
+      dejaEnvoyee = liste.some((b) => {
+        const memeSujet = String(b?.subject || '').trim() === sujet.trim();
+        const memeJour = jour(b?.send_at) === aujourdhui || jour(b?.created_at) === aujourdhui;
+        return memeSujet || memeJour;
+      });
+    }
+  }
+} catch { /* reseau : on reste a null, c'est-a-dire « je ne sais pas » */ }
+
+if (dejaEnvoyee === true) {
+  console.log('Lettre : une lettre portant ce sujet, ou datee d\'aujourd\'hui, existe deja '
+    + "chez Kit. Rien n'a ete cree — c'est le second declenchement de la journee.");
+  process.exit(0);
+}
+if (dejaEnvoyee === null) {
+  console.error("ECHEC : impossible de relire les lettres recentes chez Kit. Rien n'est "
+    + 'envoye : une lettre en double part chez tous les abonnes et ne se rattrape pas.');
+  process.exit(1);
+}
 
 const envoi = await fetch('https://api.kit.com/v4/broadcasts', {
   method: 'POST',

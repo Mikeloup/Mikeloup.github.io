@@ -34,6 +34,41 @@ site, en service payant.*
 
 ---
 
+## La lettre partait deux fois — v134 (20 août 2026)
+
+Michael : **« la newsletter envoie le mail 2x »**. La cause est arithmétique.
+
+Le workflow a **deux déclenchements**, à 07h23 et 08h23 UTC — l'un pour l'heure
+d'été d'Israël, l'autre pour l'heure d'hiver. Le script est censé trancher en
+regardant l'heure locale. Mais il accepte une **fenêtre de trois heures**
+(10 h – 13 h), posée pour survivre aux retards de GitHub. Or en été (UTC+3), les
+deux déclenchements donnent **10h23 et 11h23** : tous les deux dans la fenêtre,
+tous les deux envoient.
+
+**Et le commentaire du code affirmait le contraire :** « le doublon reste
+impossible : Kit refuse deux brouillons portant le même sujet, et le script
+vérifie l'envoi de la semaine avant d'agir ». Les deux affirmations étaient
+fausses. Kit accepte, et **aucune vérification n'existait dans ce fichier** — un
+seul POST, sans rien lire au préalable. On a cherché le défaut partout ailleurs
+pendant des semaines à cause de cette phrase. **Un commentaire qui ment coûte
+plus cher qu'un commentaire absent.**
+
+La correction est celle des Reels, appliquée mot pour mot : **on demande à Kit ce
+qu'il a réellement reçu** avant d'écrire quoi que ce soit. Même sujet, ou lettre
+datée d'aujourd'hui → on s'abstient. Trois réponses, jamais deux : oui, non, et
+« je ne sais pas » — et ne pas savoir vaut refus d'envoyer, parce qu'une lettre
+en double part chez tous les abonnés et ne se rattrape pas.
+
+La fenêtre de trois heures est conservée : elle protège d'un vrai risque, le
+retard de GitHub. Ce n'est pas elle qu'il fallait corriger, c'est l'absence de
+mémoire.
+
+Quatre cas testés sur le code réel : premier passage → envoie ; second passage
+même sujet → s'abstient ; second passage même jour → s'abstient ; Kit illisible
+→ refuse d'envoyer.
+
+---
+
 ## Deux défauts que dix cas choisis à la main ne pouvaient pas montrer — v133 (19 août 2026)
 
 v132 mise en ligne, Michael regarde la liste des invités : **« tu m'as remis des
