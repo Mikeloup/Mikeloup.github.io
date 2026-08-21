@@ -34,6 +34,64 @@ site, en service payant.*
 
 ---
 
+## Les Reels repris en Shorts YouTube — v135 (21 août 2026)
+
+Michael : **« on n'a pas pensé : les Reels qu'on envoie sur insta on peut les
+poster comme short sur youtube »**. Le fichier existe déjà — vertical, 60 à
+90 secondes, rendu pour Instagram. L'envoyer aussi sur YouTube ne coûte pas une
+minute de travail, et nourrit l'onglet Shorts, qui existe et ne reçoit rien.
+
+L'intérêt n'est pas le Short : c'est **le lien vers l'émission entière** en
+première ligne de sa description. Un Short qui tourne ramène sur la vidéo
+longue, sur la même chaîne.
+
+`scripts/short_youtube.py` sur le Mac, appelé après chaque publication
+Instagram réussie — jamais à la place : si Meta refuse, on ne veut pas d'un
+Short orphelin annonçant un Reel qui n'existe pas.
+
+**Jamais une chaîne partenaire.** Michael, 14 août : « je ne les publie pas sur
+youtube ». La reprise Instagram est couverte par leur accord ; la remontée sur
+la chaîne YouTube de Tandem TV ne l'est pas — deux droits distincts, et le
+second n'a pas été donné. Vérifié au rattrapage : sur les huit derniers Reels,
+trois écartés (deux Tel Aviv - New York, un Les Israéliennes).
+
+**Le Short part en privé**, comme tout ce que le pipeline monte sur YouTube.
+
+### Deux pièges trouvés au test, pas à la relecture
+
+**Le lien mort.** Les émissions tournées en interne portent un identifiant
+local — `LOCAL-IMG_9066` — et non un identifiant YouTube. Sans contrôle, chaque
+Short de Goldin, Hayot ou Akrich serait parti avec un `youtu.be/LOCAL-IMG_9066`
+qui ne mène nulle part : la majorité du catalogue, et la seule raison d'être du
+Short. Le lien n'apparaît que si l'identifiant fait onze caractères.
+
+**Le Short en « dernière vidéo ».** Michael l'a demandé avant que ça n'arrive :
+« ne pas mettre de short dans le site en dernière vidéo ». Le site avait bien un
+drapeau `isShort`, mais il s'arrête à **60 secondes** — nos Reels durent 60 à
+90. Ils seraient entrés comme des vidéos ordinaires, et le plus récent serait
+devenu la une de la page d'accueil : un extrait de 80 secondes à la place de
+l'émission.
+
+On ne peut pas s'en remettre à la durée : « La Turquie d'Erdogan remplace-t-elle
+l'Iran ? » dure 2 min 38 et c'est un vrai édito. Le seul signal sûr est celui
+qu'on écrit soi-même : le `#Shorts` du titre, posé au téléversement. Les
+reprises sortent du site **entièrement**, pas seulement de la page d'accueil —
+ce sont des extraits d'émissions qui ont déjà leur page, et les garder ferait
+deux pages pour un même contenu.
+
+### Une faiblesse assumée
+
+Pour les Reels et la lettre, le doublon est empêché en demandant à la plateforme
+ce qu'elle a reçu. Impossible ici : le jeton OAuth ne porte que le scope
+`youtube.upload` — écrire, pas lire. Poser la question exigerait de refaire
+l'autorisation Google, celle qui expire tous les sept jours en mode « Testing ».
+On se rabat sur le manifeste local, le mécanisme le plus faible — celui-là même
+qui avait laissé passer les Reels en double. **C'est proportionné, pas oublié :**
+un Reel en double part devant toute l'audience et ne se rattrape pas ; un Short
+en double est un brouillon privé qu'on supprime d'un clic.
+
+---
+
 ## La lettre partait deux fois — v134 (20 août 2026)
 
 Michael : **« la newsletter envoie le mail 2x »**. La cause est arithmétique.

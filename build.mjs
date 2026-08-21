@@ -372,6 +372,13 @@ function buildModel(config, data) {
   }
 
   const allVideos = [...byId.values()]
+    // Michael, 21 août 2026 : « ne pas mettre de short dans le site en
+    // dernière vidéo ». Les reprises sortent du site entièrement, et non de la
+    // seule page d'accueil : ce sont des extraits d'émissions qui ont déjà leur
+    // page ici. Les garder ferait deux pages pour un même contenu — exactement
+    // le contenu dupliqué qu'on passe nos journées à retirer. Une ligne à
+    // enlever si l'on change d'avis.
+    .filter((v) => !v.estRepriseCourte)
     .filter((v) => !v.isShort || v.playlists.length)
     .sort((a2, b2) => new Date(b2.publishedAt) - new Date(a2.publishedAt));
 

@@ -100,6 +100,18 @@ function normalizeVideo(v) {
     tags: sn.tags || [],
     duration,
     isShort: duration > 0 && duration <= 60,
+    // Une reprise de Reel, montée par nous en Short YouTube.
+    //
+    // La règle « isShort » s'arrête à 60 secondes ; nos Reels durent 60 à 90.
+    // Sans ce second marqueur, ils entraient dans le site comme des vidéos
+    // ordinaires, et le plus récent serait devenu « la dernière vidéo » sur la
+    // page d'accueil — un extrait de 80 secondes à la place de l'émission.
+    //
+    // On ne peut pas s'en remettre à la durée : « La Turquie d'Erdogan
+    // remplace-t-elle l'Iran ? » dure 2 min 38 et c'est un vrai édito. Le seul
+    // signal sûr est celui que NOUS écrivons dans le titre au moment de
+    // téléverser — voir scripts/short_youtube.py sur le Mac.
+    estRepriseCourte: /#shorts\b/i.test(sn.title || ''),
     views: Number(v.statistics?.viewCount || 0),
     likes: Number(v.statistics?.likeCount || 0),
     playlists: [],
