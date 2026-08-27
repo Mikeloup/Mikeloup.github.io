@@ -59,21 +59,89 @@ async function api(chemin, params, token) {
  */
 export async function legendesRecentes({ token, userId, limite = 25 } = {}) {
   if (!token || !userId) return null;
-  const url = new URL(`${API}/${userId}/media`);
-  url.searchParams.set('fields', 'caption,timestamp');
-  url.searchParams.set('limit', String(limite));
-  url.searchParams.set('access_token', token);
-  try {
+
+  // `media_type` sépare structurellement un Reel (VIDEO) d'une image (IMAGE).
+  // On le demande, mais JAMAIS au prix du reste : si Meta refusait ce champ,
+  // la requête entière échouerait et plus rien ne serait publié — ni plaquette,
+  // ni Reel, puisque estDejaEnLigne() s'abstient quand il ne sait pas. On
+  // réessaie donc sans le champ, et on rend `type: null` — « je ne sais pas »,
+  // que l'appelant doit traiter comme tel.
+  const lire = async (champs) => {
+    const url = new URL(`${API}/${userId}/media`);
+    url.searchParams.set('fields', champs);
+    url.searchParams.set('limit', String(limite));
+    url.searchParams.set('access_token', token);
     const res = await fetch(url);
     const data = await res.json().catch(() => ({}));
-    if (!res.ok) return null;
-    return (data?.data || []).map((m) => ({
+    return res.ok ? (data?.data || []) : null;
+  };
+
+  try {
+    let avecType = true;
+    let medias = await lire('caption,timestamp,media_type');
+    if (medias === null) {
+      avecType = false;
+      medias = await lire('caption,timestamp');
+    }
+    if (medias === null) return null;
+    return medias.map((m) => ({
       texte: String(m.caption || ''),
       date: m.timestamp ? Date.parse(m.timestamp) : 0,
+      type: avecType ? String(m.media_type || '') : null,
     }));
   } catch {
     return null;
   }
+}
+
+// Modèle de légende par défaut. Défini ICI, à l'endroit où la légende est
+// fabriquée, parce que deux fichiers s'en servent : celui qui écrit la légende
+// et celui qui reconnaît nos propres plaquettes dans le fil. Écrit deux fois,
+// il aurait divergé — c'est exactement ce qui a coûté un Reel le 11 août et un
+// autre le 15.
+export const MODELE_LEGENDE_DEFAUT =
+  '{titre}\n\n{emission} — à revoir sur {site}, et à l\'antenne sur le canal {canal}.';
+
+/**
+ * Ce média est-il une PLAQUETTE que nous avons publiée ?
+ *
+ * Rend true, false, ou null (impossible de trancher).
+ *
+ * POURQUOI CETTE FONCTION EXISTE
+ * ------------------------------
+ * Le 19 août 2026, la plaquette de « Deux communautés, un même rejet ? » n'est
+ * jamais partie. Journal de la publication : « Publication précédente trop
+ * récente : prochaine possible dans ~120 min. » L'espacement de trois heures
+ * était calculé sur TOUTES les publications du compte — la carte « CE SOIR »
+ * quotidienne et chaque Reel compris. La plaquette n'avait donc quasiment
+ * jamais sa fenêtre, et au bout de 48 h elle cessait d'être candidate. Un frein
+ * destiné à éviter huit publications d'affilée empêchait en fait la seule
+ * publication qu'il devait espacer.
+ *
+ * Reconnaître nos plaquettes demande DEUX critères, et pas un :
+ *
+ *   - le type : un Reel est un VIDEO, une plaquette une IMAGE ;
+ *   - la fin de la légende : la carte CE SOIR est aussi une IMAGE, mais elle
+ *     se termine par « Toute la grille sur … », jamais par la fin de notre
+ *     modèle de légende.
+ *
+ * Le texte seul ne suffirait pas : la légende des Reels, fabriquée par le
+ * pipeline du Mac, se termine par les mêmes mots (« … du bouquet Annatel TV.
+ * \n\nLien dans la bio ↑ »). Vérifié dans scripts/reels_pipeline.py, ligne 531,
+ * avant d'écrire cette fonction.
+ */
+export function estUnePlaquette(media, config = {}) {
+  if (!media) return null;
+
+  const modele = config.instagram?.captionTemplate || MODELE_LEGENDE_DEFAUT;
+  // La partie invariable du modèle : tout ce qui suit le dernier champ à
+  // remplacer. Se déduit du modèle, donc suit ses modifications.
+  const fin = modele.slice(modele.lastIndexOf('}') + 1).trim();
+  if (fin.length < 12) return null; // trop court pour identifier quoi que ce soit
+
+  if (media.type === null || media.type === undefined) return null; // type inconnu
+  if (media.type !== 'IMAGE') return false;                          // Reel, carrousel…
+  return String(media.texte || '').includes(fin);
 }
 
 /**
@@ -124,8 +192,7 @@ export async function estDejaEnLigne({ token, userId, caption, limite = 25 } = {
 export function legende(video, { config, emission = '', invites = [] } = {}) {
   const i = config.instagram || {};
   const tv = config.tv || {};
-  let modele = i.captionTemplate
-    || '{titre}\n\n{emission} — à revoir sur {site}, et à l\'antenne sur le canal {canal}.';
+  let modele = i.captionTemplate || MODELE_LEGENDE_DEFAUT;
 
   // Une vidéo hors rubrique donnerait « Tandem TV — à revoir sur Tandem TV » :
   // le nom deux fois dans la même phrase, ce qui sonne faux. Sans rubrique, on

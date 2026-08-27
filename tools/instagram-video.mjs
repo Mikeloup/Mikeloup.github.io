@@ -65,12 +65,50 @@ if (recentes === null) {
 
 // 3. Espacement minimal. Sans ce frein, une reprise de catalogue deverserait
 //    huit publications en quelques minutes.
-const espacement = (config.instagram?.minMinutesBetween ?? 180) * 60000;
-const derniere = Math.max(0, ...recentes.map((m) => m.date || 0));
+//
+//    CE FREIN NE COMPTE QUE LES PLAQUETTES. Jusqu'au 27 aout 2026 il comptait
+//    TOUTE publication du compte : la carte « CE SOIR » quotidienne et chaque
+//    Reel repoussaient la plaquette de trois heures. Elle n'avait donc presque
+//    jamais sa fenetre, et passe 48 h elle cessait d'etre candidate -- perdue
+//    sans que personne ne le sache. Constate sur la plaquette de Rony Hayot,
+//    « Deux communautes, un meme rejet ? », jamais publiee : journal du 19/08,
+//    « Publication precedente trop recente : prochaine possible dans ~120 min. »
+//
+//    Espacer des plaquettes ENTRE ELLES est utile ; les espacer d'un Reel ne
+//    protege de rien. Un frein qui empeche la seule chose qu'il devait cadencer
+//    n'est pas un frein, c'est une panne.
 const maintenant = Date.now();
+
+const plaquettes = recentes.map((m) => [m, insta.estUnePlaquette(m, config)]);
+const typesInconnus = plaquettes.some(([, p]) => p === null);
+
+// Type de media indisponible : on ne devine pas. On retombe sur l'ancien
+// comportement -- compter tout le monde -- qui est trop prudent mais jamais
+// faux. Et on le DIT, pour que ce repli ne s'installe pas en silence.
+const aCompter = typesInconnus
+  ? recentes
+  : plaquettes.filter(([, p]) => p === true).map(([m]) => m);
+if (typesInconnus) {
+  console.log('Note : Instagram n\'a pas rendu le type des publications. '
+    + 'Espacement calcule sur toutes les publications, comme avant le 27/08.');
+}
+
+const espacement = (config.instagram?.minMinutesBetween ?? 180) * 60000;
+const derniere = Math.max(0, ...aCompter.map((m) => m.date || 0));
 if (derniere && maintenant - derniere < espacement) {
   const reste = Math.ceil((espacement - (maintenant - derniere)) / 60000);
-  console.log(`Publication précédente trop récente : prochaine possible dans ~${reste} min.`);
+  console.log(`Plaquette précédente trop récente : prochaine possible dans ~${reste} min.`);
+  process.exit(0);
+}
+
+// Plancher contre TOUTE publication, pour ne pas poster deux choses coup sur
+// coup dans le fil. Volontairement court : a 20 minutes il ne peut pas affamer
+// une candidate qui reste eligible 48 h, contrairement au frein ci-dessus.
+const plancher = (config.instagram?.minMinutesApresToutePublication ?? 20) * 60000;
+const derniereToutes = Math.max(0, ...recentes.map((m) => m.date || 0));
+if (plancher && derniereToutes && maintenant - derniereToutes < plancher) {
+  const reste = Math.ceil((plancher - (maintenant - derniereToutes)) / 60000);
+  console.log(`Une autre publication vient de partir : on laisse ~${reste} min avant celle-ci.`);
   process.exit(0);
 }
 
