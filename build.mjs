@@ -874,6 +874,9 @@ async function main() {
   if (archive.jours) {
     log(`Historique de diffusion : ${archive.jours} journée(s) archivée(s) du ${archive.premier} au ${archive.dernier} — ${archive.parVideo.size} vidéo(s) avec un passage daté.`);
   }
+  // Les pages de sujet sont declarees sous « sujets/ » dans site.config.json.
+  // Une seule ligne les fait apparaitre au menu : leur simple existence.
+  if ((config.pages || []).some((pg) => pg.slug.startsWith('sujets/'))) nav.sujets = true;
   if (partenaires.length) nav.partenaires = true;
 
   // Medias amis (une radio, un groupe Telegram…). Distinct des producteurs
@@ -995,6 +998,7 @@ async function main() {
 
   // Pages éditoriales (Markdown) — la liste est pilotée par site.config.json
   const contentDir = path.join(ROOT, 'content');
+  const sujetsEcrits = [];
   for (const pg of config.pages || []) {
     let md;
     try {
@@ -1026,6 +1030,32 @@ async function main() {
       html,
     }));
     urls.push({ loc: `/${pg.slug}/`, freq: 'monthly', priority: '0.5' });
+    if (pg.slug.startsWith('sujets/')) sujetsEcrits.push(pg);
+  }
+
+  // Sommaire des pages de sujet.
+  //
+  // La liste ne s'ecrit nulle part a la main : elle est faite des pages
+  // REELLEMENT produites juste au-dessus. Une page declaree dont le fichier
+  // Markdown manque est ignoree par la boucle -- elle ne doit donc pas non plus
+  // figurer ici, sinon le sommaire promet une page qui renvoie une erreur.
+  if (sujetsEcrits.length) {
+    const md = ['# Sujets',
+      '',
+      'Des réponses construites à partir de ce qui a été dit à l\'antenne de '
+      + `${config.siteName}, avec les émissions d'où elles viennent.`,
+      '',
+      ...sujetsEcrits.map((pg) => `- [${pg.menuTitle || pg.title}](/${pg.slug}/)`
+        + (pg.description ? ` — ${pg.description}` : '')),
+    ].join('\n');
+    await writePage('/sujets/', R.contentPage({
+      ...ctx,
+      title: 'Sujets',
+      description: `Les sujets traités à l'antenne de ${config.siteName}, expliqués et sourcés.`,
+      canonical: '/sujets/',
+      html: markdownToHtml(md),
+    }));
+    urls.push({ loc: '/sujets/', freq: 'weekly', priority: '0.6' });
   }
 
   // Sponsoring : chiffres de la chaîne, relevés à chaque synchronisation

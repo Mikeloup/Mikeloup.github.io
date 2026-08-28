@@ -582,6 +582,7 @@ ${push}
       ${menuPanel('menu-emissions', config.groups?.shows?.label || 'Émissions', menuShows, '/emissions/', 'Toutes les émissions, passées et présentes')}
       ${menuPanel('menu-themes', config.groups?.themes?.label || 'Thèmes', menuThemes, '/themes/', 'Tous les thèmes, passés et présents')}
       <a href="/invites/">Invités</a>
+      ${nav.sujets ? '<a href="/sujets/">Sujets</a>' : ''}
       ${nav.grille ? '<a href="/grille/">Grille TV</a>' : ''}
       ${nav.partenaires ? '<a href="/autres-programmes/">Autres programmes</a>' : ''}
       ${nav.medias ? '<a href="/partenaires/">Partenaires</a>' : ''}
@@ -626,6 +627,7 @@ ${content}
         <li><a href="/emissions/">Toutes les émissions</a></li>
         <li><a href="/themes/">${escapeHtml(config.groups?.themes?.label || 'Thèmes')}</a></li>
         <li><a href="/invites/">Invités et intervenants</a></li>
+        ${nav.sujets ? '<li><a href="/sujets/">Sujets</a></li>' : ''}
         ${nav.grille ? '<li><a href="/grille/">Grille des programmes</a></li>' : ''}
         ${nav.partenaires ? '<li><a href="/autres-programmes/">Autres programmes de l\'antenne</a></li>' : ''}
         ${nav.medias ? '<li><a href="/partenaires/">Nos partenaires</a></li>' : ''}
@@ -641,7 +643,8 @@ ${content}
     <div class="footer-col">
       <h4>Le site</h4>
       <ul>
-        ${pages.map((pg) => `<li><a href="/${pg.slug}/">${escapeHtml(libelle(pg))}</a></li>`).join('')}
+        ${pages.filter((pg) => !pg.slug.startsWith('sujets/'))
+          .map((pg) => `<li><a href="/${pg.slug}/">${escapeHtml(libelle(pg))}</a></li>`).join('')}
         <li><a href="/sponsoring/">Sponsoring</a></li>
       </ul>
     </div>
