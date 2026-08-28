@@ -17,6 +17,7 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { sectionSearchConsole } from './search-console.mjs';
 
 const ROOT = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const DRY = process.argv.includes('--essai');
@@ -163,11 +164,17 @@ async function main() {
     .filter((l) => estInterne(l.dimensions.refererHost, config.siteUrl))
     .reduce((n, l) => n + l.count, 0);
 
+  // La recherche Google d'abord dans le code, en tete du rapport ensuite : ce
+  // qui se passe AVANT la visite explique ce qui se passe pendant. Et si cette
+  // section echoue, elle rend une note et le rapport part quand meme.
+  const recherche = await sectionSearchConsole(config.siteUrl);
+
   const titre = `Audience du ${jour(debut)}`;
   const corps = `## ${titre}
 
 **${visites} visite${visites > 1 ? 's' : ''}** ${evolution(visites, visitesPrec)}
 **${vues} page${vues > 1 ? 's' : ''} vue${vues > 1 ? 's' : ''}** ${evolution(vues, vuesPrec)}
+${recherche}
 
 ${tableau('Pages les plus consultées', 'Page', data.pages)}
 ${tableau("D'où viennent les visiteurs", 'Source', externes, jolieSource)}${internes ? `\n*(${internes} page${internes > 1 ? 's' : ''} vue${internes > 1 ? 's' : ''} en navigation interne, non comptée${internes > 1 ? 's' : ''} ci-dessus.)*\n` : ''}
@@ -175,7 +182,8 @@ ${tableau('Pays', 'Pays', data.pays, PAYS)}
 ${tableau('Appareils', 'Type', data.appareils, jolieAppareil)}
 ---
 
-*Rapport automatique — source : Cloudflare Web Analytics. Journée du ${jour(debut)}, heure UTC.*
+*Rapport automatique — visites : Cloudflare Web Analytics, journée du ${jour(debut)} (UTC).*
+*Recherche : Google Search Console, qui publie ses données avec deux à trois jours de retard.*
 `;
 
   if (DRY) { console.log(corps); return; }
