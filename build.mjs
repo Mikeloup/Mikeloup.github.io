@@ -544,7 +544,7 @@ async function main() {
   config.siteUrl = config.siteUrl.replace(/\/$/, '');
 
   const data = await collectData(config);
-  const { channel, categories, allVideos, nav } = buildModel(config, data);
+  const { channel, categories, allVideos, byId, nav } = buildModel(config, data);
 
   if (!allVideos.length) throw new Error('Aucune vidéo récupérée : build interrompu.');
   log(`${allVideos.length} vidéos, ${categories.length} rubriques (${nav.shows.length} émissions, ${nav.themes.length} thèmes).`);
@@ -1031,12 +1031,39 @@ async function main() {
       .map((c) => `- **[${c.title}](/emissions/${c.slug}/)**`
         + ` — ${c.videos.length} vidéo${c.videos.length > 1 ? 's' : ''}`)
       .join('\n');
-    const html = markdownToHtml(md
+    // {{video:IDENTIFIANT}} — la vignette de l'emission, dans la page du sujet.
+    //
+    // Michael, 28 aout 2026 : « pourquoi ne pas mettre le lien vers la video
+    // dans les sujets (avec la vignette) pour illustrer ». Une page de sujet
+    // sans image, c'est exactement le defaut qu'on venait de reparer sur les
+    // anciennes adresses : Google n'a rien a montrer, et le lecteur non plus.
+    //
+    // On reutilise la vignette du site (videoCard), pas une image ecrite a la
+    // main : titre, duree, date et rubrique restent justes tout seuls.
+    //
+    // Le remplacement se fait APRES la conversion Markdown. Injecter du HTML
+    // avant, c'est laisser le convertisseur l'emballer dans un paragraphe.
+    const cartes = [];
+    const poserVignette = (h) => h.replace(
+      /<p>\s*\{\{video:([A-Za-z0-9_-]{4,24})\}\}\s*<\/p>|\{\{video:([A-Za-z0-9_-]{4,24})\}\}/g,
+      (_, a, b) => {
+        const id = a || b;
+        const video = byId.get(id);
+        if (!video) {
+          warn(`content/${pg.slug}.md appelle la video ${id}, absente du catalogue : `
+            + 'la vignette est retiree.');
+          return '';
+        }
+        cartes.push(video);
+        return `<div class="grid">${R.videoCard(video, { accroche: true })}</div>`;
+      },
+    );
+    const html = poserVignette(markdownToHtml(md
       .replace(/\{\{rendezvous\}\}/g, rendezVous)
       .replace(/\{\{email\}\}/g, config.contactEmail)
       .replace(/\{\{analytics\}\}/g, analyticsNote)
       .replace(/\{\{push\}\}/g, pushNote)
-      .replace(/\{\{newsletter\}\}/g, newsletterNote));
+      .replace(/\{\{newsletter\}\}/g, newsletterNote)));
     await writePage(`/${pg.slug}/`, R.contentPage({
       ...ctx,
       title: pg.title,
@@ -1044,6 +1071,10 @@ async function main() {
       description: pg.description || `${pg.title} — ${config.siteName}.`,
       canonical: `/${pg.slug}/`,
       html,
+      // L'image de partage de la page est celle de sa premiere emission. Rien a
+      // declarer dans site.config.json : la page qui montre une video la porte
+      // aussi dans Google et sur les reseaux.
+      image: cartes[0]?.thumbnail || (cartes[0] ? `https://i.ytimg.com/vi/${cartes[0].id}/maxresdefault.jpg` : undefined),
     }));
     urls.push({ loc: `/${pg.slug}/`, freq: 'monthly', priority: '0.5' });
     if (pg.slug.startsWith('sujets/')) sujetsEcrits.push(pg);

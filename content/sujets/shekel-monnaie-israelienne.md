@@ -4,6 +4,8 @@
 
 Cette page reprend ce qui a été expliqué à l'antenne de Tandem TV par **Jérôme Haas**, dans l'émission *Shekel : l'histoire cachée, les symboles et la signification de la monnaie israélienne*.
 
+{{video:h1rtvS0PFpo}}
+
 ---
 
 ## Les pièces : l'histoire juive antique
@@ -115,7 +117,8 @@ Extraits de l'émission de **Jérôme Haas**, *Shekel : l'histoire cachée, les 
 
 ## Voir les émissions
 
-- [Shekel : l'histoire cachée, les symboles et la signification de la monnaie israélienne](/video/h1rtvS0PFpo/) — Jérôme Haas, 9 min
-- [Le Shekel : de la Bible à la Banque d'Israël](/video/wE1XSKqW3YA/) — Tour d'Israël, 6 min
+{{video:h1rtvS0PFpo}}
+
+{{video:wE1XSKqW3YA}}
 
 *Tandem TV est une chaîne de télévision francophone basée en Israël, diffusée sur le canal 14 du bouquet Annatel TV et sur Internet.*

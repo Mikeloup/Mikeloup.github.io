@@ -1737,7 +1737,7 @@ export function sponsoringPage({ config, categories, nav, channel, buildTime, vi
   });
 }
 
-export function contentPage({ config, categories, nav, title, description, canonical, html, buildTime, libelle }) {
+export function contentPage({ config, categories, nav, title, description, canonical, html, buildTime, libelle, image }) {
   // Le fil d'Ariane porte le libelle court, pas le titre ecrit pour Google.
   const fil = libelle || title;
   const content = `
@@ -1748,7 +1748,7 @@ export function contentPage({ config, categories, nav, title, description, canon
   </article>
 </div>`;
   return layout({
-    config, categories, nav, buildTime, title, description, canonical,
+    config, categories, nav, buildTime, title, description, canonical, image,
     bodyClass: 'page-content', content,
   });
 }
