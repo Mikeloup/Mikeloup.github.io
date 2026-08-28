@@ -1020,6 +1020,7 @@ async function main() {
     await writePage(`/${pg.slug}/`, R.contentPage({
       ...ctx,
       title: pg.title,
+      libelle: pg.menuTitle || pg.title,
       description: pg.description || `${pg.title} — ${config.siteName}.`,
       canonical: `/${pg.slug}/`,
       html,

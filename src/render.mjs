@@ -113,7 +113,13 @@ function uneSecondaire(video) {
  * ont publié dans la fenêtre récente, et au moins deux fois — sans quoi un
  * invité de passage figurerait parmi les chroniqueurs.
  */
-function bandeVisages(personnes, { maintenant, mois = 3, max = 10 } = {}) {
+function bandeVisages(personnes, { maintenant, mois = 3, max = 10, afficher = true } = {}) {
+  // Michael, 27 aout 2026 : « cache-moi en page d'accueil la ligne des
+  // chroniqueurs ». La page /invites/ et les fiches restent en place -- c'est
+  // uniquement la bande de portraits de l'accueil qui disparait. L'interrupteur
+  // vit dans site.config.json, home.chroniqueurs : le remettre a true rallume
+  // la bande sans toucher au code.
+  if (!afficher) return '';
   const choisir = (m) => {
     const limite = maintenant - m * 30.44 * 864e5;
     return personnes
@@ -443,6 +449,12 @@ export function layout({
     : `${racine}/assets/partage.png`;
   const pages = config.pages || [];
   const navPages = pages.filter((pg) => !pg.footerOnly);
+  // Le libelle d'un lien n'est pas le titre de la page. Un titre ecrit pour
+  // Google -- « Le shekel israelien : les symboles des pieces et des billets »
+  // -- est illisible dans un menu ou un pied de page. « menuTitle » donne le
+  // libelle court ; sans lui le titre sert, comme avant. La regle vit ici et
+  // nulle part ailleurs : les trois listes de liens passent par cette fonction.
+  const libelle = (pg) => pg.menuTitle || pg.title;
   const socialLinks = SOCIAL_ORDER
     .map(([key, label]) => [config.social?.[key], label, key])
     .filter(([href]) => href);
@@ -541,7 +553,7 @@ ${push}
     </a>
 
     <nav class="utility" aria-label="Pages du site">
-      ${navPages.map((pg) => `<a href="/${pg.slug}/">${escapeHtml(pg.title)}</a>`).join('')}
+      ${navPages.map((pg) => `<a href="/${pg.slug}/">${escapeHtml(libelle(pg))}</a>`).join('')}
       <!-- Sponsoring : seule page du site qui puisse rapporter de l'argent. Elle
            n'était atteignable qu'en déroulant toute la page jusqu'au pied. -->
       <a class="utility-fort" href="/sponsoring/">Sponsoring</a>
@@ -579,7 +591,7 @@ ${push}
         Suivre la chaîne
       </a>
       <span class="nav-only-mobile-sep" aria-hidden="true"></span>
-      ${navPages.map((pg) => `<a class="nav-alt" href="/${pg.slug}/">${escapeHtml(pg.title)}</a>`).join('')}
+      ${navPages.map((pg) => `<a class="nav-alt" href="/${pg.slug}/">${escapeHtml(libelle(pg))}</a>`).join('')}
       <a class="nav-alt" href="/sponsoring/">Sponsoring</a>
     </div>
   </nav>
@@ -629,7 +641,7 @@ ${content}
     <div class="footer-col">
       <h4>Le site</h4>
       <ul>
-        ${pages.map((pg) => `<li><a href="/${pg.slug}/">${escapeHtml(pg.title)}</a></li>`).join('')}
+        ${pages.map((pg) => `<li><a href="/${pg.slug}/">${escapeHtml(libelle(pg))}</a></li>`).join('')}
         <li><a href="/sponsoring/">Sponsoring</a></li>
       </ul>
     </div>
@@ -720,6 +732,7 @@ export function homePage({
     maintenant: new Date(buildTime).getTime(),
     mois: config.home?.chroniqueursMois ?? 3,
     max: config.home?.chroniqueursMax ?? 10,
+    afficher: config.home?.chroniqueurs !== false,
   })}
 
   ${newsletterForm(config)}
@@ -1721,10 +1734,12 @@ export function sponsoringPage({ config, categories, nav, channel, buildTime, vi
   });
 }
 
-export function contentPage({ config, categories, nav, title, description, canonical, html, buildTime }) {
+export function contentPage({ config, categories, nav, title, description, canonical, html, buildTime, libelle }) {
+  // Le fil d'Ariane porte le libelle court, pas le titre ecrit pour Google.
+  const fil = libelle || title;
   const content = `
 <div class="wrap narrow">
-  <nav class="breadcrumb"><a href="/">Accueil</a> <span>›</span> <span>${escapeHtml(title)}</span></nav>
+  <nav class="breadcrumb"><a href="/">Accueil</a> <span>›</span> <span>${escapeHtml(fil)}</span></nav>
   <article class="prose page-prose">
     ${html}
   </article>

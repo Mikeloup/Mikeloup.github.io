@@ -26,7 +26,8 @@
     "latestCount": 8,
     "themeRows": 3,
     "showRows": 3,
-    "featured": ""
+    "featured": "",
+    "chroniqueurs": false
   },
   "_comment_social": "Comptes officiels. Une adresse vide n'apparaît pas sur le site. Ces liens alimentent aussi la fiche « Organization » lue par Google (champ sameAs), qui relie officiellement le site à vos comptes.",
   "social": {
@@ -131,6 +132,13 @@
       "title": "Politique de confidentialité",
       "description": "Données personnelles, cookies et services tiers utilisés par le site Tandem TV.",
       "footerOnly": true
+    },
+    {
+      "slug": "sujets/shekel-monnaie-israelienne",
+      "title": "Le shekel israélien : les symboles des pièces et des billets",
+      "description": "Que représentent les symboles du shekel ? Ménorah, harpe, grenade, palmier, et les quatre poètes des billets — expliqués à l'antenne de Tandem TV par Jérôme Haas.",
+      "footerOnly": true,
+      "menuTitle": "Le shekel israélien"
     }
   ],
   "_comment_groups": "Deux familles de rubriques. Il suffit de lister les THÈMES : toute playlist non citée est automatiquement traitée comme une émission. Comparaison insensible à la casse et aux accents.",
