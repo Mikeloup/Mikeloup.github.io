@@ -1501,8 +1501,82 @@ function recouvrement(demandes, disponibles) {
  * où le navigateur n'exécute rien. Surtout pas de `noindex` : il empêcherait
  * justement la consolidation qu'on recherche.
  */
-function pageDeTransfert(config, cible, libelle) {
-  const abs = `${config.siteUrl.replace(/\/$/, '')}${cible}`;
+// Une ancienne adresse ne redirige plus : elle PORTE le contenu.
+//
+// Constate le 28 aout 2026 dans l'export Search Console de six mois. Sur les
+// 81 303 impressions du site, 73 672 -- 90 % -- tombent sur les anciennes
+// adresses Wix. /post/interview-de-samuel-madar... en fait 5 633 a elle
+// seule, en position 6,9. Ce sont ELLES que Google classe, et non les pages
+// vers lesquelles elles renvoient : /invites/myriam-shermer/ fait 1
+// impression la ou /post/myriam-shermer-... en fait 450.
+//
+// Or la page de transfert ne pesait que 400 octets : un titre, un lien, une
+// redirection. Aucune image, aucune fiche VideoObject. Google ne pouvait donc
+// afficher aucune vignette -- c'est Michael qui l'a vu le premier sur sa
+// capture du 28 aout : « dommage qu'il n'y ait pas de photo ou de video
+// affichee ». La page /video/... correspondante, elle, est complete :
+// og:image, twitter:card, VideoObject. Elle n'est simplement jamais montree.
+// Le rapport « Apparence dans les resultats » le confirme : 266 impressions
+// en Videos sur six mois, position 66.
+//
+// Six mois sans que Google bascule sur les nouvelles adresses, parce que
+// GitHub Pages ne sait pas repondre une redirection HTTP 301 : la redirection
+// est ecrite en JavaScript, un signal faible que Google met tres longtemps a
+// suivre. On cesse donc d'attendre la bascule.
+//
+// L'ancienne adresse sert desormais une COPIE de sa page de destination, avec
+// l'adresse canonique de celle-ci. Google garde le classement qu'il a deja,
+// sur une page qui peut enfin porter une vignette et un resultat video ; le
+// visiteur arrive sur du contenu reel au lieu d'un eclair de redirection ; et
+// le canonique continue de transmettre l'anciennete vers la nouvelle adresse.
+//
+// Si la destination est illisible, on retombe sur l'ancienne coquille de
+// redirection : degrade, mais jamais casse.
+
+/**
+ * Le HTML de la page de destination, tel qu'il vient d'etre ecrit dans dist/.
+ * Les transferts sont produits APRES les pages (voir PAGES_ECRITES), donc le
+ * fichier est la. Renvoie null si on ne peut pas le lire.
+ */
+async function contenuDeLaDestination(cible) {
+  const rel = cible.replace(/^\//, '').replace(/\/$/, '');
+  const candidats = rel.endsWith('.html')
+    ? [rel]
+    : [path.join(rel, 'index.html'), `${rel}.html`];
+  for (const candidat of candidats) {
+    try {
+      return await fs.readFile(path.join(DIST, candidat), 'utf8');
+    } catch { /* on essaie la forme suivante */ }
+  }
+  return null;
+}
+
+/**
+ * La copie, avec une seule chose imposee : l'adresse canonique.
+ *
+ * Le canonique de la copie DOIT designer la destination, jamais l'ancienne
+ * adresse -- sinon les deux pages se disputent le meme contenu et Google n'en
+ * consolide aucune. La page copiee porte deja le bon canonique puisqu'elle
+ * pointe sur elle-meme ; on le reecrit quand meme, pour que la regle vive ici
+ * et ne depende pas de ce qu'une autre fonction aura pense a faire.
+ *
+ * On retire aussi toute redirection automatique heritee : une page qui porte
+ * le contenu ne doit surtout pas fuir avant d'etre lue.
+ */
+function pageMiroir(html, abs) {
+  let out = html.replace(/<meta\s+http-equiv=["']refresh["'][^>]*>/gi, '');
+  const lien = `<link rel="canonical" href="${escapeHtml(abs)}">`;
+  out = /<link\s+rel=["']canonical["'][^>]*>/i.test(out)
+    ? out.replace(/<link\s+rel=["']canonical["'][^>]*>/i, lien)
+    : out.replace(/<\/head>/i, `${lien}\n</head>`);
+  const og = `<meta property="og:url" content="${escapeHtml(abs)}">`;
+  if (/<meta\s+property=["']og:url["'][^>]*>/i.test(out)) {
+    out = out.replace(/<meta\s+property=["']og:url["'][^>]*>/i, og);
+  }
+  return out;
+}
+
+function pageDeRedirection(config, abs, libelle) {
   return `<!doctype html>
 <html lang="${config.lang}">
 <head>
@@ -1518,6 +1592,12 @@ function pageDeTransfert(config, cible, libelle) {
 <script>location.replace(${JSON.stringify(abs)});</script>
 </body>
 </html>`;
+}
+
+async function pageDeTransfert(config, cible, libelle) {
+  const abs = `${config.siteUrl.replace(/\/$/, '')}${cible}`;
+  const copie = await contenuDeLaDestination(cible);
+  return copie ? pageMiroir(copie, abs) : pageDeRedirection(config, abs, libelle);
 }
 
 async function transfererAnciennesAdresses(config, categories, allVideos) {
@@ -1555,7 +1635,7 @@ async function transfererAnciennesAdresses(config, categories, allVideos) {
       TRANSFERTS_SANS_CIBLE.push(`${ancien} → ${cible}`);
       return false;
     }
-    const page = pageDeTransfert(config, cible, libelle);
+    const page = await pageDeTransfert(config, cible, libelle);
     await writeFile(path.join(rel, 'index.html'), page);
 
     // ET le meme contenu en FICHIER, a cote du dossier. Ce doublon repare la
