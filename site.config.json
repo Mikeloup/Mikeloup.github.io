@@ -139,6 +139,13 @@
       "description": "Que représentent les symboles du shekel ? Ménorah, harpe, grenade, palmier, et les quatre poètes des billets — expliqués à l'antenne de Tandem TV par Jérôme Haas.",
       "footerOnly": true,
       "menuTitle": "Le shekel israélien"
+    },
+    {
+      "slug": "sujets/television-israelienne-francophone",
+      "title": "Télévision israélienne en français : où regarder Tandem TV, canal 14 Annatel",
+      "menuTitle": "La télévision israélienne en français",
+      "description": "Tandem TV, chaîne de télévision francophone basée en Israël, diffusée sur le canal 14 du bouquet Annatel TV et sur Internet. Les rendez-vous, la grille du jour et où la regarder.",
+      "footerOnly": true
     }
   ],
   "_comment_groups": "Deux familles de rubriques. Il suffit de lister les THÈMES : toute playlist non citée est automatiquement traitée comme une émission. Comparaison insensible à la casse et aux accents.",
