@@ -582,12 +582,61 @@ async function main() {
   const ctx = { config, categories, nav, buildTime, channel };
   const urls = [];
 
+  // Les transcriptions sont chargées AVANT les fiches de personnes, et ce
+  // n'est pas un detail d'ordre : depuis le 28 aout, une video transcrite
+  // compte comme « quelque chose a dire » sur la personne qui y parle. Une
+  // page d'invite adossee a trois mille mots de ce qu'il a reellement dit
+  // n'est pas une page vide -- c'est le contraire. Le critere reste celui
+  // pose le 18 aout : du texte, pas un nombre de passages.
+  //
+  // La reconnaissance « ce fichier appartient a cette video » vit ici et
+  // nulle part ailleurs : elle accepte l'identifiant YouTube comme le titre,
+  // et la refaire une seconde fois pour les personnes aurait garanti que les
+  // deux finissent par diverger.
+  // Transcriptions déposées à la main dans data/transcriptions/<id>.<srt|vtt|txt>.
+  // Elles ne sont ni produites ni devinées ici : sans fichier, pas de bloc.
+  const lexique = await readJson(path.join(ROOT, 'data', 'lexique-transcription.json'), {});
+  const transcriptions = new Map();
+  const sansVideo = [];
+  try {
+    const dossier = path.join(ROOT, 'data', 'transcriptions');
+    for (const nom of await fs.readdir(dossier)) {
+      const ext = path.extname(nom).toLowerCase();
+      if (!['.srt', '.vtt', '.txt'].includes(ext)) continue;
+      const base = path.basename(nom, ext);
+      // Le fichier peut être nommé par l'identifiant de la vidéo, ou tout
+      // simplement par son titre : les outils de transcription reprennent le
+      // titre, et renommer mille fichiers à la main n'a pas de sens.
+      const id = allVideos.some((v) => v.id === base)
+        ? base
+        : (allVideos.find((v) => normKey(v.title) === normKey(base))
+          || (normKey(base).length > 20
+            ? allVideos.find((v) => normKey(v.title).startsWith(normKey(base)))
+            : null))?.id;
+      if (!id) { sansVideo.push(nom); continue; }
+      const t = lireTranscription(await readText(path.join(dossier, nom)), {
+        corrections: lexique.corrections || {}, extension: ext,
+      });
+      if (t) transcriptions.set(id, t);
+    }
+  } catch { /* dossier absent : rien à faire */ }
+  if (sansVideo.length) {
+    warn(`${sansVideo.length} fichier(s) de transcription sans vidéo correspondante — renommez-les avec l'identifiant YouTube ou le titre exact :`);
+    sansVideo.forEach((n) => warn(`   ${n}`));
+  }
+  if (transcriptions.size) {
+    const mots = [...transcriptions.values()].reduce((n, t) => n + t.mots, 0);
+    log(`${transcriptions.size} transcription(s) chargée(s), ${mots.toLocaleString('fr-FR')} mots au total.`);
+  }
+
+
   // Fiches des invités et des présentateurs. Les données de Search Console
   // montrent que l'essentiel des recherches menant au site sont des recherches
   // de noms : ce sont ces pages qui leur répondent.
   const fichesManuelles = await readJson(path.join(ROOT, 'data', 'personnes.json'), {});
   const { personnes, presentateurParRubrique, fichesOrphelines } =
-    collecterPersonnes(categories, allVideos, fichesManuelles);
+    collecterPersonnes(categories, allVideos, fichesManuelles,
+                       new Set(transcriptions.keys()));
   if (fichesOrphelines?.length) {
     warn(`${fichesOrphelines.length} fiche(s) de personnes.json ne correspondent à personne `
       + `— orthographe à vérifier : ${fichesOrphelines.join(', ')}`);
@@ -931,42 +980,6 @@ async function main() {
       }));
       urls.push({ loc: route, freq: 'weekly', priority: page === 1 ? '0.8' : '0.4', lastmod: category.videos[0]?.publishedAt });
     }
-  }
-
-  // Transcriptions déposées à la main dans data/transcriptions/<id>.<srt|vtt|txt>.
-  // Elles ne sont ni produites ni devinées ici : sans fichier, pas de bloc.
-  const lexique = await readJson(path.join(ROOT, 'data', 'lexique-transcription.json'), {});
-  const transcriptions = new Map();
-  const sansVideo = [];
-  try {
-    const dossier = path.join(ROOT, 'data', 'transcriptions');
-    for (const nom of await fs.readdir(dossier)) {
-      const ext = path.extname(nom).toLowerCase();
-      if (!['.srt', '.vtt', '.txt'].includes(ext)) continue;
-      const base = path.basename(nom, ext);
-      // Le fichier peut être nommé par l'identifiant de la vidéo, ou tout
-      // simplement par son titre : les outils de transcription reprennent le
-      // titre, et renommer mille fichiers à la main n'a pas de sens.
-      const id = allVideos.some((v) => v.id === base)
-        ? base
-        : (allVideos.find((v) => normKey(v.title) === normKey(base))
-          || (normKey(base).length > 20
-            ? allVideos.find((v) => normKey(v.title).startsWith(normKey(base)))
-            : null))?.id;
-      if (!id) { sansVideo.push(nom); continue; }
-      const t = lireTranscription(await readText(path.join(dossier, nom)), {
-        corrections: lexique.corrections || {}, extension: ext,
-      });
-      if (t) transcriptions.set(id, t);
-    }
-  } catch { /* dossier absent : rien à faire */ }
-  if (sansVideo.length) {
-    warn(`${sansVideo.length} fichier(s) de transcription sans vidéo correspondante — renommez-les avec l'identifiant YouTube ou le titre exact :`);
-    sansVideo.forEach((n) => warn(`   ${n}`));
-  }
-  if (transcriptions.size) {
-    const mots = [...transcriptions.values()].reduce((n, t) => n + t.mots, 0);
-    log(`${transcriptions.size} transcription(s) chargée(s), ${mots.toLocaleString('fr-FR')} mots au total.`);
   }
 
   // Une page par vidéo

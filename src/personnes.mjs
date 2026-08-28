@@ -77,7 +77,8 @@ export function presentateurDeLaRubrique(titreRubrique) {
  * Construit la liste des personnes du catalogue.
  * `config` = bloc `personnes` de site.config.json ; `manuel` = data/personnes.json.
  */
-export function collecterPersonnes(categories, allVideos, manuel = {}) {
+export function collecterPersonnes(categories, allVideos, manuel = {},
+                                   transcrites = new Set()) {
   const exclure = new Set((manuel.exclure || []).map((x) => x.toLowerCase()));
   const alias = new Map(Object.entries(manuel.alias || {}).map(([k, v]) => [k.toLowerCase(), v]));
   const inclure = new Set((manuel.inclure || []).map((x) => x.toLowerCase()));
@@ -233,7 +234,21 @@ export function collecterPersonnes(categories, allVideos, manuel = {}) {
   // quelque chose a dire de cette personne ? Une description d'emission
   // substantielle suffit — c'est precisement ce qu'affiche le bloc
   // « Qui est … ? », et c'est la meme fonction qui en decide.
-  const aQuelqueChoseADire = (p) => p.videos.some((v) => extraitPresentation(v));
+  // Une transcription compte comme « quelque chose a dire » (28 aout 2026).
+  //
+  // Le raisonnement du 18 aout tenait deja : ce n'est pas le nombre de videos
+  // qui fait une page vide, c'est l'absence de texte. Mais le seul texte
+  // disponible alors etait la description de l'emission -- souvent une ligne,
+  // parfois rien. Depuis, chaque video transcrite porte trois mille a huit
+  // mille mots de ce que la personne a reellement dit. Une page d'invite
+  // adossee a ca n'est pas mince : c'est la page la plus fournie du site.
+  //
+  // Et c'est precisement la demande mesuree : les recherches qui menent ici
+  // sont des recherches de NOMS -- « maxime loth », « sarah fainberg »,
+  // « justine varin ». Chaque personne sans page est une requete a laquelle
+  // le site ne repond pas, alors qu'il a le contenu pour.
+  const aQuelqueChoseADire = (p) =>
+    p.videos.some((v) => transcrites.has(v.id) || extraitPresentation(v));
 
   const retenues = [...gens.values()]
     .filter((p) => p.videos.length >= seuil
