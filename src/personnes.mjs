@@ -64,6 +64,21 @@ function candidatsDuTitre(titre) {
   if (deuxPoints.length > 1) out.push(deuxPoints[0]);
   const m = titre.match(/(?:interview|entretien|rencontre|invité|invitée)\s+(?:de|avec|d['’])\s+([^:|,?]+)/i);
   if (m) out.push(m[1]);
+  // Le nom placé APRÈS les deux points : « Une espionne du Mossad au Soudan :
+  // Yola Reitman raconte l'Opération Frères ». Trois positions étaient
+  // regardées — après la barre, avant les deux points, après « interview de »
+  // — et celle-ci manquait. Yola Reitman a une émission, une transcription de
+  // 56 minutes, et aucune page.
+  //
+  // On ne prend que la suite ININTERROMPUE de mots capitalisés qui ouvre le
+  // segment : « Yola Reitman » s'arrête à « raconte ». C'est nomDePersonne()
+  // qui valide ensuite, et qui écarte « Le grand mensonge » (article) comme
+  // « Tsahal avance » (un seul mot).
+  const apres = titre.split(':').slice(1).join(':').trim();
+  if (apres) {
+    const suite = apres.match(/^(?:[A-ZÀ-Ý][\p{L}'’-]*(?:\s+|$)){2,4}/u);
+    if (suite) out.push(suite[0].trim());
+  }
   return out;
 }
 
