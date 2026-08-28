@@ -72,6 +72,11 @@
     "proalestinienne": "pro-palestinienne",
     "identité juve": "identité juive",
     "association juve": "association juive",
-    "communauté juve": "communauté juive"
+    "communauté juve": "communauté juive",
+    "verbativtimes": "verbatim",
+    "verbattimes": "verbatim",
+    "verbatives": "verbatim",
+    "verbimes": "verbatim",
+    "verbames": "verbatim"
   }
 }
