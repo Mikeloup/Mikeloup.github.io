@@ -1,0 +1,14 @@
+# Sortie de construction : fabriquee par build.mjs, publiee par GitHub Actions.
+# Elle n'a rien a faire dans le depot -- elle change a chaque construction et
+# pese plus de mille fichiers.
+#
+# Ajoute le 28 aout 2026 : le depot n'avait aucun .gitignore. Une construction
+# lancee en local pour tester y a depose 1 281 fichiers, qu'un « git add . »
+# aurait publies sans que personne le remarque.
+dist/
+
+# Dependances, si un jour il y en a.
+node_modules/
+
+# Traces du systeme de fichiers d'Apple.
+.DS_Store

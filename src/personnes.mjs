@@ -82,6 +82,35 @@ function candidatsDuTitre(titre) {
   return out;
 }
 
+/**
+ * Remet en forme un nom ecrit tout en capitales : « ARIE ABITBOL » -> « Arie
+ * Abitbol ».
+ *
+ * POURQUOI PAS smartTitle() (28 aout 2026) : cette fonction existe deja pour
+ * les titres de videos, et j'ai voulu la reutiliser. Elle ne convient pas. Un
+ * titre est une phrase : smartTitle met tout en minuscules puis une seule
+ * majuscule, a l'initiale. Appliquee a un nom, elle donne « Arie abitbol ».
+ * La regle d'un nom n'est pas celle d'une phrase : chaque element porte sa
+ * majuscule, y compris apres un trait d'union (« Jean-Jacques ») ou une
+ * apostrophe (« Bat Ye'or »).
+ *
+ * On ne touche qu'aux noms majoritairement en capitales -- meme garde-fou que
+ * smartTitle -- pour ne jamais deformer un nom deja bien ecrit.
+ *
+ * L'adresse de la page ne bouge pas : slugify() met tout en minuscules, donc
+ * « ARIE ABITBOL » et « Arie Abitbol » donnent le meme /invites/arie-abitbol/.
+ */
+export function nomLisible(nom) {
+  const brut = String(nom || '');
+  const lettres = brut.match(/\p{L}/gu) || [];
+  if (lettres.length <= 2) return brut;
+  const capitales = brut.match(/\p{Lu}/gu) || [];
+  if (capitales.length / lettres.length < 0.7) return brut;   // deja bien ecrit
+  return brut.toLocaleLowerCase('fr')
+    .replace(/(^|[\s\-'’(])(\p{L})/gu,
+             (m, avant, lettre) => avant + lettre.toLocaleUpperCase('fr'));
+}
+
 /** Présentateur déduit du nom d'une rubrique : « L'invité de William Zerbib ». */
 export function presentateurDeLaRubrique(titreRubrique) {
   const m = String(titreRubrique || '').match(/(?:\bde\s+|\bavec\s+|\bpar\s+|[-–—]\s*)(.+)$/i);
@@ -215,8 +244,8 @@ export function collecterPersonnes(categories, allVideos, manuel = {},
   // des accents (« Jérôme » plutôt que « Jerome »).
   const accents = (x) => (x.normalize('NFD').match(/[\u0300-\u036f]/g) || []).length;
   for (const p of gens.values()) {
-    p.nom = [...p.graphies.entries()]
-      .sort((a, b) => b[1] - a[1] || accents(b[0]) - accents(a[0]))[0][0];
+    p.nom = nomLisible([...p.graphies.entries()]
+      .sort((a, b) => b[1] - a[1] || accents(b[0]) - accents(a[0]))[0][0]);
     p.slug = slugify(p.nom);
   }
 
