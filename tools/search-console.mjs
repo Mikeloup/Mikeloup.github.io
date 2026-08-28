@@ -71,6 +71,9 @@ async function interroger(jeton, site, corps) {
 }
 
 const jourISO = (d) => d.toISOString().slice(0, 10);
+// Le rapport est en francais : 1,4 % et non 1.4 %.
+const nb = (x, d = 1) => (x === null || x === undefined || Number.isNaN(x))
+  ? '—' : x.toFixed(d).replace('.', ',');
 const somme = (rows, champ) => rows.reduce((n, r) => n + (r[champ] || 0), 0);
 
 /** Moyenne pondérée par les impressions : une position se pondère, ne s'additionne pas. */
@@ -86,7 +89,7 @@ function ecart(courant, avant, unite = '', decimales = 0, inverse = false) {
   if (Math.abs(d) < (decimales ? 0.05 : 0.5)) return ' (stable)';
   const bon = inverse ? d < 0 : d > 0;
   const signe = d > 0 ? '+' : '−';
-  return ` (${bon ? '▲' : '▼'} ${signe}${Math.abs(d).toFixed(decimales)}${unite})`;
+  return ` (${bon ? '▲' : '▼'} ${signe}${Math.abs(d).toFixed(decimales).replace('.', ',')}${unite})`;
 }
 
 /**
@@ -137,7 +140,14 @@ export async function sectionSearchConsole(siteUrl) {
     const requetes = await interroger(jeton, site, {
       startDate: debutA, endDate: finA, dimensions: ['query'], rowLimit: 200,
     });
-    const parClics = [...requetes].sort((x, y) => y.clicks - x.clicks).slice(0, 8);
+    // Seulement celles qui rapportent VRAIMENT. Trier par clics decroissants
+    // ne suffit pas : quand une seule requete a des clics, les suivantes sont
+    // toutes a zero et remontent par ordre alphabetique. Le tableau du 28 aout
+    // annoncait « requetes qui rapportent » et listait « affaire mortara,
+    // 0 clic ». Un titre qui ment coute plus cher qu'un tableau vide.
+    const parClics = [...requetes]
+      .filter((r) => r.clicks > 0)
+      .sort((x, y) => y.clicks - x.clicks).slice(0, 8);
     // Vues mais pas cliquées : classées, donc à portée, et pourtant sans visite.
     // C'est la liste qui dit où le titre ne répond pas à la question posée.
     const muettes = requetes
@@ -146,7 +156,7 @@ export async function sectionSearchConsole(siteUrl) {
 
     const lignes = (rs) => rs.map((r) =>
       `| ${r.keys[0]} | ${r.clicks} | ${r.impressions} | `
-      + `${(100 * r.ctr).toFixed(1)} % | ${r.position.toFixed(1)} |`).join('\n');
+      + `${nb(100 * r.ctr)} % | ${nb(r.position)} |`).join('\n');
 
     return `
 ### Recherche Google — 7 jours (${debutA} → ${finA})
@@ -155,15 +165,15 @@ export async function sectionSearchConsole(siteUrl) {
 |---|---:|---:|
 | Clics | **${clics}**${ecart(clics, clicsB)} | ${clicsB} |
 | Impressions | **${imp}**${ecart(imp, impB)} | ${impB} |
-| Taux de clic | **${ctr.toFixed(1)} %**${ecart(ctr, ctrB, ' pt', 1)} | ${ctrB.toFixed(1)} % |
-| Position moyenne | **${pos === null ? '—' : pos.toFixed(1)}**${ecart(pos, posB, '', 1, true)} | ${posB === null ? '—' : posB.toFixed(1)} |
+| Taux de clic | **${nb(ctr)} %**${ecart(ctr, ctrB, ' pt', 1)} | ${nb(ctrB)} % |
+| Position moyenne | **${nb(pos)}**${ecart(pos, posB, '', 1, true)} | ${nb(posB)} |
 
 ${parClics.length ? `**Requêtes qui rapportent**
 
 | Requête | Clics | Impr. | CTR | Position |
 |---|---:|---:|---:|---:|
 ${lignes(parClics)}
-` : ''}
+` : '**Aucune requête n\'a rapporté de clic cette semaine.**\n'}
 ${muettes.length ? `**Vues, jamais cliquées** — classées mais le titre ne répond pas
 
 | Requête | Clics | Impr. | CTR | Position |
