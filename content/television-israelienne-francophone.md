@@ -17,20 +17,11 @@
 
 ## Les rendez-vous de la chaîne
 
-Chaque rendez-vous est porté par un journaliste ou un intervieweur qui lui donne son ton.
+Les émissions actuellement à l'antenne. Chacune est portée par un journaliste ou un intervieweur qui lui donne son ton.
 
-- **[L'édito de Stéphane Goldin](/emissions/l-edito-de-stephane-goldin/)** — l'analyse de l'actualité israélienne et régionale
-- **[L'interview de William Zerbib](/emissions/l-interview-de-william-zerbib/)** — le grand entretien
-- **[L'interview de Jérôme Haas](/emissions/l-interview-de-jerome-haas/)** — rencontres et enquêtes
-- **[Les Passions d'un Hébreu](/emissions/les-passions-d-un-hebreu-rony-akrich/)** — Rony Akrich, texte et pensée juive
-- **[L'édito de Rony Hayot](/emissions/l-edito-de-rony-hayot/)** — le regard sur la France et le monde juif
-- **[L'édito de Myriam Danan](/emissions/l-edito-de-myriam-danan/)**
-- **[Tour d'Israël](/emissions/tour-d-israel/)** — le documentaire : histoire, archéologie, symboles, patrimoine
-- **[Les grands procès de l'histoire d'Israël](/emissions/les-grands-proces-de-l-histoire-d-israel/)**
-- **[Les cours du Rav Mendel Mimoun](/emissions/les-cours-du-rav-mendel-mimoun/)**
-- **[Face à face avec Sophie Bria](/emissions/face-a-face-avec-sophie-bria/)**
+{{rendezvous}}
 
-La liste complète est sur la page [Toutes les émissions](/emissions/).
+L'ensemble du catalogue — y compris les rendez-vous passés — est sur la page [Toutes les émissions](/emissions/).
 
 ---
 
@@ -42,10 +33,14 @@ Ils sont présentés sur la page [Autres programmes de l'antenne](/autres-progra
 
 ---
 
-## Pourquoi une chaîne francophone en Israël
+## Expliquer Israël en français : pourquoi la hasbara compte
 
-Le travail de Tandem TV tient en une idée simple : **donner le temps à la parole**. Là où l'actualité sur Israël et le Proche-Orient se traite ailleurs en séquences de quelques minutes, la chaîne fait le pari de l'entretien long, du débat mené jusqu'au bout et de l'analyse qui accepte la complexité.
+**Hasbara** — de l'hébreu *lehasbir*, « expliquer ». Le mot désigne l'effort d'exposer, en dehors d'Israël, ce que le pays est, ce qu'il vit et ce qu'il décide. Non pas convaincre à tout prix, mais rendre compréhensible.
 
-Les invités ne pensent pas la même chose, et leurs propos n'engagent qu'eux. Le rôle de la chaîne est de leur donner un cadre pour s'expliquer vraiment, et au spectateur les moyens de se faire son opinion.
+En français, cet effort manque cruellement de temps d'antenne. L'actualité israélienne y arrive le plus souvent en séquences de quelques minutes, sans le contexte historique, juridique ou régional qui la rend intelligible. Ce qui n'est pas expliqué finit par être raconté par d'autres.
+
+C'est la raison d'être de Tandem TV : **donner le temps à la parole**. L'entretien long plutôt que la petite phrase, le débat mené jusqu'au bout, l'analyse qui accepte la complexité. La chaîne y consacre un rendez-vous entier, [Hasbara en Tandem](/emissions/hasbara-en-tandem/), et c'est l'esprit de toutes ses émissions.
+
+Expliquer n'est pas dicter. Les invités de la chaîne ne pensent pas la même chose, et leurs propos n'engagent qu'eux : le rôle de Tandem TV est de leur donner un cadre pour s'expliquer vraiment, et au spectateur les moyens de se faire son opinion.
 
 Pour en savoir plus : [À propos de Tandem TV](/a-propos/) · [Contact](/contact/)

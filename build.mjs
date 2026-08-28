@@ -1016,7 +1016,23 @@ async function main() {
     const newsletterNote = config.newsletter?.formId
       ? "Le site propose de recevoir les nouvelles vidéos par courrier électronique. **L'inscription est volontaire** : seule l'adresse que vous saisissez vous-même est enregistrée, et rien d'autre — ni nom, ni suivi de navigation. Elle est confiée à notre prestataire d'expédition **Kit** (Kit.com, ex-ConvertKit), qui l'utilise uniquement pour acheminer ces envois. Nous ne la cédons, ne la louons et ne la vendons à personne. Chaque message contient un lien de désinscription qui prend effet immédiatement ; vous pouvez aussi nous écrire pour être retiré de la liste. Voir la [politique de confidentialité de Kit](https://kit.com/privacy)."
       : "Le site ne propose pas de lettre d'information et ne collecte aucune adresse électronique.";
+    // {{rendezvous}} — les emissions encore a l'antenne, calculees a chaque
+    // construction. Michael, 28 aout 2026 : « dans les rdv de la chaine ne mets
+    // que les chaines des 4 derniers mois, le reste dans Toutes les emissions ».
+    // Une liste ecrite a la main aurait vieilli des la premiere emission
+    // arretee, et personne ne s'en serait apercu. Ici elle se corrige seule :
+    // une rubrique qui cesse de publier disparait toute seule au bout de
+    // quatre mois, et une nouvelle apparait des sa premiere video.
+    const RENDEZ_VOUS_MOIS = 4;
+    const limiteRdv = buildMs - RENDEZ_VOUS_MOIS * 30.44 * 86_400_000;
+    const rendezVous = (nav.shows || [])
+      .filter((c) => c.videos[0]?.publishedAt
+        && Date.parse(c.videos[0].publishedAt) >= limiteRdv)
+      .map((c) => `- **[${c.title}](/emissions/${c.slug}/)**`
+        + ` — ${c.videos.length} vidéo${c.videos.length > 1 ? 's' : ''}`)
+      .join('\n');
     const html = markdownToHtml(md
+      .replace(/\{\{rendezvous\}\}/g, rendezVous)
       .replace(/\{\{email\}\}/g, config.contactEmail)
       .replace(/\{\{analytics\}\}/g, analyticsNote)
       .replace(/\{\{push\}\}/g, pushNote)
