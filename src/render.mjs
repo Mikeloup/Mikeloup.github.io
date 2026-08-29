@@ -377,7 +377,7 @@ function newsletterForm(config, { compact = false } = {}) {
   const n = config.newsletter;
   if (!n?.formId) return '';
   return `
-<form class="newsletter${compact ? ' newsletter--compact' : ''}"
+<form id="lettre" class="newsletter${compact ? ' newsletter--compact' : ''}"
       action="https://app.kit.com/forms/${escapeHtml(n.formId)}/subscriptions"
       method="post" target="_blank">
   <div class="newsletter-text">
@@ -599,7 +599,17 @@ ${push}
       <button type="submit" aria-label="Lancer la recherche">⌕</button>
     </form>
 
-    <a class="btn btn-yt" href="${escapeHtml(config.channelUrl)}" target="_blank" rel="noopener">
+    <!-- L'action principale du site, choisie par Michael le 29 aout 2026 :
+         recevoir la lettre. Elle est posee ICI, dans .header-inner, et non
+         dans .utility : a 900 px et en dessous, .utility, .btn-yt et .nav sont
+         masques, et l'en-tete se retrouvait sans le moindre appel a l'action
+         sur telephone -- soit 79 % des impressions du site. -->
+    <a class="btn btn-primary btn-lettre" href="/suivre/#lettre">
+      <svg width="17" height="13" viewBox="0 0 24 18" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M1 3h22v12H1zM1 3l11 8 11-8"/></svg>
+      <span class="lettre-long">Recevoir notre newsletter</span><span class="lettre-court">Newsletter</span>
+    </a>
+
+    <a class="btn btn-yt-plain" href="${escapeHtml(config.channelUrl)}" target="_blank" rel="noopener">
       <svg width="17" height="12" viewBox="0 0 24 17" aria-hidden="true" focusable="false"><path fill="currentColor" d="M23.5 2.7A3 3 0 0 0 21.4.6C19.5 0 12 0 12 0S4.5 0 2.6.6A3 3 0 0 0 .5 2.7C0 4.6 0 8.5 0 8.5s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1c.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8ZM9.6 12.1V4.9l6.3 3.6-6.3 3.6Z"/></svg>
       S'abonner sur YouTube
     </a>
@@ -622,9 +632,9 @@ ${push}
       ${nav.partenaires ? '<a href="/autres-programmes/">Autres programmes</a>' : ''}
       ${nav.medias ? '<a href="/partenaires/">Partenaires</a>' : ''}
       ${nav.partenaires ? '' : '<a href="/emissions/">Tout le catalogue</a>'}
-      <a class="nav-follow" href="/suivre/">
+      <a class="nav-follow" href="/suivre/#lettre">
         <svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 22a2.2 2.2 0 0 0 2.2-2.2H9.8A2.2 2.2 0 0 0 12 22Zm7-5.3V11a7 7 0 0 0-5.2-6.8V3.5a1.8 1.8 0 1 0-3.6 0v.7A7 7 0 0 0 5 11v5.7L3 18.7v.6h18v-.6l-2-2Z"/></svg>
-        Suivre la chaîne
+        Recevoir notre newsletter
       </a>
       <span class="nav-only-mobile-sep" aria-hidden="true"></span>
       ${navPages.map((pg) => `<a class="nav-alt" href="/${pg.slug}/">${escapeHtml(libelle(pg))}</a>`).join('')}
@@ -1174,21 +1184,22 @@ export function videoPage({
       <a class="right" href="https://www.youtube.com/watch?v=${video.id}" target="_blank" rel="noopener">Voir sur YouTube ↗</a>
     </div>
 
-    <aside class="react">
-      <h2 class="react-title">Réagir</h2>
-      <p class="muted small">Les échanges se passent sur la chaîne : c'est là que la rédaction lit et répond.</p>
-      <div class="react-actions">
-        <a class="btn btn-yt" href="https://www.youtube.com/watch?v=${video.id}" target="_blank" rel="noopener">Commenter sur YouTube</a>
-        <a class="btn" href="/contact/">Proposer un sujet ou un invité</a>
-      </div>
-    </aside>
-
     ${summary}
 
     ${desc ? `<div class="prose article-body">${desc}</div>` : ''}
 
     ${video.playlists?.length > 1 ? `<p class="tags">Aussi dans : ${video.playlists.slice(1).map((p) => `<a class="chip small" href="/emissions/${p.slug}/">${escapeHtml(p.title)}</a>`).join(' ')}</p>` : ''}
   </article>
+
+  <!-- L'ordre de cette page a ete revu le 29 aout 2026, mesures a l'appui.
+       Avant : lecteur, « Reagir », « Au sommaire », description, transcription,
+       la lettre a 2 785 px sur 4 676, soit 60 % de la page.
+       On demandait donc au visiteur de commenter AVANT de lui avoir montre quoi
+       que ce soit, et l'action principale du site arrivait apres tout le reste.
+       Maintenant : le contenu d'abord, puis la lettre, puis la transcription,
+       et « Reagir » a la fin -- on ne demande rien a quelqu'un a qui on n'a
+       encore rien donne. -->
+  ${newsletterForm(config, { compact: true })}
 
   ${transcription ? `
   <section class="transcription" id="transcription">
@@ -1204,14 +1215,21 @@ export function videoPage({
     <button class="btn transcription-plus" type="button" data-deplier>Afficher toute la transcription</button>
   </section>` : ''}
 
+  <aside class="react">
+    <h2 class="react-title">Réagir</h2>
+    <p class="muted small">Les échanges se passent sur la chaîne : c'est là que la rédaction lit et répond.</p>
+    <div class="react-actions">
+      <a class="btn btn-yt" href="https://www.youtube.com/watch?v=${video.id}" target="_blank" rel="noopener">Commenter sur YouTube</a>
+      <a class="btn" href="/contact/">Proposer un sujet ou un invité</a>
+    </div>
+  </aside>
+
   ${rubrique?.description ? `
   <aside class="rubrique-note">
     <h2>À propos de « ${escapeHtml(cat.title)} »</h2>
     <p>${escapeHtml(truncate(rubrique.description, 320))}</p>
     <p><a href="/emissions/${cat.slug}/">Tous les épisodes de cette rubrique <span aria-hidden="true">→</span></a></p>
   </aside>` : ''}
-
-  ${newsletterForm(config, { compact: true })}
 
   ${related.length ? `
   <section class="row">

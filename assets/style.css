@@ -93,6 +93,29 @@ p { margin: 0 0 1em; }
 .btn-yt { background: var(--accent); border-color: var(--accent); color: #fff; white-space: nowrap; }
 .btn-yt:hover { background: var(--accent-dk); border-color: var(--accent-dk); color: #fff; }
 
+/* Un seul bouton plein dans l'en-tete, et il designe l'action n°1 : la lettre.
+   Le bouton YouTube garde son icone mais passe en contour -- present, lisible,
+   second. Deux aplats cote a cote se disputaient l'oeil et le visiteur ne
+   faisait ni l'un ni l'autre. */
+.btn-yt-plain { white-space: nowrap; }
+
+/* La lettre reste visible sur telephone, la ou .utility et .btn-yt
+   disparaissent. Le libelle raccourcit plutot que le bouton ne disparaisse. */
+.btn-lettre { white-space: nowrap; margin-left: auto; }
+.lettre-court { display: none; }
+@media (max-width: 1180px) {
+  .btn-lettre { padding-inline: .95rem; }
+}
+@media (max-width: 900px) {
+  .btn-yt-plain { display: none; }
+  .btn-lettre { margin-left: auto; order: 1; }
+  .lettre-long { display: none; }
+  .lettre-court { display: inline; }
+}
+@media (max-width: 420px) {
+  .btn-lettre { padding-inline: .8rem; font-size: .85rem; }
+}
+
 /* --- En-tête ------------------------------------------------------------- */
 
 .site-header { position: sticky; top: 0; z-index: 50; background: rgb(255 255 255 / 92%); backdrop-filter: saturate(180%) blur(12px); box-shadow: 0 1px 0 var(--line); }
