@@ -473,7 +473,22 @@ export function layout({
   config, categories, nav = {}, title, description, canonical, image, ogType = 'website', bodyClass = '',
   content, jsonLd = null, buildTime, feed = null, robots = null, sansManifeste = false,
 }) {
-  const fullTitle = title === config.siteName ? `${config.siteName} — ${config.tagline}` : `${title} | ${config.siteName}`;
+  // Le nom du site n'est ajoute au titre que s'il tient.
+  //
+  // Google n'affiche qu'une soixantaine de caracteres, et ce qu'il coupe c'est
+  // la FIN du titre -- c'est-a-dire, sur une page video, le nom de l'invite.
+  // Mesure du 29 aout 2026 sur les 1 052 pages video du site :
+  //     avec « | Tandem TV »  : 59 % des titres depassent 60 caracteres
+  //     sans                  : 38 %
+  // Le suffixe coute douze caracteres sur chaque page, alors que Google ajoute
+  // deja le nom du site de lui-meme sous le titre. On le garde donc la ou il
+  // tient -- accueil, rubriques, pages courtes -- et on le retire la ou il ne
+  // ferait que pousser l'information utile hors de l'ecran.
+  const LONGUEUR_TITRE_UTILE = 60;
+  const suffixe = ` | ${config.siteName}`;
+  const fullTitle = title === config.siteName
+    ? `${config.siteName} — ${config.tagline}`
+    : (title.length + suffixe.length <= LONGUEUR_TITRE_UTILE ? title + suffixe : title);
   const racine = config.siteUrl.replace(/\/$/, '');
   const url = racine + canonical;
   // Facebook, WhatsApp et LinkedIn exigent une adresse complète : une image
