@@ -1201,6 +1201,22 @@ async function main() {
         return `<div class="grid">${R.videoCard(video, { accroche: true })}</div>`;
       },
     );
+    // Une balise HTML ecrite dans une page de contenu ne s'execute pas : le
+    // convertisseur l'echappe, et le LECTEUR voit « XI<sup>e</sup> » en toutes
+    // lettres. C'est arrive aux deux pages de sujet, restees deux jours en
+    // ligne avec huit balises visibles, parce que la relecture s'etait faite
+    // sur le fichier markdown et non sur la page publiee.
+    //
+    // Le convertisseur a raison d'echapper -- c'est ce qui empeche une page de
+    // contenu d'injecter n'importe quoi. Ce qui manquait, c'est que personne
+    // ne le disait. Les exposants s'ecrivent en Unicode : « XIe » avec un e
+    // en exposant, « Ier » de meme, sans aucune balise.
+    const balises = [...new Set(md.match(/<\/?[a-z][a-z0-9]*(?:\s[^>]*)?>/gi) || [])];
+    if (balises.length) {
+      warn(`content/${pg.slug}.md contient ${balises.length} balise(s) HTML `
+        + `(${balises.slice(0, 4).join(' ')}) : elles s'afficheront telles quelles `
+        + 'au lecteur. Utilisez les caracteres Unicode, ou du markdown.');
+    }
     const html = poserVignette(markdownToHtml(md
       .replace(/\{\{rendezvous\}\}/g, rendezVous)
       .replace(/\{\{email\}\}/g, config.contactEmail)

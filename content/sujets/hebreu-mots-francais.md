@@ -28,7 +28,7 @@ L'argument historique qu'il avance ne dépend pas de ses rapprochements, et il e
 
 L'hébreu a été tenu en Occident pour une langue sainte, au même titre que le latin et le grec, et **étudié sans interruption depuis le début du Moyen Âge**, en particulier en France. Lors de la fondation du **Collège de France en 1530**, l'hébreu figurait parmi les matières enseignées. De nombreux théologiens protestants l'ont appris. **Rabelais** le connaissait bien et a glissé des mots d'origine hébraïque dans *Gargantua*.
 
-Il faut y ajouter le **judéo-français** — le *sarfatique* —, langue des juifs du royaume de France entre le XI<sup>e</sup> et la fin du XIV<sup>e</sup> siècle, parlée surtout dans le Nord. **Rachi de Troyes** (1040-1105), que Bruno Dray décrit comme l'un des premiers intellectuels français, a consigné dans ses gloses des centaines de mots français de son temps — un témoignage précieux, et pour lui une passerelle.
+Il faut y ajouter le **judéo-français** — le *sarfatique* —, langue des juifs du royaume de France entre le XIᵉ et la fin du XIVᵉ siècle, parlée surtout dans le Nord. **Rachi de Troyes** (1040-1105), que Bruno Dray décrit comme l'un des premiers intellectuels français, a consigné dans ses gloses des centaines de mots français de son temps — un témoignage précieux, et pour lui une passerelle.
 
 {{video:vQO9eOYRCRo}}
 
@@ -36,13 +36,13 @@ Il faut y ajouter le **judéo-français** — le *sarfatique* —, langue des ju
 
 Voici ceux qu'il a détaillés à l'antenne. La correspondance est toujours **consonantique**, jamais une traduction.
 
-**Le cep de vigne.** Le mot entre en français au XI<sup>e</sup> siècle et figure dans une glose de Rachi. Bruno Dray le rapproche de l'hébreu *gefen*, la vigne.
+**Le cep de vigne.** Le mot entre en français au XIᵉ siècle et figure dans une glose de Rachi. Bruno Dray le rapproche de l'hébreu *gefen*, la vigne.
 
 **Agraire.** Le mot vient du latin *ager*, le champ, apparenté à l'allemand *Acker*. Il le met en regard de l'hébreu *ikar*, le laboureur ou le paysan — mot toujours en usage, et qu'on lit au chapitre 51 d'Isaïe.
 
-**Le broc.** Entré en français à la fin du XIV<sup>e</sup> siècle — il avance la date de 1379 — pour un petit vase à anse, apparenté à l'italien *brocca*, la cruche. Il y voit la racine de l'hébreu *brekha*, un réservoir dans le livre de Samuel, aujourd'hui une piscine.
+**Le broc.** Entré en français à la fin du XIVᵉ siècle — il avance la date de 1379 — pour un petit vase à anse, apparenté à l'italien *brocca*, la cruche. Il y voit la racine de l'hébreu *brekha*, un réservoir dans le livre de Samuel, aujourd'hui une piscine.
 
-**Le bac.** Récipient, en français au XVI<sup>e</sup> siècle, à rapprocher du latin *bacarium*. Il le relie à l'hébreu *bakbouk*, un vase dans le livre des Rois, aujourd'hui une bouteille — un mot qu'il décrit comme une onomatopée, deux consonnes qui se répètent, le bruit du liquide qui sort du goulot.
+**Le bac.** Récipient, en français au XVIᵉ siècle, à rapprocher du latin *bacarium*. Il le relie à l'hébreu *bakbouk*, un vase dans le livre des Rois, aujourd'hui une bouteille — un mot qu'il décrit comme une onomatopée, deux consonnes qui se répètent, le bruit du liquide qui sort du goulot.
 
 **Le berceau espagnol.** *Cuna*, en espagnol, face à l'hébreu *ken*, le nid. C'est le rapprochement dont il dit avoir cherché le lien le plus longtemps.
 

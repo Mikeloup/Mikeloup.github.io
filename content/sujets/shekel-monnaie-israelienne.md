@@ -16,7 +16,7 @@ Six pièces circulent aujourd'hui. Les pièces de 1 et 5 agorot, elles, ont disp
 
 ### 10 agorot — la ménorah et la carte
 
-Première pièce de la série du nouveau shekel, introduite en **1985**. On y voit une **ménorah à sept branches** et une carte d'Israël. Le motif est inspiré d'une pièce frappée par **Antigone Mattathias**, dernier roi asmonéen, au I<sup>er</sup> siècle avant notre ère.
+Première pièce de la série du nouveau shekel, introduite en **1985**. On y voit une **ménorah à sept branches** et une carte d'Israël. Le motif est inspiré d'une pièce frappée par **Antigone Mattathias**, dernier roi asmonéen, au Iᵉʳ siècle avant notre ère.
 
 La symbolique est forte : cette pièce rappelle la souveraineté juive à l'époque du Second Temple, avant la conquête romaine — la dernière avant l'indépendance de 1948.
 
@@ -28,7 +28,7 @@ La pièce représente un **kinor**, harpe ancienne qui figure aussi sur les monn
 
 ### 1 shekel — le lys et l'inscription « Yehoud »
 
-Une **fleur de lys** et l'inscription **Yehoud** en hébreu antique. La pièce reprend exactement les petites monnaies d'argent frappées en Judée sous l'Empire perse, aux IV<sup>e</sup> et III<sup>e</sup> siècles avant notre ère.
+Une **fleur de lys** et l'inscription **Yehoud** en hébreu antique. La pièce reprend exactement les petites monnaies d'argent frappées en Judée sous l'Empire perse, aux IVᵉ et IIIᵉ siècles avant notre ère.
 
 Ces pièces portaient le nom de *Yehoud* — Judée — et symbolisaient l'autonomie juive locale après le retour de l'exil de Babylone : la renaissance du judaïsme sur sa terre après le premier exil.
 
