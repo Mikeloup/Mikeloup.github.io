@@ -396,7 +396,22 @@ function buildModel(config, data) {
     return [v.id, {
       ...v,
       title: corrigerOrthographe(titre, config),
-      description: corrigerOrthographe(cleanDescription(v.description, titre), config),
+      // Description : celle de YouTube d'abord, toujours. Le texte ecrit a la
+      // main ne sert QUE si YouTube ne dit rien.
+      //
+      // Mesure du 29 aout 2026 : 16 videos du catalogue n'avaient aucune
+      // description -- dont des entretiens de 26 a 44 minutes avec Jacques
+      // Tarnero, Michael Prazan, Jonathan Siksou. Leur page n'offrait rien a
+      // lire, ni au visiteur ni a Google.
+      //
+      // Le sens de la regle : le jour ou Michael renseigne la description sur
+      // YouTube, elle reprend la main toute seule. Rien a supprimer ici, aucun
+      // doublon possible, et aucun risque qu'un texte de secours survive a
+      // celui qu'il a ecrit lui-meme.
+      description: corrigerOrthographe(
+        cleanDescription(v.description, titre) || (data.presentations?.[v.id] || ''),
+        config,
+      ),
       playlists: [],
     }];
   }));
@@ -669,6 +684,9 @@ async function main() {
   config.siteUrl = config.siteUrl.replace(/\/$/, '');
 
   const data = await collectData(config);
+  // Textes de presentation ecrits a la main pour les videos dont la description
+  // YouTube est vide. Charges ici pour etre passes au modele.
+  data.presentations = await readJson(path.join(ROOT, 'data', 'presentations.json'), {});
   const { channel, categories, allVideos, byId, nav } = buildModel(config, data);
 
   if (!allVideos.length) throw new Error('Aucune vidéo récupérée : build interrompu.');
