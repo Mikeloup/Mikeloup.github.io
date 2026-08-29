@@ -632,10 +632,11 @@ ${push}
       ${nav.partenaires ? '<a href="/autres-programmes/">Autres programmes</a>' : ''}
       ${nav.medias ? '<a href="/partenaires/">Partenaires</a>' : ''}
       ${nav.partenaires ? '' : '<a href="/emissions/">Tout le catalogue</a>'}
-      <a class="nav-follow" href="/suivre/#lettre">
-        <svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 22a2.2 2.2 0 0 0 2.2-2.2H9.8A2.2 2.2 0 0 0 12 22Zm7-5.3V11a7 7 0 0 0-5.2-6.8V3.5a1.8 1.8 0 1 0-3.6 0v.7A7 7 0 0 0 5 11v5.7L3 18.7v.6h18v-.6l-2-2Z"/></svg>
-        Recevoir notre newsletter
-      </a>
+      <!-- Plus de bouton « suivre » dans le menu : le bouton « Recevoir notre
+           newsletter » de l'en-tete est visible en permanence, sur telephone
+           comme sur ordinateur. Le 29 aout 2026, le garder ici affichait deux
+           fois le meme appel a l'action sur la meme page. Une action
+           principale, un seul bouton. -->
       <span class="nav-only-mobile-sep" aria-hidden="true"></span>
       ${navPages.map((pg) => `<a class="nav-alt" href="/${pg.slug}/">${escapeHtml(libelle(pg))}</a>`).join('')}
       <a class="nav-alt" href="/sponsoring/">Sponsoring</a>
