@@ -1,0 +1,179 @@
+1
+00:00:13,030 --> 00:00:35,200
+[Musique] Bienvenue sur Tandem TV. Bonjour David Aaravi. Bonjour. Alors, vous êtes né en Égypte d'où vous avez été chassé en 1956. Puis après des études universitaires en France, vous avez eu une carrière professionnelle exceptionnelle auprès des industries aérospatiales israéliennes en développant notamment le domaine des avions sans pilote qu'on appelle les drones.
+
+2
+00:00:35,200 --> 00:00:56,879
+Ces avions sont actuellement utilisés dans plus de 50 pays dans le monde. Vous êtes coprésident israien du Haut Conseil Israël France pour la science et la technologie, vice-président de la fondation France Israël et vous avez été cité par le magazine Challenge comme une des 100 personnalités à avoir changé le monde, laat du prix d'Israël et de nombreux autres prix à travers le monde.
+
+3
+00:00:56,879 --> 00:01:21,159
+C'est donc un grand honneur pour Tandem TV de vous recevoir David Harari. Alors dans cet entretien, nous allons tenter d'analyser les différents aspects de l'industrie aérienne militaire d'Israël et commençons par son aviation. Comment expliquez-vous, David Harari la maîtrise totale de l'aviation israélienne dans les cieux iraniennes ?
+
+4
+00:01:21,159 --> 00:01:40,439
+Bien, écoutez, d'abord, je ne sais pas si nous avons maîtrisé exactement tout, mais il est évident qu'un qu'une nation comme Israël qui au cours de plus de 70 ans est obligée de se préparer à la prochaine guerre euh nous a amené à être toujours en avant dans la technologie.
+
+5
+00:01:40,439 --> 00:02:11,760
+Le le problème a été qu'il fallait développer la technologie aérienne parce que c'était notre seul moyen de combattre nos ennemis qui qui ne se trouvaient pas toujours à notre à nos frontières. Il nous fallait un un moyen de dissu qui allait au-delà de 1000 km à peu près et nous avons été malheureusement été obligés de l'utiliser dans la dernière guerre des fameuses 12 jours avec l'Iran.
+
+6
+00:02:11,760 --> 00:02:38,440
+Certains disent que les pilotes et les avions de salle n'ont pas de concurrent. Vous je pense qu'ils exagèrent un peu, non ? Quand même ? Oui, bien sûr, ils exagent un petit peu. Euh disons que nous mais il faut pas oublier que nous utilisons la technologie américaine à la suite justement d'une pression américaine euh aux années 80 d'arrêter justement le développement du programme la vie.
+
+7
+00:02:38,440 --> 00:03:11,200
+La vie. Mais euh c'est vrai que nos jeunes pilotes et les moins jeunes aussi, nous avons plusieurs générations d'hommes et de femmes pilotes en Israël euh toujours été obligé d'avoir une une adaptation et une des qualités qu'on retrouve pas toujours dans les autres pays, même les pays occidentaux parce que malheureusement nous avons l'expérience des opérations militaires que des autres pays n'ont pas.
+
+8
+00:03:11,200 --> 00:03:33,799
+Selon vous, Tsal, a-t-elle besoin des célèbres B2 américains ou pas maintenant ? Euh non, normalement on devrait en avoir. Oui, d'accord. Mais mais euh nous nous ne possédons possédons pas ces ces avions-là qui sont des avions remarquables. Euh vous pouvez pas imaginer euh à les avoir vu voler.
+
+9
+00:03:33,799 --> 00:03:49,920
+Pour moi, ça a été extraordinaire mais euh nous pouvons pas tout avoir, je dirais comme ça. Voilà. Nousons pas Non, mais je sais que c'est quand même nous parlons de domaine sensible. Alors, j'en dirai pas plus et je vous et je vous en demanderai pas plus.
+
+10
+00:03:49,920 --> 00:04:07,120
+Alors, venons-en. Drone de combat. Vous êtes considéré, David Harari, comme le père des drones israéliens. Euh quand euh Israël a-t-elle compris que cette arme allait devenir l'arme du futur ? Voilà, c'est une très longue histoire, une très très longue histoire.
+
+11
+00:04:07,120 --> 00:04:39,280
+Mais en fait, elle commence, je dirais, en 1969 68. Euh c'était au moment de la guerre d'Uzur que nous avions avec l'Égypte, avec l'Égypte. Euh les forces israéliennes et les forces égyptiennes étaient de de part et d'autre des deux rives du canal de Suè et nous étions obligés d'avoir des moyens de reconnaissance sur la rive donc ouest du du canal, c'est-à-dire au-dessus du territoire égyptien.
+
+12
+00:04:39,280 --> 00:05:11,639
+Euh nous avions des renseignements, nous avions des avions qui survolaient, qui prenaient des photos, mais la qualité de ces photos n'était pas bonne. Donc il y a un jeune officier de des services de renseignement commandant qui a eu l'idée justement de prendre un petit modèle réduit d'avion qui était utilisé pour les compétitions de de de modéliste et de mettre une caméra commandée à distance, de faire voler cet avion là et de prendre des photos.
+
+13
+00:05:11,639 --> 00:05:36,199
+Euh cette opération a été faite, on lui avait on lui avait donné les moyens de le faire euh et la le résultat était remarquable en ce sens que très vite on a vu que la résolution de ces photos était supérieure à la résolution des photos obtenues par les moyens traditionnels qui étaient des gros avions qui devaient voler à à haute altitude et cetera.
+
+14
+00:05:36,199 --> 00:06:12,680
+Euh bien que le résultat a été euh un succès, euh le projet n'a pas ne s'est pas développé en Islam pour des raisons, je dirais intérieur à Israël. Et et alors la guerre de Kipour en 1973, les premiers jours, vous je vous rappelle, nous avons perdu énormément de de pilotes et d'avions parce que nous n'avions pas l'information sur les missiles sol air mobile, les SA euh qui venaient qui venait de Russie d'ailleurs qui était russe, qui était soviétique.
+
+15
+00:06:12,680 --> 00:06:29,880
+Exactement. les Russes avaient donné à l'Égypte et à la Syrie. Et donc très vite l'armée de l'Ure israélienne avait compris qu'il fallait obtenir un moyen de renseignement de toute manière mais d'une manière rapide, c'est-à-dire en fait en temps réel.
+
+16
+00:06:29,880 --> 00:06:48,759
+Euh donc très vite, l'idée est ressortie des des dossiers de prendre un avion petit mais qu'il y avait une caméra alors cette fois-ci de télévision pour pouvoir justement obtenir ces informations en temps réel. et le programme a commencé en tout que suite après en 74.
+
+17
+00:06:48,759 --> 00:07:15,039
+Il y a eu des avant-projets qui ont été faits. Nous avons aux industries aérospatiales, nous avons donc euh présenté nos avant projets euh il serait pour c'était le comme nous n'avions pas encore de notoriété dans ce domaine là, Barmitler a préféré aller vers les Américains qui entre-temps développait un programme qui s'appelait Akila qui était justement un avion pareil.
+
+18
+00:07:15,039 --> 00:07:39,720
+Et donc mais très vite au bout de de d'un an, on s'est aperçu qu'on enfin l'armée de l'air s'est aperçu qu'il pourrait pas obtenir un un système rapidement. Et c'est comme ça qu'en 1977 euh nous avons reçu le la commande de développer ce premier système et j'ai eu l'honneur d'être nommé comme étant le le chef du projet de ce de cet avion là.
+
+19
+00:07:39,720 --> 00:08:00,039
+Et c'est comme ça que ça a commencé. Donc en fait c'était pas des des avions de de combat des drones de combat. C'était des drones. C'était des obsè des avions sans pilotes. Voilà. Voilà. Des avions sans pilotes dirigés euh à distance euh qui qui pouvaient prendre des photos euh jours.
+
+20
+00:08:00,039 --> 00:08:20,080
+C'était une télévision jour à ce moment-là. Au cours de la de la première guerre du Liban en 82, il y a eu une demande très importante de jours avant la guerre de d'une caméra de nuit pour pouvoir avoir des photos de nuit. Nous avons développé ça très rapidement.
+
+21
+00:08:20,080 --> 00:08:38,800
+Euh nos ingénieurs ont fait des choses remarquables. À propos d'une manière générale, l'ingénieur israélien en temps de guerre ou même sous pression fait des choses que les autres pays ne font pas. David Harari, je me suis même laissé dire qu'il y avait pas mal d'ingénieurs francophones ou qui venaient de France.
+
+22
+00:08:38,800 --> 00:09:22,240
+Alors euh là c'est une autre histoire. C'est vrai, vous avez parfaitement raison mais ça c'est une autre histoire que je pourrais vous raconter un peu plus t un autre jour. Raconte absolument, c'est intéressant. Mais donc euh nous a euh dès la suite de donc de la de cette utilisation de cet avion euh d'observation jour et nuit au cours de cette guerre du Liban, euh le projet a été découvert par le monde entier euh jusqu'à jusqu'à ce moment-là, jusqu'en 82, c'était un projet secret euh qui met euh au cours de la de la guerre il a été découvert et c'est à ce moment-là les pays alliés à Israël se sont adéressés à à cet avion là.
+
+23
+00:09:22,240 --> 00:09:40,800
+Et c'est comme ça que nous avons donc de au cours des quelques années qui ont subi, nous l'avons vendu aux Américains, à la Suisse, à la France un peu plus tard, à la Belgique et d'autres pays Finlande et d'autres pays asiatiques à ce moment. Et c'est comme ça que ça a démarré.
+
+24
+00:09:40,800 --> 00:10:01,680
+Le drone de combat s'est développé quelques années bien plus tard. D'accord. Alors dans la guerre Russie-Ukraine, on assiste au ravage des drones iraniens sur le sol ukrainien. Dans ce domaine, nos drones pardon, doivent-ils avoir la maîtrise aussi des cieux ?
+
+25
+00:10:01,680 --> 00:10:26,279
+Je je ne voudrais pas comparer euh les deux conflits. Euh la la euh le la bataille, les enfin les les terrains les terrains militaires des deux conflits sont totalement différentes et il est certain que les Ukrainiens euh au cours des 4 ans de guerre qu'ils ont et qui ne s'arrêtent pas, malheureusement pour eux, ont fait un progrès extraordinaire.
+
+26
+00:10:26,279 --> 00:10:50,480
+Euh et l'une des dernières opérations euh à plus de je crois de 2000 ou 3000 km euh au-dessus de de la Russie a montré justement le développement euh qu'ils utilisent pour pouvoir contacter. Ils ont des techniques remarquables euh mais n peut pas comparer les deux.
+
+27
+00:10:50,480 --> 00:11:17,040
+ceux qu'ils ont utilisé c'est c'est bien. Euh nous avons aussi beaucoup d'autres technologies connu et non connu au cas. Alors finalement, est-ce qu'on peut dire que la guerre moderne est d'abord une guerre de drone de combat ? C'est c'est je dirais que c'est une guerre où où la euh d'abord les renseignements en premier sont très importants.
+
+28
+00:11:17,040 --> 00:11:51,320
+Oui. Et c'est avoir le renseignement. Parfois ces renseignements sont euh sont obtenus au cours d'une période qui avant l'opération militaire comme vous pouvez pu l'imaginer. C'est pas un cours de l'opération militaire mais euh et euh et après donc évidemment euh ça va je personnellement je ne pense pas que parce qu'on parle beaucoup que tous ces avions pilotés à distance euh vont un jour arrêter des des les combats le fond des avions pilotés avec un pilote à posé.
+
+29
+00:11:51,320 --> 00:12:09,639
+Pour l'instant je ne vois pas ça là que ça ça viendra. Alors maintenant, un mot sur les les missiles balistiques iraniens dont on a tant souffert ces dernières ces derniers jours, ces dernières semaines. La guerre de 12 jours, c'est son nom maintenant, a montré le rôle essentiel que notre défense, la défense d'Israël doit avoir contre les mystiles, les myiles pardon balistiques ennemis.
+
+30
+00:12:09,639 --> 00:12:37,079
+Où on est la recherche en Israël ? Est-ce que vous pouvez nous en dire deux mots ou c'est pas possible ? Non non, on peut on peut en parler bien sûr. Euh en fait le ce développement euh de missiles euh d'interception des missiles balistiques euh a été développé euh a commencé à être développé euh en Israël au fin des années euh 70.
+
+31
+00:12:37,079 --> 00:12:56,600
+Ah bon ? Si tôt que ça ? D'accord. OK. Dévelop 70. Euh alors c'est assez amusant. Vous avez dit quelque chose tout à l'heure que je vais reprendre. C'est d'un groupe d'ingénieurs franco-israélien. D'accord. On en reviendra, on en reparlera de il y a pas de raison que qu'on les laisse de côté.
+
+32
+00:12:56,600 --> 00:13:17,720
+Et donc euh au départ euh personne n'y croyait. Euh c'était vraiment une lutte acharnée par euh un ingénieur euh non franco-israélien mais qui était le chef de de cette idée-là euh et qui a été aidé donc par ce groupe d'ingénieurs franco-israélien qui était depuis quelques années déjà en Israël.
+
+33
+00:13:17,720 --> 00:14:06,160
+Et donc euh il a fallu donc je reconnais euh pour que que les que l'équipe combatte justement pour convaincre les personnes sceptiques. Euh les euh les Américains s'intéressaient au sujet à ce sujet-là. Euh ils avaient ils avaient des certaines études mais ils se sont aperçus aussi très vite que Israël avait développé des technologies euh remarquables dans le fait que il est nécessaire que le missile d'intersection soit plus rapide que le que le missile d'attaque pour pouvoir euh pour pouvoir l'arrêter sur le terrain euh de sur le territoire ennemi.
+
+34
+00:14:06,160 --> 00:14:37,519
+parce que vous pouvez imaginer que la charge explosive que le missile d'attaque possède peut être peut être ne pas être conventionnel. Donc était important et Israël a réussi les premiers essais et cetera. C'est c'est pas pour rien qu'on dit que c'est le le système 3 AR 3 qu'on maintenant c'est la 3e génération et et très bientôt sera opérationnelle la 4e génération qui qui sera encore plus sophistiquée que l'autre.
+
+35
+00:14:37,519 --> 00:15:10,160
+Ça fait donc plus de 50 ans, je dirais presque 50 ans, un peu moins 40 ans que ce système est en développement et en fabrication en Israël. Entre-temps, il a été il est aussi euh utilisé par les Américains. Les Américains nous ont aidé à ouvrir des lignes de fabrication aux États-Unis aussi et et puis entre-temps, ils ont développé leur système, le fameux système TAD qui est aussi utilisé par euh CH.
+
+36
+00:15:10,160 --> 00:15:29,199
+Voilà. Donc il il est évident aujourd'hui que euh on a besoin tous les pays ont ont besoin de ce système-là et ce n'est pas pour rien que les Allemands, les premiers euh comme premier pays européen s'est équipé du système ARO. Très bien. Donc le système il sera bien.
+
+37
+00:15:29,199 --> 00:15:51,959
+Finalement et ce sera ma dernière question. David Harari, est-ce que peut-on espérer avoir un jour et cette dernière ces derniers jours euh nous nous l'ont nous l'ont montré où on a voulu, on y a pensé, on a rêvé. Peut-on espérer donc avoir un jour une protection hermétique à 100 % contre les missiles balistiques ?
+
+38
+00:15:51,959 --> 00:16:29,720
+Ça serait je franchement ridicule de ma part de vous dire oui, on va arriver à un système étement euh un un système quels que soient les systèmes de défense euh il y a une combinaison de la technologie et de la population aussi. Euh si si en Israël nous n'avions pas aussi une politique où la population israélienne euh c'est une population disciplinée qui ne s'affole pas, qui sait qui malheureusement ça fait pas mal de générations déjà dans les dans les familles israéliennes que nous sommes soumis à à des attaques de toutes sortes et cetera.
+
+39
+00:16:29,720 --> 00:16:59,959
+Euh cette discipline, le fait de rentrer dans les abris, aller dans les abris, le fait d'avoir développé des abris complète justement le système. Mais un système, quelle que soit la technologie, la technologie ne peut pas être à 100 % pas fait. On prend énormément de considération à la technologie, des moyens justement de pouvoir sauvegarder le système en fonctionnement malgré certaines pannes à l'intérieur.
+
+40
+00:16:59,959 --> 00:17:21,919
+Mais 100 % c'est pas possible. Ben c'est déjà pas mal. Je crois qu'on a atteint 85 ou 87 % si je me trompe pas. Voilà. Exactement. Si je vous disais que combien de fois j'ai vu des rapports qui disaient que le ces systèmes là ne seront pas efficaces, je vous assure que mais enfin ça vous a fait sourire.
+
+41
+00:17:21,919 --> 00:17:42,160
+Écoutez, merci beaucoup qu'on aura non Claudie c'est votre femme et j'aurai l'occasion d' jour d'en parler parce que j'aurai l'occasion de la voir. C'est c'est un on va dire euh presque votre équivalent mais du côté de la de l'éducation. on aura l'occasion de l'interviewer Claudia Harari mais euh euh en tous les cas euh franchement David Harari, ça a été un bonheur que de vous avoir.
+
+42
+00:17:42,160 --> 00:18:27,880
+Et puis et puis je je prends je prends la promesse, je je signe la promesse de qu'on parle parce que j'en connais quelques-uns, c'est pour ça que je vous dis ça, des franco-isliens dans euh l'industrie aéronautique d'Israël. Alors euh absolument, je crois qu'il faut il faut reconnaître que la communauté franco-israélienne euh disons la la première génération la la génération qui est venue euh aux années 70 après la guerre de jour euh en Israël a contribué énormément pour le développement de la de l'industrie aérospatiale israélienne, que ça soit dans tous les dans tous les domaines de l'aviation, dans les missiles, dans les satellites.
+
+43
+00:18:27,880 --> 00:18:51,400
+Euh mais là, je voudrais à ce moment-là avoir un rappel pour le je dirais le chef de cette de ce groupe franco-israélien, c'est Charlie Atalon Charl Attis qui a qui a été notre chef à nous tous pour départ. Absolument. Il était venu en Israël en avril 1970 et le père de la fusée diamant française même de Gaul.
+
+44
+00:18:51,400 --> 00:19:12,400
+Absolument. Absolument. Absolument. et euh pour que pour que le sachiez pour qu'il il vienne en Israël et qu'il autorisation, il a dû il a dû prêter serment à devant trois juges de ne pour ne pas développer les puisque c'était le la fusée diamant c'était quand même de la dissuation euh française.
+
+45
+00:19:12,400 --> 00:19:17,400
+Absolument et un joyau de la défense française. Merci David Arari, ça a été encore un bonheur. Et nous nous retrouverons ainsi que nous retrouvons votre épouse Claudy. fait la promesse avec grand plaisir et à bientôt. À bientôt. Au revoir. [Musique]
