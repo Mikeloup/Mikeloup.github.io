@@ -9,6 +9,7 @@
 // -----------------------------------------------------------------------------
 
 import fs from 'node:fs/promises';
+import { createHash } from 'node:crypto';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import * as yt from './src/youtube.mjs';
@@ -30,6 +31,26 @@ const DIST = path.join(ROOT, 'dist');
 const PER_PAGE = 24;
 
 const DEMO = process.argv.includes('--demo') || process.env.DEMO === '1';
+
+/**
+ * Empreinte du contenu d'un fichier d'assets, pour l'ajouter a son adresse.
+ *
+ * Le 29 aout 2026 : une modification du CSS publiee, verifiee correcte sur le
+ * serveur, s'affichait cassee sur le telephone de Michael -- nouveau HTML,
+ * ancien CSS. La feuille de style s'appelle toujours /assets/style.css et
+ * GitHub Pages la sert avec cache-control: max-age=600 ; un navigateur qui
+ * l'avait chargee peu avant gardait l'ancienne, et Safari plus longtemps
+ * encore. Un fichier qui change de contenu doit changer d'adresse, sinon on
+ * ne sait jamais quelle version le visiteur regarde.
+ */
+async function empreinte(relatif) {
+  try {
+    const contenu = await fs.readFile(path.join(ROOT, relatif));
+    return createHash('sha1').update(contenu).digest('hex').slice(0, 8);
+  } catch {
+    return '';  // pas d'empreinte plutot qu'une construction qui echoue
+  }
+}
 const buildTime = process.env.SOURCE_DATE || new Date().toISOString();
 // `buildTime` est une CHAINE ISO. Toute soustraction directe avec un nombre
 // de millisecondes rend NaN — et `NaN < seuil` vaut false, silencieusement.
@@ -541,6 +562,12 @@ ${urls.map((u) => `  <url><loc>${config.siteUrl}${u.loc}</loc>${u.lastmod ? `<la
 async function main() {
   const t0 = Date.now();
   const config = JSON.parse(await fs.readFile(path.join(ROOT, 'site.config.json'), 'utf8'));
+  // Les adresses des assets portent l'empreinte de leur contenu : un fichier
+  // modifie change d'adresse et ne peut donc pas etre servi depuis un cache.
+  config.empreintes = {
+    css: await empreinte('assets/style.css'),
+    js: await empreinte('assets/app.js'),
+  };
   config.siteUrl = config.siteUrl.replace(/\/$/, '');
 
   const data = await collectData(config);

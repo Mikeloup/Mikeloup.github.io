@@ -559,7 +559,7 @@ ${sansManifeste ? '' : `<link rel="manifest" href="/manifest.webmanifest">`}
 <meta name="apple-mobile-web-app-title" content="${escapeHtml(sansManifeste ? 'Stories' : config.siteName)}">
 <link rel="icon" href="/favicon.png" type="image/png">
 <link rel="apple-touch-icon" href="/favicon.png">
-<link rel="stylesheet" href="/assets/style.css">
+<link rel="stylesheet" href="/assets/style.css${config.empreintes?.css ? `?v=${config.empreintes.css}` : ''}">
 ${config.googleSiteVerification ? `<meta name="google-site-verification" content="${escapeHtml(config.googleSiteVerification)}">` : ''}
 <script type="application/ld+json">${JSON.stringify(orgLd)}</script>
 ${(Array.isArray(jsonLd) ? jsonLd : [jsonLd]).filter(Boolean)
@@ -700,7 +700,7 @@ ${content}
   </div>
 </footer>
 
-<script src="/assets/app.js" defer></script>
+<script src="/assets/app.js${config.empreintes?.js ? `?v=${config.empreintes.js}` : ''}" defer></script>
 </body>
 </html>`;
 }
