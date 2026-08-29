@@ -227,7 +227,10 @@
       "Hanna",
       "Daat",
       "Bari"
-    ]
+    ],
+    "renames": {
+      "Cafe Daat": "Café Daat"
+    }
   },
-  "_comment_display": "Mise en forme des titres de rubriques. 'smartCase' remet en minuscules les titres écrits TOUT EN MAJUSCULES (majuscule uniquement à la première lettre). Les titres déjà correctement écrits ne sont pas touchés. 'properNouns' liste les mots qui doivent garder leur majuscule : ajoutez-y tout nom propre mal rendu."
+  "_comment_display": "Mise en forme des titres de rubriques. 'smartCase' remet en minuscules les titres écrits TOUT EN MAJUSCULES (majuscule uniquement à la première lettre). Les titres déjà correctement écrits ne sont pas touchés. 'properNouns' liste les mots qui doivent garder leur majuscule : ajoutez-y tout nom propre mal rendu. 'renames' corrige l'orthographe d'un titre de playlist pour l'affichage seulement : la clé est le titre exact tel qu'il est écrit sur YouTube, la valeur est ce que le site affichera. L'adresse de la rubrique ne change pas — elle reste calculée sur le titre YouTube, pour ne pas casser un lien déjà indexé."
 }

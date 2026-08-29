@@ -358,15 +358,28 @@ function buildModel(config, data) {
       const videos = p.videoIds
         .map((id) => byId.get(id))
         .filter(Boolean)
+        // Même règle que pour allVideos, et c'est la même fonction : une
+        // rubrique ne doit pas contenir ce que le catalogue rejette.
+        .filter(yt.entreDansLeSite)
         .sort((a2, b2) => new Date(b2.publishedAt) - new Date(a2.publishedAt));
       return {
         ...p,
         rawTitle: p.title,
         // L'affichage corrige les titres tout en majuscules ; les comparaisons
         // (thèmes, exclusions, ordre) continuent de porter sur le titre d'origine.
-        title: config.display?.smartCase === false
-          ? p.title
-          : smartTitle(p.title, config.display?.properNouns || []),
+        //
+        // `display.renames` passe avant : c'est la seule façon de corriger une
+        // faute que YouTube nous envoie. La playlist s'appelle « Cafe Daat »
+        // sans accent sur YouTube ; smartTitle ne peut rien pour elle, il
+        // corrige les majuscules, pas l'orthographe. Renommer la playlist sur
+        // YouTube marcherait aussi, mais dépendrait d'un geste manuel qu'un
+        // futur renommage effacerait — et l'adresse /emissions/cafe-daat/, elle,
+        // est déjà indexée par Google. Le slug reste donc calculé sur le titre
+        // BRUT : on corrige ce que le visiteur lit, jamais l'adresse.
+        title: config.display?.renames?.[p.title]
+          ?? (config.display?.smartCase === false
+            ? p.title
+            : smartTitle(p.title, config.display?.properNouns || [])),
         slug: slugify(p.title),
         group: themeKeys.has(normKey(p.title)) ? 'themes' : 'shows',
         videos,
@@ -393,14 +406,10 @@ function buildModel(config, data) {
   }
 
   const allVideos = [...byId.values()]
-    // Michael, 21 août 2026 : « ne pas mettre de short dans le site en
-    // dernière vidéo ». Les reprises sortent du site entièrement, et non de la
-    // seule page d'accueil : ce sont des extraits d'émissions qui ont déjà leur
-    // page ici. Les garder ferait deux pages pour un même contenu — exactement
-    // le contenu dupliqué qu'on passe nos journées à retirer. Une ligne à
-    // enlever si l'on change d'avis.
-    .filter((v) => !v.estRepriseCourte)
-    .filter((v) => !v.isShort || v.playlists.length)
+    // La règle d'entrée dans le site vit dans src/youtube.mjs, une seule fois.
+    // Elle était écrite ici en deux filtres, et les fiches d'invités, qui
+    // passent par cat.videos, ne la connaissaient pas du tout.
+    .filter(yt.entreDansLeSite)
     .sort((a2, b2) => new Date(b2.publishedAt) - new Date(a2.publishedAt));
 
   // Une rubrique sort des menus quand elle n'a rien publié depuis N mois.

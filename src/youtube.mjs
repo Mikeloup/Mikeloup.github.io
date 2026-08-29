@@ -118,6 +118,37 @@ function normalizeVideo(v) {
   };
 }
 
+// Une video entre-t-elle dans le site ?
+//
+// Michael, 29 aout 2026 : « les videos de 90 sec ne sont pas sensees etre sur
+// le site ». C'etait deja l'intention, mais la regle etait ecrite en deux
+// morceaux, a deux endroits, et les deux ne disaient pas la meme chose :
+//
+//   build.mjs        .filter((v) => !v.estRepriseCourte)
+//                    .filter((v) => !v.isShort || v.playlists.length)
+//   personnes.mjs    aucune regle -- les videos venaient de cat.videos
+//
+// Consequence mesuree le 29 aout sur le site en ligne : « Israel : ou sont les
+// hommes d'Etat ? #Shorts » etait absent de search.json, absent du catalogue,
+// et pourtant affiche deux fois sur la fiche de Rony Akrich. Une video exclue
+// du site rentrait par la porte des fiches d'invites, parce que cette porte-la
+// ne connaissait pas la regle.
+//
+// La regle vit donc ici, une seule fois, et tout ce qui construit le site
+// l'appelle. Le seuil est celui que Michael a fixe : 90 secondes.
+//
+// Une duree inconnue (0) ne fait pas sortir la video. Ne pas savoir combien de
+// temps dure une video n'est pas une raison de la retirer -- c'est une raison
+// de ne rien conclure.
+export const DUREE_MINIMALE_SITE = 90;
+
+export function entreDansLeSite(v) {
+  if (!v) return false;
+  if (v.estRepriseCourte) return false;
+  if ((v.duration || 0) > 0 && v.duration <= DUREE_MINIMALE_SITE) return false;
+  return true;
+}
+
 // --- API publique du module --------------------------------------------------
 
 export async function fetchChannel(channelId, handle) {
