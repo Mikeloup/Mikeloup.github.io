@@ -56,14 +56,90 @@ const YT_THUMB = (id) => `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
 // hqdefault ne lui donne que 480 px utiles, soit un agrandissement de 23 % et
 // une image molle sur un bon ecran. sddefault (640x480, ~45 Ko) la couvre, et
 // il n'y en a qu'une par page.
+//
+// ATTENTION -- defaut trouve le 29 aout 2026, present depuis l'origine.
+// Cette fonction reecrivait la taille SANS VERIFIER qu'elle existe. Or toutes
+// les videos n'ont pas toutes les tailles : YouTube ne fabrique sddefault et
+// maxresdefault que si la video a ete televersee en assez haute definition.
+// Sur 120 videos du catalogue tirees au sort, 5 n'ont pas de sddefault et 8
+// n'ont pas de maxresdefault -- soit environ 4 % et 7 %.
+//
+// Et YouTube ne repond pas 404 pour une taille absente : il renvoie une image
+// grise de 120x90. Le navigateur la charge sans erreur, la CSS l'etire dans un
+// cadre de 589 px, et le visiteur voit un rectangle gris a la place de la
+// grande carte. Rien dans le code ne signalait quoi que ce soit. Exemples
+// verifies : ZYPBMmd6wMY, OLR7g0ENAFQ, 7t9jaFLDt4Q -- pour ces trois videos
+// l'API YouTube donne hqdefault comme meilleure vignette, et nous demandions
+// quand meme sddefault.
+//
+// La regle, desormais : on ne demande jamais a YouTube une taille plus grande
+// que celle qu'il nous a lui-meme annoncee. Reduire est toujours sur (les
+// petites tailles existent toujours), agrandir ne l'est jamais.
+const ECHELLE_VIGNETTES = ['default', 'mqdefault', 'hqdefault', 'sddefault', 'maxresdefault'];
+
 function vignetteUrl(url, id, taille = 'hqdefault') {
   if (/^https:\/\/i\.ytimg\.com\//.test(url || '')) {
-    return url.replace(/\/[\w-]+\.jpg/, `/${taille}.jpg`);
+    const actuelle = (url.match(/\/([\w-]+)\.jpg/) || [])[1];
+    const rang = (t) => ECHELLE_VIGNETTES.indexOf(t);
+    // Taille inconnue des deux cotes : on ne touche a rien plutot que de
+    // deviner. Ne pas savoir n'autorise pas a agrandir.
+    if (rang(taille) < 0 || rang(actuelle) < 0) return url;
+    const retenue = rang(taille) <= rang(actuelle) ? taille : actuelle;
+    return url.replace(/\/[\w-]+\.jpg/, `/${retenue}.jpg`);
   }
   return url || (id ? YT_THUMB(id) : '');
 }
 
 const vignette = (video, taille) => vignetteUrl(video?.thumbnail, video?.id, taille);
+
+// YouTube sert les memes vignettes en WebP a une autre adresse : /vi_webp/...
+// au lieu de /vi/..., et .webp au lieu de .jpg. Mesure du 29 aout 2026, faite
+// en telechargeant les deux versions de 19 videos du catalogue :
+//
+//   hqdefault      480x360   jpg  22 826 o  ->  webp  25 040 o   (+10 %)
+//   sddefault      640x480   jpg  77 170 o  ->  webp  38 833 o   (-50 %)
+//   maxresdefault 1280x720   jpg 216 439 o  ->  webp 102 671 o   (-53 %)
+//
+// Le WebP ne gagne donc PAS partout. Sur les petites vignettes -- les vingt
+// cartes d'une page de liste, celles qui font le gros du nombre -- il est plus
+// LOURD que le JPEG. « Passer toutes les vignettes en WebP » aurait alourdi le
+// site. Le gain est entierement concentre sur la ou les deux grandes images de
+// chaque page : la une, l'affiche du lecteur, la grande carte. D'ou la regle
+// ci-dessous, qui ne convertit que sddefault et maxresdefault et laisse
+// hqdefault en JPEG.
+//
+// Sur la page d'accueil du 29 aout : 258 832 -> 126 698 o pour la une et
+// 76 030 -> 36 404 o pour la grande carte, soit 171 760 octets de moins sur
+// une page qui en pesait 775 000.
+const TAILLES_GAGNANTES_EN_WEBP = /\/(sddefault|maxresdefault)\.jpg$/;
+
+function versionWebp(url) {
+  if (!/^https:\/\/i\.ytimg\.com\/vi\//.test(url || '')) return null;
+  if (!TAILLES_GAGNANTES_EN_WEBP.test(url)) return null;
+  return url.replace('/vi/', '/vi_webp/').replace(/\.jpg$/, '.webp');
+}
+
+// Disponibilite mesuree le 29 aout 2026 sur 120 videos tirees au sort, en
+// controlant la LARGEUR de l'image obtenue et non le simple fait qu'elle se
+// charge -- une premiere mesure disait « 1 053 disponibles sur 1 053 » parce
+// qu'elle comptait comme disponibles les images grises de 120x90 que YouTube
+// renvoie pour une taille absente. Elle ne distinguait pas « presente » de
+// « inconnue », et une mesure qui ne peut pas repondre « non » ne mesure rien.
+//
+// Resultat de la mesure correcte : la disponibilite du WebP est EXACTEMENT
+// celle du JPEG, taille par taille -- sddefault 115 sur 120 des deux cotes,
+// maxresdefault 112 sur 120 des deux cotes, hqdefault 120 sur 120. Passer au
+// WebP n'ajoute donc aucun risque : partout ou le JPEG existe, le WebP existe.
+//
+// Le repli ci-dessous ne sert donc PAS a rattraper un WebP manquant -- ce cas
+// n'existe pas, et de toute facon YouTube ne repond pas 404 mais renvoie une
+// image grise, qui ne declenche aucune erreur. Il sert aux navigateurs trop
+// anciens pour decoder le WebP : eux echouent vraiment, et recoivent le JPEG.
+function attributsVignette(url) {
+  const webp = versionWebp(url);
+  if (!webp) return `src="${escapeHtml(url || '')}"`;
+  return `src="${escapeHtml(webp)}" onerror="this.onerror=null;this.src='${escapeHtml(url)}'"`;
+}
 
 // --- Briques réutilisables ---------------------------------------------------
 
@@ -81,7 +157,7 @@ export function videoCard(video, { showCategory = true, eager = false, lead = fa
   return `
 <article class="card${lead ? ' card--lead' : ''}" data-video-id="${escapeHtml(video.id)}">
   <a class="card-thumb" href="/video/${video.id}/" aria-label="${escapeHtml(video.title)}">
-    <img src="${escapeHtml(vignette(video, lead ? 'sddefault' : 'hqdefault'))}" alt="" loading="${eager ? 'eager' : 'lazy'}" decoding="async" referrerpolicy="no-referrer" width="480" height="270">
+    <img ${attributsVignette(vignette(video, lead ? 'sddefault' : 'hqdefault'))} alt="" loading="${eager ? 'eager' : 'lazy'}" decoding="async" referrerpolicy="no-referrer" width="480" height="270">
     ${isFresh(video) ? '<span class="badge-new">Nouveau</span>' : ''}
     ${video.duration ? `<span class="badge-duration">${formatDuration(video.duration)}</span>` : ''}
     <span class="card-progress" hidden><span></span></span>
@@ -235,7 +311,7 @@ function hero(video, category, { pinned = false } = {}) {
   return `
 <section class="hero">
   <a class="hero-media" href="/video/${video.id}/">
-    <img src="${escapeHtml(video.thumbnail || YT_THUMB(video.id))}" alt="" fetchpriority="high" decoding="async" referrerpolicy="no-referrer" width="1280" height="720">
+    <img ${attributsVignette(video.thumbnail || YT_THUMB(video.id))} alt="" fetchpriority="high" decoding="async" referrerpolicy="no-referrer" width="1280" height="720">
     <span class="hero-play" aria-hidden="true"></span>
   </a>
   <div class="hero-body">
@@ -1212,7 +1288,7 @@ export function videoPage({
     </div>
 
     <div class="player" data-video="${video.id}" data-title="${escapeHtml(video.title)}"${related[0] ? ` data-next-id="${escapeHtml(related[0].id)}" data-next-title="${escapeHtml(related[0].title)}" data-next-thumb="${escapeHtml(related[0].thumbnail || YT_THUMB(related[0].id))}"` : ''}>
-      <img class="player-poster" src="${escapeHtml(video.thumbnail || YT_THUMB(video.id))}" alt="${escapeHtml(video.title)}" fetchpriority="high" width="1280" height="720">
+      <img class="player-poster" ${attributsVignette(video.thumbnail || YT_THUMB(video.id))} alt="${escapeHtml(video.title)}" fetchpriority="high" width="1280" height="720">
       <button class="player-btn" type="button" aria-label="Lire la vidéo"></button>
       <noscript>
         <iframe src="https://www.youtube-nocookie.com/embed/${video.id}?rel=0&amp;modestbranding=1&amp;hl=fr"
