@@ -66,6 +66,16 @@ h2 { font-size: clamp(1.25rem, 1rem + 1vw, 1.6rem); }
 p { margin: 0 0 1em; }
 
 .wrap { width: 100%; max-width: var(--wrap); margin-inline: auto; padding-inline: 20px; }
+
+/* L'en-tete est collante : elle reste en haut de l'ecran quand on descend.
+   Consequence oubliee : quand un lien mene a une ancre -- le bouton
+   « Newsletter » de l'en-tete pointe sur /suivre/#lettre --, le navigateur
+   amene la cible tout en haut de la fenetre, c'est-a-dire SOUS l'en-tete. Le
+   titre « La lettre de Tandem TV » et la premiere ligne de la promesse
+   disparaissaient derriere elle. Mesure du 29 aout 2026 : en-tete de 62 px,
+   marge d'ancrage de 0.
+   76 px laissent l'en-tete et un peu d'air au-dessus du titre. */
+:target { scroll-margin-top: 76px; }
 .wrap.narrow { max-width: 780px; }
 .muted { color: var(--muted); }
 .small { font-size: .875rem; }
