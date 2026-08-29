@@ -883,12 +883,6 @@ body.share-natif .share-label { display: none; }
 .tv-banner strong { color: var(--text); font-weight: 650; }
 .tv-banner .tv-canal { color: var(--rouge); font-weight: 700; white-space: nowrap; }
 
-/* Dans le pied de page, le fond est le violet sombre #180058 et le rouge
-   editorial #c8102e n'y ressort pas : contraste mesure 3,03 pour 1, la ou il
-   en faut 4,5. C'etait le seul defaut de contraste de toute la page d'accueil.
-   Un rouge eclairci garde le sens -- le canal reste signale en rouge -- et
-   passe a 6,5 pour 1. */
-.site-footer .tv-canal { color: #ff7a8a; }
 .tv-banner a { color: var(--rouge); font-weight: 650; text-decoration: underline; }
 .tv-badge {
   background: transparent; color: var(--rouge); border: 1px solid var(--rouge);
@@ -918,7 +912,17 @@ body.share-natif .share-label { display: none; }
 
 .tv-logo { flex: 0 0 auto; height: 22px; width: auto; display: block; }
 .tv-footer .tv-logo { height: 16px; }
-.tv-footer .tv-canal { color: var(--rouge); font-weight: 650; }
+/* Le fond du pied de page est le violet sombre #180058, et le rouge editorial
+   #c8102e n'y ressort pas : contraste mesure le 29 aout 2026 a 3,03 pour 1, la
+   ou il en faut 4,5. C'etait le seul defaut de contraste de toute la page
+   d'accueil. Un rouge eclairci garde le sens -- le canal reste signale en
+   rouge -- et monte a 6,5 pour 1.
+   La correction est ecrite ICI, dans la regle du pied de page elle-meme. Une
+   premiere tentative l'avait ajoutee plus haut dans le fichier, sous
+   « .site-footer .tv-canal » : meme specificite, mais placee avant, elle
+   perdait contre cette ligne-ci. Verifie sur le site publie : la couleur
+   n'avait pas bouge. */
+.tv-footer .tv-canal { color: #ff7a8a; font-weight: 650; }
 @media (max-width: 640px) {
   /* La marque reste à gauche et le texte coule à côté : empilé, le bandeau
      prenait trois fois la hauteur nécessaire. */
