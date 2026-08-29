@@ -30,14 +30,22 @@ const YT_THUMB = (id) => `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
 // de l'accueil, l'image de partage et la fiche video. Elles sont peu
 // nombreuses, elles s'affichent en grand, et pour les deux dernieres c'est la
 // grande taille qui permet a Google et aux reseaux d'afficher une image.
-function vignetteUrl(url, id) {
+//
+// Deux tailles, parce qu'il y a deux tailles d'affichage. Mesure du 29 aout,
+// apres la premiere version de ce correctif : les petites cartes s'affichent en
+// 284 px et les vignettes « a suivre » en 150 px -- 480 les couvre largement.
+// Mais la GRANDE carte de « Dernieres videos » s'affiche en 589 px : recadree,
+// hqdefault ne lui donne que 480 px utiles, soit un agrandissement de 23 % et
+// une image molle sur un bon ecran. sddefault (640x480, ~45 Ko) la couvre, et
+// il n'y en a qu'une par page.
+function vignetteUrl(url, id, taille = 'hqdefault') {
   if (/^https:\/\/i\.ytimg\.com\//.test(url || '')) {
-    return url.replace(/\/[\w-]+\.jpg/, '/hqdefault.jpg');
+    return url.replace(/\/[\w-]+\.jpg/, `/${taille}.jpg`);
   }
   return url || (id ? YT_THUMB(id) : '');
 }
 
-const vignette = (video) => vignetteUrl(video?.thumbnail, video?.id);
+const vignette = (video, taille) => vignetteUrl(video?.thumbnail, video?.id, taille);
 
 // --- Briques réutilisables ---------------------------------------------------
 
@@ -55,7 +63,7 @@ export function videoCard(video, { showCategory = true, eager = false, lead = fa
   return `
 <article class="card${lead ? ' card--lead' : ''}" data-video-id="${escapeHtml(video.id)}">
   <a class="card-thumb" href="/video/${video.id}/" aria-label="${escapeHtml(video.title)}">
-    <img src="${escapeHtml(vignette(video))}" alt="" loading="${eager ? 'eager' : 'lazy'}" decoding="async" referrerpolicy="no-referrer" width="480" height="270">
+    <img src="${escapeHtml(vignette(video, lead ? 'sddefault' : 'hqdefault'))}" alt="" loading="${eager ? 'eager' : 'lazy'}" decoding="async" referrerpolicy="no-referrer" width="480" height="270">
     ${isFresh(video) ? '<span class="badge-new">Nouveau</span>' : ''}
     ${video.duration ? `<span class="badge-duration">${formatDuration(video.duration)}</span>` : ''}
     <span class="card-progress" hidden><span></span></span>
