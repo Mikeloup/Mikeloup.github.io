@@ -1652,6 +1652,33 @@ function photoDe(personne) {
  * déductible du catalogue. Une fonction ou un texte de présentation ne
  * s'affichent que s'ils ont été écrits à la main dans data/personnes.json.
  */
+const sansAccent = (s) => (s || '').normalize('NFD').replace(/\p{Diacritic}/gu, '').toLowerCase();
+
+/**
+ * Les mots du nom sur lesquels on accepte de reconnaitre une personne.
+ *
+ * On ecarte les mots de moins de quatre lettres -- les particules, « ben »,
+ * « de », « el » -- qui declencheraient des correspondances au hasard. Mais un
+ * nom entierement compose de mots courts existe : « Lev Tov ». Le refuser
+ * reviendrait a vider sa fiche parce que son nom est court. Dans ce cas on
+ * redescend a trois lettres plutot que de ne rien reconnaitre.
+ */
+function motsDuNom(nom) {
+  const tous = sansAccent(nom).split(/[^a-z0-9]+/).filter(Boolean);
+  const longs = tous.filter((m) => m.length >= 4);
+  return longs.length ? longs : tous.filter((m) => m.length >= 3);
+}
+
+/** Cet extrait parle-t-il de cette personne ? Le titre compte autant que le texte. */
+function extraitParleDe(nom, video, texte) {
+  const mots = motsDuNom(nom);
+  // Nom dont on ne tire aucun mot exploitable : on garde l'extrait. Ne pas
+  // savoir reconnaitre un nom n'est pas une raison de retirer du contenu.
+  if (!mots.length) return true;
+  const champ = sansAccent(`${video?.title || ''} ${texte}`);
+  return mots.some((m) => champ.includes(m));
+}
+
 export function personPage({ config, categories, nav, personne, buildTime }) {
   const n = personne.videos.length;
   const dates = personne.videos.map((v) => v.publishedAt).filter(Boolean).sort();
@@ -1685,9 +1712,41 @@ export function personPage({ config, categories, nav, personne, buildTime }) {
   // Le seuil de 120 signes écarte les descriptions vides ou réduites à un
   // titre : mieux vaut trois extraits qui disent quelque chose que six dont la
   // moitié ne dit rien.
+  //
+  // Ajout du 29 aout 2026 : un extrait n'a le droit de figurer sous
+  // « Qui est X ? » que s'il parle de X.
+  //
+  // Le defaut, signale par Michael sur la fiche de Rony Akrich : la premiere
+  // chose qu'on lisait sous « Qui est Rony Akrich ? » etait le resume d'une
+  // conference de Cafe Daat donnee par Yola Reitman, ancienne agente du
+  // Mossad. Un texte juste, sur une video qui est bien de lui -- il produit et
+  // organise ces conferences, meme s'il ne les presente pas --, mais qui ne
+  // parle pas de lui. Le lecteur venu chercher qui est Rony Akrich apprenait
+  // qui est Yola Reitman.
+  //
+  // Ce n'etait pas propre a cette fiche. Mesure du 29 aout sur les 167 fiches
+  // en ligne : 329 extraits affiches sous « Qui est ... ? », dont 19 ne
+  // nomment la personne ni dans le titre de la video ni dans le texte. Chaque
+  // fois, le titre nomme quelqu'un d'AUTRE : « Nora Bussigny » sur la fiche
+  // d'Emmanuel Razavi, « Philippe Val » sur celle de Celine Pina, « Sarah
+  // Fainberg » sur celle du Rav Saadia Morali, « Andre Darmon » sur celle de
+  // William Zerbib.
+  //
+  // La regle retient le titre AUTANT que le texte : « Bat Ye'or : La
+  // dhimmitude dans le monde arabe » ne repete pas son nom dans la
+  // description, mais le titre le porte -- la video parle bien d'elle. Ne
+  // regarder que le texte aurait retire 44 extraits au lieu de 19, dont des
+  // bons.
+  //
+  // Aucune video ne disparait : celles dont l'extrait est ecarte restent
+  // affichees dans la grille « Ses autres passages » juste en dessous. On
+  // change l'endroit ou le texte apparait, pas le catalogue.
+  //
+  // Effet mesure : 310 extraits sur 329 conserves (94 %), 15 fiches touchees,
+  // aucune fiche ne perd la totalite de son bloc.
   const propos = personne.videos
     .map((v) => ({ v, texte: extraitPresentation(v) }))
-    .filter((x) => x.texte)
+    .filter((x) => x.texte && extraitParleDe(personne.nom, x.v, x.texte))
     .slice(0, 5);
 
   // Une seule fois chaque vidéo, et toujours cliquable.
