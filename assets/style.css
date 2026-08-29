@@ -413,11 +413,24 @@ p { margin: 0 0 1em; }
 
 /* --- Recherche ----------------------------------------------------------- */
 
+/* Mesure du 29 aout 2026 : sur la page /recherche/, le bouton « Rechercher »
+   sortait de l'ecran de 8 px sur un telephone de 375 px et de 63 px sur un
+   telephone de 320 px -- aux trois quarts hors champ, et toute la page partait
+   de travers. La cause : un element flex ne descend pas sous la largeur de son
+   contenu tant qu'on ne le lui autorise pas, et le contenu ici est le texte de
+   substitution « Un invite, un sujet, un mot-cle... ». C'est le champ qui
+   poussait le bouton dehors. Sous 400 px, les deux passent l'un sous l'autre :
+   un champ pleine largeur et un bouton pleine largeur se visent mieux du
+   pouce. */
 .search-big { display: flex; gap: .5rem; max-width: 620px; margin: 1.25rem 0 .75rem; }
-.search-big input { flex: 1; padding: .85rem 1.15rem; font: inherit; color: var(--text); background: #fff; border: 1px solid var(--line); border-radius: 999px; box-shadow: var(--shadow); }
+.search-big input { flex: 1; min-width: 0; padding: .85rem 1.15rem; font: inherit; color: var(--text); background: #fff; border: 1px solid var(--line); border-radius: 999px; box-shadow: var(--shadow); }
 .search-big input:focus { outline: none; border-color: var(--accent); }
 .search-big button { padding: .85rem 1.6rem; font: inherit; font-weight: 650; color: #fff; background: var(--brand); border: 0; border-radius: 999px; cursor: pointer; }
 .search-big button:hover { background: var(--brand-soft); }
+@media (max-width: 400px) {
+  .search-big { flex-wrap: wrap; }
+  .search-big input, .search-big button { flex: 1 1 100%; }
+}
 
 /* --- Pied de page -------------------------------------------------------- */
 
@@ -569,7 +582,12 @@ p { margin: 0 0 1em; }
 }
 .tv-banner p { margin: 0; font-size: .95rem; }
 .tv-banner strong { color: #fff; }
+/* « Voir la grille des programmes → » fait 31 signes : interdit de revenir a
+   la ligne, il sortait de 22 px sur un telephone de 320 px. Sur un ecran large
+   le nowrap evite une cesure disgracieuse ; sur un petit ecran il casse la
+   page. On le leve la ou il nuit. */
 .tv-banner a { color: var(--sky); font-weight: 650; white-space: nowrap; }
+@media (max-width: 400px) { .tv-banner a { white-space: normal; } }
 .tv-banner a:hover { text-decoration: underline; }
 .tv-badge {
   flex: 0 0 auto; display: inline-flex; align-items: center; justify-content: center;
@@ -695,7 +713,16 @@ p { margin: 0 0 1em; }
 .install-bar-actions { display: flex; align-items: center; gap: .5rem; flex-shrink: 0; }
 .install-bar .btn { background: #fff; color: #180058; border-color: #fff; }
 .install-bar .btn-primary { background: #fff; color: #180058; }
-.install-bar-close { background: none; border: 0; color: #fff; font-size: 1.5rem; line-height: 1; cursor: pointer; padding: 0 .35rem; opacity: .8; }
+/* La croix mesurait 25 x 24 px. C'est le seul moyen de faire disparaitre ce
+   bandeau, et c'est la plus petite cible de la page : une main qui tremble un
+   peu ne l'atteint pas. 44 px est le minimum retenu par les regles
+   d'accessibilite pour une cible tactile. */
+.install-bar-close {
+  background: none; border: 0; color: #fff; font-size: 1.5rem; line-height: 1;
+  cursor: pointer; opacity: .8; padding: 0;
+  min-width: 44px; min-height: 44px;
+  display: inline-flex; align-items: center; justify-content: center;
+}
 .install-bar-close:hover { opacity: 1; }
 .install-done { font-weight: 600; }
 .page-installer .follow-card ol { margin: .5rem 0 .75rem; padding-left: 1.25rem; }
@@ -735,8 +762,14 @@ body.share-natif .share-label { display: none; }
   /* Deux colonnes : on voit deux fois plus de vidéos sans faire défiler. */
   .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.35rem .8rem; }
   .card-title { font-size: .95rem; line-height: 1.3; }
-  .card-cat { font-size: .72rem; }
-  .card-meta { font-size: .78rem; }
+  /* Ces deux lignes reduisaient le texte SUR TELEPHONE, la ou il est deja le
+     plus difficile a lire : .72rem = 11,5 px pour le nom de la rubrique et
+     .78rem = 12,5 px pour « 28 aout 2026 · 5:46 · 3,3 k vues », contre .78 et
+     .82 sur ordinateur. L'ecran le plus petit recevait le plus petit texte.
+     On remonte au niveau de l'ordinateur : c'est encore discret, mais lisible
+     par quelqu'un qui n'a plus vingt ans. */
+  .card-cat { font-size: .78rem; }
+  .card-meta { font-size: .82rem; }
   /* La carte mise en avant reste sur toute la largeur. */
   .grid-lead .card--lead { grid-column: 1 / -1; }
   .grid-lead .card--lead .card-title { font-size: 1.15rem; }
@@ -849,6 +882,13 @@ body.share-natif .share-label { display: none; }
 .tv-banner p { font-size: .95rem; color: var(--text); }
 .tv-banner strong { color: var(--text); font-weight: 650; }
 .tv-banner .tv-canal { color: var(--rouge); font-weight: 700; white-space: nowrap; }
+
+/* Dans le pied de page, le fond est le violet sombre #180058 et le rouge
+   editorial #c8102e n'y ressort pas : contraste mesure 3,03 pour 1, la ou il
+   en faut 4,5. C'etait le seul defaut de contraste de toute la page d'accueil.
+   Un rouge eclairci garde le sens -- le canal reste signale en rouge -- et
+   passe a 6,5 pour 1. */
+.site-footer .tv-canal { color: #ff7a8a; }
 .tv-banner a { color: var(--rouge); font-weight: 650; text-decoration: underline; }
 .tv-badge {
   background: transparent; color: var(--rouge); border: 1px solid var(--rouge);

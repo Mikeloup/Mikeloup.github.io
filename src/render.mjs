@@ -1181,10 +1181,45 @@ function jourCourt(iso, anneeCourante) {
  * boucle. Or c'est le téléspectateur qui est sur cette page. Le décompte reste
  * dans l'archive, disponible pour un usage interne.
  */
+//
+// « Maintenant » a l'heure de Jerusalem, au format des fichiers d'archive
+// (« 2026-08-29 18:27 »), pour comparer des chaines et non des fuseaux.
+function instantJerusalem(iso) {
+  const d = new Date(iso || Date.now());
+  const p = new Intl.DateTimeFormat('sv-SE', {
+    timeZone: 'Asia/Jerusalem', year: 'numeric', month: '2-digit', day: '2-digit',
+    hour: '2-digit', minute: '2-digit', hour12: false,
+  }).format(d);
+  return p.replace(' ', ' ');
+}
+
 function blocHistorique(config, passages, buildTime) {
   if (!passages?.length) return '';
   const tv = config.tv || {};
-  const [date, heure] = passages[0];
+
+  // Ne raconter au passe que ce qui est passe.
+  //
+  // Defaut trouve le 29 aout 2026, visible sur chaque page video. La page
+  // affichait, a 18 h 06 heure d'Israel :
+  //
+  //   « A L'ANTENNE — Diffusion aujourd'hui vers 18:25 sur le canal 14 »
+  //   « Diffuse sur le canal 14 le 29 aout a 18:27. »
+  //
+  // Un futur et un passe pour le meme jour, a deux minutes d'ecart. La cause
+  // n'etait pas l'affichage mais la source : data/grille-archive/<jour>.json
+  // n'est pas l'archive de ce qui A ETE diffuse, c'est la grille du jour,
+  // ecrite d'avance. Tout ce qui reste a venir y figurait, et cette fonction
+  // le racontait au passe.
+  //
+  // On ne garde donc que les creneaux anterieurs a l'instant de construction.
+  // Entre deux constructions (une toutes les deux heures), une diffusion qui
+  // vient d'avoir lieu peut n'etre pas encore annoncee : c'est le bon sens du
+  // risque. Se taire un moment de trop ne trompe personne ; affirmer trop tot
+  // est un mensonge.
+  const maintenant = instantJerusalem(buildTime);
+  const revolus = passages.filter(([date, heure]) => `${date} ${heure}` < maintenant);
+  if (!revolus.length) return '';
+  const [date, heure] = revolus[0];
   return `<p class="tv-hist muted small">
     Diffusé sur le canal ${escapeHtml(tv.channelNumber || '14')} le ${escapeHtml(jourCourt(date, new Date(buildTime).getUTCFullYear()))} à ${escapeHtml(heure)}.
   </p>`;
@@ -1259,10 +1294,18 @@ export function videoPage({
 
   const content = `
 <div class="wrap">
+  <!-- Le fil d'Ariane reprenait le titre de la video en entier, deux lignes
+       au-dessus du titre H1 qui le repete mot pour mot. Compte du 29 aout 2026
+       sur « Israel : l'effet domino | Stephane Goldin » : le nom du
+       presentateur apparaissait CINQ fois dans les 420 premiers signes de la
+       page -- fil d'Arianne (deux fois), etiquette de rubrique, titre, et
+       « Presente par ». Un lecteur attentif le remarque, et cela sent la
+       machine. On retire le maillon qui n'apprend rien : le titre est juste
+       en dessous, en gros. Le fil d'Ariane des donnees structurees, lui, reste
+       complet pour Google. -->
   <nav class="breadcrumb">
-    <a href="/">Accueil</a> <span>›</span>
-    ${cat ? `<a href="/emissions/${cat.slug}/">${escapeHtml(cat.title)}</a> <span>›</span>` : ''}
-    <span>${escapeHtml(truncate(video.title, 70))}</span>
+    <a href="/">Accueil</a>${cat ? ` <span>›</span>
+    <a href="/emissions/${cat.slug}/">${escapeHtml(cat.title)}</a>` : ''}
   </nav>
 
   <article class="article">
@@ -1864,7 +1907,13 @@ export function personIndexPage({ config, categories, nav, personnes, buildTime 
   <header class="page-head">
     <p class="kicker">Les visages de la chaîne</p>
     <h1>Invités et intervenants</h1>
-    <p class="lede">Les ${personnes.length} personnes que l'on retrouve le plus souvent à l'antenne de ${escapeHtml(config.siteName)} — présentateurs et invités. Chaque fiche rassemble leurs passages.</p>
+    <!-- La phrase disait « les personnes que l'on retrouve LE PLUS SOUVENT a
+         l'antenne ». Compte le 29 aout 2026 : sur les 165 fiches, 93 ne
+         contiennent qu'une seule video -- 56 %. La page promettait des
+         habitues et livrait, une fois sur deux, un passage unique. Elle dit
+         maintenant ce qu'elle contient reellement : tous ceux qui sont passes,
+         de l'invite d'un soir au chroniqueur hebdomadaire. -->
+    <p class="lede">Toutes les personnes passées à l'antenne de ${escapeHtml(config.siteName)} : présentateurs, chroniqueurs et invités d'un soir. Chaque fiche rassemble leurs passages.</p>
   </header>
 
   <ul class="personnes-liste">
