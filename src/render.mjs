@@ -757,7 +757,19 @@ export function homePage({
   const themes = nav.themes || [];
   const shows = nav.shows || [];
   const themeRows = themes.slice(0, config.home?.themeRows ?? 3);
-  const showRows = shows.slice(0, config.home?.showRows ?? 3);
+  // Une rangee de l'accueil se merite.
+  //
+  // Le 29 aout 2026 : « Cafe Daat », qui redemarrait avec UNE video, occupait
+  // une rangee entiere entre « L'edito de Stephane Goldin » (44 episodes) et
+  // « L'edito de Rony Hayot » (6). Le tri se fait sur l'activite recente, et
+  // une rubrique qui vient de publier sa premiere video est, mecaniquement, la
+  // plus recente de toutes. Une rangee de huit vignettes pour un seul episode
+  // donne au visiteur une impression de vide, et prend la place d'un
+  // rendez-vous nourri.
+  const MINIMUM_POUR_UNE_RANGEE = 4;
+  const showRows = shows
+    .filter((c) => (c.videos?.length || 0) >= MINIMUM_POUR_UNE_RANGEE)
+    .slice(0, config.home?.showRows ?? 3);
 
   // Chiffres de la chaîne : recalculés à chaque synchronisation, ils disent en
   // une ligne l'ampleur du fonds — ce qu'une grille de vignettes ne montre pas.
@@ -780,6 +792,13 @@ export function homePage({
     </div>
     ${grid(rest, { lead: true })}
   </section>
+
+  <!-- « Les plus regardees » etait a environ 7 000 px du haut, sous les
+       rubriques et les themes : le contenu le plus clique du site se trouvait
+       la ou presque personne ne descend. Il remonte juste apres les dernieres
+       videos, la ou un visiteur qui n'a pas trouve son bonheur dans le neuf
+       cherche naturellement ce qui a marche. -->
+  ${plusVues.length >= 4 ? row('Les plus regardées', '/emissions/', plusVues, { dense: true }) : ''}
 
   ${shows.length ? `
   <section class="cats">
@@ -814,7 +833,6 @@ export function homePage({
     dense: true, desc: c.description || '',
   })).join('')}
 
-  ${plusVues.length >= 4 ? row('Les plus regardées', '/emissions/', plusVues, { dense: true }) : ''}
 </div>
 
 ${blocQuiSommesNous(introHtml)}
