@@ -12,6 +12,33 @@ import { mmss } from './transcriptions.mjs';
 
 const YT_THUMB = (id) => `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
 
+// Une vignette de carte fait 480 px de large au plus. YouTube en sert une de
+// 1280 : maxresdefault, entre 200 et 260 Ko piece.
+//
+// Mesure du 29 aout 2026 sur le site en ligne : la page d'accueil chargeait
+// 2,7 Mo d'images pour 19 vignettes, la page /invites/ pres de 29 Mo. Le
+// navigateur telechargeait dix fois ce qu'il affichait, et 79 % des visiteurs
+// sont sur un telephone.
+//
+// hqdefault fait 480x360 -- du 4/3 avec des bandes noires. Ce n'est pas un
+// probleme, et c'est verifie avant d'ecrire cette ligne : .card-thumb img et
+// .une2-thumb img sont en aspect-ratio 16/9 avec object-fit: cover. Les bandes
+// sont donc rognees et il reste exactement 480x270 d'image utile, soit la
+// taille d'affichage. Aucune deformation, aucune perte.
+//
+// Ce qui GARDE maxresdefault, et doit le garder : l'affiche du lecteur, la une
+// de l'accueil, l'image de partage et la fiche video. Elles sont peu
+// nombreuses, elles s'affichent en grand, et pour les deux dernieres c'est la
+// grande taille qui permet a Google et aux reseaux d'afficher une image.
+function vignetteUrl(url, id) {
+  if (/^https:\/\/i\.ytimg\.com\//.test(url || '')) {
+    return url.replace(/\/[\w-]+\.jpg/, '/hqdefault.jpg');
+  }
+  return url || (id ? YT_THUMB(id) : '');
+}
+
+const vignette = (video) => vignetteUrl(video?.thumbnail, video?.id);
+
 // --- Briques réutilisables ---------------------------------------------------
 
 /** Une vidéo publiée depuis moins de `hours` heures mérite d'attirer l'œil. */
@@ -28,7 +55,7 @@ export function videoCard(video, { showCategory = true, eager = false, lead = fa
   return `
 <article class="card${lead ? ' card--lead' : ''}" data-video-id="${escapeHtml(video.id)}">
   <a class="card-thumb" href="/video/${video.id}/" aria-label="${escapeHtml(video.title)}">
-    <img src="${escapeHtml(video.thumbnail || YT_THUMB(video.id))}" alt="" loading="${eager ? 'eager' : 'lazy'}" decoding="async" referrerpolicy="no-referrer" width="480" height="270">
+    <img src="${escapeHtml(vignette(video))}" alt="" loading="${eager ? 'eager' : 'lazy'}" decoding="async" referrerpolicy="no-referrer" width="480" height="270">
     ${isFresh(video) ? '<span class="badge-new">Nouveau</span>' : ''}
     ${video.duration ? `<span class="badge-duration">${formatDuration(video.duration)}</span>` : ''}
     <span class="card-progress" hidden><span></span></span>
@@ -83,7 +110,7 @@ function rowEmission(cat, personne, videos) {
   const href = `/emissions/${cat.slug}/`;
   const total = cat.videos?.length || videos.length;
   const avant = personne
-    ? `<a class="row-avatar" href="/invites/${personne.slug}/" aria-label="${escapeHtml(personne.nom)}"><img src="${escapeHtml(photoDe(personne))}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" width="480" height="270"></a>`
+    ? `<a class="row-avatar" href="/invites/${personne.slug}/" aria-label="${escapeHtml(personne.nom)}"><img src="${escapeHtml(vignetteUrl(photoDe(personne)))}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" width="480" height="270"></a>`
     : '';
   const chapo = personne
     ? `Présenté par <a href="/invites/${personne.slug}/">${escapeHtml(personne.nom)}</a> · ${total} épisode${total > 1 ? 's' : ''}`
@@ -96,7 +123,7 @@ function uneSecondaire(video) {
   const cat = video.playlists?.[0];
   return `
 <a class="une2" href="/video/${video.id}/">
-  <span class="une2-thumb"><img src="${escapeHtml(video.thumbnail || YT_THUMB(video.id))}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" width="480" height="270"></span>
+  <span class="une2-thumb"><img src="${escapeHtml(vignette(video))}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" width="480" height="270"></span>
   <span class="une2-body">
     ${cat ? `<span class="une2-cat">${escapeHtml(cat.title)}</span>` : ''}
     <span class="une2-title">${escapeHtml(video.title)}</span>
@@ -154,7 +181,7 @@ function bandeVisages(personnes, { maintenant, mois = 3, max = 10, afficher = tr
   <p class="row-chapo">À l'antenne ${periode}.</p>
   <ul class="visages-liste">
     ${gens.map(({ p }) => `<li><a href="/invites/${p.slug}/">
-      <span class="visage-photo"><img src="${escapeHtml(photoDe(p))}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" width="480" height="270"></span>
+      <span class="visage-photo"><img src="${escapeHtml(vignetteUrl(photoDe(p)))}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" width="480" height="270"></span>
       <span class="visage-nom">${escapeHtml(p.nom)}</span>
     </a></li>`).join('')}
   </ul>
@@ -1528,7 +1555,7 @@ export function personPage({ config, categories, nav, personne, buildTime }) {
     <h2>Qui est ${escapeHtml(personne.nom)} ?</h2>
     ${propos.map(({ v, texte }) => `
     <a class="propos" href="/video/${escapeHtml(v.id)}/">
-      <span class="propos-vignette"><img src="${escapeHtml(v.thumbnail || '')}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" width="480" height="270">${v.duration ? `<span class="propos-duree">${formatDuration(v.duration)}</span>` : ''}</span>
+      <span class="propos-vignette"><img src="${escapeHtml(vignette(v))}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" width="480" height="270">${v.duration ? `<span class="propos-duree">${formatDuration(v.duration)}</span>` : ''}</span>
       <span class="propos-corps">
         <span class="propos-titre">${escapeHtml(v.title)}</span>
         ${v.publishedAt ? `<span class="propos-date">${escapeHtml(formatDate(v.publishedAt))}</span>` : ''}
