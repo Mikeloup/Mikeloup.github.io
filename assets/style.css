@@ -135,18 +135,6 @@ p { margin: 0 0 1em; }
   .btn-yt-plain { display: none; }
 }
 
-/* Le menu porte desormais « Autres programmes de l'antenne » et « Nos
-   partenaires » en toutes lettres : 898 px pour huit entrees au lieu de 781.
-   Entre 901 px (le menu bascule en colonne au-dessous) et ~940 px, cela ne
-   tenait plus a 28 px pres. Mesure a 910 px : 898 px pour 870 disponibles.
-   On resserre l'espacement plutot que de raccourcir a nouveau les libelles --
-   le but de ce changement etait precisement de ne plus les raccourcir.
-   Apres resserrage, a 910 px : 803 px pour 870. */
-@media (min-width: 901px) and (max-width: 1000px) {
-  .nav a, .menu-btn { padding-inline: .45rem; }
-  .nav-inner { gap: .1rem; }
-}
-
 @media (max-width: 900px) {
   .btn-yt-plain { display: none; }
   .btn-lettre { margin-left: auto; order: 1; }
@@ -198,6 +186,28 @@ p { margin: 0 0 1em; }
 .nav a:hover, .menu-btn:hover { background: rgb(255 255 255 / 14%); color: #fff; }
 .menu-btn[aria-expanded="true"] { background: #fff; color: var(--brand); }
 .nav .nav-alt, .nav-only-mobile-sep { display: none; }
+
+/* Le menu porte desormais « Autres programmes de l'antenne » et « Nos
+   partenaires » en toutes lettres : 898 px pour huit entrees au lieu de 781.
+   Entre 901 px (le menu bascule en colonne au-dessous) et ~940 px, cela ne
+   tenait plus a 28 px pres. Mesure a 910 px : 898 px pour 870 disponibles.
+   On resserre l'espacement plutot que de raccourcir a nouveau les libelles --
+   le but de ce changement etait precisement de ne plus les raccourcir.
+   Apres resserrage, a 910 px : 803 px pour 870.
+
+   Cette regle doit rester ICI, apres la definition de base de « .nav a » et
+   « .nav-inner ». Placee plus haut, dans la section des boutons, elle etait
+   ecrasee par cette definition de base : meme specificite, mais situee plus
+   loin dans le fichier. Le navigateur repondait pourtant que la media query
+   s'appliquait (matchMedia -> true) tout en gardant l'ancien espacement : la
+   question « la regle s'applique-t-elle ? » et la question « la valeur a-t-elle
+   change ? » n'ont pas la meme reponse. Seule la seconde compte, et elle se
+   mesure. Verifie sur le site publie, a 905 px de large. */
+@media (min-width: 901px) and (max-width: 1000px) {
+  .nav a, .menu-btn { padding-inline: .45rem; }
+  .nav-inner { gap: .1rem; }
+}
+
 
 .caret {
   width: 0; height: 0; margin-top: 2px;
