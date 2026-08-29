@@ -266,7 +266,6 @@
         "Andre": "André",
         "Raphael": "Raphaël",
         "Chereau": "Chéreau",
-        "Drai": "Draï",
         "Emission": "Émission",
         "emission": "émission",
         "emissions": "émissions",
@@ -280,14 +279,14 @@
         "francais": "français",
         "recoit": "reçoit",
         "pres": "près",
-        "Operation": "Opération",
         "Etre": "Être",
         "etre": "être",
         "proces": "procès",
         "verite": "vérité",
         "feter": "fêter",
         "reconnait": "reconnaît"
-      }
+      },
+      "_retires": "Deux corrections ont ete retirees le 29 aout 2026 apres verification sur le site publie. « Operation → Operation accentue » : l'unique occurrence sans accent du catalogue etait « Operation Brothers », le nom ANGLAIS de l'operation du Mossad, cite a cote de sa traduction « l'Operation Freres ». La regle n'a donc rien repare et a abime un nom propre. « Drai → Drai avec trema » : une occurrence de chaque orthographe dans le catalogue, et le lexique de transcription ecrit « Bernard Drai » sans trema. Un contre un, ce n'est pas une preuve, c'est un tirage au sort. A demander a Michael plutot qu'a deviner."
     }
   },
   "_comment_display": "Mise en forme des titres de rubriques. 'smartCase' remet en minuscules les titres écrits TOUT EN MAJUSCULES (majuscule uniquement à la première lettre). Les titres déjà correctement écrits ne sont pas touchés. 'properNouns' liste les mots qui doivent garder leur majuscule : ajoutez-y tout nom propre mal rendu. 'renames' corrige l'orthographe d'un titre de playlist pour l'affichage seulement : la clé est le titre exact tel qu'il est écrit sur YouTube, la valeur est ce que le site affichera. L'adresse de la rubrique ne change pas — elle reste calculée sur le titre YouTube, pour ne pas casser un lien déjà indexé."
