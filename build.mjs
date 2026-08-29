@@ -1239,7 +1239,13 @@ async function main() {
   if (domain && !domain.includes('github.io')) await writeFile('CNAME', `${domain}\n`);
 
   await copyDir(path.join(ROOT, 'assets'), path.join(DIST, 'assets'));
-  for (const f of ['favicon.png']) {
+  // favicon.ico : aucune page du site ne le demande -- chaque page declare
+  // <link rel="icon" href="/favicon.png">, et les navigateurs recents s'y
+  // tiennent. Mais les robots et lecteurs de flux qui ignorent la balise vont
+  // chercher /favicon.ico a la racine, et recevaient un 404 (verifie le
+  // 29 aout 2026). Trois kilo-octets pour ne plus repondre « absent » a une
+  // question qu'on nous pose quand meme.
+  for (const f of ['favicon.png', 'favicon.ico']) {
     try {
       await fs.copyFile(path.join(ROOT, 'assets', f), path.join(DIST, f));
     } catch { /* facultatif */ }
