@@ -106,6 +106,47 @@ p { margin: 0 0 1em; }
 @media (max-width: 1180px) {
   .btn-lettre { padding-inline: .95rem; }
 }
+
+/* Mesure du 29 aout 2026, faite sur le site EN LIGNE dans le navigateur de la
+   machine de Michael -- pas dans un navigateur de test : les polices systeme
+   d'un Mac sont plus etroites que celles de Linux et un navigateur de test
+   annoncait des debordements qui n'existaient pas.
+   
+   Ce qu'elle a montre, et qui n'avait rien a voir avec le menu :
+     fenetre 1440 px : le bouton « S'abonner sur YouTube » finit a 1384 -> ok
+     fenetre 1280 px : il finit a 1304 -> il DEPASSE de 24 px
+     fenetre 1024 px : il finit a 1244 -> il depasse de 220 px
+   Autrement dit, depuis l'ajout du bouton « Recevoir notre newsletter », toute
+   fenetre plus etroite que ~1305 px faisait defiler la page entiere de gauche
+   a droite. 1280 px est la resolution d'ecran la plus repandue au monde. Le
+   defaut ne se voyait pas sur un grand ecran, la ou on regarde toujours.
+
+   Deux seuils, chacun mesure et non devine :
+   - au-dessous de 1310 px, le libelle passe a « Newsletter » (il economise
+     114 px) : a 1280 px la page ne defile plus.
+   - cela ne suffit plus au-dessous de ~1160 px : le bouton YouTube s'efface.
+     Il n'y a aucune perte, la chaine reste liee dans le pied de page et sur
+     chaque fiche video, et l'action n°1 de l'en-tete reste visible. */
+@media (max-width: 1310px) {
+  .lettre-long { display: none; }
+  .lettre-court { display: inline; }
+}
+@media (max-width: 1180px) {
+  .btn-yt-plain { display: none; }
+}
+
+/* Le menu porte desormais « Autres programmes de l'antenne » et « Nos
+   partenaires » en toutes lettres : 898 px pour huit entrees au lieu de 781.
+   Entre 901 px (le menu bascule en colonne au-dessous) et ~940 px, cela ne
+   tenait plus a 28 px pres. Mesure a 910 px : 898 px pour 870 disponibles.
+   On resserre l'espacement plutot que de raccourcir a nouveau les libelles --
+   le but de ce changement etait precisement de ne plus les raccourcir.
+   Apres resserrage, a 910 px : 803 px pour 870. */
+@media (min-width: 901px) and (max-width: 1000px) {
+  .nav a, .menu-btn { padding-inline: .45rem; }
+  .nav-inner { gap: .1rem; }
+}
+
 @media (max-width: 900px) {
   .btn-yt-plain { display: none; }
   .btn-lettre { margin-left: auto; order: 1; }

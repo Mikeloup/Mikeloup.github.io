@@ -10,6 +10,24 @@ import {
 } from './util.mjs';
 import { mmss } from './transcriptions.mjs';
 
+// Les deux rubriques que tout le monde confond, y compris moi apres deux jours
+// passes dans ce site : /autres-programmes/ presente les PRODUCTEURS dont la
+// chaine diffuse les emissions sur le canal 14, /partenaires/ presente les
+// MEDIAS amis (une radio, un magazine) avec lesquels aucun programme n'est
+// echange.
+//
+// Le menu principal disait « Autres programmes » et « Partenaires » ; le pied
+// de page, lui, disait deja « Autres programmes de l'antenne » et « Nos
+// partenaires » -- exactement l'information qui les distingue. Trois copies du
+// libelle dans le fichier (menu, pied de page, fil d'Ariane), c'etaient trois
+// occasions de les laisser diverger a nouveau. Le libelle vit ici, une fois.
+//
+// Mesure du 29 aout 2026 : ces deux pages totalisent 9 impressions Google en
+// six mois. Ce changement ne vise donc pas le referencement -- il ne change
+// aucune adresse -- mais le visiteur deja sur le site qui cherche ou cliquer.
+const LIBELLE_AUTRES_PROGRAMMES = "Autres programmes de l'antenne";
+const LIBELLE_PARTENAIRES_MEDIAS = 'Nos partenaires';
+
 const YT_THUMB = (id) => `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
 
 // Une vignette de carte fait 480 px de large au plus. YouTube en sert une de
@@ -644,8 +662,8 @@ ${push}
       <a href="/invites/">Invités</a>
       ${nav.sujets ? '<a href="/sujets/">Sujets</a>' : ''}
       ${nav.grille ? '<a href="/grille/">Grille TV</a>' : ''}
-      ${nav.partenaires ? '<a href="/autres-programmes/">Autres programmes</a>' : ''}
-      ${nav.medias ? '<a href="/partenaires/">Partenaires</a>' : ''}
+      ${nav.partenaires ? `<a href="/autres-programmes/">${LIBELLE_AUTRES_PROGRAMMES}</a>` : ''}
+      ${nav.medias ? `<a href="/partenaires/">${LIBELLE_PARTENAIRES_MEDIAS}</a>` : ''}
       ${nav.partenaires ? '' : '<a href="/emissions/">Tout le catalogue</a>'}
       <!-- Plus de bouton « suivre » dans le menu : le bouton « Recevoir notre
            newsletter » de l'en-tete est visible en permanence, sur telephone
@@ -690,8 +708,8 @@ ${content}
         <li><a href="/invites/">Invités et intervenants</a></li>
         ${nav.sujets ? '<li><a href="/sujets/">Sujets</a></li>' : ''}
         ${nav.grille ? '<li><a href="/grille/">Grille des programmes</a></li>' : ''}
-        ${nav.partenaires ? '<li><a href="/autres-programmes/">Autres programmes de l\'antenne</a></li>' : ''}
-        ${nav.medias ? '<li><a href="/partenaires/">Nos partenaires</a></li>' : ''}
+        ${nav.partenaires ? `<li><a href="/autres-programmes/">${LIBELLE_AUTRES_PROGRAMMES}</a></li>` : ''}
+        ${nav.medias ? `<li><a href="/partenaires/">${LIBELLE_PARTENAIRES_MEDIAS}</a></li>` : ''}
         <li><a href="/recherche/">Rechercher une vidéo</a></li>
       </ul>
       <h4>Rester au courant</h4>
@@ -1944,7 +1962,7 @@ export function partenairesPage({ config, categories, nav, partenaires = [], gri
 
   const content = `
 <div class="wrap">
-  <nav class="breadcrumb"><a href="/">Accueil</a> <span>›</span> <span>Autres programmes</span></nav>
+  <nav class="breadcrumb"><a href="/">Accueil</a> <span>›</span> <span>${LIBELLE_AUTRES_PROGRAMMES}</span></nav>
 
   <header class="page-head">
     <p class="kicker">Canal ${canal}${tv.operator ? ` · ${escapeHtml(tv.operator)}` : ''}</p>
@@ -2087,7 +2105,7 @@ function phrasesEntieres(texte) {
  */
 export function partenairesMediasPage({ config, categories, nav, medias = {}, buildTime }) {
   const liste = medias.partenaires || [];
-  const titre = medias.titre || 'Nos partenaires';
+  const titre = medias.titre || LIBELLE_PARTENAIRES_MEDIAS;
 
   const carte = (p) => `
 <article class="pm-carte" id="${escapeHtml(p.cle || '')}">
