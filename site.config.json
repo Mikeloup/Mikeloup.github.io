@@ -229,7 +229,65 @@
       "Bari"
     ],
     "renames": {
-      "Cafe Daat": "Café Daat"
+      "Cafe Daat": "Café Daat",
+      "L'interview de Jérome Haas": "L'interview de Jérôme Haas",
+      "Les grands proces de l'histoire d'Israel": "Les grands procès de l'histoire d'Israël"
+    },
+    "orthographe": {
+      "_comment": "Fautes d'accent arrivees des descriptions YouTube, corrigees a l'affichage seulement (YouTube n'est pas modifie). La liste a ete etablie le 29 aout 2026 en comparant chaque mot sans accent du catalogue aux mots accentues qui existent ailleurs dans le meme catalogue : on ne corrige que ce que la chaine ecrit deja correctement autre part. Les mots qui existent en francais SANS accent -- laisse, lance, expose, frappe, cesse, ferme, affiche, livre, des, sur, meme -- sont volontairement absents : les corriger inventerait des fautes la ou il n'y en a pas. 'proteger' met a l'abri les noms propres qui s'ecrivent sans accent.",
+      "proteger": [
+        "Nelly Ben Israel",
+        "Israel Eternel",
+        "Volunteers for Israel",
+        "Israel Start Up Nation",
+        "Mychef Israel",
+        "Chambre de Commerce Israel/Maroc",
+        "Trouver en Israel",
+        "Israel Start-Up Nation"
+      ],
+      "corriger": {
+        "Israel": "Israël",
+        "ISRAEL": "Israël",
+        "israel": "Israël",
+        "israelien": "israélien",
+        "israeliens": "israéliens",
+        "israelienne": "israélienne",
+        "israeliennes": "israéliennes",
+        "Jerome": "Jérôme",
+        "Jérome": "Jérôme",
+        "Jerusalem": "Jérusalem",
+        "Judaisme": "judaïsme",
+        "Hebreu": "Hébreu",
+        "hebreu": "hébreu",
+        "Etat": "État",
+        "Etats": "États",
+        "Etats-Unis": "États-Unis",
+        "Stephane": "Stéphane",
+        "Andre": "André",
+        "Raphael": "Raphaël",
+        "Chereau": "Chéreau",
+        "Drai": "Draï",
+        "Emission": "Émission",
+        "emission": "émission",
+        "emissions": "émissions",
+        "Ecrivain": "Écrivain",
+        "ecrivain": "écrivain",
+        "antisemite": "antisémite",
+        "antisemites": "antisémites",
+        "antisemitisme": "antisémitisme",
+        "antisemitique": "antisémitique",
+        "francaise": "française",
+        "francais": "français",
+        "recoit": "reçoit",
+        "pres": "près",
+        "Operation": "Opération",
+        "Etre": "Être",
+        "etre": "être",
+        "proces": "procès",
+        "verite": "vérité",
+        "feter": "fêter",
+        "reconnait": "reconnaît"
+      }
     }
   },
   "_comment_display": "Mise en forme des titres de rubriques. 'smartCase' remet en minuscules les titres écrits TOUT EN MAJUSCULES (majuscule uniquement à la première lettre). Les titres déjà correctement écrits ne sont pas touchés. 'properNouns' liste les mots qui doivent garder leur majuscule : ajoutez-y tout nom propre mal rendu. 'renames' corrige l'orthographe d'un titre de playlist pour l'affichage seulement : la clé est le titre exact tel qu'il est écrit sur YouTube, la valeur est ce que le site affichera. L'adresse de la rubrique ne change pas — elle reste calculée sur le titre YouTube, pour ne pas casser un lien déjà indexé."

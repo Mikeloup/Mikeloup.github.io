@@ -302,6 +302,90 @@ function normKey(str = '') {
     .toLowerCase().replace(/\s+/g, ' ').trim();
 }
 
+/**
+ * Repare les fautes d'accent arrivees de YouTube, a l'affichage seulement.
+ *
+ * Les descriptions sont ecrites dans YouTube Studio, souvent vite, parfois
+ * depuis un telephone : « en Israel », « Jerome Haas », « l'Etat Hebreu ».
+ * Le site les recopiait telles quelles.
+ *
+ * La liste des corrections n'a pas ete devinee. Elle a ete etablie le 29 aout
+ * 2026 en comparant, dans le catalogue lui-meme, chaque mot ecrit sans accent
+ * aux mots accentues presents ailleurs : « Israel » 35 fois contre « Israel »
+ * accentue 149 fois, « Jerome » 16 fois contre « Jerome » accentue 29 fois.
+ * On ne corrige que ce que la chaine ecrit deja correctement autre part.
+ *
+ * Ce que cette methode proposait et qu'on a REFUSE : « laisse » -> « laisse »
+ * accentue, « lance » -> « lance » accentue, « expose », « frappe », « cesse »,
+ * « ferme », « affiche », « livre », « des », « sur », « meme ». Ces mots
+ * existent en francais sans accent. Les corriger aurait invente des fautes la
+ * ou il n'y en avait pas. Une machine sait reperer un candidat ; elle ne sait
+ * pas decider a sa place.
+ *
+ * Les noms propres qui s'ecrivent vraiment sans accent sont mis a l'abri
+ * AVANT correction : « Nelly Ben Israel », « Israel Start Up Nation »,
+ * « Dental Volunteers for Israel », « Mychef Israel ». Sans cette etape, une
+ * correction sur 6 aurait abime un nom propre.
+ */
+/**
+ * Corrige a l'affichage le titre d'une rubrique, sans toucher a son adresse.
+ *
+ * La cle de `display.renames` est le titre de la playlist tel qu'il est ecrit
+ * sur YouTube. Mais ce titre peut arriver en majuscules (smartTitle le remet
+ * alors en minuscules) et son apostrophe peut etre droite ou courbe selon le
+ * clavier utilise ce jour-la. Chercher la cle a l'identique, c'est prendre le
+ * risque qu'une correction ne s'applique jamais sans que rien ne le signale.
+ *
+ * On essaie donc, dans l'ordre : le titre brut, le titre affiche, puis une
+ * comparaison sourde aux apostrophes, aux accents et a la casse. Cette
+ * derniere n'est permissive que parce que la liste des cles est ecrite a la
+ * main : elle ne peut rapprocher que des titres qu'on a explicitement demande
+ * de corriger.
+ */
+function renommer(config, titreBrut, titreAffiche) {
+  const renames = config.display?.renames;
+  if (!renames) return titreAffiche;
+  if (renames[titreBrut] !== undefined) return renames[titreBrut];
+  if (renames[titreAffiche] !== undefined) return renames[titreAffiche];
+  const sourd = (t) => String(t || '')
+    .replace(/[\u2018\u2019\u02bc]/g, "'")
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase().replace(/\s+/g, ' ').trim();
+  const cible = sourd(titreBrut);
+  const cibleAffichee = sourd(titreAffiche);
+  for (const [cle, valeur] of Object.entries(renames)) {
+    const k = sourd(cle);
+    if (k === cible || k === cibleAffichee) return valeur;
+  }
+  return titreAffiche;
+}
+
+function corrigerOrthographe(texte, config) {
+  const regles = config.display?.orthographe;
+  if (!texte || !regles?.corriger) return texte;
+
+  // 1. Mise a l'abri des noms propres, par un jeton qu'aucune regle ne touche.
+  const abris = [];
+  let out = String(texte);
+  for (const expression of regles.proteger || []) {
+    if (!expression) continue;
+    const motif = new RegExp(expression.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g');
+    out = out.replace(motif, () => {
+      abris.push(expression);
+      return `\u0000${abris.length - 1}\u0000`;
+    });
+  }
+
+  // 2. Correction mot entier, casse respectee (les cles portent leur casse).
+  for (const [faux, bon] of Object.entries(regles.corriger)) {
+    const motif = new RegExp(`(?<![\\p{L}\\p{M}])${faux.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}(?![\\p{L}\\p{M}])`, 'gu');
+    out = out.replace(motif, bon);
+  }
+
+  // 3. Retour des noms propres.
+  return out.replace(/\u0000(\d+)\u0000/g, (_, i) => abris[Number(i)]);
+}
+
 function buildModel(config, data) {
   // Titres écrits en caractères décoratifs Unicode : illisibles pour Google.
   // On les ramène à des lettres ordinaires et on garde la liste pour le journal.
@@ -310,7 +394,10 @@ function buildModel(config, data) {
     const titre = titreLisible(v.title);
     if (titreDecoratif(v.title)) titresCorriges.push({ id: v.id, avant: v.title, apres: titre });
     return [v.id, {
-      ...v, title: titre, description: cleanDescription(v.description, titre), playlists: [],
+      ...v,
+      title: corrigerOrthographe(titre, config),
+      description: corrigerOrthographe(cleanDescription(v.description, titre), config),
+      playlists: [],
     }];
   }));
   if (titresCorriges.length) {
@@ -376,10 +463,12 @@ function buildModel(config, data) {
         // futur renommage effacerait — et l'adresse /emissions/cafe-daat/, elle,
         // est déjà indexée par Google. Le slug reste donc calculé sur le titre
         // BRUT : on corrige ce que le visiteur lit, jamais l'adresse.
-        title: config.display?.renames?.[p.title]
-          ?? (config.display?.smartCase === false
+        title: (() => {
+          const affiche = config.display?.smartCase === false
             ? p.title
-            : smartTitle(p.title, config.display?.properNouns || [])),
+            : smartTitle(p.title, config.display?.properNouns || []);
+          return renommer(config, p.title, affiche);
+        })(),
         slug: slugify(p.title),
         group: themeKeys.has(normKey(p.title)) ? 'themes' : 'shows',
         videos,
