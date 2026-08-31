@@ -124,6 +124,8 @@ C'est ici enfin qu'a été découverte, réemployée comme siège dans le théâ
 
 {{video:oq9pRLCJN_g}}
 
+→ **[Page détaillée : Césarée maritime](/sujets/cesaree-maritime/)**
+
 ### Saint-Jean-d'Acre
 
 Deux fois inscrite au patrimoine mondial. La mer la protège au sud, à l'ouest et au nord ; le côté est, sans protection naturelle, est défendu par des remparts de **plus de vingt mètres d'épaisseur**.
@@ -245,6 +247,8 @@ Tout s'arrête le **mardi 18 janvier 749**. Un tremblement de terre dévaste le 
 Aujourd'hui, quinze à vingt pour cent du site seulement ont été fouillés.
 
 {{video:y2bw58jydCc}}
+
+→ **[Page détaillée : Beit Shean](/sujets/beit-shean/)**
 
 ---
 

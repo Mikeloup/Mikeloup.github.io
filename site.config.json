@@ -169,6 +169,20 @@
       "menuTitle": "Que visiter en Israël"
     },
     {
+      "slug": "sujets/cesaree-maritime",
+      "title": "Césarée maritime : la ville qu’Hérode a bâtie pour se faire pardonner",
+      "description": "Le premier port entièrement artificiel du monde romain, un théâtre qu’on remplissait d’eau, deux aqueducs qu’on prend pour un seul, et la seule inscription archéologique portant le nom de Ponce Pilate.",
+      "footerOnly": true,
+      "menuTitle": "Césarée maritime"
+    },
+    {
+      "slug": "sujets/beit-shean",
+      "title": "Beit Shean : la ville romaine dont on connaît le dernier jour",
+      "description": "Bains de 8 500 m², théâtre de 6 000 places, dix-huit civilisations superposées — et un séisme daté au jour près, le 18 janvier 749, grâce aux pièces retrouvées sous les colonnes tombées.",
+      "footerOnly": true,
+      "menuTitle": "Beit Shean"
+    },
+    {
       "slug": "television-israelienne-francophone",
       "title": "Télévision israélienne en français : où regarder Tandem TV, canal 14 Annatel",
       "menuTitle": "Regarder la chaîne",
