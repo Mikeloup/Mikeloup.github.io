@@ -40,6 +40,8 @@ Le détail que personne n'oublie : Hérode fait assassiner sa femme Mariamne, pe
 
 {{video:oIocYaN-qUQ}}
 
+→ **[Page détaillée : la Tour de David](/sujets/tour-de-david/)**
+
 ### Le mont Sion
 
 Il est hors les murs depuis seulement **450 ans** environ, à cause du tracé de Soliman. La tradition rapporte que le sultan, furieux que ses architectes aient laissé le mont Sion dehors, les aurait fait assassiner.
@@ -83,6 +85,8 @@ Son dôme blanc répond aux deux autres dômes de la ville : le Dôme du Rocher 
 Et collé au bâtiment, un minaret. À la suite d'une dispute communautaire, un membre de la communauté juive s'est converti à l'islam, a acheté la parcelle voisine et y a fait bâtir une mosquée. La mosquée n'est plus active. Le minaret est resté.
 
 {{video:fpGn05qusmk}}
+
+→ **[Page détaillée : les synagogues du quartier juif](/sujets/synagogues-quartier-juif-jerusalem/)**
 
 ### En dehors des murailles
 
@@ -191,6 +195,8 @@ Le nom de la famille vient d'une enseigne : elle habitait la rue juive de Francf
 Le baron est mort en France et fut d'abord enterré au Père-Lachaise, avant que sa dépouille et celle de son épouse ne soient transférées ici. Le jour de l'inhumation, des représentants des **quarante-quatre communautés** qu'il avait fondées sont venus, chacun avec de la terre de la sienne, et l'ont déposée sur son tombeau.
 
 {{video:DpFQYU3RSz0}}
+
+→ **[Page détaillée : le baron de Rothschild en Israël](/sujets/baron-rothschild-israel/)**
 
 ---
 

@@ -225,6 +225,27 @@
       "menuTitle": "Megiddo"
     },
     {
+      "slug": "sujets/synagogues-quartier-juif-jerusalem",
+      "title": "Les synagogues du quartier juif de Jérusalem : la Hurva et les quatre séfarades",
+      "description": "Bâties sous le niveau de la rue parce qu’une synagogue ne devait pas dépasser les maisons voisines. Une dette ottomane qui a valu son nom à la Hurva, un minaret construit par un juif converti, et des clés retrouvées dix-neuf ans plus tard.",
+      "footerOnly": true,
+      "menuTitle": "Les synagogues du quartier juif"
+    },
+    {
+      "slug": "sujets/baron-rothschild-israel",
+      "title": "Le baron Edmond de Rothschild en Israël : Zikhron Yaakov et Ramat HaNadiv",
+      "description": "Les pionniers de 1882 font faillite ; le baron les sauve, avec des agronomes et des cépages français — et une hiérarchie qu’ils n’avaient pas demandée. Quarante-quatre communautés fondées, et de la terre de chacune sur son tombeau.",
+      "footerOnly": true,
+      "menuTitle": "Le baron de Rothschild"
+    },
+    {
+      "slug": "sujets/tour-de-david",
+      "title": "La Tour de David : la forteresse d’Hérode qu’on a rebaptisée pour l’oublier",
+      "description": "Le bâtiment n’a rien de David : c’est une forteresse d’Hérode, renommée à l’époque byzantine pour effacer son bâtisseur. Palais croisé, mosquée, caserne pendant sept cents ans, ligne de front jordanienne pendant dix-neuf ans.",
+      "footerOnly": true,
+      "menuTitle": "La Tour de David"
+    },
+    {
       "slug": "television-israelienne-francophone",
       "title": "Télévision israélienne en français : où regarder Tandem TV, canal 14 Annatel",
       "menuTitle": "Regarder la chaîne",
