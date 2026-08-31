@@ -204,6 +204,27 @@
       "menuTitle": "Le mont Sion"
     },
     {
+      "slug": "sujets/tsipori",
+      "title": "Tsipori : le site romain le mieux conservé d’Israël, et presque vide",
+      "description": "Théâtre de 4 500 places, réservoir de 4 300 m³, la Mona Lisa de la Galilée et un concours de boisson entre Dionysos et Hercule — un site intact parce qu’il n’a pas été détruit mais abandonné, à quinze minutes de Nazareth.",
+      "footerOnly": true,
+      "menuTitle": "Tsipori"
+    },
+    {
+      "slug": "sujets/prison-saint-jean-d-acre",
+      "title": "La prison de Saint-Jean-d’Acre : l’évasion qui a précipité le départ des Britanniques",
+      "description": "Jabotinsky et Itzhak Shamir y furent détenus. En mai 1947, à 16 h 22, le mur sud explose : 27 évadés, et six mois plus tard le plan de partage. Avec le tunnel qui ne menait nulle part et l’ingénieur qui a fourni les plans.",
+      "footerOnly": true,
+      "menuTitle": "La prison d’Acre"
+    },
+    {
+      "slug": "sujets/megiddo",
+      "title": "Megiddo : vingt-six villes empilées, et le mot Armageddon",
+      "description": "Six mille ans sur la Via Maris, le plus grand temple cananéen jamais mis au jour, des portes à six chambres qui prouvent une autorité centrale, un tunnel d’eau de 3 500 ans — et l’origine hébraïque du mot Armageddon.",
+      "footerOnly": true,
+      "menuTitle": "Megiddo"
+    },
+    {
       "slug": "television-israelienne-francophone",
       "title": "Télévision israélienne en français : où regarder Tandem TV, canal 14 Annatel",
       "menuTitle": "Regarder la chaîne",

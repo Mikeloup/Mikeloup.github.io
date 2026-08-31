@@ -156,6 +156,8 @@ Et dans la cellule 28, un tunnel d'évasion inachevé. Le commandant de la priso
 
 {{video:0WWfNYcod3I}}
 
+→ **[Page détaillée : la prison de Saint-Jean-d'Acre](/sujets/prison-saint-jean-d-acre/)**
+
 ### Rosh HaNikra
 
 La pointe nord-ouest du pays, à la frontière libanaise. Une inscription sur place donne les distances : Jérusalem à 205 kilomètres au sud, Beyrouth à 120 au nord.
@@ -210,6 +212,8 @@ Et le nom a fait le tour du monde sans qu'on s'en aperçoive : *montagne* se dit
 
 {{video:RbPRvsNc540}}
 
+→ **[Page détaillée : Megiddo](/sujets/megiddo/)**
+
 ### Tsipori
 
 À mi-chemin entre Haïfa et Tibériade, à trois cents mètres d'altitude — de quoi contrôler la route. Le nom vient de *tsipor*, l'oiseau : la silhouette de la ville sur sa colline évoque un oiseau posé.
@@ -225,6 +229,8 @@ En 1994, des travaux de parking ont fait apparaître une grande synagogue byzant
 Le meilleur pour la fin : dans la maison de Dionysos, une dizaine de panneaux racontent un concours de boisson vieux de deux mille ans entre Dionysos et Hercule. Sur le dernier panneau, Hercule perd — et ne se sent visiblement pas très bien.
 
 {{video:lQS4dFyDH8E}}
+
+→ **[Page détaillée : Tsipori](/sujets/tsipori/)**
 
 ### Le doigt de la Galilée
 
