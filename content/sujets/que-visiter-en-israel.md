@@ -26,6 +26,8 @@ Jérusalem a été attaquée une cinquantaine de fois, assiégée vingt-cinq foi
 
 La seconde partie parcourt les portes est et sud. Deux choses y frappent. La **porte Dorée**, double et murée depuis des siècles, avec un cimetière musulman planté juste devant — deux obstacles superposés, le mur et les tombes, pour empêcher symboliquement l'entrée du Messie. Et la **porte de Sion**, criblée d'impacts de balles de 1948 et de 1967, délibérément non réparés : c'est la seule porte de Jérusalem dans ce cas, et des milliers de gens passent dessous chaque jour en voiture sans lever la tête.
 
+→ **[Page détaillée : les huit portes de Jérusalem](/sujets/portes-de-jerusalem/)**
+
 ### La Tour de David
 
 Le nom est un contresens assumé. Le bâtiment est une forteresse d'**Hérode le Grand**, qui y avait élevé trois grandes tours dédiées à son frère, à son meilleur ami et à sa femme. Le nom « tour de David » apparaît à l'époque byzantine — alors même qu'on savait déjà que David avait vécu plus au sud, dans la Cité de David. Il servait à honorer David, et à faire oublier Hérode.
@@ -49,6 +51,8 @@ Mais l'objet le plus étrange est la salle de la Cène. Le bâtiment visible est
 Entre 1948 et 1967, le Kotel étant inaccessible, ce tombeau fut le lieu le plus saint où les juifs pouvaient se rendre.
 
 {{video:hsVZuvx3TeE}}
+
+→ **[Page détaillée : le mont Sion](/sujets/mont-sion/)**
 
 ### Le mont des Oliviers
 
@@ -105,6 +109,8 @@ Là, le fleuve sépare Israël de la Jordanie sur **trois à quatre mètres**. C
 Et puisque le site historique était encore miné à la fin des années 1970, alors que le tourisme augmentait, le ministère du tourisme a fait aménager un **second lieu de baptême** près de Tibériade. Le texte évangélique dit seulement « dans le Jourdain », sans préciser où.
 
 {{video:PreJDOGAA6Q}}
+
+→ **[Page détaillée : le désert de Judée](/sujets/desert-de-judee/)**
 
 ---
 

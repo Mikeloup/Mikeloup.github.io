@@ -183,6 +183,27 @@
       "menuTitle": "Beit Shean"
     },
     {
+      "slug": "sujets/desert-de-judee",
+      "title": "Le désert de Judée hors des sentiers : Nabi Moussa, le Wadi Qelt et le Jourdain",
+      "description": "Le tombeau que l’islam donne à Moïse, le seul musée de mosaïques du pays, un monastère byzantin habité depuis 1 500 ans, et le lieu du baptême où le Jourdain fait trois mètres de large — et où le déminage n’est pas terminé.",
+      "footerOnly": true,
+      "menuTitle": "Le désert de Judée"
+    },
+    {
+      "slug": "sujets/portes-de-jerusalem",
+      "title": "Les huit portes de Jérusalem : pourquoi on entre par Jaffa",
+      "description": "Quatre kilomètres de remparts, dix-huit tours, huit portes. Un péage croisé a déplacé l’entrée principale pour neuf siècles ; une porte est murée avec un cimetière devant ; une autre garde ses impacts de balles de 1948 et 1967.",
+      "footerOnly": true,
+      "menuTitle": "Les portes de Jérusalem"
+    },
+    {
+      "slug": "sujets/mont-sion",
+      "title": "Le mont Sion : la salle de la Cène sauvée par le tombeau du roi David",
+      "description": "Transformée en mosquée plutôt que détruite, la salle de la Cène doit sa survie à ce qui se trouve sous son plancher. Avec la tombe d’Oskar Schindler et le premier mémorial de la Shoah réalisé en Israël, avant Yad Vashem.",
+      "footerOnly": true,
+      "menuTitle": "Le mont Sion"
+    },
+    {
       "slug": "television-israelienne-francophone",
       "title": "Télévision israélienne en français : où regarder Tandem TV, canal 14 Annatel",
       "menuTitle": "Regarder la chaîne",
