@@ -1,0 +1,139 @@
+1
+00:00:31,070 --> 00:01:18,900
+ces chers téléspectateurs bienvenue à notre toute première de skate nation une émission consacrée à la technologie made in israël qui dit technologie dit données numériques en anglais dj temps du mo dj qui veut dire chiffres et qui vient bien évidemment du latin dj tu le dois ceci n'est pas sans nous rappeler le premier système de comptage de l'humanité où les gens utiliser tout simplement les doigts pour compter notre programme d'aujourd'hui sera donc consacrée à une introduction aussi large que possible à la donner et aux chiffres puis nous nous tournerons vers monsieur fabien mort de raï cas pas merci à fabien d'être là avec nous ce soir vous vous nous aiderez à comprendre le monde des systèmes financiers
+
+2
+00:01:18,900 --> 00:02:13,860
+internationaux à la lumière justement des données numériques et du monde digital rentrons donc dans le vif du sujet tout d'abord un historique de l'internet et du monde digital parlant de technologie israélienne nous ne nous priverons pas de constater que l'état d'israël dans sa forme la plus ancienne qui soit à savoir le royaume d'israël offrait déjà un système de communication par signaux de fumée comme attesté par la mishna dans le talmud michelin rosh hashana chapitre 2 verset 2 et 3 où dans le livre des juges softeam livre vingt chapitres va verser 38 et 40 où il nous est relaté que les hébreux tout premier israël et allumé des feux de fumée pour communiquer de bêtes à kerem à bethel en
+
+3
+00:02:13,860 --> 00:03:12,849
+utilisant des signaux basé sur des lettres ou des messages angué matri il s'agit du tout premier support wifi mais que communiqué ton quel était le contenu est là aussi l'hébreu premier langage proto sinaï qu est lui même composé de lettres chacun ayant son énergie propre à savoir 1 sont ceux ci s'opposent au type de langage il aux glyphes très proche des idéogrammes chinois d'aujourd'hui la différence est que l'alphabet moderne qu'il soit hébreu latin cyrillique ou arabe est décomposable en unités chiffrables la lettre devient chiffres et vous aurez tout de suite fait le lien avec la game est rien la game atria consiste à attribuer un nombre un chiffre entier à chaque lettre de 1 à 10 alec berg email dalet jusqu'à ude de 20 à 100
+
+4
+00:03:12,849 --> 00:04:15,250
+rafle amène même et c'est jusqu'à couche et régine tav 300-400 la révolution électronique consiste à utiliser cette technique pour transformer chacune de ces lettres en électricité ou en mode électrique qui circulent entre différents systèmes le communicateur et celui qui reçoit la communication on appelle ça dans le langage moderne dans le langage informatique lasky à skis à sci pour american citizens for computer interchange l information le système est le même le à vos 65 le bo 66 le cvo 67 le z vos sens pourquoi 65 parce qu'il ya beaucoup d'autres caractères jusqu'à 65 tels que les points d'exclamation les chiffres etc la transformation de la lettre en binaire est primordial qu'est ce que le
+
+5
+00:04:15,250 --> 00:05:27,110
+binaire et bien c'est un chiffre qui représente une valeur par exemple nous prenons le chiffre ou le nombre 65 qui je vous le rappelle est la lettre a et elle est transformée en une en une chaîne de pain et 2 0 pourquoi binaire parce que un ou zéro et donc 65 dans notre langage binaire vaut la chaîne 1 0 0 0 0 c'est une des compositions très facile mathématiques qui peut être au programme de 4e ou même même de 5e dirais-je cette simple jeu mathématique consiste à représenter tous nombre en une suite comme je les dis 2 0 et 2 001 vaut un de vos 1 0 non pas 1 0 qui fait 10 puisque le dise n'existe plus juste la suite de chiffres 1 0 ça c'est 2 3 1 4 1 005 on augmente on n'ajoute pas à la place du dernier 0 1
+
+6
+00:05:27,110 --> 00:06:27,540
+0161 1 071 1 1 et ceci de suite jusqu'à aux chiffres dont on a besoin dans notre cas là je vous rappelle la lettre a qui vont 65 65 si on le décompose en binaire vaut comme je l'aï dit tout à l'heure je le rappelle 1 0 0 0 0 ceci est en fait nous sommes armés des outils nécessaires à la communication et à l'information donc une fois que j'ai des composés mon chiffre ensuite 2 1 et 2 0 on peut comprendre que très facilement tel mais signaux de fumée au temps du royaume d'israël et bien je peux allumé un interrupteur je l'éteins 0 je ne l'est toujours pas allumer 0 je continue à ne pas l'allumer 0 je continue encore à ne pas la lui mais toujours zéro enfin je la lui mme hains et bien dans cet espace de temps
+
+7
+00:06:27,540 --> 00:07:26,370
+ou intervalle de temps j'ai communiqué la chaîne 1 0 0001 et donc ma lettre a et communiquer et passe d'un système qui transmet l'électricité au même système qui reçoit électricité tout cela à la vitesse de la lumière une des applications de cette technologie comme nous le vivons tous au jour le jour c'est le système des banques et le système financier et c'est pour cette raison que j'ai invités à nous rejoindre monsieur fabien nom de craica pas expert en systèmes d'architecturé et de données bancaires bienvenue bienvenue à bien alors qu'est ce que tu fais toute la journée alors toute la journée je fais de l'intégration des systèmes bancaires ou de ce que je dis souvent c'est la modernisation des banques une banque il
+
+8
+00:07:26,370 --> 00:08:19,639
+faut le savoir de nos jours ce n'est rien d'autre qu'un immense tas de logiciels qui communiquent entre eux ces logiciels et évolue en permanence et doivent en permanence être mises à jour en temps indépendamment et en termes de communication entre eux cela implique des des problématiques d'automatisation de sécurisation de et de modernisation modernisation et scalability en français scalabilité qui rappelle justement le nom de l'émission scale up qui en anglais veut dire échelonnage mc le thème qu'on utilise effectivement dans notre industrie vous avez certainement entendu parler du mot swift qui revient sans cesse sur nos écrans par rapport aux sanctions occidentales sur la russie le swift
+
+9
+00:08:19,639 --> 00:09:15,160
+qu'est ce que c'est fabien coco qu'est ce que le swing mais que faisait les banques avant que le swift n'existe alors le swift en quelques mots c'est leur sweat déjà qu'est ce que ça veut dire ça veut dire saucier society for worldwide interbank financial telecommunication en français la société qui gère les communications financières interbancaire mondialement c'est un système qu'on peut comparer à un langage presque comme http qui permet de pour les banques de communiquer de pays à pays avant le swift avant l'introduction du système swift dans les années 70 il n'y avait pas vraiment de deux protocoles unis unifiée et universal universel les premiers les premiers échanges bancaires internationaux
+
+10
+00:09:15,160 --> 00:10:09,160
+remonte au moyen âge au temps des ponts plier ou les des sommes de monnaie sonnante et trébuchante devaient parcourir des centaines ou des milliers de kilomètres pour pouvoir passer de du donataire aux bénéficiaires et la plupart du temps les bandits de grand chemin attaquer ces convois en cours avant qu'ils n'arrivent donc les templiers qui était une organisation très répandue dans toute l'europe dans les mêmes dans la région on nous trouve en avait des décomptes l'équivalent de des branches aujourd'hui des branches des banques aujourd'hui quand un roi voulait envoyer ma et en quelques milliers de pièces d'or germain voilà l'équivalent d'un virement aujourd'hui de paris on va dire à jérusalem et bien
+
+11
+00:10:09,160 --> 00:10:54,070
+grâce aux templiers il allait voir le templier de paris qui envoyait un courrier avec un l'équivalent d'un l'ancêtre d'un chèque un papier qui disait que 1000 pièces d'or devait passer de untel à untel mais l'avantagé le papier ne valait rien s'il était capturé volet détruits et à jérusalem ont noté que désormais c'est le bénéficiaire à tant de pièces d'or en plus voilà évidemment ils prenaient leurs commissions comme comme de nos jours et alors entre le moyen âge et le système swift ya eu des systèmes petit à petit qu'ils sont mis en place après la deuxième guerre mondiale et l'arrivée des nouvelles technologies et pour répondre à votre question qu'est-ce que swift en un mot en une phrase c'est le seul moyen aujourd'hui pour une
+
+12
+00:10:54,070 --> 00:11:37,930
+banque de faire des transactions et autres opérations bancaires à l'extérieur de son pays ce qui fait que si un pays se retrouvent exclus du système swift il se retrouve littéralement au moyen âge uniquement les banques à l'intérieur du même pays peuvent échanger entre elles et ne peuvent ni envoyer ni recevoir des fonds ni et faire toutes sortes d'autres attaqués le cas de la russie ou de certaines banques en russie au jour d'aujourd'hui pourtant je me permets de me rappeler qu'il existe un équivalent chinois qui s'appelle unis payent et les russes aujourd'hui ont l'autorisation ou là quelques jours de se connecter au système chinois donc qu'est-ce que ça veut dire finalement une porte de sortie
+
+13
+00:11:37,930 --> 00:12:18,860
+pour alors je connais pas très bien ce système une ip mais j'imagine que c'est l'équivalent de swift il ya un protocole bien défini mais encore une fois comme toute ma connaissance 100% des banques du monde utilisent swift et et ce depuis presque c'est plus de 50 ans uniquement les les pays et les banques des pays qui veulent bien se mettre un autre système et qu'ils doivent changer tous leurs systèmes informatiques vont pouvoir participer à ce une ip donc j'imagine que ça va être très très limité peut être russie chine et quelques autres pays autour et ça va ça va les aider mais très très de manière très limitée à mon sens géopolitique intéressant perspectives concrètement comment ça marche select
+
+14
+00:12:18,860 --> 00:13:11,210
+alors comment ça marche ce sont des messages de messages qui ressemble à peu près à des e-mails mais des emails standardisés c'est à dire que kylie à un certain nombre de messages de type de messages swift qui ont un nom mt 103 par exemple c'est le nom pour faire un transfert de fonds etc il ya bien une réponse qui s'appelle mt 103 quelque chose d'autre d'un côté il ya quelqu'un qui prépare le message en devant en remplissant les champs de chaque message donc par exemple on peut imaginer les chambres le bénéficiaire le code iban le montant l'adresse etc etc le candidat et en le mettant le code étant un numéro de compte bancaire un million nationale format international unique dans le monde entier quels sont
+
+15
+00:13:11,210 --> 00:14:00,570
+les types d'opérations qu'on peut faire avec ce système sera au départ donc au départ dans les années 70 c'était surtout fin de ce transfert transferts de fonds envoyer recevoir de l'argent depuis donc beaucoup de vent beaucoup une douzaine d'autres types d'opérations se sont se sont ajoutés les lettres de crédit ce qu'un outil financier peu connu du grand public pour qu'ils utilisent et pour tout les imports exports de toutes les deux ce qu'on peut imaginer qu'ils peuvent être exportés et importés mais également les prêts [Musique] les collections les opérations boursières les sécurités opérations de fin à peu près tout les opéras non toutes les opérations bancaires ou financières internationales peuvent être
+
+16
+00:14:00,570 --> 00:14:56,180
+supportés par des messages swift effectivement à un comble izia ou tu le disais avant à un email où il ya différents champs qui sont remplies par le banquier qui envoie ou par la personne qui revoit donc ses chants là pour le rap l'anosy d'auditeurs à nos auditeurs sont des suites de lettres décomposé en chiffres pas leur valeur numérique donc ici à 65,6 et 1b 66 6 et un chiffre zéro le zéro à une valeur de 30,3 si je me rappelle bien et des composés par le système informatique le même logiciel que vous créez et maintenez qui va des composées chacune de ces lettres en 0 ayant une grande suez 2 0 et 2 1 et qui va être transmise sur les réseaux comme un signal comme une impulsion électrique et qui va être reçue par le bénéficiaire
+
+17
+00:14:56,180 --> 00:15:39,060
+pour schématiser bien absolument absolument comme un e-mail et comme toutes sortes de données par contre c'est tu restes souhaité être extrêmement strictes au niveau du format des deschamps c'est à dire que si un champ par exemple le champ censés recevoir le code iban essence et re est censé faire je sais pas moi 28 caractère et qu'il en avait 27 tout le message est invalidée donc là il ya un autre message swift qui veut qu'ils retournent à l'envoyeur qui des messages invalide un dos comme si on envoie un email puis on s'est trompé c'est extrêmement structurée que sa mort précise c'est difficile de faire des fins de faire volontairement des erreurs d'accord donc c'est comme on dit designed for security design et pour la
+
+18
+00:15:39,060 --> 00:16:24,670
+sécurité donc et le trading sa marche pareil alors le trading c'est différent dans le domaine sweet est extrêmement sécurisé et extrêmement fiable mais cela n'a jamais été ni consultés amélioré pour battre des records de vitesse donc comme tout le monde le sait le trading on parle millisecondes de micro secondes parfois même de nanosecondes quelques fractions de seconde font une différence entre le jour et la nuit entre gagner et perdre de l'argent sur des volumes si la différence entre faire cent mille dollars ou 90 mille dollars le temps d'acheter le temps de récupérer l'action qu'on a acheté en fin de ces fluctuations sur les marchés en fait de nos jours plus de 90% des des acteurs sur le marché sont
+
+19
+00:16:24,670 --> 00:17:08,980
+des robots donc c'est il se peut que si tel robot est plus rapide 5 millisecondes que l'autre robot c'est pas indifférent 200 et 100 mille c'est que celui-là va gagner un milliard de dollars et l'autre va perdre le même milliards $ qui était acquis été attrapés en fait va par robot pas robot interposés robot ce sont des automates et d'automates logiciels qui sont systématiquement sur l'ordinateur en train de rechercher le meilleur deal ou rechercher le meilleur la meilleure offre en fonction de paramètres qu'on lui aura donné les les traders enregistre lorsqu'il appelle en stratégie trading dans ces robots et heriot s'il est vrai qu'il existe encore des vrais traders humain mais de plus en plus ils sont remplacés par des robots
+
+20
+00:17:08,980 --> 00:17:57,640
+pourquoi d'ailleurs parce que davantage des automates c'est qu'ils n'ont pas le facteur émotionnel même les traders les plus talentueux les plus expérimentés sont quand même obligés de quand même restes humains et donc ils ont les facteurs émotionnels ce qui est une mauvaise chose en trading les rues de naples être dangereux pour leur part mais j'imagine que vous mentionnez les les les enjeux de temporel la distance par rapport aux salles de marché là les les canaux par lesquels les instructions sont envoyés et donc j'ai pas tout à fait répondu à votre question heureuse pour le trading il existe autre chose qui s'appelle fixe donc là c'est un script swift c'est quelque chose qui s'apparente à un script un format de
+
+21
+00:17:57,640 --> 00:18:51,690
+messages par contre fixe est un vrai langage informatique beaucoup plus libre aux coûts plus flexible qui permet de communiquer entre les outils de trading et les marchés en temps réel et pour se fixer fine et donc pour schématiser le le front end c'est géré par fixe et le backend c'est à dire ce qui se passe derrière les coulisses et en général la nuit puisque c'est la nuit que après les heures de l'opération que les banques traite tous leurs transactions internationales ça c'est traité par swift d'accord et le fixe c'est par contre c'est le donc j'imagine et la banque qui aura aussi une alliance stratégique avec une compagnie télécommunications et aura un accès préférentiel aux réseaux aura
+
+22
+00:18:51,690 --> 00:19:37,080
+plus de chances de gagner des oui c'est tout le alors est-ce qu'il déroule eux mêmes leur propre câble ou comment ça se passe comment ça se passe évidemment là ce qui fait la vraie différence sont les stratégies la plupart des stratégies sont basées sur des théories mathématiques de très haut niveau mais après il ya aussi aussi domaine aussi important il ya l'aspect physique par exemple la plus une compagnie de trading va vouloir installer c'est serveurs physiques ordinateur ces ordinateurs dans le data center où se trouve le marché lui-même puisque le marché lui-même maintenant c'est un c'est un logiciel enfin c'est un ensemble de serveurs c'est plus la salle de marché conte dont on avait à l'image il ya
+
+23
+00:19:37,080 --> 00:20:17,119
+quelques années donc effectivement il faut que les serveurs soient physiquement tout près les serveurs de votre application de trading soit tout près des serveurs des marchés ces bateaux il ya des nids ya dix ans par exemple et des différents jeux pas bon mais je vais pas m'étendre sur le sujet il ya des différences de câble entre le câble en cuir et le câble en or qui est plus cher et qui va faire gagner 3000 seconde prendra nos secondes absolument c'est un aspect qu'on voit nulle part ailleurs a pas peut-être dans la défense où le chaque micro seconde compte d'accord donc en fait finalement la distance géographique content parce qu'elle est une histoire géographique par la vitesse de la lumière
+
+24
+00:20:17,119 --> 00:21:04,440
+est en fait traduite en vitesse et qui dit vitesse diversité qu'ils veulent aussi t10 accès à de meilleurs deals plus rapidement que la conque voilà donc il ya la distance il ya aussi la capacité de deux procès c'est de la ville le niveau 2 processing des informations qui doit être le plus rapide possible donc là c'est différent lasser des processeurs les plus performants possible et les câbles tout simplement les câbles il ya quelques années je ne sais plus quelle grande compagnie de training a dépensé une fortune pour alors il ya déjà des câbles qui sépare l'amérique du nord et l'europe pour internet a dépensé une fortune pour faire passer sous le sous l'océan un câble de fibre optique dédiée à ces
+
+25
+00:21:04,440 --> 00:21:50,470
+transactions et tout ça pour gagner si me souviens bien je sais plus quel quelque chose comme 20 nano secondes j'ai pas les chiffres de la combien ça coûte et mais c'était une fortune juste pour gagner 20 ha non c'est pas mon cher d'envoyer un satellite sais pas où les satellites sont moins su sécuriser bon nous explorons la question j'imagine la question de téléspectateurs bon comment on triche a déjà est ce que c'est possible malheureusement malgré tout les toutes les technologies toutes les plus grands cerveaux qui se penche sur comment sécuriser les relations financières oui c'est possible alors avec fixe et passaient moins possible pendant avec swift c'est moins possible qu'avec l'industrie bancaire en général
+
+26
+00:21:50,470 --> 00:22:39,519
+mais pour vous donner une idée en 2011 on estimait la fraude juste pour swift à 10 milliards de dollars par an moins de dix ans plus tard ça a été multiplié par 3 on passe à 33 milliards de dollars juste pour l'année 2020 en fraude enfants désirent des messages qui ont qui sont manipulés pour faire croire à un transfert qui n'a pas lieu d'être voilà alors il ya dix feria plein de moyens de fraude évidemment il ya les contrefaçons il ya les détournements il ya les fausses identités [Musique] des faux transfert d'argent il ya beaucoup de m'étonner parler de grand palais lors de grands jours voilà le préconise de garder pour la fin le rhône somewhere le l'industrie en france et voilà ça se fait très
+
+27
+00:22:39,519 --> 00:23:25,929
+compréhensible 10 rames sont morts ok alors je crois que oui j'ai le gpad et schiphol a beau se moquer mais c'est s'aider des sommes phénoménales d'intérêt ces difficultés sont très difficiles à connaître parce que c'est un côté honteux de l'industrie bancaire souvent on sait que quasiment toutes les grandes banques du monde sont victimes de manière répétée on pourrait presque dire quotidienne de rousseau et évidemment ils le cachent et le cash est presque toujours ils vont le payer d'abord ici payent pas ça va se voir et ensuite les les les groupes qui sont qui peuvent aider groupement des gourmands extrêmement désorganisation extrêmement complexe est passé on a passé depuis longtemps le stade des 2/3 à coeur dans un coin c'est
+
+28
+00:23:25,929 --> 00:24:10,760
+des vrais organisations qui font qu'on la concurrence à des entreprises sérieuses ils demandent évidemment des sommes qui bien que qui peuvent atteindre des dizaines de millions de dollars voire plus sont toujours bien moindre que l'équivalent caunes alternatif pour la banque c'est à dire ne pas payer et devoirs soient remplacées des données et à son annonce hier des clients que des données importantes ont été perdus soit remplacé des systèmes donc c'est pour ça que ils font en sorte que ce soit toujours payé et je crois que avant lui je me rappelle justement vous nous contredire c'était un ddd des revenus les plus juteux interne au ciel internationalement de la corée du nord de faire marcher les les sociétés
+
+29
+00:24:10,760 --> 00:24:49,430
+occidentales et de et de réclamer des gens trop tôt bien entendu aussi parlé de la russie de la chine alors évidemment on parle pas des états là on parle de 1 2 groupes qui sont organisations qui sont comme des comme des compagnies gérées comme des compagnies avec des centaines d'employés des hiérarchies et tout ça mais qui sont à but malveillants juste un point je crois que vous m'aviez dit auparavant quel est le volume de transactions swiftkey anglais par jour oui oui c'est un point important à souligner pour les gens se rendent compte chaque jour il ya 5 trillions de dollars qui sont échangées grâce à ce rite 5 trillions $ c'est-à-dire 5000 milliards de dollars chaque jour donc j'avais un petit peu
+
+30
+00:24:49,430 --> 00:25:36,950
+vérifier avant c'est trois fois le budget d'allemagne annuel par jour donc dernière question que vois-tu pour l'avenir proche pour l'avenir proche de lui du système bancaire et de et de l'informatique il ya deux tendances claires qui se dessine dans le monde fintec bancaire finance d'abord mise à part cette explosion des technologies aux réorganisations malveillantes qui prennent avant que complet avantages des nouvelles technologies jean arthuis intelligence intelligence artificielle pardon lire et à machine learning etc ils sont ils sont à la pointe un ils sont pas ils sont pas du tout en retard bon donc à cet aspect là mais évidemment comment comme dans le domaine des virus et un coeur pour
+
+31
+00:25:36,950 --> 00:26:18,440
+chaque nouvelle manière de voler de l'argent il ya des manières de contre-attaqués qui se met en place assez rapidement donc c'est pas trop trop inquiétant l'autre tendance plus intéressante que les gens ne réalisent pas c'est que pour les la nouvelle génération mais les jeunes de maintenant comparé compris à notre génération des générations d'avant la relation de l'individu à la banque qui est omniprésente dans la vie de chacun d'entre nous ce qu'on réalise pas trop va complètement changer pour toi et moi acheter une maison achetée une voiture recevoir un salaire payé un loyer versé 1 s'arrête c'est payer des factures tout ça ça se passe dans un compte bancaire qu'on va aller physiquement voir de
+
+32
+00:26:18,440 --> 00:27:02,030
+temps en temps avec une agence avec un banquier convaincu on va parler physiquement et une relation humaine pour les jeunes d'aujourd'hui et surtout les jeunes de demain toute la banque tout ce que j'aimerais de ce site de citer toutes les transactions bancaires dans leur vie ça ne sera rien d'autre qu'une ou plusieurs applications dans leur téléphone pour donner un exemple le le sou technique 1 auquel on est en train d'assister c'est pas le c'est pas la différence entre le la lettre traditionnelle physique et l'e-mail mais c'est la différence entre la lettre traditionnelle physique et what's app ou applications similaires le jeune de demain n'aura plus du tout comme nous la notion de si je veux un prêt pour
+
+33
+00:27:02,030 --> 00:27:58,160
+obtenir un prêt il faut que j'attende lundi que la banque ouvre non tout doit être fait instantanément ou presque donc merci beaucoup pour cette intervention est d'avoir répondu à nos questions donc pour conclure ce que je voulais donc à signaler c'est qu'effectivement nous avons vu en tout début d'émission que l'on prend une lettre le à qui vaut 65 dans un certain code informatique et qui est transmis par ondes électriques sur des câbles en cuivre ou ceux du câble en ordre sur des câbles optiques j'imagine tout est transformé en ondes magnétiques ou électromagnétiques ou en lumière et transférés d'un endroit à un autre endroit tel les signaux de fumée été transféré pour indiquer un ennemi la nouvelle lune aux autres autres
+
+34
+00:27:58,160 --> 00:28:57,529
+choses intéressantes à communiquer entre différentes régions ici en israël il ya 3000 ans est aujourd'hui partout dans le monde vers l'espace ou d'un peu d'impôts allant du globe instantanément l'ordinateur quantique qui arrive aujourd'hui est en train de changer ce modèle de données c'est un modèle qui permet de jouer des scénarios de simulation sur différentes possibilités et on peut imaginer un très proche échéance que la tous les secrets bancaires tous les codes de cartes de crédit où il faut un des dizaines et des dizaines d'années d'ordinateurs qui recherchent un code en mettant en réseau tous les ordinateurs du monde pour décrypter une une un mot de passe se fera en quelques secondes maximum quelques minutes donc ce monde
+
+35
+00:28:57,529 --> 00:29:02,529
+là va changer énormément et va devenir une menace nous en parlerons dans un dans une nouvelle émission avec un petit clin d'oeil à l'état d'israël qui a déjà investi des milliards de dollars en recherche quantique skyler nations oblige on en reparle très bientôt merci d'avoir été avec nous à très bientôt sur ton mtv merci beaucoup fabien d'avoir été avec nous j'espère que nous avons pu éclairer nos téléspectateurs en leur donnant une nouvelle perspective de l'informatique dans la vie de tous les jours au revoir [Musique]

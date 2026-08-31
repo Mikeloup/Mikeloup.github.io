@@ -1,0 +1,547 @@
+1
+00:00:17,910 --> 00:01:58,310
+[Musique] m daniel bonsoir bienvenue bienvenue sur tandem 2.0 la nouvelle émission le laboratoire de la presse nous sommes sur cette deuxième émission ont rappelé la semaine dernière on a parlé de l'économie et 7 secondes nous allons parler de communications médicales on va essayer avec nos experts de décortiquer en termes de communications médicales ce que le nouveau coronavirus a changé entre news effet que news ont essayé de comprendre avec nos experts que je vais vous présenter tout ce qui a changé et va changer ce soir 3 3 experts une dame on va commencer par madame sauf si tayeb bonsoir sophie hausse a donc sophie et radiologues depuis 1989 docteur sophie tayeb spécialiste en imagerie médicale
+
+2
+00:01:58,310 --> 00:02:56,310
+vous êtes dans le travail est au centre de lutte contre le cancer des os de france voilà le centre oscar lambret qui se trouve à proximité il sa chair de lille oui vous êtes présidente de la commission des équipements médicaux depuis 2001 vous êtes présidente du comité pédagogique fort commettre d une association de formation post universitaire des radiologues pour la formation au dépistage du cancer du sein ça c est claude acte les avait donc de 2001 2013 la vt fans allemands et vous avez à votre actif plus de 100 publications scientifiques dans des revues médicales nationales et internationales à comité de lecture voilà est actuellement ou diriger le projet d'intelligence artificielle au centre oscar lambret avec l'équipe d'à
+
+3
+00:02:56,310 --> 00:03:53,840
+pharma titien bien entendu est pas tout seul très bien très bien donc bienvenue à vous puisque vous allez nous parler bien sûr d'une communication médicale du coc vie de 19 puisque vous êtes également en première ligne sur sur le sur le sujet nous accueillons également ce soir un deuxième médecin le docteur jean-jacques erstein bonsoir jean gérard bonsoir bienvenue alors georges laraque vous êtes médecin généraliste depuis 1994 pour la carmi qui est la caisse régionale des mines de moselle est vous avez été médecin capitaine des sapeurs-pompiers également de 1994 à 2004 vous êtes correspondant du british medical journal pour la relecture des publications en français vous écrivez des scripts pour des séries médicales
+
+4
+00:03:53,840 --> 00:04:52,750
+pour du probable programmes médicaux tout public ce que vous êtes également active voilà vous êtes directeur de la société stan santé non j'ai été oui j'étais directeur de planter absolument voilà je ne le suis plus belles îles et atolls et vous êtes fondateur de la sms mais dit méditez movie absolument méditer quelle est l'activité sociétés ont fait des programmes de formation pour les mets d'accord d'accord et puis vous êtes également auteur vous avez écrit tas de livres l'homme fatigué l'ange de la rue des rosiers vous avez le blues de la boule de la blouse blanche plein de plein de livres à votre à votre actif et vous êtes en tant que médecin généraliste en première ligne depuis le début de ces pandémies
+
+5
+00:04:52,750 --> 00:05:51,100
+et on vous a vu beaucoup beaucoup beaucoup communiqué sur les réseaux sociaux sur la presse grand public donc c'est aussi une des raisons pour lesquelles on vise à inviter pour nous faire part de votre retour d'expérience ce qu'on va parler de communication bien sûr très bien merci merci jean jacques et enfin notre notre dernier invité gaspard crest alors gaspard n'est pas n'est pas docteur on vous entend pas gaspard saï saï super donc gaspard même s'il se définit lui même comme un citoyen lambda sont pros chine iconoclaste fait de lui notre électron libre de ce soir après des études de chimie et de physique il bifurque vers des études théoriques et pratiques de cinéma en effet comme il se plaît à le dire lui-même faire des
+
+6
+00:05:51,100 --> 00:06:40,690
+images est une science son métier de cinéaste l'amène à être reconnu pour son travail dans des films aussi variés que les deux biopics sur mesrine celui de coluche transporteur 3 un balcon sur la mer et tant d'autres films mais on n'est pas là pour citer les films on est là pour parler de ce qu'il fait à côté de son métier parce que son esprit d'analysé et inand et impertinent l'amène sur les réseaux sociaux à se passionner sur une remise en cause des bobs défectueuse des manipulations d'opinion et théories du complot donc comme on est dans la communication gaspard vous êtes notre et les combine notre sniper n'hésitez pas au fur et à mesure des discussions avec nos experts à intervenir et puis on a la chance d'avoir avec nous
+
+7
+00:06:40,690 --> 00:07:29,289
+ce soir également le docteur michael lemole quelle chance c'est très connu ici en israël puisque c'était le relais d'information en français pour toutes les informations liées au coroner c'est par lui qu'on savait le nombre de malades le nombre de personne ni en confinement le nombre de personnes guéries et malheureusement le nombre des personnes décédées et il est également le directeur de l'antenne tandem 2.0 donc michael interviendra de temps en temps pour relayer les questions des spectateurs et puis en tant qu expert médical aussi pouvoir accompagner les paroles de nos deux autres médecins spectateurs hier déjà nombreux daniel avec nous donc je l'aurais déjà signalé qu'ils n'hésitent absolument pas à poser des questions mon
+
+8
+00:07:29,289 --> 00:08:31,780
+rôle de ce soir c'est principalement de vous transmettre merci michael alors depuis le début de cette année une chorale un virus est devenu le sujet incontournable du monde entier on a vu un démarrage de pandémie en chine et puis cette pandémie s'est propagée partout dans le monde et on a vu que les mesures qui avaient été adoptées par les différents pays pour essayer de se protéger protéger leurs populations pour essayer d'endiguer la propagation du virus ont été complètement complètement différent en parallèle de ça on a vu pour la première fois une vague de tsunami de communication autour de l'origine de ce virus les symptômes la propagation la manière de son protégé c'est parti dans tous les
+
+9
+00:08:31,780 --> 00:09:27,130
+sens c'est parti dans tous les sens dans les grandes chaînes de télé dans les journaux dans les revues les magazines dans les réseaux sociaux alors on va essayer dans cette émission sans aucune ce temps sûr d'y voir plus clair d'essayer de comprendre en termes de communication qu'est ce qui s'est passé ici c'est assez de biens de moins bien et qu'est ce qui fait que la donne a changé va changer doit changer en termes de modes de communication la règle du jeu est simple trois experts des questions et on y va ça vous va c'est parti alors vu la rupture sanitaires économiques et sociales au casino occasionnés par cette pandémie la communication des informations autour du colis de 19 son parti dans tous les
+
+10
+00:09:27,130 --> 00:10:20,560
+sens tous les trois on vous a vu beaucoup beaucoup beaucoup réagir dans les réseaux sociaux qu'est ce qui vous dérange dans cette communication autour de covile 19 sophie oui on peut commencer je peux commencer ce qui nous dérange ce qui nous a dérangé initialement c'était pas sur les réseaux sociaux tant que la capacité qu'on avait à se faire une idée précise de ce qui se passait c'est à dire on avait des dd on a des moyens de communication monstrueux par rapport à il ya 20 ou 30 ans on savait qu'il se passait quelque chose de grave en chine on avait vu un petit peu que la corée singapour hong kong commencé à faire des choses israël qui a très très vite interrompu ses vols aériens et c'était extrêmement
+
+11
+00:10:20,560 --> 00:11:04,030
+difficile de se faire une idée est ce qu'il faut est ce qu'il faut est ce que ça va être grave ou est ce que ça va faire comme le sras c'est le maire 6 à 15 15 ans et ça va rester limités en asie et c'était extrêmement difficile de se faire une idée d'abord parce que ben ça fait peur et que c'est très très difficile de réfléchir sereinement quand quelque chose fait peur et puis le déni est un outil extrêmement facile et pratique pour continuer de vivre comme avant sans avoir trop peur et donc je pense que janvier-février en tout cas en france on était plutôt dans des nids avec des experts médicaux les experts médicaux qui ont fait partie après du conseil scientifique qui a mis en place olivier ferrand qui disait vous
+
+12
+00:11:04,030 --> 00:11:49,570
+inquiétez pas les choses vont aller bien ça va pas ça va pas être très grave et donc on a tous vécu ou sans moi en particulier jusqu'au 2 3 mars hub ce mode là alors moi je t'écris j'ai une vision un peu différente c'est à dire que les images de convoyer chinmoy le baver un peu perturbé par ce qu'ont montré des clips qui tombait raide mort dans la rue on est des petits qu'auparavant alors déguisés en cosmonaute et ont eu l'idée hante à son statut que des gens qui ont des décombres et puis on n'est pas avec une grille par un grille-pain peu sérieuse des grippes et surtout il ya eu un hiatus énorme entre les images qu'on monterait de la chine et donc ses cosmonautes été cadavres dans la rue étaient 3000 manquons nous annoncer il y
+
+13
+00:11:49,570 --> 00:12:25,360
+attendait là ya quelque chose qui va pas et soit c'est quelque chose de très sérieux et à ce moment-là 3000 morts c'est totalement sous-évalué je vous rappelle que la grippe saisonnière tue en france entre 5 et 2000 personnes en fonction un peu de la gravité la gravité du virus trois mille morts à l'échelle de la chine mais ces finales donc quelque part il y avait à part moi j'ai senti sale comme une sorte de dichotomie un peu bizarre dans qu'est ce qu'on vous dit il ya vraiment un problème et puis comme le dit très justement ceux qui m'ont tant que j'ai commencé à baisser qu'en israël à juger parce que bon il traîne n'a pas la réputation d'être des des danseurs folkloriques comme je disais tout à l'heure et des
+
+14
+00:12:25,360 --> 00:13:07,390
+gens très sérieux et qui ont une heure une culture de la sécurité qui comme très extrême et là à partir de mi-février j'ai commencé à me marquer et essayer de faire appliquer dans matane d'attentes des démesures un peu de distanciation ne reste pas avec des autres je veux tu l'a 10 à quiconque jeu s'est réduit la marque j'ai commencé à vraiment à messiers très fortement est ce que j'ai trouvé curieux quand même c'est cette persistante de dan d'un effet de race ne pas de vouloir rassurer les gens un peu sucré comme en 40 tout va très bien madame la marquise ne vous inquiétez pas tout va bien mais en 40 on disait nous gagnerons parce que nous sommes des plus forts un peu ce qui était le discours qu'ils aient lieu et
+
+15
+00:13:07,390 --> 00:13:47,650
+puis on avait un mépris mais alors à dédain envers les italiens rendez compte les bouffeurs de one de minestrone siphon incapable de gérer de virus céder un pet il ils n'ont pas un système de santé mais la renault nous on est les plus beaux les plus grands et plus forts voilà c'est la politique française qui m'a effectivement déranger et bien malheureusement l'avenir de démontrer et bakel italiens n'ont pas faibli ou qu'on n'a pas que dieu te dis va bien et pourtant c'est quand même incroyable parce que à l'époque il y avait déjà plus de 60 millions de personnes de chinois qui étaient confinés et puis après ils sont passés à 200 puisqu'ils ont dit les trois traits aux villes des régions a eu six ans que personne en
+
+16
+00:13:47,650 --> 00:14:27,550
+france ne s'est dit alors que je ne suis pas j'ai pas l'impression d'être un type d'une intelligence extrême un petit peu mais pas extrêmes j'ai trouvé ça mais extraordinaire qu'on réalise que la chine qui a quand même l'économie la plus dynamique au monde qui est en train de bouffer tout l'économie mondiale est en train de se tirer une balle dans le pied pour une grippette qui va pas quand la lombardie été confinés c'est pareil le pont économique de l'italie a commencé à l'éteindre à tout doucement pour une grippette et nous comme des vidéos on a continué à dire aller voter fait comme s'il réalisait et à ce moment là le virus commencé à être déployés il ya contaminer tout le monde clairement on a
+
+17
+00:14:27,550 --> 00:15:18,160
+eu un retard à la mise en route des mesures sécuritaires par rapport à ce qu'on avait vu je pense que ce retard c'est certainement une extension de l'épidémie notamment dans le grand test dans la région parisienne qui a été beaucoup plus rapide que dans le reste de la france ceci dit si on regarde les courbes qui sont des courbe exponentielle le premier mort c'était en le premier patient décédé en france on était le 27 février le numéro 2 on devait être le 2 ou le 3 mars et il a fallu attendre finalement le 11 mars où tout d'un coup on a eu trente patients décédés et là on s'est rendu compte que le risque c'était cet afflux de patients graves qui allait faire exploser le système hospitalier et
+
+18
+00:15:18,160 --> 00:16:03,329
+on a vraiment l'impression que les décisions ont été prises à ce moment-là c'est à dire au moment où on s'est rendu compte que le système hospitalier pouvait pas supporter le choc notre d'autant qu'en france le système hospitalier était quand même un peu malade que on s'est mis à que les décisions de confinement de t'arrêter les écoles etc a été mise en route mais ça a été très long aussi dans l'opinion publique le conseil scientifique de macron le 14 mars disait si si on peut aller voter on avait déjà le 11 mars plus de 30 patients décédés donc je pense que tout le monde et est resté un peu dans le déni sans vraiment prendre la mesure la perception de qu'est-ce que c'est une progression exponentielle est extrêmement difficile
+
+19
+00:16:03,329 --> 00:16:50,010
+si on s'assoit pas pour réfléchir et pour essayer de se représenter les choses mais les modèles existent les simulations déjà été fait mais mes enfants y compris il faut aller les regarder les simulations c'est à dire qu'on dit le 1er mars ya un patient décédé le 11 mars y en a 30 tu tilt pas forcément si tu t'assois pas pour te dirai demain dans dix jours je vais en avoir s'en va et on avance et on n'a pas un comité scientifique est capable de regarder ces chiffres d'analysé d'essayer de faire là la projection pour le gouvernement on a eu on a eu un conseil scientifique qui a été nommé le 11 mars et dans ses conclusions il était encore extrêmement tranquille par rapport à ce qui allait arriver
+
+20
+00:16:50,010 --> 00:17:27,150
+je veux dire que le biais cognitifs de pas se rendre compte qu'ils se passe parce que le déni parce que la vision exponentielle des choses est compliqué comme quelque chose d'extrêmement bien partagée et pourtant il ya eu une remontée d'informations terrain des médecins généralistes mais tu sais j'ai vraiment l'impression qu'on gouvernement alors moi je serai un peu dur avec eux tant pis a fait preuve d'un cynisme appelé redoutable je suis persuadé qu'au départ ils ont voulu faire une immunité collective la même chose qui a voulu faire que vous pourriez faire les anglais 1 et qui bon on a voulu faire cette immunité collective voilà on va laisser tout doucement tout le monde se contaminer et quand même l'équipe on va
+
+21
+00:17:27,150 --> 00:18:02,460
+faire une barrière immunologique seulement dans leurs bons plans il ya eu un truc qui a déraillé ça a été le cluster dans le dans le haut rhin avec ces deux réunions en gnl et évangéliques qui a fait pschitt et qui a malheureusement été mais la balle est dans toute la france parce que les gens après être contaminées dans cette région ils sont partis un peu partout en france et là et la maladie est reparti et à ce moment là ils ont dû un peu changé leur fusil d'épaulé en prendre en compte qu'on allait avoir comme dit très justement se fit une saturation rapide des détails d'irlande vous rappelle qu au début de la crise une idée tout va bien on a family drea on tiendra le choc aujourd'hui j'étais plus on en est
+
+22
+00:18:02,460 --> 00:18:35,640
+presque à à plus de 10000 où nous avons habité par deux par trois le nombre de livrets a et ils ont dû changer un peu leur fusil d'épaulé alors on peut dire que normalement un général quand il établit une stratégie et bat exactement comme quand on joue au bridge pas tous les bridgeurs mais quand on fait un plan de jeu on doit se tenir à son plan de jeu si on déroge un peu de son plan de jeu c'est la catastrophe là on a l'impression qu'ils ont changé leurs plans au fur et à mesure des informations qui leur remontée est ce que je trouve très curieux et que je pense qu'on a comme des tamis secret j'espère que nous avons à prendre des thalys créer un peu costaud qui ont pu peut-être traîner un peu en chine pour
+
+23
+00:18:35,640 --> 00:19:10,410
+un festival qui se passait pardon et à ce moment là faire remonter des informations qui auraient pu un peu de me prévenir ou en italie or là que dalle rien du tout alors qu'est ce qu'ils ont tous et cette carte là parce qu'ils se sont rendus compte qu'ils aient pas de mac qui avait pas de protection et que notre système hospitalier était très chanson et qui risque est de 2 de s'effondrer et qu'on appelait le compliment ça j'étais pas si l'avenir nous dira où les historiens jurons dans dans 50 ans mais je pense qu'ils ont fait preuve au départ d'un cynisme un peu particulier en disant on va sacrifier quelques dents c'est pas grave ça va permettre à près de protéger d'une mélodie de profiter tout le monde
+
+24
+00:19:10,410 --> 00:20:00,180
+je sais et gaspard voulait dire quelque chose ça fait un moment qu'ils lèvent la main oui alors deux trois petites choses je vais essayer de pas partir trop en escalier forcément de suivre un ordre chronologique simplement concernant le conseil scientifique il me semble seul moi du coup j'ai commencé à vraiment mettre le nez dedans cette semaine là justement parce qu'en plus il y avait donc en france le premier tour des élections municipales effectivement qui a eu lieu donc le le dimanche le dimanche 15 4 14 mars en bref et beaucoup de gens ont dit oui mais voilà le conseil scientifique avait dit non quelques jours après une fois qu'on a été confiné et que on avait tous quasiment entre guillemets plus rien à
+
+25
+00:20:00,180 --> 00:20:39,690
+faire d'autre que de traîner sur les réseaux sociaux et d'échangés et du coup je suis allé je suis allé chercher en soi je suis allé voir en fait il s'agit d'un conseil scientifique alors peut-être que je me suis trompé que j'aie mal lu sophie su rectifier un peu d'être m le conseil scientifique n'a pas dit c'est ok pour maintenir le premier tour des élections municipales ils se sont plutôt montrés réservés là dessus en disant si le choix politique qui est retenu est celui de maintenir ce premier tour des élections municipales alors il faudra apprendre tant que telle et telle mesure qui d'ailleurs n'ont pas été complètement respecté et sectaire c'est plutôt ça ce que le conseil scientifique à 10 au 12 mars
+
+26
+00:20:39,690 --> 00:21:26,160
+après voilà c'est normal que les scientifiques n'impose pas une une décision politique un sirh c'est toute la question aussi de la place et de la distance entre la mon sens mais je pense que je ne suis pas le seul à partager ça même ici la distance qu'il doit y avoir entre le conseil call scientifique et derrière la décision politique est de fait bon sur le plan purement politique de toute façon le chef de l'état français était de façon pris entre deux feux il ya des têtes d'affiché politique qui met la cde crié à la dictature si le premier tour des élections municipales étaient étaient annulés les mêmes qui dix jours après on crie au scandale puisqu'il y maintient des municipales assez génial d'observer
+
+27
+00:21:26,160 --> 00:22:10,950
+sa a faim il ya quand même des têtes d'affiché des municipales parisiennes qui qui je ne dirais pas de nom mais qui avait sur son twitter encore en fait vraiment la menace de cris à la dictature si c'était annulé et ensuite le scandale green scandale sanitaire une semaine après parce que les élections avec les noms daniel gagnier je vais prendre la parole donc parce que les auditeurs le prennent la prennent part dont isabelle à propos des signes qui auraient dû nous alerter nous dit que la construction de ce fameux hôpital en 10 jours en chine aurait dû nous alerter et il ne fallait pas tenir compte simplement des les chiffres jacqueline qui dit que non tout le monde n'était pas dupe certains voiliers voyez arriver cette
+
+28
+00:22:10,950 --> 00:22:55,140
+pandémie on n'est pas obligé de croire ce que l'on nous raconte on a aussi le pouvoir personnel de lire et de réfléchir il ya des questions qui arrive qui sont peut être lié à d'autres questions ou d'autres sujets daniel que tu va aborder donc je les garde de côté je le dis pour des gens ne vous ne vous inquiétez pas je n'oublierai personnes donc très clairement lé il ya il ya des gens et on en a vu et tout le monde dans la dans son entourage qui ont été beaucoup plus affûté sur les choses qui arrivent et maintenant comme tu as dit dans l'introduction c'est le monde d'après il ya une chose sur lequel je voulais revenir en france quand on a un problème sanitaire ont fait monter les gros hôpitaux en première ligne et début
+
+29
+00:22:55,140 --> 00:23:39,410
+février on a vu dans les journaux que les deux plus gros hôpitaux parisiens qui s'occupe de maladies infectieuses la pitié beaujon s'était mis en ordre de marche et que donc tout tiré ce que c'est de ces deux gros hôpitaux étaient là on n'a pas parlé aux médecins généralistes on n'a pas parlé aux hôpitaux périphériques comme si par rapport à une crise sanitaire deux hôpitaux à paris pouvait suffire pour prendre en charge la population et là on arrive quand même dans un dé travers français ont fait monter les généraux en première ligne et finalement les fantassins qui étaient les médecins généralistes et et on sait très bien que dans l'est le personnel soignant était un petit peu nu quand l'épidémie est abîmée on s'en
+
+30
+00:23:39,410 --> 00:24:20,480
+est pas du tout occupé comme si on partait du haut pour aller vers le bas au lieu de former la lal la masse des médecins généralistes qui aurait pu faire un tri qui aurait pu remonter les alertes on leur a dit vous inquiétez pas on a des gros hôpitaux qui vont gérer hélas pour le monde d'après faut quand même se poser la question de si c'est bien comme ça qu'il fonctionne mais alors justement justement ça me permet de fanon de faire le lien avec avec la deuxième question est ce qu'il ya des bonnes règles et des bonnes pratiques en termes de communications médicales est ce que les par exemple ici on n'a pas requis elles sont émises par les deux médecins généralistes et les médecins généralistes qui sont trois
+
+31
+00:24:20,480 --> 00:25:09,980
+plus de 300000 je crois en france 300 330 milles en miroir des formules 3000 général 500000 généraliste vous est représenté par un ordre des médecins [Rires] on va peut-être laissé avec les années on a dit sans censure pour pour rebondir on se qualifie et c'est tout à fait juste et que normalement on aurait dû appliquer la technique de la digue c'est à dire peut retenir les digues étaient exactement quand il ya raz-de-marée la première dit détient en lui la deuxième la troisième on aurait dû mettre les généralistes pour première ligne mais vraiment en première ligne nous on nous a laissés partir au combat alors monsieur macron c'est la guerre la guerre dans des parties d'abuser de vide et la cartouchière vide c'est à dire
+
+32
+00:25:09,980 --> 00:25:45,620
+protection donc quand je dis qu'on est parti à poil on est parti à poil et nous ces petites choses mais nos infirmières libérales qui ont été alors je le dirai jamais assez mais exceptionnelle elles n'ont jamais trahi le serment de florence nightingale elles se sont dévoués corvéable elles n'ont pas eu peur d'entrer dans des maisons qui étaient remplis de co vide alors qu'elles avaient des masques en papier et de papier toilette ou des tissus avant qu'on commence un peu à leur fournir des détenus à peu adéquat nous on a été complètement ignorés c'est à dire qu'on n'existe pas on nous a dit et alors tu es un ami le docteur benaïche de paris qui a trouvé cette expression que je dis c'est la technique
+
+33
+00:25:45,620 --> 00:26:24,290
+du 3d la 3d c'était domicile dodo doliprane et qui va le dire aux gens docteur ça va alors naturellement ça a changé au départ les gens bien quelqu'un tient près de nous appeler mais nous on avait comme consigne de dire prenez du doliprane pour les syndromes grippaux et si ça va pas vous faites le 15 donc on a vu des gens qui nous ont appelés dans des états respiratoires épouvantable et quelques jours plus tard on les retrouve dans le journal donc dans les avis de décès c'est quelque chose de très difficile pour nous parce que moi je suis les patients depuis 25 ans maintenant pour forcément on tisse avec eux une relation amicale et empathique est très forte et de se retrouver dans une situation de médecins
+
+34
+00:26:24,290 --> 00:26:59,480
+et n'avoir aucune consigne les héros à écouter si on est à la guerre comme à la guerre on est comme les médecins de trancher il faut qu'on a promis d' or et qu'est ce qu'on nous reproche c'est notamment ce que le conseil de l'ordre vous reproche c'est d'avoir un produit d et d'avoir essayé de de trouver des solutions je dis pas accédé bonne solution dans la lignée de parer au plus urgent il se trouve que des quelques résultats positifs alors maintenant on nous allègue que ta santé des gens qui dirigent tout seul et ça encore c'est une communication que je trouvais désastreuse parce que oui il ya des gens qui dirigent tout seul sans trop de bobos ya des gens qui finissent au réal mais aussi les gens qui traversent
+
+35
+00:26:59,480 --> 00:27:39,890
+l'orage du duc au vide d'une manière épouvantable aider des gens de 35 45 ans à des gens très vieux ils sont obligés de dalé de leur canapé jusqu alors c'est la manger c'est un calvaire tellement ils sont essoufflés donc on peut pas laisser quand même souffrir les gens en faisant rien la communication était terrible parce qu'elle vient que d'en haut regardez sur tous les plateaux de télé il y avait qui que des grands pontes est vraiment l'art mexicaine ils sont tous là un tous les grands généraux en train de raconter douste-blazy en première ligne période le seul qui a un peu grâce à mes yeux tu trouve très bien des cyber dorée de néphrologues de l'attique et mais les autres tu as été grotesque peron qui
+
+36
+00:27:39,890 --> 00:28:21,860
+avaient la larme à l'oeil douste-blazy qui veut faire l'apologie des dropkick au rocking on a bien l'impression que qui veut absolument un portefeuille celui là le verront et c'est quand même la vienne première fois qu'on assiste à cette vague de communication voire même d'anti communication qui part comme ça dans tous les sens mais des municipales le problème de la médecine comme de la religion doit rester dans des cénacles la religion on doit pas on va pas trop en parler les gens croient ils vont à l'église on doit pas trop à la raconter la médecine fait pareil à partir du moment où on a mis au débat public nogué guerres intestines parce que faut pas se leurrer des médecins entre oui chers confrères cheikh amine écrasante
+
+37
+00:28:21,860 --> 00:29:06,080
+majorité se détestent parce que vous mettez quatre médecins devant abattent un malade vous aurez 4,4 des motifs différents ce piteux pas me contredire et là on l'a mis devant devant la la la france entière et ça a été terrible parce que des gens pensaient qu'il y avait une forme d'unité à créer une union sacrée du corps médical et là ils sont rendus compte que les bains tirer dans les pattes taipei a quitté rim je crois que là là on est peut-être des partis très loin si on reprend sur sur la question initiale c'est notre job de qui d'informer les médecins et de les préparer et les mettre en ordre de marche on a une structure en france qui sont les ars à l'enjmin de santé qui gère au niveau territorial des bassins de vie
+
+38
+00:29:06,080 --> 00:29:49,140
+dans lequel ils savent très bien ce dans lequel il ya des hôpitaux le niveau des hôpitaux se les endroits où il n'y a pas suffisamment de médecins bien désarmée ça les ars elles sont capables de prendre leur téléphone pour prévenir quand il ya un problème là ça a été la paralysie totale puisque on avait dit on au patient vous faites le 15 et c'est le samu qui gère samu il a bien évidemment été débordée au bout d'un an les hôpitaux pareil les patients avait peur d'aller à l'hôpital pour autre chose parce que risque est chopé le coc vite s'il n'avait pas eu et sur ceux arrive donc la polémique du grand professeur qui nous dit mais vous vous inquiétez pour rien moi j'ai le traitement miracle est dans sa première
+
+39
+00:29:49,140 --> 00:30:31,470
+communication il explique surtout elle évite en acheter parce qu'il y en aura pas pour tout le monde et là on arrive dans la société du spectacle c'est à dire les cinq minutes de gloire mais c'est plus de la médecine et quand après on a les informations qui arrivent avec des études qui commencent à sortir et on s'aperçoit que les études n'ont rien à voir avec la politique spectacle et avec ce qu'on vendait et la médecine c'est pas le spectacle la médecine c'est la recherche médicale c'est vraiment des boulots de de taschereau on avance petit pas par petit pas mais on avance cancérologie les progrès ont été incroyables mais sur trente ans donc des gens une population qui a peur des médecins qui sont
+
+40
+00:30:31,470 --> 00:31:12,450
+désemparés parce que il n'y a pas de collectif pour faire avancer tout le monde ensemble des hôpitaux débordés et arrive le voilà et arrive le médicament miracle et tout le monde se met dans le truc et là ça a été très très compliqué on était vers le 20 23 mars de dire attendez on peut pas donner un traitement qui a pas de preuve d'efficacité avec des effets secondaires avant d'avoir commencé à réfléchir à ce qu'on pouvait faire pour nos patients avec des molécules qu'on connaît éprouvée et c'était la position de jean jacques et de ses collègues il ya des molécules qu'on connaît pour les pathologies pulmonaires qu'on peut éventuellement donner en préventif quand on craint une surinfection il ya
+
+41
+00:31:12,450 --> 00:31:49,560
+des bronchodilatateurs on a su très vite qu'il y avait des problèmes de coagulation on a de l'héparine est donc déjà se poser et réfléchir à la pratique médicale à ce qu'on connaît tout le monde a zappé cette étape sauf quelques-uns et qu'on calcule et quelques habitants on a quand même un peu des résultats à ce moment là le conseil de l'ordre qu'on n'avait pas vu mais qu'on voit jamais un sas et c'est pas un scoop d'un coup arrive avec son gros bâton dix ans n'est pas loin de faire ça on a juste envie de leur dire mais où vous étiez depuis moi et donc on était très très en colère alors sur les réseaux sociaux on ya beaucoup et et moi j'ai été contaminé par une patiente comme dit jean jacques
+
+42
+00:31:49,560 --> 00:32:30,750
+j'avais que ça à faire lang a spa et là là le manque de culture de nos collègues médecins sur qu'est ce que c'est que la recherche médicale faut se reposer la question de nos études médicales il faut se reposer la question de la certification des médecins si on veut construire le monde d'après on a quand même un certain nombre de questions et de problèmes à avancer pour que l'on soit plus à nouveau dans un bazar comme ça qu'en dise on aura peut-être encore une épidémie il faudrait être un tout petit peu plus près au niveau intellectuel déjà alors parfaitement raison parce qu'on l'a été moi j'ai vu débarquer des gens dans mon cabinet et qui donnait du plaqué lille je veux du placard je veux je veux je
+
+43
+00:32:30,750 --> 00:33:08,790
+veux déjà non fait et deuxièmement il y en avait pas dans les pharmacies il est il est réservé qu'aux lui pique alors moi je me suis beaucoup métier diderot suis tranquille parce que j'ai une très grosse activité de médecine interne et sur les quatre ou cinq cupic que je suis regardé à 4 90% ont quelques vides donc que le que le plaquer me protège j'ai des sérieux doutes en revanche en revanche il a suffi d'une chose qui est très intéressante et qui est une molécule donc appel a dit robin que je prescris au long cou parce que j'ai une clientèle de patients qui ont des bronchites chroniques et des anciens mineurs dans les poumons sont sont rongés par la silicose et il y à des défis des papiers des publications de
+
+44
+00:33:08,790 --> 00:33:44,310
+sociétés savantes qui disent qu'on peut prescrire des antibiotiques au long cou de manière un peu préventive à paris les natures antiviral et d'anti-inflammatoires haut niveau au niveau respiratoire or mes patients qui étaient sous un titre homicide ne faisait pas le vide ou alors des formes excessivement petit stand automatique donc très peu de symptômes en revanche lors des 12es l'unissant réa donc les deux étaient contaminés forcément mais lui alors qu ils s incident respiratoire que généralement hypertendus diabétiques obèses voilà le tableau de de l'homme de carte de 81 ans qui a plein plein plein d'enquêté dans l'huile avait rien du tout forcément on se pose des questions et quand on doit choisir and
+
+45
+00:33:44,310 --> 00:34:25,619
+antibiotiques pour traiter une personne qui a une une infection respiratoire lorsque c'est le cas des collines il y avait des affections respiratoires on april a dû trop vite il est là au terme arona remarqué qu'au bout 3 4 jours les symptômes s'arrêter encore une fois on s'interroge donc on a fait une communication dans la presse grand public mais pour une raison simple c'est que déjà on était saoulé par le débat hydroxy coquines ou rien on a voulu montrer attendait il existe une troisième voie explorée la diplomatie donc on a fait un papier qui est très prudent mais excessivement ont marché sur des sur des oeufs en disant attention il nous semble qu'il ya des améliorations donc on aimerait bien que
+
+46
+00:34:25,619 --> 00:35:04,290
+cette molécule soit testé ça a été notre uniquement notre notre démarche n'a pas du tout une démarche marseille aides en 10 ans d'ailleurs péremptoire fin du game on a trouvé la baule itunes on va guérir tout le monde on a chuté prétention et là il ya eu un truc terrible c'est que je me suis fait mais exploser la tête par sur les réseaux sociaux et ça a été très très loin et d'ailleurs il ya deux plaintes qu'il a déposées à la licra et au bureau de signalements en contre l'antisémitisme c'est qu'on me renvoyer le code du rabais sur les expérimentations humaines je m'appelle pas du pont donc la personne qui l'envoyaient savez très bien et qui n'en voyaient et c'est un confrère un jeune confrère
+
+47
+00:35:04,290 --> 00:35:48,119
+donc ça a été quand même assez fort on nous a traités de la façade charlatans de zozo un jeune confrère en deux mots absolument oui tout simplement on a émis une hypothèse dans dix ans on a remarqué ça parce que la médecine pour moi et aussi la force de la science de l'observation en prescrivant une maudite ud dans son mm dans son indication on a remarqué qu'il se passait quelque chose on demande d'étude alors là c'était expérimentation sauvage bla bla bla bla enfin on t che massacré l'a dit robin tu as coûte 8 euros et coûte pas très cher et comme l'a dit un une deux une deux mais à mes confrères avec qui on a on l'apprendra communiqué imaginez que les études qui sont lus actuellement ce soit
+
+48
+00:35:48,119 --> 00:36:31,130
+aux états unis ou en france sur ladite remis sine en emprise au prix seuls 2 donc en monothérapie montre quelque chose on a su un gay l'économie mondiale pour un truc qui coûte 8 euros bon maintenant je ne veux pas préjuger des résultats mais enfin on nous sort des molécules à 900 euros machin truc des choses compliquées alors que peut-être il suffirait de prendre le problème un peu en amont mais comme la médecine générale n'existe pas en france on n'écoute que les grands patrons bah écoutez on vous début pas nous on est les dodos voilà daniel dos avant de avant de rebondir sur ce qu'a dit docteur erstein sur des traitements qui coûtent peu cher au lieu de dépenser de faire en l'air et l'économie
+
+49
+00:36:31,130 --> 00:37:08,180
+parce que d'autres médecins on va dire quand un statut plus prestigieux ont dit pareil pour d'autres molécules dont il ya moyen éventuellement de faire certaines comparaisons je voudrais juste revenir un petit peu en arrière parce qu ils font des missions à lui tout seul les zozos on n'arrive pas à les interrompre paiement qui sont passionnants non ils ont dit quelque chose d'extrêmement intéressant ils ont dit jean jacques a dit quatre médecins 4 ou 5 diagnostic différent et donc je voudrais rebondir sur ce que lui nous nous a dit l'une de nos auditrices mais en posant une question agace par agreste je reste à voir gaspard en tant que citoyen lambda comme vous avez été décrit est ce que avec tout ce qui a été
+
+50
+00:37:08,180 --> 00:38:01,760
+dit tous ces médecins médiatisé toutes ces recommandations qui part dans tous les sens est ce que on a perdu aujourd'hui confiance en la médecine est ce qu'on est pas du confiance en son propre médecin traitant alors est ce que c'est une généralité affaire est ce que l'on peut dire que tout le monde a perdu confiance dans son généraliste je suis pas sûr je suis un citoyen lambda mais moi j'ai plutôt confiance dans mon généraliste éventuellement dans la pédiatre et qui s'occupait de l'enfant même si parfois elle tient des discours un peu une border border pseudo médecine mais voilà enfin sur sur le reste je crois que ça l m'a l'air plutôt est ce que est ce qu'il faut faire il faudrait je sais pas s'il
+
+51
+00:38:01,760 --> 00:38:51,690
+existe une enquête d'opinion sur le sujet ça pourrait être intéressant en matière d' enquêtes d'opinion on en a vu une circuler justement il ya quelques semaines déjà qui avait été lancé par parisien l'ifop l'ifop pour le parisien qu'il ya des façons un institut de sondages français donc pour la rédaction du parisien sur en fait la lide roxy curieux qui la question c'était pensez vous que l'hydroxyde pure routine est efficace dans la lutte contre le coc vie de 19 et on avait quand même 59% des français qui disaient oui 21 % 20 % qui disaient non et 20% de français quand même heureusement un franc un sondé sur cinq en tout cas qui répondait ce qu'il fallait répondre à savoir je ne sais pas puisque à l'heure actuelle afin à ce
+
+52
+00:38:51,690 --> 00:39:39,350
+moment là en tout cas on n'avait vraiment pas un niveau de preuve qui pouvait pencher d'un côté ou de l'autre par rapport à l'efficacité c'est quand même hallucinant qu'on interroge les français sur une question qui est technique et musicale vous savez en cuir serre on parle pas de foot mais en france on l'a on a on a posé la même question le même genre de question enfin il ya sur un autre sujet c'est pas du tout pour faire dévier attention ça c'est mon côté escaliers attention donc méfiez vous de moi par rapport à ça il ya un an ou deux je crois il ya eu le même type de sondage de mener sur l'énergie électrique d'origine nucléaire est la question posée aux français aux sondés en tout cas en france était dense et vous que
+
+53
+00:39:39,350 --> 00:40:18,240
+l'électricité est d'origine nucléaire participe au réchauffement climatique et on avait quand même la plus de 60% je crois de sondés qui répondait oui l'électricité d'origine nucléaire participe au réchauffement climatique la question était simple ça n'allait pas à ce genre et pensez vous que les déchets nucléaire pose problème pour des générations à venir c'était à ça c'était pas entre guillemets aussi complexe que ça c'était simplement sur en fait la réaction en jeu et ce qu'elle dégageait du cndd ou pas pour revenir à sur le point mais le plan médical on avait aussi une question comme ça avec un lourd sondage mené sur les vaccins et sur la sécurité des vaccins on avait quand même plus de 40% des
+
+54
+00:40:18,240 --> 00:40:56,140
+français c'était il ya peut-être quatre où cinq ans qui disait qu' il n'avait pas nécessairement confiance alors la question était la suivante c'était c'est vous que les vaccins sont sûrs et il y avait 42 ou 44% des français qui disaient non ne pense pas que les vaccins sont sûrs alors on peut pinailler on peut dire bah oui suivre le risque zéro n'existe pas donc ils ont raison de choisir au fond cette question mais il ya toujours la question qui devrait en fait primer sur n'importe quelle problématique et qu'on peut le demander et qu'on peut poser aux français ce à n'importe quelle question technique médicale vieux six mois en tant que citoyen lambda jarry la forge espèce de gymnastique est inhérente à l'esprit
+
+55
+00:40:56,140 --> 00:41:36,910
+critique c'est dire que n'importe qui peut le faire il suffit de savoir lire écrire et compter est bon a priori je crois que quand on rentre en coller au collège en sixième en france en tout cas en général les les élèves les adolescents où les pré-adolescents ils parviennent à manipuler ce genre d'opération simplement pour revenir à cette histoire de vaccins il y à la question de la balance bénéfices risques et c'est ça en fait qui devrait sauter aux yeux tout de suite avant de se dire oui non peut-être je ne sais pas c'est de renvoyer à la question du tout mais même qu'elle est là quelle est la balance bénéfices risques est de quel côté pestel bien sûr que le risque zéro avec la vaccination par exemple n'existe
+
+56
+00:41:36,910 --> 00:42:22,870
+pas mais la balance bénéfice-risque baisse largement en faveur de la vaccination et des bénéfices de la vaccination voilà peut-être une interruption infantile merci les gars soient juste juste pour pour rebondir sur ce que vient de dire n'est ce pas on a quand même un problème en france sur la formation scientifique des jeunes et des moins jeunes et les études scientifiques sont des lycées et on se rend compte qu'il ya beaucoup de gens qui ne maîtrisent pas une notion toute simple qui serait simplement la proportionnalité donc ça ça pose quand même un problème ensuite le problème de la balance bénéfice risque là on paye l'école de médecine française ou quand même jusque dans les années 70 80
+
+57
+00:42:22,870 --> 00:43:05,730
+les médecins s'étaient quasiment dieu il savait avec une relation avec les patients extrêmement paternaliste et la réflexion sur le médecin qui sait et il doit vérifier ses connaissances dans la littérature scientifique et avant de prendre la décision il doit discuter avec son patient de cette balance bénéfice risque elle arrive au début des années 90 avec l'évidence based medecine et c'est pas encore quelque chose qui est passé tout à fait parmi nos plus anciens les médecins qu'on a cité tout à l'heure qui venait sur les plateaux nous expliquer comme la chloroquine c'était bien ils sont plus médecins ça fait des années qu'ils ont plus une médecine et l'évidence based medecine ils connaissent pas la littérature
+
+58
+00:43:05,730 --> 00:43:50,430
+scientifique c'est pas un blanc-seing ce pas parce qu'on a montré dans une étude qui est un médicament fonctionne dans cette étude il fonctionne a priori un petit peu pour la population étudiée et nous on doit soigner ce patient qu'on a en face de nous et le job du médecin c'est bien de faire la part entre ce qu'il a appris son observation son examen clinique les données de la science pour ensuite discuter avec son patient ce patient la particulier de la balance bénéfice risque pour lui et ce schéma-là de pratique de la médecine on a certains confrères qui ont sont très très loin ils ont une la molécule qui marche et qui va sauver le monde mais la médecine en 2020 c'est plus sain alors moi moi jusque allemand mais oui
+
+59
+00:43:50,430 --> 00:44:40,380
+jean-jacques l'environnement dit rapidement sur ce que dit y'a pas sur les avant c'était le café du commerce a fait aujourd'hui de café du commerce mondial internet c'est à dire qu'au lieu d'être à 4 5 e en train de picoler dire tous des pourris tas sans bla bla bla bla là maintenant ils sont des millions de gens à converger dans cette même dans cette même semaine est planté mais ça sont tocqueville qui était pas grand historien raison l'histoire état est aguerri de tableau où il ya un original et que des copies ils ont refait exactement les choses qui ont pu se faire garder dans les périodes des plus terribles de notre de notre histoire regarde ce qu'on a dit au départ que c'était un complot sioniste encore une
+
+60
+00:44:40,380 --> 00:45:20,310
+fois toujours leur part les ulémas ti illuminati les sionistes la bla bla bla parvient toujours parce qu'il ya toutes les vieilles peurs en train de se réveiller et c'est facile dans une part d'une crise majeur et qui est très grave qu'un thaumaturge un gourou se dresse et dire suivez-moi moi j'ai la solution regardez ce qui s'est passé alors toutes proportions gardées naturellement en 1933 en allemagne c'est que quand quand c'est la panique il suffit que quelqu'un parle plus fort et il est propre haine dans le sens du poil mais imaginez ces gens à qui on bon des images des gens à tubes et sur le ventre on dit c'est grave ouh là là vous pouvez mourir attention des sciences méfiant etc at il dit en
+
+61
+00:45:20,310 --> 00:46:03,030
+plus je prends pas de souligner a dit bill j'ai la solution miracle moi c'est la fin du jeu je sais ce qu'on peut faire il faut le prendre c'est scandaleux les vu combien à la pétition de douste blazy a récolté signature il ya cent mille personnes qui ont signé il avait mis la maison blanche un pour l'occasion ah ouais ap ap acheté 1 ap hp entre at-il ajouté mais non non mais là on attend le gala on l'a envoyé loin loin loin loin dans le nouveau monde vice-président au garde du secrétaire général de l'onu parce que voilà athées et des petits pions le seuil de peters ils ont atteint leur niveau d'incompétence ils sont allés très haut très haut très haut puis à un moment qu'elle est alors voilà il ya le
+
+62
+00:46:03,030 --> 00:46:53,810
+syndrome de peters et puis et puis moi je ferais référence aussi à l'expérience de milgram où on a vu que manière quand on met une blouse blanche ont fait passer une autorité qui détient le savoir et qui dit voilà c'est comme ça oui c'est très bien mais l'autorité enfin l'argument d'autorité l'argument de la bri blanche pas vraiment ccd choses objectivement qu'on a vu à l'oeuvre douste-blazy quiron finances admise blanche le gars mais pardon mais quelle blague et puis avec qui il est allé faire le malin quoi avec peron père en garde les personnes qui est quand même aussi dans le genre marchand marchands de solutions maladie de lyme est ce la rue nature juste juste une petite remarque justement par rapport à ce que
+
+63
+00:46:53,810 --> 00:47:43,369
+j'aurai une question d'ailleurs c'est que il ya tout un truc sur en fait le marché de l'information moi la première fois que j'ai entendu ce genre de terme c'était avec gérald bronner qui est un sociologue et qui a fait un très bon travail il ya des années déjà de vulgarisation sur le sujet quand ils travaillent sur les croyances les rumeurs etc depuis une vingtaine d'années et est pour moi un de ses livres phares c'est le seul livre qu'il a appelé la démocratie décret d'une d'expérience 2013 et qui est très intéressant et il dit notamment que les croyants et forcément les plus radicaux mais bon les plus radicaux c'est peut-être ce qui gueulent le plus donc plus donc au café du commerce mais sur les réseaux sociaux ils ont une
+
+64
+00:47:43,369 --> 00:48:28,699
+facilité que derrière les gens plutôt rationnel rationaliste qui les esthéticiens ceux qui font preuve d'un minimum tous les citoyens lambda qui font preuve d'un minimum d'esprit critique on peut avoir beaucoup de mal à démonter parfois des espèces de millefeuille argumentatif complotistes ou pas mais peu importe dit souvent des trucs infondées ou des soupes fondées parfois mais qu'on met en corrélation et qui créa du sens facile et gratuit et dans lequel en fait notre esprit d'homo sapiens vers lequel on fait notre esprit d'homo sapiens se précipitent parce que c'est la pente une pente peu honorables comme dit brodeur justement et que et qui est facile à prendre mais par rapport à cela il ya ce truc de la motivation c'est à
+
+65
+00:48:28,699 --> 00:49:10,069
+dire que le croyant radical va être finalement parfois ontologiquement même je dirais il va y va il va réagir tout de suite il va avoir un discours hyper rodez et le mec dit j'en ai rien à j'ai rien à perdre parce que je sais que c'est vrai parce que c'est son référentiel de réalité qui est peut-être différent de ceux de la majorité des gens mais pour lui tout est logique nous ça nous paraît aberrant c'est vraiment je vais prendre je faire un parallèle qui va vous paraître douteux ou fumeux mais avec le terrorisme en france notamment en 2015 avec tout ce qui a pu se passer enfin à partir de 2015 et encore même récemment à chaque fois même dans le marché le marché de l'information lui-même traite l'information que c'est
+
+66
+00:49:10,069 --> 00:49:57,099
+l'oeuvre d'un déséquilibré sont des gens qui étaient complètement fou mais non dans les faits à chaque fois qu'on regarde qu'on a accès éventuellement c'est toujours le cas a en fait une espèce d'analysés psychiatriques ou non du terroriste événements ils sont ils sont pas fous ils ont juste à référentiel qui est très différent et dans lequel tout s'inscrit dans une certaine logique avait des des documents assez glaçant je me souviens que quelques temps après les attentats de charlie hebdo de l'hyper cacher à paris l'élu janvier 2015 il y à un document qui avait circulé et de la bfm une chaîne d'info en continu française et qui était en fait une conversation entre coulibaly le terrorisme le leader cacher et ses
+
+67
+00:49:57,099 --> 00:50:39,670
+otages ceux qui n'avaient encore pas tué en tout cas et le discours du gard c'est du complotisme de base mais qui est hyper serein il vient de dégommer 10 personnes mais il est hyper calme les personnes et il explique tranquillement son référentiel sa réalité voilà les attentats du 11 septembre de toute façon c'est à israël et avec la cia etc et pour lui c'est les cool il sait ce qu'il fait là non mais moi je sais ce que je fais là n'était pas énervé pareille avait un enregistrement téléphonique entre un journaliste et les frères coup achi qui est lorsqu'ils étaient retranchés dans cet accord est pareil les gars sont hyper zen le journaliste dit mais vous avez tué des innocents et dans leurs référentiels
+
+68
+00:50:39,670 --> 00:51:14,709
+et nous on n'a pas de fils innocent réfléchit bien à ce que toi le journaliste sur me poser comme question est ce que tu crois vraiment pas tuer des innocents maman je dérive un petit peu mais vous voyez c'est à dire que la rénommée cesse et c'est bien vous êtes un sérieux retard à la mêlée ça me permet de faire le lien avec la question suivante qui est la communication des relais d'information institutionnels et grandes chaînes de télé les grands journaux on a l'impression qu'ils sont sans cesse à la recherche du scoop permanents et donc après ils relaient tous types d'informations qui sont des sûr relayé par les réseaux sociaux du type mais c'est le virus si mu en trois quatre ou cinq fois du type deuxième
+
+69
+00:51:14,709 --> 00:51:55,180
+vague pas deuxième vague tel traitement marche pas l'eau alors comment comment est-ce qu'on comment est ce qu'on y voie clair adopté le type de réponse on va prouver parce que je précise ma question quand on suit ce qui se passe sur les plateaux tv on voit des médecins on voit des professeurs des chercheurs dire tout et son contraire comment est ce qu'on y voie clair là dedans et les stars de télé des gens extraordinaires ce sont des gens qui leur pose une question sur un sujet qui la domine pas mais ils vont en parler pendant dix minutes ils vont te dire je ne suis pas spécialiste de la matière mais néanmoins et là ils sont partis pendant 10 minutes donc ils vont dilué 18 et diluée et c'est un peu ce qu'on a vu sur les
+
+70
+00:51:55,180 --> 00:52:32,710
+plateaux tv avec certains états il ya quelques virologues dont l'avis est important quelques l'infectiologue des urgentistes des petits pois bon bah j'aime beaucoup plus 20 parce qu'il a dit on a dit des choses il est saoul de cash et il a il paye tourne pas autour du pot pendant 25 ans il ya quand même un paquet de personnes qui sont obligés parce qu'on leur pose la question mais il ya des gammes expliqué heil a eu six ans les bêtises qui pouvait raconter le problème c'est que nous on a nos films et vous permettent de décoder de de décoder un peu la bêtise on sait très bien que tu as tes pas vrai en revanche le monsieur lambda qui n'a pas la formation médicale et la culture médicale qui va prendre ta ont de
+
+71
+00:52:32,710 --> 00:53:12,520
+l'argent comptant alors ça va vachement loin parce que là c'est un truc que j'ai pu passer cet après midi c'est un ami qui m'a fait suivre ce truc tu as créé que torreton après rappelons qu'à eu un reportage sur bfm avec la boîte torreton or quand on a montré les religions on a montré la kaaba on a montré rome on n'a rien montré dire comme si les juifs n'existait pas ça c'est un truc que moi j'avais remarqué il ya certaines personnes qui redescend dans tes normal passons les huit bla bla bla bla donc fait super missiaen faut être très très prudent avec tout ce qu'on peut dire parce que tout peut être interprété d'une manière ben alors à vous connaissez les systèmes du dos du téléphone à rabat on dit un truc et puis
+
+72
+00:53:12,520 --> 00:53:51,349
+au bout de la chaîne c'est complètement différent effet relayé relayée par les tolérer domine sur les plages on arrive ça commence à faire des plateaux personnes leur apporte la contradiction mais non parce que le même heureux personne n'en apporte la contradiction parce que le journaliste qui choisit ses invités il les choisit dans son sens à lui une pièce qui se vend quand même c'est le conflit c'est le buzz f cell sensationnaliste alors il y en a qui font comme moi j'ai jeté ma télé ya dix ans et puis il y en a qui regardent la télé le problème c'est que c'est vraiment je trouve l'échec de l'éducation france c'est à dire qu'on n'a pas formé les gens à se poser des questions quand on le ramène sur un
+
+73
+00:53:51,349 --> 00:54:34,309
+plateau une solution évidente oh ça va prendre du temps c'est à dire qu'être capable de décoder on a une journaliste je sais plus laquelle mais on la voit périodiquement sur la grippe à chaîne l'a dit que des conneries elle a dit qu'on avait acheté trop de mars avait coûté trop cher etc personne ne l'a relevé elle nous a fait le même coup avec le glyphosate ya pas très longtemps mais elle ne dit que des sottises et elle l'a vite jamais enfin elle quelqu'un qui a les connaissances ou la culture pour lui répondre parce que là on lui casse son coup on est dans la télé spectacle est celui qui fait le spectacle c'est le journaliste star et donc il veut inviter que des gens qui vont aller dans son sens il n'y a pas d'
+
+74
+00:54:34,309 --> 00:55:16,849
+espaces dans ses émissions là pour apporter la contradiction ou si on en met un qui en capacité d'apporter la contradiction au bout d'un quart d'heure qui se fait allumer par cinq six autres plus nuls les uns que les autres il dit je perds mon temps et il s'en va parce que c'est pas possible donc la question c'est comment on ralentit dans l'esprit des gens à partir de l'école à partir du lycée de la facom ont ralenti sa d'espèces d'accélération pour dire j'en attendais pouces est ce que c'est possible ce qu'on vous raconter ce que vous avez vérifié est ce qu'on vous aime est ce qu'on vous a donné des liens moi j'ai passé dix jours à mettre sur ma page facebook délia sur les études critiques de des
+
+75
+00:55:16,849 --> 00:55:53,170
+publications de raul et des chinois j'en avais aussi qu'ils étaient vraiment nul mais les gens ne vont jamais regardé les liens parce que là ça demande un effort en plus ses cris en anglais donc pour certains j'ai même fait des bouts de traduction j'ai traduit des pages entières pour les gens qui savent pas lire l'anglais mais attendez quand on vous propose une vidéo youtube de quatre minutes ou de lire trois pages moi je vais lire trois pages parce que la vidéo youtube elle me casse les pieds ça va trop lentement et la majorité des gens ils vont regarder la vidéo youtube et sa sa forme pas forcément l'esprit critique à part les vidéos de gaspard mais bon le reste on en a pas eu beaucoup qui
+
+76
+00:55:53,170 --> 00:56:37,030
+forment à l'esprit que je suis en algérie je vois d'autres il y en a eu plein d'autres sur le sujet 500 vues par vidéo il ya tout à il ya tout un monde irait jauge il ya tout un panel de chaîne youtube qui font de la très bonne vulgarisation scientifique et qu'il faut absolument qu'il faut absolument consulter il faut se méfier de certaines qui font qu'ils en profitent aussi éventuellement pouvoir pour faire un peu et je voulais juste rebondir pour finir aussi vite être là dessus sur l'histoire du marché marché collective qui est donc le marché de l'information et en fait souvent on dit ouais c'est la faute des médias qui ont menti et c est tout ça ou qui on dit n'importe quoi bon je parle pas de ceux qui invitent
+
+77
+00:56:37,030 --> 00:57:15,369
+pas de contradicteur par exemple ça c'est autre chose qu'on peut aborder d'ailleurs c'est lorsque le csa va se défendre d'avoir respecté toutes les opinions par exemple d'avoir invité un pro vaccin antrim et impro vaccin est un anti vaccins et bien c'est bon j'ai respecté on a respecté toutes les opinions pourquoi vous nous emmerdent embêter pardon pour ce programme puisque toutes les opinions étaient respectées comme si en fait ça enfin unis n'ont rien à faire de ce que dit le consensus éventuel l'éventuelle consensus scientifique sur une problématique et de fait ils s'en fichent de savoir que 99 9% des à des analyses sur la question de la vaccination franches pour la vexation bref donc là dans ce coup on a un pro et
+
+78
+00:57:15,369 --> 00:57:58,599
+anti vaccins et puis il ya pour eux c'est ok quoi donc juste de revenir sur marché cognitif sur le marché de l'information l'occurrence précisément ce qui se passe c'est que nous sommes nous mêmes usagers d internet comme on dit des réseaux sociaux nous sommes nous mêmes un facteur nous prenons part à ceux à ce marché de l'information c'est à dire que l'offre ce sont les médias et éventuellement même les réseaux sociaux les chaînes youtube etc qui vont la fournir bien sûr mais ils répondent à une demande et c'est très intéressant de regarder par exemple un analyseur de tendance comme google trend alors si on va sur google trend et cherche chloroquine hydroxy chloroquine autour du 20 au 23 mars mais
+
+79
+00:57:58,599 --> 00:58:40,780
+vous voyez le truc qui explose moi j'ai fait le test il ya une quinzaine de jours sur la prévôté là n'est ce pas cette bactérie dont apparemment on avait vanté éventuellement les mérites préventif ou curatif je sais plus d'ailleurs par rapport aux qu'ovide bactéries intestinales et c est et de fait il y avait un article plutôt sérieux sur je sais plus quel site internet qui fait de la vulgarisation scientifique ou qui prétend faire non pardon je suis désolé j'ai pas la science d'accord avant qu il y avait un gars d'en face il y avait pas un truc genre futura-sciences qui avait regagné quelque chose là dessus alors qu'ils avaient relié en connais je sais pas il y avait une rousse a semblé plutôt
+
+80
+00:58:40,780 --> 00:59:20,470
+sérieux et ça parlait d'une étude chinoise qui alors moi pour l'heure j'ai pas non plus cherché à trois jours mais je n'ai jamais trouvé cette étude et je connais personne qui a trouvé cette étude qui vont t'aimer donc de cette bactérie mais donc moi j'ai fait ma petite recherche fait d'être en groupe recherche et de fait je suis allé sur google trend aussi pour voir la tendance autour de la prévôté là et vous voyez que autour du 8 avril le moment de la parution de l'article salle wef il y avait quelques clics de plus que d'habitude mais le boom ces huit dix jours après quand sur les réseaux sociaux il ya un texte qui est partagée massivement par plein de gens qui le met en accès public donc tout le monde
+
+81
+00:59:20,470 --> 01:00:05,620
+vraiment fait un effet de dominos et relais le truc à texte purement militant pour rien à voir avec l'article même d'agoravox était jean oui voilà on a cette solution là mais vous inquiétez pas les gouvernants les services secrets vont faire taire ceux qui ont trouvé ça comme le professeur raoult qui lui a la solution parce que derrière c'est quoi c'est les intérêts de big pharma avec l'idée de vendre un vaccin qui vend plus nous empoisonner nous mettre une puce électronique avec de la 5g enfin j'exagère à peine le contenu du message c'était trois lignes un moment donné ça mais c'était vraiment ça au milieu de tout un paquet de trucs mais justement où justement crédit le rôle des big pharma ce binz alors c'est quoi alain jeannois
+
+82
+01:00:05,620 --> 01:01:01,370
+temple et donc yann mot big pharma c'est nul allez on pharmaceutique s'est pas c'est pas ils ont besoin de gagner leur vie il nous amène des molécules ils gagnent leur vie alors après à la marge effectivement on sait très bien qu'il ya des choses qui n'ont pas lieu d'être en termes de publicité et de vente quasi forcée la france a bien à bien régulé ça avec l'interdiction des visiteurs médicaux l'obligation de faire des études pour être l'obligation de mettre les données en public pour qu'on puisse évaluer l'arrivée des nouvelles molécules il faut bien se rendre compte que tout la médecine de recherche a besoin de l'industrie pharmaceutique parce que on a des molécules qui coûte extrêmement cher et pour lesquels personne ne peut
+
+83
+01:01:01,370 --> 01:01:42,940
+payer ces molécules au moment où les expérimentaux moment on les teste donc la recherche clinique elle se fait bien évidemment avec les firmes pharmaceutiques mais on peut mettre une éthique de dire à partir du moment où on travaille avec une firme pharmaceutique on est acheté on n'est pas payé quand on fait des études la seule chose qu'on a c'est la molécule gratuitement pour nos patients qu'il ya eu des abus je n'en disconviens pas mais là on arrive quand même à des choses relativement tranquille sur le test des nouvelles molécules je vais parler encore 0 parce que c'est mon domaine ans quand ses romans des études avec l'industrie pharmaceutique qui nous permettent de payer les études académiques
+
+84
+01:01:42,940 --> 01:02:27,200
+il faut pas il faut pas faire d'angélisme les partenariats bien conduit où les gens se met pas l'argent dans la poche parce que ça c'est quand même de plus en plus rare enfin en tout cas pas dans les centres de lutte contre le cancer est pas dans les hôpitaux publics ça nous permet quand même d'avoir accès à des molécules pour lesquels on n'aurait pas accès si tous les tous les essais se font en angleterre en allemagne aux états unis nous on prend cinq à dix ans de retard dans l'évaluation des molécules pour les patients donc il équilibre alors justement justement j'aimerais qu'on revienne sur ses études cliniques qu'elle soit d'ailleurs clinique ou empiriques et qu'on revienne sur sur notre sujet aujourd'hui on parle
+
+85
+01:02:27,200 --> 01:03:18,200
+d'héparine d'asie trop micinn didot diderot chloroquine de plaques et nîmes ii reine des reines des sévir de tous il jubile humide risio milliards d'injection de plasma je veux dire là encore on part dans tous les sens est ce qu'on peut essayer d'y voir clair parce que le problème est que des gens sur les plateaux des médecins ont annoncé des choses sans savoir de certitudes clinique c'est-à-dire que quand par exemple car ils le craignent la comble que je respecte totalement la chef du service de maladies infectieuses je crois qu'elle est allée à saint-antoine annonce voilà on va faire idéal e coli place qui peut donner des bons résultats mais on dit des choses il n'y a absolument aucune étude qui a été
+
+86
+01:03:18,200 --> 01:03:56,030
+faite quand par exemple ce groupe d'intégristes de thenon qui sont des gens très bien sûr et certain que je connais ont remarqué qu éventuellement à la limite peut-être pouvoir la nicotine permettrait d'éviter d'avoir le coc vide tout simplement parce qu'ils se sont aperçus que dans leur famille de réanimation le pourcentage de fumeurs n'était pas est en décalage par rapport au pourcentage de fumeurs par tranche d'âge en france et on a fait la même la même remarque en chine et qu'on attente et qu'il avait donc eu une compétition sont les récepteurs et cetera et cetera mais il a donc ça alors que d'études a commenté kid à trois ou quatre jours et les gens se sont précipités dans les bureaux de tabac pour acheter des
+
+87
+01:03:56,030 --> 01:04:30,900
+cigarettes et on a dû mettre une alerte sur les patchs à la nicotine parce que tout monde en acheter donc oui les choses sont annoncés alors moi j'ai beau dieu moi je mette dans le même sac parce que j'ai bien dit que l'on avait trouvé que l'adie trouvé ce film donnait des résultats corrects je suis un peu exactement dans la même dans cette même logique sauf que là tu trouves is in est prescrite dans des infections respiratoires c'est pas fumer des cigarettes vous n'aurez pas le co lead nous on est quand même dans une sorte de bon sens par rapport à ça le taux si dumas ben c'est pareil le professeur de combes a annoncé que le politique et aux lectrices du mahb donner des bons résultats parce qu'ils ont fait des
+
+88
+01:04:30,900 --> 01:05:06,780
+tests précis mais avant même que l'étude soit faite là l'étude ont dit ah super bague magique on a trouvé le traitement et l'étude n'est même pas publiés il ya même pas de pré print encore on sait même pas ce qu'elle dit cette étude donc si vous voulez c'est encore une fois je suis d'accord les journalistes des chaînes des chaînes bfm c'est d'une des compagnies qui ont besoin un petit peu de nourrir d'information parce que franchement y'a rien dans le monde actuellement ou alors qu'il passe des choses on sait pas trop et nous exploser à la figure dans quelques mois et ils t'ont ils sont bien obligés de remplir un peu leur cadre et donc d'inviter des bêtas alors coûté des questions et puis peut-être par naïveté
+
+89
+01:05:06,780 --> 01:05:51,900
+je veux le croire il va faire plaindre qu'ils tombent dans le piège on pourrait voir les choses de manière un tout petit peu plus positif quand même il ya actuellement une coopération au niveau des équipes de recherche qu'on n'a jamais vu les plus grandes revues netscher silent vingt sept se sont mis en accès libre pour que tout le monde ait accès aux plus d'informations en même temps ce virus qui était inconnu il ya six mois on a réussi à démembrer le génome a or le 9 janvier cet effet donc cette coopération elle est extrêmement importante et elle est nouvelle et les gens travaillent ensemble avec le même objectif ce qui est sûr c'est qu'à moi j'ai l'impression d'être à nouveau étudiante en médecine en 85
+
+90
+01:05:51,900 --> 01:06:32,900
+quand on nous a fait la cyclosporine c'est à dire que tout d'un coup le médecin il a l'impression d'avoir trouvé le traitement miracle il prend pas toutes les précautions et il mène pas des études comme si on avait oublié 35 ans de recherche clinique est ce que tout le monde est aiguillonné par la peur tout le monde veut qu'on trouvera et puis parce que cette espèce de l'antenne tous les jours il ya eu 200 morts ya eu 600 voire iedm il ment jamais vraiment une pression terrible sur les gens qui font de la recherche la recherche ça prend du temps et ce temps là qui est quand même incompressibles il est obligatoire pour qu'on ne sortent pas des médicaments qui feront pire que mieux on a vu avec l'hydrochlorothiazide
+
+91
+01:06:32,900 --> 01:07:11,180
+chikungunya on a eu des patients notamment la réunion ça fait pire que mieux c'est molécule ya plein de choses qu'on connaît pas il ya plein de choses qu'on comprend pas on aura ans à petits pas la seule chose de certaine c'est qu'on a des patients qui ont des signes cliniques peut graver et on a une pharmacopée qui permet de les soulager je ne sais pas aujourd'hui personne ne sait s'il traitement que jean jacques et ses confrères ont proposé est un traitement symptomatique ou un traitement sur le virus lui même pour le moment on n'a pas les études qui permet en tout cas les patients vont mieux ça c'est pas mal c'est ça aussi la médecine maintenant on va on a trois maladies on a la maladie d
+
+92
+01:07:11,180 --> 01:07:51,109
+asymptomatiques qui contamine on sait pas on a la maladie des gens qui font des formes peu graves comme moi j'ai fait comme d'autres ont fait et qui peut effectivement être aidé par une pharmacopée on connaît et on à la bascule des formes graves aux formes très grave et c'est trois tentes différentes dans la recherche dans et dans la mise en route de traitement ce qui est important aujourd'hui c'est que ces formes graves ne bascule pas dans les formes très grave et des le plasma rnd et virer tous et toutes ces molécules qui ont des noms à coucher dehors on compte sur elle on nous faire avancer ce qui est important aussi c'est que là on va d confiné il va donc y avoir forcément des nouvelles personnes qui vont attraper
+
+93
+01:07:51,109 --> 01:08:35,210
+cette maladie qu'est ce qu'on a comme traitement symptomatique ou même étiopathe au génie qui vont permettre de les aider à aller mieux plus vite a pas basculer dans une forme plus grave que les études sont en cours il faut se donner le temps qu'il faut que les médecins arrêtent de se mettre sous le feu des projecteurs pas vraiment la cyclosporine vous vous êtes peut-être que jeune que moi mais moi j'avais 25 ans étudiante en médecine mais ça a été un drame on prenait l'engagement de faire quand quand quand vous avez une étude discovery telle qu'elle est menée et que les patients réclame la cyclosporine au lieu au lieu de reculer de 1,6 ils doivent se tenir parce qu'ils ont des arguments scientifiques ça la
+
+94
+01:08:35,210 --> 01:09:21,819
+discussion avec le patient quand même le coeur de notre métier si on n'est pas prêt à discuter avec un patient pour lui expliquer une balance bénéfices risques pour lui un patient cardiaque qui vient vous réclamez de l'hydroxyde chloroquine honnêtement vous avez tué ça n'a pas de sens impatient pas cardiaque qui a peu de signes dire c'est cette discussion a cessé sa métier de médecin c'est pas parce sophie donc sophie excusez moi mais c'est un fait pourtant que la laitue discovery a été ou est encore perturbée parce qu' énormément trop de patients n'ont pas voulu être traitée par une autre médical qui peut être est plus efficace que des trucs six taureaux kid et percuté une étude en double aveugle tel était ouvert et donc
+
+95
+01:09:21,819 --> 01:09:59,889
+les gens bien choisir voilà alors le problème c'est pas que avec les dentistes nous on a le problème aujourd'hui encore avec des patients qui est moi je suis radiologue mais joie tous mes patients les patients qui demandent mon oncologue il m'a proposé de rentrer dans une étude qu'est ce que vous en pensez parce que là le placebo pas le placebo et puis le professeur ai dit qu'on n'a pas besoin de statistiques sur un grand nord les gens sont perdus et c'est dégueulasse de leur avoir fait ça parce qu'il ya quand même la majorité des médecins qui font de la recherche clinique travail proprement et reste dans une éthique de balance bénéfice-risque au bénéfice du patient donc là on l'a vraiment on est reparti
+
+96
+01:09:59,889 --> 01:10:38,949
+comme il ya 20 ans et ce retard là c'est pour ça qu'on est si tellement en colère aussi pourquoi on n'a pas lâché les réseaux sociaux et pourquoi on y retourne pour expliquer aux gens pasqua il nous fait prendre 25 ans de retard et parce qu'avec avec son hyper super labo tous ses collaborateurs etc il n'a pas réussi à nous faire quelque chose qui nous permette d'expliquer aux patients la balance bénéfice risque pour ce patient particulier et ça c'est inacceptable donc là on va ramer on est parti pour 5 10 ans à ramer pourrait expliquer aux patients qu'est ce que c'est un soins de support qu'est ce que c'est un placebo qu'est ce que c'est un traitement efficace c'est quoi le risque pour eux et on perd 20
+
+97
+01:10:38,949 --> 01:11:27,040
+ans et on est fou de rage non mais tu l'as vu il ya un paquet qui en irak et qui va bientôt faire sortir qui montrent que l'hydro chloroquine peut être éventuellement la limite ça peut donner des résultats mais tu as tu eu bob c'est à dire que td d'autres qui font totalement toxique pour le coeur on va peut-être conclure avec la chloroquine sur les recommandations de la société française d'anesthésie-réanimation les chinois ont mis la crau keane dans leur liste de deux molécules à tester et puis le 12 15 mars sur les recommandations en compassionnel pour les patients que ce grave est hospitalisé en réel les protocoles de prise en charge inclus l'hydroxyte eurokin honnêtement si ça a marché depuis le 12 15 mars avec la quantité de
+
+98
+01:11:27,040 --> 01:12:09,880
+patients n'est pas qu'en france au brésil en suède partout on le saurait donc peut-être que ça marche sur un tout petit groupe de patients sélectionnés 65 à 68 ans que les hommes que ce groupe ce que ce groupe sangala que cette symptomatologie ça on le sait pas pour le moment donc il faut arrêter avec ce produit il faut attendre que la recherche clinique avance l avance très très vite et vraiment les lélés les sites internet maintenant où on met en commun où on essaye de produire de l'intelligence collective pour la recherche tu as dit qu'on devait parler de la princesse à la presse et oui la travailler ensemble des add d'aider des spécialités variées de poser le plus de questions possibles et
+
+99
+01:12:09,880 --> 01:12:55,389
+d'avancer ensemble et sans big pharma puisque ce sont des plateformes gratuites où on partage toutes les informations est ce pas oui j'aurais bien aimé e j'aurais bien aimé en fait le monde bien sûr deux trois petites choses mais là tout de suite dans les médias pour revenir sur la police a rejoint aussi un petit peu la question qui a été posée tantôt sur l'histoire de faire confiance à son généraliste ou pas le problème c'est qu'il ya aussi des médecins est actif sur les réseaux sociaux mais pas forcément hyper médiatisé et puis parfois complètement anonymes qui vont pas sur la lune sociaux ni rien qui vont dire mais moi j'ai été malade et moi je me suis prescrit de maxit urines c'est les témoignages que j'ai vu passer
+
+100
+01:12:55,389 --> 01:13:40,090
+ou qu'on m'a même transmis son message privé en zambie mais pourquoi tu t'attaques a expliqué raul puisque voilà regarde moi ces témoignages les deux amis médecins dans les alpes de haute provence qui m'ont dit qu'ils s'étaient eux-mêmes soigné à la chloroquine sauf que c'est toujours le problème 2 donner un truc alors que peut-être conquérir est de toute façon de la même manière spontanément comme ceux semble être le cas dans dans 80% des et encore même après a des problèmes c'est quand ça vient aussi ça atteint des couches un peu plus hot de la société où on me dit mais donc voilà un mois j'ai un compte dans les contacts qui est une sommité dentelle grand hôpital parisien qui me dit effectivement que raoult c'est un
+
+101
+01:13:40,090 --> 01:14:20,440
+ou en tout cas que vraiment il fait n'importe quoi et qu'il traîne la recherche à tout ce que l'on aime dire excuse est suffisamment appelé c'est que vraiment là il fait du mal à la recherche etc mais mais ce médecin ce ponte cette sommité dit enfin bon en attendant j'ai quand même fait un petit stock d'ide roxy chloroquine au cas où quoi enfin si moi je tombe malade en tout cas je prendrai biloxi coup de l'hydraulique le routine mais bordel alors d'abord déjà il ya une espèce de truc un peu paradoxal dans cette démarche et de la part de deux de ses médecins et d'autre part malgré tout c'est toujours pareil c'est à quoi peut-on se fier mais pas à une parole isolé aussi experte soit l on retourne à
+
+102
+01:14:20,440 --> 01:14:59,619
+l'histoire de l'expérience de milgram l'argument d'autorité qu'est la blouse blanche etc mais une parole aussi experte soit elles isolées elle n'a pas forcément une valeur est en tout cas pas une valeur supérieure là où il ya éventuellement un début de consensus pour revenir aussi justin à ce que disaient aussi sophie tout à l'heure par rapport à si je puis dire l'âge médiatique en tout cas et même dans mon milieu dans le milieu de la recherche médicale de ce virus effectivement il ya énormément de choses on apprend on en apprend finalement tous les jours et ce qui s'est passé et c'est aussi une par rapport aux décisions politiques elles se sont faites en prenant compte en tout cas de l'avis du conseil
+
+103
+01:14:59,619 --> 01:15:37,460
+scientifique par exemple pour la france et le truc c'est que effectivement les les données changent c'est à dire qu'au début on sait notamment calqué sur les virus grippaux nous aurons alors attention c'est les mômes pour ça qu'on a fermé les écoles en premier en tout cas en france n'est pas comment ça s'est passé dans les autres pays mais c'est les gamins qui qui en fait ils sont pas vraiment malades comme pour la grippe mais c'est son hyper ils sont hyper contagieux c'est eux qui refilent le virus aux parents dont il s'avère qu'avec le recul dont on n'est toujours pas vraiment sûr j'ai l'impression de de la contagiosité je me fasse connaissez vous le disait il ya quelque quinze jours disait que les enfants finalement
+
+104
+01:15:37,460 --> 01:16:12,110
+n'était pas du tout content à jouer et c'est maintenant on est un peu en train de revenir là dessus notamment suite à ce que le docteur dresden en allemagne a pu dire dans les médias allemands la semaine dernière en battant ils sont quand même une charge virale importante mais bon vu qu'ils crachent pas leurs coûts et qui crache pas leur gouttelettes partout finalement vont ils sont pas tant vecteurs que ça il s'avère en tout cas il ya une chose qui est avéré c'est que tous les enfants qui sont tous les malades et sont tombés malades à cause d'une transmission depuis leurs parents à priori à priori à après je m'embrouille dans tous ces nickel je crois que tu as des questions de deux de nos spectateurs oui je vais
+
+105
+01:16:12,110 --> 01:17:00,230
+essayer de faire un condensé des questions qui ont été posées alors je vais la doubler la première à nos experts ce qu'il pense de cette éventuelle deuxième vague et puis la question pour même rebondir sur ce que vient de dire gaspard est ce qu'ils doivent avoir peur du déconfinement ici ici en israël on a commencé vraiment à des copines et les cp ce1 ce2 en israël ont repris l'école aujourd'hui les jardins d'enfants d'ici quelques jours et on parle même d'aller éventuellement si tout se passe bien jusqu'à décoder confinement total y compris les restaurants et des cinémas en fin de mois donc faut-il avoir peur de ces deux cd de ceux des confinement et y aura-t-il selon vous oui non pourquoi une seconde vague alors qu'il
+
+106
+01:17:00,230 --> 01:17:39,530
+était difficile d'être péremptoire c'est très difficile lorsque celui qui va dire oui sur l'art a pas également à l'habitude c'est à dire qu'on est vraiment dans une logique un petit peu de doute et le médecin doit de toute façon on n'a absolument aucune certitude dans un sens comme dans l'autre maintenant moi j'étais pour alors j'ai très radicale un confinement des complets en dix ans à partir du moment il a personne dans les rues le virus n'a vu personne a contaminé il ya 100 voilà les choses vont s'arrêter elle même maintenant il ya des paramètres économiques il faut absolument prendre en compte et et qui font qu'ils sont parfaitement en parfaitement normaux on va te retrouver avec une quantité de chômeurs était
+
+107
+01:17:39,530 --> 01:18:15,680
+assez exceptionnel maintenant il va falloir attendre des premiers signes dans les jours qui vont suivre le cours de déconfinement mais je pense qu'on va très rapidement se rendre compte parce qu'en france le déconfinement enfin le continent tout au moins il est devenu qu'une banque une notion très très très théorique 1 c'est à dire que des gens sont sortis un peu partout bon il a il va faire très beau les jours qui viennent je pense que les gens vont de nouveau rapidement ceux des comptines et et on saura très très vite comment les choses d'ailleurs dès mai le gouvernement est très prudent il est revenu sur une sur un créatif puisque vers ans a dit tout à l'heure attention le des compliments en théorie
+
+108
+01:18:15,680 --> 01:18:53,330
+c'est le monde mais en théorie si jamais on aperçoit dans les jours qui viennent ou dans les passes que les gens commencent à peu à sortir qu'il ya des prémices d'une nouvelle vague comment la vie mais de façon c'est clair que confiné pendant deux mois tout un peuple c'est très très très compliqué il va falloir il faut trouver évidemment des alternatives et l'alternative c'était selon moi soit le confinement total exactement comme on a fait entrer ce temps 49 et quand on a vaincu la peste noire parce que les stocks sont sortis que ceux qui étaient enfermés qu'ils n'ont personne n'a entre personnes de part et d'autre solution et malgré tout le monde c'est à dire que tout le monde porte à ma ville à ce
+
+109
+01:18:53,330 --> 01:19:36,590
+moment là on est quasiment sûr que hors de chez toi iard actuellement aucune contamination non la gestion des batteries en france vous savez ces quatre cases du de l'ubuesque du burlesque on sait pas trop comment les choses vont se passer en tout cas dans les supermarchés ça coûte un peu d'argent tel singer par poppy oui je vais juste faire grand chose de plus personne personne n'a personne ne peut deviner ce qui va se passer on est passé d'un virus avec un doublement des cas et de la mortalité qui étaient quatre à cinq fois en trois jours donc ça c'est sûr que c'est cassé il reste du virus il n'y a pas de problème qui reste du virus en circulation il ya des gens qui sont encore contaminés qui sont
+
+110
+01:19:36,590 --> 01:20:20,030
+potentiellement contaminées les masses bien sûr il faut que tout le monde soit masqué parce que ondes et confine au moment du confinement vol oms disais non on a eu un problème de pénurie dramatique jusqu'au mont où la demande mondiale a explosé la chine la plus fournie on n'a absolument pas anticipé ça il semblerait que maintenant il y aura des masques en quantité suffisante je trouve que dès qu'on finit tranquillement en surveillant en testant et puis on a une sérologie qui va arriver qui a l'air en bonne voie pour voir quelles sont des gens qui sont immunisés combien de temps va durer l'immunité il faut ya six mois ce virus personne ne le connaissait il n'existait pas donc il faut accepter de vivre avec
+
+111
+01:20:20,030 --> 01:21:03,170
+un certain degré d'incertitude avec un certain degré de risque qui est un petit peu difficile pour tout le monde et puis d'avancer pas à pas mais collectivement je sais pas comment c'est dans les autres pays mais en france d'être une proposition politique et fait quelle qu'elle soit on a d'abord tous les yaka fokon c'est pas ça qu'il faut faire est absolument insupportable donc on va sortir tranquillement si on se donne les moyens on pourra re confiné localement et donc des périmètres géographiques très petit de façon à apr a obéré complètement j'ai regardé l'émission la semaine dernière la crise économique et la difficulté économique à laquelle maintenant on va se coltiner ça va être difficile
+
+112
+01:21:03,170 --> 01:21:51,590
+faut quand même se dit enfin bon moi j'étais petit en 68 quand il ya eu la grande grippe a mais je me souviens à l'époque en 68 ans 57 même j'étais même pas nés personnes s'y poser la question de la protection de la vie humaine par rapport à l'économie mais on a des sociétés qui ont fait ce choix là c'est quand même extrêmement nouveau et donc maintenant on va d confié on ne s'est pas arrêté alors qu'il ya eu un million de morts je crois de 68 en france il ya eu cent mille morts celle de 57 qui a eu 50 mille morts rien ne s'était arrêté donc là aujourd'hui on arrive dans un monde où le politique fait le choix de on protège les personnes fragiles et on soutient l'économie en faisant en allant
+
+113
+01:21:51,590 --> 01:22:35,750
+chercher de l'argent chez les banques et en faisant des prêts et en explosant nos déficits qui a aussi un choix politique pour aider le pays à redémarrer mais le travail il va commencer maintenant c'est bêtement qui va falloir se retrousser les manches et donc il faut des consignes et ont des consignes on croise les doigts pour pâques une deuxième vague dramatique y aura forcément encore des patients qui vont être contaminés il aura forcément des personnes âgées qui vont encore mourir du cojep 19 et puis on espère que la recherche va permettre d'aller que les moins de gens meurent mais voilà je crois que la marche à suivre très pragmatique elle est très progressive je vois pas très bien comment aurait elle doit être discrète
+
+114
+01:22:35,750 --> 01:23:18,290
+d'après ce que j'ai compris en termes de communication elle doit être discrète pour pouvoir lui manque a été là faut arrêter avec les réseaux sociaux arrêtez avec la pub et ça y est les maîtriser leurs cinq minutes de gloire télévisuelle maintenant ils peuvent rentrer chez eux recommencer à bosser je pense que c'est pour toi mon appareil le problème sur un banc des rose et sur les yaka fokon effectivement ça c'est qu'il semblerait ont souvent on dit que c'est un problème franco français je ne sais pas exactement comment ça se passe ailleurs notamment via les réseaux sociaux en tout cas dans toute cette espèce de robes roses qui est le marché d'information etc mais simplement il ya cette réaction au début on vous parlait
+
+115
+01:23:18,290 --> 01:24:02,570
+du doute par luis normal de doute et c'est normal aussi d'avoir peur dans une situation inédite et puis à un moment donné où finalement tout on se retrouve confiné chez soi avec comme vraiment encore plus que d'habitude de la seule fenêtre ouverte sur le monde extérieur a finalement le smartphone ordinateur les réseaux sociaux sur lesquels on s'exprime certainement plus que d'habitude en moyenne ceux qui s'y aventurent simplement là dessus on n'est plus dans le doute et la méfiance qu'ils peuvent être justifiées et fondées et face à l'inconnu on est rentré assez rapidement des enfants j'ai l'impression dans quelque chose qui relève vraiment de la défiance pure qui peut être ou un partiellement fondées mais qui souvent
+
+116
+01:24:02,570 --> 01:24:48,990
+par n'importe dans n'importe quelle direction je vais prendre un exemple très récent et qui encore vraiment chaud comme la braise c'est tout simplement l'histoire de l'approvisionnement en main et de leur distribution aux français donc de la vente puisque en début ou milieu de semaine qui vient de s'écouler en france il a été annoncé que la grande distribution vendre et des masques appris que mon temps mais le truc que venait à peine d'être annoncée alors aussi maladroitement soit il avec peut-être pas assez de détails c'est toujours la même chose et bien d'un seul coup ça de mai mais ils vont se faire du fric et c'est n'importe quoi mais tant et si bien il avait destl ketch et voilà il ya le truc des stocks cachés mais
+
+117
+01:24:48,990 --> 01:25:28,020
+c'est même pas ça s'équivaut le problème d'un problème je trouve c'est que là on a franchi un autre cap puisque plusieurs ordres de professions médicales se sont engouffrés dans cette brèche l'ordre des médecins l'ordre des pharmaciens l'ordre des dentistes et les personnels soignants etc qui est ce que c'est d'avoir les personnels soignants une association un syndicat je ne sais plus qui a commencé à faire un communiqué indien mais où étaient ces masques lorsque nous en avions besoin est là aussi bien sûr ceux qui étaient en première ligne au front durant toute cette période il faut bien sûr comprendre cette réaction mai mais à un moment donné il faut aussi se repencher sur les faits alors pourquoi est-ce que moi citoyen
+
+118
+01:25:28,020 --> 01:26:04,950
+lambda alors je ne suis pas au front je ne suis pas du tout sous une pression en fait les remparts externe orale mais pourquoi moi en quelques clics finalement je trouve des informations beaucoup plus détaillé je ne fais pas que lire à la une en tête d'article un chapeau d'article je vais dedans et là j'ai quand même des données qui renvoie éventuellement vers des sources et qui montre que non d'abord l'annnonce de bas on a on aura 500 millions maska dispositifs mobiles à disposition à la vente dans nos supermarchés lundi prochain ça ne veut pas dire on les a là en stock c'est une projection par rapport à des commandes en fait qui ont été faites à partir du 24 avril mais il faut juste rentré à manger un
+
+119
+01:26:04,950 --> 01:26:43,440
+petit peu dans le détail quoi il est juste pas se cantonner au chapeau alors c'est beaucoup plus facile pour quelqu'un qui à l'arrière qui vit dans une grande maison avec un jardin etc même si je suis dans le 93 au lieu de tous les risques tous les dangers mais mais il ya quand même effectivement un effort je peux comprendre que lorsqu'on n'a pas le temps lorsque l'on continue à travailler malgré le confinement sous pression etc un niveau de risque assez conséquent les soignants je comprends qu'effectivement on n'est pas ce temps là et que derrière l'ordre des médecins qui alors je t'ai je me trompe peut-être mais j'ai l'impression qu'il ya quand même une moyenne d'âge au sein de l'ordre des
+
+120
+01:26:43,440 --> 01:27:21,540
+médecins en france qui est un petit peu élevé donc je suis pas sûr que ce soit des gens qui sont tous en première ligne mais peut-être que je me trompe mais quand même l'ordre des médecins s'enfonce dans la brèche enfin je trouve que ça pose question et surtout derrière ce que ça suscite après sur les réseaux sociaux conspirationnistes classique mais qui arrive aussi dans la bouche dans les doigts à des citoyens lambda qui vont partager cette note d'information éventuellement la rumeur de il avait des stocks cachés toutes ces semaines alors qu'en fait on vous pensez qu'il ya eu des réquisitions justement ya une vraie participation de ces enseignes privé et qui sont entre évidemment une mission de
+
+121
+01:27:21,540 --> 01:28:01,740
+service là je suis d'accord avec toi mais d'un autre côté c'est vrai ce que tu dis c'est que quand tu es une infirmière qui est parti au combat avec des bâches en plastique par pratique en papier et en papier toilette ou avec du papier essuie-tout alors des tissus et gégé d'avis qu'il ya qu'à récupérer le colis dans la toilette mortuaire d'un patient mort à domicile du co lead habillé en femme belle parce qu'elle a des riens du tout quand on voit que nous on a dû faire appel à la générosité publique c'est-à-dire content d'apporter des balcons nous apporter des sur blood et charlotte des surchaussures tu as été un élan de générosité mais le français peut être le pire comme le meilleur pas dire
+
+122
+01:28:01,740 --> 01:28:38,550
+qu'on se rend compte chose qu'on fait déjà depuis toujours c'est que là il ya des gens qui est pas forcément les gens les plus les plus argentés des petites chances des deux marques 3 matches dis maman c'était c'est exceptionnel maintenant je suis d'accord avec toi c'est qu'il ya une communication qui est désastreuse encore une fois exactement comme quand tu as iba ndiaye qui dit les matches mais pourquoi mettre à mal pour y aller il faut avoir un diplôme de bac +4 ou alors cette major de polytechnique et de l'ena pour savoir mettre un masque non mais rendez compte à quel point on a pris les gens pour des cons c'est terrible dire qu'il ya un moment ou un autre dans une situation de crise comme
+
+123
+01:28:38,550 --> 01:29:09,540
+petit il faut faire preuve à mon sens peut-être naïf à une forme d'honnêteté intellectuelle en disant clairement les choses les gens sont tout à fait capables de les comprendre moi je le vois dans mon métier si jamais je fais ça peut m'arriver de faire une erreur d'avoir une insuffisante dieu merci pas trop souvent mais ça peut m'arriver il ya deux solutions soit je me cache derrière mon petit doigt en disant mais non pas du tout c'est vous qui avez pas compris ou alors c'est preuve d'une honnêteté intellectuelle un oui vous avez raison c'était bras bon j'ai pas répondu quand il fallait répondre n'est pas expliquée comme il fallait tout de suite on ne recommence et des gens club l'entente ce
+
+124
+01:29:09,540 --> 01:29:47,040
+discours à partir du moment où on fait un peu pas dire acte de contrition mais ont fait preuve d'honnêteté avec eux et là le gouvernement français puisqu'on parlait de la cob a été à mon avis en dessous tout parce qu'ils se sont complètement mais vautrer dans leur communication c'était une communication des fêtes dans l'urgence qui est absolument pas réfléchi et on a pris des gens pour des cons et les gens en france n'aime pas trop qu'on les prennent pour des imbéciles et là il commence par rendre compte et pour parler des bêtas généralités et après je m'étais promis c'est que on perd on arrive sur la fin ça fait déjà une heure et demi qu'on est ensemble un autre résident les les gens à les gens j'aime pas je n'aime pas dire les
+
+125
+01:29:47,040 --> 01:30:23,460
+gens te tais toi un peu péjoratif nos patients nous ont fait preuve d'une énorme forme de sympathie d'empathie c'était très drôle parce que déjà remonté dans le sens de la marche notamment quand avec des confrères on a communiqué sur la volonté des thés trouver une solution et que lors du traitement des boues terre mais on a reçu des dizaines des centaines des milliers de messages de sympathie de gens qui sont reconnaissants de ce conflit pour eux c'est à dire qu'ils rendent compte que même si ce n'est pas la solution miracle mais au moins on essayer dé sauver parce que c'était un peu notre but ou simplement et en les généralistes et des médecins de terrain on sent la bouse de vache on est dans la campagne nos patients ils
+
+126
+01:30:23,460 --> 01:31:05,599
+sont conscients on est on nous avait des dassault 6 des salades des légumes enfin voilà il ya une relation mais c'est très très balzacienne avec compassion mais ça ils ont parfaitement compris que notre volonté c'était simplement non pas de mettre en lumière moi je n'ai rien à fiche de ta mais simplement des six trouver une solution pour les soulager peut-être pas les sauver mais au moins ils tous les six ans j'ai encore si on est encore un peu tôt est ce qu'une minute une minute simplement pour dire que le vrai problème des masques d'accord lodetti je suis d'accord a expliqué jean jacques gueffier la circulation de l'information entre le terrain et le sommet de l'état quand les ars demande aux hôpitaux vous
+
+127
+01:31:05,599 --> 01:31:48,050
+avez des masques tous les hôpitaux ont dit oui on avait des masques pour notre besoin quotidien début février comme la demande a explosé multiplié par 20 au moment où l'approvisionnement s'est tari la formation est pas forcément remonter parce que du coup on sait bien comment marche d'administration les ars elles n'ont pas forcément eu envie de remonter l'information les les gens sont un petit peu débrouiller chacun dans leur coin y'a pas un collectif administratif qui fonctionne et comment elle prend pas je suis tombé sur une étude de 2005 qui disait qu'en cas de pandémie ou à france nécessité à minima 200 millions de masques par mois juste pour le personnel soignant alors ça c'était en 2005 et ça c'est ce
+
+128
+01:31:48,050 --> 01:32:31,999
+qui s est passé en 2009 en 2009 on a acheté les masques en 2011 comme on en avait il en restait beaucoup on a dit ça coûte trop cher l'emv à déstocker on va pas en racheter on va pas renouveler en 2013 ce qui sont arrivés à péremption dont la brûler 75% dans la garde et 25% et on a dit aux directeurs d'hôpitaux des acteurs d'entreprise vous allez gérer vous même votre stop mais dans l'économie de 2013 tous les directeurs d'hôpitaux gérer leurs stocks à flux tendus comme partout mais personne n'a pensé au centre médico sociaux au centre d'handicapés aux prisons tout bêtement il n'y avait pas c'est le rôle de l'état ou d'une structure intermédiaire les rs sur un territoire de penser à la population
+
+129
+01:32:31,999 --> 01:33:22,270
+directeur d'hôpital dépensé 150 masses chaque jour du jour au lendemain il en faut 2000 et cette information là et par remonter plus le ms qui disait on en a pas forcément besoin honnêtement les politiques qu'ils ont fait de la com minable mais parce que il est au courant de rien il n'avait pas percuter absolument pas perçu de l'ampleur du problème du problème et c'est drôle erreurs et erreurs de communication interne erreur de communication externe c'est préparer le monde d'après ça veut dire régler ce problème là parce que si demain pas forcément pour une pandémie mais pour autre chose il faut un matériau qu'il faut être capable de produire à 100 millions d'exemplaires quels qu'ils soient il faut qu'on soit prêt à le faire or la
+
+130
+01:33:22,270 --> 01:34:12,429
+personne n'était prêt personne n'avait les informations pour le faire donc cette circulation d'informations elle a été minable réparé dernier dernier mot oui peut-être pour conclure justement sur le titre la thématique de la mission à savoir le monde d'après et en peut-être temps fond d'ouverture vers autre chose un autre sujet le monde d'après dans les médias français toutes les tout un tas de personnalités culturelles politiques qu'ils s'ennuyaient du fin fond de leur résidence secondaire puisqu'il avait fui paris n'est ce pas un truc très responsable affaires du confinement donc tout ça a été tout un tas de beau monde s'est mis à s'exprimer sur ce que serait le monde d'après et moi j'ai une
+
+131
+01:34:12,429 --> 01:35:01,389
+impression que suivant ce qu'on connaissait déjà des appétences on va dire intellectuelle de ces gens là que en fait ce qu'il calqué sur le monde d'après c'était plutôt leurs obsessions déjà présentes et déjà manifesté de manière parfois outrancière dans le monde d'avant ce soit des militants politiques ou tout simplement d'aider des intervenants qui tuerait jeu il ya toujours ces branches qu'on s'en fout en prenant ma douche vers un peu près 12h30 comme normal quoi et là j'entends je vais citer un nom j'entends cyril dion alors bon j'ai des a priori négatifs sur cette personne et c'est pas du tout personnel c'est tout ce que j'aime pas du tout sa façon de défendre et en fait de dévoyer en fait beaucoup de faits sur
+
+132
+01:35:01,389 --> 01:35:41,350
+des questions scientifiques et technologiques qu'ils essayent à c'est tout à fait louable de sa part de faire en sorte que les gens opinion public s'approprie cette fille là sauf qu'en fait ils racontent n'importe quoi donc je rentre pas dans le détail mais donc lui pour son monde d'après en fait qui parle et exactement ce qu'ils voyaient et c'est qu'il préconisait déjà dans le monde d'avant donc j'ai du mal à comprendre qu' on est occupé un espace médiatique assez régulièrement sur les services publics à défaut nique et télévisuelle en france avec des gens qui vend et qui était invité pour vendre pour vanter le nombre d'après alors qu'il raconte et que simplement ce qu'il racontait déjà dans
+
+133
+01:35:41,350 --> 01:36:18,730
+le monde d'avant et c'est la même chose je vais finir juste là dessus sur quelque chose de beaucoup plus le projet il ya des restaurants mcdonald's les mac drive qui ont réouvert il ya une quinzaine de jours je crois dans certains points en france et il ya des gens qui ont fait la queue pendant des heures parfois pendant des heures en tout cas à pour se prendre un bon vieux mac est bon alors on peut trouver ça surprenant etc sinon surtout quand on balance comme ça les images je suis là ce pouvoir avec moi inédit puis romain cependant confinement mais en fait ces gens qui fantasment le monde d'après ont souvent fait preuve d'un mépris de classe par deux ce qui pourrait s'apparenter à un mépris de classe
+
+134
+01:36:18,730 --> 01:37:07,900
+attendais et je trouve que là en l'occurrence où je suis pas très optimiste mais du coup je suis pas très inquiet non plus par rapport au monde d'après parce que j'ai l'impression que ceux qui prétendent le changer où tout va changer vont continuer mon respect assister dans leur dédain dans le mépris de ceux qui sont différents de ceux qui prennent pour des beaufs alors que même moi ça mais je trouve que il ya un vrai paradoxe à et il a été bien mis en évidence qu'il trouve lors de cette anecdote là parce que voilà les les gens qui y vantait le monde d'après en fait finalement on ne faisait que se comporter comme dans le monde d'avant et à mépriser ce qui fait notre commun ce qui fait la diversité culturelle et des
+
+135
+01:37:07,900 --> 01:38:06,469
+appétences de chacun en français merci beaucoup vos interventions jean-jacques way simplement ressortir la prade de burt lancaster dans le guépard de guide complet il faut que tout change pour que rien ne change daniel a lâché avant que porte une conclusion cette émission donc il ya eu débat dans le débat sur la page facebook énormément d'abord des loges pour nos trois experts pas mal de questions aussi qui ont été posées que je n'ai pas pu transmettre j'ai promis je me suis engagé je compte sur vous les amis pour que vous y répondiez même après le live et puis voilà beaucoup de réactions et je remercie tous ces gens qui ont réagi kim aimons échanger entre eux pendant que vous échangez en direct qu'elle merci
+
+136
+01:38:06,469 --> 01:39:00,170
+beaucoup gaspard encore une fois merci sophy jean-jacques votre regard d'expert votre expérience ont permis de nous donner un éclairage supplémentaire j'espère vraiment que nos auditeurs ils verront un tout petit peu plus clair sur ce qui s'est passé avant pendant et ce qui pourrait éventuellement se passer après en terme de bonnes pratiques en terme de bonnes communications merci beaucoup pour vos apports merci à tous nos auditeurs et spectateurs d'être resté présent jusqu'au bout ce que l'émission a duré plus d'une heure et demie beaucoup de questions en suspens nos experts ont promis d'y répondre restez branchés sur tandem 2.0 si l'émission vous a plu n'hésitez pas à partager repartager et faire savoir
+
+137
+01:39:00,170 --> 01:39:05,170
+parce que ici sur notre antenne on parle sans aucune censure on n'a pas de directeur d'antenne on n'a pas d'organe politique ou ou d'organes syndicale qui nous qui nous limite donc on peut dire tout ce qu'on a envie de dire notre rendez vous du dimanche soir ma va continuer on se retrouve dimanche prochain pour un nouveau sujet qui va également vous plaire merci beaucoup merci de venir sur 100 m à très bientôt merci merci et au revoir [Musique] m

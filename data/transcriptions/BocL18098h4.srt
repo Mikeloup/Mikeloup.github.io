@@ -1,0 +1,59 @@
+1
+00:00:31,730 --> 00:01:21,960
+très cher téléspectateurs c'est un plaisir de vous retrouver aujourd'hui sur notre plateau tandem TV et tout particulièrement pour un nouveau numéro de skel up nation notre série consacrée à la technologie en Israël et aux données numériques lorsque nous parlons de donner numérique vous le savez maintenant j'ai plutôt envie de dire digital parce que bien que ce ne soit pas le terme approprié en français c'est de cela dont on parle en Israël on hébreu et en anglais digital ou digitalie beyrite en hébreu qui représente tout ce qui a très à la numérisation et au numérique aujourd'hui nous allons un peu décoller et nous intéresser à la géoposition géolocalisation en français et à son vecteur principal à savoir le support de
+
+2
+00:01:21,960 --> 00:02:12,900
+support satellitaire donc le positionnement des gens et des choses donc des individus et des biens Israël est à la pointe de ce secteur de par l'importance de cette technologie au niveau militaire repérer identifier des soldats ou des équipements sur le terrain permet des frappes chirurgicales une capacité de lancement de satellite tout cela est nécessaire de maîtriser la technologie des satellites les applications civiles sont très nombreuses et s'inscrivent entièrement dans l'optique de la révolution digitale que nous vivons déjà depuis quatre décennies repérage et navigation que vous connaissez sur vos applications de téléphone localisation des biens et des personnes qui permettent la compétition
+
+3
+00:02:12,900 --> 00:03:09,300
+et la disponibilité des services autonomisation des déplacements qui permettent de nous retrouver plus rapidement d'un endroit à l'autre de la planète deux compagnies phares que vous connaissez déjà et qui ont permis à Israël d'être sur la carte de ces technologies dans le monde sont Waze qui a été acquise par Google pour 1,8 milliards de dollars il y a de cela près de 10 ans et dernièrement mobile light une société qui permet la visualisation et la navigation de voiture autonome sur la route acquise par un tel il y a de cela quelques années pour 15 milliards de dollars tout d'abord avant de parler de GPS le GPS est un terme approprié par les Américains pour un système particulier il est plus naturel de parler de système
+
+4
+00:03:09,300 --> 00:04:04,319
+GNSS à savoir globale navigation satellite système en français système de navigation globale par satellite il y a de cela quelques systèmes comme je l'ai dit qui existe dans le monde le GPS des États-Unis Galileo qui appartient à l'Europe et à l'Union européenne GLONASS qui a un système de satellite qui est entre les mains des Russes bydu pour les Chinois et Navic en Inde donc 5 systèmes de satellites et nous allons voir qu'est-ce que ces systèmes composent dans un instant et environ 8 pays dans le monde 9 pays maintenant sont capables de lancer des satellites la Russie les États-Unis la France bien évidemment le Royaume-Uni le Japon nouvelle depuis 1985 c'est-à-dire moins de 40 ans après le début ou la création
+
+5
+00:04:04,319 --> 00:05:04,139
+de l'État d'Israël et dernièrement la Chine l'Inde l'Iran 2010 beaucoup de retard et la Corée du Nord tout dernièrement mais comment ça marche qu'est-ce qu'un système de positionnement par satellite comme vous pouvez le voir sur votre écran il s'agit de 24 satellites qui émettent continuellement des signaux synchronisés par des pendules atomiques le réseau de satellitaires consiste de 24 satellites qui sont en géopositionnement ou en géostationnement perpétuel au dessus de nos têtes c'est à dire que chaque satellite tourne à la vitesse de la rotation de la Terre à savoir positionner à 35000 ou 36000 km de au-dessus de nos têtes 36000 km c'est à peu près un dixième de la distance Terre-Lune de comment ça marche 24 satellites
+
+6
+00:05:04,139 --> 00:05:56,699
+émettent continuellement des signaux synchronisés par des pendules atomiques c'est-à-dire que les les montres ou les ou les le temps donné par ces satellites au milliardième de millisecondes près est exact et le même et le récepteur qui est dans votre téléphone ou dans votre voiture est capable de calculer la Latitude et la Longitude et le temps en comparant les signaux des satellites qu'ils reçoivent ou vers lequel il est connecté la précision peut donc atteindre quelques centimètres donc un peu de maths niveau 3e je vous rassure comme vous pouvez voir le voir sur l'écran nous avons un point situé sur la terre qui est un récepteur GPS et qui est connecté à 3 ou 4 satellites qui sont au-dessus de sa tête plus ou moins
+
+7
+00:05:56,699 --> 00:06:51,080
+et à distance différente puisqu'ils sont pas exactement au dessus de lui donc la trigonométrie ou un minimum de trigonométrie nous permet de dire voilà si je connais la distance entre les deux points et la distance qui sépare chaque satellite qui est donc une donnée qui ne change jamais alors je suis capable d'avoir l'exact position et l'exact altitude sur la terre une exacte position sur la terre bien ça s'appelle une latitude et une longitude une latitude ce sont les lignes horizontales entre l'équateur et le Pôle Nord ou le Pôle Sud et les longitudes ce sont ces lignes verticales qui sont un petit peu comme nous créneau horaire et qui découpe la planète en 24 fuseaux donc ça nous permet de de
+
+8
+00:06:51,080 --> 00:07:43,620
+positionner au centimètre près donc quand il s'agit dans le civil on est environ à 5 10 mètres de précision mais pour le positionnement militaire le centimètre est d'usage qu'est-ce qu'on fait avec tout ça et ben un des sujets ou un des secteurs de l'industrie qui est en train de monter de manière fulgurante aujourd'hui et spécialement en Israël en Californie aussi en Inde aussi c'est ce qu'on appelle la gritech la technologie de l'agriculture et comme vous pouvez le comprendre cette industrie a énormément besoin de savoir où sont les plantations ou sont les cultures et comment elles sont gérées à distance 400 compagnies en Israël existent dans ce domaine au jour d'aujourd'hui et elles ont levé près de 300 millions de
+
+9
+00:07:43,620 --> 00:08:40,680
+dollars en 2020 donc par exemple la société utilise qui est un pionnier dans l'intelligence et l'infrastructure de management de satellite qui utilise les satellites pour détecter des sources d'eau souterraine la compagnie a levé 6 millions de dollars ces dernières années pour permettre son expansion globale une autre compagnie qui a levé 10 millions dernièrement 10 millions de dollars se plante qui permet à de développer ou d'utiliser un logiciel qui collecte et génère des Data ou de la donnée très importante pour permettre d'optimiser les matériels de des équipements d'agriculture arroga une autre compagnie qui a levé 4 millions dernièrement et qui développe un robot autonome pour traiter et
+
+10
+00:08:40,680 --> 00:09:42,180
+monitorer chacun des ou chacune des cultures des arbres des arbres fruitiers etc dans dans les serres Bewise un autre niveau 120 millions de dollars d'investissement qui utilisent l'énergie solaire et qui permet le contrôle du climat le contrôle de l'humidité le contrôle de de la des problèmes de développement qu'il y aurait au niveau des plantes tout ça de manière automatique et qui permet aussi la le le recueillement des fruits et des légumes automatiquement et enfin phildin une compagnie qui a levé 50 millions de dollars dernièrement et qui a développé une armée de robots et de drones capable de circuler entre les cultures et de diffuser des pesticides en fonction des informations recueillies par d'autres
+
+11
+00:09:42,180 --> 00:10:43,560
+drones sur la nature et le potentiel de maladies qu'il y aurait dans ces cultures quoi d'autre et bien nous parlons tout justement de transport par drone le transport des biens et des personnes et aussi un sujet très très à la mode dans le domaine technologique en Israël avec environ 1,5 milliards de dollars qui ont été financés cette dernière année avec hérobotix par exemple qui permet de traiter et de d'utiliser des drones qui sont capables de traiter toutes sortes toutes sortes d'informations que ça soit dans les villes ou sur les routes des systèmes comme sparo de percepto qui sont des qui ont des systèmes de drone autonomes qui peuvent opérer sans aucun aucune interaction humaine pour faire du
+
+12
+00:10:43,560 --> 00:11:32,579
+de la sécurité pour vérifier que tout se passe bien dans les prisons par exemple etc et une autre compagnie Saitek qui utilise elle des caméras et un GPS intégré pour être capable de repérer ou d'aider le drone à se repérer dans des endroits où il n'y a pas justement de couverture satellite comme dans les centres villes avec des des très hauts immeubles qui cachent la vision satellitaire qui est nécessaire pour ce genre de navigation nous avons aussi les véhicules autonomes avec des petites voitures de golf utilisées dans de nombreux villages de retraités ou de vacances de par le monde le transport de passagers oui dans les aéroports ou autres campus par voiture autonome ou minibus autonome que ça soit
+
+13
+00:11:32,579 --> 00:12:26,760
+des universités les hôpitaux ou les zones piétonnes ou protégées ou interdites aux véhicules non autonomes là encore le positionnement exact au centimètre près est primordial pour permettre aux ordinateurs et aux capteurs caméra radar de corriger et de rectifier leur trajectoire une autre type d'utilisation dans lequel une société israélienne a contribué très activement d'une société d'hélicoptère ou de drones privés en Californie qui transporte jusqu'à 4 personnes dans des drones assez impressionnants et qui les amène d'un aéroport à un autre aéroport pour l'instant c'est en Californie et dans la zone donc mes très chers téléspectateurs pour conclure comme vous pouvez l'imaginer et le comprendre la miniaturisation et
+
+14
+00:12:26,760 --> 00:13:15,240
+l'expansion des réseaux de données qui transmettent la localisation des biens et des ressources comme la 5G par exemple vont multiplier et vont être multipliés par des facteurs incommensurables la mobilité des objets les objets vont devenir de plus en plus mobiles et toutes sortes d'objets va devenir de plus en plus mobiles pour ma part je me permets de m'interroger sur ces millions de jobs exécutés aujourd'hui par les livreurs et les chauffeurs de taxi et qui aujourd'hui permettent la livraison de tout instantanément en gros Volt et Hubert ne sont-ils pas en train de tout simplement entraîner leur système de mobilité à devenir autonome et ces derniers probablement nous demanderons aucune intervention humaine d'ici 2030 ou 2035
+
+15
+00:13:15,240 --> 00:13:20,240
+un monde où la technologie sert tous et tout le monde tout le temps et je ne peux m'empêcher de penser à ces phrases du Talmud déclarant qu'à la fin des temps chaque humain aura des milliers de serviteurs à sa disposition les données numériques sont autant de pavés qui construisent notre cheminement vers un monde meilleur optimisation de l'agriculture avec nourriture pour tous ou pire à bientôt pour une prochaine émission [Musique] [Applaudissements] [Musique]

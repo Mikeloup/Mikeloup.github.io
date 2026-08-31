@@ -1,0 +1,95 @@
+1
+00:00:30,230 --> 00:01:14,220
+[Musique] très chers téléspectateurs comptait bien soir c'est un plaisir que de vous trouver pour notre deuxième émission consacrée à skate nation et donc à la technologie et à la démocratie comme vous le savez nous essayons de comprendre la high tech israélienne au prisme d'une de la technologie aujourd'hui nous accueillons lévis à mama qui nous parlera donc de démocratie digital bonsoir les vivres bonsoir dans notre dernière émission nous avons ainsi évoqué le big data ou qu'est-ce qu'une donnée comment les données sont agrégées les unes aux autres et surtout transmises entre systèmes ces données petites entités d'électrons ou photons selon pour les transmettre par voie électronique ou optiques sont des unités de base
+
+2
+00:01:14,220 --> 00:02:06,060
+d'informations de la lettre aux maux du mot à la phrase est de la phrase qu'on message lettres transaction ordre quelconque sont donc des agrégations de données digitales la chine par exemple est un grand producteur de données on vous êtes ce que vous faites où vous allez ce que vous pensez qu'ils vous voyez ce que vous fréquentez tout vous traquez vous police et vous éduquez dicter votre pensée et vous donner même un score sociale mais là où le big data peut être utilisé pour traquer l'individu dans un monde autoritaires ou pour inciter à l'ultra consommation dans un nombre sur obscure occidentalisée là où l'individu devient produit ce même big data peut être utilisé pour promouvoir la démocratie représentative et n'influence
+
+3
+00:02:06,060 --> 00:02:52,540
+en temps réel du citoyen envers ses élus big data et démocratie sera donc le sujet de notre émission aujourd'hui comme premier jeu tourne donc vers lévis à mama signaux cofondateur de collègues et shane une technologie de vote est une plateforme d'échangé d'opinions dont le but est donc de véhicules et idées soutien politique de la base au sommet en quelques clics bonsoir les sorts alors je vous en prie c'est un plaisir alors première question qu'est-ce que connaîtrait alors que lee chin tout d'abord et pour un besoin qu'on connaît comme on c'est tout sans démocratie là où la démocratie est aujourd'hui essentiellement centralisé autour de certaines personnes qui décident généralement sur tous les
+
+4
+00:02:52,540 --> 00:03:30,970
+sujets pour tout le monde le colis tienne c'est un nouveau protocole démocratique qui est plutôt orienté citoyens c'est à dire que grâce à la décentralisation donc la distribution du pouvoir on permet aux personnes de nos concitoyens ou un membre de tout membre tout troupes de voter pour des représentants différents domaines de gouvernance plutôt que de voter pour une seule personne qui représente tout le monde sur tous les domaines par exemple un citoyen pourra voter pour un expert dans le domaine de la santé un expert dans le domaine de l'économie un expert dans ce domaine de l'éducation et donc il pourra choisir ses représentants aussi de manière flexible donc le citoyen aujourd'hui va être au centre de
+
+5
+00:03:30,970 --> 00:04:05,680
+décisions qui seront prises et je crois que vous utilisez donc là bloquerait pour permettre ce protocole tout à fait est basée sur une plate forme dont qu'il est il peut s'exécuter sur une plateforme qui utilisent la blog shane donc une manière très sécurisée et fiable de transférer des données donc des votes entre citoyens entre personnes et représentant alors pour nos téléspectateurs peut-être un petit une petite explication de diriger qu'est ce que la bloquer alors là blocs chaîne en fait c'est une manière de manière digitale en fait de transférer des données comme on le sait aujourd'hui sauf que quand on transfère une donner de point a à un point b actuellement 6es centralisée c'est à dire que ça passe par un
+
+6
+00:04:05,680 --> 00:04:41,050
+ordinateur est donc cet ordinateur il peut être à quai où il peut être trafic à tout moment on peut trafiquer les données imaginez que sur sur un serveur facebook on puisse mettre voilà qu'est facebook et mettre n'importe quoi ce qu'on veut autour d'un haïku d'un vote sauf que facebook le fasse lui même paradoxe chaîne la bio tchane donc c'est un réseau d'ordinateurs qui duplique à chaque fois les données avec un consensus qui vient et filet donnée à tout moment sa garantie que quand j'en vois une donnée via ce réseau personne ne peut interférer au milieu et dont une fois que la transaction est écrite il faut que mon vote par exemple est inscrit personne ne trichait pas même nous mêmes qui sommes propriétaires
+
+7
+00:04:41,050 --> 00:05:16,600
+d'une plateforme va trafic et un vote à la place de quelqu'un parce que la brique chaîne en fait c'est de l'idc de clown et de nos chaînes de coller sur plusieurs ordinateurs sur des milliers d'ordinateurs la même information tout à fait est que la changer où que ce soit demanderez de la changer partout et ce qui est très difficile est pratiquement impossible de changer la même données en temps réel sur des dizaines d'ordinateurs dans tout le tout le monde sachant qu'on ne sait pas quel ordinateur écrit la transaction en temps réel absolument donc il ya un système protocole qui permet systématisation de voir si une corruption de données de la visite au mans pour information par exemple à blocs chaîne c'est la
+
+8
+00:05:16,600 --> 00:05:52,630
+technologie qui se trouvèrent le beacon d'accord quand on envoie un beat code aujourd'hui ça a été prouvé le transaction bitcoin elle est fiable aussi fiable qu'une banque une transaction bancaire donc on pourra passer les votes aussi fiablement que si on avait passé nos votes même plus fiables manquent eux dans les urnes aujourd'hui qu'on connaît traditionnel d'accord donc donc on parle on parle d'un compagne de coalition de votre solution de votre plateforme on parle à la fois sécuriser au sucre de sécurisation données et sociale donc encore votre solution est-elle social qu'est ce qu'est ce qui permet de simplement parce que la plateforme elle-même est construit de manière un peu sociale un
+
+9
+00:05:52,630 --> 00:06:30,040
+peu comme un facebook donc le d'avoir simplement un bouton pour voter ou pour rodez voter vous avez donc des experts où tout citoyen qui peut s'exprimer librement avant de prendre une décision sur un sujet il ya devant une délibération qui se fait et donc je vois les experts en dans chaque domaine de gouvernance s'exprimer je les vois un peu comme sur facebook et puis au lieu de faire simplement un lac je peux donner transférer ma voix un expert qui décédera pour moi au lieu que au lieu de demander à tous les citoyens de demandes de décider sur tous les sujets ce qui est aussi un peu compliqué parce que là la démocratie représentative qu'on connaît celle qu'on connaît aujourd'hui avec donc des représentants face à une
+
+10
+00:06:30,040 --> 00:07:11,340
+démocratie directe donc les gens souvent de moments sauf qu'on a beaucoup de mal à croire que tous les citoyens peuvent s'exprimer sur tous les domaines et à tout moment les domaines sont de plus en plus complexes et complexe jean connaissances en économie j'aimerais pour pouvoir avoir un expert que je reconnais que qui accule que j'apprécie dans ses pensées ou dans son mode de pensée qui utilisera ma voix mais de manière beaucoup plus et toute confiance sachant que professionnel professionnel sachant que dans le protocole qu'on est bien en place le passage de la voie à un expert est flexible et révocable donc l'expert aussi à tout moment y voit un peu comme sur facebook il sait qu'il a reçu des laïcs il a des gens qu'il faut
+
+11
+00:07:11,340 --> 00:07:46,789
+l'eau il sait que s'il fait un peu n'importe quoi il aura des gens qui vont le qui vont se sortir de sa page donc il a tout intérêt à ne pas décevoir ses électeurs pink et son gang ce qui met chaque c'est le secret du vote est garanti et transparent alors le secret du vote il est garanti on a intégré une autre technologie en s'habillant sécurité israélienne qui nous garantit que donc d'un côté les serveurs qui sont qui sont les nôtres parce qu'on n'a pas tous qui est sur la bonne chaîne ya des données qui sont aussi of china dont qui sont sur un serveur traditionnel ces données là seront entièrement crypté par une nouvelle technologie cider qui garantit également l'anonymat des personnes qui votent d'accord d'accord
+
+12
+00:07:46,789 --> 00:08:27,710
+donc vous mentionner l'existence d'experts donc j'imagine que sa plateforme un besoin d'experts aussi lu localiser ou locaux au sens où la démocratie ce n'est pas que les élections présidentielles ou législatives c'est aussi gérer ma maison gérée mareux gérer mon quartier je les mon environnement immédiat comment recruter vous des experts dans quels domaines sont ils recrutés aujourd'hui on recrute des domaines dans des experts dans tous les domaines essentiellement santé éducation et économies sont les domaines les aujourd'hui qui sont les plus qui touche le plus les citoyens mais on recrute également des experts qui viennent tout seuls 1 p aujourd'hui les experts en fait on les trouve partout quand vous
+
+13
+00:08:27,710 --> 00:09:06,170
+allez sur twitter vous allez sur facebook vous recrutez vous voyez des gens qui s'expriment qui veulent pas forcément se salir entre guillemets en politique mais qui s'exprime sur tous les domaines ces gens là vont pouvoir maintenant s'exprimer sur quoi les chaînes mais d'une manière purement décisionnaires dire que là aujourd'hui s'exprimer ce qui disent ça rien puisqu'ils sont pas en politique aujourd'hui grâce à cette plateforme ils vont pouvoir s'exprimer recevoir la voix le vote des personnes qui comptent sur eux et leur décision contrave pour le nombre de voix qu'ils ont reçu alors effectivement démocratie au sens du salé drine l'époque biblique où effectivement les seuls les experts dans une matière
+
+14
+00:09:06,170 --> 00:09:46,700
+pouvaient voter et pouvait avoir le droit de s'exprimer sur un dossier que koné fait il faut savoir que la démocratie la première démocratie c'est le gouvernement que moins cher à bennoo moïse a mis en place à l'époque ça prévient démocratie parce que c'est le peuple qui a choisi ses représentants par domaine c'est exactement ses influences et de la démocratie qu'on avait déjà ya des 3000 ans superbe donc concrètement on a les enfants à l'école on a tous des enfants à l'école on voit dans le groupe whatsapp des questions des réponses des questions dans des questions d ordre concrets comment qu elle est chère pour venir mettre de l'ordre là dedans et à quel niveau alors in ça peut se faire plus haut niveau
+
+15
+00:09:46,700 --> 00:10:23,110
+déjà au niveau national au global les ordres et les experts qui seront présentées par des centaines de milliers ou des millions d'utilisateurs pardon mon pouvoir de manière assez globale mule nationale ou municipale s'exprimer et représentait donc des gens qui l'ont fait confiance voilà voilà ce que les gens cherchent aujourd'hui comme programme mais également au niveau local il ya des gens qui peuvent s'exprimer au niveau local c'est et participatif dans des grands groupes comme des petits groupes par exemple même une école disons qu'ils qui veut utiliser ce protocole pour dire voilà on demande aux parents également de s'exprimer sur telle ou telle matière s'il le souhaite donc c'est beaucoup
+
+16
+00:10:23,110 --> 00:11:06,220
+plus organisés que les google chine qui apparaissent avec les votes des parents qui peuvent être rompus mais par d'autres parents ou par d'autres exactement ça en fait ça s'apprend simplement ce qu'on sait faire aujourd'hui mais de manière désorganisée ça le rend beaucoup plus simple les enfants devaient exactement alors j'essaie un petit peu de nous projeter est ce que je peux utiliser votre plateforme pour des besoins de démocratie privé comme délégué syndical dans dans une association ou dans une entreprise une union des étudiants ou aux biens là même la démocratie collaborative de voisinage jusqu'au député local comment comment vous voyez la plateforme en très bon alors aujourd'hui c'est utilisable un peu ce
+
+17
+00:11:06,220 --> 00:11:38,140
+pour tous les deux pour tous les domaines pour tous les besoins essentiellement pour des questions plus généralistes ne municipale nationale etc on peut également l'utiliser pour des votes privé pour des questions privées donc des petits groupes mais ça demande encore quelques consolidation donc sur laquelle on en train de travailler en ce moment donc tout est basé autour de groupes ont constituent nos groupes de manière aldok en fait on vit déjà dans des groupes aujourd'hui d'ailleurs on est tous sur des dizaines c'est pas des centaines de gros poids de saper télégramme etc sauf qu'on a aujourd'hui peu de chance de pouvoir participer à une décision si on n'est pas le directeur ou le manager du groupe
+
+18
+00:11:38,140 --> 00:12:18,490
+aujourd'hui grâce à ça vous allez pouvoir non seulement participé en plus votre voix va pouvoir compter concrètement le candide moins peut on pense limitation nos participants très fort ce quartier art and allied déjà dix groupes sur what's app donc là vous avez bien sûr n'ont pas prévu de mettre de limitation donc des milliers des dizaines et des centaines des millions c'est nécessaire d'accord si la technologie nous permet d'accord et votre financement et je crois de base et aussi où on fondée sur le principe de la participation collaborative ou collective pouvez vous nous en fait pour des raisons d'éthique et pour ne pas avoir besoin de rendre des comptes à des gars femmes ou des big brother gars
+
+19
+00:12:18,490 --> 00:12:58,240
+femmes c'est la peur voilà donc la nasa fait on n'a même pas refuser mais on a évité quelques investissements au gros de grosses sociétés on préfère que ce soit plein de petits financeurs qui est de ce projet à voir le jour pour ne pas avoir pour ne pas être dépendant de tout gros groupe qui puisse après influencer les décisions que cette plate forme prendra donc c'est vraiment la liberté au niveau de la sa a été conçue enfin moi quand je les monte avec mes collaborateurs ont été conçues pour servir la démocratie les citoyens et les membres du groupe qui se veulent être démocrate dans une vraie démocratie donc votre plateforme de vente et ont fait une base et sur la blogo chaîne ce qui vous permet de le rétribuer aussi vos
+
+20
+00:12:58,240 --> 00:13:42,279
+utilisateurs avec une monnaie crypto propre à votre écosystème à savoir je crois que tous les choses donc je vote je participe je contribue à et au développement d'une économie décentralisée citoyenne société francophone en israël technologie israélienne vous êtes on a un peu partout justement on est aussi décentraliser volontairement ce ne pouvait pas appartenir à un pays quelconque conçoit pas forcément influencé par par des gens locaux donc on a des développeurs en france en israël l'entreprise colis cheney mais est un chiffre voilà pour des raisons également de régulation au niveau des crypto est donc en conclusion je crois que vous recherchez des ambassadeurs aujourd'hui enveloppement de l'acte a fait une autre
+
+21
+00:13:42,279 --> 00:14:15,580
+stratégie de lancement c'est du marketing un peu de réseaux comme un appel c'est à dire qu'on est en train de recruter aujourd'hui en france et en israël essentiellement mais dans d'autres pays également les ambassadeurs dont les personnes qui vont représenter le projet auprès de leur entourage leur quartier de leur pays donc des influenceurs mais aussi des gens de l'amdh à des personnes des citoyens qui se veulent s'investir pour une une vraie démocratie dans leurs dans le louise habitent ou dans leur pays non qu'ils vont ils vont ils vont valeurs dont on va leur faire on va leur partager le projet en avant première on va déformer un petit peu manière dont ça fonctionne au niveau démocratique mais
+
+22
+00:14:15,580 --> 00:14:52,360
+aussi technologiques ils vont pouvoir après le diffuser auprès de leurs proches les inscrire sur la plateforme aider le développement au même au niveau du financement donc là je suis un téléspectateur je vous écoute je peux m'inscrire alors il ya un site qui s'appelle projet c'est point fr plusieurs sites internet avec des dandys pêche mais là il ya un site qu'on danse dans les prochains jours qui s'appelle projet c'est point fr et sur lequel on peut s'inscrire en tant qu'ambassadeur en tant que pour se préinscrire également sur la plateforme enfin voilà il faut il faut visiter ceux qui veulent participer sont les bienvenus c'est extraordinaire parce que si j'étais un étudiant par exemple je me
+
+23
+00:14:52,360 --> 00:15:50,949
+projette un étudiant en france à la fac je me vois déjà partir de loi et promouvoir cette application chez mai mais il connaît les étudiants etc pour permettre un petit peu de gêne et le désordre constitutionnel qui à chaque fois autour d'une des stationnements c'est extraordinaire c'est un travail ce qu'on met déjà depuis près de cinq ans voilà qui est en train d'aboutir et qui en train de voir voir le jour en tout cas au niveau du grand public écoutez je vous remercie d'être avec bercy avec nous ce soir merci à tous et à toutes très chers téléspectateurs merci de votre fidélité dont nous retrouverons très bientôt pour une nouvelle émission sur le big data la technologie est bien évidemment israël
+
+24
+00:15:50,949 --> 00:15:55,949
+cinq barrettes at work will release in the community une oeuvre vous décidez au country ivan social network safety review [Musique] el mostapha préférence de marque focus représentationnel démocratie gonzalez patricia [Musique] kaas en réalité ils dansent aussi le système iceberg monde et nina au vote des promesses du world unseen parents des fillettes débuts de bing des ados lens we do not because de zlatan week-end de will get me désengage oui des commandes de frites democratic process de lester james peries de nordine saïdi votre point info de reprise de 3 50 et 3 nuls me canoy représentant deux tonnes
