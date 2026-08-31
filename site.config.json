@@ -246,6 +246,20 @@
       "menuTitle": "La Tour de David"
     },
     {
+      "slug": "sujets/jerusalem-hors-les-murs",
+      "title": "Sortir des murailles : comment Jérusalem s’est étendue, en 1860",
+      "description": "Montefiore offre le logement, puis paie les gens pour habiter hors les murs — ils rentrent dormir dans la vieille ville dès qu’il s’en va. Ce qui les décidera, c’est le choléra de 1866. Avec Mahané Israël, le quartier bâti sans bienfaiteur par des juifs marocains.",
+      "footerOnly": true,
+      "menuTitle": "Jérusalem hors les murs"
+    },
+    {
+      "slug": "sujets/doigt-de-la-galilee",
+      "title": "Le doigt de la Galilée : cinq cents millions d’oiseaux, et le dieu Pan",
+      "description": "Israël est le seul pont terrestre entre trois continents : 500 millions d’oiseaux le traversent deux fois par an, et de plus en plus renoncent à repartir. Et à Banias, un nom grec conservé par ceux qui ne prononçaient pas le p.",
+      "footerOnly": true,
+      "menuTitle": "Le doigt de la Galilée"
+    },
+    {
       "slug": "television-israelienne-francophone",
       "title": "Télévision israélienne en français : où regarder Tandem TV, canal 14 Annatel",
       "menuTitle": "Regarder la chaîne",

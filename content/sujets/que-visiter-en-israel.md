@@ -102,6 +102,8 @@ L'émission visite aussi **Mahané Israël**, le deuxième quartier hors les mur
 
 {{video:czQrRf7iRLY}}
 
+→ **[Page détaillée : sortir des murailles, 1860](/sujets/jerusalem-hors-les-murs/)**
+
 ### Le désert de Judée
 
 Un désert se définit par un seuil : **moins de 20 centimètres de pluie par an**, en dessous desquels les céréales ne poussent pas et l'habitat permanent devient impossible.
@@ -249,6 +251,8 @@ L'émission passe ensuite à **Banias**, dont le nom raconte deux mille ans à l
 L'eau vient du mont Hermon, une montagne de calcaire de deux cents millions d'années qui fonctionne comme une éponge : la pluie et la neige s'y engouffrent et ressortent ici. Le Banias est l'un des trois affluents qui forment le Jourdain.
 
 {{video:7q8F3vMG0uo}}
+
+→ **[Page détaillée : le doigt de la Galilée](/sujets/doigt-de-la-galilee/)**
 
 ### Beit Shean
 
