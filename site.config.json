@@ -134,130 +134,148 @@
       "footerOnly": true
     },
     {
-      "slug": "sujets/shekel-monnaie-israelienne",
-      "title": "Le shekel israélien : les symboles des pièces et des billets",
-      "description": "Que représentent les symboles du shekel ? Ménorah, harpe, grenade, palmier, et les quatre poètes des billets — expliqués à l'antenne de Tandem TV par Jérôme Haas.",
-      "footerOnly": true,
-      "menuTitle": "Le shekel israélien"
-    },
-    {
-      "slug": "sujets/hebreu-mots-francais",
-      "title": "Des mots français venus de l'hébreu ? La thèse de Bruno Dray",
-      "description": "Cep, broc, gomme, groseille, agraire : le linguiste Bruno Dray relie plusieurs centaines de mots français à des racines de l'hébreu biblique. Sa méthode, ses exemples et ce que disent les dictionnaires — expliqué sur Tandem TV avec Jérôme Haas.",
-      "footerOnly": true,
-      "menuTitle": "L'hébreu et le français"
-    },
-    {
-      "slug": "sujets/jerusalem-antique-archeologie",
-      "title": "Jérusalem antique : ce que les fouilles ont révélé",
-      "description": "Textes d’exécration, stèle de Tel Dan, palais d’Eilat Mazar, amulettes de Ketef Hinnom : ce que l’archéologie établit de Jérusalem avant l’exil — expliqué sur Tandem TV par Jérôme Haas.",
-      "footerOnly": true,
-      "menuTitle": "Jérusalem antique"
-    },
-    {
-      "slug": "sujets/vagues-alya-1882-1939",
-      "title": "Les vagues d’alya, de 1882 à 1939 : qui est venu, et pourquoi",
-      "description": "Cinq vagues d’immigration juive en terre d’Israël, de 1882 à 1939 : pogroms russes, idéologie sioniste, décret Grabski, fuite devant le nazisme — et une immigration jamais libre sous mandat britannique. Expliqué sur Tandem TV par l’historien Georges Bensoussan.",
-      "footerOnly": true,
-      "menuTitle": "Les vagues d’alya"
-    },
-    {
       "slug": "sujets/que-visiter-en-israel",
       "title": "Que visiter en Israël : 21 sites racontés par les guides de Tandem TV",
       "description": "Massada, Césarée, Saint-Jean-d’Acre, Megiddo, Tsipori, le mont Sion, le désert de Judée, Rosh HaNikra… 21 lieux parcourus caméra à la main dans la série Guide en Tandem, avec ce qu’on y voit et le détail qu’on retient.",
       "footerOnly": true,
-      "menuTitle": "Que visiter en Israël"
-    },
-    {
-      "slug": "sujets/cesaree-maritime",
-      "title": "Césarée maritime : la ville qu’Hérode a bâtie pour se faire pardonner",
-      "description": "Le premier port entièrement artificiel du monde romain, un théâtre qu’on remplissait d’eau, deux aqueducs qu’on prend pour un seul, et la seule inscription archéologique portant le nom de Ponce Pilate.",
-      "footerOnly": true,
-      "menuTitle": "Césarée maritime"
+      "menuTitle": "Que visiter en Israël",
+      "groupe": "Visiter Israël"
     },
     {
       "slug": "sujets/beit-shean",
       "title": "Beit Shean : la ville romaine dont on connaît le dernier jour",
       "description": "Bains de 8 500 m², théâtre de 6 000 places, dix-huit civilisations superposées — et un séisme daté au jour près, le 18 janvier 749, grâce aux pièces retrouvées sous les colonnes tombées.",
       "footerOnly": true,
-      "menuTitle": "Beit Shean"
+      "menuTitle": "Beit Shean",
+      "groupe": "Visiter Israël"
     },
     {
-      "slug": "sujets/desert-de-judee",
-      "title": "Le désert de Judée hors des sentiers : Nabi Moussa, le Wadi Qelt et le Jourdain",
-      "description": "Le tombeau que l’islam donne à Moïse, le seul musée de mosaïques du pays, un monastère byzantin habité depuis 1 500 ans, et le lieu du baptême où le Jourdain fait trois mètres de large — et où le déminage n’est pas terminé.",
+      "slug": "sujets/cesaree-maritime",
+      "title": "Césarée maritime : la ville qu’Hérode a bâtie pour se faire pardonner",
+      "description": "Le premier port entièrement artificiel du monde romain, un théâtre qu’on remplissait d’eau, deux aqueducs qu’on prend pour un seul, et la seule inscription archéologique portant le nom de Ponce Pilate.",
       "footerOnly": true,
-      "menuTitle": "Le désert de Judée"
-    },
-    {
-      "slug": "sujets/portes-de-jerusalem",
-      "title": "Les huit portes de Jérusalem : pourquoi on entre par Jaffa",
-      "description": "Quatre kilomètres de remparts, dix-huit tours, huit portes. Un péage croisé a déplacé l’entrée principale pour neuf siècles ; une porte est murée avec un cimetière devant ; une autre garde ses impacts de balles de 1948 et 1967.",
-      "footerOnly": true,
-      "menuTitle": "Les portes de Jérusalem"
-    },
-    {
-      "slug": "sujets/mont-sion",
-      "title": "Le mont Sion : la salle de la Cène sauvée par le tombeau du roi David",
-      "description": "Transformée en mosquée plutôt que détruite, la salle de la Cène doit sa survie à ce qui se trouve sous son plancher. Avec la tombe d’Oskar Schindler et le premier mémorial de la Shoah réalisé en Israël, avant Yad Vashem.",
-      "footerOnly": true,
-      "menuTitle": "Le mont Sion"
-    },
-    {
-      "slug": "sujets/tsipori",
-      "title": "Tsipori : le site romain le mieux conservé d’Israël, et presque vide",
-      "description": "Théâtre de 4 500 places, réservoir de 4 300 m³, la Mona Lisa de la Galilée et un concours de boisson entre Dionysos et Hercule — un site intact parce qu’il n’a pas été détruit mais abandonné, à quinze minutes de Nazareth.",
-      "footerOnly": true,
-      "menuTitle": "Tsipori"
-    },
-    {
-      "slug": "sujets/prison-saint-jean-d-acre",
-      "title": "La prison de Saint-Jean-d’Acre : l’évasion qui a précipité le départ des Britanniques",
-      "description": "Jabotinsky et Itzhak Shamir y furent détenus. En mai 1947, à 16 h 22, le mur sud explose : 27 évadés, et six mois plus tard le plan de partage. Avec le tunnel qui ne menait nulle part et l’ingénieur qui a fourni les plans.",
-      "footerOnly": true,
-      "menuTitle": "La prison d’Acre"
-    },
-    {
-      "slug": "sujets/megiddo",
-      "title": "Megiddo : vingt-six villes empilées, et le mot Armageddon",
-      "description": "Six mille ans sur la Via Maris, le plus grand temple cananéen jamais mis au jour, des portes à six chambres qui prouvent une autorité centrale, un tunnel d’eau de 3 500 ans — et l’origine hébraïque du mot Armageddon.",
-      "footerOnly": true,
-      "menuTitle": "Megiddo"
-    },
-    {
-      "slug": "sujets/synagogues-quartier-juif-jerusalem",
-      "title": "Les synagogues du quartier juif de Jérusalem : la Hurva et les quatre séfarades",
-      "description": "Bâties sous le niveau de la rue parce qu’une synagogue ne devait pas dépasser les maisons voisines. Une dette ottomane qui a valu son nom à la Hurva, un minaret construit par un juif converti, et des clés retrouvées dix-neuf ans plus tard.",
-      "footerOnly": true,
-      "menuTitle": "Les synagogues du quartier juif"
-    },
-    {
-      "slug": "sujets/baron-rothschild-israel",
-      "title": "Le baron Edmond de Rothschild en Israël : Zikhron Yaakov et Ramat HaNadiv",
-      "description": "Les pionniers de 1882 font faillite ; le baron les sauve, avec des agronomes et des cépages français — et une hiérarchie qu’ils n’avaient pas demandée. Quarante-quatre communautés fondées, et de la terre de chacune sur son tombeau.",
-      "footerOnly": true,
-      "menuTitle": "Le baron de Rothschild"
-    },
-    {
-      "slug": "sujets/tour-de-david",
-      "title": "La Tour de David : la forteresse d’Hérode qu’on a rebaptisée pour l’oublier",
-      "description": "Le bâtiment n’a rien de David : c’est une forteresse d’Hérode, renommée à l’époque byzantine pour effacer son bâtisseur. Palais croisé, mosquée, caserne pendant sept cents ans, ligne de front jordanienne pendant dix-neuf ans.",
-      "footerOnly": true,
-      "menuTitle": "La Tour de David"
+      "menuTitle": "Césarée maritime",
+      "groupe": "Visiter Israël"
     },
     {
       "slug": "sujets/jerusalem-hors-les-murs",
       "title": "Sortir des murailles : comment Jérusalem s’est étendue, en 1860",
       "description": "Montefiore offre le logement, puis paie les gens pour habiter hors les murs — ils rentrent dormir dans la vieille ville dès qu’il s’en va. Ce qui les décidera, c’est le choléra de 1866. Avec Mahané Israël, le quartier bâti sans bienfaiteur par des juifs marocains.",
       "footerOnly": true,
-      "menuTitle": "Jérusalem hors les murs"
+      "menuTitle": "Jérusalem hors les murs",
+      "groupe": "Visiter Israël"
+    },
+    {
+      "slug": "sujets/tour-de-david",
+      "title": "La Tour de David : la forteresse d’Hérode qu’on a rebaptisée pour l’oublier",
+      "description": "Le bâtiment n’a rien de David : c’est une forteresse d’Hérode, renommée à l’époque byzantine pour effacer son bâtisseur. Palais croisé, mosquée, caserne pendant sept cents ans, ligne de front jordanienne pendant dix-neuf ans.",
+      "footerOnly": true,
+      "menuTitle": "La Tour de David",
+      "groupe": "Visiter Israël"
+    },
+    {
+      "slug": "sujets/prison-saint-jean-d-acre",
+      "title": "La prison de Saint-Jean-d’Acre : l’évasion qui a précipité le départ des Britanniques",
+      "description": "Jabotinsky et Itzhak Shamir y furent détenus. En mai 1947, à 16 h 22, le mur sud explose : 27 évadés, et six mois plus tard le plan de partage. Avec le tunnel qui ne menait nulle part et l’ingénieur qui a fourni les plans.",
+      "footerOnly": true,
+      "menuTitle": "La prison d’Acre",
+      "groupe": "Visiter Israël"
+    },
+    {
+      "slug": "sujets/baron-rothschild-israel",
+      "title": "Le baron Edmond de Rothschild en Israël : Zikhron Yaakov et Ramat HaNadiv",
+      "description": "Les pionniers de 1882 font faillite ; le baron les sauve, avec des agronomes et des cépages français — et une hiérarchie qu’ils n’avaient pas demandée. Quarante-quatre communautés fondées, et de la terre de chacune sur son tombeau.",
+      "footerOnly": true,
+      "menuTitle": "Le baron de Rothschild",
+      "groupe": "Visiter Israël"
     },
     {
       "slug": "sujets/doigt-de-la-galilee",
       "title": "Le doigt de la Galilée : cinq cents millions d’oiseaux, et le dieu Pan",
       "description": "Israël est le seul pont terrestre entre trois continents : 500 millions d’oiseaux le traversent deux fois par an, et de plus en plus renoncent à repartir. Et à Banias, un nom grec conservé par ceux qui ne prononçaient pas le p.",
       "footerOnly": true,
-      "menuTitle": "Le doigt de la Galilée"
+      "menuTitle": "Le doigt de la Galilée",
+      "groupe": "Visiter Israël"
+    },
+    {
+      "slug": "sujets/desert-de-judee",
+      "title": "Le désert de Judée hors des sentiers : Nabi Moussa, le Wadi Qelt et le Jourdain",
+      "description": "Le tombeau que l’islam donne à Moïse, le seul musée de mosaïques du pays, un monastère byzantin habité depuis 1 500 ans, et le lieu du baptême où le Jourdain fait trois mètres de large — et où le déminage n’est pas terminé.",
+      "footerOnly": true,
+      "menuTitle": "Le désert de Judée",
+      "groupe": "Visiter Israël"
+    },
+    {
+      "slug": "sujets/mont-sion",
+      "title": "Le mont Sion : la salle de la Cène sauvée par le tombeau du roi David",
+      "description": "Transformée en mosquée plutôt que détruite, la salle de la Cène doit sa survie à ce qui se trouve sous son plancher. Avec la tombe d’Oskar Schindler et le premier mémorial de la Shoah réalisé en Israël, avant Yad Vashem.",
+      "footerOnly": true,
+      "menuTitle": "Le mont Sion",
+      "groupe": "Visiter Israël"
+    },
+    {
+      "slug": "sujets/portes-de-jerusalem",
+      "title": "Les huit portes de Jérusalem : pourquoi on entre par Jaffa",
+      "description": "Quatre kilomètres de remparts, dix-huit tours, huit portes. Un péage croisé a déplacé l’entrée principale pour neuf siècles ; une porte est murée avec un cimetière devant ; une autre garde ses impacts de balles de 1948 et 1967.",
+      "footerOnly": true,
+      "menuTitle": "Les portes de Jérusalem",
+      "groupe": "Visiter Israël"
+    },
+    {
+      "slug": "sujets/synagogues-quartier-juif-jerusalem",
+      "title": "Les synagogues du quartier juif de Jérusalem : la Hurva et les quatre séfarades",
+      "description": "Bâties sous le niveau de la rue parce qu’une synagogue ne devait pas dépasser les maisons voisines. Une dette ottomane qui a valu son nom à la Hurva, un minaret construit par un juif converti, et des clés retrouvées dix-neuf ans plus tard.",
+      "footerOnly": true,
+      "menuTitle": "Les synagogues du quartier juif",
+      "groupe": "Visiter Israël"
+    },
+    {
+      "slug": "sujets/megiddo",
+      "title": "Megiddo : vingt-six villes empilées, et le mot Armageddon",
+      "description": "Six mille ans sur la Via Maris, le plus grand temple cananéen jamais mis au jour, des portes à six chambres qui prouvent une autorité centrale, un tunnel d’eau de 3 500 ans — et l’origine hébraïque du mot Armageddon.",
+      "footerOnly": true,
+      "menuTitle": "Megiddo",
+      "groupe": "Visiter Israël"
+    },
+    {
+      "slug": "sujets/tsipori",
+      "title": "Tsipori : le site romain le mieux conservé d’Israël, et presque vide",
+      "description": "Théâtre de 4 500 places, réservoir de 4 300 m³, la Mona Lisa de la Galilée et un concours de boisson entre Dionysos et Hercule — un site intact parce qu’il n’a pas été détruit mais abandonné, à quinze minutes de Nazareth.",
+      "footerOnly": true,
+      "menuTitle": "Tsipori",
+      "groupe": "Visiter Israël"
+    },
+    {
+      "slug": "sujets/jerusalem-antique-archeologie",
+      "title": "Jérusalem antique : ce que les fouilles ont révélé",
+      "description": "Textes d’exécration, stèle de Tel Dan, palais d’Eilat Mazar, amulettes de Ketef Hinnom : ce que l’archéologie établit de Jérusalem avant l’exil — expliqué sur Tandem TV par Jérôme Haas.",
+      "footerOnly": true,
+      "menuTitle": "Jérusalem antique",
+      "groupe": "Histoire et archéologie"
+    },
+    {
+      "slug": "sujets/vagues-alya-1882-1939",
+      "title": "Les vagues d’alya, de 1882 à 1939 : qui est venu, et pourquoi",
+      "description": "Cinq vagues d’immigration juive en terre d’Israël, de 1882 à 1939 : pogroms russes, idéologie sioniste, décret Grabski, fuite devant le nazisme — et une immigration jamais libre sous mandat britannique. Expliqué sur Tandem TV par l’historien Georges Bensoussan.",
+      "footerOnly": true,
+      "menuTitle": "Les vagues d’alya",
+      "groupe": "Histoire et archéologie"
+    },
+    {
+      "slug": "sujets/hebreu-mots-francais",
+      "title": "Des mots français venus de l’hébreu ? La thèse de Bruno Dray",
+      "description": "Cep, broc, gomme, groseille, agraire : le linguiste Bruno Dray relie plusieurs centaines de mots français à des racines de l’hébreu biblique. Sa méthode, ses exemples et ce que disent les dictionnaires — expliqué sur Tandem TV avec Jérôme Haas.",
+      "footerOnly": true,
+      "menuTitle": "L’hébreu et le français",
+      "groupe": "Langue, symboles et monnaie"
+    },
+    {
+      "slug": "sujets/shekel-monnaie-israelienne",
+      "title": "Le shekel israélien : les symboles des pièces et des billets",
+      "description": "Que représentent les symboles du shekel ? Ménorah, harpe, grenade, palmier, et les quatre poètes des billets — expliqués à l’antenne de Tandem TV par Jérôme Haas.",
+      "footerOnly": true,
+      "menuTitle": "Le shekel israélien",
+      "groupe": "Langue, symboles et monnaie"
     },
     {
       "slug": "television-israelienne-francophone",
@@ -408,5 +426,10 @@
       "_retires": "Deux corrections ont ete retirees le 29 aout 2026 apres verification sur le site publie. « Operation → Operation accentue » : l'unique occurrence sans accent du catalogue etait « Operation Brothers », le nom ANGLAIS de l'operation du Mossad, cite a cote de sa traduction « l'Operation Freres ». La regle n'a donc rien repare et a abime un nom propre. « Drai → Drai avec trema » : une occurrence de chaque orthographe dans le catalogue, et le lexique de transcription ecrit « Bernard Drai » sans trema. Un contre un, ce n'est pas une preuve, c'est un tirage au sort. A demander a Michael plutot qu'a deviner."
     }
   },
-  "_comment_display": "Mise en forme des titres de rubriques. 'smartCase' remet en minuscules les titres écrits TOUT EN MAJUSCULES (majuscule uniquement à la première lettre). Les titres déjà correctement écrits ne sont pas touchés. 'properNouns' liste les mots qui doivent garder leur majuscule : ajoutez-y tout nom propre mal rendu. 'renames' corrige l'orthographe d'un titre de playlist pour l'affichage seulement : la clé est le titre exact tel qu'il est écrit sur YouTube, la valeur est ce que le site affichera. L'adresse de la rubrique ne change pas — elle reste calculée sur le titre YouTube, pour ne pas casser un lien déjà indexé."
+  "_comment_display": "Mise en forme des titres de rubriques. 'smartCase' remet en minuscules les titres écrits TOUT EN MAJUSCULES (majuscule uniquement à la première lettre). Les titres déjà correctement écrits ne sont pas touchés. 'properNouns' liste les mots qui doivent garder leur majuscule : ajoutez-y tout nom propre mal rendu. 'renames' corrige l'orthographe d'un titre de playlist pour l'affichage seulement : la clé est le titre exact tel qu'il est écrit sur YouTube, la valeur est ce que le site affichera. L'adresse de la rubrique ne change pas — elle reste calculée sur le titre YouTube, pour ne pas casser un lien déjà indexé.",
+  "groupesSujets": {
+    "Visiter Israël": "Les grands sites du pays, parcourus caméra à la main avec un guide conférencier dans la série « Guide en Tandem ».",
+    "Histoire et archéologie": "Ce que les fouilles et les historiens établissent — et où ils divergent.",
+    "Langue, symboles et monnaie": "Ce que racontent les mots et les objets du quotidien israélien."
+  }
 }

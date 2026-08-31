@@ -83,7 +83,91 @@ const PAGES_ECRITES = new Set();
 // connait encore, mais dont la page d'arrivee a disparu.
 const TRANSFERTS_SANS_CIBLE = [];
 
+// Le menu se construit par ajouts successifs (Sujets, Grille TV, partenaires…)
+// au fur et a mesure que les donnees sont chargees. Une page ecrite avant la
+// fin de ces ajouts sort avec un menu incomplet -- sans erreur, sans trace.
+// C'est arrive aux 500 fiches d'invites, privees de l'entree « Sujets »
+// pendant des semaines parce qu'elles etaient ecrites trente lignes trop tot.
+// Ce drapeau ne repare rien : il fait du bruit, ce qui suffit a l'empecher de
+// recommencer.
+let MENU_FIGE = false;
+const PAGES_AVANT_MENU = [];
+
+// --- Mise en page des pages de sujet ---------------------------------------
+//
+// Une page de sujet fait 1 500 a 4 000 mots. Sans reperes, elle se lit comme un
+// bloc : on ne sait pas ce qu'on va y trouver, ni ou l'on en est. Trois objets
+// suffisent, et aucun ne demande d'ecrire quoi que ce soit dans le Markdown --
+// tout est deduit du texte deja ecrit.
+//
+//   1. le chapo   : le paragraphe « En bref », detache et encadre ;
+//   2. le sommaire: les intertitres, cliquables, a partir de quatre ;
+//   3. les renvois: « Page detaillee » et « Sur le meme sujet », en cartes.
+//
+// Le principe est le meme que pour les vignettes : on transforme le HTML APRES
+// la conversion Markdown. Ecrire ces balises dans le contenu ne marcherait pas
+// -- le convertisseur les echapperait, et le lecteur verrait « <div> » en
+// toutes lettres. C'est arrive, et c'est pour ca que build.mjs le signale.
+function identifiantTitre(texte, pris) {
+  const base = String(texte)
+    .replace(/<[^>]*>/g, '')
+    .replace(/&[a-z]+;|&#\d+;/gi, ' ')
+    .normalize('NFD').replace(/\p{Diacritic}/gu, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '')
+    .slice(0, 60) || 'section';
+  let id = base;
+  let n = 2;
+  while (pris.has(id)) { id = `${base}-${n}`; n += 1; }
+  pris.add(id);
+  return id;
+}
+
+function mettreEnPageSujet(html) {
+  let out = html;
+
+  // 1. Le chapo. On ne devine pas : on reconnait la formule « En bref. » que
+  //    toutes ces pages emploient en ouverture. Si elle manque, on ne fait
+  //    rien plutot que d'encadrer un paragraphe au hasard.
+  out = out.replace(/<p>(<strong>En bref\.<\/strong>[\s\S]*?)<\/p>/,
+    (_, dedans) => `<div class="chapo"><p>${dedans}</p></div>`);
+
+  // 2. Les identifiants d'ancrage, puis le sommaire.
+  const pris = new Set();
+  const titres = [];
+  out = out.replace(/<h2>([\s\S]*?)<\/h2>/g, (_, dedans) => {
+    const id = identifiantTitre(dedans, pris);
+    titres.push({ id, texte: dedans });
+    return `<h2 id="${id}">${dedans}</h2>`;
+  });
+  // En dessous de quatre intertitres, un sommaire encombre plus qu'il n'aide.
+  if (titres.length >= 4) {
+    const sommaire = `<nav class="sommaire" aria-label="Sommaire">`
+      + `<h2>Sur cette page</h2><ol>`
+      + titres.map((t) => `<li><a href="#${t.id}">${t.texte}</a></li>`).join('')
+      + `</ol></nav>`;
+    // Juste apres le chapo s'il existe, sinon juste apres le titre principal.
+    if (out.includes('</div>') && /<div class="chapo">/.test(out)) {
+      out = out.replace(/(<div class="chapo">[\s\S]*?<\/div>)/, `$1${sommaire}`);
+    } else {
+      out = out.replace(/(<\/h1>)/, `$1${sommaire}`);
+    }
+  }
+
+  // 3. Les renvois vers une page detaillee : un paragraphe qui commence par
+  //    une fleche. C'est une convention d'ecriture, pas une balise.
+  out = out.replace(/<p>(→[\s\S]*?)<\/p>/g, '<p class="lien-detail">$1</p>');
+
+  // 4. La liste de fin, sous « Sur le meme sujet ».
+  out = out.replace(/(<h2[^>]*>Sur le m[^<]*<\/h2>\s*)<ul>/,
+    '$1<ul class="liens-connexes">');
+
+  return out;
+}
+
 async function writePage(routePath, html) {
+  if (!MENU_FIGE) PAGES_AVANT_MENU.push(routePath);
   const rel = routePath.endsWith('.html')
     ? routePath.replace(/^\//, '')
     : path.join(routePath.replace(/^\//, ''), 'index.html');
@@ -795,20 +879,6 @@ async function main() {
   }
   ctx.personnesParVideo = personnesParVideo;
 
-  if (personnes.length) {
-    await writePage('/invites/', R.personIndexPage({ ...ctx, personnes }));
-    urls.push({ loc: '/invites/', freq: 'weekly', priority: '0.6' });
-    for (const personne of personnes) {
-      await writePage(`/invites/${personne.slug}/`, R.personPage({ ...ctx, personne }));
-      urls.push({
-        loc: `/invites/${personne.slug}/`,
-        freq: 'monthly',
-        priority: '0.6',
-        lastmod: personne.videos[0]?.publishedAt,
-      });
-    }
-    log(`${personnes.length} fiche(s) d'invités ou de présentateurs : ${personnes.slice(0, 6).map((p) => `${p.nom} (${p.videos.length})`).join(', ')}…`);
-  }
 
 
   // Grille des programmes du canal 14, si un export est présent.
@@ -1026,6 +1096,30 @@ async function main() {
   // ci-dessus : aucun programme n'est echange, c'est un partenariat editorial.
   const medias = await readJson(path.join(ROOT, 'data', 'partenaires-medias.json'), null);
   if (medias?.partenaires?.length) { nav.medias = true; ctx.medias = medias; }
+
+  // Le menu est complet a partir d'ici. Tout ce qui s'ecrit avant sort avec un
+  // menu tronque -- d'ou le deplacement des fiches d'invites, qui etaient
+  // generees bien plus haut.
+  MENU_FIGE = true;
+  if (PAGES_AVANT_MENU.length) {
+    warn(`${PAGES_AVANT_MENU.length} page(s) ecrite(s) avant que le menu soit complet `
+      + `(${PAGES_AVANT_MENU.slice(0, 3).join(', ')}) : leur menu est incomplet.`);
+  }
+
+  if (personnes.length) {
+    await writePage('/invites/', R.personIndexPage({ ...ctx, personnes }));
+    urls.push({ loc: '/invites/', freq: 'weekly', priority: '0.6' });
+    for (const personne of personnes) {
+      await writePage(`/invites/${personne.slug}/`, R.personPage({ ...ctx, personne }));
+      urls.push({
+        loc: `/invites/${personne.slug}/`,
+        freq: 'monthly',
+        priority: '0.6',
+        lastmod: personne.videos[0]?.publishedAt,
+      });
+    }
+    log(`${personnes.length} fiche(s) d'invités ou de présentateurs : ${personnes.slice(0, 6).map((p) => `${p.nom} (${p.videos.length})`).join(', ')}…`);
+  }
   if (grille) {
     const relies = grille.jours.flatMap((j) => j.programmes).filter((p) => p.videoId).length;
     const a = grille.apparies;
@@ -1223,13 +1317,16 @@ async function main() {
       .replace(/\{\{analytics\}\}/g, analyticsNote)
       .replace(/\{\{push\}\}/g, pushNote)
       .replace(/\{\{newsletter\}\}/g, newsletterNote)));
+    // La mise en page (chapo, sommaire, renvois) ne s'applique qu'aux pages de
+    // sujet : les mentions legales n'ont pas besoin d'un sommaire.
+    const htmlFinal = pg.slug.startsWith('sujets/') ? mettreEnPageSujet(html) : html;
     await writePage(`/${pg.slug}/`, R.contentPage({
       ...ctx,
       title: pg.title,
       libelle: pg.menuTitle || pg.title,
       description: pg.description || `${pg.title} — ${config.siteName}.`,
       canonical: `/${pg.slug}/`,
-      html,
+      html: htmlFinal,
       // L'image de partage de la page est celle de sa premiere emission. Rien a
       // declarer dans site.config.json : la page qui montre une video la porte
       // aussi dans Google et sur les reseaux.
@@ -1246,20 +1343,38 @@ async function main() {
   // Markdown manque est ignoree par la boucle -- elle ne doit donc pas non plus
   // figurer ici, sinon le sommaire promet une page qui renvoie une erreur.
   if (sujetsEcrits.length) {
-    const md = ['# Sujets',
-      '',
-      'Des réponses construites à partir de ce qui a été dit à l\'antenne de '
-      + `${config.siteName}, avec les émissions d'où elles viennent.`,
-      '',
-      ...sujetsEcrits.map((pg) => `- [${pg.menuTitle || pg.title}](/${pg.slug}/)`
-        + (pg.description ? ` — ${pg.description}` : '')),
-    ].join('\n');
+    // Une liste a puces de vingt lignes ne se lit pas : on n'y distingue ni les
+    // familles, ni ce qui vaut la peine d'etre ouvert. Les sujets sont donc
+    // ranges par groupe -- l'ordre des groupes est celui de leur premiere
+    // apparition dans site.config.json, donc pilotable sans toucher au code --
+    // et presentes en cartes titre + resume.
+    const GROUPE_PAR_DEFAUT = 'Autres sujets';
+    const groupes = new Map();
+    for (const pg of sujetsEcrits) {
+      const nom = pg.groupe || GROUPE_PAR_DEFAUT;
+      if (!groupes.has(nom)) groupes.set(nom, []);
+      groupes.get(nom).push(pg);
+    }
+    const carte = (pg) => `<li class="sujet-carte"><a href="/${pg.slug}/">`
+      + `<span class="sujet-titre">${escapeHtml(pg.menuTitle || pg.title)}</span>`
+      + (pg.description ? `<span class="sujet-desc">${escapeHtml(pg.description)}</span>` : '')
+      + '</a></li>';
+    const blocs = [...groupes.entries()].map(([nom, pages]) => `<section class="sujets-groupe">`
+      + `<h2>${escapeHtml(nom)}</h2>`
+      + (config.groupesSujets?.[nom]
+        ? `<p class="sujets-intro">${escapeHtml(config.groupesSujets[nom])}</p>` : '')
+      + `<ul class="sujets-cartes">${pages.map(carte).join('')}</ul>`
+      + '</section>').join('');
+    const entete = `<h1>Sujets</h1>`
+      + `<p class="chapo">Des réponses construites à partir de ce qui a été dit à l'antenne `
+      + `de ${escapeHtml(config.siteName)}, avec les émissions d'où elles viennent. `
+      + `<strong>${sujetsEcrits.length} sujets</strong> à ce jour.</p>`;
     await writePage('/sujets/', R.contentPage({
       ...ctx,
       title: 'Sujets',
       description: `Les sujets traités à l'antenne de ${config.siteName}, expliqués et sourcés.`,
       canonical: '/sujets/',
-      html: markdownToHtml(md),
+      html: entete + blocs,
     }));
     urls.push({ loc: '/sujets/', freq: 'weekly', priority: '0.6' });
   }
