@@ -127,11 +127,17 @@ function identifiantTitre(texte, pris) {
 function mettreEnPageSujet(html) {
   let out = html;
 
-  // 1. Le chapo. On ne devine pas : on reconnait la formule « En bref. » que
-  //    toutes ces pages emploient en ouverture. Si elle manque, on ne fait
-  //    rien plutot que d'encadrer un paragraphe au hasard.
-  out = out.replace(/<p>(<strong>En bref\.<\/strong>[\s\S]*?)<\/p>/,
-    (_, dedans) => `<div class="chapo"><p>${dedans}</p></div>`);
+  // 1. Le chapo : le premier paragraphe de l'article, detache et encadre.
+  //
+  //    La premiere version reconnaissait la formule « En bref. » ecrite en
+  //    tete de page. Michael, 1er septembre : ces pages « font trop fiches,
+  //    trop techniques ». Un article n'annonce pas qu'il resume -- il attaque.
+  //    On prend donc simplement le premier paragraphe qui suit le titre, ce
+  //    qui est la definition meme du chapeau en presse ecrite, et ce qui
+  //    marche aussi bien sur les pages qui portaient encore l'ancienne
+  //    formule.
+  out = out.replace(/(<\/h1>\s*)<p>([\s\S]*?)<\/p>/,
+    (_, avant, dedans) => `${avant}<div class="chapo"><p>${dedans}</p></div>`);
 
   // 2. Les identifiants d'ancrage, puis le sommaire.
   const pris = new Set();
