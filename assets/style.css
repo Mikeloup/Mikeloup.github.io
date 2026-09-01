@@ -1772,14 +1772,21 @@ a.g-src:hover { color: var(--accent); text-decoration: underline; text-underline
    nom de l'auteur et celui de la licence. Elle est donc plus longue que celle
    d'une vignette video, et se lit sur deux lignes : la legende, puis le
    credit, en plus petit. */
-.prose .ouverture-photo figcaption {
-  display: flex;
-  flex-direction: column;
-  gap: .15rem;
+.prose .ouverture-photo img {
+  /* La proportion est calculee page par page (voir ouverturePhoto) et posee
+     en variable sur la figure. Sans elle, on retombe sur le 16/9 des vignettes
+     video, qui reste le bon repli. */
+  aspect-ratio: var(--proportion, 16 / 9);
 }
-.prose .ouverture-photo .photo-legende { color: var(--text); }
+.prose .ouverture-photo .photo-legende {
+  display: block;
+  color: var(--text);
+}
 .prose .ouverture-photo .photo-credit {
+  display: block;
+  margin-top: .15rem;
   font-size: .8rem;
+  line-height: 1.4;
   color: var(--muted);
 }
 .prose .ouverture-photo .photo-credit a { font-weight: 500; }

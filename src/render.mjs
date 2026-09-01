@@ -2069,6 +2069,15 @@ export function ouverturePhoto(photo) {
   const ligne = [credits.join(', '), source].filter(Boolean).join(' — via ');
   const dims = photo.largeur && photo.hauteur
     ? ` width="${photo.largeur}" height="${photo.hauteur}"` : '';
+  // Le bandeau ne peut pas etre plus haut qu'un 16/9 -- une photo 4/3 affichee
+  // en pleine largeur pousserait tout l'article sous la ligne de flottaison, et
+  // on la recadre donc. Mais il ne doit pas non plus etre plus etroit que la
+  // photo : une vue panoramique en 3,2 pour 1, forcee dans un cadre 16/9,
+  // perdrait la moitie de sa largeur -- c'est-a-dire l'essentiel du sujet. La
+  // regle tient en une ligne : on garde la plus large des deux proportions.
+  const proportion = photo.largeur && photo.hauteur
+    ? Math.max(16 / 9, photo.largeur / photo.hauteur).toFixed(3)
+    : '';
   // Deux tailles, et le navigateur choisit. La colonne d'article fait 780 px,
   // l'ouverture deborde a 836 px sur grand ecran : au-dela de 1600 px de
   // fichier, on n'envoie que du poids. Sur un telephone, c'est la version
@@ -2079,7 +2088,7 @@ export function ouverturePhoto(photo) {
       + ' sizes="(min-width: 1100px) 836px, 100vw"'
     : '';
   return `
-<figure class="ouverture ouverture-photo">
+<figure class="ouverture ouverture-photo"${proportion ? ` style="--proportion: ${proportion}"` : ''}>
   <img src="/assets/${escapeHtml(photo.fichier)}"${jeu} alt="${escapeHtml(photo.alt || '')}"${dims}
        loading="eager" fetchpriority="high" decoding="async">
   <figcaption>

@@ -1,17 +1,4 @@
 {
-  "sujets/cesaree-maritime": {
-    "fichier": "photos/cesaree-maritime.jpg",
-    "largeur": 1600,
-    "hauteur": 1200,
-    "alt": "L'aqueduc romain de Césarée maritime, le long du rivage",
-    "legende": "L'aqueduc bâti sous Hérode amenait l'eau depuis les sources du mont Carmel.",
-    "auteur": "The original uploader was Mark87 at English Wikipedia .",
-    "auteurUrl": "https://en.wikipedia.org/wiki/User:Mark87",
-    "licence": "Public domain",
-    "source": "https://commons.wikimedia.org/wiki/File:Caesarea_Maritima_aqueduct.jpg",
-    "nomFichierCommons": "Caesarea Maritima aqueduct.jpg",
-    "recupereLe": "2026-09-01"
-  },
   "sujets/megiddo": {
     "fichier": "photos/megiddo.jpg",
     "largeur": 1600,
@@ -65,20 +52,6 @@
     "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
     "source": "https://commons.wikimedia.org/wiki/File:View_over_Akko_(Acre)_from_Old_City_Walls_-_Akko_-_Israel_(5693252457).jpg",
     "nomFichierCommons": "View over Akko (Acre) from Old City Walls - Akko - Israel (5693252457).jpg",
-    "recupereLe": "2026-09-01"
-  },
-  "sujets/portes-de-jerusalem": {
-    "fichier": "photos/portes-de-jerusalem.jpg",
-    "largeur": 1600,
-    "hauteur": 1200,
-    "alt": "La porte de Jaffa, dans la muraille de la vieille ville de Jérusalem",
-    "legende": "La porte de Jaffa, la plus fréquentée des huit portes de la muraille.",
-    "auteur": "No machine-readable author provided. Cucaracha assumed (based on copyright claims).",
-    "auteurUrl": "https://commons.wikimedia.org/wiki/User:Cucaracha",
-    "licence": "CC BY-SA 3.0",
-    "licenceUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
-    "source": "https://commons.wikimedia.org/wiki/File:Jaffa_Gate_Jerusalem_10.JPG",
-    "nomFichierCommons": "Jaffa Gate Jerusalem 10.JPG",
     "recupereLe": "2026-09-01"
   },
   "sujets/synagogues-quartier-juif-jerusalem": {
@@ -223,6 +196,39 @@
     "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
     "source": "https://commons.wikimedia.org/wiki/File:10_Agorot_coin_-_Israeli_Currency_-_Money_and_Coins_-_Scattered_coins.JPG",
     "nomFichierCommons": "10 Agorot coin - Israeli Currency - Money and Coins - Scattered coins.JPG",
+    "recupereLe": "2026-09-01"
+  },
+  "sujets/cesaree-maritime": {
+    "fichier": "photos/cesaree-maritime.jpg",
+    "largeur": 1600,
+    "hauteur": 1200,
+    "fichierPetit": "photos/cesaree-maritime-800.jpg",
+    "largeurPetite": 800,
+    "alt": "L'aqueduc romain de Césarée maritime, le long du rivage",
+    "legende": "L'aqueduc bâti sous Hérode amenait l'eau depuis les sources du mont Carmel.",
+    "auteur": "Mark87",
+    "auteurUrl": "https://en.wikipedia.org/wiki/User:Mark87",
+    "licence": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Caesarea_Maritima_aqueduct.jpg",
+    "nomFichierCommons": "Caesarea Maritima aqueduct.jpg",
+    "auteurSource": "The original uploader was <a href=\"https://en.wikipedia.org/wiki/User:Mark87\" class=\"extiw\" title=\"wikipedia:User:Mark87\">Mark87</a> at <a href=\"https://en.wikipedia.org/wiki/\" class=\"extiw\" title=\"wikipedia:\">English Wikipedia</a>.",
+    "recupereLe": "2026-09-01"
+  },
+  "sujets/portes-de-jerusalem": {
+    "fichier": "photos/portes-de-jerusalem.jpg",
+    "largeur": 1600,
+    "hauteur": 1200,
+    "fichierPetit": "photos/portes-de-jerusalem-800.jpg",
+    "largeurPetite": 800,
+    "alt": "La porte de Jaffa, dans la muraille de la vieille ville de Jérusalem",
+    "legende": "La porte de Jaffa, la plus fréquentée des huit portes de la muraille.",
+    "auteur": "No machine-readable author provided. Cucaracha assumed (based on copyright claims).",
+    "auteurUrl": "https://commons.wikimedia.org/wiki/User:Cucaracha",
+    "licence": "CC BY-SA 3.0",
+    "licenceUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:Jaffa_Gate_Jerusalem_10.JPG",
+    "nomFichierCommons": "Jaffa Gate Jerusalem 10.JPG",
+    "auteurSource": "No machine-readable author provided. <a href=\"//commons.wikimedia.org/wiki/User:Cucaracha\" title=\"User:Cucaracha\">Cucaracha</a> assumed (based on copyright claims).",
     "recupereLe": "2026-09-01"
   }
 }

@@ -124,7 +124,7 @@ function identifiantTitre(texte, pris) {
   return id;
 }
 
-function mettreEnPageSujet(html) {
+function mettreEnPageSujet(html, ouverture = '') {
   let out = html;
 
   // 1. Le chapo : le premier paragraphe de l'article, detache et encadre.
@@ -159,6 +159,21 @@ function mettreEnPageSujet(html) {
     } else {
       out = out.replace(/(<\/h1>)/, `$1${sommaire}`);
     }
+  }
+
+  // 2 bis. La photographie d'ouverture, si la page en a une.
+  //
+  //    Elle se place apres le chapo et avant le sommaire, comme dans un
+  //    journal : le titre, l'attaque, l'image, puis les reperes. Elle ne se
+  //    pose PAS a l'endroit de la premiere video : cet endroit varie d'une
+  //    page a l'autre, et sur certaines il tombe trois ecrans plus bas -- une
+  //    image d'ouverture qu'il faut aller chercher n'ouvre rien.
+  if (ouverture) {
+    const poser = (motif) => { out = out.replace(motif, (m) => `${m}${ouverture}`); };
+    const poserAvant = (motif) => { out = out.replace(motif, (m) => `${ouverture}${m}`); };
+    if (/<nav class="sommaire"/.test(out)) poserAvant(/<nav class="sommaire"/);
+    else if (/<div class="chapo">/.test(out)) poser(/<div class="chapo">[\s\S]*?<\/div>/);
+    else poser(/<\/h1>/);
   }
 
   // 3. Les renvois vers une page detaillee : un paragraphe qui commence par
@@ -1330,10 +1345,9 @@ async function main() {
         cartes.push(video);
         if (premiere && pg.slug.startsWith('sujets/')) {
           premiere = false;
-          if (photo) {
-            return R.ouverturePhoto(photo)
-              + `<div class="grid">${R.videoCard(video, { accroche: true })}</div>`;
-          }
+          // Quand la page a une photographie, c'est elle qui ouvre, tout en
+          // haut ; la video reprend ici sa place de vignette dans le fil.
+          if (photo) return `<div class="grid">${R.videoCard(video, { accroche: true })}</div>`;
           return R.ouvertureSujet(video);
         }
         return `<div class="grid">${R.videoCard(video, { accroche: true })}</div>`;
@@ -1363,7 +1377,9 @@ async function main() {
       .replace(/\{\{newsletter\}\}/g, newsletterNote)));
     // La mise en page (chapo, sommaire, renvois) ne s'applique qu'aux pages de
     // sujet : les mentions legales n'ont pas besoin d'un sommaire.
-    const htmlFinal = pg.slug.startsWith('sujets/') ? mettreEnPageSujet(html) : html;
+    const htmlFinal = pg.slug.startsWith('sujets/')
+      ? mettreEnPageSujet(html, photo ? R.ouverturePhoto(photo) : '')
+      : html;
     const estSujet = pg.slug.startsWith('sujets/');
     await writePage(`/${pg.slug}/`, R.contentPage({
       ...ctx,
