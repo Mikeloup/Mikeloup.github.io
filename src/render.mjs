@@ -2026,6 +2026,33 @@ export function sponsoringPage({ config, categories, nav, channel, buildTime, vi
   });
 }
 
+/**
+ * Image d'ouverture d'une page de sujet.
+ *
+ * Une page de 1 000 a 3 000 mots qui commence par un bloc de texte n'a aucune
+ * accroche visuelle. Faute de photographies libres de droits -- la chaine n'en
+ * possede pas, et les fonds d'emission appartiennent a des tiers --, on emploie
+ * la vignette YouTube de l'emission : elle appartient a la chaine, existe en
+ * 1280x720, et a ete composee pour arreter l'oeil.
+ *
+ * Elle remplace la premiere vignette de la page plutot que de s'y ajouter :
+ * afficher deux fois la meme image a deux ecrans d'intervalle donnerait
+ * l'impression d'un bug.
+ */
+export function ouvertureSujet(video) {
+  const legende = video.playlists?.[0]?.title;
+  return `
+<figure class="ouverture">
+  <a href="/video/${escapeHtml(video.id)}/" aria-label="${escapeHtml(video.title)}">
+    <img ${attributsVignette(vignette(video, 'maxresdefault'))} alt=""
+         loading="eager" fetchpriority="high" decoding="async" referrerpolicy="no-referrer">
+  </a>
+  <figcaption>
+    <a href="/video/${escapeHtml(video.id)}/">${escapeHtml(video.title)}</a>${legende ? ` <span class="ouverture-rubrique">${escapeHtml(legende)}</span>` : ''}
+  </figcaption>
+</figure>`;
+}
+
 export function contentPage({ config, categories, nav, title, description, canonical, html, buildTime, libelle, image }) {
   // Le fil d'Ariane porte le libelle court, pas le titre ecrit pour Google.
   const fil = libelle || title;

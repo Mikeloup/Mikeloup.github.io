@@ -1715,3 +1715,50 @@ a.g-src:hover { color: var(--accent); text-decoration: underline; text-underline
   .sujets-cartes { grid-template-columns: 1fr; }
   .prose .chapo { padding: .95rem 1.1rem; font-size: 1.02rem; }
 }
+
+/* --- Image d'ouverture des pages de sujet ---------------------------------
+ *
+ * Ajoutee le 1er septembre 2026. Une page de sujet commencait par un mur de
+ * texte : rien n'arretait l'oeil, et rien ne disait de quoi on allait parler.
+ * L'image est la vignette de l'emission -- seule source d'images que la chaine
+ * possede en propre.
+ */
+.prose .ouverture {
+  margin: 0 0 2rem;
+  /* L'image deborde la colonne de texte : c'est ce debordement qui la fait
+     lire comme une ouverture et non comme une illustration en cours de route. */
+  width: min(100%, 860px);
+  margin-inline: auto;
+}
+.prose .ouverture a { display: block; text-decoration: none; }
+.prose .ouverture img {
+  display: block;
+  width: 100%;
+  /* Le format est impose ici, pas par le fichier. YouTube ne garantit pas la
+     meme taille pour toutes les vignettes : selon la video, on recoit du
+     1280x720 (16/9) ou du 480x360 (4/3, avec deux bandes noires). Un cadre
+     16/9 en « cover » donne la meme ouverture dans les deux cas, et rogne
+     precisement les bandes noires des secondes. La proportion etant fixee en
+     CSS, la place est reservee avant meme que l'image arrive : la page ne
+     saute pas au chargement. */
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  height: auto;
+  border-radius: var(--radius);
+  background: var(--surface-2);
+}
+.prose .ouverture figcaption {
+  margin-top: .55rem;
+  font-size: .88rem;
+  line-height: 1.45;
+  color: var(--muted);
+}
+.prose .ouverture figcaption a { color: var(--brand); text-decoration: none; font-weight: 600; }
+.prose .ouverture figcaption a:hover { color: var(--accent); text-decoration: underline; }
+.ouverture-rubrique::before { content: " · "; }
+.ouverture-rubrique { color: var(--muted); font-weight: 400; }
+
+@media (min-width: 1100px) {
+  /* Sur grand ecran, l'ouverture deborde legerement de part et d'autre. */
+  .prose .ouverture { width: calc(100% + 6rem); margin-inline: -3rem; }
+}

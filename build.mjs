@@ -1287,6 +1287,17 @@ async function main() {
     // Le remplacement se fait APRES la conversion Markdown. Injecter du HTML
     // avant, c'est laisser le convertisseur l'emballer dans un paragraphe.
     const cartes = [];
+    // La PREMIERE video d'une page de sujet devient une image d'ouverture large,
+    // pas une vignette dans une grille.
+    //
+    // Michael, 1er septembre : « pour les images je n'ai rien d'autre que les
+    // videos elles-memes ». Les emissions sont tournees en studio -- une image
+    // extraite d'une video montre un presentateur, pas un site -- et les fonds
+    // projetes derriere lui appartiennent a des tiers. En revanche, les
+    // vignettes YouTube de la chaine lui appartiennent, existent deja en
+    // 1280x720, et sont composees pour donner envie. C'est la seule source
+    // d'images disponible sans droits a demander ni fichier a telecharger.
+    let premiere = true;
     const poserVignette = (h) => h.replace(
       /<p>\s*\{\{video:([A-Za-z0-9_-]{4,24})\}\}\s*<\/p>|\{\{video:([A-Za-z0-9_-]{4,24})\}\}/g,
       (_, a, b) => {
@@ -1298,6 +1309,10 @@ async function main() {
           return '';
         }
         cartes.push(video);
+        if (premiere && pg.slug.startsWith('sujets/')) {
+          premiere = false;
+          return R.ouvertureSujet(video);
+        }
         return `<div class="grid">${R.videoCard(video, { accroche: true })}</div>`;
       },
     );
