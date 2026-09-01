@@ -591,6 +591,13 @@ export function layout({
   const partage = image
     ? (/^https?:\/\//.test(image) ? image : racine + (image.startsWith('/') ? '' : '/') + image)
     : `${racine}/assets/partage.png`;
+  // Les dimensions annoncees ne valent que pour l'image par defaut, qui fait
+  // bien 1200 sur 630. Les declarer pour une vignette YouTube (1280 sur 720)
+  // ou une photographie (1600 sur ce qu'elle veut) revient a mentir a Facebook,
+  // qui recadre alors sur des mesures fausses. Quand on ne sait pas, on se tait :
+  // les reseaux mesurent l'image eux-memes. Il en va de meme du texte de
+  // remplacement, qui decrivait la chaine quelle que soit l'image affichee.
+  const imageParDefaut = !image;
   const pages = config.pages || [];
   const navPages = pages.filter((pg) => !pg.footerOnly);
   // Le libelle d'un lien n'est pas le titre de la page. Un titre ecrit pour
@@ -654,10 +661,10 @@ OneSignalDeferred.push(async function (OneSignal) {
 <meta property="og:description" content="${escapeHtml(truncate(description, 300))}">
 <meta property="og:url" content="${escapeHtml(url)}">
 <meta property="og:image" content="${escapeHtml(partage)}">
-<meta property="og:image:width" content="1200">
+${imageParDefaut ? `<meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="${escapeHtml(config.siteName)} — ${escapeHtml(config.tagline)}">
-<meta name="twitter:card" content="summary_large_image">
+` : ''}<meta name="twitter:card" content="summary_large_image">
 ${robots ? `<meta name="robots" content="${escapeHtml(robots)}">` : ''}
 <link rel="preconnect" href="https://i.ytimg.com" crossorigin>
 <link rel="alternate" type="application/rss+xml" title="${escapeHtml(config.siteName)}" href="/rss.xml">
@@ -2024,6 +2031,53 @@ export function sponsoringPage({ config, categories, nav, channel, buildTime, vi
     bodyClass: 'page-sponsoring',
     content,
   });
+}
+
+/**
+ * Photographie d'ouverture, quand la page en a une.
+ *
+ * Une vignette YouTube montre un presentateur en studio. Une photographie
+ * montre le lieu dont la page parle : c'est ce que le visiteur cherche, et
+ * c'est ce que Google Images sait indexer.
+ *
+ * La photo vient de Wikimedia Commons, sous une licence qui autorise la
+ * reutilisation. Ces licences ne sont pas gratuites au sens ou l'on n'aurait
+ * rien a faire : elles exigent le nom de l'auteur, le nom de la licence et un
+ * lien vers la source. La legende ci-dessous n'est donc pas un ornement, c'est
+ * la condition du droit d'usage -- et elle est ecrite par le script qui
+ * telecharge l'image, a partir des donnees de Commons, jamais a la main.
+ *
+ * Elle remplace l'ouverture video plutot que de s'y ajouter : deux grandes
+ * images l'une sous l'autre repoussent le texte sous la ligne de flottaison.
+ */
+export function ouverturePhoto(photo) {
+  if (!photo?.fichier) return '';
+  const credits = [];
+  if (photo.auteur) {
+    credits.push(photo.auteurUrl
+      ? `<a href="${escapeHtml(photo.auteurUrl)}" rel="nofollow noopener">${escapeHtml(photo.auteur)}</a>`
+      : escapeHtml(photo.auteur));
+  }
+  if (photo.licence) {
+    credits.push(photo.licenceUrl
+      ? `<a href="${escapeHtml(photo.licenceUrl)}" rel="license nofollow noopener">${escapeHtml(photo.licence)}</a>`
+      : escapeHtml(photo.licence));
+  }
+  const source = photo.source
+    ? `<a href="${escapeHtml(photo.source)}" rel="nofollow noopener">Wikimedia Commons</a>`
+    : '';
+  const ligne = [credits.join(', '), source].filter(Boolean).join(' — via ');
+  const dims = photo.largeur && photo.hauteur
+    ? ` width="${photo.largeur}" height="${photo.hauteur}"` : '';
+  return `
+<figure class="ouverture ouverture-photo">
+  <img src="/assets/${escapeHtml(photo.fichier)}" alt="${escapeHtml(photo.alt || '')}"${dims}
+       loading="eager" fetchpriority="high" decoding="async">
+  <figcaption>
+    ${photo.legende ? `<span class="photo-legende">${escapeHtml(photo.legende)}</span> ` : ''}
+    ${ligne ? `<span class="photo-credit">Photo : ${ligne}</span>` : ''}
+  </figcaption>
+</figure>`;
 }
 
 /**

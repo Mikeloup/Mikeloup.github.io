@@ -1762,3 +1762,24 @@ a.g-src:hover { color: var(--accent); text-decoration: underline; text-underline
   /* Sur grand ecran, l'ouverture deborde legerement de part et d'autre. */
   .prose .ouverture { width: calc(100% + 6rem); margin-inline: -3rem; }
 }
+
+/* --- Photographie d'ouverture (Wikimedia Commons) --------------------------
+   Ajoute le 2 septembre 2026. Toujours a la FIN du fichier : a specificite
+   egale, c'est la derniere regle ecrite qui l'emporte. Deux corrections ont
+   deja ete perdues pour l'avoir oublie.
+
+   La legende d'une photo libre de droits porte une obligation juridique -- le
+   nom de l'auteur et celui de la licence. Elle est donc plus longue que celle
+   d'une vignette video, et se lit sur deux lignes : la legende, puis le
+   credit, en plus petit. */
+.prose .ouverture-photo figcaption {
+  display: flex;
+  flex-direction: column;
+  gap: .15rem;
+}
+.prose .ouverture-photo .photo-legende { color: var(--text); }
+.prose .ouverture-photo .photo-credit {
+  font-size: .8rem;
+  color: var(--muted);
+}
+.prose .ouverture-photo .photo-credit a { font-weight: 500; }

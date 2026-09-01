@@ -1242,6 +1242,19 @@ async function main() {
   // Pages éditoriales (Markdown) — la liste est pilotée par site.config.json
   const contentDir = path.join(ROOT, 'content');
   const sujetsEcrits = [];
+  // Photographies d'ouverture. Ce fichier n'est jamais écrit à la main : il est
+  // produit par publication/recuperer-images.js, qui interroge Wikimedia
+  // Commons, vérifie la licence, télécharge l'image et recopie ici le nom de
+  // l'auteur, la licence et le lien source. Une page sans photo n'a pas
+  // d'entrée : c'est un fichier facultatif, et son absence n'est pas une
+  // erreur.
+  const photosSujets = await readJson(path.join(ROOT, 'data', 'photos-sujets.json'), {});
+  const photosOrphelines = Object.keys(photosSujets)
+    .filter((slug) => !(config.pages || []).some((p) => p.slug === slug));
+  if (photosOrphelines.length) {
+    warn(`data/photos-sujets.json décrit ${photosOrphelines.length} photo(s) pour des pages `
+      + `qui n'existent pas : ${photosOrphelines.join(', ')}. Elles ne s'afficheront nulle part.`);
+  }
   for (const pg of config.pages || []) {
     let md;
     try {
@@ -1297,6 +1310,12 @@ async function main() {
     // vignettes YouTube de la chaine lui appartiennent, existent deja en
     // 1280x720, et sont composees pour donner envie. C'est la seule source
     // d'images disponible sans droits a demander ni fichier a telecharger.
+    //
+    // 2 septembre : quand la page a une PHOTOGRAPHIE libre de droits, c'est
+    // elle qui ouvre -- elle montre le lieu, pas le plateau. La video reprend
+    // alors sa place de vignette dans le fil. Deux grandes images l'une sous
+    // l'autre repousseraient le texte hors de l'ecran.
+    const photo = photosSujets[pg.slug];
     let premiere = true;
     const poserVignette = (h) => h.replace(
       /<p>\s*\{\{video:([A-Za-z0-9_-]{4,24})\}\}\s*<\/p>|\{\{video:([A-Za-z0-9_-]{4,24})\}\}/g,
@@ -1311,6 +1330,10 @@ async function main() {
         cartes.push(video);
         if (premiere && pg.slug.startsWith('sujets/')) {
           premiere = false;
+          if (photo) {
+            return R.ouverturePhoto(photo)
+              + `<div class="grid">${R.videoCard(video, { accroche: true })}</div>`;
+          }
           return R.ouvertureSujet(video);
         }
         return `<div class="grid">${R.videoCard(video, { accroche: true })}</div>`;
@@ -1353,10 +1376,14 @@ async function main() {
       section: pg.groupe,
       datePublished: pg.datePublished,
       dateModified: pg.dateModified,
-      // L'image de partage de la page est celle de sa premiere emission. Rien a
-      // declarer dans site.config.json : la page qui montre une video la porte
-      // aussi dans Google et sur les reseaux.
-      image: cartes[0]?.thumbnail || (cartes[0] ? `https://i.ytimg.com/vi/${cartes[0].id}/maxresdefault.jpg` : undefined),
+      // L'image de partage de la page est sa photo d'ouverture quand elle en a
+      // une, sinon celle de sa premiere emission. Rien a declarer dans
+      // site.config.json : la page qui montre une image la porte aussi dans
+      // Google et sur les reseaux. L'adresse doit etre absolue -- un chemin
+      // relatif dans une balise og:image n'est suivi par aucun reseau.
+      image: photo
+        ? `${config.siteUrl.replace(/\/$/, '')}/assets/${photo.fichier}`
+        : (cartes[0]?.thumbnail || (cartes[0] ? `https://i.ytimg.com/vi/${cartes[0].id}/maxresdefault.jpg` : undefined)),
     }));
     urls.push({ loc: `/${pg.slug}/`, freq: 'monthly', priority: '0.5' });
     if (pg.slug.startsWith('sujets/')) sujetsEcrits.push(pg);
