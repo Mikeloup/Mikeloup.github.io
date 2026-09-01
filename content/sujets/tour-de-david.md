@@ -1,73 +1,55 @@
 # La Tour de David : la forteresse d'Hérode qu'on a rebaptisée pour l'oublier
 
-**En bref.** Le bâtiment n'a rien de David. C'est une forteresse d'**Hérode le Grand**. Le nom « tour de David » apparaît à l'époque byzantine — alors qu'on savait déjà que David avait vécu plus au sud. Il servait à honorer David, et surtout à effacer Hérode. Le lieu a ensuite été palais croisé, mosquée, camp militaire pendant sept cents ans, puis ligne de front jordanienne pendant dix-neuf ans. Il est aujourd'hui le musée d'histoire de Jérusalem.
+Le bâtiment n'a rien de David. C'est une forteresse d'Hérode le Grand, et les Byzantins qui l'ont rebaptisée le savaient parfaitement : ils savaient aussi que David avait vécu plus au sud, dans la cité qui porte son nom. Le nom n'est donc pas une erreur. C'est une décision — honorer David, et effacer Hérode.
 
-Cette page reprend la visite guidée diffusée dans *Guide en Tandem* sur Tandem TV.
+Elle a plutôt bien fonctionné : deux mille ans plus tard, personne n'appelle l'endroit autrement.
 
 {{video:oIocYaN-qUQ}}
 
----
-
-## Pourquoi la porte de Jaffa, et pas la porte de Damas
-
-La citadelle se dresse juste à l'intérieur de la porte de Jaffa, aujourd'hui la porte la plus fréquentée de Jérusalem. Historiquement, ce n'était pas elle : c'était la **porte de Damas**, au nord, sur le côté plat et le plus facile d'accès.
-
-Le renversement date du Moyen Âge, et il est purement financier : les croisés instaurent un péage plus élevé à la porte de Damas. Les gens se détournent vers Jaffa, malgré le chemin plus difficile — et ne sont jamais revenus.
-
-Le mouvement s'est accentué de lui-même. Le centre commercial **Mamilla**, ouvert il y a une vingtaine d'années, compte plus de 140 boutiques, 1 400 places de parking, 60 places d'autobus, et jusqu'à **20 000 visiteurs par jour** en été. Il débouche sur la porte de Jaffa.
-
-Ce sujet est développé sur la page consacrée aux [huit portes de Jérusalem](/sujets/portes-de-jerusalem/).
-
 ## Trois tours, trois dédicaces
 
-Hérode le Grand règne de **−37 à −4**. Il construit ici une forteresse avec trois grandes tours, dédiées respectivement à son frère, à son meilleur ami et à sa femme.
+Hérode règne de −37 à −4. Il élève ici une forteresse à trois grandes tours, dédiées respectivement à son frère, à son meilleur ami et à sa femme.
 
-La base de ces tours est faite des mêmes énormes blocs de calcaire que le Kotel, avec la même marge taillée tout autour et la même pose en léger décalage. C'est une signature de chantier : on reconnaît la main.
+Leur base est faite des mêmes énormes blocs de calcaire que le Kotel, taillés avec la même marge périphérique et posés avec le même léger décalage. C'est une signature de chantier : on reconnaît la main, comme on reconnaît une écriture. L'une de ces tours, dit-on, dépassait en hauteur le phare d'Alexandrie — l'une des sept merveilles du monde.
 
-L'une d'elles, dit l'émission, était plus haute que le phare d'Alexandrie — l'une des sept merveilles du monde.
+La femme à qui l'une d'elles est dédiée s'appelait Mariamne. Petite-fille des derniers rois hasmonéens, Hérode l'avait épousée pour se donner la légitimité qui lui manquait. Sa sœur Salomé l'accusa de comploter ; il la fit assassiner, comme il avait déjà fait tuer plusieurs de ses fils.
 
-## Mariamne
+Flavius Josèphe, qui le décrit pourtant comme éperdument amoureux d'elle, rapporte qu'il conserva ensuite son corps dans un bain de miel, le reste de sa vie. On ne sait pas quoi faire de cette phrase, et c'est peut-être ce qui la rend inoubliable.
 
-La femme à qui l'une des tours est dédiée s'appelait Mariamne. Elle était la petite-fille des derniers rois hasmonéens, et Hérode l'avait épousée pour gagner en légitimité.
+## De la révolte à la caserne
 
-Sa sœur Salomé l'accuse de comploter. Hérode la fait assassiner — il avait déjà fait tuer plusieurs de ses fils.
+Tout est détruit lors de la révolte juive commencée en 66 et achevée quatre ans plus tard par la destruction du Second Temple. Le site reste en ruines des décennies avant que les Romains n'en refassent une forteresse de garnison.
 
-Flavius Josèphe, qui le décrit comme éperdument amoureux d'elle, rapporte qu'il a ensuite conservé son corps dans un **bain de miel** le reste de sa vie.
+C'est à l'époque byzantine qu'apparaît le nom de tour de David. Et ce nom-là va tenir plus longtemps que tous les régimes qui vont se succéder dans ses murs.
 
-## De la révolte à la garnison romaine
-
-Tout est détruit lors de la révolte juive commencée en **66**, achevée quatre ans plus tard par la destruction du Second Temple. Le site reste en ruines des décennies, avant que les Romains n'en refassent une forteresse de garnison.
-
-C'est à l'époque byzantine qu'apparaît le nom de « tour de David » — alors même que les Byzantins savaient parfaitement que David avait vécu plus au sud, dans la Cité de David. Le nom est un choix, pas une erreur.
-
-## Les croisés, et la naissance des Templiers
+## Comment les Templiers sont nés ici
 
 Les croisés s'installent d'abord sur le mont du Temple : al-Aqsa devient palais royal, le Dôme du Rocher devient une église.
 
-Puis un roi de Jérusalem, s'estimant trop éloigné du peuple, quitte le mont du Temple pour la citadelle. Il cède al-Aqsa à des moines chevaliers. Ceux-ci, résidant désormais sur le Temple, en prennent le nom : les **Templiers**.
+Puis un roi de Jérusalem, s'estimant trop loin de son peuple, quitte le mont du Temple pour la citadelle. Il cède al-Aqsa à des moines chevaliers. Ceux-ci, résidant désormais sur le Temple, en prennent le nom : les Templiers. L'ordre le plus mythifié du Moyen Âge doit son nom à un déménagement.
 
-Ce même roi fait creuser les douves et bâtir un **glacis** — un mur incliné à quarante-cinq degrés qui renforce la structure, empêche d'approcher au pied du mur et donne aux défenseurs un meilleur angle de tir.
+Le même roi fait creuser les douves et bâtir un glacis — ce mur incliné à quarante-cinq degrés qui renforce la structure, empêche l'assaillant d'approcher au pied du rempart et offre aux défenseurs un meilleur angle de tir. On le voit encore, avec le pont-levis.
 
-## Sept cents ans de caserne, puis dix-neuf ans de front
+Après les croisés, les musulmans ajoutent une mosquée et un minaret. Puis plus rien ne change pendant sept cents ans : c'est un camp militaire avec garnison, et rien d'autre.
 
-Après les croisés, les musulmans ajoutent une mosquée et un minaret. Le lieu reste un camp militaire avec garnison pendant **sept cents ans**.
+En 1948, Jérusalem est partagée et les Jordaniens en font une ligne de front fortifiée. Cela dure dix-neuf ans. Les fouilles ne commenceront qu'après 1967 — soit deux millénaires pendant lesquels personne n'a jamais eu le loisir de creuser.
 
-En 1948, Jérusalem est partagée et les Jordaniens en font une ligne de front fortifiée. Cela dure **dix-neuf ans**, jusqu'à 1967 — et c'est seulement après que les fouilles commencent.
+## Pourquoi tout le monde entre par la porte de Jaffa
+
+La citadelle se dresse juste à l'intérieur de la porte de Jaffa, aujourd'hui la plus fréquentée de Jérusalem. Ce n'était pas elle historiquement : c'était la porte de Damas, au nord, sur le seul côté plat et le plus facile d'accès.
+
+Le renversement date du Moyen Âge, et il est purement financier. Les croisés instaurent un péage plus élevé à la porte de Damas. Les gens se détournent vers Jaffa malgré le chemin plus difficile — et ne sont jamais revenus. Le sujet est développé sur la page des [huit portes de Jérusalem](/sujets/portes-de-jerusalem/).
+
+Le mouvement s'est accentué tout seul. Le centre commercial Mamilla, ouvert il y a une vingtaine d'années, compte plus de 140 boutiques, 1 400 places de parking, 60 places d'autobus et jusqu'à vingt mille visiteurs par jour en été. Il débouche exactement là.
 
 ## Le musée aujourd'hui
 
-Une dizaine de salles, retraçant trois mille ans d'histoire de Jérusalem. Sa particularité : il n'est pas construit sur des pièces archéologiques mais sur des **cartes, croquis, dessins et hologrammes**. C'est un passage quasi obligé des écoles.
+Une dizaine de salles retracent trois mille ans d'histoire de Jérusalem. La particularité du lieu, c'est qu'il n'est pas bâti sur des pièces archéologiques mais sur des cartes, des croquis, des dessins et des hologrammes — ce qui en fait un passage quasi obligé des écoles, et une bonne première visite pour qui débarque dans la ville sans repères.
 
-Le **spectacle son et lumière** a lieu une à deux fois par soir, dure quarante-cinq minutes, et projette ses images directement sur les remparts et les ruines.
-
----
+Le spectacle son et lumière a lieu une à deux fois par soir et dure quarante-cinq minutes. Les images sont projetées directement sur les remparts et les ruines : le bâtiment sert d'écran à sa propre histoire.
 
 ## Sur le même sujet
 
 - [Que visiter en Israël : 21 sites racontés par les guides de Tandem TV](/sujets/que-visiter-en-israel/)
 - [Les huit portes de Jérusalem : pourquoi on entre par Jaffa](/sujets/portes-de-jerusalem/)
-- [Césarée maritime : la ville qu'Hérode a bâtie pour se faire pardonner](/sujets/cesaree-maritime/)
-
-*Cette page est écrite à partir de la transcription de l'émission. Les transcriptions sont automatiques et déforment beaucoup les noms propres : chaque nom, date et chiffre repris ici a été retenu seulement lorsqu'il était lisible sans ambiguïté. Sur le massacre des Innocents, l'émission pose elle-même la réserve — il n'existe pas de source extra-biblique — et cette page ne va pas plus loin.*
-
-*Tandem TV est une chaîne de télévision francophone basée en Israël, diffusée sur le canal 14 du bouquet Annatel TV et sur Internet.*
+- [L'histoire de Jérusalem, époque par époque](/sujets/histoire-de-jerusalem/)

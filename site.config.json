@@ -144,7 +144,7 @@
     {
       "slug": "sujets/beit-shean",
       "title": "Beit Shean : la ville romaine dont on connaît le dernier jour",
-      "description": "Bains de 8 500 m², théâtre de 6 000 places, dix-huit civilisations superposées — et un séisme daté au jour près, le 18 janvier 749, grâce aux pièces retrouvées sous les colonnes tombées.",
+      "description": "Le 18 janvier 749, un séisme couche ses colonnes sur des pièces de monnaie frappées peu avant. On connaît donc le dernier jour de cette ville romaine au jour près — et personne ne l’a jamais relevée.",
       "footerOnly": true,
       "menuTitle": "Beit Shean",
       "groupe": "Visiter Israël"
@@ -208,7 +208,7 @@
     {
       "slug": "sujets/mont-sion",
       "title": "Le mont Sion : la salle de la Cène sauvée par le tombeau du roi David",
-      "description": "Transformée en mosquée plutôt que détruite, la salle de la Cène doit sa survie à ce qui se trouve sous son plancher. Avec la tombe d’Oskar Schindler et le premier mémorial de la Shoah réalisé en Israël, avant Yad Vashem.",
+      "description": "La salle de la Cène n’a pas été détruite par les musulmans : elle a été transformée en mosquée. Elle doit sa survie au tombeau du roi David, prophète de l’islam, situé juste sous son plancher.",
       "footerOnly": true,
       "menuTitle": "Le mont Sion",
       "groupe": "Visiter Israël"
@@ -232,15 +232,15 @@
     {
       "slug": "sujets/megiddo",
       "title": "Megiddo : vingt-six villes empilées, et le mot Armageddon",
-      "description": "Six mille ans sur la Via Maris, le plus grand temple cananéen jamais mis au jour, des portes à six chambres qui prouvent une autorité centrale, un tunnel d’eau de 3 500 ans — et l’origine hébraïque du mot Armageddon.",
+      "description": "Vingt-six villes empilées en six mille ans sur la route qui reliait l’Égypte à la Syrie. Un tunnel d’eau de 3 500 ans, des portes qui prouvent l’existence d’un royaume — et le mot Armageddon, qui vient d’ici.",
       "footerOnly": true,
       "menuTitle": "Megiddo",
       "groupe": "Visiter Israël"
     },
     {
       "slug": "sujets/tsipori",
-      "title": "Tsipori : le site romain le mieux conservé d’Israël, et presque vide",
-      "description": "Théâtre de 4 500 places, réservoir de 4 300 m³, la Mona Lisa de la Galilée et un concours de boisson entre Dionysos et Hercule — un site intact parce qu’il n’a pas été détruit mais abandonné, à quinze minutes de Nazareth.",
+      "title": "Tsipori : le plus beau site romain d’Israël, et le plus vide",
+      "description": "Un théâtre de 4 500 places, la Mona Lisa de la Galilée et un concours de boisson perdu par Hercule — à quinze minutes de Nazareth, sur un site où l’on croise deux voitures sur le parking.",
       "footerOnly": true,
       "menuTitle": "Tsipori",
       "groupe": "Visiter Israël"
