@@ -135,8 +135,8 @@
     },
     {
       "slug": "sujets/que-visiter-en-israel",
-      "title": "Que visiter en Israël : 21 sites racontés par les guides de Tandem TV",
-      "description": "Massada, Césarée, Saint-Jean-d’Acre, Megiddo, Tsipori, le mont Sion, le désert de Judée, Rosh HaNikra… 21 lieux parcourus caméra à la main dans la série Guide en Tandem, avec ce qu’on y voit et le détail qu’on retient.",
+      "title": "Que visiter en Israël : 21 sites, et ce qu’on y voit vraiment",
+      "description": "Massada, Césarée, Saint-Jean-d’Acre, Megiddo, Tsipori, le mont Sion, le désert de Judée, Rosh HaNikra… vingt et un sites, avec pour chacun ce qui s’y trouve et le détail qui reste en mémoire une fois rentré.",
       "footerOnly": true,
       "menuTitle": "Que visiter en Israël",
       "groupe": "Visiter Israël"
@@ -152,7 +152,7 @@
     {
       "slug": "sujets/cesaree-maritime",
       "title": "Césarée maritime : la ville qu’Hérode a bâtie pour se faire pardonner",
-      "description": "Hérode avait misé sur Marc Antoine. Octave l’emporte — et le roi de Judée bâtit au vainqueur une ville entière : le premier port entièrement artificiel du monde romain, un théâtre qu’on remplissait d’eau, et la seule pierre au monde portant le nom de Ponce Pilate.",
+      "description": "Hérode avait misé sur Marc Antoine. Octave l’emporte — et le roi de Judée bâtit au vainqueur une ville entière : le premier port entièrement artificiel du monde romain, et la seule pierre au monde portant le nom de Ponce Pilate.",
       "footerOnly": true,
       "menuTitle": "Césarée maritime",
       "groupe": "Visiter Israël"
@@ -160,7 +160,7 @@
     {
       "slug": "sujets/jerusalem-hors-les-murs",
       "title": "Sortir des murailles : comment Jérusalem s’est étendue, en 1860",
-      "description": "Montefiore offre le logement, puis paie les gens pour habiter hors les murs — ils rentrent dormir dans la vieille ville dès qu’il s’en va. Ce qui les décidera, c’est le choléra de 1866. Avec Mahané Israël, le quartier bâti sans bienfaiteur par des juifs marocains.",
+      "description": "Il a fallu payer les gens pour qu’ils acceptent d’habiter hors les murs — et même payés, ils rentraient dormir dans la vieille ville. Ce qui les a décidés, c’est le choléra de 1866.",
       "footerOnly": true,
       "menuTitle": "Jérusalem hors les murs",
       "groupe": "Visiter Israël"
@@ -168,7 +168,7 @@
     {
       "slug": "sujets/tour-de-david",
       "title": "La Tour de David : la forteresse d’Hérode qu’on a rebaptisée pour l’oublier",
-      "description": "Le bâtiment n’a rien de David : c’est une forteresse d’Hérode, renommée à l’époque byzantine pour effacer son bâtisseur. Palais croisé, mosquée, caserne pendant sept cents ans, ligne de front jordanienne pendant dix-neuf ans.",
+      "description": "Une forteresse d’Hérode que les Byzantins ont rebaptisée pour effacer son bâtisseur. Palais croisé, mosquée, caserne pendant sept cents ans, ligne de front jordanienne pendant dix-neuf — et le lieu où les Templiers ont pris leur nom.",
       "footerOnly": true,
       "menuTitle": "La Tour de David",
       "groupe": "Visiter Israël"
@@ -176,7 +176,7 @@
     {
       "slug": "sujets/prison-saint-jean-d-acre",
       "title": "La prison de Saint-Jean-d’Acre : l’évasion qui a précipité le départ des Britanniques",
-      "description": "Jabotinsky et Itzhak Shamir y furent détenus. En mai 1947, à 16 h 22, le mur sud explose : 27 évadés, et six mois plus tard le plan de partage. Avec le tunnel qui ne menait nulle part et l’ingénieur qui a fourni les plans.",
+      "description": "Dans la salle des pendaisons, le début de la Hatikva est gravé, suivi de trois points de suspension. Un dimanche de mai 1947 à 16 h 22, le mur sud explose : vingt-sept évadés, et six mois plus tard le plan de partage.",
       "footerOnly": true,
       "menuTitle": "La prison d’Acre",
       "groupe": "Visiter Israël"
@@ -184,7 +184,7 @@
     {
       "slug": "sujets/baron-rothschild-israel",
       "title": "Le baron Edmond de Rothschild en Israël : Zikhron Yaakov et Ramat HaNadiv",
-      "description": "Les pionniers de 1882 font faillite ; le baron les sauve, avec des agronomes et des cépages français — et une hiérarchie qu’ils n’avaient pas demandée. Quarante-quatre communautés fondées, et de la terre de chacune sur son tombeau.",
+      "description": "En 1882, des pionniers roumains ruinés en quelques années. Un banquier parisien qui ne s’intéressait pas à la banque les sauve — au prix d’une hiérarchie qu’ils n’avaient pas demandée. Quarante-quatre communautés fondées.",
       "footerOnly": true,
       "menuTitle": "Le baron de Rothschild",
       "groupe": "Visiter Israël"
@@ -192,7 +192,7 @@
     {
       "slug": "sujets/doigt-de-la-galilee",
       "title": "Le doigt de la Galilée : cinq cents millions d’oiseaux, et le dieu Pan",
-      "description": "Israël est le seul pont terrestre entre trois continents : 500 millions d’oiseaux le traversent deux fois par an, et de plus en plus renoncent à repartir. Et à Banias, un nom grec conservé par ceux qui ne prononçaient pas le p.",
+      "description": "Cinq cents millions d’oiseaux traversent Israël deux fois par an, parce que le pays est le seul pont terrestre entre trois continents. Et à Banias, le nom d’un dieu grec conservé par ceux qui ne prononçaient pas le p.",
       "footerOnly": true,
       "menuTitle": "Le doigt de la Galilée",
       "groupe": "Visiter Israël"
@@ -200,7 +200,7 @@
     {
       "slug": "sujets/desert-de-judee",
       "title": "Le désert de Judée hors des sentiers : Nabi Moussa, le Wadi Qelt et le Jourdain",
-      "description": "Le tombeau que l’islam donne à Moïse, le seul musée de mosaïques du pays, un monastère byzantin habité depuis 1 500 ans, et le lieu du baptême où le Jourdain fait trois mètres de large — et où le déminage n’est pas terminé.",
+      "description": "Le tombeau que l’islam attribue à Moïse, le seul musée de mosaïques du pays, un monastère byzantin habité depuis 1 500 ans, et un fleuve large de trois mètres où l’on se fait baptiser entre deux champs de mines.",
       "footerOnly": true,
       "menuTitle": "Le désert de Judée",
       "groupe": "Visiter Israël"
@@ -216,7 +216,7 @@
     {
       "slug": "sujets/portes-de-jerusalem",
       "title": "Les huit portes de Jérusalem : pourquoi on entre par Jaffa",
-      "description": "Quatre kilomètres de remparts, dix-huit tours, huit portes. Un péage croisé a déplacé l’entrée principale pour neuf siècles ; une porte est murée avec un cimetière devant ; une autre garde ses impacts de balles de 1948 et 1967.",
+      "description": "Tout le monde entre par la porte de Jaffa, et c’est un accident : un roi croisé a surtaxé la porte de Damas il y a neuf cents ans. Avec la porte murée devant laquelle on a planté un cimetière, et celle qui garde ses impacts de balles.",
       "footerOnly": true,
       "menuTitle": "Les portes de Jérusalem",
       "groupe": "Visiter Israël"
@@ -224,7 +224,7 @@
     {
       "slug": "sujets/synagogues-quartier-juif-jerusalem",
       "title": "Les synagogues du quartier juif de Jérusalem : la Hurva et les quatre séfarades",
-      "description": "Bâties sous le niveau de la rue parce qu’une synagogue ne devait pas dépasser les maisons voisines. Une dette ottomane qui a valu son nom à la Hurva, un minaret construit par un juif converti, et des clés retrouvées dix-neuf ans plus tard.",
+      "description": "Quatre synagogues enterrées sous le niveau de la rue parce qu’une synagogue ne devait pas dépasser les maisons voisines. Une dette ottomane qui a valu son nom à la Hurva. Et des clés retrouvées dix-neuf ans après.",
       "footerOnly": true,
       "menuTitle": "Les synagogues du quartier juif",
       "groupe": "Visiter Israël"
@@ -240,7 +240,7 @@
     {
       "slug": "sujets/tsipori",
       "title": "Tsipori : le plus beau site romain d’Israël, et le plus vide",
-      "description": "Un théâtre de 4 500 places, la Mona Lisa de la Galilée et un concours de boisson perdu par Hercule — à quinze minutes de Nazareth, sur un site où l’on croise deux voitures sur le parking.",
+      "description": "Un théâtre de 4 500 places, la Mona Lisa de la Galilée, un concours de boisson perdu par Hercule — et deux ou trois voitures sur le parking, à quinze minutes de Nazareth.",
       "footerOnly": true,
       "menuTitle": "Tsipori",
       "groupe": "Visiter Israël"
@@ -248,7 +248,7 @@
     {
       "slug": "sujets/histoire-de-jerusalem",
       "title": "L’histoire de Jérusalem, époque par époque",
-      "description": "De l’âge du bronze aux Ottomans : Cananéens, rois de Juda, Perses, Hasmonéens, Hérode, Rome, Byzance, l’islam, les croisés, les Mamelouks. Neuf émissions de Tour d’Israël, avec ce qu’on peut encore aller voir de chaque époque.",
+      "description": "Cinq mille ans, cinquante attaques, deux destructions totales et sept régimes successifs — chacun ayant laissé quelque chose qu’on peut encore aller toucher. De l’âge du bronze aux Ottomans.",
       "footerOnly": true,
       "menuTitle": "L’histoire de Jérusalem",
       "groupe": "Histoire et archéologie"
@@ -256,7 +256,7 @@
     {
       "slug": "sujets/jerusalem-antique-archeologie",
       "title": "Jérusalem antique : ce que les fouilles ont révélé",
-      "description": "Textes d’exécration, stèle de Tel Dan, palais d’Eilat Mazar, amulettes de Ketef Hinnom : ce que l’archéologie établit de Jérusalem avant l’exil — expliqué sur Tandem TV par Jérôme Haas.",
+      "description": "Le nom de Jérusalem est gravé sur des objets égyptiens vieux de quatre mille ans — par des ennemis qui la maudissaient. Textes d’exécration, stèle de Tel Dan, amulettes de Ketef Hinnom, et ce qu’on n’a jamais trouvé.",
       "footerOnly": true,
       "menuTitle": "Jérusalem antique",
       "groupe": "Histoire et archéologie"
@@ -264,7 +264,7 @@
     {
       "slug": "sujets/vagues-alya-1882-1939",
       "title": "Les vagues d’alya, de 1882 à 1939 : qui est venu, et pourquoi",
-      "description": "Cinq vagues d’immigration juive en terre d’Israël, de 1882 à 1939 : pogroms russes, idéologie sioniste, décret Grabski, fuite devant le nazisme — et une immigration jamais libre sous mandat britannique. Expliqué sur Tandem TV par l’historien Georges Bensoussan.",
+      "description": "Ce n’est pas la Shoah qui a lancé l’alya : le mouvement était engagé depuis un demi-siècle. Cinq vagues, dont deux seulement idéologiques — et une immigration jamais libre sous mandat britannique.",
       "footerOnly": true,
       "menuTitle": "Les vagues d’alya",
       "groupe": "Histoire et archéologie"
@@ -272,15 +272,15 @@
     {
       "slug": "sujets/hebreu-mots-francais",
       "title": "Des mots français venus de l’hébreu ? La thèse de Bruno Dray",
-      "description": "Cep, broc, gomme, groseille, agraire : le linguiste Bruno Dray relie plusieurs centaines de mots français à des racines de l’hébreu biblique. Sa méthode, ses exemples et ce que disent les dictionnaires — expliqué sur Tandem TV avec Jérôme Haas.",
+      "description": "Cep, broc, gomme, groseille : Bruno Dray relie plusieurs centaines de mots français à des racines de l’hébreu biblique. Sa méthode, ses exemples — et pourquoi les dictionnaires ne le suivent pas.",
       "footerOnly": true,
       "menuTitle": "L’hébreu et le français",
       "groupe": "Langue, symboles et monnaie"
     },
     {
       "slug": "sujets/shekel-monnaie-israelienne",
-      "title": "Le shekel israélien : les symboles des pièces et des billets",
-      "description": "Que représentent les symboles du shekel ? Ménorah, harpe, grenade, palmier, et les quatre poètes des billets — expliqués à l’antenne de Tandem TV par Jérôme Haas.",
+      "title": "Le shekel israélien : que représentent les symboles des pièces et des billets ?",
+      "description": "Les pièces racontent l’Antiquité juive — ménorah asmonéenne, harpe des révoltes contre Rome, hébreu ancien. Les billets ne portent aucun homme politique : depuis 2014, ce sont quatre poètes.",
       "footerOnly": true,
       "menuTitle": "Le shekel israélien",
       "groupe": "Langue, symboles et monnaie"
