@@ -2053,19 +2053,79 @@ export function ouvertureSujet(video) {
 </figure>`;
 }
 
-export function contentPage({ config, categories, nav, title, description, canonical, html, buildTime, libelle, image }) {
+/**
+ * Fiche « Article » d'une page de sujet.
+ *
+ * Ce qu'on declare ici doit decrire ce que le visiteur voit reellement sur la
+ * page -- c'est la regle de Google, et c'est aussi la seule honnete. D'ou deux
+ * abstentions deliberees :
+ *
+ *  - pas de VideoObject. Les videos d'une page de sujet sont des LIENS vers
+ *    leur page dediee, pas des lecteurs integres. Declarer une video jouable
+ *    ici serait faux, et c'est le genre de faux que Google sanctionne.
+ *  - pas de date inventee. Si la date de publication n'est pas connue, le champ
+ *    est absent. Mettre la date de construction ferait croire que la page est
+ *    reecrite chaque quart d'heure, ce qui est exactement le signal inverse de
+ *    celui qu'on cherche.
+ */
+function articleLd(config, { title, description, canonical, image, datePublished, dateModified, section }) {
+  const base = config.siteUrl.replace(/\/$/, '');
+  const ld = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: title,
+    description,
+    inLanguage: config.lang || 'fr',
+    mainEntityOfPage: { '@type': 'WebPage', '@id': `${base}${canonical}` },
+    author: { '@type': 'Organization', name: config.siteName, url: base },
+    publisher: {
+      '@type': 'Organization',
+      name: config.siteName,
+      url: base,
+      logo: { '@type': 'ImageObject', url: `${base}/assets/logo.png` },
+    },
+  };
+  if (image) ld.image = image;
+  if (section) ld.articleSection = section;
+  if (datePublished) ld.datePublished = datePublished;
+  if (dateModified) ld.dateModified = dateModified;
+  return ld;
+}
+
+export function contentPage({
+  config, categories, nav, title, description, canonical, html, buildTime, libelle, image,
+  datePublished, dateModified, section, estSujet = false,
+}) {
   // Le fil d'Ariane porte le libelle court, pas le titre ecrit pour Google.
   const fil = libelle || title;
+  // Une page de sujet est a deux niveaux de l'accueil : elle passe par /sujets/.
+  // Le fil affiche doit dire la meme chose que le fil balise, sans quoi on
+  // declare a Google une arborescence que le visiteur ne voit pas.
+  const filHtml = estSujet
+    ? `<a href="/">Accueil</a> <span>›</span> <a href="/sujets/">Sujets</a> <span>›</span> <span>${escapeHtml(fil)}</span>`
+    : `<a href="/">Accueil</a> <span>›</span> <span>${escapeHtml(fil)}</span>`;
   const content = `
 <div class="wrap narrow">
-  <nav class="breadcrumb"><a href="/">Accueil</a> <span>›</span> <span>${escapeHtml(fil)}</span></nav>
+  <nav class="breadcrumb">${filHtml}</nav>
   <article class="prose page-prose">
     ${html}
   </article>
 </div>`;
+  const fiches = [];
+  if (estSujet) {
+    fiches.push(breadcrumbLd(config, [
+      { name: 'Accueil', path: '/' },
+      { name: 'Sujets', path: '/sujets/' },
+      { name: fil, path: canonical },
+    ]));
+    fiches.push(articleLd(config, {
+      title, description, canonical, image, datePublished, dateModified, section,
+    }));
+  }
   return layout({
     config, categories, nav, buildTime, title, description, canonical, image,
     bodyClass: 'page-content', content,
+    jsonLd: fiches.length ? fiches : null,
   });
 }
 

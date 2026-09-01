@@ -1341,6 +1341,7 @@ async function main() {
     // La mise en page (chapo, sommaire, renvois) ne s'applique qu'aux pages de
     // sujet : les mentions legales n'ont pas besoin d'un sommaire.
     const htmlFinal = pg.slug.startsWith('sujets/') ? mettreEnPageSujet(html) : html;
+    const estSujet = pg.slug.startsWith('sujets/');
     await writePage(`/${pg.slug}/`, R.contentPage({
       ...ctx,
       title: pg.title,
@@ -1348,6 +1349,10 @@ async function main() {
       description: pg.description || `${pg.title} — ${config.siteName}.`,
       canonical: `/${pg.slug}/`,
       html: htmlFinal,
+      estSujet,
+      section: pg.groupe,
+      datePublished: pg.datePublished,
+      dateModified: pg.dateModified,
       // L'image de partage de la page est celle de sa premiere emission. Rien a
       // declarer dans site.config.json : la page qui montre une video la porte
       // aussi dans Google et sur les reseaux.
