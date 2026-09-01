@@ -2069,9 +2069,18 @@ export function ouverturePhoto(photo) {
   const ligne = [credits.join(', '), source].filter(Boolean).join(' — via ');
   const dims = photo.largeur && photo.hauteur
     ? ` width="${photo.largeur}" height="${photo.hauteur}"` : '';
+  // Deux tailles, et le navigateur choisit. La colonne d'article fait 780 px,
+  // l'ouverture deborde a 836 px sur grand ecran : au-dela de 1600 px de
+  // fichier, on n'envoie que du poids. Sur un telephone, c'est la version
+  // 800 px qui part -- trois a quatre fois plus legere, pour exactement le
+  // meme rendu.
+  const jeu = photo.fichierPetit && photo.largeur
+    ? ` srcset="/assets/${escapeHtml(photo.fichierPetit)} ${photo.largeurPetite || 800}w, /assets/${escapeHtml(photo.fichier)} ${photo.largeur}w"`
+      + ' sizes="(min-width: 1100px) 836px, 100vw"'
+    : '';
   return `
 <figure class="ouverture ouverture-photo">
-  <img src="/assets/${escapeHtml(photo.fichier)}" alt="${escapeHtml(photo.alt || '')}"${dims}
+  <img src="/assets/${escapeHtml(photo.fichier)}"${jeu} alt="${escapeHtml(photo.alt || '')}"${dims}
        loading="eager" fetchpriority="high" decoding="async">
   <figcaption>
     ${photo.legende ? `<span class="photo-legende">${escapeHtml(photo.legende)}</span> ` : ''}
