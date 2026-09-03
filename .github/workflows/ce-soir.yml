@@ -1,9 +1,13 @@
 name: Ce soir sur le canal 14
 
 on:
-  schedule:
-    - cron: '17 13 * * *'
-    - cron: '17 14 * * *'
+  # Cron desactive le 03/09/2026 (demande de Michael) : la fiche "ce soir"
+  # ne doit plus etre postee automatiquement sur Instagram. Le workflow reste
+  # utilisable manuellement (workflow_dispatch, avec "publier: oui") si
+  # Michael veut la republier ponctuellement lui-meme.
+  # schedule:
+  #   - cron: '17 13 * * *'
+  #   - cron: '17 14 * * *'
   workflow_dispatch:
     inputs:
       publier:
