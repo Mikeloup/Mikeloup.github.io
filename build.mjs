@@ -1467,6 +1467,38 @@ async function main() {
   await writePage('/suivre/', R.followPage(ctx));
   urls.push({ loc: '/suivre/', freq: 'monthly', priority: '0.6' });
 
+  // Annuaire des personnes, en JSON.
+  //
+  // Les fiches d'invites existent deja en HTML, une par personne. Mais la
+  // question « qui est passe, et dans quelle emission » ne se lit nulle part
+  // d'un seul coup : il faut ouvrir cinq cents pages. Ce fichier repond a la
+  // question en un seul appel.
+  //
+  // Il n'est pas construit a part : il recopie EXACTEMENT ce que les pages
+  // affichent, a partir du meme objet `personnes`. Un annuaire calcule
+  // autrement finirait par diverger des pages, et l'on ne saurait plus lequel
+  // des deux ment.
+  if (personnes.length) {
+    await writeFile('invites.json', JSON.stringify({
+      genere: new Date().toISOString(),
+      personnes: personnes.map((p) => ({
+        nom: p.nom,
+        slug: p.slug,
+        page: `/invites/${p.slug}/`,
+        role: p.fiche?.role || p.identite || '',
+        presente: p.presente,               // emissions qu'elle presente
+        emissions: p.rubriques,             // emissions ou elle apparait
+        videos: p.videos.map((v) => ({
+          id: v.id,
+          titre: v.title,
+          emission: v.playlists?.[0]?.title || '',
+          date: v.publishedAt || '',
+          vues: v.views || 0,
+        })),
+      })),
+    }, null, 1));
+  }
+
   // Recherche (index JSON + page cliente)
   await writePage('/recherche/', R.searchPage(ctx));
   await writeFile('search.json', JSON.stringify(allVideos.map((v) => ({
