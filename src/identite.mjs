@@ -145,6 +145,23 @@ export function candidatsIdentite(noms, texte) {
         // l'apposition. On perd parfois un complément, on ne publie jamais un
         // fragment de phrase sur le compte de quelqu'un.
         let bout = m[1].split(',')[0];
+        // Le quantificateur {4,90} compte des CARACTERES : quand la phrase est
+        // plus longue, il coupe au milieu d'un mot. Yehuda Lancry etait
+        // presente comme « actuel president de la Chamb », et l'experte en
+        // securite financiere comme luttant contre « le blanchiment d'argent
+        // e ». Si la coupe tombe dans un mot, on recule jusqu'a l'espace : on
+        // perd trois mots, on ne publie pas une syllabe orpheline.
+        const suite = t[m.index + m[0].length] || ' ';
+        if (m[1].length === 90 && !m[1].includes(',') && /[\p{L}\p{N}]/u.test(suite)) {
+          bout = bout.replace(/\s+\S*$/, '');
+          // Reculer d'un mot laisse souvent une preposition en l'air (« … de
+          // la »), et le controle FINS_TRONQUEES rejetterait alors la ligne
+          // entiere : on perdrait toute la presentation pour deux syllabes.
+          // On recule donc jusqu'a retomber sur un mot plein.
+          for (let i = 0; i < 5 && FINS_TRONQUEES.test(bout); i++) {
+            bout = bout.replace(/\s+\S+$/, '');
+          }
+        }
         const coupe = bout.search(RE_VERBE);
         if (coupe > 0) bout = bout.slice(0, coupe);
         derriere = plausible(bout);
