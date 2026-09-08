@@ -113,13 +113,20 @@ function normalizeVideo(v) {
     // téléverser — voir scripts/short_youtube.py sur le Mac.
     estRepriseCourte: /#shorts\b/i.test(sn.title || ''),
     // Video verticale : hauteur superieure a largeur dans le lecteur que
-    // YouTube nous decrit. Une chaine de television produit du 16/9 ; ce qui
-    // arrive en portrait est une reprise pour les reseaux.
+    // YouTube decrit. Une chaine de television produit du 16/9 ; ce qui arrive
+    // en portrait est une reprise pour les reseaux.
     //
-    // Deux precautions. On n'en conclut rien si l'API ne donne pas les deux
-    // dimensions -- ne pas savoir n'est pas une raison de retirer une video.
-    // Et l'on borne a cinq minutes : une video verticale plus longue n'est
-    // plus un Short, c'est autre chose, et on ne la retire pas en silence.
+    // Le champ reste vide aujourd'hui : les dimensions ne sont renvoyees que
+    // si l'on demande « part=player », et cet appel-la met douze minutes (voir
+    // fetchVideos). La regle ci-dessous est donc en sommeil, prete a servir le
+    // jour ou l'information arrivera autrement -- par exemple ecrite par notre
+    // propre script de publication au moment du televersement, ce qui ne coute
+    // rien du tout.
+    //
+    // Deux precautions y sont deja posees : on n'en conclut rien si les deux
+    // dimensions manquent -- ne pas savoir n'est pas une raison de retirer une
+    // video -- et l'on borne a cinq minutes, au-dela desquelles une video
+    // verticale n'est plus un Short.
     estVertical: Number(v.player?.embedHeight) > Number(v.player?.embedWidth)
       && Number(v.player?.embedWidth) > 0
       && duration > 0 && duration <= 300,
@@ -276,17 +283,25 @@ export async function fetchVideos(ids) {
   const out = [];
   for (let i = 0; i < unique.length; i += 50) {
     const batch = unique.slice(i, i + 50);
+    // ESSAI ABANDONNE, 8 septembre 2026 — a ne pas refaire tel quel.
+    //
+    // L'API ne dit nulle part « ceci est un Short ». Le seul signal connu est
+    // la FORME de la video : en demandant « part=player » avec un « maxWidth »,
+    // YouTube renvoie les dimensions du lecteur, et une video verticale y
+    // porte une hauteur superieure a sa largeur.
+    //
+    // Techniquement juste, pratiquement inutilisable ici : la construction du
+    // site est passee de 90 secondes a plus de 12 minutes. YouTube fabrique le
+    // code d'integration de chaque video, cinquante par appel, vingt et un
+    // appels. Or le site se publie toutes les dix minutes et le depot
+    // n'autorise qu'une construction a la fois : deux passages se seraient
+    // mis en file l'un derriere l'autre, et la publication se serait arretee.
+    //
+    // Un controle qui empeche de publier ne protege plus rien. Les Shorts sont
+    // donc ecartes par les trois regles qui ne coutent rien -- duree, marqueur
+    // « #Shorts » dans le titre, et la liste data/videos-exclues.json.
     const data = await api('videos', {
-      // « player » sert a une seule chose : connaitre la FORME de la video.
-      //
-      // L'API ne dit nulle part « ceci est un Short ». Mais elle renvoie les
-      // dimensions du lecteur a integrer -- a condition qu'on demande une
-      // largeur maximale, sans quoi elle sert un 480x270 identique pour tout
-      // le monde. Avec maxWidth, une video verticale rend une hauteur
-      // superieure a sa largeur. C'est le seul signal fiable, et il ne coute
-      // aucun appel supplementaire : c'est la meme requete.
-      part: 'snippet,contentDetails,statistics,status,player',
-      maxWidth: 8192,
+      part: 'snippet,contentDetails,statistics,status',
       id: batch.join(','),
     });
     for (const v of data.items || []) {
