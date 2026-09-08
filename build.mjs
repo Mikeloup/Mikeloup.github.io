@@ -1224,8 +1224,24 @@ async function main() {
     log(`Partenaires médias : ${ctx.medias.partenaires.length} média(s) présenté(s).`);
   }
 
+  // Le rendez-vous quotidien, s'il y en a un. La rubrique est designee dans
+  // site.config.json (home.jt) par son adresse, pas devinee d'apres son titre :
+  // « JT », « journal » et « edition » apparaissent dans trop de titres pour
+  // qu'une recherche par mot soit sure.
+  // Les reglages de l'accueil vivent dans data/accueil.json, PAS dans
+  // site.config.json : la publication automatique restaure ce dernier depuis
+  // le depot a chaque passage (pour ne jamais publier une modification locale
+  // par accident), et un reglage ecrit la serait efface dix minutes plus tard.
+  const accueil = await readJson(path.join(ROOT, 'data', 'accueil.json'), {});
+  const slugJT = String(accueil.jt?.rubrique || '').trim();
+  const rubriqueJT = slugJT ? categories.find((c) => c.slug === slugJT) : null;
+  if (slugJT && !rubriqueJT) {
+    warn(`data/accueil.json désigne « ${slugJT} » comme rubrique du journal quotidien, mais `
+      + "aucune rubrique ne porte cette adresse. Le bandeau du JT ne s'affichera pas.");
+  }
   await writePage('/', R.homePage({
     ...ctx, latest: allVideos, personnes, personneParRubrique, introHtml,
+    jt: rubriqueJT, jtEditions: accueil.jt?.editions,
   }));
   urls.push({ loc: '/', freq: 'daily', priority: '1.0', lastmod: allVideos[0]?.publishedAt });
 

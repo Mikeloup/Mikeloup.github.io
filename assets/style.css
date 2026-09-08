@@ -1790,3 +1790,98 @@ a.g-src:hover { color: var(--accent); text-decoration: underline; text-underline
   color: var(--muted);
 }
 .prose .ouverture-photo .photo-credit a { font-weight: 500; }
+
+/* --- Bandeau du JT quotidien ----------------------------------------------
+   Ajoute le 8 septembre 2026, et toujours a la FIN du fichier : a specificite
+   egale, c'est la derniere regle ecrite qui l'emporte.
+
+   Le JT parait tous les jours. Il lui fallait donc une forme qui se lise en une
+   seconde -- « aujourd'hui, il y a une edition » -- et qui ne ressemble a
+   aucune autre rangee de l'accueil, sans quoi le visiteur la survolerait comme
+   les autres. D'ou le filet rouge, la meme couleur que le bandeau television :
+   c'est le signal « antenne » du site. */
+.jt {
+  margin: 2.2rem 0;
+  padding: 1.15rem 1.25rem 1.35rem;
+  background: var(--surface-2);
+  border-radius: var(--radius);
+  border-top: 3px solid var(--rouge);
+}
+.jt-head {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: .35rem .9rem;
+  margin-bottom: 1rem;
+}
+.jt-titre { margin: 0; font-size: 1.45rem; }
+.jt-titre a { color: var(--brand); }
+.jt-titre a:hover { color: var(--accent); }
+.jt-chapo { margin: 0; color: var(--muted); font-size: .9rem; }
+.jt-chapo .dot { margin: 0 .4rem; }
+.jt-head .row-more { margin-left: auto; }
+
+.jt-corps {
+  display: grid;
+  gap: 1.1rem;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 860px) {
+  /* L'edition du jour a droit a un peu plus de la moitie : c'est elle qu'on
+     vient voir. Les precedentes tiennent en liste, ou la date compte plus que
+     l'image -- un JT d'avant-hier se choisit par son jour. */
+  .jt-corps { grid-template-columns: 1.35fr 1fr; gap: 1.6rem; }
+}
+
+.jt-une { display: block; }
+.jt-une-thumb {
+  position: relative;
+  display: block;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--bg-soft);
+}
+.jt-une-thumb img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+.jt-une:hover .card-play { opacity: 1; }
+.jt-une-corps { display: block; margin-top: .6rem; }
+.jt-date {
+  display: block;
+  color: var(--rouge);
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+.jt-une-titre {
+  display: block;
+  margin-top: .15rem;
+  font-family: var(--font-titre);
+  font-size: 1.2rem;
+  line-height: 1.3;
+  color: var(--text);
+}
+.jt-une:hover .jt-une-titre { color: var(--accent); }
+.jt-une-desc {
+  display: block;
+  margin-top: .3rem;
+  color: var(--muted);
+  font-size: .9rem;
+  line-height: 1.5;
+}
+
+.jt-avant { list-style: none; margin: 0; padding: 0; }
+.jt-avant li + li { border-top: 1px solid var(--line); }
+.jt-avant a { display: block; padding: .6rem 0; }
+.jt-avant li:first-child a { padding-top: 0; }
+.jt-avant-titre {
+  display: block;
+  margin-top: .1rem;
+  font-size: .95rem;
+  line-height: 1.4;
+}
+.jt-avant a:hover .jt-avant-titre { color: var(--accent); }
+@media (max-width: 859px) {
+  /* Sur telephone, la barre d'en-tete passe a la ligne : le lien « Toutes les
+     editions » collé à droite paraissait alors orphelin, seul sur sa ligne. */
+  .jt-head .row-more { margin-left: 0; }
+}

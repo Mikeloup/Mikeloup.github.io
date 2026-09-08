@@ -220,6 +220,62 @@ function rowEmission(cat, personne, videos) {
   return row(cat.title, href, videos, { avant, chapo, desc: cat.description || '' });
 }
 
+/**
+ * Le bandeau du JT quotidien.
+ *
+ * Michael, 8 septembre 2026 : « il y aura des JT tous les jours a peu pres ».
+ * Un rendez-vous quotidien ne se range pas comme les autres, pour une raison
+ * arithmetique : le tri de l'accueil se fait sur la fraicheur, et une emission
+ * qui publie chaque jour est mecaniquement la plus fraiche de toutes. Laissee
+ * dans le rang commun, elle prendrait la une tous les matins, remplirait les
+ * huit dernieres videos en une semaine, et occuperait une des trois rangees
+ * d'emission a demeure -- trois places prises a la production du reste de la
+ * chaine.
+ *
+ * D'ou ce bandeau : le JT a sa place a lui, en haut, immediatement
+ * reconnaissable, et il est retire partout ailleurs sur l'accueil. Le visiteur
+ * qui vient pour le journal le trouve sans chercher ; celui qui vient pour les
+ * entretiens ne voit pas sept editions avant eux.
+ *
+ * L'edition du jour est en grand, les precedentes en liste datee a cote : c'est
+ * la forme qui dit « quotidien » sans avoir a l'ecrire.
+ */
+function bandeauJT(cat, editions) {
+  if (!cat || !editions.length) return '';
+  const href = `/emissions/${cat.slug}/`;
+  const [derniere, ...avant] = editions;
+  const accroche = excerpt(derniere.description, 180);
+  const total = cat.videos?.length || editions.length;
+  return `
+<section class="jt" aria-labelledby="jt-titre">
+  <div class="jt-head">
+    <h2 class="jt-titre" id="jt-titre"><a href="${href}">${escapeHtml(cat.title)}</a></h2>
+    <p class="jt-chapo">L'actualité d'Israël et du Proche-Orient, chaque jour<span class="dot">·</span>${total} édition${total > 1 ? 's' : ''}</p>
+    <a class="row-more" href="${href}">Toutes les éditions <span aria-hidden="true">→</span></a>
+  </div>
+  <div class="jt-corps">
+    <a class="jt-une" href="/video/${escapeHtml(derniere.id)}/">
+      <span class="jt-une-thumb">
+        <img ${attributsVignette(vignette(derniere, 'sddefault'))} alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" width="640" height="360">
+        <span class="card-play" aria-hidden="true"></span>
+        ${derniere.duration ? `<span class="badge-duration">${formatDuration(derniere.duration)}</span>` : ''}
+      </span>
+      <span class="jt-une-corps">
+        <time class="jt-date" datetime="${escapeHtml(derniere.publishedAt || '')}">${formatDate(derniere.publishedAt)}</time>
+        <span class="jt-une-titre">${escapeHtml(derniere.title)}</span>
+        ${accroche ? `<span class="jt-une-desc">${escapeHtml(accroche)}</span>` : ''}
+      </span>
+    </a>
+    ${avant.length ? `<ol class="jt-avant">
+      ${avant.map((v) => `<li><a href="/video/${escapeHtml(v.id)}/">
+        <time class="jt-date" datetime="${escapeHtml(v.publishedAt || '')}">${formatDate(v.publishedAt)}</time>
+        <span class="jt-avant-titre">${escapeHtml(v.title)}</span>
+      </a></li>`).join('')}
+    </ol>` : ''}
+  </div>
+</section>`;
+}
+
 /** Un des deux sujets secondaires de la une. */
 function uneSecondaire(video) {
   const cat = video.playlists?.[0];
@@ -831,15 +887,25 @@ function chips(items) {
 export function homePage({
   config, categories, nav, latest, buildTime, grille = null,
   personnes = [], personneParRubrique = new Map(), introHtml = '',
+  jt = null, jtEditions = 5,
 }) {
+  // Le JT quotidien vit dans son bandeau, et nulle part ailleurs sur l'accueil.
+  // Voir bandeauJT() pour le raisonnement : sans ce retrait, sept editions par
+  // semaine noieraient la une et les dernieres videos.
+  const editionsJT = (jt?.videos || []).slice(0, jtEditions || 5);
+  const idsJT = new Set((jt?.videos || []).map((v) => v.id));
+  const flux = idsJT.size ? latest.filter((v) => !idsJT.has(v.id)) : latest;
+
   const pinnedId = String(config.home?.featured || '').trim();
+  // Une video epinglee a la main l'emporte, JT compris : c'est une decision
+  // editoriale, et elle passe avant la regle generale.
   const pinned = pinnedId ? latest.find((v) => v.id === pinnedId) : null;
-  const featured = pinned || latest[0];
+  const featured = pinned || flux[0];
   const featuredCat = featured?.playlists?.[0];
 
   // Deux sujets secondaires en une, retirés ensuite du flux pour ne pas
   // apparaître deux fois à quelques centimètres d'intervalle.
-  const suite = latest.filter((v) => v.id !== featured?.id);
+  const suite = flux.filter((v) => v.id !== featured?.id);
   const secondaires = suite.slice(0, 2);
   const dejaVus = new Set([featured?.id, ...secondaires.map((v) => v.id)]);
   const rest = suite.slice(2, 2 + (config.home?.latestCount ?? 8));
@@ -850,7 +916,7 @@ export function homePage({
   // Les rangées secondaires tiennent sur une seule ligne de cinq : c'est ce
   // qui les distingue au premier coup d'œil des rangées d'émission.
   const DENSE = 5;
-  const plusVues = [...latest]
+  const plusVues = [...flux]
     .filter((v) => Number(v.views) > 0 && !dejaVus.has(v.id))
     .sort((a, b) => Number(b.views) - Number(a.views))
     .slice(0, DENSE);
@@ -870,6 +936,9 @@ export function homePage({
   const MINIMUM_POUR_UNE_RANGEE = 4;
   const showRows = shows
     .filter((c) => (c.videos?.length || 0) >= MINIMUM_POUR_UNE_RANGEE)
+    // Le JT a deja son bandeau en haut de page : une rangee de plus serait un
+    // doublon, et elle prendrait la place d'une autre emission.
+    .filter((c) => !jt || c.slug !== jt.slug)
     .slice(0, config.home?.showRows ?? 3);
 
   // Chiffres de la chaîne : recalculés à chaque synchronisation, ils disent en
@@ -883,6 +952,8 @@ export function homePage({
   const content = `
 <div class="wrap">
   ${uneZone(featured, featuredCat, secondaires, { pinned: Boolean(pinned), chiffres })}
+
+  ${bandeauJT(jt, editionsJT)}
 
   ${tvBanner(config, { grille: Boolean(nav.grille), direct: Boolean(grille?.pourNavigateurCourt?.length) })}
 
