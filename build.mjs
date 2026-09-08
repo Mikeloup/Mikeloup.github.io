@@ -792,7 +792,33 @@ async function main() {
   // Textes de presentation ecrits a la main pour les videos dont la description
   // YouTube est vide. Charges ici pour etre passes au modele.
   data.presentations = await readJson(path.join(ROOT, 'data', 'presentations.json'), {});
+  // Videos tenues hors du site a la main. La regle vit dans src/youtube.mjs ;
+  // ici on ne fait que lui donner la liste, AVANT que le modele ne filtre quoi
+  // que ce soit -- une exclusion declaree trop tard ne s'appliquerait a rien.
+  const exclues = await readJson(path.join(ROOT, 'data', 'videos-exclues.json'), {});
+  const fichesExclues = Object.fromEntries(
+    Object.entries(exclues).filter(([id]) => !id.startsWith('_')));
+  yt.declarerVideosExclues(fichesExclues);
   const { channel, categories, allVideos, byId, nav } = buildModel(config, data);
+  const ecartees = Object.keys(fichesExclues)
+    .filter((id) => data.videos.some((v) => v.id === id));
+  if (ecartees.length) {
+    log(`${ecartees.length} vidéo(s) tenue(s) hors du site à la main : `
+      + ecartees.map((id) => `${id} (${fichesExclues[id]})`).join(', '));
+  }
+  // Une exclusion qui ne correspond a aucune video du catalogue est une faute
+  // de frappe : elle ne protege de rien et personne ne s'en apercevrait.
+  const fantomes = Object.keys(fichesExclues).filter((id) => !ecartees.includes(id));
+  if (fantomes.length) {
+    warn(`data/videos-exclues.json cite ${fantomes.length} identifiant(s) absent(s) du `
+      + `catalogue YouTube : ${fantomes.join(', ')}. Vérifiez l'identifiant.`);
+  }
+  // Les Shorts reperes par leur forme, et non par leur duree ni par leur titre.
+  const verticales = data.videos.filter((v) => v.estVertical);
+  if (verticales.length) {
+    log(`${verticales.length} vidéo(s) verticale(s) écartée(s) du site (reprises pour les réseaux) :`);
+    for (const v of verticales.slice(0, 12)) log(`   ${v.id} · ${Math.round(v.duration)} s · ${v.title}`);
+  }
 
   if (!allVideos.length) throw new Error('Aucune vidéo récupérée : build interrompu.');
   log(`${allVideos.length} vidéos, ${categories.length} rubriques (${nav.shows.length} émissions, ${nav.themes.length} thèmes).`);

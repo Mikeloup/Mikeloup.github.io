@@ -112,6 +112,17 @@ function normalizeVideo(v) {
     // signal sûr est celui que NOUS écrivons dans le titre au moment de
     // téléverser — voir scripts/short_youtube.py sur le Mac.
     estRepriseCourte: /#shorts\b/i.test(sn.title || ''),
+    // Video verticale : hauteur superieure a largeur dans le lecteur que
+    // YouTube nous decrit. Une chaine de television produit du 16/9 ; ce qui
+    // arrive en portrait est une reprise pour les reseaux.
+    //
+    // Deux precautions. On n'en conclut rien si l'API ne donne pas les deux
+    // dimensions -- ne pas savoir n'est pas une raison de retirer une video.
+    // Et l'on borne a cinq minutes : une video verticale plus longue n'est
+    // plus un Short, c'est autre chose, et on ne la retire pas en silence.
+    estVertical: Number(v.player?.embedHeight) > Number(v.player?.embedWidth)
+      && Number(v.player?.embedWidth) > 0
+      && duration > 0 && duration <= 300,
     views: Number(v.statistics?.viewCount || 0),
     likes: Number(v.statistics?.likeCount || 0),
     playlists: [],
@@ -142,9 +153,30 @@ function normalizeVideo(v) {
 // de ne rien conclure.
 export const DUREE_MINIMALE_SITE = 90;
 
+// Videos tenues hors du site a la main, par leur identifiant YouTube.
+//
+// Michael, 8 septembre 2026 : « tu as publie un short (le short du JT du
+// 7 septembre), on ne publie pas les shorts sur le site ca fait doublon ».
+//
+// Ce Short-la est passe entre les mailles : il dure 2 min 08, donc au-dessus
+// du seuil de 90 secondes, et son titre ne porte pas « #Shorts » parce qu'il
+// n'a pas ete publie par notre script de Shorts. Les deux regles automatiques
+// etaient aveugles, chacune pour une bonne raison.
+//
+// D'ou cette liste : le dernier mot, ecrit a la main, qui n'attend aucune
+// heuristique. Une regle automatique finira toujours par manquer un cas ; il
+// faut alors pouvoir corriger en une ligne, sans toucher au code.
+let EXCLUES = new Map();
+export function declarerVideosExclues(fiches) {
+  EXCLUES = new Map(Object.entries(fiches || {}));
+}
+export function raisonExclusion(id) { return EXCLUES.get(id) || null; }
+
 export function entreDansLeSite(v) {
   if (!v) return false;
+  if (EXCLUES.has(v.id)) return false;
   if (v.estRepriseCourte) return false;
+  if (v.estVertical) return false;
   if ((v.duration || 0) > 0 && v.duration <= DUREE_MINIMALE_SITE) return false;
   return true;
 }
@@ -245,7 +277,16 @@ export async function fetchVideos(ids) {
   for (let i = 0; i < unique.length; i += 50) {
     const batch = unique.slice(i, i + 50);
     const data = await api('videos', {
-      part: 'snippet,contentDetails,statistics,status',
+      // « player » sert a une seule chose : connaitre la FORME de la video.
+      //
+      // L'API ne dit nulle part « ceci est un Short ». Mais elle renvoie les
+      // dimensions du lecteur a integrer -- a condition qu'on demande une
+      // largeur maximale, sans quoi elle sert un 480x270 identique pour tout
+      // le monde. Avec maxWidth, une video verticale rend une hauteur
+      // superieure a sa largeur. C'est le seul signal fiable, et il ne coute
+      // aucun appel supplementaire : c'est la meme requete.
+      part: 'snippet,contentDetails,statistics,status,player',
+      maxWidth: 8192,
       id: batch.join(','),
     });
     for (const v of data.items || []) {
