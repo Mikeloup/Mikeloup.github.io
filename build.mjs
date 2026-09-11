@@ -869,8 +869,35 @@ async function main() {
   // ici on ne fait que lui donner la liste, AVANT que le modele ne filtre quoi
   // que ce soit -- une exclusion declaree trop tard ne s'appliquerait a rien.
   const exclues = await readJson(path.join(ROOT, 'data', 'videos-exclues.json'), {});
+  // Ce qui distingue une exclusion d'un commentaire, c'est la FORME de la clef,
+  // pas son premier caractere.
+  //
+  // La premiere version ecartait tout ce qui commencait par un souligne, pour
+  // laisser passer les clefs « _comment ». Elle a tenu jusqu'au 11 septembre
+  // 2026, jour ou il a fallu ecarter la reprise courte du Flash Info du 9 :
+  // son identifiant YouTube est « _TO_X94sYQY ». Les identifiants YouTube sont
+  // ecrits en base64url -- onze caracteres pris dans A-Z a-z 0-9 _ et - --, et
+  // un identifiant sur soixante-quatre commence donc par un souligne. Celui-la
+  // aurait ete jete avec les commentaires, sans un mot dans le journal :
+  // l'exclusion aurait paru faite, et le doublon serait reste sur le site.
+  //
+  // Un identifiant se reconnait donc a sa forme exacte. Avec une reserve, que
+  // le premier essai a manquee : « _comment_jt » fait lui aussi onze
+  // caracteres pris dans le meme alphabet. La forme seule ne suffit pas ; on
+  // exige en plus que la clef ne soit pas un commentaire declare -- c'est-a-
+  // dire qu'elle ne commence pas par « _comment ». Les deux criteres ensemble
+  // ne laissent aucune ambiguite, et ce qui n'est ni l'un ni l'autre est
+  // signale plutot que devine.
+  const EST_IDENTIFIANT = (k) => /^[A-Za-z0-9_-]{11}$/.test(k) && !k.startsWith('_comment');
   const fichesExclues = Object.fromEntries(
-    Object.entries(exclues).filter(([id]) => !id.startsWith('_')));
+    Object.entries(exclues).filter(([id]) => EST_IDENTIFIANT(id)));
+  const clefsIgnorees = Object.keys(exclues)
+    .filter((k) => !EST_IDENTIFIANT(k) && !k.startsWith('_'));
+  if (clefsIgnorees.length) {
+    warn(`data/videos-exclues.json : ${clefsIgnorees.length} clef(s) qui ne sont ni un `
+      + `identifiant YouTube (11 caractères) ni un commentaire (« _… ») : `
+      + `${clefsIgnorees.join(', ')}. Elles n'écartent rien.`);
+  }
   yt.declarerVideosExclues(fichesExclues);
   const { channel, categories, allVideos, byId, nav } = buildModel(config, data);
   const ecartees = Object.keys(fichesExclues)

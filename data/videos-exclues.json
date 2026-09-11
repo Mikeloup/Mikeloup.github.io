@@ -1,4 +1,6 @@
 {
   "_comment": "Vidéos YouTube tenues hors du site, par identifiant. Le site retire déjà tout seul ce qui dure moins de 90 secondes, ce qui porte « #Shorts » dans le titre, et ce qui est filmé en vertical. Ce fichier est le dernier mot pour les cas qu'aucune de ces règles n'attrape. Format : \"identifiant\": \"la raison, en clair\". La raison s'affiche dans le journal de construction — elle est là pour qu'on se souvienne, dans six mois, pourquoi cette vidéo n'est pas sur le site.",
-  "JV25dI_TyaQ": "Short du JT du 7 septembre 2026 : doublon de l'édition complète (-mPZ0dY9E2o), publiée 45 minutes plus tôt"
+  "JV25dI_TyaQ": "Short du JT du 7 septembre 2026 : doublon de l'édition complète (-mPZ0dY9E2o), publiée 45 minutes plus tôt",
+  "7RMCimq4cvI": "Reprise courte du Flash Info du 8 septembre 2026 (2 min 17, hors playlist, sans sommaire) : doublon de l'édition complète 5l-xnnguTkE (3 min 28), publiée quinze minutes plus tôt",
+  "_TO_X94sYQY": "Reprise courte du Flash Info du 9 septembre 2026 (1 min 51, hors playlist) : doublon de l'édition complète dCL4aMgNRr4 (4 min 28), même titre exact, publiée trois minutes plus tôt"
 }
