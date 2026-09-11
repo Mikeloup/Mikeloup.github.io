@@ -869,7 +869,20 @@ ${content}
   </div>
   <div class="wrap footer-bottom">
     <p class="muted small">© ${new Date(buildTime).getUTCFullYear()} ${escapeHtml(config.siteName)} — Tous droits réservés.</p>
-    <p class="muted small">Site mis à jour automatiquement · dernière synchronisation le ${formatDateTime(buildTime)}</p>
+    <p class="muted small">${(() => {
+      // Ce que cette ligne disait jusqu'au 11 septembre 2026 : « derniere
+      // synchronisation le … », suivi de l'heure de CONSTRUCTION du site. Or
+      // une construction peut tres bien avoir lieu sans que YouTube ait ete
+      // lu -- c'est meme ce qui s'est passe pendant trois jours, en silence.
+      // La ligne affirmait donc une synchronisation qui n'avait pas eu lieu.
+      // Elle dit maintenant les deux dates, et ne les confond que lorsqu'elles
+      // tombent le meme jour.
+      const sync = config.synchroYouTube;
+      if (!sync) return `Site mis à jour automatiquement · page construite le ${formatDateTime(buildTime)}`;
+      const ecart = (new Date(buildTime).getTime() - Date.parse(sync)) / 3_600_000;
+      if (!(ecart > 6)) return `Site mis à jour automatiquement · dernière synchronisation le ${formatDateTime(sync)}`;
+      return `Catalogue synchronisé le ${formatDateTime(sync)} · page construite le ${formatDateTime(buildTime)}`;
+    })()}</p>
   </div>
 </footer>
 

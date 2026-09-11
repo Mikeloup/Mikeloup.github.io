@@ -1,9 +1,14 @@
 {
-  "_comment": "Réglages de la page d'accueil qui ne peuvent pas vivre dans site.config.json : ce fichier-là est restauré depuis le dépôt à chaque publication automatique, et une valeur écrite à la main y serait effacée dix minutes plus tard.",
+  "_comment": "Réglages de la page d'accueil et des noms de rubriques qui ne peuvent pas vivre dans site.config.json : ce fichier-là est restauré depuis le dépôt à chaque publication automatique, et une valeur écrite à la main y serait effacée dix minutes plus tard.",
 
-  "_comment_jt": "Le rendez-vous quotidien. 'rubrique' = l'adresse de la playlist telle qu'elle apparaît dans /emissions/…/ ; elle est désignée ici, jamais devinée d'après son titre. La rubrique nommée obtient son propre bandeau en haut de l'accueil, et sort de la une, des dernières vidéos, des plus regardées et des rangées d'émission : une émission qui publie tous les jours est mécaniquement la plus fraîche de toutes, et occuperait sinon toute la page. 'editions' = nombre d'éditions montrées dans le bandeau, la plus récente en grand. Mettre 'rubrique' à \"\" retire le bandeau.",
+  "_comment_jt": "Le rendez-vous quotidien. 'rubrique' = l'adresse de la playlist telle qu'elle apparaît dans /emissions/…/ ; on peut en donner plusieurs, la première qui existe l'emporte — ainsi le bandeau survit au jour où la playlist sera renommée sur YouTube. La rubrique nommée obtient son propre bandeau en haut de l'accueil, et sort de la une, des dernières vidéos, des plus regardées et des rangées d'émission : une émission qui publie tous les jours est mécaniquement la plus fraîche de toutes, et occuperait sinon toute la page. 'editions' = nombre d'éditions montrées dans le bandeau, la plus récente en grand. Mettre 'rubrique' à \"\" retire le bandeau.",
   "jt": {
-    "rubrique": "le-jt-de-tandem-tv",
+    "rubrique": ["flash-info-tandem-tv", "le-jt-de-tandem-tv"],
     "editions": 5
+  },
+
+  "_comment_renommages": "Nom d'affichage d'une rubrique, quand celui de YouTube ne convient pas. À gauche le titre exact de la playlist sur YouTube, à droite ce que le site doit écrire — dans le menu, sur la page de la rubrique, dans le bandeau et dans les flux. L'adresse de la page, elle, ne change pas : elle est calculée sur le titre YouTube. Pour qu'elle change aussi, il faut renommer la playlist sur YouTube.",
+  "renommages": {
+    "Le JT de Tandem TV": "Flash Info Tandem TV"
   }
 }

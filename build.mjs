@@ -342,6 +342,13 @@ function marquerPremiereVue(data, ancien) {
   if (nouvelles) log(`${nouvelles} vidéo(s) apparue(s) dans le catalogue à cette synchronisation.`);
 }
 
+// Au-dela de ce delai sans avoir pu lire YouTube, la construction ne se
+// contente plus d'un avertissement dans un journal que personne n'ouvre : elle
+// affiche une erreur rouge sur GitHub. Une journee de tolerance : assez pour
+// absorber une panne d'API ou un quota atteint en fin de journee, trop peu
+// pour qu'une emission manque a l'appel sans que personne le sache.
+const TOLERANCE_CACHE_HEURES = 24;
+
 async function collectData(config) {
   const cachePath = path.join(ROOT, 'data', 'cache.json');
   const cacheMinutes = Number(process.env.CACHE_MINUTES ?? config.youtube?.cacheMinutes ?? 100);
@@ -391,7 +398,48 @@ async function collectData(config) {
     warn(`Échec de l'appel API : ${err.message}`);
     const cached = await readJson(cachePath);
     if (cached) {
-      warn('Utilisation du cache de la dernière synchronisation réussie.');
+      // Le repli sur le cache est une bonne idee pour une panne de dix
+      // minutes. C'en est une mauvaise pour une panne de trois jours.
+      //
+      // Constat du 11 septembre 2026 : le site n'avait plus lu YouTube depuis
+      // le 8, et il ne s'en plaignait nulle part. Deux flash info manquaient,
+      // les compteurs de vues etaient figes, et chaque construction se
+      // terminait en vert. Michael s'en est apercu tout seul, en regardant sa
+      // page d'accueil -- c'est-a-dire par le seul moyen qui restait.
+      //
+      // Passe ce delai, la construction echoue donc franchement. Le site
+      // deja en ligne reste en ligne (rien n'est deploye), mais la
+      // construction passe au rouge et GitHub previent. Un repli qui ne
+      // previent personne n'est pas un repli, c'est une panne deguisee.
+      const heures = cached.fetchedAt
+        ? (buildMs - Date.parse(cached.fetchedAt)) / 3_600_000
+        : Infinity;
+      if (heures > TOLERANCE_CACHE_HEURES) {
+        const combien = Number.isFinite(heures) ? `${Math.round(heures)} h` : 'une durée inconnue';
+        const phrase = `Le catalogue YouTube n'a pas pu être relu depuis ${combien} `
+          + `(dernière synchronisation réussie : ${cached.fetchedAt || 'inconnue'}). `
+          + 'Le site publié est donc périmé d\'autant : les nouvelles vidéos manquent et les '
+          + 'compteurs de vues sont figés. Vérifiez la clé YOUTUBE_API_KEY — quota Google Cloud, '
+          + `validité. Cause d'origine : ${err.message}`;
+        // Pourquoi une annonce et non un arret.
+        //
+        // La premiere version arretait la construction. C'etait la reponse
+        // logique -- et le piege : le site cesse alors d'etre publie, donc la
+        // correction elle-meme ne part plus. Un garde-fou qui empeche de
+        // reparer ne protege plus, il enferme.
+        //
+        // On publie donc, mais on crie. « ::error:: » est le format que GitHub
+        // reconnait : le message s'affiche en rouge en tete de la
+        // construction, visible sans meme ouvrir le journal. Et le pied de
+        // page du site affiche desormais la vraie date de synchronisation, au
+        // lieu de l'heure de construction qui laissait croire a une mise a
+        // jour qui n'avait pas eu lieu.
+        console.log(`::error title=Catalogue YouTube périmé::${phrase.replace(/\n/g, ' ')}`);
+        warn(phrase);
+        return cached;
+      }
+      warn(`Utilisation du cache de la dernière synchronisation réussie `
+        + `(${heures < 1 ? 'moins d\'une heure' : `${Math.round(heures)} h`}).`);
       return cached;
     }
     throw err;
@@ -792,6 +840,23 @@ async function main() {
   // Textes de presentation ecrits a la main pour les videos dont la description
   // YouTube est vide. Charges ici pour etre passes au modele.
   data.presentations = await readJson(path.join(ROOT, 'data', 'presentations.json'), {});
+  // Reglages d'accueil (bandeau du journal, renommages de rubriques). Ils sont
+  // lus AVANT le modele : un renommage applique apres coup ne toucherait ni le
+  // menu, ni les pages de rubrique, ni le fil RSS.
+  const accueil = await readJson(path.join(ROOT, 'data', 'accueil.json'), {});
+  if (accueil.renommages && Object.keys(accueil.renommages).length) {
+    // Les renommages vivent ici plutot que dans site.config.json parce que ce
+    // dernier est restaure depuis le depot a chaque publication automatique :
+    // une correction ecrite la serait effacee dix minutes plus tard.
+    config.display = {
+      ...config.display,
+      renames: { ...(config.display?.renames || {}), ...accueil.renommages },
+    };
+  }
+  // La date de la derniere lecture REUSSIE de YouTube, pour le pied de page.
+  // Jusqu'ici il affichait l'heure de construction, ce qui laissait croire a
+  // une synchronisation qui n'avait pas eu lieu.
+  config.synchroYouTube = data.fetchedAt || null;
   // Videos tenues hors du site a la main. La regle vit dans src/youtube.mjs ;
   // ici on ne fait que lui donner la liste, AVANT que le modele ne filtre quoi
   // que ce soit -- une exclusion declaree trop tard ne s'appliquerait a rien.
@@ -1232,12 +1297,15 @@ async function main() {
   // site.config.json : la publication automatique restaure ce dernier depuis
   // le depot a chaque passage (pour ne jamais publier une modification locale
   // par accident), et un reglage ecrit la serait efface dix minutes plus tard.
-  const accueil = await readJson(path.join(ROOT, 'data', 'accueil.json'), {});
-  const slugJT = String(accueil.jt?.rubrique || '').trim();
-  const rubriqueJT = slugJT ? categories.find((c) => c.slug === slugJT) : null;
-  if (slugJT && !rubriqueJT) {
-    warn(`data/accueil.json désigne « ${slugJT} » comme rubrique du journal quotidien, mais `
-      + "aucune rubrique ne porte cette adresse. Le bandeau du JT ne s'affichera pas.");
+  // Plusieurs adresses peuvent etre proposees pour la rubrique du journal : la
+  // premiere qui existe l'emporte. C'est ce qui permet de renommer la playlist
+  // sur YouTube -- et donc de changer son adresse -- sans que le bandeau
+  // disparaisse sans bruit le jour ou Michael s'en occupe.
+  const slugsJT = [accueil.jt?.rubrique].flat().filter(Boolean).map((x) => String(x).trim());
+  const rubriqueJT = slugsJT.map((s2) => categories.find((c) => c.slug === s2)).find(Boolean) || null;
+  if (slugsJT.length && !rubriqueJT) {
+    warn(`data/accueil.json désigne ${slugsJT.map((x) => `« ${x} »`).join(' ou ')} comme rubrique du `
+      + "journal quotidien, mais aucune rubrique ne porte ces adresses. Le bandeau ne s'affichera pas.");
   }
   await writePage('/', R.homePage({
     ...ctx, latest: allVideos, personnes, personneParRubrique, introHtml,
