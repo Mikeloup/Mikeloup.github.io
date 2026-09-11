@@ -8,6 +8,7 @@ const API = 'https://www.googleapis.com/youtube/v3';
 
 let apiKey = null;
 let quotaUsed = 0;
+const quotaParEndpoint = new Map();
 
 export function setApiKey(key) {
   apiKey = key;
@@ -17,8 +18,44 @@ export function getQuotaUsed() {
   return quotaUsed;
 }
 
+/** Où est parti le quota, endpoint par endpoint. « playlistItems 42, videos 21 ». */
+export function detailQuota() {
+  return [...quotaParEndpoint.entries()]
+    .sort((a, b) => b[1] - a[1])
+    .map(([e, n]) => `${e} ${n}`)
+    .join(', ') || 'aucun appel';
+}
+
+// Plafond de consommation pour UNE construction.
+//
+// Le 11 septembre 2026 : le site n'avait plus lu YouTube depuis trois jours.
+// La console Google donnait le chiffre sans appel — 9 985 unités sur 10 000
+// consommées dans la journée, sur un projet flambant neuf où une seule
+// construction avait tourné. Or une synchronisation complète en coûte environ
+// cent cinquante : channels, une soixantaine de playlists, leurs pages, le
+// détail des vidéos par lots de cinquante. Il manquait donc un zéro et demi,
+// et le seul endroit du code capable de faire dix mille appels sans que
+// personne s'en aperçoive était la boucle de pagination ci-dessous, qui
+// tournait tant que YouTube renvoyait un jeton de page suivante — sans
+// plafond, sans mémoire des jetons déjà vus, sans rien.
+//
+// D'où ce budget. Il ne corrige pas la boucle (elle est corrigée plus bas) :
+// il garantit qu'aucune erreur future, connue ou pas, ne puisse consommer la
+// journée entière. Dépasser 1 500 unités n'arrive dans aucun fonctionnement
+// normal ; c'est dix fois le coût réel, et il reste alors 85 % du quota du
+// jour pour publier le correctif. La construction s'arrête et DIT où est
+// parti le quota — un garde-fou muet ne protège personne.
+const BUDGET_PAR_CONSTRUCTION = 1500;
+
 async function api(endpoint, params, { cost = 1 } = {}) {
   if (!apiKey) throw new Error('YOUTUBE_API_KEY manquante.');
+  if (quotaUsed + cost > BUDGET_PAR_CONSTRUCTION) {
+    throw new Error(
+      `Budget de quota dépassé : ${quotaUsed} unités consommées par cette seule construction `
+      + `(plafond ${BUDGET_PAR_CONSTRUCTION}, une synchronisation normale en coûte ~150). `
+      + `Répartition : ${detailQuota()}. Arrêt avant d'épuiser le quota de la journée.`,
+    );
+  }
   const url = new URL(`${API}/${endpoint}`);
   for (const [k, v] of Object.entries(params)) {
     if (v !== undefined && v !== null && v !== '') url.searchParams.set(k, v);
@@ -30,6 +67,7 @@ async function api(endpoint, params, { cost = 1 } = {}) {
     try {
       const res = await fetch(url, { headers: { referer: 'https://www.tandemtv.net' } });
       quotaUsed += cost;
+      quotaParEndpoint.set(endpoint, (quotaParEndpoint.get(endpoint) || 0) + cost);
       if (res.ok) return await res.json();
 
       const body = await res.text();
@@ -47,15 +85,73 @@ async function api(endpoint, params, { cost = 1 } = {}) {
   throw lastError;
 }
 
-/** Parcourt toutes les pages d'un endpoint paginé. */
-async function apiAll(endpoint, params, { cost = 1, max = Infinity } = {}) {
+/**
+ * Parcourt toutes les pages d'un endpoint paginé.
+ *
+ * « Toutes les pages » était pris au pied de la lettre : on redemandait tant
+ * que YouTube renvoyait un jeton de page suivante. C'est exactement ce que
+ * demande la documentation, et c'est ce qui a coûté dix mille unités de quota
+ * en treize minutes le 11 septembre 2026, puis trois jours de site figé.
+ *
+ * Une boucle qui s'arrête sur une condition dictée par le serveur d'en face
+ * n'est pas une boucle bornée. Il suffit que ce serveur renvoie indéfiniment
+ * un jeton — cas connu sur les playlists contenant des vidéos supprimées ou
+ * privées, où une page peut être vide tout en annonçant une suite — pour que
+ * le programme tourne jusqu'à ce qu'on lui coupe les vivres.
+ *
+ * Trois arrêts s'ajoutent donc à celui de YouTube, chacun pour un scénario
+ * distinct, et chacun dit ce qu'il a vu :
+ *   - le même jeton revient : YouTube tourne en rond ;
+ *   - trois pages vides d'affilée alors qu'une suite est annoncée : plus rien
+ *     à lire ;
+ *   - plus de 'maxPages' pages : quelque chose d'imprévu. La chaîne compte
+ *     ~1 100 vidéos, soit 22 pages de 50 ; 60 laisse la place de tripler sans
+ *     rien changer, et arrête net à trois fois le budget prévu.
+ *
+ * Aucun de ces arrêts ne fait échouer la construction : on rend ce qu'on a lu
+ * et on le signale. Mieux vaut un catalogue incomplet et un avertissement
+ * qu'un site figé — c'est la leçon de septembre.
+ */
+async function apiAll(endpoint, params, { cost = 1, max = Infinity, maxPages = 60, quoi = '' } = {}) {
   const items = [];
+  const jetonsVus = new Set();
+  const ou = quoi ? `${endpoint} (${quoi})` : endpoint;
   let pageToken;
+  let pages = 0;
+  let videsDaffilee = 0;
+
   do {
     const data = await api(endpoint, { ...params, pageToken, maxResults: 50 }, { cost });
-    items.push(...(data.items || []));
-    pageToken = data.nextPageToken;
-  } while (pageToken && items.length < max);
+    const lot = data.items || [];
+    items.push(...lot);
+    pages += 1;
+
+    const suivant = data.nextPageToken;
+    if (!suivant) break;
+
+    if (jetonsVus.has(suivant)) {
+      console.warn(`⚠ ${ou} : YouTube renvoie un jeton de page déjà vu après ${pages} page(s) `
+        + `et ${items.length} élément(s). Pagination interrompue.`);
+      break;
+    }
+    jetonsVus.add(suivant);
+
+    videsDaffilee = lot.length === 0 ? videsDaffilee + 1 : 0;
+    if (videsDaffilee >= 3) {
+      console.warn(`⚠ ${ou} : trois pages vides d'affilée alors qu'une suite est annoncée, `
+        + `après ${items.length} élément(s). Pagination interrompue.`);
+      break;
+    }
+
+    if (pages >= maxPages) {
+      console.warn(`⚠ ${ou} : ${maxPages} pages lues (${items.length} éléments) sans que YouTube `
+        + `annonce la fin. Pagination interrompue pour ne pas consommer le quota de la journée.`);
+      break;
+    }
+
+    pageToken = suivant;
+  } while (items.length < max);
+
   return items;
 }
 
@@ -255,7 +351,7 @@ export async function fetchChaineTierce(handle) {
 }
 
 export async function fetchPlaylists(channelId) {
-  const items = await apiAll('playlists', { part: 'snippet,contentDetails', channelId });
+  const items = await apiAll('playlists', { part: 'snippet,contentDetails', channelId }, { quoi: channelId, maxPages: 20 });
   return items.map((p) => ({
     id: p.id,
     title: p.snippet.title,
@@ -269,7 +365,11 @@ export async function fetchPlaylists(channelId) {
 
 /** Renvoie les IDs de vidéos d'une playlist, dans l'ordre de la playlist. */
 export async function fetchPlaylistVideoIds(playlistId) {
-  const items = await apiAll('playlistItems', { part: 'snippet,contentDetails', playlistId });
+  const items = await apiAll(
+    'playlistItems',
+    { part: 'snippet,contentDetails', playlistId },
+    { quoi: playlistId, maxPages: 60 },
+  );
   return items
     .filter((it) => !PRIVATE_TITLES.has(it.snippet?.title))
     .filter((it) => it.snippet?.resourceId?.kind === 'youtube#video')

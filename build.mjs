@@ -251,7 +251,7 @@ async function collectFromApi(config) {
 
   const partenaires = await collecterPartenaires();
 
-  log(`Quota API consommé : ~${yt.getQuotaUsed()} unités (limite quotidienne : 10 000)`);
+  log(`Quota API consommé : ~${yt.getQuotaUsed()} unités sur 10 000/jour — ${yt.detailQuota()}`);
   return { channel, playlists, videos, partenaires, fetchedAt: buildTime };
 }
 
@@ -395,7 +395,14 @@ async function collectData(config) {
     await fs.writeFile(cachePath, JSON.stringify(data), 'utf8');
     return data;
   } catch (err) {
+    // Combien la tentative RATEE a-t-elle coute ? Le 11 septembre 2026, la
+    // reponse etait 9 985 unites sur 10 000 -- et le journal ne la donnait
+    // nulle part, parce que le seul endroit qui affichait le quota etait la
+    // derniere ligne de collectFromApi, jamais atteinte en cas d'echec. On a
+    // cherche trois jours une panne de cle alors que le chiffre, ecrit ici,
+    // aurait designe le coupable en une ligne.
     warn(`Échec de l'appel API : ${err.message}`);
+    warn(`Quota consommé par cette tentative : ~${yt.getQuotaUsed()} unités (${yt.detailQuota()}).`);
     const cached = await readJson(cachePath);
     if (cached) {
       // Le repli sur le cache est une bonne idee pour une panne de dix
@@ -420,7 +427,8 @@ async function collectData(config) {
           + `(dernière synchronisation réussie : ${cached.fetchedAt || 'inconnue'}). `
           + 'Le site publié est donc périmé d\'autant : les nouvelles vidéos manquent et les '
           + 'compteurs de vues sont figés. Vérifiez la clé YOUTUBE_API_KEY — quota Google Cloud, '
-          + `validité. Cause d'origine : ${err.message}`;
+          + `validité. Quota consommé par cette tentative : ~${yt.getQuotaUsed()} unités `
+          + `(${yt.detailQuota()}). Cause d'origine : ${err.message}`;
         // Pourquoi une annonce et non un arret.
         //
         // La premiere version arretait la construction. C'etait la reponse
