@@ -95,9 +95,47 @@ if (!Array.isArray(toutes) || !toutes.length) {
 const maintenant = Date.now();
 const date = (v) => Date.parse(v.f || v.p || 0) || 0;
 const jours = Number(hebdo.jours ?? 8);
-const recentes = toutes
+
+// Le rendez-vous quotidien ne paraît qu'UNE fois dans la lettre.
+//
+// Michael, 11 septembre 2026 : « dans la newsletter ne mets qu'une seule
+// vidéo du flash info (la dernière) même s'il y en a plusieurs ».
+//
+// Depuis que le Flash Info paraît tous les jours, sept des huit jours de la
+// période en sont. La lettre, qui prend simplement les plus récentes, se
+// remplissait donc d'éditions successives de la même émission — et les
+// autres programmes de la semaine, ceux qu'un abonné n'a pas vus passer,
+// disparaissaient derrière. On garde la dernière édition, qui est
+// l'actualité du jour, et on rend la place au reste.
+//
+// La liste des rubriques concernées vient de data/accueil.json — le MÊME
+// fichier qui décide du bandeau en haut de la page d'accueil. Une seule
+// définition de « le rendez-vous quotidien », pas deux qui divergeront.
+let rubriquesQuotidiennes = new Set();
+try {
+  const accueil = JSON.parse(await fs.readFile(path.join(ROOT, 'data', 'accueil.json'), 'utf8'));
+  rubriquesQuotidiennes = new Set([].concat(accueil?.jt?.rubrique || []).filter(Boolean));
+} catch {
+  // Fichier absent ou illisible : on ne filtre rien plutôt que de risquer
+  // une lettre vide. Une lettre trop pleine se lit ; une lettre vide, non.
+}
+
+const parPeriode = toutes
   .filter((v) => maintenant - date(v) < jours * 86400000)
   .sort((a, b) => date(b) - date(a));
+
+let quotidienDejaPris = false;
+const recentes = parPeriode.filter((v) => {
+  if (!rubriquesQuotidiennes.has(v.s)) return true;
+  if (quotidienDejaPris) return false;
+  quotidienDejaPris = true;   // la liste est triée : c'est la plus récente
+  return true;
+});
+const ecartees = parPeriode.length - recentes.length;
+if (ecartees) {
+  console.log(`Lettre : ${ecartees} édition(s) plus ancienne(s) du rendez-vous quotidien `
+    + `écartée(s) — seule la dernière figure dans la lettre.`);
+}
 
 if (!recentes.length) {
   console.log("Lettre : aucune vidéo depuis la dernière lettre. Rien n'est envoyé.");
@@ -114,6 +152,10 @@ const retenues = new Set([une, ...autres].map((v) => v.i));
 const moisRetour = Number(hebdo.moisRetour ?? 18);
 const aRevoir = toutes
   .filter((v) => !retenues.has(v.i))
+  // Et pas davantage dans « À revoir » : une édition d'actualité vieille de
+  // trois semaines n'est pas une pépite à redécouvrir, c'est une nouvelle
+  // périmée. Si vous préférez les y garder, retirer cette seule ligne.
+  .filter((v) => !rubriquesQuotidiennes.has(v.s))
   .filter((v) => maintenant - date(v) >= jours * 86400000)
   .filter((v) => maintenant - date(v) < moisRetour * 30.44 * 86400000)
   .sort((a, b) => (b.v || 0) - (a.v || 0))
