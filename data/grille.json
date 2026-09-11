@@ -1,5 +1,5 @@
 {
-  "exported_at": "2026-09-11T15:56:21.590964",
+  "exported_at": "2026-09-11T16:11:27.163351",
   "window_days": 7,
   "rows": [
     {
@@ -1536,21 +1536,15 @@
     },
     {
       "date_diffusion": "2026-09-13",
-      "bloc_apres": null,
-      "type": "CLIPS_CHAINE",
+      "heure_debut": "08:00",
+      "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
+      "channel_id": "OROT_VEKELIM",
+      "title": "Israël : Netanyahou repasse, le Hamas est à Gaza"
     },
     {
       "date_diffusion": "2026-09-13",
-      "bloc_apres": null,
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "ISRAEL_EN_FRANCAIS"
-    },
-    {
-      "date_diffusion": "2026-09-13",
-      "heure_debut": "08:01",
+      "heure_debut": "08:00",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "YINON_SHOW",
@@ -1558,7 +1552,7 @@
     },
     {
       "date_diffusion": "2026-09-13",
-      "heure_debut": "08:50",
+      "heure_debut": "08:49",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "STEPHANE_GOLDIN",
@@ -1573,24 +1567,27 @@
     },
     {
       "date_diffusion": "2026-09-13",
-      "bloc_apres": "YINON_SHOW",
-      "type": "CLIPS_CHAINE",
+      "heure_debut": "08:54",
+      "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
+      "channel_id": "RONY_HAYOT",
+      "title": "New York sous Mamdani New York sacrifiee"
     },
     {
       "date_diffusion": "2026-09-13",
-      "bloc_apres": "YINON_SHOW",
-      "type": "CLIPS_CHAINE",
+      "heure_debut": "08:55",
+      "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL"
+      "channel_id": "CARTES_POSTALES",
+      "title": "Carte postale La synagogue de Capharnaum2"
     },
     {
       "date_diffusion": "2026-09-13",
-      "bloc_apres": "YINON_SHOW",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
+      "heure_debut": "09:00",
+      "type": "ANCRE",
+      "heure_fixe": true,
+      "channel_id": "TEL_AVIV_NEW_YORK",
+      "title": "EPISODE 19- SEMAINE DU 23 AU 30 AOUT"
     },
     {
       "date_diffusion": "2026-09-13",
@@ -1602,22 +1599,6 @@
     },
     {
       "date_diffusion": "2026-09-13",
-      "heure_debut": "09:01",
-      "type": "ANCRE",
-      "heure_fixe": true,
-      "channel_id": "TEL_AVIV_NEW_YORK",
-      "title": "EPISODE 19- SEMAINE DU 23 AU 30 AOUT"
-    },
-    {
-      "date_diffusion": "2026-09-13",
-      "heure_debut": "09:01",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 081224"
-    },
-    {
-      "date_diffusion": "2026-09-13",
       "bloc_apres": "TEL_AVIV_NEW_YORK",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
@@ -1625,7 +1606,15 @@
     },
     {
       "date_diffusion": "2026-09-13",
-      "heure_debut": "09:08",
+      "heure_debut": "09:01",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "un jour une histoire 2206025"
+    },
+    {
+      "date_diffusion": "2026-09-13",
+      "heure_debut": "09:09",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "KATAVA",
@@ -1633,15 +1622,23 @@
     },
     {
       "date_diffusion": "2026-09-13",
-      "heure_debut": "09:10",
+      "heure_debut": "09:11",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "Bet Shearim"
+      "channel_id": "RONY_HAYOT",
+      "title": "Israël : TVA à 18 %, retraite à 70 ans… la facture de la guerre arrive"
     },
     {
       "date_diffusion": "2026-09-13",
-      "heure_debut": "09:15",
+      "heure_debut": "09:19",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "RONY_HAYOT",
+      "title": "Deux communautés, un même rejet ?"
+    },
+    {
+      "date_diffusion": "2026-09-13",
+      "heure_debut": "09:27",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "RONY_AKRICH",
@@ -1649,39 +1646,7 @@
     },
     {
       "date_diffusion": "2026-09-13",
-      "heure_debut": "09:29",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 241124"
-    },
-    {
-      "date_diffusion": "2026-09-13",
-      "heure_debut": "09:37",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "KATAVA",
-      "title": "La folie Kpop Demon Hunters, en Israël aussi ! (reportage)"
-    },
-    {
-      "date_diffusion": "2026-09-13",
-      "heure_debut": "09:40",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "KATAVA",
-      "title": "Les 4 Fantastiques : Ben Grimm / La Chose est juif ?"
-    },
-    {
-      "date_diffusion": "2026-09-13",
-      "heure_debut": "09:46",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "Carte postale La synagogue de Capharnaum2"
-    },
-    {
-      "date_diffusion": "2026-09-13",
-      "heure_debut": "09:52",
+      "heure_debut": "09:41",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
@@ -1689,11 +1654,34 @@
     },
     {
       "date_diffusion": "2026-09-13",
-      "heure_debut": "09:56",
+      "heure_debut": "09:46",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "KATAVA",
+      "title": "La folie Kpop Demon Hunters, en Israël aussi ! (reportage)"
+    },
+    {
+      "date_diffusion": "2026-09-13",
+      "heure_debut": "09:49",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "KATAVA",
+      "title": "Les 4 Fantastiques : Ben Grimm / La Chose est juif ?"
+    },
+    {
+      "date_diffusion": "2026-09-13",
+      "heure_debut": "09:55",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
       "title": "Ein Gedi"
+    },
+    {
+      "date_diffusion": "2026-09-13",
+      "bloc_apres": "TEL_AVIV_NEW_YORK",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "KFIR_ALMAGOR"
     },
     {
       "date_diffusion": "2026-09-13",
@@ -1715,6 +1703,13 @@
       "bloc_apres": "OROT_VEKELIM",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
+      "channel_id": "TSAHAL_FR"
+    },
+    {
+      "date_diffusion": "2026-09-13",
+      "bloc_apres": "OROT_VEKELIM",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
       "channel_id": "KFIR_ALMAGOR"
     },
     {
@@ -1723,13 +1718,6 @@
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
       "channel_id": "ISRAEL_EN_FRANCAIS"
-    },
-    {
-      "date_diffusion": "2026-09-13",
-      "bloc_apres": "OROT_VEKELIM",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
     },
     {
       "date_diffusion": "2026-09-13",
@@ -1744,6 +1732,13 @@
       "bloc_apres": "TOUR_D_ISRAEL",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
+      "channel_id": "KFIR_ALMAGOR"
+    },
+    {
+      "date_diffusion": "2026-09-13",
+      "bloc_apres": "TOUR_D_ISRAEL",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
       "channel_id": "TSAHAL_FR"
     },
     {
@@ -1762,14 +1757,7 @@
     },
     {
       "date_diffusion": "2026-09-13",
-      "bloc_apres": "TOUR_D_ISRAEL",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
-    },
-    {
-      "date_diffusion": "2026-09-13",
-      "heure_debut": "12:51",
+      "heure_debut": "12:50",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "STEPHANE_GOLDIN",
@@ -1777,7 +1765,7 @@
     },
     {
       "date_diffusion": "2026-09-13",
-      "heure_debut": "13:01",
+      "heure_debut": "13:00",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "JEROME_HAAS_L_INTERVIEW",
@@ -1785,7 +1773,7 @@
     },
     {
       "date_diffusion": "2026-09-13",
-      "heure_debut": "13:18",
+      "heure_debut": "13:17",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "RONY_AKRICH",
@@ -1800,18 +1788,10 @@
     },
     {
       "date_diffusion": "2026-09-13",
-      "heure_debut": "13:20",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "RONY_AKRICH",
-      "title": "Israël : où sont les hommes d’État ?"
-    },
-    {
-      "date_diffusion": "2026-09-13",
       "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL"
+      "channel_id": "KFIR_ALMAGOR"
     },
     {
       "date_diffusion": "2026-09-13",
@@ -1825,19 +1805,27 @@
       "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
+      "channel_id": "SOLAL_ISRAEL"
     },
     {
       "date_diffusion": "2026-09-13",
-      "heure_debut": "14:56",
+      "heure_debut": "14:04",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "RONY_AKRICH",
+      "title": "Israël : où sont les hommes d’État ?"
+    },
+    {
+      "date_diffusion": "2026-09-13",
+      "heure_debut": "14:53",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 171124"
+      "title": "2. UJUH Eurovision"
     },
     {
       "date_diffusion": "2026-09-13",
-      "heure_debut": "15:02",
+      "heure_debut": "15:00",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "STEPHANE_GOLDIN",
@@ -1845,7 +1833,7 @@
     },
     {
       "date_diffusion": "2026-09-13",
-      "heure_debut": "15:06",
+      "heure_debut": "15:04",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
@@ -1853,7 +1841,7 @@
     },
     {
       "date_diffusion": "2026-09-13",
-      "heure_debut": "15:10",
+      "heure_debut": "15:08",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "KATAVA",
@@ -1861,7 +1849,7 @@
     },
     {
       "date_diffusion": "2026-09-13",
-      "heure_debut": "15:13",
+      "heure_debut": "15:10",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "RONY_AKRICH",
@@ -1869,11 +1857,11 @@
     },
     {
       "date_diffusion": "2026-09-13",
-      "heure_debut": "15:13",
+      "heure_debut": "15:10",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 101124"
+      "title": "ujuh070626"
     },
     {
       "date_diffusion": "2026-09-13",
@@ -1893,15 +1881,15 @@
     },
     {
       "date_diffusion": "2026-09-13",
-      "heure_debut": "15:27",
+      "heure_debut": "15:26",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 031124"
+      "title": "1. UJUH Marc Chagall"
     },
     {
       "date_diffusion": "2026-09-13",
-      "heure_debut": "15:35",
+      "heure_debut": "15:33",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
@@ -1909,7 +1897,7 @@
     },
     {
       "date_diffusion": "2026-09-13",
-      "heure_debut": "15:39",
+      "heure_debut": "15:37",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "KATAVA",
@@ -1917,15 +1905,15 @@
     },
     {
       "date_diffusion": "2026-09-13",
-      "heure_debut": "15:42",
+      "heure_debut": "15:39",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 271024"
+      "title": "Boris Cyrulnik"
     },
     {
       "date_diffusion": "2026-09-13",
-      "heure_debut": "15:47",
+      "heure_debut": "15:48",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
@@ -1945,11 +1933,11 @@
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 131024"
+      "title": "UJUH30526"
     },
     {
       "date_diffusion": "2026-09-13",
-      "heure_debut": "16:02",
+      "heure_debut": "16:03",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "KATAVA",
@@ -1969,11 +1957,11 @@
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 061024"
+      "title": "ujuh240526"
     },
     {
       "date_diffusion": "2026-09-13",
-      "heure_debut": "16:20",
+      "heure_debut": "16:21",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
@@ -1985,7 +1973,7 @@
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 290924"
+      "title": "ujuh 170526"
     },
     {
       "date_diffusion": "2026-09-13",
@@ -1997,15 +1985,15 @@
     },
     {
       "date_diffusion": "2026-09-13",
-      "heure_debut": "16:35",
+      "heure_debut": "16:34",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 220924"
+      "title": "ujuh100526"
     },
     {
       "date_diffusion": "2026-09-13",
-      "heure_debut": "16:41",
+      "heure_debut": "16:42",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
@@ -2017,11 +2005,11 @@
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 150924"
+      "title": "ujuh260426"
     },
     {
       "date_diffusion": "2026-09-13",
-      "heure_debut": "16:52",
+      "heure_debut": "16:54",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
@@ -2029,15 +2017,15 @@
     },
     {
       "date_diffusion": "2026-09-13",
-      "heure_debut": "16:56",
+      "heure_debut": "16:57",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire080924"
+      "title": "ujuh190426"
     },
     {
       "date_diffusion": "2026-09-13",
-      "heure_debut": "17:03",
+      "heure_debut": "17:05",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
@@ -2045,7 +2033,15 @@
     },
     {
       "date_diffusion": "2026-09-13",
-      "heure_debut": "17:07",
+      "heure_debut": "17:09",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "ujuh120426"
+    },
+    {
+      "date_diffusion": "2026-09-13",
+      "heure_debut": "17:18",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
@@ -2053,23 +2049,15 @@
     },
     {
       "date_diffusion": "2026-09-13",
-      "heure_debut": "17:13",
+      "heure_debut": "17:24",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 30.06.24"
+      "title": "ujuh050426"
     },
     {
       "date_diffusion": "2026-09-13",
-      "heure_debut": "17:20",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 23.06.24"
-    },
-    {
-      "date_diffusion": "2026-09-13",
-      "heure_debut": "17:26",
+      "heure_debut": "17:33",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
@@ -2077,27 +2065,19 @@
     },
     {
       "date_diffusion": "2026-09-13",
-      "heure_debut": "17:30",
+      "heure_debut": "17:37",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 1606.24"
+      "title": "ujuh290326"
     },
     {
       "date_diffusion": "2026-09-13",
-      "heure_debut": "17:36",
+      "heure_debut": "17:44",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 090624"
-    },
-    {
-      "date_diffusion": "2026-09-13",
-      "heure_debut": "17:43",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 2.06.24"
+      "title": "ujuh220326"
     },
     {
       "date_diffusion": "2026-09-13",
@@ -2105,7 +2085,7 @@
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 26.05.24"
+      "title": "ujuh150326"
     },
     {
       "date_diffusion": "2026-09-13",
@@ -2113,15 +2093,15 @@
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 19.05.24"
+      "title": "ujuh010326"
     },
     {
       "date_diffusion": "2026-09-13",
-      "heure_debut": "18:03",
+      "heure_debut": "18:01",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 12.0524"
+      "title": "ujuh220226"
     },
     {
       "date_diffusion": "2026-09-13",
@@ -2129,7 +2109,7 @@
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 05.05.24"
+      "title": "ujuh080226"
     },
     {
       "date_diffusion": "2026-09-13",
@@ -2137,39 +2117,39 @@
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire140424"
+      "title": "ujuh310126"
     },
     {
       "date_diffusion": "2026-09-13",
-      "heure_debut": "18:21",
+      "heure_debut": "18:22",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 310324"
+      "title": "ujuh250126"
     },
     {
       "date_diffusion": "2026-09-13",
-      "heure_debut": "18:28",
+      "heure_debut": "18:27",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 240324"
+      "title": "UJUH180126"
     },
     {
       "date_diffusion": "2026-09-13",
-      "heure_debut": "18:35",
+      "heure_debut": "18:33",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 17.03.24"
+      "title": "ujuh110126"
     },
     {
       "date_diffusion": "2026-09-13",
-      "heure_debut": "18:41",
+      "heure_debut": "18:40",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 10.03.24"
+      "title": "ujuh 040126"
     },
     {
       "date_diffusion": "2026-09-13",
@@ -2177,15 +2157,15 @@
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 25.02.24"
+      "title": "ujuh211225"
     },
     {
       "date_diffusion": "2026-09-13",
-      "heure_debut": "18:54",
+      "heure_debut": "18:57",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire18.02.24"
+      "title": "ujuh141225"
     },
     {
       "date_diffusion": "2026-09-13",
@@ -2193,39 +2173,39 @@
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 11 02 24"
+      "title": "ujuh071225"
     },
     {
       "date_diffusion": "2026-09-13",
-      "heure_debut": "19:09",
+      "heure_debut": "19:11",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 04.02.24"
+      "title": "Le partage de la Palestine"
     },
     {
       "date_diffusion": "2026-09-13",
-      "heure_debut": "19:17",
+      "heure_debut": "19:18",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 28.01.24"
+      "title": "un jour une histoire231125"
     },
     {
       "date_diffusion": "2026-09-13",
-      "heure_debut": "19:24",
+      "heure_debut": "19:25",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire21.01.24"
+      "title": "ujuh191125"
     },
     {
       "date_diffusion": "2026-09-13",
-      "heure_debut": "19:30",
+      "heure_debut": "19:31",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 14.0124"
+      "title": "UJUH 091125"
     },
     {
       "date_diffusion": "2026-09-13",
@@ -2233,7 +2213,7 @@
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un joiur une histoire 241223"
+      "title": "un jour une histoire261025"
     },
     {
       "date_diffusion": "2026-09-13",
@@ -2241,19 +2221,19 @@
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 17 12 23"
+      "title": "un jour une histoire 261025"
     },
     {
       "date_diffusion": "2026-09-13",
-      "heure_debut": "19:53",
+      "heure_debut": "19:51",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 10.12.23"
+      "title": "un jour une histoire 191025"
     },
     {
       "date_diffusion": "2026-09-13",
-      "heure_debut": "20:00",
+      "heure_debut": "19:57",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "WILLIAM_ZERBIB_L_INTERVIEW",
@@ -2269,14 +2249,7 @@
     },
     {
       "date_diffusion": "2026-09-14",
-      "bloc_apres": null,
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL"
-    },
-    {
-      "date_diffusion": "2026-09-14",
-      "heure_debut": "08:01",
+      "heure_debut": "08:00",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "CAFE_DAAT",
@@ -2294,13 +2267,6 @@
       "bloc_apres": "CAFE_DAAT",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
-    },
-    {
-      "date_diffusion": "2026-09-14",
-      "bloc_apres": "CAFE_DAAT",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
       "channel_id": "ISRAEL_EN_FRANCAIS"
     },
     {
@@ -2308,12 +2274,12 @@
       "heure_debut": "09:00",
       "type": "ANCRE",
       "heure_fixe": true,
-      "channel_id": "YINON_SHOW",
-      "title": "IL OUVRE DES PORTES ET RASSEMBLE DES MILLIERS DE JEUNES AUX SELI’HOT"
+      "channel_id": "TEL_AVIV_NEW_YORK",
+      "title": "EPISODE 19- SEMAINE DU 23 AU 30 AOUT"
     },
     {
       "date_diffusion": "2026-09-14",
-      "heure_debut": "09:49",
+      "heure_debut": "09:01",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "STEPHANE_GOLDIN",
@@ -2321,51 +2287,14 @@
     },
     {
       "date_diffusion": "2026-09-14",
-      "bloc_apres": "YINON_SHOW",
+      "bloc_apres": "TEL_AVIV_NEW_YORK",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
       "channel_id": "ISRAEL_EN_FRANCAIS"
     },
     {
       "date_diffusion": "2026-09-14",
-      "bloc_apres": "YINON_SHOW",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL"
-    },
-    {
-      "date_diffusion": "2026-09-14",
-      "bloc_apres": "YINON_SHOW",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
-    },
-    {
-      "date_diffusion": "2026-09-14",
-      "bloc_apres": "YINON_SHOW",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
-    },
-    {
-      "date_diffusion": "2026-09-14",
-      "heure_debut": "09:58",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "RONY_AKRICH",
-      "title": "Deuxieme partie - Qui peut vraiment gouverner Israel ?"
-    },
-    {
-      "date_diffusion": "2026-09-14",
-      "heure_debut": "10:00",
-      "type": "ANCRE",
-      "heure_fixe": true,
-      "channel_id": "TEL_AVIV_NEW_YORK",
-      "title": "EPISODE 19- SEMAINE DU 23 AU 30 AOUT"
-    },
-    {
-      "date_diffusion": "2026-09-14",
-      "heure_debut": "10:00",
+      "heure_debut": "09:05",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "RONY_AKRICH",
@@ -2373,10 +2302,11 @@
     },
     {
       "date_diffusion": "2026-09-14",
-      "bloc_apres": "TEL_AVIV_NEW_YORK",
-      "type": "CLIPS_CHAINE",
+      "heure_debut": "09:19",
+      "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "ISRAEL_EN_FRANCAIS"
+      "channel_id": "RONY_AKRICH",
+      "title": "Deuxieme partie - Qui peut vraiment gouverner Israel ?"
     },
     {
       "date_diffusion": "2026-09-14",
@@ -2401,7 +2331,7 @@
     },
     {
       "date_diffusion": "2026-09-14",
-      "heure_debut": "11:00",
+      "heure_debut": "10:01",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "WILLIAM_ZERBIB_L_INTERVIEW",
@@ -2430,23 +2360,7 @@
     },
     {
       "date_diffusion": "2026-09-14",
-      "heure_debut": "11:56",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "Rosh Hanikra"
-    },
-    {
-      "date_diffusion": "2026-09-14",
-      "heure_debut": "12:00",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "RONY_AKRICH",
-      "title": "Deuxieme partie - Qui peut vraiment gouverner Israel ?"
-    },
-    {
-      "date_diffusion": "2026-09-14",
-      "heure_debut": "12:00",
+      "heure_debut": "11:00",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "OROT_VEKELIM",
@@ -2454,31 +2368,28 @@
     },
     {
       "date_diffusion": "2026-09-14",
-      "heure_debut": "13:47",
-      "type": "COURT_NOMME",
+      "bloc_apres": "OROT_VEKELIM",
+      "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 23.04.23"
+      "channel_id": "SOLAL_ISRAEL"
     },
     {
       "date_diffusion": "2026-09-14",
-      "heure_debut": "13:54",
-      "type": "COURT_NOMME",
+      "bloc_apres": "OROT_VEKELIM",
+      "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "STEPHANE_GOLDIN",
-      "title": "IMG 9214"
+      "channel_id": "KFIR_ALMAGOR"
     },
     {
       "date_diffusion": "2026-09-14",
-      "heure_debut": "13:58",
-      "type": "COURT_NOMME",
+      "bloc_apres": "OROT_VEKELIM",
+      "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "KATAVA",
-      "title": "Gerard Hoffnung : le clown de l'orchestre"
+      "channel_id": "TSAHAL_FR"
     },
     {
       "date_diffusion": "2026-09-14",
-      "heure_debut": "14:01",
+      "heure_debut": "13:00",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "TOUR_D_ISRAEL",
@@ -2486,11 +2397,11 @@
     },
     {
       "date_diffusion": "2026-09-14",
-      "heure_debut": "14:23",
+      "heure_debut": "13:22",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "RONY_AKRICH",
-      "title": "Israël : où sont les hommes d’État ?"
+      "channel_id": "STEPHANE_GOLDIN",
+      "title": "IMG 9214"
     },
     {
       "date_diffusion": "2026-09-14",
@@ -2501,10 +2412,19 @@
     },
     {
       "date_diffusion": "2026-09-14",
-      "bloc_apres": "TOUR_D_ISRAEL",
-      "type": "CLIPS_CHAINE",
+      "heure_debut": "13:28",
+      "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
+      "channel_id": "RONY_AKRICH",
+      "title": "Israël : où sont les hommes d’État ?"
+    },
+    {
+      "date_diffusion": "2026-09-14",
+      "heure_debut": "13:41",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "RONY_AKRICH",
+      "title": "Deuxieme partie - Qui peut vraiment gouverner Israel ?"
     },
     {
       "date_diffusion": "2026-09-14",
@@ -2518,11 +2438,18 @@
       "bloc_apres": "TOUR_D_ISRAEL",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
+      "channel_id": "TSAHAL_FR"
+    },
+    {
+      "date_diffusion": "2026-09-14",
+      "bloc_apres": "TOUR_D_ISRAEL",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
       "channel_id": "SOLAL_ISRAEL"
     },
     {
       "date_diffusion": "2026-09-14",
-      "heure_debut": "15:01",
+      "heure_debut": "14:00",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "JEROME_HAAS_L_INTERVIEW",
@@ -2540,34 +2467,27 @@
       "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
+      "channel_id": "ISRAEL_EN_FRANCAIS"
     },
     {
       "date_diffusion": "2026-09-14",
-      "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
-    },
-    {
-      "date_diffusion": "2026-09-14",
-      "heure_debut": "16:03",
+      "heure_debut": "15:15",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "RONY_AKRICH",
-      "title": "Deuxieme partie - Qui peut vraiment gouverner Israel ?"
+      "title": "Israël : où sont les hommes d’État ?"
     },
     {
       "date_diffusion": "2026-09-14",
-      "heure_debut": "17:14",
+      "heure_debut": "15:28",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire11.12.22"
+      "title": "un jour une histoire 230225"
     },
     {
       "date_diffusion": "2026-09-14",
-      "heure_debut": "17:20",
+      "heure_debut": "15:36",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "STEPHANE_GOLDIN",
@@ -2575,7 +2495,71 @@
     },
     {
       "date_diffusion": "2026-09-14",
-      "heure_debut": "17:25",
+      "heure_debut": "15:41",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "CARTES_POSTALES",
+      "title": "Les jardins Bahai"
+    },
+    {
+      "date_diffusion": "2026-09-14",
+      "heure_debut": "15:45",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "KATAVA",
+      "title": "Quand Superman faisait la paix entre Israël et les Palestiniens"
+    },
+    {
+      "date_diffusion": "2026-09-14",
+      "heure_debut": "15:50",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "un jour une histoire 090225"
+    },
+    {
+      "date_diffusion": "2026-09-14",
+      "heure_debut": "15:57",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "CARTES_POSTALES",
+      "title": "Massada"
+    },
+    {
+      "date_diffusion": "2026-09-14",
+      "heure_debut": "16:01",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "KATAVA",
+      "title": "Gerard Hoffnung : le clown de l'orchestre"
+    },
+    {
+      "date_diffusion": "2026-09-14",
+      "heure_debut": "16:04",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "RONY_AKRICH",
+      "title": "Deuxieme partie - Qui peut vraiment gouverner Israel ?"
+    },
+    {
+      "date_diffusion": "2026-09-14",
+      "heure_debut": "16:04",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "un jour une histoire 020225"
+    },
+    {
+      "date_diffusion": "2026-09-14",
+      "heure_debut": "16:11",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "CARTES_POSTALES",
+      "title": "Ramat Hanadiv"
+    },
+    {
+      "date_diffusion": "2026-09-14",
+      "heure_debut": "16:16",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "KATAVA",
@@ -2583,23 +2567,15 @@
     },
     {
       "date_diffusion": "2026-09-14",
-      "heure_debut": "17:29",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "appolonia"
-    },
-    {
-      "date_diffusion": "2026-09-14",
-      "heure_debut": "17:32",
+      "heure_debut": "16:20",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 4.12.22"
+      "title": "un jour une histoire 260125"
     },
     {
       "date_diffusion": "2026-09-14",
-      "heure_debut": "17:40",
+      "heure_debut": "16:26",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "KATAVA",
@@ -2607,7 +2583,39 @@
     },
     {
       "date_diffusion": "2026-09-14",
-      "heure_debut": "17:45",
+      "heure_debut": "16:31",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "CARTES_POSTALES",
+      "title": "Rosh Hanikra"
+    },
+    {
+      "date_diffusion": "2026-09-14",
+      "heure_debut": "16:35",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "un jour une histoire 190125"
+    },
+    {
+      "date_diffusion": "2026-09-14",
+      "heure_debut": "16:42",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "CARTES_POSTALES",
+      "title": "appolonia"
+    },
+    {
+      "date_diffusion": "2026-09-14",
+      "heure_debut": "16:45",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "un jour une histoire 120125"
+    },
+    {
+      "date_diffusion": "2026-09-14",
+      "heure_debut": "16:52",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
@@ -2615,15 +2623,15 @@
     },
     {
       "date_diffusion": "2026-09-14",
-      "heure_debut": "17:49",
+      "heure_debut": "16:55",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 271122"
+      "title": "un jour une histoire 050125"
     },
     {
       "date_diffusion": "2026-09-14",
-      "heure_debut": "17:55",
+      "heure_debut": "17:00",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
@@ -2631,15 +2639,15 @@
     },
     {
       "date_diffusion": "2026-09-14",
-      "heure_debut": "17:59",
+      "heure_debut": "17:04",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 201122"
+      "title": "un jour une histoire 291224"
     },
     {
       "date_diffusion": "2026-09-14",
-      "heure_debut": "18:07",
+      "heure_debut": "17:09",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
@@ -2647,15 +2655,7 @@
     },
     {
       "date_diffusion": "2026-09-14",
-      "heure_debut": "18:11",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 061122"
-    },
-    {
-      "date_diffusion": "2026-09-14",
-      "heure_debut": "18:17",
+      "heure_debut": "17:13",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
@@ -2663,15 +2663,23 @@
     },
     {
       "date_diffusion": "2026-09-14",
-      "heure_debut": "18:24",
+      "heure_debut": "17:20",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 231022"
+      "title": "un jour une hsitoire 221224"
     },
     {
       "date_diffusion": "2026-09-14",
-      "heure_debut": "18:32",
+      "heure_debut": "17:25",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "un jour une histoire 15.12.24"
+    },
+    {
+      "date_diffusion": "2026-09-14",
+      "heure_debut": "17:31",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
@@ -2679,27 +2687,107 @@
     },
     {
       "date_diffusion": "2026-09-14",
-      "heure_debut": "18:36",
+      "heure_debut": "17:35",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 18.09.22"
+      "title": "un jour une histoire 081224"
     },
     {
       "date_diffusion": "2026-09-14",
-      "heure_debut": "18:43",
+      "heure_debut": "17:42",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 11.09.22"
+      "title": "un jour une histoire 241124"
     },
     {
       "date_diffusion": "2026-09-14",
-      "heure_debut": "18:50",
+      "heure_debut": "17:49",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 04.09.22"
+      "title": "un jour une histoire 171124"
+    },
+    {
+      "date_diffusion": "2026-09-14",
+      "heure_debut": "17:54",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "un jour une histoire 101124"
+    },
+    {
+      "date_diffusion": "2026-09-14",
+      "heure_debut": "17:59",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "un jour une histoire 031124"
+    },
+    {
+      "date_diffusion": "2026-09-14",
+      "heure_debut": "18:07",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "un jour une histoire 271024"
+    },
+    {
+      "date_diffusion": "2026-09-14",
+      "heure_debut": "18:13",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "un jour une histoire 131024"
+    },
+    {
+      "date_diffusion": "2026-09-14",
+      "heure_debut": "18:19",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "un jour une histoire 061024"
+    },
+    {
+      "date_diffusion": "2026-09-14",
+      "heure_debut": "18:26",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "un jour une histoire 290924"
+    },
+    {
+      "date_diffusion": "2026-09-14",
+      "heure_debut": "18:32",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "un jour une histoire 220924"
+    },
+    {
+      "date_diffusion": "2026-09-14",
+      "heure_debut": "18:38",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "un jour une histoire 150924"
+    },
+    {
+      "date_diffusion": "2026-09-14",
+      "heure_debut": "18:45",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "un jour une histoire080924"
+    },
+    {
+      "date_diffusion": "2026-09-14",
+      "heure_debut": "18:51",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "un jour une histoire 30.06.24"
     },
     {
       "date_diffusion": "2026-09-14",
@@ -2707,23 +2795,31 @@
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 17.07.22"
+      "title": "un jour une histoire 23.06.24"
     },
     {
       "date_diffusion": "2026-09-14",
-      "heure_debut": "19:05",
+      "heure_debut": "19:03",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 22.05.22"
+      "title": "un jour une histoire 1606.24"
     },
     {
       "date_diffusion": "2026-09-14",
-      "heure_debut": "19:14",
+      "heure_debut": "19:10",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 1.05.22"
+      "title": "un jour une histoire 090624"
+    },
+    {
+      "date_diffusion": "2026-09-14",
+      "heure_debut": "19:17",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "un jour une histoire 2.06.24"
     },
     {
       "date_diffusion": "2026-09-14",
@@ -2731,126 +2827,67 @@
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 100422"
+      "title": "un jour une histoire 26.05.24"
     },
     {
       "date_diffusion": "2026-09-14",
-      "heure_debut": "19:32",
-      "type": "ANCRE",
-      "heure_fixe": true,
-      "channel_id": "RADIO_SHALOM_BOCHURBERG",
-      "title": "Le grand rabbin Olivier Kaufmann"
-    },
-    {
-      "date_diffusion": "2026-09-14",
-      "heure_debut": "22:01",
-      "type": "ANCRE",
-      "heure_fixe": true,
-      "channel_id": "SHALOM_SALAM",
-      "title": "Fracture dans la gauche française"
-    },
-    {
-      "date_diffusion": "2026-09-15",
-      "bloc_apres": null,
-      "type": "CLIPS_CHAINE",
+      "heure_debut": "19:31",
+      "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "un jour une histoire 19.05.24"
     },
     {
-      "date_diffusion": "2026-09-15",
-      "heure_debut": "08:01",
+      "date_diffusion": "2026-09-14",
+      "heure_debut": "19:37",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "un jour une histoire 12.0524"
+    },
+    {
+      "date_diffusion": "2026-09-14",
+      "heure_debut": "19:42",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "un jour une histoire 05.05.24"
+    },
+    {
+      "date_diffusion": "2026-09-14",
+      "heure_debut": "19:48",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "un jour une histoire140424"
+    },
+    {
+      "date_diffusion": "2026-09-14",
+      "heure_debut": "19:55",
       "type": "ANCRE",
       "heure_fixe": true,
-      "channel_id": "LES_ISRAELIENNES",
-      "title": "Israël avant le 7 septembre : qui sera sur les listes ?"
+      "channel_id": "OROT_VEKELIM",
+      "title": "Israël : Netanyahou repasse, le Hamas est à Gaza"
     },
     {
-      "date_diffusion": "2026-09-15",
-      "heure_debut": "09:19",
+      "date_diffusion": "2026-09-14",
+      "heure_debut": "19:55",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "STEPHANE_GOLDIN",
       "title": "IMG 9214"
     },
     {
-      "date_diffusion": "2026-09-15",
-      "bloc_apres": "LES_ISRAELIENNES",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "ISRAEL_EN_FRANCAIS"
+      "date_diffusion": "2026-09-14",
+      "heure_debut": "22:00",
+      "type": "ANCRE",
+      "heure_fixe": true,
+      "channel_id": "YINON_SHOW",
+      "title": "IL OUVRE DES PORTES ET RASSEMBLE DES MILLIERS DE JEUNES AUX SELI’HOT"
     },
     {
       "date_diffusion": "2026-09-15",
-      "heure_debut": "09:24",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "RONY_AKRICH",
-      "title": "Israël : où sont les hommes d’État ?"
-    },
-    {
-      "date_diffusion": "2026-09-15",
-      "heure_debut": "09:38",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 2206025"
-    },
-    {
-      "date_diffusion": "2026-09-15",
-      "heure_debut": "09:46",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "KATAVA",
-      "title": "Maroc/Israël : un film d'animation célèbre les accords d'Abraham"
-    },
-    {
-      "date_diffusion": "2026-09-15",
-      "heure_debut": "09:48",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "Bet Shearim"
-    },
-    {
-      "date_diffusion": "2026-09-15",
-      "heure_debut": "09:53",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "RONY_AKRICH",
-      "title": "Deuxieme partie - Qui peut vraiment gouverner Israel ?"
-    },
-    {
-      "date_diffusion": "2026-09-15",
-      "heure_debut": "09:54",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "KATAVA",
-      "title": "La folie Kpop Demon Hunters, en Israël aussi ! (reportage)"
-    },
-    {
-      "date_diffusion": "2026-09-15",
-      "bloc_apres": "LES_ISRAELIENNES",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
-    },
-    {
-      "date_diffusion": "2026-09-15",
-      "bloc_apres": "LES_ISRAELIENNES",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL"
-    },
-    {
-      "date_diffusion": "2026-09-15",
-      "bloc_apres": "LES_ISRAELIENNES",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
-    },
-    {
-      "date_diffusion": "2026-09-15",
-      "heure_debut": "10:01",
+      "heure_debut": "08:00",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "CAFE_DAAT",
@@ -2858,15 +2895,74 @@
     },
     {
       "date_diffusion": "2026-09-15",
-      "heure_debut": "10:58",
-      "type": "COURT_NOMME",
+      "bloc_apres": "CAFE_DAAT",
+      "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "KATAVA",
-      "title": "Israël : la version disparue de Sesame Street (1998)"
+      "channel_id": "SOLAL_ISRAEL"
     },
     {
       "date_diffusion": "2026-09-15",
-      "heure_debut": "11:00",
+      "bloc_apres": "CAFE_DAAT",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "KFIR_ALMAGOR"
+    },
+    {
+      "date_diffusion": "2026-09-15",
+      "bloc_apres": "CAFE_DAAT",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "TSAHAL_FR"
+    },
+    {
+      "date_diffusion": "2026-09-15",
+      "heure_debut": "09:01",
+      "type": "ANCRE",
+      "heure_fixe": true,
+      "channel_id": "YINON_SHOW",
+      "title": "IL OUVRE DES PORTES ET RASSEMBLE DES MILLIERS DE JEUNES AUX SELI’HOT"
+    },
+    {
+      "date_diffusion": "2026-09-15",
+      "heure_debut": "09:50",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "STEPHANE_GOLDIN",
+      "title": "IMG 9214"
+    },
+    {
+      "date_diffusion": "2026-09-15",
+      "bloc_apres": "YINON_SHOW",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "ISRAEL_EN_FRANCAIS"
+    },
+    {
+      "date_diffusion": "2026-09-15",
+      "heure_debut": "09:55",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "KATAVA",
+      "title": "Le Japon et les Juifs, une même origine ? Décryptage d'un mythe"
+    },
+    {
+      "date_diffusion": "2026-09-15",
+      "bloc_apres": "YINON_SHOW",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "TSAHAL_FR"
+    },
+    {
+      "date_diffusion": "2026-09-15",
+      "heure_debut": "10:00",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "RONY_AKRICH",
+      "title": "Deuxieme partie - Qui peut vraiment gouverner Israel ?"
+    },
+    {
+      "date_diffusion": "2026-09-15",
+      "heure_debut": "10:01",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "TEL_AVIV_NEW_YORK",
@@ -2874,7 +2970,78 @@
     },
     {
       "date_diffusion": "2026-09-15",
-      "heure_debut": "11:00",
+      "heure_debut": "10:01",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "un jour une histoire 17.03.24"
+    },
+    {
+      "date_diffusion": "2026-09-15",
+      "bloc_apres": "TEL_AVIV_NEW_YORK",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "ISRAEL_EN_FRANCAIS"
+    },
+    {
+      "date_diffusion": "2026-09-15",
+      "heure_debut": "10:07",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "CARTES_POSTALES",
+      "title": "Bet Shearim"
+    },
+    {
+      "date_diffusion": "2026-09-15",
+      "heure_debut": "10:12",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "RONY_AKRICH",
+      "title": "Israël : où sont les hommes d’État ?"
+    },
+    {
+      "date_diffusion": "2026-09-15",
+      "heure_debut": "10:26",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "un jour une histoire 10.03.24"
+    },
+    {
+      "date_diffusion": "2026-09-15",
+      "heure_debut": "10:32",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "un jour une histoire 25.02.24"
+    },
+    {
+      "date_diffusion": "2026-09-15",
+      "heure_debut": "10:39",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "KATAVA",
+      "title": "Maroc/Israël : un film d'animation célèbre les accords d'Abraham"
+    },
+    {
+      "date_diffusion": "2026-09-15",
+      "heure_debut": "10:42",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "KATAVA",
+      "title": "La folie Kpop Demon Hunters, en Israël aussi ! (reportage)"
+    },
+    {
+      "date_diffusion": "2026-09-15",
+      "heure_debut": "10:45",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "KATAVA",
+      "title": "Les 4 Fantastiques : Ben Grimm / La Chose est juif ?"
+    },
+    {
+      "date_diffusion": "2026-09-15",
+      "heure_debut": "10:51",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
@@ -2885,29 +3052,6 @@
       "bloc_apres": "TEL_AVIV_NEW_YORK",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "ISRAEL_EN_FRANCAIS"
-    },
-    {
-      "date_diffusion": "2026-09-15",
-      "heure_debut": "11:05",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "Cesarée"
-    },
-    {
-      "date_diffusion": "2026-09-15",
-      "heure_debut": "11:11",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "Ein Gedi"
-    },
-    {
-      "date_diffusion": "2026-09-15",
-      "bloc_apres": "TEL_AVIV_NEW_YORK",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
       "channel_id": "SOLAL_ISRAEL"
     },
     {
@@ -2919,14 +3063,7 @@
     },
     {
       "date_diffusion": "2026-09-15",
-      "bloc_apres": "TEL_AVIV_NEW_YORK",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
-    },
-    {
-      "date_diffusion": "2026-09-15",
-      "heure_debut": "12:00",
+      "heure_debut": "11:01",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "OROT_VEKELIM",
@@ -2934,11 +3071,11 @@
     },
     {
       "date_diffusion": "2026-09-15",
-      "heure_debut": "13:46",
+      "heure_debut": "12:48",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "STEPHANE_GOLDIN",
-      "title": "IMG 9214"
+      "channel_id": "CARTES_POSTALES",
+      "title": "Ein Gedi"
     },
     {
       "date_diffusion": "2026-09-15",
@@ -2949,140 +3086,7 @@
     },
     {
       "date_diffusion": "2026-09-15",
-      "bloc_apres": "OROT_VEKELIM",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
-    },
-    {
-      "date_diffusion": "2026-09-15",
-      "bloc_apres": "OROT_VEKELIM",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL"
-    },
-    {
-      "date_diffusion": "2026-09-15",
-      "bloc_apres": "OROT_VEKELIM",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
-    },
-    {
-      "date_diffusion": "2026-09-15",
-      "heure_debut": "13:56",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "RONY_AKRICH",
-      "title": "Deuxieme partie - Qui peut vraiment gouverner Israel ?"
-    },
-    {
-      "date_diffusion": "2026-09-15",
-      "heure_debut": "14:00",
-      "type": "ANCRE",
-      "heure_fixe": true,
-      "channel_id": "TOUR_D_ISRAEL",
-      "title": "La Jérusalem musulmane"
-    },
-    {
-      "date_diffusion": "2026-09-15",
-      "heure_debut": "14:22",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "RONY_AKRICH",
-      "title": "Israël : où sont les hommes d’État ?"
-    },
-    {
-      "date_diffusion": "2026-09-15",
-      "bloc_apres": "TOUR_D_ISRAEL",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "ISRAEL_EN_FRANCAIS"
-    },
-    {
-      "date_diffusion": "2026-09-15",
-      "bloc_apres": "TOUR_D_ISRAEL",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL"
-    },
-    {
-      "date_diffusion": "2026-09-15",
-      "bloc_apres": "TOUR_D_ISRAEL",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
-    },
-    {
-      "date_diffusion": "2026-09-15",
-      "bloc_apres": "TOUR_D_ISRAEL",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
-    },
-    {
-      "date_diffusion": "2026-09-15",
-      "heure_debut": "14:59",
-      "type": "ANCRE",
-      "heure_fixe": true,
-      "channel_id": "JEROME_HAAS_L_INTERVIEW",
-      "title": "Pierre Lurcat presente le monde de Jabotinsky"
-    },
-    {
-      "date_diffusion": "2026-09-15",
-      "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL"
-    },
-    {
-      "date_diffusion": "2026-09-15",
-      "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
-    },
-    {
-      "date_diffusion": "2026-09-15",
-      "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
-    },
-    {
-      "date_diffusion": "2026-09-15",
-      "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "ISRAEL_EN_FRANCAIS"
-    },
-    {
-      "date_diffusion": "2026-09-15",
-      "heure_debut": "15:55",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "2. UJUH Eurovision"
-    },
-    {
-      "date_diffusion": "2026-09-15",
-      "heure_debut": "16:01",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "STEPHANE_GOLDIN",
-      "title": "IMG 9214"
-    },
-    {
-      "date_diffusion": "2026-09-15",
-      "heure_debut": "16:06",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "KATAVA",
-      "title": "Quand Superman faisait la paix entre Israël et les Palestiniens"
-    },
-    {
-      "date_diffusion": "2026-09-15",
-      "heure_debut": "16:10",
+      "heure_debut": "12:52",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
@@ -3090,7 +3094,80 @@
     },
     {
       "date_diffusion": "2026-09-15",
-      "heure_debut": "16:13",
+      "bloc_apres": "OROT_VEKELIM",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "TSAHAL_FR"
+    },
+    {
+      "date_diffusion": "2026-09-15",
+      "bloc_apres": "OROT_VEKELIM",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "SOLAL_ISRAEL"
+    },
+    {
+      "date_diffusion": "2026-09-15",
+      "bloc_apres": "OROT_VEKELIM",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "KFIR_ALMAGOR"
+    },
+    {
+      "date_diffusion": "2026-09-15",
+      "heure_debut": "12:59",
+      "type": "ANCRE",
+      "heure_fixe": true,
+      "channel_id": "TOUR_D_ISRAEL",
+      "title": "La Jérusalem musulmane"
+    },
+    {
+      "date_diffusion": "2026-09-15",
+      "bloc_apres": "TOUR_D_ISRAEL",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "SOLAL_ISRAEL"
+    },
+    {
+      "date_diffusion": "2026-09-15",
+      "bloc_apres": "TOUR_D_ISRAEL",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "TSAHAL_FR"
+    },
+    {
+      "date_diffusion": "2026-09-15",
+      "bloc_apres": "TOUR_D_ISRAEL",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "ISRAEL_EN_FRANCAIS"
+    },
+    {
+      "date_diffusion": "2026-09-15",
+      "bloc_apres": "TOUR_D_ISRAEL",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "KFIR_ALMAGOR"
+    },
+    {
+      "date_diffusion": "2026-09-15",
+      "heure_debut": "13:55",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "STEPHANE_GOLDIN",
+      "title": "IMG 9214"
+    },
+    {
+      "date_diffusion": "2026-09-15",
+      "heure_debut": "14:00",
+      "type": "ANCRE",
+      "heure_fixe": true,
+      "channel_id": "JEROME_HAAS_L_INTERVIEW",
+      "title": "Israël : exode réel ou chiffres trompeurs ? Dov Maimon"
+    },
+    {
+      "date_diffusion": "2026-09-15",
+      "heure_debut": "14:25",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "RONY_AKRICH",
@@ -3098,311 +3175,14 @@
     },
     {
       "date_diffusion": "2026-09-15",
-      "heure_debut": "16:13",
-      "type": "COURT_NOMME",
+      "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
+      "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "ujuh070626"
+      "channel_id": "ISRAEL_EN_FRANCAIS"
     },
     {
       "date_diffusion": "2026-09-15",
-      "heure_debut": "16:21",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "Grotte de sédécias"
-    },
-    {
-      "date_diffusion": "2026-09-15",
-      "heure_debut": "16:25",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "KATAVA",
-      "title": "Gerard Hoffnung : le clown de l'orchestre"
-    },
-    {
-      "date_diffusion": "2026-09-15",
-      "heure_debut": "16:28",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "1. UJUH Marc Chagall"
-    },
-    {
-      "date_diffusion": "2026-09-15",
-      "heure_debut": "16:34",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "Les jardins Bahai"
-    },
-    {
-      "date_diffusion": "2026-09-15",
-      "heure_debut": "16:39",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "KATAVA",
-      "title": "Edgar Magnin, le rabbin d'Hollywood"
-    },
-    {
-      "date_diffusion": "2026-09-15",
-      "heure_debut": "16:43",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "Boris Cyrulnik"
-    },
-    {
-      "date_diffusion": "2026-09-15",
-      "heure_debut": "16:51",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "KATAVA",
-      "title": "Les \"méchants sionistes\" au cinéma en Iran"
-    },
-    {
-      "date_diffusion": "2026-09-15",
-      "heure_debut": "16:56",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "Massada"
-    },
-    {
-      "date_diffusion": "2026-09-15",
-      "heure_debut": "17:00",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "UJUH30526"
-    },
-    {
-      "date_diffusion": "2026-09-15",
-      "heure_debut": "17:08",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "Ramat Hanadiv"
-    },
-    {
-      "date_diffusion": "2026-09-15",
-      "heure_debut": "17:13",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "ujuh240526"
-    },
-    {
-      "date_diffusion": "2026-09-15",
-      "heure_debut": "17:20",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "Rosh Hanikra"
-    },
-    {
-      "date_diffusion": "2026-09-15",
-      "heure_debut": "17:24",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "ujuh 170526"
-    },
-    {
-      "date_diffusion": "2026-09-15",
-      "heure_debut": "17:30",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "appolonia"
-    },
-    {
-      "date_diffusion": "2026-09-15",
-      "heure_debut": "17:33",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "ujuh100526"
-    },
-    {
-      "date_diffusion": "2026-09-15",
-      "heure_debut": "17:42",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "nabatheens"
-    },
-    {
-      "date_diffusion": "2026-09-15",
-      "heure_debut": "17:45",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "ujuh260426"
-    },
-    {
-      "date_diffusion": "2026-09-15",
-      "heure_debut": "17:53",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "tiberiad"
-    },
-    {
-      "date_diffusion": "2026-09-15",
-      "heure_debut": "17:56",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "ujuh190426"
-    },
-    {
-      "date_diffusion": "2026-09-15",
-      "heure_debut": "18:05",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "zichron yaakov"
-    },
-    {
-      "date_diffusion": "2026-09-15",
-      "heure_debut": "18:09",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "ujuh120426"
-    },
-    {
-      "date_diffusion": "2026-09-15",
-      "heure_debut": "18:17",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "Beit Alpha"
-    },
-    {
-      "date_diffusion": "2026-09-15",
-      "heure_debut": "18:24",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "ujuh050426"
-    },
-    {
-      "date_diffusion": "2026-09-15",
-      "heure_debut": "18:33",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "Safed"
-    },
-    {
-      "date_diffusion": "2026-09-15",
-      "heure_debut": "18:37",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "ujuh290326"
-    },
-    {
-      "date_diffusion": "2026-09-15",
-      "heure_debut": "18:44",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "ujuh220326"
-    },
-    {
-      "date_diffusion": "2026-09-15",
-      "heure_debut": "18:50",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "ujuh150326"
-    },
-    {
-      "date_diffusion": "2026-09-15",
-      "heure_debut": "18:56",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "ujuh010326"
-    },
-    {
-      "date_diffusion": "2026-09-15",
-      "heure_debut": "19:01",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "ujuh220226"
-    },
-    {
-      "date_diffusion": "2026-09-15",
-      "heure_debut": "19:08",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "ujuh080226"
-    },
-    {
-      "date_diffusion": "2026-09-15",
-      "heure_debut": "19:15",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "ujuh310126"
-    },
-    {
-      "date_diffusion": "2026-09-15",
-      "heure_debut": "19:22",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "ujuh250126"
-    },
-    {
-      "date_diffusion": "2026-09-15",
-      "heure_debut": "19:26",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "UJUH180126"
-    },
-    {
-      "date_diffusion": "2026-09-15",
-      "heure_debut": "19:33",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "ujuh110126"
-    },
-    {
-      "date_diffusion": "2026-09-15",
-      "heure_debut": "19:39",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "ujuh 040126"
-    },
-    {
-      "date_diffusion": "2026-09-15",
-      "heure_debut": "19:47",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "ujuh211225"
-    },
-    {
-      "date_diffusion": "2026-09-15",
-      "heure_debut": "19:56",
-      "type": "ANCRE",
-      "heure_fixe": true,
-      "channel_id": "OROT_VEKELIM",
-      "title": "Israël : Netanyahou repasse, le Hamas est à Gaza"
-    },
-    {
-      "date_diffusion": "2026-09-15",
-      "heure_debut": "19:56",
+      "heure_debut": "14:26",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "RONY_AKRICH",
@@ -3410,11 +3190,384 @@
     },
     {
       "date_diffusion": "2026-09-15",
-      "heure_debut": "22:01",
+      "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "KFIR_ALMAGOR"
+    },
+    {
+      "date_diffusion": "2026-09-15",
+      "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "SOLAL_ISRAEL"
+    },
+    {
+      "date_diffusion": "2026-09-15",
+      "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "TSAHAL_FR"
+    },
+    {
+      "date_diffusion": "2026-09-15",
+      "heure_debut": "16:00",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "un jour une histoire18.02.24"
+    },
+    {
+      "date_diffusion": "2026-09-15",
+      "heure_debut": "16:09",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "CARTES_POSTALES",
+      "title": "Grotte de sédécias"
+    },
+    {
+      "date_diffusion": "2026-09-15",
+      "heure_debut": "16:14",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "STEPHANE_GOLDIN",
+      "title": "IMG 9214"
+    },
+    {
+      "date_diffusion": "2026-09-15",
+      "heure_debut": "16:18",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "KATAVA",
+      "title": "Israël : la version disparue de Sesame Street (1998)"
+    },
+    {
+      "date_diffusion": "2026-09-15",
+      "heure_debut": "16:20",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "RONY_AKRICH",
+      "title": "Deuxieme partie - Qui peut vraiment gouverner Israel ?"
+    },
+    {
+      "date_diffusion": "2026-09-15",
+      "heure_debut": "16:21",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "un jour une histoire 11 02 24"
+    },
+    {
+      "date_diffusion": "2026-09-15",
+      "heure_debut": "16:27",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "CARTES_POSTALES",
+      "title": "Les jardins Bahai"
+    },
+    {
+      "date_diffusion": "2026-09-15",
+      "heure_debut": "16:32",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "KATAVA",
+      "title": "Quand Superman faisait la paix entre Israël et les Palestiniens"
+    },
+    {
+      "date_diffusion": "2026-09-15",
+      "heure_debut": "16:35",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "un jour une histoire 04.02.24"
+    },
+    {
+      "date_diffusion": "2026-09-15",
+      "heure_debut": "16:43",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "CARTES_POSTALES",
+      "title": "Massada"
+    },
+    {
+      "date_diffusion": "2026-09-15",
+      "heure_debut": "16:47",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "KATAVA",
+      "title": "Gerard Hoffnung : le clown de l'orchestre"
+    },
+    {
+      "date_diffusion": "2026-09-15",
+      "heure_debut": "16:50",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "un jour une histoire 28.01.24"
+    },
+    {
+      "date_diffusion": "2026-09-15",
+      "heure_debut": "16:57",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "CARTES_POSTALES",
+      "title": "Ramat Hanadiv"
+    },
+    {
+      "date_diffusion": "2026-09-15",
+      "heure_debut": "17:01",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "KATAVA",
+      "title": "Edgar Magnin, le rabbin d'Hollywood"
+    },
+    {
+      "date_diffusion": "2026-09-15",
+      "heure_debut": "17:05",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "un jour une histoire21.01.24"
+    },
+    {
+      "date_diffusion": "2026-09-15",
+      "heure_debut": "17:11",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "KATAVA",
+      "title": "Les \"méchants sionistes\" au cinéma en Iran"
+    },
+    {
+      "date_diffusion": "2026-09-15",
+      "heure_debut": "17:17",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "CARTES_POSTALES",
+      "title": "Rosh Hanikra"
+    },
+    {
+      "date_diffusion": "2026-09-15",
+      "heure_debut": "17:21",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "un jour une histoire 14.0124"
+    },
+    {
+      "date_diffusion": "2026-09-15",
+      "heure_debut": "17:28",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "CARTES_POSTALES",
+      "title": "appolonia"
+    },
+    {
+      "date_diffusion": "2026-09-15",
+      "heure_debut": "17:31",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "un joiur une histoire 241223"
+    },
+    {
+      "date_diffusion": "2026-09-15",
+      "heure_debut": "17:38",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "CARTES_POSTALES",
+      "title": "nabatheens"
+    },
+    {
+      "date_diffusion": "2026-09-15",
+      "heure_debut": "17:41",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "un jour une histoire 17 12 23"
+    },
+    {
+      "date_diffusion": "2026-09-15",
+      "heure_debut": "17:49",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "CARTES_POSTALES",
+      "title": "tiberiad"
+    },
+    {
+      "date_diffusion": "2026-09-15",
+      "heure_debut": "17:52",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "un jour une histoire 10.12.23"
+    },
+    {
+      "date_diffusion": "2026-09-15",
+      "heure_debut": "17:59",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "CARTES_POSTALES",
+      "title": "zichron yaakov"
+    },
+    {
+      "date_diffusion": "2026-09-15",
+      "heure_debut": "18:03",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "un jur une histoire031223"
+    },
+    {
+      "date_diffusion": "2026-09-15",
+      "heure_debut": "18:10",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "CARTES_POSTALES",
+      "title": "Beit Alpha"
+    },
+    {
+      "date_diffusion": "2026-09-15",
+      "heure_debut": "18:17",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "un jour une histoire 261123"
+    },
+    {
+      "date_diffusion": "2026-09-15",
+      "heure_debut": "18:23",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "CARTES_POSTALES",
+      "title": "Safed"
+    },
+    {
+      "date_diffusion": "2026-09-15",
+      "heure_debut": "18:27",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "un jour une histoire 121123"
+    },
+    {
+      "date_diffusion": "2026-09-15",
+      "heure_debut": "18:33",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "un jour une histoire 05.11.23"
+    },
+    {
+      "date_diffusion": "2026-09-15",
+      "heure_debut": "18:39",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "un jour une histoire 29.10.23"
+    },
+    {
+      "date_diffusion": "2026-09-15",
+      "heure_debut": "18:45",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "un jour une histoire 22.10.23"
+    },
+    {
+      "date_diffusion": "2026-09-15",
+      "heure_debut": "18:51",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "un jour une histoire 15.10.23"
+    },
+    {
+      "date_diffusion": "2026-09-15",
+      "heure_debut": "18:58",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "ujuh10.09.23"
+    },
+    {
+      "date_diffusion": "2026-09-15",
+      "heure_debut": "19:05",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "ujuh3.09.23"
+    },
+    {
+      "date_diffusion": "2026-09-15",
+      "heure_debut": "19:11",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "un jour une histoire16.07.23"
+    },
+    {
+      "date_diffusion": "2026-09-15",
+      "heure_debut": "19:17",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "un jour une histoire 09.07.23"
+    },
+    {
+      "date_diffusion": "2026-09-15",
+      "heure_debut": "19:23",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "un jour une histoire 02.07.23"
+    },
+    {
+      "date_diffusion": "2026-09-15",
+      "heure_debut": "19:31",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "un jour une histoire 25.06.23"
+    },
+    {
+      "date_diffusion": "2026-09-15",
+      "heure_debut": "19:36",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "un jour une histoire 18.06.23"
+    },
+    {
+      "date_diffusion": "2026-09-15",
+      "heure_debut": "19:42",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "un jour une histoire 11.06.23"
+    },
+    {
+      "date_diffusion": "2026-09-15",
+      "heure_debut": "19:47",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "un jour une histoire 04.06.23"
+    },
+    {
+      "date_diffusion": "2026-09-15",
+      "heure_debut": "19:55",
       "type": "ANCRE",
       "heure_fixe": true,
-      "channel_id": "YINON_SHOW",
-      "title": "IL OUVRE DES PORTES ET RASSEMBLE DES MILLIERS DE JEUNES AUX SELI’HOT"
+      "channel_id": "RADIO_SHALOM_BOCHURBERG",
+      "title": "Le grand rabbin Olivier Kaufmann"
+    },
+    {
+      "date_diffusion": "2026-09-15",
+      "heure_debut": "22:00",
+      "type": "ANCRE",
+      "heure_fixe": true,
+      "channel_id": "JEROME_HAAS_L_INTERVIEW",
+      "title": "Pierre Lurcat presente le monde de Jabotinsky"
     },
     {
       "date_diffusion": "2026-09-16",
@@ -3432,7 +3585,7 @@
     },
     {
       "date_diffusion": "2026-09-16",
-      "heure_debut": "08:01",
+      "heure_debut": "08:02",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "CAFE_DAAT",
@@ -3443,18 +3596,11 @@
       "bloc_apres": "CAFE_DAAT",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "ISRAEL_EN_FRANCAIS"
-    },
-    {
-      "date_diffusion": "2026-09-16",
-      "bloc_apres": "CAFE_DAAT",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
       "channel_id": "KFIR_ALMAGOR"
     },
     {
       "date_diffusion": "2026-09-16",
-      "heure_debut": "09:01",
+      "heure_debut": "09:00",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "YINON_SHOW",
@@ -3481,56 +3627,42 @@
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "UJUH 091125"
+      "title": "un jour une histoire 23.04.23"
     },
     {
       "date_diffusion": "2026-09-16",
-      "bloc_apres": "YINON_SHOW",
-      "type": "CLIPS_CHAINE",
+      "heure_debut": "09:59",
+      "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL"
-    },
-    {
-      "date_diffusion": "2026-09-16",
-      "bloc_apres": "YINON_SHOW",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
+      "channel_id": "KATAVA",
+      "title": "Maroc/Israël : un film d'animation célèbre les accords d'Abraham"
     },
     {
       "date_diffusion": "2026-09-16",
       "heure_debut": "10:00",
       "type": "ANCRE",
       "heure_fixe": true,
-      "channel_id": "OROT_VEKELIM",
-      "title": "Israël : Netanyahou repasse, le Hamas est à Gaza"
+      "channel_id": "TEL_AVIV_NEW_YORK",
+      "title": "EPISODE 19- SEMAINE DU 23 AU 30 AOUT"
     },
     {
       "date_diffusion": "2026-09-16",
-      "heure_debut": "10:01",
+      "heure_debut": "10:00",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "KATAVA",
-      "title": "Israël : la version disparue de Sesame Street (1998)"
+      "channel_id": "CARTES_POSTALES",
+      "title": "Carte postale La synagogue de Capharnaum2"
     },
     {
       "date_diffusion": "2026-09-16",
-      "bloc_apres": "OROT_VEKELIM",
+      "bloc_apres": "TEL_AVIV_NEW_YORK",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
       "channel_id": "ISRAEL_EN_FRANCAIS"
     },
     {
       "date_diffusion": "2026-09-16",
-      "heure_debut": "10:04",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "Cesarée"
-    },
-    {
-      "date_diffusion": "2026-09-16",
-      "heure_debut": "10:08",
+      "heure_debut": "10:06",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "RONY_AKRICH",
@@ -3542,35 +3674,35 @@
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire261025"
+      "title": "un jour une histoire11.12.22"
     },
     {
       "date_diffusion": "2026-09-16",
-      "heure_debut": "10:29",
+      "heure_debut": "10:27",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 261025"
+      "channel_id": "KATAVA",
+      "title": "La folie Kpop Demon Hunters, en Israël aussi ! (reportage)"
+    },
+    {
+      "date_diffusion": "2026-09-16",
+      "heure_debut": "10:30",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "KATAVA",
+      "title": "Les 4 Fantastiques : Ben Grimm / La Chose est juif ?"
     },
     {
       "date_diffusion": "2026-09-16",
       "heure_debut": "10:36",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "KATAVA",
-      "title": "Quand Superman faisait la paix entre Israël et les Palestiniens"
+      "channel_id": "CARTES_POSTALES",
+      "title": "Cesarée"
     },
     {
       "date_diffusion": "2026-09-16",
       "heure_debut": "10:41",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "KATAVA",
-      "title": "Gerard Hoffnung : le clown de l'orchestre"
-    },
-    {
-      "date_diffusion": "2026-09-16",
-      "heure_debut": "10:44",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
@@ -3578,29 +3710,21 @@
     },
     {
       "date_diffusion": "2026-09-16",
-      "heure_debut": "10:49",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "Ein Hod"
-    },
-    {
-      "date_diffusion": "2026-09-16",
-      "bloc_apres": "OROT_VEKELIM",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
-    },
-    {
-      "date_diffusion": "2026-09-16",
-      "bloc_apres": "OROT_VEKELIM",
+      "bloc_apres": "TEL_AVIV_NEW_YORK",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
       "channel_id": "SOLAL_ISRAEL"
     },
     {
       "date_diffusion": "2026-09-16",
-      "bloc_apres": "OROT_VEKELIM",
+      "bloc_apres": "TEL_AVIV_NEW_YORK",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "KFIR_ALMAGOR"
+    },
+    {
+      "date_diffusion": "2026-09-16",
+      "bloc_apres": "TEL_AVIV_NEW_YORK",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
       "channel_id": "TSAHAL_FR"
@@ -3618,13 +3742,6 @@
       "bloc_apres": "TOUR_D_ISRAEL",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL"
-    },
-    {
-      "date_diffusion": "2026-09-16",
-      "bloc_apres": "TOUR_D_ISRAEL",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
       "channel_id": "KFIR_ALMAGOR"
     },
     {
@@ -3639,11 +3756,18 @@
       "bloc_apres": "TOUR_D_ISRAEL",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
+      "channel_id": "SOLAL_ISRAEL"
+    },
+    {
+      "date_diffusion": "2026-09-16",
+      "bloc_apres": "TOUR_D_ISRAEL",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
       "channel_id": "ISRAEL_EN_FRANCAIS"
     },
     {
       "date_diffusion": "2026-09-16",
-      "heure_debut": "11:55",
+      "heure_debut": "11:49",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "STEPHANE_GOLDIN",
@@ -3655,7 +3779,7 @@
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "JEROME_HAAS_L_INTERVIEW",
-      "title": "Israël : exode réel ou chiffres trompeurs ? Dov Maimon"
+      "title": "Pierre Lurcat presente le monde de Jabotinsky"
     },
     {
       "date_diffusion": "2026-09-16",
@@ -3669,49 +3793,26 @@
       "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
-    },
-    {
-      "date_diffusion": "2026-09-16",
-      "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "ISRAEL_EN_FRANCAIS"
-    },
-    {
-      "date_diffusion": "2026-09-16",
-      "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
       "channel_id": "TSAHAL_FR"
     },
     {
       "date_diffusion": "2026-09-16",
-      "heure_debut": "13:50",
-      "type": "COURT_NOMME",
+      "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
+      "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "RONY_AKRICH",
-      "title": "Deuxieme partie - Qui peut vraiment gouverner Israel ?"
+      "channel_id": "KFIR_ALMAGOR"
     },
     {
       "date_diffusion": "2026-09-16",
-      "heure_debut": "13:51",
+      "heure_debut": "13:28",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 191025"
+      "title": "un jour une histoire 4.12.22"
     },
     {
       "date_diffusion": "2026-09-16",
-      "heure_debut": "13:57",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "Grotte de sédécias"
-    },
-    {
-      "date_diffusion": "2026-09-16",
-      "heure_debut": "14:02",
+      "heure_debut": "13:36",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "STEPHANE_GOLDIN",
@@ -3719,31 +3820,63 @@
     },
     {
       "date_diffusion": "2026-09-16",
-      "heure_debut": "14:07",
+      "heure_debut": "13:41",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "KATAVA",
-      "title": "Edgar Magnin, le rabbin d'Hollywood"
+      "channel_id": "CARTES_POSTALES",
+      "title": "Ein Hod"
     },
     {
       "date_diffusion": "2026-09-16",
-      "heure_debut": "14:11",
+      "heure_debut": "13:44",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "KATAVA",
+      "title": "Israël : la version disparue de Sesame Street (1998)"
+    },
+    {
+      "date_diffusion": "2026-09-16",
+      "heure_debut": "13:46",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "RONY_AKRICH",
+      "title": "Deuxieme partie - Qui peut vraiment gouverner Israel ?"
+    },
+    {
+      "date_diffusion": "2026-09-16",
+      "heure_debut": "13:47",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un ujuh121025"
+      "title": "un jour une histoire 271122"
     },
     {
       "date_diffusion": "2026-09-16",
-      "heure_debut": "14:18",
+      "heure_debut": "13:53",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "CARTES_POSTALES",
+      "title": "Grotte de sédécias"
+    },
+    {
+      "date_diffusion": "2026-09-16",
+      "heure_debut": "13:58",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "KATAVA",
-      "title": "Les \"méchants sionistes\" au cinéma en Iran"
+      "title": "Quand Superman faisait la paix entre Israël et les Palestiniens"
     },
     {
       "date_diffusion": "2026-09-16",
-      "heure_debut": "14:23",
+      "heure_debut": "14:02",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "un jour une histoire 201122"
+    },
+    {
+      "date_diffusion": "2026-09-16",
+      "heure_debut": "14:10",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
@@ -3751,15 +3884,23 @@
     },
     {
       "date_diffusion": "2026-09-16",
-      "heure_debut": "14:27",
+      "heure_debut": "14:14",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 051025"
+      "channel_id": "KATAVA",
+      "title": "Gerard Hoffnung : le clown de l'orchestre"
     },
     {
       "date_diffusion": "2026-09-16",
-      "heure_debut": "14:35",
+      "heure_debut": "14:17",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "un jour une histoire 061122"
+    },
+    {
+      "date_diffusion": "2026-09-16",
+      "heure_debut": "14:23",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
@@ -3767,15 +3908,31 @@
     },
     {
       "date_diffusion": "2026-09-16",
-      "heure_debut": "14:39",
+      "heure_debut": "14:27",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 280925"
+      "channel_id": "KATAVA",
+      "title": "Edgar Magnin, le rabbin d'Hollywood"
     },
     {
       "date_diffusion": "2026-09-16",
-      "heure_debut": "14:45",
+      "heure_debut": "14:31",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "un jour une histoire 231022"
+    },
+    {
+      "date_diffusion": "2026-09-16",
+      "heure_debut": "14:39",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "KATAVA",
+      "title": "Les \"méchants sionistes\" au cinéma en Iran"
+    },
+    {
+      "date_diffusion": "2026-09-16",
+      "heure_debut": "14:44",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
@@ -3787,11 +3944,11 @@
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 210925"
+      "title": "un jour une histoire 18.09.22"
     },
     {
       "date_diffusion": "2026-09-16",
-      "heure_debut": "14:56",
+      "heure_debut": "14:57",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
@@ -3803,11 +3960,11 @@
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 130725"
+      "title": "un jour une histoire 11.09.22"
     },
     {
       "date_diffusion": "2026-09-16",
-      "heure_debut": "15:05",
+      "heure_debut": "15:07",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
@@ -3815,15 +3972,15 @@
     },
     {
       "date_diffusion": "2026-09-16",
-      "heure_debut": "15:08",
+      "heure_debut": "15:10",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une hsitoire 290625"
+      "title": "un jour une histoire 04.09.22"
     },
     {
       "date_diffusion": "2026-09-16",
-      "heure_debut": "15:16",
+      "heure_debut": "15:19",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
@@ -3831,15 +3988,15 @@
     },
     {
       "date_diffusion": "2026-09-16",
-      "heure_debut": "15:19",
+      "heure_debut": "15:22",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 150625"
+      "title": "un jour une histoire 17.07.22"
     },
     {
       "date_diffusion": "2026-09-16",
-      "heure_debut": "15:25",
+      "heure_debut": "15:29",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
@@ -3847,15 +4004,15 @@
     },
     {
       "date_diffusion": "2026-09-16",
-      "heure_debut": "15:29",
+      "heure_debut": "15:32",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 080625"
+      "title": "un jour une histoire 22.05.22"
     },
     {
       "date_diffusion": "2026-09-16",
-      "heure_debut": "15:34",
+      "heure_debut": "15:41",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
@@ -3863,15 +4020,15 @@
     },
     {
       "date_diffusion": "2026-09-16",
-      "heure_debut": "15:38",
+      "heure_debut": "15:45",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 310525"
+      "title": "un jour une histoire 1.05.22"
     },
     {
       "date_diffusion": "2026-09-16",
-      "heure_debut": "15:46",
+      "heure_debut": "15:54",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
@@ -3879,15 +4036,15 @@
     },
     {
       "date_diffusion": "2026-09-16",
-      "heure_debut": "15:52",
+      "heure_debut": "16:01",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 060425"
+      "title": "un jour une histoire 100422"
     },
     {
       "date_diffusion": "2026-09-16",
-      "heure_debut": "15:58",
+      "heure_debut": "16:09",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
@@ -3895,319 +4052,89 @@
     },
     {
       "date_diffusion": "2026-09-16",
-      "heure_debut": "16:02",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 300325"
+      "heure_debut": "16:13",
+      "type": "ANCRE",
+      "heure_fixe": true,
+      "channel_id": "OROT_VEKELIM",
+      "title": "La halakha face à la santé mentale - LES BÂTISSEURS — Rav Elikan"
     },
     {
       "date_diffusion": "2026-09-16",
-      "heure_debut": "16:07",
+      "heure_debut": "18:00",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 230325"
+      "channel_id": "STEPHANE_GOLDIN",
+      "title": "IMG 9214"
     },
     {
       "date_diffusion": "2026-09-16",
-      "heure_debut": "16:14",
-      "type": "COURT_NOMME",
+      "bloc_apres": "OROT_VEKELIM",
+      "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 160325"
+      "channel_id": "ISRAEL_EN_FRANCAIS"
     },
     {
       "date_diffusion": "2026-09-16",
-      "heure_debut": "16:19",
+      "heure_debut": "18:06",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 090325"
-    },
-    {
-      "date_diffusion": "2026-09-16",
-      "heure_debut": "16:26",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 020325"
-    },
-    {
-      "date_diffusion": "2026-09-16",
-      "heure_debut": "16:33",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 230225"
-    },
-    {
-      "date_diffusion": "2026-09-16",
-      "heure_debut": "16:40",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 090225"
-    },
-    {
-      "date_diffusion": "2026-09-16",
-      "heure_debut": "16:47",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 020225"
-    },
-    {
-      "date_diffusion": "2026-09-16",
-      "heure_debut": "16:54",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 260125"
-    },
-    {
-      "date_diffusion": "2026-09-16",
-      "heure_debut": "16:59",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 190125"
-    },
-    {
-      "date_diffusion": "2026-09-16",
-      "heure_debut": "17:06",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 120125"
-    },
-    {
-      "date_diffusion": "2026-09-16",
-      "heure_debut": "17:13",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 050125"
-    },
-    {
-      "date_diffusion": "2026-09-16",
-      "heure_debut": "17:18",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 291224"
-    },
-    {
-      "date_diffusion": "2026-09-16",
-      "heure_debut": "17:24",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une hsitoire 221224"
-    },
-    {
-      "date_diffusion": "2026-09-16",
-      "heure_debut": "17:29",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 15.12.24"
-    },
-    {
-      "date_diffusion": "2026-09-16",
-      "heure_debut": "17:35",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 081224"
-    },
-    {
-      "date_diffusion": "2026-09-16",
-      "heure_debut": "17:42",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 241124"
-    },
-    {
-      "date_diffusion": "2026-09-16",
-      "heure_debut": "17:48",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 171124"
-    },
-    {
-      "date_diffusion": "2026-09-16",
-      "heure_debut": "17:54",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 101124"
-    },
-    {
-      "date_diffusion": "2026-09-16",
-      "heure_debut": "17:59",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 031124"
-    },
-    {
-      "date_diffusion": "2026-09-16",
-      "heure_debut": "18:07",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 271024"
-    },
-    {
-      "date_diffusion": "2026-09-16",
-      "heure_debut": "18:13",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 131024"
+      "channel_id": "RONY_AKRICH",
+      "title": "Israël : où sont les hommes d’État ?"
     },
     {
       "date_diffusion": "2026-09-16",
       "heure_debut": "18:19",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 061024"
+      "channel_id": "RONY_AKRICH",
+      "title": "Deuxieme partie - Qui peut vraiment gouverner Israel ?"
     },
     {
       "date_diffusion": "2026-09-16",
-      "heure_debut": "18:26",
-      "type": "COURT_NOMME",
+      "bloc_apres": "OROT_VEKELIM",
+      "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 290924"
+      "channel_id": "TSAHAL_FR"
     },
     {
       "date_diffusion": "2026-09-16",
-      "heure_debut": "18:32",
-      "type": "COURT_NOMME",
+      "bloc_apres": "OROT_VEKELIM",
+      "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 220924"
+      "channel_id": "KFIR_ALMAGOR"
     },
     {
       "date_diffusion": "2026-09-16",
-      "heure_debut": "18:37",
-      "type": "COURT_NOMME",
+      "bloc_apres": "OROT_VEKELIM",
+      "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 150924"
+      "channel_id": "SOLAL_ISRAEL"
     },
     {
       "date_diffusion": "2026-09-16",
-      "heure_debut": "18:44",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire080924"
-    },
-    {
-      "date_diffusion": "2026-09-16",
-      "heure_debut": "18:51",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 30.06.24"
-    },
-    {
-      "date_diffusion": "2026-09-16",
-      "heure_debut": "18:57",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 23.06.24"
-    },
-    {
-      "date_diffusion": "2026-09-16",
-      "heure_debut": "19:03",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 1606.24"
-    },
-    {
-      "date_diffusion": "2026-09-16",
-      "heure_debut": "19:09",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 090624"
-    },
-    {
-      "date_diffusion": "2026-09-16",
-      "heure_debut": "19:17",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 2.06.24"
-    },
-    {
-      "date_diffusion": "2026-09-16",
-      "heure_debut": "19:24",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 26.05.24"
-    },
-    {
-      "date_diffusion": "2026-09-16",
-      "heure_debut": "19:30",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 19.05.24"
-    },
-    {
-      "date_diffusion": "2026-09-16",
-      "heure_debut": "19:37",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 12.0524"
-    },
-    {
-      "date_diffusion": "2026-09-16",
-      "heure_debut": "19:42",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 05.05.24"
-    },
-    {
-      "date_diffusion": "2026-09-16",
-      "heure_debut": "19:48",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire140424"
-    },
-    {
-      "date_diffusion": "2026-09-16",
-      "heure_debut": "19:55",
+      "heure_debut": "22:00",
       "type": "ANCRE",
       "heure_fixe": true,
-      "channel_id": "TEL_AVIV_NEW_YORK",
-      "title": "TEL AVIV NEW YORK EPISODE 19- SEMAINE DU 23 AU 30 AOUT"
-    },
-    {
-      "date_diffusion": "2026-09-16",
-      "heure_debut": "22:01",
-      "type": "ANCRE",
-      "heure_fixe": true,
-      "channel_id": "JEROME_HAAS_L_INTERVIEW",
-      "title": "Pierre Lurcat presente le monde de Jabotinsky"
+      "channel_id": "WILLIAM_ZERBIB_L_INTERVIEW",
+      "title": "Du Hamas à Téhéran : le grand tour géostratégique du Moyen-Orient | Alexander Grinberg"
     },
     {
       "date_diffusion": "2026-09-17",
-      "heure_debut": "08:00",
+      "bloc_apres": null,
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "ISRAEL_EN_FRANCAIS"
+    },
+    {
+      "date_diffusion": "2026-09-17",
+      "bloc_apres": null,
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "TSAHAL_FR"
+    },
+    {
+      "date_diffusion": "2026-09-17",
+      "heure_debut": "08:01",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "CAFE_DAAT",
@@ -4218,21 +4145,14 @@
       "bloc_apres": "CAFE_DAAT",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
+      "channel_id": "SOLAL_ISRAEL"
+    },
+    {
+      "date_diffusion": "2026-09-17",
+      "bloc_apres": "CAFE_DAAT",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
       "channel_id": "KFIR_ALMAGOR"
-    },
-    {
-      "date_diffusion": "2026-09-17",
-      "bloc_apres": "CAFE_DAAT",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "ISRAEL_EN_FRANCAIS"
-    },
-    {
-      "date_diffusion": "2026-09-17",
-      "bloc_apres": "CAFE_DAAT",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
     },
     {
       "date_diffusion": "2026-09-17",
@@ -4255,41 +4175,12 @@
       "heure_debut": "09:49",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 25.02.24"
+      "channel_id": "CARTES_POSTALES",
+      "title": "Bet Shearim"
     },
     {
       "date_diffusion": "2026-09-17",
-      "bloc_apres": "YINON_SHOW",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL"
-    },
-    {
-      "date_diffusion": "2026-09-17",
-      "bloc_apres": "YINON_SHOW",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
-    },
-    {
-      "date_diffusion": "2026-09-17",
-      "bloc_apres": "YINON_SHOW",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "ISRAEL_EN_FRANCAIS"
-    },
-    {
-      "date_diffusion": "2026-09-17",
-      "heure_debut": "10:01",
-      "type": "ANCRE",
-      "heure_fixe": true,
-      "channel_id": "TEL_AVIV_NEW_YORK",
-      "title": "TEL AVIV NEW YORK EPISODE 19- SEMAINE DU 23 AU 30 AOUT"
-    },
-    {
-      "date_diffusion": "2026-09-17",
-      "heure_debut": "10:31",
+      "heure_debut": "09:54",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "KATAVA",
@@ -4297,6 +4188,50 @@
     },
     {
       "date_diffusion": "2026-09-17",
+      "bloc_apres": "YINON_SHOW",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "SOLAL_ISRAEL"
+    },
+    {
+      "date_diffusion": "2026-09-17",
+      "bloc_apres": "YINON_SHOW",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "ISRAEL_EN_FRANCAIS"
+    },
+    {
+      "date_diffusion": "2026-09-17",
+      "bloc_apres": "YINON_SHOW",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "TSAHAL_FR"
+    },
+    {
+      "date_diffusion": "2026-09-17",
+      "bloc_apres": "YINON_SHOW",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "KFIR_ALMAGOR"
+    },
+    {
+      "date_diffusion": "2026-09-17",
+      "heure_debut": "10:01",
+      "type": "ANCRE",
+      "heure_fixe": true,
+      "channel_id": "TEL_AVIV_NEW_YORK",
+      "title": "EPISODE 19- SEMAINE DU 23 AU 30 AOUT"
+    },
+    {
+      "date_diffusion": "2026-09-17",
+      "heure_debut": "10:02",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "un jour une histoire"
+    },
+    {
+      "date_diffusion": "2026-09-17",
       "bloc_apres": "TEL_AVIV_NEW_YORK",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
@@ -4304,15 +4239,15 @@
     },
     {
       "date_diffusion": "2026-09-17",
-      "heure_debut": "10:35",
+      "heure_debut": "10:09",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "Bet Shearim"
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "un jour une histoire 2206025"
     },
     {
       "date_diffusion": "2026-09-17",
-      "heure_debut": "10:41",
+      "heure_debut": "10:17",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "KATAVA",
@@ -4320,7 +4255,7 @@
     },
     {
       "date_diffusion": "2026-09-17",
-      "heure_debut": "10:44",
+      "heure_debut": "10:19",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "KATAVA",
@@ -4328,7 +4263,7 @@
     },
     {
       "date_diffusion": "2026-09-17",
-      "heure_debut": "10:46",
+      "heure_debut": "10:23",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "KATAVA",
@@ -4336,11 +4271,27 @@
     },
     {
       "date_diffusion": "2026-09-17",
-      "heure_debut": "10:53",
+      "heure_debut": "10:28",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
       "title": "Carte postale La synagogue de Capharnaum2"
+    },
+    {
+      "date_diffusion": "2026-09-17",
+      "heure_debut": "10:33",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "CARTES_POSTALES",
+      "title": "Cesarée"
+    },
+    {
+      "date_diffusion": "2026-09-17",
+      "heure_debut": "10:38",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "CARTES_POSTALES",
+      "title": "Ein Gedi"
     },
     {
       "date_diffusion": "2026-09-17",
@@ -4358,34 +4309,18 @@
     },
     {
       "date_diffusion": "2026-09-17",
-      "heure_debut": "11:00",
+      "bloc_apres": "TEL_AVIV_NEW_YORK",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "TSAHAL_FR"
+    },
+    {
+      "date_diffusion": "2026-09-17",
+      "heure_debut": "10:59",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "TOUR_D_ISRAEL",
       "title": "La Jérusalem musulmane"
-    },
-    {
-      "date_diffusion": "2026-09-17",
-      "heure_debut": "11:23",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "Ein Gedi"
-    },
-    {
-      "date_diffusion": "2026-09-17",
-      "bloc_apres": "TOUR_D_ISRAEL",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "ISRAEL_EN_FRANCAIS"
-    },
-    {
-      "date_diffusion": "2026-09-17",
-      "heure_debut": "11:27",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "Ein Hod"
     },
     {
       "date_diffusion": "2026-09-17",
@@ -4403,10 +4338,67 @@
     },
     {
       "date_diffusion": "2026-09-17",
-      "bloc_apres": "TOUR_D_ISRAEL",
-      "type": "CLIPS_CHAINE",
+      "heure_debut": "11:27",
+      "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL"
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "2. UJUH Eurovision"
+    },
+    {
+      "date_diffusion": "2026-09-17",
+      "heure_debut": "11:34",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "STEPHANE_GOLDIN",
+      "title": "IMG 9214"
+    },
+    {
+      "date_diffusion": "2026-09-17",
+      "heure_debut": "11:39",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "CARTES_POSTALES",
+      "title": "Ein Hod"
+    },
+    {
+      "date_diffusion": "2026-09-17",
+      "heure_debut": "11:42",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "KATAVA",
+      "title": "Israël : la version disparue de Sesame Street (1998)"
+    },
+    {
+      "date_diffusion": "2026-09-17",
+      "heure_debut": "11:44",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "RONY_AKRICH",
+      "title": "Deuxieme partie - Qui peut vraiment gouverner Israel ?"
+    },
+    {
+      "date_diffusion": "2026-09-17",
+      "heure_debut": "11:44",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "ujuh070626"
+    },
+    {
+      "date_diffusion": "2026-09-17",
+      "heure_debut": "11:52",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "CARTES_POSTALES",
+      "title": "Grotte de sédécias"
+    },
+    {
+      "date_diffusion": "2026-09-17",
+      "heure_debut": "11:57",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "KATAVA",
+      "title": "Quand Superman faisait la paix entre Israël et les Palestiniens"
     },
     {
       "date_diffusion": "2026-09-17",
@@ -4418,11 +4410,11 @@
     },
     {
       "date_diffusion": "2026-09-17",
-      "heure_debut": "12:17",
+      "heure_debut": "12:18",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "STEPHANE_GOLDIN",
-      "title": "IMG 9214"
+      "channel_id": "RONY_AKRICH",
+      "title": "Israël : où sont les hommes d’État ?"
     },
     {
       "date_diffusion": "2026-09-17",
@@ -4430,13 +4422,6 @@
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
       "channel_id": "ISRAEL_EN_FRANCAIS"
-    },
-    {
-      "date_diffusion": "2026-09-17",
-      "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL"
     },
     {
       "date_diffusion": "2026-09-17",
@@ -4454,31 +4439,22 @@
     },
     {
       "date_diffusion": "2026-09-17",
-      "heure_debut": "13:04",
-      "type": "COURT_NOMME",
+      "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
+      "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "RONY_AKRICH",
-      "title": "Deuxieme partie - Qui peut vraiment gouverner Israel ?"
+      "channel_id": "SOLAL_ISRAEL"
     },
     {
       "date_diffusion": "2026-09-17",
-      "heure_debut": "13:31",
+      "heure_debut": "14:35",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire18.02.24"
+      "title": "1. UJUH Marc Chagall"
     },
     {
       "date_diffusion": "2026-09-17",
-      "heure_debut": "13:40",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "Grotte de sédécias"
-    },
-    {
-      "date_diffusion": "2026-09-17",
-      "heure_debut": "13:45",
+      "heure_debut": "14:41",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "STEPHANE_GOLDIN",
@@ -4486,23 +4462,7 @@
     },
     {
       "date_diffusion": "2026-09-17",
-      "heure_debut": "13:50",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "KATAVA",
-      "title": "Israël : la version disparue de Sesame Street (1998)"
-    },
-    {
-      "date_diffusion": "2026-09-17",
-      "heure_debut": "13:52",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 11 02 24"
-    },
-    {
-      "date_diffusion": "2026-09-17",
-      "heure_debut": "13:59",
+      "heure_debut": "14:46",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
@@ -4510,31 +4470,7 @@
     },
     {
       "date_diffusion": "2026-09-17",
-      "heure_debut": "14:03",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "KATAVA",
-      "title": "Quand Superman faisait la paix entre Israël et les Palestiniens"
-    },
-    {
-      "date_diffusion": "2026-09-17",
-      "heure_debut": "14:07",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 04.02.24"
-    },
-    {
-      "date_diffusion": "2026-09-17",
-      "heure_debut": "14:15",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "Massada"
-    },
-    {
-      "date_diffusion": "2026-09-17",
-      "heure_debut": "14:19",
+      "heure_debut": "14:50",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "KATAVA",
@@ -4542,23 +4478,31 @@
     },
     {
       "date_diffusion": "2026-09-17",
-      "heure_debut": "14:23",
+      "heure_debut": "14:56",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "RONY_AKRICH",
+      "title": "Deuxieme partie - Qui peut vraiment gouverner Israel ?"
+    },
+    {
+      "date_diffusion": "2026-09-17",
+      "heure_debut": "14:56",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 28.01.24"
+      "title": "Boris Cyrulnik"
     },
     {
       "date_diffusion": "2026-09-17",
-      "heure_debut": "14:29",
+      "heure_debut": "15:05",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
-      "title": "Ramat Hanadiv"
+      "title": "Massada"
     },
     {
       "date_diffusion": "2026-09-17",
-      "heure_debut": "14:34",
+      "heure_debut": "15:09",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "KATAVA",
@@ -4566,15 +4510,15 @@
     },
     {
       "date_diffusion": "2026-09-17",
-      "heure_debut": "14:39",
+      "heure_debut": "15:15",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire21.01.24"
+      "title": "UJUH30526"
     },
     {
       "date_diffusion": "2026-09-17",
-      "heure_debut": "14:45",
+      "heure_debut": "15:22",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "KATAVA",
@@ -4582,7 +4526,23 @@
     },
     {
       "date_diffusion": "2026-09-17",
-      "heure_debut": "14:51",
+      "heure_debut": "15:28",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "CARTES_POSTALES",
+      "title": "Ramat Hanadiv"
+    },
+    {
+      "date_diffusion": "2026-09-17",
+      "heure_debut": "15:35",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "ujuh240526"
+    },
+    {
+      "date_diffusion": "2026-09-17",
+      "heure_debut": "15:42",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
@@ -4590,15 +4550,15 @@
     },
     {
       "date_diffusion": "2026-09-17",
-      "heure_debut": "14:55",
+      "heure_debut": "15:47",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 14.0124"
+      "title": "ujuh 170526"
     },
     {
       "date_diffusion": "2026-09-17",
-      "heure_debut": "15:02",
+      "heure_debut": "15:54",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
@@ -4606,15 +4566,15 @@
     },
     {
       "date_diffusion": "2026-09-17",
-      "heure_debut": "15:07",
+      "heure_debut": "15:58",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un joiur une histoire 241223"
+      "title": "ujuh100526"
     },
     {
       "date_diffusion": "2026-09-17",
-      "heure_debut": "15:14",
+      "heure_debut": "16:06",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
@@ -4622,15 +4582,15 @@
     },
     {
       "date_diffusion": "2026-09-17",
-      "heure_debut": "15:19",
+      "heure_debut": "16:10",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 17 12 23"
+      "title": "ujuh260426"
     },
     {
       "date_diffusion": "2026-09-17",
-      "heure_debut": "15:26",
+      "heure_debut": "16:19",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
@@ -4638,15 +4598,15 @@
     },
     {
       "date_diffusion": "2026-09-17",
-      "heure_debut": "15:29",
+      "heure_debut": "16:24",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 10.12.23"
+      "title": "ujuh190426"
     },
     {
       "date_diffusion": "2026-09-17",
-      "heure_debut": "15:36",
+      "heure_debut": "16:33",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
@@ -4654,15 +4614,15 @@
     },
     {
       "date_diffusion": "2026-09-17",
-      "heure_debut": "15:40",
+      "heure_debut": "16:38",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jur une histoire031223"
+      "title": "ujuh120426"
     },
     {
       "date_diffusion": "2026-09-17",
-      "heure_debut": "15:47",
+      "heure_debut": "16:46",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
@@ -4670,15 +4630,15 @@
     },
     {
       "date_diffusion": "2026-09-17",
-      "heure_debut": "15:54",
+      "heure_debut": "16:53",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 261123"
+      "title": "ujuh050426"
     },
     {
       "date_diffusion": "2026-09-17",
-      "heure_debut": "16:00",
+      "heure_debut": "17:02",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
@@ -4686,267 +4646,227 @@
     },
     {
       "date_diffusion": "2026-09-17",
-      "heure_debut": "16:04",
+      "heure_debut": "17:07",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 121123"
+      "title": "ujuh290326"
     },
     {
       "date_diffusion": "2026-09-17",
-      "heure_debut": "16:10",
+      "heure_debut": "17:14",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 05.11.23"
+      "title": "ujuh220326"
     },
     {
       "date_diffusion": "2026-09-17",
-      "heure_debut": "16:16",
+      "heure_debut": "17:21",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 29.10.23"
+      "title": "ujuh150326"
     },
     {
       "date_diffusion": "2026-09-17",
-      "heure_debut": "16:22",
+      "heure_debut": "17:27",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 22.10.23"
+      "title": "ujuh010326"
     },
     {
       "date_diffusion": "2026-09-17",
-      "heure_debut": "16:28",
+      "heure_debut": "17:31",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 15.10.23"
+      "title": "ujuh220226"
     },
     {
       "date_diffusion": "2026-09-17",
-      "heure_debut": "16:36",
+      "heure_debut": "17:39",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "ujuh10.09.23"
+      "title": "ujuh080226"
     },
     {
       "date_diffusion": "2026-09-17",
-      "heure_debut": "16:42",
+      "heure_debut": "17:45",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "ujuh3.09.23"
+      "title": "ujuh310126"
     },
     {
       "date_diffusion": "2026-09-17",
-      "heure_debut": "16:48",
+      "heure_debut": "17:52",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire16.07.23"
+      "title": "ujuh250126"
     },
     {
       "date_diffusion": "2026-09-17",
-      "heure_debut": "16:54",
+      "heure_debut": "17:57",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 09.07.23"
+      "title": "UJUH180126"
     },
     {
       "date_diffusion": "2026-09-17",
-      "heure_debut": "17:00",
+      "heure_debut": "18:03",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 02.07.23"
+      "title": "ujuh110126"
     },
     {
       "date_diffusion": "2026-09-17",
-      "heure_debut": "17:08",
+      "heure_debut": "18:10",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 25.06.23"
+      "title": "ujuh 040126"
     },
     {
       "date_diffusion": "2026-09-17",
-      "heure_debut": "17:13",
+      "heure_debut": "18:17",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 18.06.23"
+      "title": "ujuh211225"
     },
     {
       "date_diffusion": "2026-09-17",
-      "heure_debut": "17:19",
+      "heure_debut": "18:27",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 11.06.23"
+      "title": "ujuh141225"
     },
     {
       "date_diffusion": "2026-09-17",
-      "heure_debut": "17:24",
+      "heure_debut": "18:33",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 04.06.23"
+      "title": "ujuh071225"
     },
     {
       "date_diffusion": "2026-09-17",
-      "heure_debut": "17:32",
+      "heure_debut": "18:41",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 21.05.23"
+      "title": "Le partage de la Palestine"
     },
     {
       "date_diffusion": "2026-09-17",
-      "heure_debut": "17:38",
+      "heure_debut": "18:48",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 14.05.23"
+      "title": "un jour une histoire231125"
     },
     {
       "date_diffusion": "2026-09-17",
-      "heure_debut": "17:44",
+      "heure_debut": "18:55",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 30.04.23"
+      "title": "ujuh191125"
     },
     {
       "date_diffusion": "2026-09-17",
-      "heure_debut": "17:51",
+      "heure_debut": "19:01",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 23.04.23"
+      "title": "UJUH 091125"
     },
     {
       "date_diffusion": "2026-09-17",
-      "heure_debut": "17:58",
+      "heure_debut": "19:08",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire11.12.22"
+      "title": "un jour une histoire261025"
     },
     {
       "date_diffusion": "2026-09-17",
-      "heure_debut": "18:05",
+      "heure_debut": "19:15",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 4.12.22"
+      "title": "un jour une histoire 261025"
     },
     {
       "date_diffusion": "2026-09-17",
-      "heure_debut": "18:13",
+      "heure_debut": "19:21",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 271122"
+      "title": "un jour une histoire 191025"
     },
     {
       "date_diffusion": "2026-09-17",
-      "heure_debut": "18:20",
+      "heure_debut": "19:27",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 201122"
+      "title": "un ujuh121025"
     },
     {
       "date_diffusion": "2026-09-17",
-      "heure_debut": "18:28",
+      "heure_debut": "19:34",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 061122"
+      "title": "un jour une histoire 051025"
     },
     {
       "date_diffusion": "2026-09-17",
-      "heure_debut": "18:34",
+      "heure_debut": "19:42",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 231022"
+      "title": "un jour une histoire 280925"
     },
     {
       "date_diffusion": "2026-09-17",
-      "heure_debut": "18:42",
+      "heure_debut": "19:47",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 18.09.22"
+      "title": "un jour une histoire 210925"
     },
     {
       "date_diffusion": "2026-09-17",
-      "heure_debut": "18:50",
+      "heure_debut": "19:54",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 11.09.22"
+      "title": "un jour une histoire 130725"
     },
     {
       "date_diffusion": "2026-09-17",
-      "heure_debut": "18:56",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 04.09.22"
-    },
-    {
-      "date_diffusion": "2026-09-17",
-      "heure_debut": "19:05",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 17.07.22"
-    },
-    {
-      "date_diffusion": "2026-09-17",
-      "heure_debut": "19:12",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 22.05.22"
-    },
-    {
-      "date_diffusion": "2026-09-17",
-      "heure_debut": "19:20",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 1.05.22"
-    },
-    {
-      "date_diffusion": "2026-09-17",
-      "heure_debut": "19:30",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 100422"
-    },
-    {
-      "date_diffusion": "2026-09-17",
-      "heure_debut": "19:38",
+      "heure_debut": "19:59",
       "type": "ANCRE",
       "heure_fixe": true,
-      "channel_id": "OROT_VEKELIM",
-      "title": "La halakha face à la santé mentale - LES BÂTISSEURS — Rav Elikan"
+      "channel_id": "LES_ISRAELIENNES",
+      "title": "Israël avant le 7 septembre : qui sera sur les listes ?"
     },
     {
       "date_diffusion": "2026-09-17",
-      "heure_debut": "21:59",
+      "heure_debut": "22:00",
       "type": "ANCRE",
       "heure_fixe": true,
-      "channel_id": "WILLIAM_ZERBIB_L_INTERVIEW",
-      "title": "Du Hamas à Téhéran : le grand tour géostratégique du Moyen-Orient | Alexander Grinberg"
+      "channel_id": "RADIO_SHALOM_BOCHURBERG",
+      "title": "Le grand rabbin Olivier Kaufmann"
     }
   ]
 }
