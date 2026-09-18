@@ -5,7 +5,7 @@
   "_comment_motif_jt": "Deuxième façon de reconnaître une édition, ajoutée le 18 septembre 2026. 'rubrique' ne suffisait pas : les éditions des 16 et 17 septembre n'avaient été ajoutées à AUCUNE playlist sur YouTube, donc le site ne savait pas qu'il s'agissait du Flash Info — il l'affichait en une, dans les dernières vidéos et dans la newsletter, tout en l'omettant de sa propre rubrique. 'motifTitre' rattrape ce cas : si le TITRE de la vidéo contient l'un de ces morceaux de texte, elle est traitée comme une édition du rendez-vous quotidien, playlist ou pas. Ce sont des morceaux de texte, pas des expressions savantes : la casse, les accents et les espaces en trop sont ignorés. Choisir une signature précise — « | Flash Info Tandem TV » n'apparaît que dans ce rendez-vous, alors que « JT », « journal » ou « édition » apparaissent dans beaucoup d'autres titres de la chaîne et attraperaient des vidéos qui n'ont rien à voir. Un motif de moins de six caractères est ignoré, par sécurité. Laisser la liste vide revient au comportement d'avant : la playlist seule.",
   "jt": {
     "rubrique": ["le-flash-info-de-tandem-tv", "flash-info-tandem-tv", "le-jt-de-tandem-tv"],
-    "motifTitre": ["| Flash Info Tandem TV", "| Le Flash Info de Tandem TV", "| Le JT de Tandem TV"],
+    "motifTitre": ["| Flash Info Tandem TV", "| Le Flash Info de Tandem TV", "| Le JT de Tandem TV", "| JT TandemTV"],
     "editions": 5
   },
 

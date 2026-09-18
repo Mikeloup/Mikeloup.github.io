@@ -275,9 +275,24 @@ export function declarerVideosExclues(fiches) {
 }
 export function raisonExclusion(id) { return EXCLUES.get(id) || null; }
 
+// Les reprises courtes du rendez-vous quotidien, designees par le build avant
+// toute construction de modele -- exactement comme la liste manuelle ci-dessus.
+//
+// 18/09/2026. La regle qui les reconnait vit dans src/rendez-vous-quotidien.mjs
+// (une edition hors de sa playlist est une reprise) ; elle a besoin des
+// playlists brutes, que ce module-ci ne voit pas. On lui laisse donc le calcul
+// et on ne garde ici que le VERDICT, pour que « entreDansLeSite » reste le seul
+// endroit qui decide de l'entree d'une video sur le site.
+let REPRISES = new Set();
+export function declarerReprisesDuQuotidien(ids) {
+  REPRISES = new Set(ids || []);
+}
+export function estRepriseDuQuotidien(id) { return REPRISES.has(id); }
+
 export function entreDansLeSite(v) {
   if (!v) return false;
   if (EXCLUES.has(v.id)) return false;
+  if (REPRISES.has(v.id)) return false;
   if (v.estRepriseCourte) return false;
   if (v.estVertical) return false;
   if ((v.duration || 0) > 0 && v.duration <= DUREE_MINIMALE_SITE) return false;

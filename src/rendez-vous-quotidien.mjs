@@ -97,11 +97,50 @@ export function estLeRendezVousQuotidien(v, regles) {
 }
 
 /**
- * Les editions que le site reconnait au titre mais que YouTube ne range dans
- * aucune playlist. Ce sont exactement celles qui, avant le 18/09, passaient a
- * travers les deux filtres -- et qui manquent aussi a leur propre rubrique.
- * Le build les nomme dans son journal : l'oubli se voit au lieu de se propager.
+ * Les identifiants qui composent VRAIMENT le rendez-vous quotidien : ceux que
+ * la ou les playlists designees contiennent.
+ *
+ * On lit les playlists brutes (celles que YouTube renvoie), pas les videos :
+ * au moment ou le build a besoin de cette reponse, les videos ne connaissent
+ * pas encore leur rubrique. `slugDe` est la fonction d'adresse du site
+ * (util.slugify), passee en argument pour que ce module n'ait a importer
+ * personne.
  */
-export function editionsHorsPlaylist(videos, regles) {
-  return (videos || []).filter((v) => reconnuAuTitre(v, regles) && !dansLaPlaylist(v, regles));
+export function idsDuRendezVous(playlists, regles, slugDe) {
+  const ids = new Set();
+  for (const p of playlists || []) {
+    if (regles.slugs.has(slugDe(p.title || ''))) {
+      for (const id of p.videoIds || []) ids.add(id);
+    }
+  }
+  return ids;
+}
+
+/**
+ * LES REPRISES COURTES -- ce que Michael appelle « les shorts ».
+ *
+ * Constat du 18 septembre 2026, lu dans le search.json du site en ligne :
+ * chaque jour d'edition, la chaine porte DEUX videos. L'edition complete, dans
+ * la playlist (246 s le 14, 358 s le 16, 278 s le 17), et une reprise courte
+ * pour les reseaux, dans AUCUNE playlist (100 s, 152 s, 166 s). La reprise
+ * etant la plus recente des deux, c'est elle qui prenait la une.
+ *
+ * Aucune regle de duree ne les separe -- une edition complete peut durer
+ * 191 s, une reprise 166 s. Aucune regle de titre non plus : le 16 septembre,
+ * les deux portaient des titres differents (« le rapprochement qui inquiete
+ * l'Iran » contre « l'alliance secrete contre les Houthis »). Le seul signal
+ * qui les distingue a tous les coups est celui que Michael ecrit lui-meme :
+ * IL RANGE L'EDITION COMPLETE DANS LA PLAYLIST, ET PAS LA REPRISE.
+ *
+ * D'ou la regle, qui est exactement la sienne : le Flash Info, c'est ce qui
+ * est dans sa rubrique. Ce qui porte sa signature au titre mais n'y est pas
+ * est une reprise, et n'entre pas sur le site.
+ *
+ * Le risque assume : une vraie edition oubliee de la playlist disparaitrait du
+ * site. C'est pourquoi le build NOMME chaque video ecartee par cette regle --
+ * une ligne suffit alors a la remettre, en l'ajoutant a la playlist.
+ */
+export function reprisesDuQuotidien(videos, regles, idsDuRendezVousSet) {
+  return (videos || []).filter(
+    (v) => reconnuAuTitre(v, regles) && !idsDuRendezVousSet.has(v.id));
 }

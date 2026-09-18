@@ -23,7 +23,7 @@ import { collecterPersonnes } from './src/personnes.mjs';
 import { lireTranscription } from './src/transcriptions.mjs';
 import { prepareGrille, indexerVideos, jourIsrael } from './src/grille.mjs';
 import { lireArchive } from './src/archive.mjs';
-import { reglesDuQuotidien, editionsHorsPlaylist } from './src/rendez-vous-quotidien.mjs';
+import { reglesDuQuotidien, idsDuRendezVous, reprisesDuQuotidien } from './src/rendez-vous-quotidien.mjs';
 import * as insta from './src/instagram.mjs';
 import { ficheDuSoir } from './tools/ce-soir.mjs';
 
@@ -900,7 +900,39 @@ async function main() {
       + `${clefsIgnorees.join(', ')}. Elles n'écartent rien.`);
   }
   yt.declarerVideosExclues(fichesExclues);
+
+  // LES REPRISES COURTES DU RENDEZ-VOUS QUOTIDIEN.
+  //
+  // Michael, 18 septembre 2026, devant sa page d'accueil : « ben la tu vois
+  // 2 shorts ». Chaque jour d'edition, la chaine porte deux videos : l'edition
+  // complete, rangee dans la playlist, et une reprise courte pour les reseaux,
+  // rangee nulle part. La reprise etant publiee la derniere, c'est elle qui
+  // prenait la une.
+  //
+  // Le calcul se fait ICI, avant buildModel, pour la meme raison que la liste
+  // manuelle juste au-dessus : une exclusion declaree apres coup ne
+  // s'appliquerait a rien. Et il se fait sur les playlists BRUTES, parce qu'a
+  // ce moment-la les videos ne connaissent pas encore leur rubrique.
+  const reglesJT = reglesDuQuotidien(accueil);
+  const idsJTdeLaPlaylist = idsDuRendezVous(data.playlists, reglesJT, slugify);
+  const reprises = reprisesDuQuotidien(data.videos, reglesJT, idsJTdeLaPlaylist);
+  yt.declarerReprisesDuQuotidien(reprises.map((v) => v.id));
+
   const { channel, categories, allVideos, byId, nav } = buildModel(config, data);
+
+  // On NOMME ce qu'on a ecarte. La regle assume un risque -- une vraie edition
+  // oubliee de la playlist disparaitrait du site -- et ce risque n'est
+  // acceptable que si l'oubli se voit le jour meme.
+  if (reprises.length) {
+    log(`${reprises.length} reprise(s) courte(s) du rendez-vous quotidien tenue(s) hors du site `
+      + `(titre reconnu, absente de la playlist) :`);
+    for (const v of reprises.slice(0, 10)) {
+      log(`   ${v.id}  ${v.duration || '?'}s  ${(v.publishedAt || '').slice(0, 10)}  « ${v.title} »`);
+    }
+    if (reprises.length > 10) log(`   … et ${reprises.length - 10} autre(s).`);
+    log(`   Si l'une d'elles est une VRAIE edition, elle n'a pas ete rangee dans la playlist `
+      + `« ${[...reglesJT.slugs][0]} » sur YouTube : l'y ajouter la remet sur le site.`);
+  }
   const ecartees = Object.keys(fichesExclues)
     .filter((id) => data.videos.some((v) => v.id === id));
   if (ecartees.length) {
@@ -1344,25 +1376,9 @@ async function main() {
       + "journal quotidien, mais aucune rubrique ne porte ces adresses. Le bandeau ne s'affichera pas.");
   }
 
-  // 18/09/2026 -- DIRE TOUT HAUT CE QUI MANQUE A LA PLAYLIST.
-  //
-  // Une edition reconnue a son titre mais rangee dans aucune playlist est
-  // exactement le cas qui, le 17 septembre, a mis le Flash Info en une : le
-  // site la traite maintenant correctement, mais elle reste ABSENTE de sa
-  // propre rubrique et du bandeau -- et cela, seul un ajout sur YouTube le
-  // repare. Le journal de construction la nomme, pour que l'oubli se voie le
-  // jour meme au lieu de s'accumuler.
-  const reglesJT = reglesDuQuotidien(accueil);
-  const orphelinesJT = editionsHorsPlaylist(allVideos, reglesJT);
-  if (orphelinesJT.length) {
-    warn(`${orphelinesJT.length} édition(s) du rendez-vous quotidien ne sont dans AUCUNE playlist `
-      + `YouTube. Le site les tient hors de la une et de la lettre grâce à leur titre, mais elles `
-      + `manquent à leur propre rubrique et au bandeau : les ajouter à la playlist « `
-      + `${slugsJT[0]} » sur YouTube. `
-      + orphelinesJT.slice(0, 8).map((v) => `« ${v.title} »`).join(' ; ')
-      + (orphelinesJT.length > 8 ? ` ; … et ${orphelinesJT.length - 8} autre(s).` : ''));
-  }
-
+  // Les reprises courtes, elles, ont deja ete ecartees et nommees plus haut,
+  // avant la construction du modele. Rien a refaire ici : une regle, un
+  // endroit.
   await writePage('/', R.homePage({
     ...ctx, latest: allVideos, personnes, personneParRubrique, introHtml,
     jt: rubriqueJT, jtEditions: accueil.jt?.editions, reglesJT,
