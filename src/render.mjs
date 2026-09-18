@@ -1374,6 +1374,96 @@ export function categoryPage({
   });
 }
 
+/**
+ * « QUI EST X ? » SUR LA PAGE VIDEO.
+ *
+ * Ecrit le 18 septembre 2026, apres le croisement requete x page de Search
+ * Console (ticket #57). Le constat, sur les vingt requetes hors marque les
+ * plus vues : Google montre dix-huit fois une page « /post/… », deux fois une
+ * page de rubrique, et ZERO fois une fiche d'invite. Pas une seule.
+ *
+ * Les fiches /invites/ ne sont donc pas mauvaises -- elles ne sont jamais
+ * montrees. Le bloc « Qui est X ? » construit en aout est au bon endroit pour
+ * un visiteur et au mauvais endroit pour Google.
+ *
+ * Or les pages « /post/… » sont des pages d'anciennes adresses : elles
+ * RECOPIENT le contenu de leur destination (voir pageMiroir dans build.mjs),
+ * et cette destination est la page video. Ameliorer la page video ameliore
+ * donc la page que Google montre.
+ *
+ * Ce que ces gens cherchent, mesure a l'appui : « samuel madar journaliste »
+ * (62 affichages, position 9,3, zero clic), « lucas moulard wikipedia » (54),
+ * « fadila tatah » (38), « sarah fainberg » (29), « stephan zeev goldin bio »
+ * (20). Cinq cent quarante-quatre affichages en premiere page, aucune visite.
+ * Ils demandent QUI EST cette personne ; la page ne portait que son nom, en
+ * lien.
+ *
+ * RIEN N'EST INVENTE. Trois sources, dans cet ordre, toutes deja presentes :
+ *   1. le texte ecrit a la main dans data/personnes.json ;
+ *   2. une presentation tiree de la description d'une AUTRE video de la
+ *      personne -- jamais celle de la page courante, qui est deja affichee
+ *      juste au-dessus ;
+ *   3. a defaut, sa fonction telle que la chaine la presente a l'antenne.
+ * Si aucune des trois ne dit rien, le bloc ne s'affiche pas. Un intertitre
+ * « Qui est X ? » suivi de rien vaut moins que pas d'intertitre du tout.
+ */
+function quiEstBloc({ config, video, gens, presentateur }) {
+  if (!gens.length) return '';
+
+  // La personne dont la page PARLE d'abord est celle que le titre nomme.
+  // « Interview de Samuel Madar » : c'est lui qu'on cherche, pas le
+  // presentateur de l'emission.
+  const nomme = (p) => extraitParleDe(p.nom, { title: video.title }, '');
+  const ordre = [...gens].sort((a, b) => (nomme(b) - nomme(a))
+    || ((a.nom === presentateur) - (b.nom === presentateur)));
+
+  const fiches = ordre.slice(0, 2).map((p) => {
+    const role = p.fiche?.role || p.identite || '';
+    // Source 2 : une autre video de la personne, jamais celle-ci.
+    const ailleurs = (p.videos || [])
+      .filter((v) => v.id !== video.id)
+      .map((v) => ({ v, texte: extraitPresentation(v) }))
+      .find((x) => x.texte && extraitParleDe(p.nom, x.v, x.texte));
+    const texte = p.fiche?.texte
+      ? truncate(p.fiche.texte, 420)
+      : (ailleurs ? truncate(ailleurs.texte, 420) : '');
+    if (!role && !texte) return null;
+    const autres = (p.videos || []).length - 1;
+    return { p, role, texte, autres, source: p.fiche?.texte ? null : ailleurs?.v };
+  }).filter(Boolean);
+
+  if (!fiches.length) return '';
+
+  const noms = fiches.map((f) => f.p.nom);
+  const titre = noms.length > 1
+    ? `Qui sont ${escapeHtml(noms.slice(0, -1).join(', '))} et ${escapeHtml(noms[noms.length - 1])} ?`
+    : `Qui est ${escapeHtml(noms[0])} ?`;
+
+  return `
+  <section class="qui-est">
+    <h2 class="qui-est-titre">${titre}</h2>
+    <div class="qui-est-grille">
+      ${fiches.map(({ p, role, texte, autres, source }) => `
+      <article class="qui-est-carte">
+        <a class="qui-est-portrait" href="/invites/${p.slug}/" aria-hidden="true" tabindex="-1">
+          <img src="${escapeHtml(photoDe(p))}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" width="480" height="270">
+        </a>
+        <div class="qui-est-corps">
+          <h3 class="qui-est-nom"><a href="/invites/${p.slug}/">${escapeHtml(p.nom)}</a></h3>
+          ${role ? `<p class="qui-est-role">${escapeHtml(role)}</p>` : ''}
+          ${texte ? `<p class="qui-est-texte">${escapeHtml(texte)}</p>` : ''}
+          <p class="qui-est-plus">
+            ${source ? `<a href="/video/${source.id}/">Dit dans « ${escapeHtml(truncate(source.title, 60))} »</a> · ` : ''}
+            <a href="/invites/${p.slug}/">${autres > 0
+              ? `${autres} autre${autres > 1 ? 's' : ''} passage${autres > 1 ? 's' : ''} sur ${escapeHtml(config.siteName)}`
+              : `Sa fiche sur ${escapeHtml(config.siteName)}`} <span aria-hidden="true">&rarr;</span></a>
+          </p>
+        </div>
+      </article>`).join('')}
+    </div>
+  </section>`;
+}
+
 export function videoPage({
   config, categories, nav, video, related, buildTime,
   personnesParVideo = new Map(), presentateurParRubrique = new Map(),
@@ -1464,6 +1554,8 @@ export function videoPage({
     ${summary}
 
     ${desc ? `<div class="prose article-body">${desc}</div>` : ''}
+
+    ${quiEstBloc({ config, video, gens, presentateur })}
 
     ${video.playlists?.length > 1 ? `<p class="tags">Aussi dans : ${video.playlists.slice(1).map((p) => `<a class="chip small" href="/emissions/${p.slug}/">${escapeHtml(p.title)}</a>`).join(' ')}</p>` : ''}
   </article>

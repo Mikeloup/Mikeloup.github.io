@@ -1458,6 +1458,7 @@ async function main() {
   }
 
   // Une page par vidéo
+  let pagesQuiEst = 0;
   for (const video of allVideos) {
     const cat = video.playlists?.[0];
     const pool = cat ? categories.find((c) => c.slug === cat.slug).videos : allVideos;
@@ -1468,10 +1469,28 @@ async function main() {
       .filter((v) => v.id !== video.id)
       .filter((v) => video.estLeRendezVousQuotidien || !v.estLeRendezVousQuotidien)
       .slice(0, 8);
-    await writePage(`/video/${video.id}/`, R.videoPage({
+    // On COMPTE les pages qui portent « Qui est … ? », au lieu de l'estimer.
+    //
+    // 18/09/2026. Le bloc ne s'affiche que si la chaine a vraiment dit quelque
+    // chose de la personne (fiche ecrite a la main, ou presentation tiree
+    // d'une autre video). Combien de pages en beneficient reellement, seul un
+    // build sur les VRAIES donnees peut le dire : en demonstration, les titres
+    // sont fictifs et aucun nom n'y est reconnu. Le journal le dira donc a
+    // chaque publication -- et si le compte est bas, c'est data/personnes.json
+    // qu'il faut nourrir, en commencant par les dix noms que Search Console
+    // montre comme cherches.
+    const htmlVideo = R.videoPage({
       ...ctx, video, related, transcription: transcriptions.get(video.id) || null,
-    }));
+    });
+    if (htmlVideo.includes('class="qui-est"')) pagesQuiEst++;
+    await writePage(`/video/${video.id}/`, htmlVideo);
     urls.push({ loc: `/video/${video.id}/`, freq: 'monthly', priority: '0.7', lastmod: video.publishedAt });
+  }
+  log(`« Qui est … ? » : ${pagesQuiEst} page(s) vidéo sur ${allVideos.length} portent le bloc `
+    + `(${Math.round((100 * pagesQuiEst) / Math.max(1, allVideos.length))} %).`);
+  if (pagesQuiEst === 0 && allVideos.length > 50) {
+    warn("Aucune page vidéo ne porte « Qui est … ? ». Le bloc exige qu'on sache quelque chose "
+      + "de la personne : renseignez « role » ou « texte » dans data/personnes.json.");
   }
 
   // Pages éditoriales (Markdown) — la liste est pilotée par site.config.json

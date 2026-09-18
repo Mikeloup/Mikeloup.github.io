@@ -1885,3 +1885,27 @@ a.g-src:hover { color: var(--accent); text-decoration: underline; text-underline
      editions » collé à droite paraissait alors orphelin, seul sur sa ligne. */
   .jt-head .row-more { margin-left: 0; }
 }
+
+/* « Qui est X ? » sur la page video -- 18 septembre 2026.
+   Search Console (#57) : sur les vingt requetes hors marque les plus vues,
+   Google montre dix-huit pages « /post/… » et zero fiche d'invite. Les gens
+   cherchent QUI EST la personne ; la page video ne portait que son nom en
+   lien. Le bloc repond, sur la page que Google montre vraiment. */
+.qui-est { margin: 2rem 0 0; padding: 1.25rem 1.25rem .25rem;
+  border: 1px solid var(--line); border-radius: .75rem; background: var(--bg-soft); }
+.qui-est-titre { margin: 0 0 1rem; font-size: 1.15rem; line-height: 1.3; }
+.qui-est-grille { display: grid; gap: 1.25rem; }
+.qui-est-carte { display: grid; grid-template-columns: 120px 1fr; gap: 1rem;
+  align-items: start; margin-bottom: 1.25rem; }
+.qui-est-portrait { display: block; border-radius: .5rem; overflow: hidden; }
+.qui-est-portrait img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; display: block; }
+.qui-est-nom { margin: 0 0 .15rem; font-size: 1.05rem; }
+.qui-est-nom a { text-decoration: none; }
+.qui-est-nom a:hover { text-decoration: underline; }
+.qui-est-role { margin: 0 0 .5rem; font-weight: 600; font-size: .95rem; color: var(--text); }
+.qui-est-texte { margin: 0 0 .5rem; font-size: .95rem; line-height: 1.55; color: var(--muted); }
+.qui-est-plus { margin: 0; font-size: .85rem; color: var(--muted); }
+@media (max-width: 620px) {
+  .qui-est-carte { grid-template-columns: 1fr; }
+  .qui-est-portrait { max-width: 220px; }
+}
