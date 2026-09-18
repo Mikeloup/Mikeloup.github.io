@@ -56,10 +56,34 @@ export function nomDePersonne(chaine) {
 }
 
 /** Candidats extraits d'un titre de vidéo, par ordre de fiabilité décroissante. */
-function candidatsDuTitre(titre) {
+export function candidatsDuTitre(titre) {
   const out = [];
   const barres = titre.split('|');
   if (barres.length > 1) out.push(barres[barres.length - 1]);
+  // LE NOM APRES UN TIRET, 18 septembre 2026.
+  //
+  // Quatre positions etaient lues -- apres la barre, avant les deux points,
+  // apres « interview de », apres les deux points -- et celle-ci manquait.
+  // Mesure du jour : les fiches de Lucas Moulard et de Fadila Tatah, ajoutees
+  // a data/personnes.json, ne creaient AUCUNE page, quand celles d'Isabelle
+  // Nizard, Samuel Madar et Simon Moos fonctionnaient. La difference tenait a
+  // la place du nom dans le titre :
+  //
+  //   « Interview de Samuel Madar : … »                 -> lu
+  //   « Simon Moos : en Israel on combat… »             -> lu
+  //   « Je prends la parole… – Lucas Moulard »          -> MANQUE
+  //   « Le seul camp qui existe… - Fadila Tatah »       -> MANQUE
+  //
+  // Or « lucas moulard wikipedia » vaut 54 affichages en premiere page et zero
+  // clic : la personne la plus cherchee du site etait celle qu'il ne savait pas
+  // voir. `inclure` dans data/personnes.json ne pouvait rien : il retient une
+  // personne deja reperee, il n'en repere aucune.
+  //
+  // Le tiret doit etre ENTOURE D'ESPACES : « Israel-Hamas » et « Jean-Pierre »
+  // ne doivent jamais etre coupes. nomDePersonne() valide ensuite -- deux a
+  // quatre mots capitalises, pas de chiffre, pas d'article.
+  const tirets = titre.split(/\s[\u2013\u2014-]\s/);
+  if (tirets.length > 1) out.push(tirets[tirets.length - 1]);
   const deuxPoints = titre.split(':');
   if (deuxPoints.length > 1) out.push(deuxPoints[0]);
   const m = titre.match(/(?:interview|entretien|rencontre|invité|invitée)\s+(?:de|avec|d['’])\s+([^:|,?]+)/i);
