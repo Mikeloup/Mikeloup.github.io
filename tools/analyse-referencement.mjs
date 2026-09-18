@@ -77,6 +77,9 @@ function tableau(entetes, lignes) {
 const ligneMetrique = (cle, r) => [
   cle, r.clicks, r.impressions, `${nb(pourcent(r.clicks, r.impressions))} %`, nb(r.position),
 ];
+const ligneAvecPage = (r, page) => [
+  r.keys[0], r.impressions, nb(r.position), page,
+];
 
 /**
  * Les requêtes de marque : celles où l'on cherche Tandem TV, pas un sujet.
@@ -128,11 +131,22 @@ async function main() {
   });
   const a = bloc(A); const b = bloc(B);
 
-  const [requetes, pages, pays, appareils] = await Promise.all([
+  const [requetes, pages, pays, appareils, croise] = await Promise.all([
     interroger(jeton, site, { startDate: debut, endDate: fin, dimensions: ['query'], rowLimit: 500 }),
     interroger(jeton, site, { startDate: debut, endDate: fin, dimensions: ['page'], rowLimit: 500 }),
     interroger(jeton, site, { startDate: debut, endDate: fin, dimensions: ['country'], rowLimit: 20 }),
     interroger(jeton, site, { startDate: debut, endDate: fin, dimensions: ['device'], rowLimit: 10 }),
+    // QUELLE PAGE se classe sur QUELLE requête.
+    //
+    // Michael, 18/09 : « si les gens recherchent des infos sur les gens,
+    // pourquoi la rubrique invités ne fonctionne pas mieux ? » La question ne
+    // se répond pas avec les requêtes d'un côté et les pages de l'autre : il
+    // faut les croiser. Sur un nom propre, deux pages du site peuvent
+    // concourir -- la fiche d'invité et la page de l'entretien -- et Google
+    // n'en retient qu'une. Savoir laquelle, c'est savoir laquelle réparer.
+    interroger(jeton, site, {
+      startDate: debut, endDate: fin, dimensions: ['query', 'page'], rowLimit: 1000,
+    }),
   ]);
 
   const marque = requetes.filter((r) => EST_MARQUE(r.keys[0]));
@@ -163,6 +177,18 @@ async function main() {
     .filter((r) => !aPorteeSet.has(r.keys[0]))
     .filter((r) => r.impressions >= 100 && pourcent(r.clicks, r.impressions) < 1)
     .sort((x, y) => y.impressions - x.impressions).slice(0, 10);
+
+  // Pour chaque requête qui nous intéresse, la page que Google montre.
+  const pageDe = new Map();
+  for (const r of croise) {
+    const [q, u] = r.keys;
+    const prec = pageDe.get(q);
+    if (!prec || r.impressions > prec.impressions) pageDe.set(q, { url: u, ...r });
+  }
+  const quellePage = (q) => {
+    const p = pageDe.get(q);
+    return p ? chemin(p.url) : '—';
+  };
 
   const pagesTop = [...pages].sort((x, y) => y.clicks - x.clicks || y.impressions - x.impressions)
     .slice(0, 20);
@@ -250,7 +276,17 @@ Position 20 ou mieux, au moins 20 affichages, zéro clic. Google vous propose,
 et les gens passent : **le titre ne répond pas à la question posée.** C'est la
 seule liste de ce rapport qui dise quoi réécrire.
 
-${tableau(['Requête', 'Clics', 'Impr.', 'CTR', 'Position'], aPortee.map((r) => ligneMetrique(r.keys[0], r)))}
+${tableau(['Requête', 'Impr.', 'Position', 'Page que Google montre'],
+    aPortee.map((r) => ligneAvecPage(r, quellePage(r.keys[0]))))}
+### Sur un nom, quelle page Google retient-il ?
+
+Deux pages du site peuvent concourir sur le même nom : la fiche d'invité et la
+page de l'entretien. Google n'en montre qu'une. Celle qu'il montre est celle
+qu'il faut réparer — l'autre ne sera jamais vue.
+
+${tableau(['Requête', 'Clics', 'Impr.', 'Position', 'Page que Google montre'],
+    [...horsMarque].sort((x, y) => y.impressions - x.impressions).slice(0, 20)
+      .map((r) => [r.keys[0], r.clicks, r.impressions, nb(r.position), quellePage(r.keys[0])]))}
 ### Les parasites
 
 Cent affichages ou plus, moins de 1 % de clics. Elles gonflent les impressions,
