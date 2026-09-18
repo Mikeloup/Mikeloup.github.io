@@ -23,7 +23,9 @@ import { collecterPersonnes } from './src/personnes.mjs';
 import { lireTranscription } from './src/transcriptions.mjs';
 import { prepareGrille, indexerVideos, jourIsrael } from './src/grille.mjs';
 import { lireArchive } from './src/archive.mjs';
-import { reglesDuQuotidien, idsDuRendezVous, reprisesDuQuotidien } from './src/rendez-vous-quotidien.mjs';
+import {
+  reglesDuQuotidien, idsDuRendezVous, reprisesDuQuotidien, estLeRendezVousQuotidien,
+} from './src/rendez-vous-quotidien.mjs';
 import * as insta from './src/instagram.mjs';
 import { ficheDuSoir } from './tools/ce-soir.mjs';
 
@@ -920,6 +922,36 @@ async function main() {
 
   const { channel, categories, allVideos, byId, nav } = buildModel(config, data);
 
+  // LE RENDEZ-VOUS QUOTIDIEN NE PARAIT QUE DANS SA RUBRIQUE ET DANS SON BANDEAU.
+  //
+  // Michael, 18 septembre 2026 : « pas ailleurs que dans sa categorie/son
+  // bandeau ». L'accueil respectait deja la regle ; l'inventaire du meme jour,
+  // fait en marquant six editions et en cherchant le marqueur dans les 1 310
+  // pages produites, a montre qu'elle ne tenait nulle part ailleurs :
+  //
+  //   - « Tout le catalogue » (/emissions/) : les editions en tete de page 1 ;
+  //   - l'ENCHAINEMENT AUTOMATIQUE : 479 pages video sur 1 106 enchainaient sur
+  //     la meme edition. Une video sans rubrique enchaine sur la plus recente
+  //     du catalogue, et le Flash Info l'est presque toujours ;
+  //   - la page /merci/ (« les dernieres publications ») ;
+  //   - les anciennes adresses (blog, les-articles/…), qui recopient le
+  //     contenu de leur destination -- corrigees par ricochet.
+  //
+  // On MARQUE la video une fois, ici, et chaque liste lit la marque. Le calcul
+  // ne se refait pas a cinq endroits qui finiraient par diverger.
+  //
+  // Ce qui reste INCHANGE, par decision de Michael du 18/09 : la recherche du
+  // site, le flux RSS general et les sitemaps. Le Flash Info ne s'impose nulle
+  // part, mais qui le cherche le trouve, et Google continue de l'indexer.
+  for (const v of allVideos) v.estLeRendezVousQuotidien = estLeRendezVousQuotidien(v, reglesJT);
+  const horsQuotidien = allVideos.filter((v) => !v.estLeRendezVousQuotidien);
+  const nbQuotidien = allVideos.length - horsQuotidien.length;
+  if (nbQuotidien) {
+    log(`${nbQuotidien} edition(s) du rendez-vous quotidien : gardees dans leur rubrique, `
+      + `dans le bandeau, dans la recherche et dans les sitemaps -- retirees du catalogue, `
+      + `de l'enchainement automatique et de la page « merci ».`);
+  }
+
   // On NOMME ce qu'on a ecarte. La regle assume un risque -- une vraie edition
   // oubliee de la playlist disparaitrait du site -- et ce risque n'est
   // acceptable que si l'oubli se voit le jour meme.
@@ -1386,7 +1418,7 @@ async function main() {
   urls.push({ loc: '/', freq: 'daily', priority: '1.0', lastmod: allVideos[0]?.publishedAt });
 
   // Catalogue complet (sous /emissions/), paginé
-  const allPages = paginate(allVideos, PER_PAGE);
+  const allPages = paginate(horsQuotidien, PER_PAGE);
   for (const [i, pageVideos] of allPages.entries()) {
     const page = i + 1;
     const route = page === 1 ? '/emissions/' : `/emissions/page/${page}/`;
@@ -1429,7 +1461,13 @@ async function main() {
   for (const video of allVideos) {
     const cat = video.playlists?.[0];
     const pool = cat ? categories.find((c) => c.slug === cat.slug).videos : allVideos;
-    const related = pool.filter((v) => v.id !== video.id).slice(0, 8);
+    // « A suivre » et l'enchainement automatique. Le Flash Info n'y entre pas
+    // -- sauf quand on regarde justement une edition : la suite naturelle
+    // d'une edition est l'edition voisine, et on est alors DANS sa rubrique.
+    const related = pool
+      .filter((v) => v.id !== video.id)
+      .filter((v) => video.estLeRendezVousQuotidien || !v.estLeRendezVousQuotidien)
+      .slice(0, 8);
     await writePage(`/video/${video.id}/`, R.videoPage({
       ...ctx, video, related, transcription: transcriptions.get(video.id) || null,
     }));
@@ -1646,7 +1684,7 @@ async function main() {
 
   // Page d'arrivée après inscription à la lettre (Kit y renvoie l'abonné)
   if (config.newsletter?.formId) {
-    await writePage('/merci/', R.thanksPage({ ...ctx, latest: allVideos.slice(0, 4) }));
+    await writePage('/merci/', R.thanksPage({ ...ctx, latest: horsQuotidien.slice(0, 4) }));
   }
 
   // Page « Installer » : le site est déjà une application, encore faut-il le dire
