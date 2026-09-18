@@ -1410,12 +1410,29 @@ export function categoryPage({
 function quiEstBloc({ config, video, gens, presentateur }) {
   if (!gens.length) return '';
 
-  // La personne dont la page PARLE d'abord est celle que le titre nomme.
-  // « Interview de Samuel Madar » : c'est lui qu'on cherche, pas le
-  // presentateur de l'emission.
+  // ON NE PARLE QUE DE QUELQU'UN QUE LE TITRE NOMME.
+  //
+  // Mesure du 18/09 sur le site en ligne, vingt pages tirees au hasard : le
+  // bloc s'affichait sur neuf d'entre elles, et l'une disait « Qui est Sophie
+  // Bria ? » sur l'entretien « Je prends la parole parce que trop peu osent le
+  // faire » -- qui est l'interview de LUCAS MOULARD. Sophie Bria y presente ;
+  // c'est Lucas Moulard qu'on cherche (54 affichages, zero clic).
+  //
+  // Pourquoi : Lucas Moulard n'a qu'une video, sous le seuil de deux de
+  // data/personnes.json, et n'est ni dans « inclure » ni dans « fiches ». Le
+  // site ne le connait pas. Il ne restait que la presentatrice, presente dans
+  // des dizaines de videos.
+  //
+  // Le tri seul ne suffisait donc pas : quand personne de connu n'est nomme
+  // dans le titre, il faut SE TAIRE. Un bloc « Qui est X ? » qui presente
+  // l'intervieweur a la place de l'invite repond a cote de la question -- et
+  // c'est precisement la question qui amene ces gens.
   const nomme = (p) => extraitParleDe(p.nom, { title: video.title }, '');
-  const ordre = [...gens].sort((a, b) => (nomme(b) - nomme(a))
-    || ((a.nom === presentateur) - (b.nom === presentateur)));
+  const candidats = gens.filter(nomme);
+  if (!candidats.length) return '';
+  // Entre deux personnes nommees, l'invite passe avant le presentateur.
+  const ordre = [...candidats].sort((a, b) =>
+    ((a.nom === presentateur) - (b.nom === presentateur)));
 
   const fiches = ordre.slice(0, 2).map((p) => {
     const role = p.fiche?.role || p.identite || '';
