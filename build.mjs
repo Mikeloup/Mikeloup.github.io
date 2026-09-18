@@ -23,6 +23,7 @@ import { collecterPersonnes } from './src/personnes.mjs';
 import { lireTranscription } from './src/transcriptions.mjs';
 import { prepareGrille, indexerVideos, jourIsrael } from './src/grille.mjs';
 import { lireArchive } from './src/archive.mjs';
+import { indexerTranscriptions, videosDuSujet } from './src/maillage-sujets.mjs';
 import {
   reglesDuQuotidien, idsDuRendezVous, reprisesDuQuotidien, estLeRendezVousQuotidien,
 } from './src/rendez-vous-quotidien.mjs';
@@ -1495,6 +1496,18 @@ async function main() {
 
   // Pages éditoriales (Markdown) — la liste est pilotée par site.config.json
   const contentDir = path.join(ROOT, 'content');
+  // MAILLAGE SUJETS -> VIDEOS.
+  //
+  // Mesure du 18/09 : les dix-neuf pages de sujet recevaient entre deux et
+  // neuf liens internes, TOUS depuis une autre page de sujet, et
+  // « /sujets/histoire-de-jerusalem/ » ne pointait vers aucune video, aucune
+  // emission, aucun invite. Un ilot ferme a cote d'un catalogue de 1 022
+  // transcriptions sur les memes sujets.
+  //
+  // L'index se construit une seule fois, a partir des transcriptions DEJA
+  // chargees : aucun fichier n'est relu.
+  const indexSujets = indexerTranscriptions(transcriptions);
+  let liensSujets = 0;
   const sujetsEcrits = [];
   // Photographies d'ouverture. Ce fichier n'est jamais écrit à la main : il est
   // produit par publication/recuperer-images.js, qui interroge Wikimedia
@@ -1616,10 +1629,38 @@ async function main() {
       .replace(/\{\{newsletter\}\}/g, newsletterNote)));
     // La mise en page (chapo, sommaire, renvois) ne s'applique qu'aux pages de
     // sujet : les mentions legales n'ont pas besoin d'un sommaire.
-    const htmlFinal = pg.slug.startsWith('sujets/')
+    let htmlFinal = pg.slug.startsWith('sujets/')
       ? mettreEnPageSujet(html, photo ? R.ouverturePhoto(photo) : '')
       : html;
     const estSujet = pg.slug.startsWith('sujets/');
+
+    // « A voir sur Tandem TV » : les videos qui parlent VRAIMENT du sujet,
+    // trouvees dans les transcriptions. Celles que la page cite deja a la main
+    // ({{video:…}}) sont ecartees -- on ne montre pas deux fois la meme.
+    //
+    // Quatre au maximum, et RIEN en dessous du score plancher : une rubrique
+    // « A voir » qui se trompe une fois sur trois cesse d'etre lue. Le
+    // 18 septembre, ce plancher a vide la page « Tsipori » -- le catalogue ne
+    // couvre pas ce site, et il vaut mieux le dire en n'affichant rien.
+    if (estSujet && indexSujets.total) {
+      const dejaCitees = new Set(cartes.map((v) => v.id));
+      const trouvees = videosDuSujet(pg, indexSujets, { max: 6 })
+        .map((r) => byId.get(r.id))
+        .filter((v) => v && !dejaCitees.has(v.id) && yt.entreDansLeSite(v))
+        .slice(0, 4);
+      if (trouvees.length) {
+        liensSujets += trouvees.length;
+        htmlFinal += `
+<section class="row sujet-videos">
+  <div class="row-head">
+    <h2 class="row-title">À voir sur ${escapeHtml(config.siteName)}</h2>
+  </div>
+  <p class="muted small">Ces émissions parlent de ce sujet — repérées dans leur transcription,
+    pas choisies au hasard.</p>
+  ${R.gridPublique(trouvees)}
+</section>`;
+      }
+    }
     await writePage(`/${pg.slug}/`, R.contentPage({
       ...ctx,
       title: pg.title,
@@ -1642,6 +1683,11 @@ async function main() {
     }));
     urls.push({ loc: `/${pg.slug}/`, freq: 'monthly', priority: '0.5' });
     if (pg.slug.startsWith('sujets/')) sujetsEcrits.push(pg);
+  }
+
+  if (indexSujets.total) {
+    log(`Maillage des sujets : ${liensSujets} lien(s) vers des vidéos ajouté(s) sur `
+      + `${sujetsEcrits.length} page(s) de sujet.`);
   }
 
   // Sommaire des pages de sujet.

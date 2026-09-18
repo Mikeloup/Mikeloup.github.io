@@ -176,6 +176,13 @@ export function videoCard(video, { showCategory = true, eager = false, lead = fa
 </article>`;
 }
 
+/**
+ * La grille de vignettes, rendue publique le 18/09 pour le maillage des pages
+ * de sujet : build.mjs en a besoin, et dupliquer une grille de cartes serait
+ * le meilleur moyen qu'elles divergent.
+ */
+export function gridPublique(videos, opts = {}) { return grid(videos, opts); }
+
 function grid(videos, opts = {}) {
   if (!videos.length) return '<p class="empty">Aucune vidéo dans cette rubrique pour le moment.</p>';
   const { lead = false, ...cardOpts } = opts;
