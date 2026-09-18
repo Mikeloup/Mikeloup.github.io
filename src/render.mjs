@@ -1375,6 +1375,59 @@ export function categoryPage({
 }
 
 /**
+ * LE NOM QUE PORTE LA FIN DU TITRE, s'il y en a un.
+ *
+ * 18/09/2026, troisieme version du bloc « Qui est … ? ». La deuxieme exigeait
+ * que le titre nomme la personne presentee ; mesure sur vingt vraies pages du
+ * site, la couverture est tombee de 45 % a 5 %, en ecartant trois cas justes :
+ *
+ *   « Le moment venu pour Israel d'attaquer l'Iran ? »  -> Alexandre Del Valle
+ *   « Ne sois pas comme Noe : sauve les autres… »        -> Rav Mendel Mimoun
+ *   « Israel, souvenir solennel : hommage aux soldats »  -> Rony Akrich
+ *
+ * Aucun de ces titres ne porte le nom : il est dans la rubrique, ou seulement
+ * dans la description. La regle visait juste et mesurait la mauvaise chose.
+ *
+ * La bonne question n'est pas « le titre nomme-t-il cette personne ? » mais
+ * « le titre nomme-t-il quelqu'un D'AUTRE ? ». La chaine signe ses entretiens
+ * en fin de titre : « … – Lucas Moulard », « … | Polo Labraise ». Quand cette
+ * signature existe, c'est l'invite -- et presenter quelqu'un d'autre, la
+ * presentatrice de l'emission par exemple, repond a cote de la question qui
+ * amene ces visiteurs. Quand elle n'existe pas, la personne que le site
+ * connait est la bonne.
+ *
+ * Exportee pour etre essayee sur les VRAIS titres : tools/essai-qui-est.mjs.
+ */
+export function nomEnFinDeTitre(titre, { siteName = '', rubrique = '' } = {}) {
+  const t = String(titre || '');
+  // Separateurs ENTOURES D'ESPACES seulement : « Israel-Hamas » et
+  // « Jean-Pierre » ne doivent jamais etre coupes.
+  const COUPE = /\s[|–—-]\s/;
+  if (!COUPE.test(t)) return null;
+  const segment = t.split(new RegExp(COUPE.source, 'g')).pop().trim();
+  if (!segment || segment.length > 42) return null;
+  // Une date, un numero d'episode, un « J47 » : ce n'est pas un nom.
+  if (/\d/.test(segment)) return null;
+  const mots = segment.split(/\s+/).filter(Boolean);
+  if (mots.length < 2 || mots.length > 4) return null;
+  const PARTICULES = new Set(['de', 'du', 'des', 'la', 'le', 'van', 'von', 'ben', 'el', 'da', 'di']);
+  const majuscule = (m) => {
+    const nu = m.replace(/^[«"'(]+/, '').replace(/[»"'.,)!?]+$/, '');
+    if (!nu) return false;
+    if (PARTICULES.has(nu.toLowerCase())) return true;
+    const c = nu[0];
+    return c === c.toUpperCase() && c !== c.toLowerCase();
+  };
+  if (!mots.every(majuscule)) return null;
+  // Ni le nom de la chaine, ni celui de la rubrique : ce sont des enseignes.
+  const nu = (x) => (x || '').normalize('NFD').replace(/\p{Diacritic}/gu, '')
+    .toLowerCase().replace(/\s+/g, ' ').trim();
+  if (nu(segment) === nu(siteName)) return null;
+  if (rubrique && nu(rubrique).includes(nu(segment))) return null;
+  return segment;
+}
+
+/**
  * « QUI EST X ? » SUR LA PAGE VIDEO.
  *
  * Ecrit le 18 septembre 2026, apres le croisement requete x page de Search
@@ -1427,12 +1480,19 @@ function quiEstBloc({ config, video, gens, presentateur }) {
   // dans le titre, il faut SE TAIRE. Un bloc « Qui est X ? » qui presente
   // l'intervieweur a la place de l'invite repond a cote de la question -- et
   // c'est precisement la question qui amene ces gens.
-  const nomme = (p) => extraitParleDe(p.nom, { title: video.title }, '');
-  const candidats = gens.filter(nomme);
+  const signature = nomEnFinDeTitre(video.title, {
+    siteName: config.siteName, rubrique: video.playlists?.[0]?.title || '',
+  });
+  // Le titre signe un invite : on ne parle que de lui. S'il est inconnu du
+  // site, on se tait.
+  const candidats = signature
+    ? gens.filter((p) => extraitParleDe(p.nom, { title: signature }, ''))
+    : gens;
   if (!candidats.length) return '';
-  // Entre deux personnes nommees, l'invite passe avant le presentateur.
-  const ordre = [...candidats].sort((a, b) =>
-    ((a.nom === presentateur) - (b.nom === presentateur)));
+  // Pas de signature : l'invite nomme dans le titre passe avant le presentateur.
+  const nomme = (p) => extraitParleDe(p.nom, { title: video.title }, '');
+  const ordre = [...candidats].sort((a, b) => (nomme(b) - nomme(a))
+    || ((a.nom === presentateur) - (b.nom === presentateur)));
 
   const fiches = ordre.slice(0, 2).map((p) => {
     const role = p.fiche?.role || p.identite || '';
