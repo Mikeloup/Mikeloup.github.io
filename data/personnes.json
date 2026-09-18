@@ -115,10 +115,34 @@
     "Stéphane Zeev Goldin": "Stéphane Goldin"
   },
   "inclure": [
-    "Samuel Madar"
+    "Samuel Madar",
+    "Lucas Moulard",
+    "Isabelle Nizard",
+    "Simon Moos",
+    "Fadila Tatah"
   ],
   "presentateurs": {},
   "fiches": {
+    "Lucas Moulard": {
+      "role": "Influenceur politique, chaîne Lucas Talk Actu",
+      "texte": "Lucas Moulard anime la chaîne Lucas Talk Actu, où il traite de politique, d'actualité et d'Israël. Il se présente comme écologiste, libéral et républicain, et consacre une part de son travail à la lutte contre l'antisémitisme."
+    },
+    "Isabelle Nizard": {
+      "role": "Maire adjointe chargée des affaires scolaires, 16e arrondissement de Paris",
+      "texte": "Isabelle Nizard est maire adjointe chargée des affaires scolaires dans le 16e arrondissement de Paris. Sur Tandem TV, elle décrit ce qui a changé dans les écoles de son arrondissement depuis le 7 octobre 2023, jusque dans les classes élémentaires."
+    },
+    "Samuel Madar": {
+      "role": "Auteur de « L'Édito de Madar »",
+      "texte": "Samuel Madar publie sur Instagram L'Édito de Madar, des vidéos de deux à trois minutes consacrées à la défense d'Israël et de la communauté juive de France. Il explique sur Tandem TV ce qui l'a décidé à prendre la parole."
+    },
+    "Simon Moos": {
+      "role": "Débatteur, présent sur les plateaux de télévision",
+      "texte": "Simon Moos est l'une des rares voix à défendre Israël et la communauté juive sur les plateaux de télévision français. Sur Tandem TV, il raconte comment il tient dans des débats devenus hostiles depuis le 7 octobre."
+    },
+    "Fadila Tatah": {
+      "role": "Artiste, dessinatrice engagée",
+      "texte": "Fadila Tatah dessine l'engagement depuis toujours — les femmes iraniennes, les femmes afghanes. Après le 7 octobre 2023, elle a peint les portraits des personnes massacrées au festival Nova et s'est engagée pour la libération des otages."
+    },
     "William Zerbib": {
       "photo": "/assets/visages/william-zerbib.jpg"
     },
