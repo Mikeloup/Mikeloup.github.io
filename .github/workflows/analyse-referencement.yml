@@ -1,0 +1,45 @@
+# Analyse de référencement — à la demande, jamais automatique.
+#
+# Le rapport quotidien (rapport.yml) surveille ; celui-ci comprend. On le
+# déclenche depuis l'onglet Actions → « Analyse de référencement » → « Run
+# workflow ». Le résultat est publié en ticket du dépôt, étiqueté
+# « referencement ».
+#
+# Pas de « schedule » : une analyse longue tous les jours ne serait plus lue,
+# et les données de Search Console bougent trop peu sur vingt-quatre heures
+# pour que ça en vaille la peine.
+name: Analyse de référencement
+
+on:
+  workflow_dispatch:
+    inputs:
+      jours:
+        description: "Fenêtre d'analyse, en jours (90 par défaut)"
+        required: false
+        default: '90'
+      brouillon:
+        description: "Mettre « oui » pour seulement afficher le rapport, sans créer de ticket"
+        required: false
+        default: 'non'
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  analyse:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+
+      - name: Interroger Search Console et publier l'analyse
+        env:
+          GOOGLE_SEARCH_CONSOLE_KEY: ${{ secrets.GOOGLE_SEARCH_CONSOLE_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          JOURS: ${{ github.event.inputs.jours }}
+          BROUILLON: ${{ github.event.inputs.brouillon }}
+        run: node tools/analyse-referencement.mjs

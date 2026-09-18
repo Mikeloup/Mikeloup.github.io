@@ -28,8 +28,13 @@ const PORTEE = 'https://www.googleapis.com/auth/webmasters.readonly';
 const base64url = (buf) => Buffer.from(buf).toString('base64')
   .replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
 
-/** Jeton d'accès OAuth 2 à partir de la clé du compte de service. */
-async function jetonAcces(cle) {
+/** Jeton d'accès OAuth 2 à partir de la clé du compte de service.
+ *
+ * Exportée depuis le 18/09 : tools/analyse-referencement.mjs s'en sert aussi.
+ * Une seule signature de jeton dans le dépôt, pas deux qui divergeront le jour
+ * où Google changera quelque chose.
+ */
+export async function jetonAcces(cle) {
   const maintenant = Math.floor(Date.now() / 1000);
   const entete = base64url(JSON.stringify({ alg: 'RS256', typ: 'JWT' }));
   const charge = base64url(JSON.stringify({
@@ -57,7 +62,8 @@ async function jetonAcces(cle) {
   return corps.access_token;
 }
 
-async function interroger(jeton, site, corps) {
+/** Une requête à l'API Search Console. Exportée pour la même raison. */
+export async function interroger(jeton, site, corps) {
   const res = await fetch(
     `${ENDPOINT}/sites/${encodeURIComponent(site)}/searchAnalytics/query`,
     {
