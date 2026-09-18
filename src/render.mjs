@@ -9,6 +9,7 @@ import {
   extraitPresentation,
 } from './util.mjs';
 import { mmss } from './transcriptions.mjs';
+import { estLeRendezVousQuotidien } from './rendez-vous-quotidien.mjs';
 
 // Les deux rubriques que tout le monde confond, y compris moi apres deux jours
 // passes dans ce site : /autres-programmes/ presente les PRODUCTEURS dont la
@@ -900,14 +901,28 @@ function chips(items) {
 export function homePage({
   config, categories, nav, latest, buildTime, grille = null,
   personnes = [], personneParRubrique = new Map(), introHtml = '',
-  jt = null, jtEditions = 5,
+  jt = null, jtEditions = 5, reglesJT = null,
 }) {
   // Le JT quotidien vit dans son bandeau, et nulle part ailleurs sur l'accueil.
   // Voir bandeauJT() pour le raisonnement : sans ce retrait, sept editions par
   // semaine noieraient la une et les dernieres videos.
-  const editionsJT = (jt?.videos || []).slice(0, jtEditions || 5);
-  const idsJT = new Set((jt?.videos || []).map((v) => v.id));
-  const flux = idsJT.size ? latest.filter((v) => !idsJT.has(v.id)) : latest;
+  //
+  // 18/09/2026 -- ON NE RECONNAIT PLUS UNE EDITION A SA SEULE PLAYLIST.
+  // Le 17 septembre, le Flash Info du jour s'affichait en une : il n'avait ete
+  // ajoute a aucune playlist sur YouTube, donc il n'etait pas dans jt.videos,
+  // et le retrait ci-dessous ne le voyait pas. La question « est-ce le
+  // rendez-vous quotidien ? » vit desormais dans UNE fonction, partagee avec
+  // la lettre hebdomadaire (src/rendez-vous-quotidien.mjs), qui accepte aussi
+  // la signature du titre.
+  //
+  // Le retrait reste conditionne a l'existence de la rubrique : sans elle, pas
+  // de bandeau, et une edition retiree du flux ne serait visible NULLE PART.
+  // Mieux vaut un doublon qu'une disparition.
+  const reconnu = (jt && reglesJT)
+    ? (v) => estLeRendezVousQuotidien(v, reglesJT)
+    : (v) => Boolean(jt) && (jt.videos || []).some((e) => e.id === v.id);
+  const editionsJT = jt ? latest.filter(reconnu).slice(0, jtEditions || 5) : [];
+  const flux = jt ? latest.filter((v) => !reconnu(v)) : latest;
 
   const pinnedId = String(config.home?.featured || '').trim();
   // Une video epinglee a la main l'emporte, JT compris : c'est une decision
@@ -2045,6 +2060,143 @@ export function personIndexPage({ config, categories, nav, personnes, buildTime 
         },
       },
     ],
+  });
+}
+
+/**
+ * Page « Annoncer sur Tandem TV » — refonte de la page sponsoring.
+ *
+ * 18/09/2026. Ecrite a partir du travail de cadrage commercial : quatre
+ * formules, des prix affiches, et un principe qui vaut mieux que n'importe
+ * quel argument — ne rien promettre qui ne puisse etre prouve. L'audience du
+ * bouquet n'etant mesuree par personne, cette page ne parle jamais de
+ * telespectateurs : elle parle de passages, et ceux-la sont comptes.
+ *
+ * VOLONTAIREMENT HORS LIGNE : `robots: noindex, nofollow`, aucun lien depuis
+ * la navigation, le pied de page ou le plan du site. Elle n'est atteignable
+ * qu'a son adresse, le temps que Michael la valide. La page /sponsoring/
+ * actuelle reste en place et inchangee jusque-la.
+ */
+export function annonceursPage({ config, categories, nav, buildTime, videoCount, showCount }) {
+  const mail = config.contactEmail;
+  const objet = encodeURIComponent('Annoncer sur Tandem TV');
+  const tv = config.tv;
+  const canal = tv?.channelNumber ? escapeHtml(tv.channelNumber) : '14';
+  const operateur = tv?.operator ? escapeHtml(tv.operator) : 'Annatel';
+
+  const formule = (titre, prix, unite, lignes, mise = false) => `
+    <article class="offre${mise ? ' offre-mise' : ''}">
+      <h3>${titre}</h3>
+      <p class="offre-prix"><strong>${prix}</strong> <span>${unite}</span></p>
+      <ul>${lignes.map((l) => `<li>${l}</li>`).join('')}</ul>
+    </article>`;
+
+  const content = `
+<div class="wrap narrow">
+  <nav class="breadcrumb"><a href="/">Accueil</a> <span>&rsaquo;</span> <span>Annonceurs</span></nav>
+
+  <header class="page-head">
+    <p class="kicker">Annonceurs</p>
+    <h1>Votre marque à la télévision, en français, en Israël</h1>
+    <p class="lede">Tandem TV est diffusée sur le canal ${canal} du bouquet ${operateur}, et prolongée sur YouTube,
+    Instagram et ce site. Une présence répétée, dans un environnement francophone que vous choisissez.</p>
+  </header>
+
+  <section class="figures">
+    <div class="figure"><strong>canal ${canal}</strong><span>du bouquet ${operateur}</span></div>
+    <div class="figure"><strong>24 h/24</strong><span>de diffusion</span></div>
+    ${showCount ? `<div class="figure"><strong>${formatNumber(showCount)}</strong><span>émissions régulières</span></div>` : ''}
+    ${videoCount ? `<div class="figure"><strong>${formatNumber(videoCount)}</strong><span>vidéos en ligne</span></div>` : ''}
+  </section>
+  <p class="muted small center">Chiffres de la chaîne relevés automatiquement à chaque mise à jour du site.</p>
+
+  <section class="follow-card">
+    <h2>Ce que nous vendons, et ce que nous ne vendons pas</h2>
+    <p>Nous ne vous annoncerons jamais un nombre de téléspectateurs&nbsp;: l'audience du bouquet n'est mesurée par
+    aucun institut, et un chiffre invérifiable ne vaut rien pour vous comme pour nous.</p>
+    <p><strong>Ce que nous garantissons par écrit, c'est le nombre de passages de votre message</strong>, relevé mois
+    par mois sur notre grille de diffusion et communiqué dans un rapport. Vous savez exactement ce que vous achetez.</p>
+  </section>
+
+  <section class="follow-card">
+    <h2>Parrainer une émission</h2>
+    <p>Votre message de cinq secondes ouvre et ferme chaque diffusion d'un rendez-vous régulier — et chaque
+    rediffusion. La même émission part ensuite sur notre chaîne YouTube, en extrait sur Instagram et sur ce
+    site&nbsp;: le parrainage vous suit sur les quatre supports, sans supplément.</p>
+    <p>Selon l'émission, cela représente <strong>de 128 à 284 passages par mois</strong>, rediffusions comprises.
+    Les chiffres exacts de chaque émission — passages relevés sur notre grille, vues par épisode sur YouTube —
+    vous sont communiqués sur demande, avec leur date de relevé.</p>
+    <p><strong>Cinq émissions, un parrain chacune, et pas deux.</strong> Premier arrivé, premier servi&nbsp;:
+    quand une émission est prise, elle l'est pour toute la durée du contrat.</p>
+    ${formule('Parrainage d’émission', '3 000 NIS', 'par mois — engagement de six mois', [
+      'Votre message avant et après chaque diffusion et chaque rediffusion',
+      'Exclusivité&nbsp;: seul parrain, et seul annonceur de votre secteur sur l’émission',
+      'Mention sur les extraits publiés en Reel et en Short',
+      'Présence sur la page de l’émission, sur ce site',
+      'Production de votre message incluse',
+      'Rapport mensuel des passages',
+    ], true)}
+  </section>
+
+  <section class="follow-card">
+    <h2>Acheter des passages</h2>
+    <p>Une publicité qui passe à l'antenne sans être attachée à une émission, vendue au nombre de diffusions.
+    Plus le volume est élevé, moins le passage coûte cher.</p>
+    <div class="offres">
+      ${formule('Découverte', '1 200 NIS', 'par mois — 150 passages', ['5 diffusions par jour', 'Engagement de trois mois', 'Production incluse'])}
+      ${formule('Régulier', '2 000 NIS', 'par mois — 300 passages', ['10 diffusions par jour', 'Engagement de trois mois', 'Production incluse'])}
+      ${formule('Intensif', '3 200 NIS', 'par mois — 600 passages', ['20 diffusions par jour', 'Engagement de trois mois', 'Production incluse'])}
+      ${formule('Campagne', '4 800 NIS', 'par mois — 1 000 passages', ['33 diffusions par jour', 'Engagement de trois mois', 'Production incluse'])}
+    </div>
+  </section>
+
+  <section class="follow-card">
+    <h2>Le message lui-même</h2>
+    <p>Nous le fabriquons. La plupart des entreprises n'ont ni agence ni film prêt à diffuser&nbsp;: c'est
+    précisément ce que nous savons faire.</p>
+    <ul>
+      <li><strong>Chapeau image et son</strong>, 10 à 15 secondes — vos visuels, une voix off, notre habillage. <strong>Inclus.</strong></li>
+      <li><strong>Vidéo publicitaire</strong>, 15 à 20 secondes, montée à partir de vos images — 1 200 NIS, une seule fois.</li>
+      <li><strong>Vidéo avec tournage chez vous</strong> — 2 900 NIS, une seule fois.</li>
+      <li><strong>Reportage sponsorisé</strong> de deux à trois minutes, tourné chez vous, diffusé à l'antenne et publié sur YouTube — 4 500 NIS.</li>
+    </ul>
+  </section>
+
+  <section class="follow-card">
+    <h2>Comment cela se passe</h2>
+    <ol>
+      <li>Vous nous écrivez. Nous vous rappelons et nous regardons ensemble ce qui a du sens pour votre activité.</li>
+      <li>Nous vous envoyons une proposition écrite&nbsp;: formule, nombre de passages, durée, prix. Rien d'autre.</li>
+      <li>Nous fabriquons votre message et vous le validez avant toute diffusion.</li>
+      <li>La campagne démarre. Vous recevez chaque mois le relevé des passages effectués.</li>
+    </ol>
+    <p class="muted small">Tandem TV facture en tant qu'ossek patour&nbsp;: vous recevez un reçu et non une facture
+    avec TVA. La dépense reste déductible de votre résultat, la TVA ne l'est pas — nos prix en tiennent compte.</p>
+  </section>
+
+  <section class="follow-card">
+    <h2>Une règle qui ne change pas</h2>
+    <p>Un annonceur n'a jamais son mot à dire sur le contenu d'une émission. C'est ce qui fait la valeur de
+    l'environnement dans lequel votre marque apparaît&nbsp;: si nos programmes étaient à vendre, personne ne les
+    regarderait.</p>
+  </section>
+
+  <section class="follow-card">
+    <h2>Nous écrire</h2>
+    <p>Dites-nous en deux lignes ce que vous vendez et à qui. Nous répondons à toutes les demandes sérieuses,
+    y compris pour dire que ce n'est pas pour vous.</p>
+    <a class="btn btn-primary" href="mailto:${escapeHtml(mail)}?subject=${objet}">Écrire à ${escapeHtml(mail)}</a>
+  </section>
+</div>`;
+
+  return layout({
+    config, categories, nav, buildTime,
+    title: 'Annoncer sur Tandem TV',
+    description: `Parrainage d'émission et espaces publicitaires sur Tandem TV, chaîne francophone d'Israël, canal ${canal} du bouquet ${operateur}.`,
+    canonical: '/annonceurs/',
+    bodyClass: 'page-sponsoring',
+    robots: 'noindex, nofollow',
+    content,
   });
 }
 

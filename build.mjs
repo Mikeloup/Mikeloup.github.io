@@ -23,6 +23,7 @@ import { collecterPersonnes } from './src/personnes.mjs';
 import { lireTranscription } from './src/transcriptions.mjs';
 import { prepareGrille, indexerVideos, jourIsrael } from './src/grille.mjs';
 import { lireArchive } from './src/archive.mjs';
+import { reglesDuQuotidien, editionsHorsPlaylist } from './src/rendez-vous-quotidien.mjs';
 import * as insta from './src/instagram.mjs';
 import { ficheDuSoir } from './tools/ce-soir.mjs';
 
@@ -1342,9 +1343,29 @@ async function main() {
     warn(`data/accueil.json désigne ${slugsJT.map((x) => `« ${x} »`).join(' ou ')} comme rubrique du `
       + "journal quotidien, mais aucune rubrique ne porte ces adresses. Le bandeau ne s'affichera pas.");
   }
+
+  // 18/09/2026 -- DIRE TOUT HAUT CE QUI MANQUE A LA PLAYLIST.
+  //
+  // Une edition reconnue a son titre mais rangee dans aucune playlist est
+  // exactement le cas qui, le 17 septembre, a mis le Flash Info en une : le
+  // site la traite maintenant correctement, mais elle reste ABSENTE de sa
+  // propre rubrique et du bandeau -- et cela, seul un ajout sur YouTube le
+  // repare. Le journal de construction la nomme, pour que l'oubli se voie le
+  // jour meme au lieu de s'accumuler.
+  const reglesJT = reglesDuQuotidien(accueil);
+  const orphelinesJT = editionsHorsPlaylist(allVideos, reglesJT);
+  if (orphelinesJT.length) {
+    warn(`${orphelinesJT.length} édition(s) du rendez-vous quotidien ne sont dans AUCUNE playlist `
+      + `YouTube. Le site les tient hors de la une et de la lettre grâce à leur titre, mais elles `
+      + `manquent à leur propre rubrique et au bandeau : les ajouter à la playlist « `
+      + `${slugsJT[0]} » sur YouTube. `
+      + orphelinesJT.slice(0, 8).map((v) => `« ${v.title} »`).join(' ; ')
+      + (orphelinesJT.length > 8 ? ` ; … et ${orphelinesJT.length - 8} autre(s).` : ''));
+  }
+
   await writePage('/', R.homePage({
     ...ctx, latest: allVideos, personnes, personneParRubrique, introHtml,
-    jt: rubriqueJT, jtEditions: accueil.jt?.editions,
+    jt: rubriqueJT, jtEditions: accueil.jt?.editions, reglesJT,
   }));
   urls.push({ loc: '/', freq: 'daily', priority: '1.0', lastmod: allVideos[0]?.publishedAt });
 
@@ -1598,6 +1619,14 @@ async function main() {
     ...ctx, videoCount: allVideos.length, showCount: nav.shows.length,
   }));
   urls.push({ loc: '/sponsoring/', freq: 'monthly', priority: '0.5' });
+
+  // Page annonceurs — refonte de /sponsoring/, EN ATTENTE DE VALIDATION.
+  // Volontairement absente du sitemap, de la navigation et du pied de page, et
+  // marquee noindex/nofollow : elle n'est atteignable qu'a son adresse. Le jour
+  // ou Michael la valide, elle remplace sponsoringPage et retrouve ses liens.
+  await writePage('/annonceurs/', R.annonceursPage({
+    ...ctx, videoCount: allVideos.length, showCount: nav.shows.length,
+  }));
 
   // Page d'arrivée après inscription à la lettre (Kit y renvoie l'abonné)
   if (config.newsletter?.formId) {

@@ -30,6 +30,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import * as R from '../src/render.mjs';
+import { reglesDuQuotidien, estLeRendezVousQuotidien } from '../src/rendez-vous-quotidien.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const config = JSON.parse(await fs.readFile(path.join(ROOT, 'site.config.json'), 'utf8'));
@@ -111,14 +112,23 @@ const jours = Number(hebdo.jours ?? 8);
 // La liste des rubriques concernées vient de data/accueil.json — le MÊME
 // fichier qui décide du bandeau en haut de la page d'accueil. Une seule
 // définition de « le rendez-vous quotidien », pas deux qui divergeront.
-let rubriquesQuotidiennes = new Set();
+//
+// 18/09/2026 : ce filtre ne regardait que la rubrique (le champ « s » de
+// search.json). Les éditions des 16 et 17 septembre n'étant dans aucune
+// playlist YouTube, leur rubrique valait "" — le filtre était aveugle et
+// TOUTES les éditions de la semaine entraient dans la lettre. La question
+// « est-ce le rendez-vous quotidien ? » vit maintenant dans une seule
+// fonction, la même que celle de la page d'accueil, qui accepte aussi la
+// signature du titre.
+let reglesJT = reglesDuQuotidien(null);
 try {
   const accueil = JSON.parse(await fs.readFile(path.join(ROOT, 'data', 'accueil.json'), 'utf8'));
-  rubriquesQuotidiennes = new Set([].concat(accueil?.jt?.rubrique || []).filter(Boolean));
+  reglesJT = reglesDuQuotidien(accueil);
 } catch {
   // Fichier absent ou illisible : on ne filtre rien plutôt que de risquer
   // une lettre vide. Une lettre trop pleine se lit ; une lettre vide, non.
 }
+const estQuotidien = (v) => estLeRendezVousQuotidien(v, reglesJT);
 
 const parPeriode = toutes
   .filter((v) => maintenant - date(v) < jours * 86400000)
@@ -126,7 +136,7 @@ const parPeriode = toutes
 
 let quotidienDejaPris = false;
 const recentes = parPeriode.filter((v) => {
-  if (!rubriquesQuotidiennes.has(v.s)) return true;
+  if (!estQuotidien(v)) return true;
   if (quotidienDejaPris) return false;
   quotidienDejaPris = true;   // la liste est triée : c'est la plus récente
   return true;
@@ -155,7 +165,7 @@ const aRevoir = toutes
   // Et pas davantage dans « À revoir » : une édition d'actualité vieille de
   // trois semaines n'est pas une pépite à redécouvrir, c'est une nouvelle
   // périmée. Si vous préférez les y garder, retirer cette seule ligne.
-  .filter((v) => !rubriquesQuotidiennes.has(v.s))
+  .filter((v) => !estQuotidien(v))
   .filter((v) => maintenant - date(v) >= jours * 86400000)
   .filter((v) => maintenant - date(v) < moisRetour * 30.44 * 86400000)
   .sort((a, b) => (b.v || 0) - (a.v || 0))
