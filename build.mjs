@@ -2443,6 +2443,25 @@ async function transfererAnciennesAdresses(config, categories, allVideos) {
     if (!await ecrire(`/emissions/${ancienSlug}/`, `/emissions/${c.slug}/`, c.title)) continue;
     urls.push(`/emissions/${ancienSlug}/`);
     renommees++;
+
+    // LES PAGES SUIVANTES DE LA RUBRIQUE RENOMMEE, 19 septembre 2026.
+    //
+    // Le renommage ne redirigeait que la page 1. Search Console montre
+    // pourtant /emissions/l-invite-de-william-zerbib/page/2/ et
+    // /emissions/l-analyse-de-stephane-goldin/page/2/ -- deux rubriques
+    // renommees, dont la deuxieme page repond 404 alors que la premiere est
+    // correctement pontee. Une rubrique de 91 videos en a douze.
+    //
+    // On ponte donc autant de pages que la NOUVELLE rubrique en compte. Au-dela
+    // il n'y a rien a montrer, et ecrire un transfert vers une page inexistante
+    // est precisement ce que `ecrire` refuse.
+    const pagesRubrique = Math.max(1, Math.ceil((c.videos?.length || 0) / PER_PAGE));
+    for (let i = 2; i <= pagesRubrique; i++) {
+      if (await ecrire(`/emissions/${ancienSlug}/page/${i}/`,
+                       `/emissions/${c.slug}/page/${i}/`, c.title)) {
+        urls.push(`/emissions/${ancienSlug}/page/${i}/`);
+      }
+    }
   }
   if (renommees) log(`${renommees} rubrique(s) renommée(s) : ancienne adresse redirigée.`);
 
