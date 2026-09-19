@@ -1488,14 +1488,45 @@ function quiEstBloc({ config, video, gens, presentateur }) {
   // dans le titre, il faut SE TAIRE. Un bloc « Qui est X ? » qui presente
   // l'intervieweur a la place de l'invite repond a cote de la question -- et
   // c'est precisement la question qui amene ces gens.
+  // D'ABORD LE FAIT, ENSUITE SEULEMENT LA FORME.
+  //
+  // Mesure du 19 septembre 2026 sur les 1 048 titres reels du site : 138
+  // portent le nom d'une personne dont data/personnes.json tient une fiche,
+  // et le bloc ne s'affichait que sur 26. Les 112 manques venaient de deux
+  // defauts de la meme famille -- on jugeait la POSITION du nom au lieu de se
+  // demander si c'est une personne :
+  //
+  //   65 titres signaient pourtant proprement « … | Stephane Goldin ». Mais
+  //   nomEnFinDeTitre refuse un nom que la rubrique contient, pour ne pas
+  //   prendre « Cote Cuisine » pour quelqu'un. Consequence : les trois
+  //   chroniqueurs qui ont une rubrique a leur nom -- Stephane Goldin (29
+  //   pages), Rony Akrich (29), Rony Hayot (4) -- n'etaient jamais reconnus,
+  //   alors que ce sont ceux qu'on cherche le plus (« stephan zeev goldin
+  //   bio », « origine parents », « jeune »).
+  //
+  //   47 titres nomment la personne AU DEBUT : « Interview de Samuel Madar :
+  //   Combattre l'antisemitisme chez les jeunes ». Cette page-la totalise
+  //   3 621 affichages pour 1,1 % de clics, sur la requete « samuel madar
+  //   wikipedia ». La page ne disait pas qui il est.
+  //
+  // La bonne question n'est pas « ou le nom se trouve-t-il ? » mais « ce nom
+  // est-il quelqu'un que le site connait ? ». Si le titre nomme une personne
+  // deja rattachee a cette video, c'est d'elle qu'on parle -- ou qu'elle se
+  // trouve dans le titre. Le reste du tri ne bouge pas : quand le titre ne
+  // nomme personne de connu, on retombe exactement sur le comportement
+  // precedent, qui a ete mesure et qui evite de presenter l'intervieweur a la
+  // place de l'invite.
+  const nommesDansLeTitre = gens.filter((p) => extraitParleDe(p.nom, { title: video.title }, ''));
   const signature = nomEnFinDeTitre(video.title, {
     siteName: config.siteName, rubrique: video.playlists?.[0]?.title || '',
   });
   // Le titre signe un invite : on ne parle que de lui. S'il est inconnu du
   // site, on se tait.
-  const candidats = signature
-    ? gens.filter((p) => extraitParleDe(p.nom, { title: signature }, ''))
-    : gens;
+  const candidats = nommesDansLeTitre.length
+    ? nommesDansLeTitre
+    : (signature
+      ? gens.filter((p) => extraitParleDe(p.nom, { title: signature }, ''))
+      : gens);
   if (!candidats.length) return '';
   // Pas de signature : l'invite nomme dans le titre passe avant le presentateur.
   const nomme = (p) => extraitParleDe(p.nom, { title: video.title }, '');
