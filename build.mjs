@@ -1460,6 +1460,38 @@ async function main() {
 
   // Une page par vidéo
   let pagesQuiEst = 0;
+  // LE RAPPROCHEMENT SUJETS <-> VIDEOS, CALCULE UNE SEULE FOIS.
+  //
+  // 19/09. Hier, le maillage n'allait que dans un sens : les pages de sujet
+  // pointaient vers les videos. L'inverse manquait, et c'est le sens qui
+  // compte le plus -- les pages video sont indexees et visitees, les pages de
+  // sujet ne recevaient que deux a neuf liens, tous venus d'une autre page de
+  // sujet. Search Console, ce matin : Cesaree, Jerusalem hors les murs et le
+  // doigt de la Galilee sont « Discovered - currently not indexed ». Google
+  // les connait, les a vues dans le sitemap, et juge qu'elles ne valent pas la
+  // place. Des liens depuis de vraies pages sont exactement ce qui manque.
+  //
+  // Le calcul monte donc avant la boucle des pages video, et sert aux deux.
+  const indexSujets = indexerTranscriptions(transcriptions);
+  const pagesSujets = (config.pages || [])
+    .filter((pg) => (pg.slug || '').startsWith('sujets/'));
+  const videosParSujet = new Map();
+  const sujetsParVideo = new Map();
+  if (indexSujets.total) {
+    for (const pg of pagesSujets) {
+      const trouvees = videosDuSujet(pg, indexSujets, { max: 6 });
+      videosParSujet.set(pg.slug, trouvees);
+      // Une video ne renvoie qu'au sujet qui la revendique le plus fort : deux
+      // renvois sous une meme video se contrediraient.
+      for (const r of trouvees) {
+        const mieux = sujetsParVideo.get(r.id);
+        if (!mieux || r.score > mieux.score) {
+          sujetsParVideo.set(r.id, { slug: pg.slug, titre: pg.title, score: r.score });
+        }
+      }
+    }
+  }
+
   for (const video of allVideos) {
     const cat = video.playlists?.[0];
     const pool = cat ? categories.find((c) => c.slug === cat.slug).videos : allVideos;
@@ -1482,6 +1514,7 @@ async function main() {
     // montre comme cherches.
     const htmlVideo = R.videoPage({
       ...ctx, video, related, transcription: transcriptions.get(video.id) || null,
+      sujet: sujetsParVideo.get(video.id) || null,
     });
     if (htmlVideo.includes('class="qui-est"')) pagesQuiEst++;
     await writePage(`/video/${video.id}/`, htmlVideo);
@@ -1506,7 +1539,6 @@ async function main() {
   //
   // L'index se construit une seule fois, a partir des transcriptions DEJA
   // chargees : aucun fichier n'est relu.
-  const indexSujets = indexerTranscriptions(transcriptions);
   let liensSujets = 0;
   const sujetsEcrits = [];
   // Photographies d'ouverture. Ce fichier n'est jamais écrit à la main : il est
@@ -1644,7 +1676,7 @@ async function main() {
     // couvre pas ce site, et il vaut mieux le dire en n'affichant rien.
     if (estSujet && indexSujets.total) {
       const dejaCitees = new Set(cartes.map((v) => v.id));
-      const trouvees = videosDuSujet(pg, indexSujets, { max: 6 })
+      const trouvees = (videosParSujet.get(pg.slug) || [])
         .map((r) => byId.get(r.id))
         .filter((v) => v && !dejaCitees.has(v.id) && yt.entreDansLeSite(v))
         .slice(0, 4);

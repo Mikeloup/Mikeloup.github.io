@@ -1552,6 +1552,7 @@ export function videoPage({
   config, categories, nav, video, related, buildTime,
   personnesParVideo = new Map(), presentateurParRubrique = new Map(),
   transcription = null, diffusionsVideo = new Map(), archive = null,
+  sujet = null,
 }) {
   const cat = video.playlists?.[0];
   // L'entrée rangée dans la vidéo ne porte que le titre et l'identifiant ; la
@@ -1640,6 +1641,12 @@ export function videoPage({
     ${desc ? `<div class="prose article-body">${desc}</div>` : ''}
 
     ${quiEstBloc({ config, video, gens, presentateur })}
+
+    ${sujet ? `
+    <p class="renvoi-sujet">
+      <span class="renvoi-sujet-mot">Pour aller plus loin</span>
+      <a href="/${escapeHtml(sujet.slug)}/">${escapeHtml(sujet.titre)}</a>
+    </p>` : ''}
 
     ${video.playlists?.length > 1 ? `<p class="tags">Aussi dans : ${video.playlists.slice(1).map((p) => `<a class="chip small" href="/emissions/${p.slug}/">${escapeHtml(p.title)}</a>`).join(' ')}</p>` : ''}
   </article>
