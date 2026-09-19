@@ -200,12 +200,19 @@ async function main() {
   // La question laissée ouverte le 13 septembre : les demandes d'indexation
   // ont-elles abouti ? Aucune statistique ne le dit -- il faut interroger
   // l'inspection d'URL, une adresse à la fois.
+  // 19/09 : l'inspection ne couvrait que les pages « sujets/ ». Or la seule
+  // page thematique du site -- « television-israelienne-francophone », titree
+  // « Television israelienne en francais : ou regarder Tandem TV, canal 14
+  // Annatel » -- n'apparait nulle part dans les 20 premieres pages de Search
+  // Console, et on ne savait meme pas si elle etait indexee. On les inspecte
+  // toutes : elles sont vingt-quatre, et l'inspection d'URL en autorise 2 000
+  // par jour.
   const slugsSujets = (config.pages || [])
-    .map((pg) => pg.slug).filter((s) => s && s.startsWith('sujets/'));
+    .map((pg) => pg.slug).filter(Boolean);
   let indexation = '';
   try {
     const lignes = [];
-    for (const slug of slugsSujets.slice(0, 30)) {
+    for (const slug of slugsSujets.slice(0, 40)) {
       const url = `${config.siteUrl.replace(/\/$/, '')}/${slug}/`;
       const res = await fetch('https://searchconsole.googleapis.com/v1/urlInspection/index:inspect', {
         method: 'POST',
@@ -239,6 +246,48 @@ async function main() {
     if (Math.abs(v) < (d ? 0.05 : 0.5)) return ' (stable)';
     return ` (${v > 0 ? '+' : '−'}${nb(Math.abs(v), d)}${unite})`;
   };
+
+  // LES ADRESSES MORTES QUE GOOGLE MONTRE ENCORE.
+  //
+  // Michael, 18 septembre : « attention aux anciennes pages wix ». Le site
+  // vient d'un blog Wix, et data/anciennes-adresses.json a ete constitue le
+  // 30 juillet 2026 a partir de Search Console : 249 anciennes adresses
+  // recevaient alors des impressions, 89 seulement y sont declarees. Les
+  // autres ne sont recreees nulle part : elles repondent 404, et Google y
+  // envoie encore du monde.
+  //
+  // On ne DEDUIT pas la liste du fichier de correspondances -- on interroge
+  // chaque adresse que Google dit montrer, et on garde celles qui ne
+  // repondent pas. Une adresse peut manquer au fichier et vivre quand meme ;
+  // une autre peut y figurer et casser. Seule la reponse du serveur tranche.
+  let adressesMortes = '';
+  try {
+    const aTester = pages.slice(0, 300);
+    const mortes = [];
+    const LOT = 12;
+    for (let i = 0; i < aTester.length; i += LOT) {
+      await Promise.all(aTester.slice(i, i + LOT).map(async (r) => {
+        try {
+          const res = await fetch(r.keys[0], { method: 'HEAD', redirect: 'follow' });
+          if (!res.ok) mortes.push({ ...r, code: res.status });
+        } catch {
+          // Reseau : on ne conclut rien. Ne pas savoir n'est pas une panne.
+        }
+      }));
+    }
+    mortes.sort((x, y) => y.impressions - x.impressions);
+    adressesMortes = mortes.length
+      ? `**${mortes.length} adresse(s)** montrée(s) par Google sur ${aTester.length} testée(s) `
+        + `ne répondent plus. Elles ont l'ancienneté ; chacune se répare par une ligne dans `
+        + `\`data/anciennes-adresses.json\`.\n\n`
+        + tableau(['Adresse', 'Clics', 'Impr.', 'Position', 'Réponse'],
+          mortes.slice(0, 30).map((r) => [chemin(r.keys[0]), r.clicks, r.impressions,
+            nb(r.position), r.code]))
+        + (mortes.length > 30 ? `\n_… et ${mortes.length - 30} autre(s)._\n` : '')
+      : `**Aucune.** Les ${aTester.length} adresses que Google montre répondent toutes.\n`;
+  } catch (e) {
+    adressesMortes = `_Contrôle impossible : ${String(e.message).slice(0, 160)}_\n`;
+  }
 
   const titre = `Référencement — ${JOURS} jours au ${fin}`;
   const corps = `## ${titre}
@@ -304,6 +353,9 @@ ${sujets.length
 ### Sont-elles indexées ?
 
 ${indexation}
+### Ce que Google montre et qui n'existe plus
+
+${adressesMortes}
 ### Pays
 
 ${tableau(['Pays', 'Clics', 'Impr.', 'CTR', 'Position'], pays.slice(0, 10).map((r) => ligneMetrique(nomPays(r.keys[0]), r)))}
