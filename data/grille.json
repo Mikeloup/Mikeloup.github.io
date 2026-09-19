@@ -1,5 +1,5 @@
 {
-  "exported_at": "2026-09-19T15:47:52.420799",
+  "exported_at": "2026-09-19T16:02:57.022641",
   "window_days": 7,
   "rows": [
     {
@@ -795,10 +795,11 @@
     },
     {
       "date_diffusion": "2026-09-21",
-      "bloc_apres": "LES_ISRAELIENNES",
-      "type": "CLIPS_CHAINE",
+      "heure_debut": "09:24",
+      "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL"
+      "channel_id": "RONY_HAYOT",
+      "title": "Israël : TVA à 18 %, retraite à 70 ans… la facture de la guerre arrive"
     },
     {
       "date_diffusion": "2026-09-21",
@@ -806,6 +807,13 @@
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
       "channel_id": "KFIR_ALMAGOR"
+    },
+    {
+      "date_diffusion": "2026-09-21",
+      "bloc_apres": "LES_ISRAELIENNES",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "SOLAL_ISRAEL"
     },
     {
       "date_diffusion": "2026-09-21",
@@ -824,17 +832,26 @@
     },
     {
       "date_diffusion": "2026-09-21",
-      "bloc_apres": "CAFE_DAAT",
-      "type": "CLIPS_CHAINE",
+      "heure_debut": "10:57",
+      "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
+      "channel_id": "TSAHAL_FR",
+      "title": "Le Hezbollah continue de violer l’accord et de menacer directement les soldats d   IG Dc8zuLlgeVS"
     },
     {
       "date_diffusion": "2026-09-21",
       "bloc_apres": "CAFE_DAAT",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL"
+      "channel_id": "ISRAEL_EN_FRANCAIS"
+    },
+    {
+      "date_diffusion": "2026-09-21",
+      "heure_debut": "10:59",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "SOLAL_ISRAEL",
+      "title": "3en1 Merci l’hébreu!💯💡   IG Dc8Gjp9M1wf"
     },
     {
       "date_diffusion": "2026-09-21",
@@ -857,8 +874,8 @@
       "heure_debut": "12:31",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR",
-      "title": "שבעת   IG Dc6eArHt7oj"
+      "channel_id": "TSAHAL_FR",
+      "title": "Le Hamas et le Hezbollah peuvent opérer sur des fronts différents, mais ils part   IG DdEiXEegkxc"
     },
     {
       "date_diffusion": "2026-09-21",
@@ -872,12 +889,12 @@
       "heure_debut": "12:33",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "TSAHAL_FR",
-      "title": "Le Hezbollah continue de violer l’accord et de menacer directement les soldats d   IG Dc8zuLlgeVS"
+      "channel_id": "SOLAL_ISRAEL",
+      "title": "DAVID un être & une histoire qui sommeille en chacun de nous.   IG Dc2s1SaMgGq"
     },
     {
       "date_diffusion": "2026-09-21",
-      "heure_debut": "12:35",
+      "heure_debut": "12:36",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "SOLAL_ISRAEL",
@@ -885,7 +902,7 @@
     },
     {
       "date_diffusion": "2026-09-21",
-      "heure_debut": "12:37",
+      "heure_debut": "12:39",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "SOLAL_ISRAEL",
@@ -893,19 +910,11 @@
     },
     {
       "date_diffusion": "2026-09-21",
-      "heure_debut": "12:40",
+      "heure_debut": "12:42",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "SOLAL_ISRAEL",
       "title": "On passe notre vie à faire pour les autres ce qu’on ne fait pas avec soi même. A   IG Dc lqpBMdHR"
-    },
-    {
-      "date_diffusion": "2026-09-21",
-      "heure_debut": "12:43",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL",
-      "title": "3en1 Merci l’hébreu!💯💡   IG Dc8Gjp9M1wf"
     },
     {
       "date_diffusion": "2026-09-21",
@@ -919,14 +928,14 @@
       "bloc_apres": "WILLIAM_ZERBIB_L_INTERVIEW",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
+      "channel_id": "TSAHAL_FR"
     },
     {
       "date_diffusion": "2026-09-21",
       "bloc_apres": "WILLIAM_ZERBIB_L_INTERVIEW",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
+      "channel_id": "KFIR_ALMAGOR"
     },
     {
       "date_diffusion": "2026-09-21",
@@ -938,7 +947,7 @@
     },
     {
       "date_diffusion": "2026-09-21",
-      "heure_debut": "14:10",
+      "heure_debut": "14:11",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "STEPHANE_GOLDIN",
@@ -953,18 +962,11 @@
     },
     {
       "date_diffusion": "2026-09-21",
-      "heure_debut": "14:15",
+      "heure_debut": "14:16",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "TEL_AVIV_NEW_YORK",
-      "title": "SEMAINE DU 3 AU 9 AOUT"
-    },
-    {
-      "date_diffusion": "2026-09-21",
-      "bloc_apres": "OROT_VEKELIM",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
+      "title": "TEL AVIV NEW YORK EPISODE 19- SEMAINE DU 23 AU 30 AOUT"
     },
     {
       "date_diffusion": "2026-09-21",
@@ -972,6 +974,13 @@
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
       "channel_id": "SOLAL_ISRAEL"
+    },
+    {
+      "date_diffusion": "2026-09-21",
+      "bloc_apres": "OROT_VEKELIM",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "TSAHAL_FR"
     },
     {
       "date_diffusion": "2026-09-21",
@@ -993,13 +1002,6 @@
       "bloc_apres": "TOUR_D_ISRAEL",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL"
-    },
-    {
-      "date_diffusion": "2026-09-21",
-      "bloc_apres": "TOUR_D_ISRAEL",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
       "channel_id": "ISRAEL_EN_FRANCAIS"
     },
     {
@@ -1014,11 +1016,26 @@
       "bloc_apres": "TOUR_D_ISRAEL",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
+      "channel_id": "SOLAL_ISRAEL"
+    },
+    {
+      "date_diffusion": "2026-09-21",
+      "bloc_apres": "TOUR_D_ISRAEL",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
       "channel_id": "KFIR_ALMAGOR"
     },
     {
       "date_diffusion": "2026-09-21",
-      "heure_debut": "16:00",
+      "heure_debut": "15:25",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "TEL_AVIV_NEW_YORK",
+      "title": "EPISODE 19- SEMAINE DU 23 AU 30 AOUT"
+    },
+    {
+      "date_diffusion": "2026-09-21",
+      "heure_debut": "15:59",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "JEROME_HAAS_L_INTERVIEW",
@@ -1030,29 +1047,23 @@
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "SHALOM_SALAM",
-      "title": "Liban-Israël : la paix enfin possible ?"
+      "title": "Fracture dans la gauche française"
     },
     {
       "date_diffusion": "2026-09-21",
-      "heure_debut": "17:47",
+      "heure_debut": "18:09",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "RADIO_SHALOM_BOCHURBERG",
-      "title": "Le grand rabbin Olivier Kaufmann"
+      "title": "Alexandre Doulut et François Heilbronn"
     },
     {
       "date_diffusion": "2026-09-21",
-      "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
-      "type": "CLIPS_CHAINE",
+      "heure_debut": "18:58",
+      "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL"
-    },
-    {
-      "date_diffusion": "2026-09-21",
-      "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
+      "channel_id": "TEL_AVIV_NEW_YORK",
+      "title": "Interview de Denis Charbit"
     },
     {
       "date_diffusion": "2026-09-21",
@@ -1063,30 +1074,15 @@
     },
     {
       "date_diffusion": "2026-09-21",
-      "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
-    },
-    {
-      "date_diffusion": "2026-09-21",
-      "heure_debut": "19:34",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "KATAVA",
-      "title": "Farfour : la mascotte de Gaza qui a choqué le monde"
-    },
-    {
-      "date_diffusion": "2026-09-21",
-      "heure_debut": "19:43",
+      "heure_debut": "19:36",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 261025"
+      "title": "ujuh120426"
     },
     {
       "date_diffusion": "2026-09-21",
-      "heure_debut": "19:49",
+      "heure_debut": "19:44",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "STEPHANE_GOLDIN",
@@ -1094,19 +1090,59 @@
     },
     {
       "date_diffusion": "2026-09-21",
-      "heure_debut": "19:53",
+      "heure_debut": "19:49",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
-      "title": "Belvoir (1)"
+      "title": "tiberiad"
     },
     {
       "date_diffusion": "2026-09-21",
-      "heure_debut": "19:57",
+      "heure_debut": "19:52",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "KATAVA",
+      "title": "Maroc/Israël : un film d'animation célèbre les accords d'Abraham"
+    },
+    {
+      "date_diffusion": "2026-09-21",
+      "heure_debut": "19:53",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "KFIR_ALMAGOR",
+      "title": "שבעת   IG Dc6eArHt7oj"
+    },
+    {
+      "date_diffusion": "2026-09-21",
+      "heure_debut": "19:54",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "SOLAL_ISRAEL",
+      "title": "3en1 Merci l’hébreu!💯💡   IG Dc8Gjp9M1wf"
+    },
+    {
+      "date_diffusion": "2026-09-21",
+      "heure_debut": "19:55",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "TSAHAL_FR",
+      "title": "Le Hezbollah continue de violer l’accord et de menacer directement les soldats d   IG Dc8zuLlgeVS"
+    },
+    {
+      "date_diffusion": "2026-09-21",
+      "heure_debut": "19:56",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "SOLAL_ISRAEL",
       "title": "DAVID un être & une histoire qui sommeille en chacun de nous.   IG Dc2s1SaMgGq"
+    },
+    {
+      "date_diffusion": "2026-09-21",
+      "heure_debut": "19:59",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "KATAVA",
+      "title": "La folie Kpop Demon Hunters, en Israël aussi ! (reportage)"
     },
     {
       "date_diffusion": "2026-09-21",
@@ -1118,7 +1154,7 @@
     },
     {
       "date_diffusion": "2026-09-21",
-      "heure_debut": "22:01",
+      "heure_debut": "22:00",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "RADIO_SHALOM_BOCHURBERG",
@@ -1137,14 +1173,7 @@
       "bloc_apres": "CAFE_DAAT",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
-    },
-    {
-      "date_diffusion": "2026-09-22",
-      "bloc_apres": "CAFE_DAAT",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "ISRAEL_EN_FRANCAIS"
+      "channel_id": "TSAHAL_FR"
     },
     {
       "date_diffusion": "2026-09-22",
@@ -1152,6 +1181,13 @@
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
       "channel_id": "SOLAL_ISRAEL"
+    },
+    {
+      "date_diffusion": "2026-09-22",
+      "bloc_apres": "CAFE_DAAT",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "KFIR_ALMAGOR"
     },
     {
       "date_diffusion": "2026-09-22",
@@ -1186,21 +1222,6 @@
     },
     {
       "date_diffusion": "2026-09-22",
-      "heure_debut": "10:38",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL",
-      "title": "On passe notre vie à faire pour les autres ce qu’on ne fait pas avec soi même. A   IG Dc lqpBMdHR"
-    },
-    {
-      "date_diffusion": "2026-09-22",
-      "bloc_apres": "WILLIAM_ZERBIB_L_INTERVIEW",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
-    },
-    {
-      "date_diffusion": "2026-09-22",
       "bloc_apres": "WILLIAM_ZERBIB_L_INTERVIEW",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
@@ -1208,18 +1229,17 @@
     },
     {
       "date_diffusion": "2026-09-22",
-      "heure_debut": "10:42",
-      "type": "COURT_NOMME",
+      "bloc_apres": "WILLIAM_ZERBIB_L_INTERVIEW",
+      "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "TSAHAL_FR",
-      "title": "Le Hamas et le Hezbollah peuvent opérer sur des fronts différents, mais ils part   IG DdEiXEegkxc"
+      "channel_id": "TSAHAL_FR"
     },
     {
       "date_diffusion": "2026-09-22",
       "bloc_apres": "WILLIAM_ZERBIB_L_INTERVIEW",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
+      "channel_id": "KFIR_ALMAGOR"
     },
     {
       "date_diffusion": "2026-09-22",
@@ -1231,11 +1251,19 @@
     },
     {
       "date_diffusion": "2026-09-22",
-      "heure_debut": "12:11",
+      "heure_debut": "12:10",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "RADIO_SHALOM_BOCHURBERG",
-      "title": "Benjamin Fogel pour son livre: \"Les évadés du convoi 53\""
+      "title": "Alexandre Doulut et François Heilbronn"
+    },
+    {
+      "date_diffusion": "2026-09-22",
+      "heure_debut": "12:59",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "TSAHAL_FR",
+      "title": "Protéger les eaux d’Israël, jour comme nuit 🌊   IG Dc ZR 7AxmD"
     },
     {
       "date_diffusion": "2026-09-22",
@@ -1247,18 +1275,26 @@
     },
     {
       "date_diffusion": "2026-09-22",
-      "bloc_apres": "TOUR_D_ISRAEL",
-      "type": "CLIPS_CHAINE",
+      "heure_debut": "13:22",
+      "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL"
+      "channel_id": "KFIR_ALMAGOR",
+      "title": "שבעת   IG Dc6eArHt7oj"
     },
     {
       "date_diffusion": "2026-09-22",
-      "heure_debut": "13:24",
+      "heure_debut": "13:23",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "SOLAL_ISRAEL",
-      "title": "3en1 Merci l’hébreu!💯💡   IG Dc8Gjp9M1wf"
+      "title": "Et si les animaux qui nous dérangent   IG Dc1LNQCM zM"
+    },
+    {
+      "date_diffusion": "2026-09-22",
+      "bloc_apres": "TOUR_D_ISRAEL",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "KFIR_ALMAGOR"
     },
     {
       "date_diffusion": "2026-09-22",
@@ -1269,25 +1305,59 @@
     },
     {
       "date_diffusion": "2026-09-22",
-      "heure_debut": "13:25",
+      "heure_debut": "13:37",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "ujuh141225"
+    },
+    {
+      "date_diffusion": "2026-09-22",
+      "heure_debut": "13:43",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "STEPHANE_GOLDIN",
+      "title": "IMG 9254"
+    },
+    {
+      "date_diffusion": "2026-09-22",
+      "heure_debut": "13:48",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "CARTES_POSTALES",
+      "title": "tiberiad"
+    },
+    {
+      "date_diffusion": "2026-09-22",
+      "heure_debut": "13:51",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "KATAVA",
+      "title": "Israël : la version disparue de Sesame Street (1998)"
+    },
+    {
+      "date_diffusion": "2026-09-22",
+      "heure_debut": "13:54",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "SOLAL_ISRAEL",
+      "title": "Je crois que ce qu’il manque au monde c’est la diffusion de l’hébreu!   IG DdA9j AMCB6"
+    },
+    {
+      "date_diffusion": "2026-09-22",
+      "heure_debut": "13:56",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "TSAHAL_FR",
-      "title": "Le Hezbollah continue de violer l’accord et de menacer directement les soldats d   IG Dc8zuLlgeVS"
+      "title": "Le Hamas et le Hezbollah peuvent opérer sur des fronts différents, mais ils part   IG DdEiXEegkxc"
     },
     {
       "date_diffusion": "2026-09-22",
-      "bloc_apres": "TOUR_D_ISRAEL",
-      "type": "CLIPS_CHAINE",
+      "heure_debut": "13:56",
+      "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "ISRAEL_EN_FRANCAIS"
-    },
-    {
-      "date_diffusion": "2026-09-22",
-      "bloc_apres": "TOUR_D_ISRAEL",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
+      "channel_id": "KATAVA",
+      "title": "Quand Superman faisait la paix entre Israël et les Palestiniens"
     },
     {
       "date_diffusion": "2026-09-22",
@@ -1322,11 +1392,11 @@
     },
     {
       "date_diffusion": "2026-09-22",
-      "heure_debut": "16:39",
+      "heure_debut": "16:40",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "TSAHAL_FR",
-      "title": "Protéger les eaux d’Israël, jour comme nuit 🌊   IG Dc ZR 7AxmD"
+      "title": "Le Hezbollah continue de violer l’accord et de menacer directement les soldats d   IG Dc8zuLlgeVS"
     },
     {
       "date_diffusion": "2026-09-22",
@@ -1334,43 +1404,35 @@
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "SOLAL_ISRAEL",
+      "title": "On passe notre vie à faire pour les autres ce qu’on ne fait pas avec soi même. A   IG Dc lqpBMdHR"
+    },
+    {
+      "date_diffusion": "2026-09-22",
+      "heure_debut": "16:43",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "SOLAL_ISRAEL",
+      "title": "3en1 Merci l’hébreu!💯💡   IG Dc8Gjp9M1wf"
+    },
+    {
+      "date_diffusion": "2026-09-22",
+      "heure_debut": "16:46",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "SOLAL_ISRAEL",
       "title": "DAVID un être & une histoire qui sommeille en chacun de nous.   IG Dc2s1SaMgGq"
     },
     {
       "date_diffusion": "2026-09-22",
-      "heure_debut": "16:44",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "STEPHANE_GOLDIN",
-      "title": "IMG 9254"
-    },
-    {
-      "date_diffusion": "2026-09-22",
-      "heure_debut": "16:50",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL",
-      "title": "Et si les animaux qui nous dérangent   IG Dc1LNQCM zM"
-    },
-    {
-      "date_diffusion": "2026-09-22",
-      "heure_debut": "16:52",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL",
-      "title": "Je crois que ce qu’il manque au monde c’est la diffusion de l’hébreu!   IG DdA9j AMCB6"
-    },
-    {
-      "date_diffusion": "2026-09-22",
-      "heure_debut": "16:54",
+      "heure_debut": "16:49",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "SHALOM_SALAM",
-      "title": "La guerre en Iran peut-elle permettre l’avènement d’une démocratie ?"
+      "title": "Liban-Israël : la paix enfin possible ?"
     },
     {
       "date_diffusion": "2026-09-22",
-      "heure_debut": "18:39",
+      "heure_debut": "18:19",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "LES_ISRAELIENNES",
@@ -1381,11 +1443,25 @@
       "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
+      "channel_id": "SOLAL_ISRAEL"
+    },
+    {
+      "date_diffusion": "2026-09-22",
+      "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "TSAHAL_FR"
+    },
+    {
+      "date_diffusion": "2026-09-22",
+      "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
       "channel_id": "KFIR_ALMAGOR"
     },
     {
       "date_diffusion": "2026-09-22",
-      "heure_debut": "20:01",
+      "heure_debut": "20:00",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "JEROME_HAAS_L_INTERVIEW",
@@ -1419,31 +1495,8 @@
       "heure_debut": "09:19",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "WILLIAM_ZERBIB_L_INTERVIEW",
-      "title": "Du Hamas à Téhéran : le grand tour géostratégique du Moyen-Orient | Alexander Grinberg"
-    },
-    {
-      "date_diffusion": "2026-09-23",
-      "heure_debut": "09:51",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "Ramat Hanadiv"
-    },
-    {
-      "date_diffusion": "2026-09-23",
-      "heure_debut": "09:56",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL",
-      "title": "DAVID un être & une histoire qui sommeille en chacun de nous.   IG Dc2s1SaMgGq"
-    },
-    {
-      "date_diffusion": "2026-09-23",
-      "bloc_apres": "LES_ISRAELIENNES",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
+      "channel_id": "KFIR_ALMAGOR",
+      "title": "שבעת   IG Dc6eArHt7oj"
     },
     {
       "date_diffusion": "2026-09-23",
@@ -1454,7 +1507,7 @@
     },
     {
       "date_diffusion": "2026-09-23",
-      "heure_debut": "10:00",
+      "heure_debut": "09:21",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "TSAHAL_FR",
@@ -1462,7 +1515,47 @@
     },
     {
       "date_diffusion": "2026-09-23",
-      "heure_debut": "10:01",
+      "heure_debut": "09:23",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "SOLAL_ISRAEL",
+      "title": "Je crois que ce qu’il manque au monde c’est la diffusion de l’hébreu!   IG DdA9j AMCB6"
+    },
+    {
+      "date_diffusion": "2026-09-23",
+      "heure_debut": "09:25",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "STEPHANE_GOLDIN",
+      "title": "IMG 9254"
+    },
+    {
+      "date_diffusion": "2026-09-23",
+      "heure_debut": "09:30",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "JEROME_HAAS_L_INTERVIEW",
+      "title": "Mahnaz Shirali"
+    },
+    {
+      "date_diffusion": "2026-09-23",
+      "heure_debut": "09:50",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "UJUH 091125"
+    },
+    {
+      "date_diffusion": "2026-09-23",
+      "heure_debut": "09:57",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "KATAVA",
+      "title": "Le Japon et les Juifs, une même origine ? Décryptage d'un mythe"
+    },
+    {
+      "date_diffusion": "2026-09-23",
+      "heure_debut": "10:00",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "CAFE_DAAT",
@@ -1470,18 +1563,26 @@
     },
     {
       "date_diffusion": "2026-09-23",
-      "bloc_apres": "CAFE_DAAT",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL"
-    },
-    {
-      "date_diffusion": "2026-09-23",
-      "heure_debut": "10:59",
+      "heure_debut": "10:57",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "TSAHAL_FR",
       "title": "Protéger les eaux d’Israël, jour comme nuit 🌊   IG Dc ZR 7AxmD"
+    },
+    {
+      "date_diffusion": "2026-09-23",
+      "bloc_apres": "CAFE_DAAT",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "ISRAEL_EN_FRANCAIS"
+    },
+    {
+      "date_diffusion": "2026-09-23",
+      "heure_debut": "10:58",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "SOLAL_ISRAEL",
+      "title": "On passe notre vie à faire pour les autres ce qu’on ne fait pas avec soi même. A   IG Dc lqpBMdHR"
     },
     {
       "date_diffusion": "2026-09-23",
@@ -1496,16 +1597,31 @@
       "heure_debut": "11:49",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "STEPHANE_GOLDIN",
-      "title": "IMG 9254"
+      "channel_id": "TSAHAL_FR",
+      "title": "Le Hamas et le Hezbollah peuvent opérer sur des fronts différents, mais ils part   IG DdEiXEegkxc"
     },
     {
       "date_diffusion": "2026-09-23",
-      "heure_debut": "11:54",
+      "bloc_apres": "YINON_SHOW",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "ISRAEL_EN_FRANCAIS"
+    },
+    {
+      "date_diffusion": "2026-09-23",
+      "heure_debut": "11:51",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "KATAVA",
-      "title": "Edgar Magnin, le rabbin d'Hollywood"
+      "channel_id": "SOLAL_ISRAEL",
+      "title": "3en1 Merci l’hébreu!💯💡   IG Dc8Gjp9M1wf"
+    },
+    {
+      "date_diffusion": "2026-09-23",
+      "heure_debut": "11:53",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "CARTES_POSTALES",
+      "title": "Belvoir (1)"
     },
     {
       "date_diffusion": "2026-09-23",
@@ -1519,15 +1635,7 @@
       "bloc_apres": "YINON_SHOW",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
-    },
-    {
-      "date_diffusion": "2026-09-23",
-      "heure_debut": "12:00",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL",
-      "title": "Et si les animaux qui nous dérangent   IG Dc1LNQCM zM"
+      "channel_id": "KFIR_ALMAGOR"
     },
     {
       "date_diffusion": "2026-09-23",
@@ -1542,35 +1650,59 @@
       "heure_debut": "13:11",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "LES_ISRAELIENNES",
-      "title": "La Diaspora contre Israël ? Cette guerre va-t-elle éclater ?"
+      "channel_id": "SOLAL_ISRAEL",
+      "title": "DAVID un être & une histoire qui sommeille en chacun de nous.   IG Dc2s1SaMgGq"
     },
     {
       "date_diffusion": "2026-09-23",
       "bloc_apres": "OROT_VEKELIM",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL"
+      "channel_id": "ISRAEL_EN_FRANCAIS"
     },
     {
       "date_diffusion": "2026-09-23",
-      "heure_debut": "13:58",
+      "heure_debut": "13:15",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL",
-      "title": "Je crois que ce qu’il manque au monde c’est la diffusion de l’hébreu!   IG DdA9j AMCB6"
+      "channel_id": "WILLIAM_ZERBIB_L_INTERVIEW",
+      "title": "Michel Fayad"
+    },
+    {
+      "date_diffusion": "2026-09-23",
+      "heure_debut": "13:48",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "KFIR_ALMAGOR",
+      "title": "שבעת   IG Dc6eArHt7oj"
+    },
+    {
+      "date_diffusion": "2026-09-23",
+      "heure_debut": "13:49",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "TSAHAL_FR",
+      "title": "Le Hezbollah continue de violer l’accord et de menacer directement les soldats d   IG Dc8zuLlgeVS"
+    },
+    {
+      "date_diffusion": "2026-09-23",
+      "heure_debut": "13:50",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "STEPHANE_GOLDIN",
+      "title": "IMG 9254"
+    },
+    {
+      "date_diffusion": "2026-09-23",
+      "heure_debut": "13:55",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "CARTES_POSTALES",
+      "title": "Bet Shearim"
     },
     {
       "date_diffusion": "2026-09-23",
       "heure_debut": "14:00",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "TSAHAL_FR",
-      "title": "Le Hamas et le Hezbollah peuvent opérer sur des fronts différents, mais ils part   IG DdEiXEegkxc"
-    },
-    {
-      "date_diffusion": "2026-09-23",
-      "heure_debut": "14:01",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "TOUR_D_ISRAEL",
@@ -1578,11 +1710,11 @@
     },
     {
       "date_diffusion": "2026-09-23",
-      "heure_debut": "14:23",
+      "heure_debut": "14:22",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR",
-      "title": "שבעת   IG Dc6eArHt7oj"
+      "channel_id": "SOLAL_ISRAEL",
+      "title": "Et si les animaux qui nous dérangent   IG Dc1LNQCM zM"
     },
     {
       "date_diffusion": "2026-09-23",
@@ -1593,43 +1725,11 @@
     },
     {
       "date_diffusion": "2026-09-23",
-      "heure_debut": "14:24",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "JEROME_HAAS_L_INTERVIEW",
-      "title": "Mahnaz Shirali"
-    },
-    {
-      "date_diffusion": "2026-09-23",
-      "heure_debut": "14:44",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL",
-      "title": "On passe notre vie à faire pour les autres ce qu’on ne fait pas avec soi même. A   IG Dc lqpBMdHR"
-    },
-    {
-      "date_diffusion": "2026-09-23",
-      "heure_debut": "14:46",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "TSAHAL_FR",
-      "title": "Le Hezbollah continue de violer l’accord et de menacer directement les soldats d   IG Dc8zuLlgeVS"
-    },
-    {
-      "date_diffusion": "2026-09-23",
-      "heure_debut": "14:47",
+      "heure_debut": "14:23",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une hsitoire 221224"
-    },
-    {
-      "date_diffusion": "2026-09-23",
-      "heure_debut": "14:52",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "KATAVA",
-      "title": "Les \"méchants sionistes\" au cinéma en Iran"
+      "title": "un jour une histoire 261025"
     },
     {
       "date_diffusion": "2026-09-23",
@@ -1640,10 +1740,33 @@
     },
     {
       "date_diffusion": "2026-09-23",
+      "heure_debut": "14:31",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "KATAVA",
+      "title": "Maroc/Israël : un film d'animation célèbre les accords d'Abraham"
+    },
+    {
+      "date_diffusion": "2026-09-23",
       "bloc_apres": "TOUR_D_ISRAEL",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
       "channel_id": "TSAHAL_FR"
+    },
+    {
+      "date_diffusion": "2026-09-23",
+      "bloc_apres": "TOUR_D_ISRAEL",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "KFIR_ALMAGOR"
+    },
+    {
+      "date_diffusion": "2026-09-23",
+      "heure_debut": "14:41",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "CARTES_POSTALES",
+      "title": "Carte postale La synagogue de Capharnaum2"
     },
     {
       "date_diffusion": "2026-09-23",
@@ -1658,8 +1781,8 @@
       "heure_debut": "15:17",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "appolonia"
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "un jour une histoire 191025"
     },
     {
       "date_diffusion": "2026-09-23",
@@ -1670,7 +1793,15 @@
     },
     {
       "date_diffusion": "2026-09-23",
-      "heure_debut": "15:21",
+      "heure_debut": "15:25",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "LES_ISRAELIENNES",
+      "title": "Bibi est-il devenu plus grand que le Likoud ?"
+    },
+    {
+      "date_diffusion": "2026-09-23",
+      "heure_debut": "16:29",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "TSAHAL_FR",
@@ -1678,7 +1809,55 @@
     },
     {
       "date_diffusion": "2026-09-23",
-      "heure_debut": "15:23",
+      "heure_debut": "16:31",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "SOLAL_ISRAEL",
+      "title": "Je crois que ce qu’il manque au monde c’est la diffusion de l’hébreu!   IG DdA9j AMCB6"
+    },
+    {
+      "date_diffusion": "2026-09-23",
+      "heure_debut": "16:34",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "un ujuh121025"
+    },
+    {
+      "date_diffusion": "2026-09-23",
+      "heure_debut": "16:42",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "KATAVA",
+      "title": "La folie Kpop Demon Hunters, en Israël aussi ! (reportage)"
+    },
+    {
+      "date_diffusion": "2026-09-23",
+      "heure_debut": "16:44",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "CARTES_POSTALES",
+      "title": "Cesarée"
+    },
+    {
+      "date_diffusion": "2026-09-23",
+      "heure_debut": "16:49",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "TSAHAL_FR",
+      "title": "Le Hamas et le Hezbollah peuvent opérer sur des fronts différents, mais ils part   IG DdEiXEegkxc"
+    },
+    {
+      "date_diffusion": "2026-09-23",
+      "heure_debut": "16:50",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "SOLAL_ISRAEL",
+      "title": "On passe notre vie à faire pour les autres ce qu’on ne fait pas avec soi même. A   IG Dc lqpBMdHR"
+    },
+    {
+      "date_diffusion": "2026-09-23",
+      "heure_debut": "16:52",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "SOLAL_ISRAEL",
@@ -1686,99 +1865,43 @@
     },
     {
       "date_diffusion": "2026-09-23",
-      "heure_debut": "15:25",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL",
-      "title": "DAVID un être & une histoire qui sommeille en chacun de nous.   IG Dc2s1SaMgGq"
-    },
-    {
-      "date_diffusion": "2026-09-23",
-      "heure_debut": "15:29",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 15.12.24"
-    },
-    {
-      "date_diffusion": "2026-09-23",
-      "heure_debut": "15:35",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 081224"
-    },
-    {
-      "date_diffusion": "2026-09-23",
-      "heure_debut": "15:43",
+      "heure_debut": "16:53",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "KATAVA",
-      "title": "Farfour : la mascotte de Gaza qui a choqué le monde"
+      "title": "Les 4 Fantastiques : Ben Grimm / La Chose est juif ?"
     },
     {
       "date_diffusion": "2026-09-23",
-      "heure_debut": "15:52",
+      "heure_debut": "16:59",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "KATAVA",
-      "title": "Le Japon et les Juifs, une même origine ? Décryptage d'un mythe"
+      "title": "Israël : la version disparue de Sesame Street (1998)"
     },
     {
       "date_diffusion": "2026-09-23",
-      "heure_debut": "15:56",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "KATAVA",
-      "title": "Maroc/Israël : un film d'animation célèbre les accords d'Abraham"
-    },
-    {
-      "date_diffusion": "2026-09-23",
-      "heure_debut": "15:58",
+      "heure_debut": "17:03",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
-      "title": "nabatheens"
+      "title": "Ein Gedi"
     },
     {
       "date_diffusion": "2026-09-23",
-      "heure_debut": "16:02",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL",
-      "title": "Et si les animaux qui nous dérangent   IG Dc1LNQCM zM"
-    },
-    {
-      "date_diffusion": "2026-09-23",
-      "heure_debut": "16:04",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "tiberiad"
-    },
-    {
-      "date_diffusion": "2026-09-23",
-      "heure_debut": "16:08",
+      "heure_debut": "17:07",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "SHALOM_SALAM",
-      "title": "Fracture dans la gauche française"
+      "title": "La guerre en Iran peut-elle permettre l’avènement d’une démocratie ?"
     },
     {
       "date_diffusion": "2026-09-23",
-      "heure_debut": "18:00",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "RADIO_SHALOM_BOCHURBERG",
-      "title": "Benjamin Fogel pour son livre: \"Les évadés du convoi 53\""
-    },
-    {
-      "date_diffusion": "2026-09-23",
-      "heure_debut": "18:49",
+      "heure_debut": "18:53",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "LES_ISRAELIENNES",
-      "title": "40 jours de Guerre : 1er bilan"
+      "title": "Que reste-t-il de la gauche israélienne ?"
     },
     {
       "date_diffusion": "2026-09-23",
@@ -1803,7 +1926,7 @@
     },
     {
       "date_diffusion": "2026-09-23",
-      "heure_debut": "20:00",
+      "heure_debut": "20:01",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "WILLIAM_ZERBIB_L_INTERVIEW",
@@ -1819,7 +1942,14 @@
     },
     {
       "date_diffusion": "2026-09-24",
-      "heure_debut": "08:00",
+      "bloc_apres": null,
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "ISRAEL_EN_FRANCAIS"
+    },
+    {
+      "date_diffusion": "2026-09-24",
+      "heure_debut": "08:01",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "LES_ISRAELIENNES",
@@ -1827,11 +1957,11 @@
     },
     {
       "date_diffusion": "2026-09-24",
-      "heure_debut": "09:18",
+      "heure_debut": "09:19",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR",
-      "title": "שבעת   IG Dc6eArHt7oj"
+      "channel_id": "SOLAL_ISRAEL",
+      "title": "Et si les animaux qui nous dérangent   IG Dc1LNQCM zM"
     },
     {
       "date_diffusion": "2026-09-24",
@@ -1842,35 +1972,49 @@
     },
     {
       "date_diffusion": "2026-09-24",
-      "heure_debut": "09:19",
+      "heure_debut": "09:21",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "TSAHAL_FR",
-      "title": "Le Hezbollah continue de violer l’accord et de menacer directement les soldats d   IG Dc8zuLlgeVS"
+      "channel_id": "STEPHANE_GOLDIN",
+      "title": "IMG 9254"
     },
     {
       "date_diffusion": "2026-09-24",
-      "heure_debut": "09:20",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL",
-      "title": "On passe notre vie à faire pour les autres ce qu’on ne fait pas avec soi même. A   IG Dc lqpBMdHR"
-    },
-    {
-      "date_diffusion": "2026-09-24",
-      "heure_debut": "09:22",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "WILLIAM_ZERBIB_L_INTERVIEW",
-      "title": "Bruno Lellouche"
-    },
-    {
-      "date_diffusion": "2026-09-24",
-      "heure_debut": "09:52",
+      "heure_debut": "09:25",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 031124"
+      "title": "un jour une hsitoire 290625"
+    },
+    {
+      "date_diffusion": "2026-09-24",
+      "heure_debut": "09:33",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "CARTES_POSTALES",
+      "title": "Grotte de sédécias"
+    },
+    {
+      "date_diffusion": "2026-09-24",
+      "heure_debut": "09:38",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "KATAVA",
+      "title": "Edgar Magnin, le rabbin d'Hollywood"
+    },
+    {
+      "date_diffusion": "2026-09-24",
+      "bloc_apres": "LES_ISRAELIENNES",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "KFIR_ALMAGOR"
+    },
+    {
+      "date_diffusion": "2026-09-24",
+      "bloc_apres": "LES_ISRAELIENNES",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "SOLAL_ISRAEL"
     },
     {
       "date_diffusion": "2026-09-24",
@@ -1916,38 +2060,31 @@
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "SOLAL_ISRAEL",
-      "title": "3en1 Merci l’hébreu!💯💡   IG Dc8Gjp9M1wf"
+      "title": "Je crois que ce qu’il manque au monde c’est la diffusion de l’hébreu!   IG DdA9j AMCB6"
     },
     {
       "date_diffusion": "2026-09-24",
-      "heure_debut": "11:35",
+      "heure_debut": "11:36",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 271024"
+      "title": "un jour une histoire 150625"
     },
     {
       "date_diffusion": "2026-09-24",
-      "heure_debut": "11:41",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "Safed"
-    },
-    {
-      "date_diffusion": "2026-09-24",
-      "heure_debut": "11:45",
+      "heure_debut": "11:42",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "KATAVA",
-      "title": "Israël : la version disparue de Sesame Street (1998)"
+      "title": "Les \"méchants sionistes\" au cinéma en Iran"
     },
     {
       "date_diffusion": "2026-09-24",
-      "bloc_apres": "WILLIAM_ZERBIB_L_INTERVIEW",
-      "type": "CLIPS_CHAINE",
+      "heure_debut": "11:47",
+      "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
+      "channel_id": "CARTES_POSTALES",
+      "title": "Les jardins Bahai"
     },
     {
       "date_diffusion": "2026-09-24",
@@ -1965,15 +2102,14 @@
     },
     {
       "date_diffusion": "2026-09-24",
-      "heure_debut": "11:52",
-      "type": "COURT_NOMME",
+      "bloc_apres": "WILLIAM_ZERBIB_L_INTERVIEW",
+      "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "STEPHANE_GOLDIN",
-      "title": "IMG 9254"
+      "channel_id": "KFIR_ALMAGOR"
     },
     {
       "date_diffusion": "2026-09-24",
-      "heure_debut": "11:59",
+      "heure_debut": "12:00",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "OROT_VEKELIM",
@@ -1984,8 +2120,8 @@
       "heure_debut": "13:10",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "TSAHAL_FR",
-      "title": "Le Hamas et le Hezbollah peuvent opérer sur des fronts différents, mais ils part   IG DdEiXEegkxc"
+      "channel_id": "KFIR_ALMAGOR",
+      "title": "שבעת   IG Dc6eArHt7oj"
     },
     {
       "date_diffusion": "2026-09-24",
@@ -1999,32 +2135,40 @@
       "heure_debut": "13:12",
       "type": "COURT_NOMME",
       "heure_fixe": false,
+      "channel_id": "TSAHAL_FR",
+      "title": "Le Hamas et le Hezbollah peuvent opérer sur des fronts différents, mais ils part   IG DdEiXEegkxc"
+    },
+    {
+      "date_diffusion": "2026-09-24",
+      "heure_debut": "13:14",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
       "channel_id": "SOLAL_ISRAEL",
-      "title": "DAVID un être & une histoire qui sommeille en chacun de nous.   IG Dc2s1SaMgGq"
+      "title": "On passe notre vie à faire pour les autres ce qu’on ne fait pas avec soi même. A   IG Dc lqpBMdHR"
     },
     {
       "date_diffusion": "2026-09-24",
-      "heure_debut": "13:15",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 131024"
-    },
-    {
-      "date_diffusion": "2026-09-24",
-      "heure_debut": "13:22",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "Belvoir (1)"
-    },
-    {
-      "date_diffusion": "2026-09-24",
-      "heure_debut": "13:26",
+      "heure_debut": "13:16",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "KATAVA",
-      "title": "Quand Superman faisait la paix entre Israël et les Palestiniens"
+      "title": "Farfour : la mascotte de Gaza qui a choqué le monde"
+    },
+    {
+      "date_diffusion": "2026-09-24",
+      "heure_debut": "13:25",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "un jour une histoire 080625"
+    },
+    {
+      "date_diffusion": "2026-09-24",
+      "heure_debut": "13:31",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "CARTES_POSTALES",
+      "title": "Massada"
     },
     {
       "date_diffusion": "2026-09-24",
@@ -2049,11 +2193,11 @@
     },
     {
       "date_diffusion": "2026-09-24",
-      "heure_debut": "13:59",
+      "heure_debut": "13:39",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL",
-      "title": "Et si les animaux qui nous dérangent   IG Dc1LNQCM zM"
+      "channel_id": "STEPHANE_GOLDIN",
+      "title": "IMG 9254"
     },
     {
       "date_diffusion": "2026-09-24",
@@ -2068,8 +2212,24 @@
       "heure_debut": "14:22",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR",
-      "title": "שבעת   IG Dc6eArHt7oj"
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "un jour une histoire 310525"
+    },
+    {
+      "date_diffusion": "2026-09-24",
+      "heure_debut": "14:29",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "CARTES_POSTALES",
+      "title": "Ramat Hanadiv"
+    },
+    {
+      "date_diffusion": "2026-09-24",
+      "heure_debut": "14:34",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "KATAVA",
+      "title": "Le Japon et les Juifs, une même origine ? Décryptage d'un mythe"
     },
     {
       "date_diffusion": "2026-09-24",
@@ -2080,27 +2240,10 @@
     },
     {
       "date_diffusion": "2026-09-24",
-      "heure_debut": "14:24",
-      "type": "COURT_NOMME",
+      "bloc_apres": "TOUR_D_ISRAEL",
+      "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 061024"
-    },
-    {
-      "date_diffusion": "2026-09-24",
-      "heure_debut": "14:31",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "Bet Shearim"
-    },
-    {
-      "date_diffusion": "2026-09-24",
-      "heure_debut": "14:35",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "KATAVA",
-      "title": "Gerard Hoffnung : le clown de l'orchestre"
+      "channel_id": "KFIR_ALMAGOR"
     },
     {
       "date_diffusion": "2026-09-24",
@@ -2111,17 +2254,11 @@
     },
     {
       "date_diffusion": "2026-09-24",
-      "bloc_apres": "TOUR_D_ISRAEL",
-      "type": "CLIPS_CHAINE",
+      "heure_debut": "14:46",
+      "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
-    },
-    {
-      "date_diffusion": "2026-09-24",
-      "bloc_apres": "TOUR_D_ISRAEL",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
+      "channel_id": "TSAHAL_FR",
+      "title": "Le Hezbollah continue de violer l’accord et de menacer directement les soldats d   IG Dc8zuLlgeVS"
     },
     {
       "date_diffusion": "2026-09-24",
@@ -2152,7 +2289,7 @@
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "TSAHAL_FR",
-      "title": "Le Hezbollah continue de violer l’accord et de menacer directement les soldats d   IG Dc8zuLlgeVS"
+      "title": "Protéger les eaux d’Israël, jour comme nuit 🌊   IG Dc ZR 7AxmD"
     },
     {
       "date_diffusion": "2026-09-24",
@@ -2160,43 +2297,83 @@
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "SOLAL_ISRAEL",
+      "title": "3en1 Merci l’hébreu!💯💡   IG Dc8Gjp9M1wf"
+    },
+    {
+      "date_diffusion": "2026-09-24",
+      "heure_debut": "16:18",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "un jour une histoire 060425"
+    },
+    {
+      "date_diffusion": "2026-09-24",
+      "heure_debut": "16:23",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "LES_ISRAELIENNES",
+      "title": "Pourquoi la droite israélienne ne pardonnera jamais à Bennett ?"
+    },
+    {
+      "date_diffusion": "2026-09-24",
+      "heure_debut": "17:26",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "KFIR_ALMAGOR",
+      "title": "שבעת   IG Dc6eArHt7oj"
+    },
+    {
+      "date_diffusion": "2026-09-24",
+      "heure_debut": "17:28",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "TSAHAL_FR",
+      "title": "Le Hamas et le Hezbollah peuvent opérer sur des fronts différents, mais ils part   IG DdEiXEegkxc"
+    },
+    {
+      "date_diffusion": "2026-09-24",
+      "heure_debut": "17:30",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "SOLAL_ISRAEL",
+      "title": "DAVID un être & une histoire qui sommeille en chacun de nous.   IG Dc2s1SaMgGq"
+    },
+    {
+      "date_diffusion": "2026-09-24",
+      "heure_debut": "17:33",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "KATAVA",
+      "title": "Maroc/Israël : un film d'animation célèbre les accords d'Abraham"
+    },
+    {
+      "date_diffusion": "2026-09-24",
+      "heure_debut": "17:36",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "CARTES_POSTALES",
+      "title": "Rosh Hanikra"
+    },
+    {
+      "date_diffusion": "2026-09-24",
+      "heure_debut": "17:41",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "SOLAL_ISRAEL",
+      "title": "Et si les animaux qui nous dérangent   IG Dc1LNQCM zM"
+    },
+    {
+      "date_diffusion": "2026-09-24",
+      "heure_debut": "17:43",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "SOLAL_ISRAEL",
       "title": "Je crois que ce qu’il manque au monde c’est la diffusion de l’hébreu!   IG DdA9j AMCB6"
     },
     {
       "date_diffusion": "2026-09-24",
-      "heure_debut": "16:19",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 290924"
-    },
-    {
-      "date_diffusion": "2026-09-24",
-      "heure_debut": "16:25",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "KATAVA",
-      "title": "Edgar Magnin, le rabbin d'Hollywood"
-    },
-    {
-      "date_diffusion": "2026-09-24",
-      "heure_debut": "16:29",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "Carte postale La synagogue de Capharnaum2"
-    },
-    {
-      "date_diffusion": "2026-09-24",
-      "heure_debut": "16:34",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "TSAHAL_FR",
-      "title": "Protéger les eaux d’Israël, jour comme nuit 🌊   IG Dc ZR 7AxmD"
-    },
-    {
-      "date_diffusion": "2026-09-24",
-      "heure_debut": "16:36",
+      "heure_debut": "17:46",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "SOLAL_ISRAEL",
@@ -2204,66 +2381,35 @@
     },
     {
       "date_diffusion": "2026-09-24",
-      "heure_debut": "16:38",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL",
-      "title": "3en1 Merci l’hébreu!💯💡   IG Dc8Gjp9M1wf"
-    },
-    {
-      "date_diffusion": "2026-09-24",
-      "heure_debut": "16:41",
+      "heure_debut": "17:49",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "KATAVA",
-      "title": "Les \"méchants sionistes\" au cinéma en Iran"
+      "title": "La folie Kpop Demon Hunters, en Israël aussi ! (reportage)"
     },
     {
       "date_diffusion": "2026-09-24",
-      "heure_debut": "16:47",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "KATAVA",
-      "title": "Farfour : la mascotte de Gaza qui a choqué le monde"
-    },
-    {
-      "date_diffusion": "2026-09-24",
-      "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
-    },
-    {
-      "date_diffusion": "2026-09-24",
-      "heure_debut": "16:58",
+      "heure_debut": "17:51",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
-      "title": "Cesarée"
+      "title": "appolonia"
     },
     {
       "date_diffusion": "2026-09-24",
-      "heure_debut": "17:02",
+      "heure_debut": "17:56",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
-      "title": "Ein Gedi"
+      "title": "nabatheens"
     },
     {
       "date_diffusion": "2026-09-24",
-      "heure_debut": "17:07",
+      "heure_debut": "18:00",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "SHALOM_SALAM",
-      "title": "Liban-Israël : la paix enfin possible ?"
-    },
-    {
-      "date_diffusion": "2026-09-24",
-      "heure_debut": "18:36",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "YINON_SHOW",
-      "title": "C'est pas Versailles ici : l'histoire de l'acteur derrière la pub culte - Ary Gabison"
+      "title": "Fracture dans la gauche française"
     },
     {
       "date_diffusion": "2026-09-24",
@@ -2277,11 +2423,18 @@
       "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
+      "channel_id": "TSAHAL_FR"
+    },
+    {
+      "date_diffusion": "2026-09-24",
+      "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
       "channel_id": "KFIR_ALMAGOR"
     },
     {
       "date_diffusion": "2026-09-24",
-      "heure_debut": "19:59",
+      "heure_debut": "20:00",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "TEL_AVIV_NEW_YORK",
@@ -2297,7 +2450,14 @@
     },
     {
       "date_diffusion": "2026-09-25",
-      "heure_debut": "08:00",
+      "bloc_apres": null,
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "KFIR_ALMAGOR"
+    },
+    {
+      "date_diffusion": "2026-09-25",
+      "heure_debut": "08:01",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "LES_ISRAELIENNES",
@@ -2308,8 +2468,8 @@
       "heure_debut": "09:19",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "TSAHAL_FR",
-      "title": "Protéger les eaux d’Israël, jour comme nuit 🌊   IG Dc ZR 7AxmD"
+      "channel_id": "KFIR_ALMAGOR",
+      "title": "שבעת   IG Dc6eArHt7oj"
     },
     {
       "date_diffusion": "2026-09-25",
@@ -2320,15 +2480,23 @@
     },
     {
       "date_diffusion": "2026-09-25",
-      "heure_debut": "09:20",
+      "heure_debut": "09:21",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL",
-      "title": "Et si les animaux qui nous dérangent   IG Dc1LNQCM zM"
+      "channel_id": "TSAHAL_FR",
+      "title": "Le Hezbollah continue de violer l’accord et de menacer directement les soldats d   IG Dc8zuLlgeVS"
     },
     {
       "date_diffusion": "2026-09-25",
-      "heure_debut": "09:22",
+      "heure_debut": "09:23",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "SOLAL_ISRAEL",
+      "title": "DAVID un être & une histoire qui sommeille en chacun de nous.   IG Dc2s1SaMgGq"
+    },
+    {
+      "date_diffusion": "2026-09-25",
+      "heure_debut": "09:27",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "STEPHANE_GOLDIN",
@@ -2336,18 +2504,27 @@
     },
     {
       "date_diffusion": "2026-09-25",
-      "heure_debut": "09:27",
+      "heure_debut": "09:32",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "WILLIAM_ZERBIB_L_INTERVIEW",
-      "title": "Du Hamas à Téhéran : le grand tour géostratégique du Moyen-Orient | Alexander Grinberg"
+      "channel_id": "CARTES_POSTALES",
+      "title": "Beit Alpha"
     },
     {
       "date_diffusion": "2026-09-25",
-      "bloc_apres": "LES_ISRAELIENNES",
-      "type": "CLIPS_CHAINE",
+      "heure_debut": "09:39",
+      "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "un jour une histoire 090325"
+    },
+    {
+      "date_diffusion": "2026-09-25",
+      "heure_debut": "09:45",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "KATAVA",
+      "title": "Quand Superman faisait la paix entre Israël et les Palestiniens"
     },
     {
       "date_diffusion": "2026-09-25",
@@ -2355,6 +2532,20 @@
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
       "channel_id": "TSAHAL_FR"
+    },
+    {
+      "date_diffusion": "2026-09-25",
+      "bloc_apres": "LES_ISRAELIENNES",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "SOLAL_ISRAEL"
+    },
+    {
+      "date_diffusion": "2026-09-25",
+      "bloc_apres": "LES_ISRAELIENNES",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "KFIR_ALMAGOR"
     },
     {
       "date_diffusion": "2026-09-25",
@@ -2370,7 +2561,7 @@
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "TSAHAL_FR",
-      "title": "Le Hamas et le Hezbollah peuvent opérer sur des fronts différents, mais ils part   IG DdEiXEegkxc"
+      "title": "Protéger les eaux d’Israël, jour comme nuit 🌊   IG Dc ZR 7AxmD"
     },
     {
       "date_diffusion": "2026-09-25",
@@ -2385,7 +2576,14 @@
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "SOLAL_ISRAEL",
-      "title": "Je crois que ce qu’il manque au monde c’est la diffusion de l’hébreu!   IG DdA9j AMCB6"
+      "title": "Et si les animaux qui nous dérangent   IG Dc1LNQCM zM"
+    },
+    {
+      "date_diffusion": "2026-09-25",
+      "bloc_apres": "CAFE_DAAT",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "SOLAL_ISRAEL"
     },
     {
       "date_diffusion": "2026-09-25",
@@ -2408,8 +2606,8 @@
       "heure_debut": "13:10",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR",
-      "title": "שבעת   IG Dc6eArHt7oj"
+      "channel_id": "TSAHAL_FR",
+      "title": "Le Hamas et le Hezbollah peuvent opérer sur des fronts différents, mais ils part   IG DdEiXEegkxc"
     },
     {
       "date_diffusion": "2026-09-25",
@@ -2423,28 +2621,28 @@
       "heure_debut": "13:12",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "TSAHAL_FR",
-      "title": "Le Hezbollah continue de violer l’accord et de menacer directement les soldats d   IG Dc8zuLlgeVS"
-    },
-    {
-      "date_diffusion": "2026-09-25",
-      "heure_debut": "13:14",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
       "channel_id": "SOLAL_ISRAEL",
-      "title": "On passe notre vie à faire pour les autres ce qu’on ne fait pas avec soi même. A   IG Dc lqpBMdHR"
+      "title": "Je crois que ce qu’il manque au monde c’est la diffusion de l’hébreu!   IG DdA9j AMCB6"
     },
     {
       "date_diffusion": "2026-09-25",
-      "heure_debut": "13:16",
+      "heure_debut": "13:15",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 1606.24"
+      "channel_id": "WILLIAM_ZERBIB_L_INTERVIEW",
+      "title": "Sabrina Medjebeur : Les Français juifs sont les canaris dans la mine"
     },
     {
       "date_diffusion": "2026-09-25",
-      "heure_debut": "13:24",
+      "heure_debut": "13:46",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "KFIR_ALMAGOR",
+      "title": "שבעת   IG Dc6eArHt7oj"
+    },
+    {
+      "date_diffusion": "2026-09-25",
+      "heure_debut": "13:48",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "STEPHANE_GOLDIN",
@@ -2452,67 +2650,25 @@
     },
     {
       "date_diffusion": "2026-09-25",
-      "heure_debut": "13:29",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "KATAVA",
-      "title": "Maroc/Israël : un film d'animation célèbre les accords d'Abraham"
-    },
-    {
-      "date_diffusion": "2026-09-25",
-      "heure_debut": "13:32",
+      "heure_debut": "13:54",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
-      "title": "Grotte de sédécias"
+      "title": "Safed"
     },
     {
       "date_diffusion": "2026-09-25",
-      "heure_debut": "13:37",
-      "type": "COURT_NOMME",
+      "bloc_apres": "OROT_VEKELIM",
+      "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "TSAHAL_FR",
-      "title": "Protéger les eaux d’Israël, jour comme nuit 🌊   IG Dc ZR 7AxmD"
+      "channel_id": "KFIR_ALMAGOR"
     },
     {
       "date_diffusion": "2026-09-25",
-      "heure_debut": "13:38",
-      "type": "COURT_NOMME",
+      "bloc_apres": "OROT_VEKELIM",
+      "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL",
-      "title": "3en1 Merci l’hébreu!💯💡   IG Dc8Gjp9M1wf"
-    },
-    {
-      "date_diffusion": "2026-09-25",
-      "heure_debut": "13:40",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL",
-      "title": "DAVID un être & une histoire qui sommeille en chacun de nous.   IG Dc2s1SaMgGq"
-    },
-    {
-      "date_diffusion": "2026-09-25",
-      "heure_debut": "13:43",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL",
-      "title": "Et si les animaux qui nous dérangent   IG Dc1LNQCM zM"
-    },
-    {
-      "date_diffusion": "2026-09-25",
-      "heure_debut": "13:44",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 090624"
-    },
-    {
-      "date_diffusion": "2026-09-25",
-      "heure_debut": "13:53",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 2.06.24"
+      "channel_id": "SOLAL_ISRAEL"
     },
     {
       "date_diffusion": "2026-09-25",
@@ -2527,8 +2683,8 @@
       "heure_debut": "14:22",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "KATAVA",
-      "title": "La folie Kpop Demon Hunters, en Israël aussi ! (reportage)"
+      "channel_id": "TSAHAL_FR",
+      "title": "Le Hezbollah continue de violer l’accord et de menacer directement les soldats d   IG Dc8zuLlgeVS"
     },
     {
       "date_diffusion": "2026-09-25",
@@ -2539,47 +2695,23 @@
     },
     {
       "date_diffusion": "2026-09-25",
-      "heure_debut": "14:25",
+      "heure_debut": "14:23",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "Les jardins Bahai"
+      "channel_id": "WILLIAM_ZERBIB_L_INTERVIEW",
+      "title": "Michel Fayad"
     },
     {
       "date_diffusion": "2026-09-25",
-      "heure_debut": "14:30",
+      "heure_debut": "14:55",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 26.05.24"
+      "channel_id": "SOLAL_ISRAEL",
+      "title": "On passe notre vie à faire pour les autres ce qu’on ne fait pas avec soi même. A   IG Dc lqpBMdHR"
     },
     {
       "date_diffusion": "2026-09-25",
-      "heure_debut": "14:38",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "KATAVA",
-      "title": "Les 4 Fantastiques : Ben Grimm / La Chose est juif ?"
-    },
-    {
-      "date_diffusion": "2026-09-25",
-      "heure_debut": "14:44",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "KATAVA",
-      "title": "Israël : la version disparue de Sesame Street (1998)"
-    },
-    {
-      "date_diffusion": "2026-09-25",
-      "heure_debut": "14:48",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "KATAVA",
-      "title": "Quand Superman faisait la paix entre Israël et les Palestiniens"
-    },
-    {
-      "date_diffusion": "2026-09-25",
-      "heure_debut": "14:53",
+      "heure_debut": "14:57",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "KATAVA",
@@ -2587,11 +2719,10 @@
     },
     {
       "date_diffusion": "2026-09-25",
-      "heure_debut": "14:56",
-      "type": "COURT_NOMME",
+      "bloc_apres": "TOUR_D_ISRAEL",
+      "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "KATAVA",
-      "title": "Edgar Magnin, le rabbin d'Hollywood"
+      "channel_id": "TSAHAL_FR"
     },
     {
       "date_diffusion": "2026-09-25",
@@ -2606,8 +2737,8 @@
       "heure_debut": "15:17",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "TSAHAL_FR",
-      "title": "Le Hamas et le Hezbollah peuvent opérer sur des fronts différents, mais ils part   IG DdEiXEegkxc"
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "un jour une histoire 090225"
     },
     {
       "date_diffusion": "2026-09-25",
@@ -2618,75 +2749,154 @@
     },
     {
       "date_diffusion": "2026-09-25",
-      "heure_debut": "15:19",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL",
-      "title": "Je crois que ce qu’il manque au monde c’est la diffusion de l’hébreu!   IG DdA9j AMCB6"
-    },
-    {
-      "date_diffusion": "2026-09-25",
-      "heure_debut": "15:22",
+      "heure_debut": "15:25",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
-      "title": "Massada"
+      "title": "Belvoir (1)"
     },
     {
       "date_diffusion": "2026-09-25",
-      "heure_debut": "15:26",
+      "heure_debut": "15:30",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "Ramat Hanadiv"
+      "channel_id": "TSAHAL_FR",
+      "title": "Protéger les eaux d’Israël, jour comme nuit 🌊   IG Dc ZR 7AxmD"
     },
     {
       "date_diffusion": "2026-09-25",
       "heure_debut": "15:31",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "Rosh Hanikra"
+      "channel_id": "SOLAL_ISRAEL",
+      "title": "3en1 Merci l’hébreu!💯💡   IG Dc8Gjp9M1wf"
     },
     {
       "date_diffusion": "2026-09-25",
-      "heure_debut": "15:36",
+      "heure_debut": "15:34",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "appolonia"
+      "channel_id": "SOLAL_ISRAEL",
+      "title": "DAVID un être & une histoire qui sommeille en chacun de nous.   IG Dc2s1SaMgGq"
+    },
+    {
+      "date_diffusion": "2026-09-25",
+      "heure_debut": "15:37",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "SOLAL_ISRAEL",
+      "title": "Et si les animaux qui nous dérangent   IG Dc1LNQCM zM"
     },
     {
       "date_diffusion": "2026-09-25",
       "heure_debut": "15:39",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "nabatheens"
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "un jour une histoire 020225"
     },
     {
       "date_diffusion": "2026-09-25",
-      "heure_debut": "15:43",
+      "heure_debut": "15:48",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "KATAVA",
+      "title": "Edgar Magnin, le rabbin d'Hollywood"
+    },
+    {
+      "date_diffusion": "2026-09-25",
+      "heure_debut": "15:53",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "un jour une histoire 260125"
+    },
+    {
+      "date_diffusion": "2026-09-25",
+      "heure_debut": "15:59",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "un jour une histoire 190125"
+    },
+    {
+      "date_diffusion": "2026-09-25",
+      "heure_debut": "16:07",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "KATAVA",
+      "title": "Les \"méchants sionistes\" au cinéma en Iran"
+    },
+    {
+      "date_diffusion": "2026-09-25",
+      "heure_debut": "16:13",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "CARTES_POSTALES",
+      "title": "Bet Shearim"
+    },
+    {
+      "date_diffusion": "2026-09-25",
+      "heure_debut": "16:18",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "KATAVA",
+      "title": "Farfour : la mascotte de Gaza qui a choqué le monde"
+    },
+    {
+      "date_diffusion": "2026-09-25",
+      "heure_debut": "16:28",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "KATAVA",
+      "title": "Le Japon et les Juifs, une même origine ? Décryptage d'un mythe"
+    },
+    {
+      "date_diffusion": "2026-09-25",
+      "heure_debut": "16:31",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "CARTES_POSTALES",
+      "title": "Carte postale La synagogue de Capharnaum2"
+    },
+    {
+      "date_diffusion": "2026-09-25",
+      "heure_debut": "16:36",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "CARTES_POSTALES",
+      "title": "Cesarée"
+    },
+    {
+      "date_diffusion": "2026-09-25",
+      "heure_debut": "16:41",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "SHALOM_SALAM",
-      "title": "La guerre en Iran peut-elle permettre l’avènement d’une démocratie ?"
+      "title": "Liban-Israël : la paix enfin possible ?"
     },
     {
       "date_diffusion": "2026-09-25",
-      "heure_debut": "17:28",
+      "heure_debut": "18:11",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "YINON_SHOW",
-      "title": "Moshe Nadjar, de Tiktok à la présidentielle 2027"
+      "title": "Du 6/9 NRJ à Israël, la renaissance de Géronimo"
     },
     {
       "date_diffusion": "2026-09-25",
-      "heure_debut": "18:29",
+      "heure_debut": "19:00",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "RADIO_SHALOM_BOCHURBERG",
-      "title": "Benjamin Fogel pour son livre: \"Les évadés du convoi 53\""
+      "title": "Alexandre Doulut et François Heilbronn"
+    },
+    {
+      "date_diffusion": "2026-09-25",
+      "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "TSAHAL_FR"
     },
     {
       "date_diffusion": "2026-09-25",
@@ -2704,13 +2914,6 @@
     },
     {
       "date_diffusion": "2026-09-25",
-      "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
-    },
-    {
-      "date_diffusion": "2026-09-25",
       "heure_debut": "20:00",
       "type": "ANCRE",
       "heure_fixe": true,
@@ -2719,7 +2922,7 @@
     },
     {
       "date_diffusion": "2026-09-25",
-      "heure_debut": "22:01",
+      "heure_debut": "22:00",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "SHALOM_SALAM",
