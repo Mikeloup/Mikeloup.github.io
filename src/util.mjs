@@ -394,3 +394,20 @@ export function extraitPresentation(video) {
   const texte = excerpt(video?.description, EXTRAIT_MAX);
   return texte.length >= EXTRAIT_MIN ? texte : '';
 }
+
+// DONNEES STRUCTUREES.
+//
+// JSON.stringify seul ne suffit pas a l'interieur d'une balise <script> : un
+// texte contenant la sequence de fermeture referme la balise, et la moitie de
+// la page passe alors en clair. Le cas n'est pas theorique -- les titres de
+// chapitres viennent des descriptions YouTube, et les questions du sommaire de
+// repli viennent des transcriptions. On neutralise les signes qui peuvent
+// sortir de la balise, sous une forme que JSON comprend et qui ne change rien
+// a la valeur lue par Google.
+export function ld(objet) {
+  return JSON.stringify(objet)
+    .replace(/</g, '\\u003c')
+    .replace(/>/g, '\\u003e')
+    .replace(/\u2028/g, '\\u2028')
+    .replace(/\u2029/g, '\\u2029');
+}

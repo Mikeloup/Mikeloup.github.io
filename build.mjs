@@ -1038,6 +1038,11 @@ async function main() {
   // Transcriptions déposées à la main dans data/transcriptions/<id>.<srt|vtt|txt>.
   // Elles ne sont ni produites ni devinées ici : sans fichier, pas de bloc.
   const lexique = await readJson(path.join(ROOT, 'data', 'lexique-transcription.json'), {});
+  // Questions relues a la main (voir le _comment du fichier). Elles alimentent
+  // le sommaire de repli des pages video quand la description YouTube n'a pas
+  // de chapitres. Fichier absent = pas de bloc, et rien ne casse.
+  const questionsRelues = await readJson(path.join(ROOT, 'data', 'questions-transcriptions.json'), {});
+  delete questionsRelues._comment;
   const transcriptions = new Map();
   const sansVideo = [];
   try {
@@ -1462,6 +1467,7 @@ async function main() {
 
   // Une page par vidéo
   let pagesQuiEst = 0;
+  let pagesQuestions = 0;
   // LE RAPPROCHEMENT SUJETS <-> VIDEOS, CALCULE UNE SEULE FOIS.
   //
   // 19/09. Hier, le maillage n'allait que dans un sens : les pages de sujet
@@ -1520,11 +1526,15 @@ async function main() {
     const htmlVideo = R.videoPage({
       ...ctx, video, related, transcription: transcriptions.get(video.id) || null,
       sujet: sujetsParVideo.get(video.id) || null,
+      questions: questionsRelues[video.id] || null,
     });
     if (htmlVideo.includes('class="qui-est"')) pagesQuiEst++;
+    if (htmlVideo.includes('chapters-questions')) pagesQuestions++;
     await writePage(`/video/${video.id}/`, htmlVideo);
     urls.push({ loc: `/video/${video.id}/`, freq: 'monthly', priority: '0.7', lastmod: video.publishedAt });
   }
+  log(`« Les questions posées » : ${pagesQuestions} page(s) vidéo sur ${allVideos.length} `
+    + `(bloc de repli, affiché seulement quand la description YouTube n'a pas de chapitres).`);
   log(`« Qui est … ? » : ${pagesQuiEst} page(s) vidéo sur ${allVideos.length} portent le bloc `
     + `(${Math.round((100 * pagesQuiEst) / Math.max(1, allVideos.length))} %).`);
   if (pagesQuiEst === 0 && allVideos.length > 50) {

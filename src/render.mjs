@@ -5,6 +5,7 @@
 
 import {
   escapeHtml, formatDate, formatDateTime, formatDuration, formatCount, formatNumber, truncate,
+  ld,
   excerpt, descriptionToHtml, extractChapters, removeChapterLines, slugify as slugifyNom,
   extraitPresentation,
 } from './util.mjs';
@@ -741,9 +742,9 @@ ${sansManifeste ? '' : `<link rel="manifest" href="/manifest.webmanifest">`}
 <link rel="apple-touch-icon" href="/favicon.png">
 <link rel="stylesheet" href="/assets/style.css${config.empreintes?.css ? `?v=${config.empreintes.css}` : ''}">
 ${config.googleSiteVerification ? `<meta name="google-site-verification" content="${escapeHtml(config.googleSiteVerification)}">` : ''}
-<script type="application/ld+json">${JSON.stringify(orgLd)}</script>
+<script type="application/ld+json">${ld(orgLd)}</script>
 ${(Array.isArray(jsonLd) ? jsonLd : [jsonLd]).filter(Boolean)
-  .map((o) => `<script type="application/ld+json">${JSON.stringify(o)}</script>`).join('\n')}
+  .map((o) => `<script type="application/ld+json">${ld(o)}</script>`).join('\n')}
 ${analytics}
 ${push}
 </head>
@@ -1552,7 +1553,7 @@ export function videoPage({
   config, categories, nav, video, related, buildTime,
   personnesParVideo = new Map(), presentateurParRubrique = new Map(),
   transcription = null, diffusionsVideo = new Map(), archive = null,
-  sujet = null,
+  sujet = null, questions = null,
 }) {
   const cat = video.playlists?.[0];
   // L'entrée rangée dans la vidéo ne porte que le titre et l'identifiant ; la
@@ -1571,6 +1572,33 @@ export function videoPage({
       <ol class="chapters-list">
         ${chapters.map((ch) => `<li><a href="https://www.youtube.com/watch?v=${video.id}&amp;t=${ch.seconds}s" data-seek="${ch.seconds}"><span class="chapters-time">${escapeHtml(ch.time)}</span><span class="chapters-label">${escapeHtml(ch.label)}</span></a></li>`).join('')}
       </ol>
+    </nav>` : '';
+
+  // SOMMAIRE DE REPLI.
+  //
+  // Le bloc « Au sommaire » se nourrit des chapitres ecrits a la main dans la
+  // description YouTube. Mesure du 19 septembre 2026 : 8 pages video sur 40 en
+  // portaient un, soit 20 % du catalogue -- et sur les videos de 2025-2026,
+  // 8 sur 13. Les 80 % restants n'offraient a Google aucun point d'entree
+  // interne, alors que la question posee par le presentateur est justement la
+  // forme sous laquelle les gens cherchent.
+  //
+  // Les questions viennent de data/questions-transcriptions.json. Elles ont ete
+  // extraites des transcriptions PUIS RELUES UNE PAR UNE : sur 300 candidates,
+  // 102 ont ete ecartees. Rien n'est publie ici qui n'ait ete lu. « Mieux vaut
+  // rien que faux » : le fichier ne contient que du valide, et le rendu ne fait
+  // que l'afficher -- il ne filtre plus rien, il n'a rien a rattraper.
+  //
+  // On ne montre ce bloc QUE si la description n'a pas deja de chapitres : les
+  // chapitres sont ecrits par la redaction, ils passent toujours devant.
+  const questionsListe = !chapters.length && Array.isArray(questions) ? questions : [];
+  const sommaireQuestions = questionsListe.length ? `
+    <nav class="chapters chapters-questions" aria-label="Questions posees dans la video">
+      <h2 class="chapters-title">Les questions posées</h2>
+      <ol class="chapters-list">
+        ${questionsListe.map((q) => `<li><a href="https://www.youtube.com/watch?v=${video.id}&amp;t=${q.t}s" data-seek="${q.t}"><span class="chapters-time">${escapeHtml(mmss(q.t))}</span><span class="chapters-label">${escapeHtml(q.q)}</span></a></li>`).join('')}
+      </ol>
+      <p class="muted small">Questions relevées dans la bande son, horodatées : cliquez pour lancer la vidéo à cet endroit.</p>
     </nav>` : '';
 
   const content = `
@@ -1637,6 +1665,7 @@ export function videoPage({
     </div>
 
     ${summary}
+    ${sommaireQuestions}
 
     ${desc ? `<div class="prose article-body">${desc}</div>` : ''}
 
@@ -1756,6 +1785,20 @@ export function videoPage({
           ...(chapters[i + 1] ? { endOffset: chapters[i + 1].seconds }
             : (video.duration ? { endOffset: video.duration } : {})),
           url: `${config.siteUrl}/video/${video.id}/?t=${ch.seconds}`,
+        })),
+      } : {}),
+      // Meme chose a partir des questions relues, quand la description n'a pas
+      // de chapitres. Les « Clip » decrivent des sequences de la video : c'est
+      // la forme que Google attend, et elle ne pretend rien d'autre que ce
+      // qu'elle dit -- une question posee a telle seconde.
+      ...(questionsListe.length ? {
+        hasPart: questionsListe.map((q, i) => ({
+          '@type': 'Clip',
+          name: q.q,
+          startOffset: q.t,
+          ...(questionsListe[i + 1] ? { endOffset: questionsListe[i + 1].t }
+            : (video.duration ? { endOffset: video.duration } : {})),
+          url: `${config.siteUrl}/video/${video.id}/?t=${q.t}`,
         })),
       } : {}),
     }],
