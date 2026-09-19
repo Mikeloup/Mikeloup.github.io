@@ -23,7 +23,9 @@ import { collecterPersonnes } from './src/personnes.mjs';
 import { lireTranscription } from './src/transcriptions.mjs';
 import { prepareGrille, indexerVideos, jourIsrael } from './src/grille.mjs';
 import { lireArchive } from './src/archive.mjs';
-import { indexerTranscriptions, videosDuSujet } from './src/maillage-sujets.mjs';
+import {
+  indexerTranscriptions, videosDuSujet, MINI_TETE_RENVOI,
+} from './src/maillage-sujets.mjs';
 import {
   reglesDuQuotidien, idsDuRendezVous, reprisesDuQuotidien, estLeRendezVousQuotidien,
 } from './src/rendez-vous-quotidien.mjs';
@@ -1484,6 +1486,9 @@ async function main() {
       // Une video ne renvoie qu'au sujet qui la revendique le plus fort : deux
       // renvois sous une meme video se contrediraient.
       for (const r of trouvees) {
+        // Le renvoi affirme que la video PARLE de ce sujet : elle doit en
+        // prononcer le mot, pas seulement partager son vocabulaire.
+        if ((r.tete || 0) < MINI_TETE_RENVOI) continue;
         const mieux = sujetsParVideo.get(r.id);
         if (!mieux || r.score > mieux.score) {
           sujetsParVideo.set(r.id, { slug: pg.slug, titre: pg.title, score: r.score });

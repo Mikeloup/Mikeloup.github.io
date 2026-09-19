@@ -78,6 +78,19 @@ const MINI_TETE = 5;      // un mot de l'adresse doit etre prononce cinq fois
 const DENSITE = 1.0;      // et au moins une fois pour mille mots
 const PLANCHER = 90;      // en dessous, on n'affiche rien
 
+// LES DEUX SENS N'ONT PAS LA MEME EXIGENCE, 19 septembre 2026.
+//
+// Sous une page de sujet, « A voir sur Tandem TV » est une suggestion. Sous
+// une video, « Pour aller plus loin : Cesaree maritime » est une AFFIRMATION
+// sur ce que la video raconte. Mesure du jour sur le site : la video
+// « Jerusalem a l'epoque d'Herode le Grand » renvoyait vers Cesaree -- parce
+// que les mots de Cesaree sont surtout « herode », « romain », « pierre »,
+// que cette video contient tous, sans jamais prononcer « Cesaree ».
+//
+// Le renvoi exige donc que la video prononce le mot MEME du sujet, celui de
+// son adresse, au moins trois fois. C'est `MINI_TETE_RENVOI`, lu par build.mjs.
+export const MINI_TETE_RENVOI = 3;
+
 // QUI A LE DROIT D'ANCRER. Premier essai a 60 : « Tsipori » remontait une video
 // sur un PARKING (parking x12), et « Saint-Jean-d'Acre » une video ou le mot
 // « prison » revient sans qu'il s'agisse de celle-la. Le mot fautif venait
@@ -133,7 +146,11 @@ export function videosDuSujet(page, index, { max = 4 } = {}) {
       if (tetes.has(m) && n >= MINI_TETE && (1000 * n) / d.mots >= DENSITE) ancre = true;
     }
     if (ancre && score >= PLANCHER) {
-      res.push({ id, score, termes: detail.sort((a, b) => b[1] - a[1]).slice(0, 4) });
+      // Combien de fois la video prononce-t-elle le mot MEME du sujet, celui
+      // de son adresse ? Le sens « video -> sujet » s'en sert (voir plus bas).
+      let tete = 0;
+      for (const m of tetes) tete = Math.max(tete, compter(d.texte, m));
+      res.push({ id, score, tete, termes: detail.sort((a, b) => b[1] - a[1]).slice(0, 4) });
     }
   }
   return res.sort((a, b) => b.score - a.score).slice(0, max);

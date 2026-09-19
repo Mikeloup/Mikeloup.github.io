@@ -14,7 +14,9 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { lireTranscription } from '../src/transcriptions.mjs';
-import { indexerTranscriptions, videosDuSujet } from '../src/maillage-sujets.mjs';
+import {
+  indexerTranscriptions, videosDuSujet, MINI_TETE_RENVOI,
+} from '../src/maillage-sujets.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const config = JSON.parse(await fs.readFile(path.join(ROOT, 'site.config.json'), 'utf8'));
@@ -54,3 +56,29 @@ for (const pg of sujets) {
 }
 console.log(`${sujets.length} sujet(s) — ${totalVideos} vidéo(s) retenue(s), `
   + `${vides} sujet(s) sans aucune correspondance.`);
+
+// --- LE SENS INVERSE : quelles vidéos renverront vers un sujet ? -------------
+//
+// Plus exigeant que « À voir sur Tandem TV ». Sous une page de sujet, une
+// vidéo proposée est une suggestion ; sous une vidéo, « Pour aller plus loin :
+// Césarée maritime » affirme que la vidéo en parle. Le 19/09, « Jérusalem à
+// l'époque d'Hérode le Grand » renvoyait vers Césarée — dont les mots sont
+// surtout « hérode », « romain », « pierre », que cette vidéo contient tous
+// sans jamais prononcer « Césarée ».
+const renvois = new Map();
+let candidats = 0;
+for (const pg of sujets) {
+  for (const r of videosDuSujet(pg, index, { max: 6 })) {
+    candidats++;
+    if ((r.tete || 0) < MINI_TETE_RENVOI) continue;
+    const mieux = renvois.get(r.id);
+    if (!mieux || r.score > mieux.score) {
+      renvois.set(r.id, { slug: pg.slug, score: r.score, tete: r.tete });
+    }
+  }
+}
+console.log(`\nRenvois « vidéo → sujet » : ${renvois.size} vidéo(s) sur ${candidats} `
+  + `correspondance(s) prononcent le mot du sujet au moins ${MINI_TETE_RENVOI} fois.`);
+for (const [id, v] of renvois) {
+  console.log(`   https://youtu.be/${id}  ->  /${v.slug}/   (mot du sujet ×${v.tete})`);
+}
