@@ -1,5 +1,5 @@
 {
-  "exported_at": "2026-09-20T18:57:10.220845",
+  "exported_at": "2026-09-20T19:12:14.739748",
   "window_days": 7,
   "rows": [
     {
@@ -2710,15 +2710,7 @@
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "YINON_SHOW",
-      "title": "IL OUVRE DES PORTES ET RASSEMBLE DES MILLIERS DE JEUNES AUX SELI’HOT"
-    },
-    {
-      "date_diffusion": "2026-09-26",
-      "heure_debut": "09:49",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL",
-      "title": "On passe notre vie à faire pour les autres ce qu’on ne fait pas avec soi même"
+      "title": "SIMON MOOS : FRANCAIS, JUIF, PATRIOTE... LE COMBAT POLITIQUE D'UNE NOUVELLE GENERATION"
     },
     {
       "date_diffusion": "2026-09-26",
@@ -2726,36 +2718,6 @@
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
       "channel_id": "ISRAEL_EN_FRANCAIS"
-    },
-    {
-      "date_diffusion": "2026-09-26",
-      "heure_debut": "09:50",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "Les jardins Bahai"
-    },
-    {
-      "date_diffusion": "2026-09-26",
-      "heure_debut": "09:55",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "KATAVA",
-      "title": "Le Japon et les Juifs, une même origine ? Décryptage d'un mythe"
-    },
-    {
-      "date_diffusion": "2026-09-26",
-      "bloc_apres": "YINON_SHOW",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL"
-    },
-    {
-      "date_diffusion": "2026-09-26",
-      "bloc_apres": "YINON_SHOW",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
     },
     {
       "date_diffusion": "2026-09-26",
@@ -2767,7 +2729,7 @@
     },
     {
       "date_diffusion": "2026-09-26",
-      "heure_debut": "11:11",
+      "heure_debut": "11:10",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "TSAHAL_FR",
@@ -2794,7 +2756,7 @@
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "WILLIAM_ZERBIB_L_INTERVIEW",
-      "title": "Sabrina Medjebeur : Les Français juifs sont les canaris dans la mine"
+      "title": "Du Hamas à Téhéran : le grand tour géostratégique du Moyen-Orient | Alexander Grinberg"
     },
     {
       "date_diffusion": "2026-09-26",
@@ -2810,22 +2772,15 @@
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
-      "title": "Massada"
+      "title": "Les jardins Bahai"
     },
     {
       "date_diffusion": "2026-09-26",
-      "heure_debut": "11:54",
+      "heure_debut": "11:55",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "KATAVA",
-      "title": "Maroc/Israël : un film d'animation célèbre les accords d'Abraham"
-    },
-    {
-      "date_diffusion": "2026-09-26",
-      "bloc_apres": "OROT_VEKELIM",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
+      "title": "Le Japon et les Juifs, une même origine ? Décryptage d'un mythe"
     },
     {
       "date_diffusion": "2026-09-26",
@@ -2839,11 +2794,11 @@
       "bloc_apres": "OROT_VEKELIM",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
+      "channel_id": "TSAHAL_FR"
     },
     {
       "date_diffusion": "2026-09-26",
-      "heure_debut": "12:01",
+      "heure_debut": "12:00",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "TOUR_D_ISRAEL",
@@ -2851,7 +2806,7 @@
     },
     {
       "date_diffusion": "2026-09-26",
-      "heure_debut": "12:23",
+      "heure_debut": "12:22",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "STEPHANE_GOLDIN",
@@ -2876,18 +2831,18 @@
       "bloc_apres": "TOUR_D_ISRAEL",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
+      "channel_id": "SOLAL_ISRAEL"
     },
     {
       "date_diffusion": "2026-09-26",
       "bloc_apres": "TOUR_D_ISRAEL",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL"
+      "channel_id": "KFIR_ALMAGOR"
     },
     {
       "date_diffusion": "2026-09-26",
-      "heure_debut": "12:32",
+      "heure_debut": "12:33",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
@@ -2895,19 +2850,19 @@
     },
     {
       "date_diffusion": "2026-09-26",
-      "heure_debut": "12:44",
+      "heure_debut": "12:43",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
-      "title": "Ramat Hanadiv"
+      "title": "Massada"
     },
     {
       "date_diffusion": "2026-09-26",
-      "heure_debut": "12:48",
+      "heure_debut": "12:50",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "KATAVA",
-      "title": "La folie Kpop Demon Hunters, en Israël aussi ! (reportage)"
+      "title": "Maroc/Israël : un film d'animation célèbre les accords d'Abraham"
     },
     {
       "date_diffusion": "2026-09-26",
@@ -2950,7 +2905,7 @@
     },
     {
       "date_diffusion": "2026-09-26",
-      "heure_debut": "14:39",
+      "heure_debut": "14:40",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "TSAHAL_FR",
@@ -2958,7 +2913,7 @@
     },
     {
       "date_diffusion": "2026-09-26",
-      "heure_debut": "14:40",
+      "heure_debut": "14:41",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "SOLAL_ISRAEL",
@@ -2974,7 +2929,7 @@
     },
     {
       "date_diffusion": "2026-09-26",
-      "heure_debut": "14:52",
+      "heure_debut": "14:51",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "LES_ISRAELIENNES",
@@ -2990,7 +2945,7 @@
     },
     {
       "date_diffusion": "2026-09-26",
-      "heure_debut": "15:57",
+      "heure_debut": "15:56",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "SOLAL_ISRAEL",
@@ -2998,7 +2953,7 @@
     },
     {
       "date_diffusion": "2026-09-26",
-      "heure_debut": "15:59",
+      "heure_debut": "15:58",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "LES_ISRAELIENNES",
@@ -3014,7 +2969,7 @@
     },
     {
       "date_diffusion": "2026-09-26",
-      "heure_debut": "16:47",
+      "heure_debut": "16:46",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "SOLAL_ISRAEL",
@@ -3022,7 +2977,7 @@
     },
     {
       "date_diffusion": "2026-09-26",
-      "heure_debut": "16:50",
+      "heure_debut": "16:49",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "LES_ISRAELIENNES",
@@ -3030,7 +2985,7 @@
     },
     {
       "date_diffusion": "2026-09-26",
-      "heure_debut": "17:37",
+      "heure_debut": "17:38",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "SOLAL_ISRAEL",
@@ -3042,19 +2997,19 @@
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "KATAVA",
-      "title": "Les 4 Fantastiques : Ben Grimm / La Chose est juif ?"
+      "title": "La folie Kpop Demon Hunters, en Israël aussi ! (reportage)"
     },
     {
       "date_diffusion": "2026-09-26",
-      "heure_debut": "17:46",
+      "heure_debut": "17:43",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
-      "title": "Rosh Hanikra"
+      "title": "Ramat Hanadiv"
     },
     {
       "date_diffusion": "2026-09-26",
-      "heure_debut": "17:50",
+      "heure_debut": "17:48",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "SOLAL_ISRAEL",
@@ -3062,7 +3017,15 @@
     },
     {
       "date_diffusion": "2026-09-26",
-      "heure_debut": "17:52",
+      "heure_debut": "17:49",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "KATAVA",
+      "title": "Les 4 Fantastiques : Ben Grimm / La Chose est juif ?"
+    },
+    {
+      "date_diffusion": "2026-09-26",
+      "heure_debut": "17:55",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "KATAVA",
@@ -3070,7 +3033,7 @@
     },
     {
       "date_diffusion": "2026-09-26",
-      "heure_debut": "17:54",
+      "heure_debut": "17:58",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "KATAVA",
@@ -3078,19 +3041,11 @@
     },
     {
       "date_diffusion": "2026-09-26",
-      "heure_debut": "17:58",
+      "heure_debut": "18:01",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
-      "title": "appolonia"
-    },
-    {
-      "date_diffusion": "2026-09-26",
-      "heure_debut": "18:02",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "nabatheens"
+      "title": "Rosh Hanikra"
     },
     {
       "date_diffusion": "2026-09-26",
@@ -3098,7 +3053,7 @@
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
-      "title": "tiberiad"
+      "title": "appolonia"
     },
     {
       "date_diffusion": "2026-09-26",
@@ -3106,11 +3061,27 @@
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
+      "title": "nabatheens"
+    },
+    {
+      "date_diffusion": "2026-09-26",
+      "heure_debut": "18:15",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "CARTES_POSTALES",
+      "title": "tiberiad"
+    },
+    {
+      "date_diffusion": "2026-09-26",
+      "heure_debut": "18:19",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "CARTES_POSTALES",
       "title": "zichron yaakov"
     },
     {
       "date_diffusion": "2026-09-26",
-      "heure_debut": "18:16",
+      "heure_debut": "18:24",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "RADIO_SHALOM_BOCHURBERG",
@@ -3118,7 +3089,7 @@
     },
     {
       "date_diffusion": "2026-09-26",
-      "heure_debut": "19:05",
+      "heure_debut": "19:13",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "LES_ISRAELIENNES",
@@ -3158,8 +3129,8 @@
       "heure_debut": "22:00",
       "type": "ANCRE",
       "heure_fixe": true,
-      "channel_id": "YINON_SHOW",
-      "title": "SIMON MOOS : FRANCAIS, JUIF, PATRIOTE... LE COMBAT POLITIQUE D'UNE NOUVELLE GENERATION"
+      "channel_id": "WILLIAM_ZERBIB_L_INTERVIEW",
+      "title": "Du Hamas à Téhéran : le grand tour géostratégique du Moyen-Orient | Alexander Grinberg"
     }
   ]
 }
