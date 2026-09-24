@@ -2656,13 +2656,20 @@ ${analytics}
   <div class="wrap">
     <h2>Ils sont passés sur nos plateaux</h2>
     <p class="intro">Plus de 150 invités depuis la création de la chaîne. Parmi eux&nbsp;:</p>
+    <!-- Liste arretee par Michael le 24 septembre 2026. Chaque nom a ete
+         verifie dans l'annuaire des invites du site (invites.json, releve du
+         jour) : les quinze ont bien des passages a l'antenne. Deux
+         orthographes corrigees au passage -- Rachel KHAN (trois videos, dont
+         « Un Kaddish pour le droit international ») et Fadila MAAROUFI
+         (quatre videos). « + 146 autres » : l'annuaire compte 170 personnes,
+         dont 9 presentateurs, soit 161 invites ; 161 - 15 = 146. -->
     <div class="noms">
-      <span>Raphaël Enthoven</span><span>Daniel Shek</span><span>Georges Bensoussan</span><span>Dan Catarivas</span>
-      <span>Gilles-William Goldnadel</span><span>Céline Pina</span><span>Dov Maimon</span><span>Pierre Lurçat</span>
-      <span>Alexandre Del Valle</span><span>Florence Bergeaud-Blackler</span><span>Guy Millière</span>
-      <span>Haïm Musicant</span><span>Charles Rojzman</span><span>Michel Gad Wolkowicz</span>
-      <span>Nora Bussigny</span><span>Amine El Khatmi</span><span>Ari Afilalo</span><span>Alexandre Grinberg</span>
-      <span class="plus">+ 130 autres</span>
+      <span>Michel Fayad</span><span>Rachel Khan</span><span>Sabrina Medjebeur</span><span>Pierre Martinet</span>
+      <span>Fadila Maaroufi</span><span>Philippe Val</span><span>Paul Amar</span><span>Raphaël Enthoven</span>
+      <span>Georges Bensoussan</span><span>Gilles-William Goldnadel</span><span>Céline Pina</span>
+      <span>Alexandre Del Valle</span><span>Florence Bergeaud-Blackler</span><span>Nora Bussigny</span>
+      <span>Amine El Khatmi</span>
+      <span class="plus">+ 146 autres</span>
     </div>
   </div>
 </section>
