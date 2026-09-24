@@ -88,5 +88,32 @@ console.log('\n--- une enseigne n’est pas quelqu’un ---');
 const f = rendu({ titre: 'Recette du jour | Côté Cuisine', rubrique: 'Côté Cuisine', gens: [] });
 dire('aucune personne rattachée : pas de bloc', muet(f));
 
+console.log('\n--- un résumé d’émission n’est pas une biographie ---');
+// Le 19 septembre, le bloc reprenait la description d'une AUTRE vidéo de la
+// personne des lors qu'elle l'y nommait. Sur « Qui est Rony Akrich ? », cela
+// donnait le resume d'une emission en capitales. Cette source est retiree :
+// seuls un texte ecrit a la main et la fonction ont le droit de s'afficher.
+const akrich = {
+  nom: 'Rony Akrich', slug: 'rony-akrich',
+  fiche: { role: 'historiosophe de la Bible' }, identite: 'historiosophe de la Bible',
+  videos: [
+    { id: 'zzz', title: 'Ici', description: 'Description de la page courante.' },
+    {
+      id: 'aaa',
+      title: 'ÉLECTIONS 2026 : QUATRE VISIONS D’ISRAËL, UN SEUL ÉTAT ?',
+      description: 'ÉLECTIONS 2026 : QUATRE VISIONS D’ISRAËL, UN SEUL ÉTAT ?\n'
+        + 'Dans cette troisième partie, Rony Akrich poursuit son analyse des forces politiques.',
+    },
+  ],
+};
+const g = rendu({
+  titre: 'Israël : pluralisme ou domination ? | Rony Akrich',
+  rubrique: 'Les Passions d’un Hébreu - Rony Akrich', gens: [akrich],
+});
+dire('le bloc s’affiche avec la seule fonction', presente(g, 'Rony Akrich'));
+dire('la fonction est bien là', g.includes('historiosophe de la Bible'));
+dire('le résumé de l’autre émission n’apparaît pas', !g.includes('poursuit son analyse'));
+dire('… ni son titre en capitales', !g.includes('QUATRE VISIONS'));
+
 console.log(`\n${ok} essai(s) réussi(s), ${ko} échoué(s).`);
 process.exit(ko ? 1 : 0);

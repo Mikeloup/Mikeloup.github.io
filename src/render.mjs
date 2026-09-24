@@ -1459,14 +1459,28 @@ export function nomEnFinDeTitre(titre, { siteName = '', rubrique = '' } = {}) {
  * Ils demandent QUI EST cette personne ; la page ne portait que son nom, en
  * lien.
  *
- * RIEN N'EST INVENTE. Trois sources, dans cet ordre, toutes deja presentes :
+ * RIEN N'EST INVENTE. Deux sources, toutes deux deja presentes :
  *   1. le texte ecrit a la main dans data/personnes.json ;
- *   2. une presentation tiree de la description d'une AUTRE video de la
- *      personne -- jamais celle de la page courante, qui est deja affichee
- *      juste au-dessus ;
- *   3. a defaut, sa fonction telle que la chaine la presente a l'antenne.
- * Si aucune des trois ne dit rien, le bloc ne s'affiche pas. Un intertitre
+ *   2. sa fonction telle que la chaine la presente a l'antenne.
+ * Si aucune des deux ne dit rien, le bloc ne s'affiche pas. Un intertitre
  * « Qui est X ? » suivi de rien vaut moins que pas d'intertitre du tout.
+ *
+ * UNE TROISIEME SOURCE A ETE RETIREE le 19 septembre 2026. Elle reprenait la
+ * description d'une AUTRE video de la personne, a condition que cette
+ * description la nomme. Releve sur le site en ligne le jour ou le bloc est
+ * passe de 4 % a 50 % des pages, deux blocs sur quatre donnaient ceci :
+ *
+ *   « Qui est Rony Akrich ? -- Rony Akrich, historiosophe de la Bible.
+ *     ELECTIONS 2026 : QUATRE VISIONS D'ISRAEL... Dans cette troisieme
+ *     partie, Rony Akrich poursuit son analyse... »
+ *
+ * Ce n'est pas une presentation de quelqu'un, c'est le resume d'une emission,
+ * en capitales, avec sa liste a puces qui deborde. Le controle verifiait que
+ * le texte MENTIONNE la personne ; il ne pouvait pas verifier qu'il DIT qui
+ * elle est. Aucune regle de forme ne rattrape cela : un resume d'emission ne
+ * sera jamais une biographie. Les deux blocs corrects de ce releve, eux,
+ * n'affichaient que la fonction (« president du MAK ») ou la fiche ecrite a
+ * la main -- la fonction seule se lit tres bien.
  */
 function quiEstBloc({ config, video, gens, presentateur }) {
   if (!gens.length) return '';
@@ -1535,17 +1549,12 @@ function quiEstBloc({ config, video, gens, presentateur }) {
 
   const fiches = ordre.slice(0, 2).map((p) => {
     const role = p.fiche?.role || p.identite || '';
-    // Source 2 : une autre video de la personne, jamais celle-ci.
-    const ailleurs = (p.videos || [])
-      .filter((v) => v.id !== video.id)
-      .map((v) => ({ v, texte: extraitPresentation(v) }))
-      .find((x) => x.texte && extraitParleDe(p.nom, x.v, x.texte));
-    const texte = p.fiche?.texte
-      ? truncate(p.fiche.texte, 420)
-      : (ailleurs ? truncate(ailleurs.texte, 420) : '');
+    // Seul un texte ECRIT POUR PRESENTER QUELQU'UN a le droit d'apparaitre
+    // ici. A defaut, la fonction seule -- et rien d'autre.
+    const texte = p.fiche?.texte ? truncate(p.fiche.texte, 420) : '';
     if (!role && !texte) return null;
     const autres = (p.videos || []).length - 1;
-    return { p, role, texte, autres, source: p.fiche?.texte ? null : ailleurs?.v };
+    return { p, role, texte, autres };
   }).filter(Boolean);
 
   if (!fiches.length) return '';
@@ -1559,7 +1568,7 @@ function quiEstBloc({ config, video, gens, presentateur }) {
   <section class="qui-est">
     <h2 class="qui-est-titre">${titre}</h2>
     <div class="qui-est-grille">
-      ${fiches.map(({ p, role, texte, autres, source }) => `
+      ${fiches.map(({ p, role, texte, autres }) => `
       <article class="qui-est-carte">
         <a class="qui-est-portrait" href="/invites/${p.slug}/" aria-hidden="true" tabindex="-1">
           <img src="${escapeHtml(photoDe(p))}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" width="480" height="270">
@@ -1569,7 +1578,6 @@ function quiEstBloc({ config, video, gens, presentateur }) {
           ${role ? `<p class="qui-est-role">${escapeHtml(role)}</p>` : ''}
           ${texte ? `<p class="qui-est-texte">${escapeHtml(texte)}</p>` : ''}
           <p class="qui-est-plus">
-            ${source ? `<a href="/video/${source.id}/">Dit dans « ${escapeHtml(truncate(source.title, 60))} »</a> · ` : ''}
             <a href="/invites/${p.slug}/">${autres > 0
               ? `${autres} autre${autres > 1 ? 's' : ''} passage${autres > 1 ? 's' : ''} sur ${escapeHtml(config.siteName)}`
               : `Sa fiche sur ${escapeHtml(config.siteName)}`} <span aria-hidden="true">&rarr;</span></a>
@@ -2321,140 +2329,557 @@ export function personIndexPage({ config, categories, nav, personnes, buildTime 
 }
 
 /**
- * Page « Annoncer sur Tandem TV » — refonte de la page sponsoring.
+ * Page « Communiquer sur Tandem TV » — la rubrique Sponsoring.
  *
- * 18/09/2026. Ecrite a partir du travail de cadrage commercial : quatre
- * formules, des prix affiches, et un principe qui vaut mieux que n'importe
- * quel argument — ne rien promettre qui ne puisse etre prouve. L'audience du
- * bouquet n'etant mesuree par personne, cette page ne parle jamais de
- * telespectateurs : elle parle de passages, et ceux-la sont comptes.
+ * 23/09/2026. Validee par Michael, elle prend la place de l'ancienne page
+ * /sponsoring/. Elle dit d'abord POURQUOI communiquer ici — la television, le
+ * public franco-israelien, une cible qu'on n'atteint pas par hasard — et ne
+ * propose les formules qu'ensuite. Elle ne parle jamais de telespectateurs :
+ * l'audience du bouquet n'est mesuree par personne, et un chiffre
+ * invérifiable ne vaut rien. Elle parle de diffusions, et celles-la se
+ * comptent.
  *
- * VOLONTAIREMENT HORS LIGNE : `robots: noindex, nofollow`, aucun lien depuis
- * la navigation, le pied de page ou le plan du site. Elle n'est atteignable
- * qu'a son adresse, le temps que Michael la valide. La page /sponsoring/
- * actuelle reste en place et inchangee jusque-la.
+ * Le formulaire est natif : rien n'est charge depuis un tiers, le visiteur ne
+ * quitte jamais la page. Il recapitule chaque ligne AVEC SON PRIX et affiche
+ * les totaux ; il n'existe pas de « a partir de » ni de remise a discuter,
+ * parce qu'un tarif qu'on laisse deviner est un tarif qu'on va marchander.
+ * Le meme detail part en texte dans le courriel, champ « _resume ».
+ *
+ * PAGE AUTONOME : elle n'emprunte pas layout(). Sa mise en page lui est propre
+ * — heros, barre de sommaire collante, cartes a cocher — et son style vit dans
+ * assets/annonceurs.css, hors de la feuille du site. Aucune de ses regles ne
+ * peut donc deborder sur les 1 100 autres pages, ni l'inverse. Le prix de ce
+ * choix : l'en-tete et le pied du site ne s'y trouvent pas, remplaces par un
+ * retour « Tandem TV » dans la barre de sommaire et un pied court.
  */
-export function annonceursPage({ config, categories, nav, buildTime, videoCount, showCount }) {
-  const mail = config.contactEmail;
-  const objet = encodeURIComponent('Annoncer sur Tandem TV');
-  const tv = config.tv;
-  const canal = tv?.channelNumber ? escapeHtml(tv.channelNumber) : '14';
-  const operateur = tv?.operator ? escapeHtml(tv.operator) : 'Annatel';
+export function annonceursPage({ config }) {
+  const racine = config.siteUrl.replace(/\/$/, '');
+  const url = `${racine}/sponsoring/`;
+  const image = `${racine}/assets/salon-tandem-tv.jpg`;
+  const titre = 'Communiquer sur Tandem TV';
+  const description = 'Parrainage d’émission, spot publicitaire ou reportage sur Tandem TV, '
+    + 'la chaîne francophone d’Israël — canal 14 du bouquet Annatel. Les formules et les prix.';
+  const vCss = config.empreintes?.annonceursCss ? `?v=${config.empreintes.annonceursCss}` : '';
+  const vJs = config.empreintes?.annonceursJs ? `?v=${config.empreintes.annonceursJs}` : '';
+  // Les memes mesures d'audience que le reste du site : sans elles, cette page
+  // serait la seule a ne rien remonter, et c'est justement celle qu'on veut
+  // savoir lue.
+  const analytics = [
+    config.analytics?.cloudflareToken
+      ? `<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "${escapeHtml(config.analytics.cloudflareToken)}"}'></script>`
+      : '',
+    config.analytics?.plausibleDomain
+      ? `<script defer data-domain="${escapeHtml(config.analytics.plausibleDomain)}" src="https://plausible.io/js/script.js"></script>`
+      : '',
+    config.analytics?.gaMeasurementId
+      ? `<script async src="https://www.googletagmanager.com/gtag/js?id=${escapeHtml(config.analytics.gaMeasurementId)}"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','${escapeHtml(config.analytics.gaMeasurementId)}');</script>`
+      : '',
+  ].join('');
 
-  const formule = (titre, prix, unite, lignes, mise = false) => `
-    <article class="offre${mise ? ' offre-mise' : ''}">
-      <h3>${titre}</h3>
-      <p class="offre-prix"><strong>${prix}</strong> <span>${unite}</span></p>
-      <ul>${lignes.map((l) => `<li>${l}</li>`).join('')}</ul>
-    </article>`;
+  const donnees = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: titre,
+    description,
+    url,
+    inLanguage: 'fr',
+    isPartOf: { '@type': 'WebSite', name: config.siteName, url: racine },
+    publisher: { '@type': 'Organization', name: config.siteName, url: racine },
+  };
 
-  const content = `
-<div class="wrap narrow">
-  <nav class="breadcrumb"><a href="/">Accueil</a> <span>&rsaquo;</span> <span>Annonceurs</span></nav>
-
-  <header class="page-head">
-    <p class="kicker">Annonceurs</p>
-    <h1>Votre marque à la télévision, en français, en Israël</h1>
-    <p class="lede">Tandem TV est diffusée sur le canal ${canal} du bouquet ${operateur}, et prolongée sur YouTube,
-    Instagram et ce site. Une présence répétée, dans un environnement francophone que vous choisissez.</p>
-  </header>
-
-  <section class="figures">
-    <div class="figure"><strong>canal ${canal}</strong><span>du bouquet ${operateur}</span></div>
-    <div class="figure"><strong>24 h/24</strong><span>de diffusion</span></div>
-    ${showCount ? `<div class="figure"><strong>${formatNumber(showCount)}</strong><span>émissions régulières</span></div>` : ''}
-    ${videoCount ? `<div class="figure"><strong>${formatNumber(videoCount)}</strong><span>vidéos en ligne</span></div>` : ''}
-  </section>
-  <p class="muted small center">Chiffres de la chaîne relevés automatiquement à chaque mise à jour du site.</p>
-
-  <section class="follow-card">
-    <h2>Ce que nous vendons, et ce que nous ne vendons pas</h2>
-    <p>Nous ne vous annoncerons jamais un nombre de téléspectateurs&nbsp;: l'audience du bouquet n'est mesurée par
-    aucun institut, et un chiffre invérifiable ne vaut rien pour vous comme pour nous.</p>
-    <p><strong>Ce que nous garantissons par écrit, c'est le nombre de passages de votre message</strong>, relevé mois
-    par mois sur notre grille de diffusion et communiqué dans un rapport. Vous savez exactement ce que vous achetez.</p>
-  </section>
-
-  <section class="follow-card">
-    <h2>Parrainer une émission</h2>
-    <p>Votre message de cinq secondes ouvre et ferme chaque diffusion d'un rendez-vous régulier — et chaque
-    rediffusion. La même émission part ensuite sur notre chaîne YouTube, en extrait sur Instagram et sur ce
-    site&nbsp;: le parrainage vous suit sur les quatre supports, sans supplément.</p>
-    <p>Selon l'émission, cela représente <strong>de 128 à 284 passages par mois</strong>, rediffusions comprises.
-    Les chiffres exacts de chaque émission — passages relevés sur notre grille, vues par épisode sur YouTube —
-    vous sont communiqués sur demande, avec leur date de relevé.</p>
-    <p><strong>Cinq émissions, un parrain chacune, et pas deux.</strong> Premier arrivé, premier servi&nbsp;:
-    quand une émission est prise, elle l'est pour toute la durée du contrat.</p>
-    ${formule('Parrainage d’émission', '3 000 NIS', 'par mois — engagement de six mois', [
-      'Votre message avant et après chaque diffusion et chaque rediffusion',
-      'Exclusivité&nbsp;: seul parrain, et seul annonceur de votre secteur sur l’émission',
-      'Mention sur les extraits publiés en Reel et en Short',
-      'Présence sur la page de l’émission, sur ce site',
-      'Production de votre message incluse',
-      'Rapport mensuel des passages',
-    ], true)}
-  </section>
-
-  <section class="follow-card">
-    <h2>Acheter des passages</h2>
-    <p>Une publicité qui passe à l'antenne sans être attachée à une émission, vendue au nombre de diffusions.
-    Plus le volume est élevé, moins le passage coûte cher.</p>
-    <div class="offres">
-      ${formule('Découverte', '1 200 NIS', 'par mois — 150 passages', ['5 diffusions par jour', 'Engagement de trois mois', 'Production incluse'])}
-      ${formule('Régulier', '2 000 NIS', 'par mois — 300 passages', ['10 diffusions par jour', 'Engagement de trois mois', 'Production incluse'])}
-      ${formule('Intensif', '3 200 NIS', 'par mois — 600 passages', ['20 diffusions par jour', 'Engagement de trois mois', 'Production incluse'])}
-      ${formule('Campagne', '4 800 NIS', 'par mois — 1 000 passages', ['33 diffusions par jour', 'Engagement de trois mois', 'Production incluse'])}
+  return `<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>${escapeHtml(titre)} | ${escapeHtml(config.siteName)}</title>
+<meta name="description" content="${escapeHtml(description)}">
+<link rel="canonical" href="${escapeHtml(url)}">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="${escapeHtml(config.siteName)}">
+<meta property="og:title" content="${escapeHtml(titre)}">
+<meta property="og:description" content="${escapeHtml(description)}">
+<meta property="og:url" content="${escapeHtml(url)}">
+<meta property="og:image" content="${escapeHtml(image)}">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="/favicon.png">
+<link rel="stylesheet" href="/assets/annonceurs.css${vCss}">
+${config.googleSiteVerification ? `<meta name="google-site-verification" content="${escapeHtml(config.googleSiteVerification)}">` : ''}
+<script type="application/ld+json">${ld(donnees)}</script>
+${analytics}
+</head>
+<body class="page-annonceurs">
+<header class="hero">
+  <div class="wrap">
+    <div class="grille">
+      <div>
+        <p class="kicker">Communiquer sur Tandem TV</p>
+        <h1>Faites connaître votre activité à la télévision, en français, en Israël</h1>
+        <p class="lede">Entreprise, commerce ou profession libérale&nbsp;: Tandem TV, canal&nbsp;14 du bouquet Annatel,
+          vous fait connaître largement auprès des francophones d'Israël.</p>
+        <div class="boutons">
+          <a class="cta" href="#demande">Je suis intéressé</a>
+          <a class="cta ghost" href="#offres">Voir les offres</a>
+        </div>
+      </div>
+      <div class="illu photo"><img src="/assets/salon-tandem-tv.jpg" alt="Un salon ; sur l'écran mural : « Faites votre publicité sur Tandem TV »" width="1600" height="1000"></div>
     </div>
-  </section>
+  </div>
+</header>
 
-  <section class="follow-card">
-    <h2>Le message lui-même</h2>
-    <p>Nous le fabriquons. La plupart des entreprises n'ont ni agence ni film prêt à diffuser&nbsp;: c'est
-    précisément ce que nous savons faire.</p>
-    <ul>
-      <li><strong>Chapeau image et son</strong>, 10 à 15 secondes — vos visuels, une voix off, notre habillage. <strong>Inclus.</strong></li>
-      <li><strong>Vidéo publicitaire</strong>, 15 à 20 secondes, montée à partir de vos images — 1 200 NIS, une seule fois.</li>
-      <li><strong>Vidéo avec tournage chez vous</strong> — 2 900 NIS, une seule fois.</li>
-      <li><strong>Reportage sponsorisé</strong> de deux à trois minutes, tourné chez vous, diffusé à l'antenne et publié sur YouTube — 4 500 NIS.</li>
-    </ul>
-  </section>
+<nav class="sommaire" aria-label="Sommaire">
+  <div class="wrap">
+    <a class="retour" href="/" aria-label="Retour à l'accueil de Tandem TV">Tandem&nbsp;TV</a>
+    <a href="#pour-qui">Pour qui</a>
+    <a href="#pourquoi">Pourquoi Tandem TV</a>
+    <a href="#offres">Nos offres</a>
+    <a href="#comment">Comment ça se passe</a>
+    <a class="ecrire" href="#demande">Je suis intéressé</a>
+  </div>
+</nav>
 
-  <section class="follow-card">
-    <h2>Comment cela se passe</h2>
-    <ol>
-      <li>Vous nous écrivez. Nous vous rappelons et nous regardons ensemble ce qui a du sens pour votre activité.</li>
-      <li>Nous vous envoyons une proposition écrite&nbsp;: formule, nombre de passages, durée, prix. Rien d'autre.</li>
-      <li>Nous fabriquons votre message et vous le validez avant toute diffusion.</li>
-      <li>La campagne démarre. Vous recevez chaque mois le relevé des passages effectués.</li>
-    </ol>
-    <p class="muted small">Tandem TV facture en tant qu'ossek patour&nbsp;: vous recevez un reçu et non une facture
-    avec TVA. La dépense reste déductible de votre résultat, la TVA ne l'est pas — nos prix en tiennent compte.</p>
-  </section>
+<section id="pour-qui">
+  <div class="wrap">
+    <p class="num"><b>1</b> Pour qui</p>
+    <h2>Toute activité qui s'adresse aux francophones d'Israël</h2>
+    <p class="intro">Il n'est pas nécessaire d'être une grande marque pour passer à la télévision.
+      Ce qui compte, c'est d'avoir quelque chose à proposer à ce public-là.</p>
 
-  <section class="follow-card">
-    <h2>Une règle qui ne change pas</h2>
-    <p>Un annonceur n'a jamais son mot à dire sur le contenu d'une émission. C'est ce qui fait la valeur de
-    l'environnement dans lequel votre marque apparaît&nbsp;: si nos programmes étaient à vendre, personne ne les
-    regarderait.</p>
-  </section>
+    <div class="pourqui">
+      <div class="profil">
+        <div class="ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-6h6v6"/></svg></div>
+        <h3>Entreprises et marques</h3>
+        <p>Lancer un produit, installer un nom, accompagner une implantation en Israël.</p>
+        <div class="ex"><span>Immobilier</span><span>Banque, assurance</span><span>Automobile</span><span>Équipement</span></div>
+      </div>
+      <div class="profil">
+        <div class="ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l1.5-5h15L21 9"/><path d="M4 9v11h16V9"/><path d="M3 9h18"/><path d="M10 20v-6h4v6"/></svg></div>
+        <h3>Commerces et services</h3>
+        <p>Devenir l'adresse que l'on recommande dans sa ville, et au-delà.</p>
+        <div class="ex"><span>Agences</span><span>Boutiques</span><span>Restaurants</span><span>Écoles, formation</span></div>
+      </div>
+      <div class="profil">
+        <div class="ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/><path d="M3 13h18"/></svg></div>
+        <h3>Professions libérales</h3>
+        <p>Être le professionnel francophone que l'on appelle, plutôt qu'un nom parmi d'autres.</p>
+        <div class="ex"><span>Avocats</span><span>Médecins</span><span>Experts-comptables</span><span>Agents immobiliers</span><span>Courtiers</span></div>
+      </div>
+    </div>
+    <p class="autres">Institution, association, événement&nbsp;? <a href="#contact">Parlons-en</a> — la formule s'adapte.</p>
+  </div>
+</section>
 
-  <section class="follow-card">
-    <h2>Nous écrire</h2>
-    <p>Dites-nous en deux lignes ce que vous vendez et à qui. Nous répondons à toutes les demandes sérieuses,
-    y compris pour dire que ce n'est pas pour vous.</p>
-    <a class="btn btn-primary" href="mailto:${escapeHtml(mail)}?subject=${objet}">Écrire à ${escapeHtml(mail)}</a>
-  </section>
-</div>`;
+<section id="pourquoi" class="alt">
+  <div class="wrap">
+    <p class="num"><b>2</b> Pourquoi communiquer sur Tandem TV</p>
+    <h2>Un média, un public, une cible que vous ne toucherez nulle part ailleurs</h2>
+    <p class="intro">Avant de choisir une formule, voici ce que Tandem TV apporte — et ce qu'aucun autre support ne réunit.</p>
 
-  return layout({
-    config, categories, nav, buildTime,
-    title: 'Annoncer sur Tandem TV',
-    description: `Parrainage d'émission et espaces publicitaires sur Tandem TV, chaîne francophone d'Israël, canal ${canal} du bouquet ${operateur}.`,
-    canonical: '/annonceurs/',
-    bodyClass: 'page-sponsoring',
-    robots: 'noindex, nofollow',
-    content,
-  });
+    <div class="pilier">
+      <div class="n">1</div>
+      <div>
+        <h3>La télévision</h3>
+        <p>Votre vraie alternative, ce n'est pas une autre chaîne&nbsp;: c'est une campagne sur les réseaux sociaux.
+          La télévision fonctionne autrement, et c'est précisément son intérêt.</p>
+      </div>
+      <ul class="points">
+        <li><b>Vous êtes seul</b><span>Dans un fil d'actualité, vous êtes le quarantième annonceur de la journée. Ici, vous êtes le seul partenaire de l'émission que vous avez choisie.</span></li>
+        <li><b>Vous êtes vu</b><span>La télévision se regarde dans un salon, souvent à plusieurs, sans pouce pour faire défiler.</span></li>
+        <li><b>Vous durez</b><span>Une publicité en ligne s'arrête le jour où vous cessez de payer. Une émission que vous accompagnez, elle, installe votre nom, diffusion après diffusion.</span></li>
+      </ul>
+    </div>
+
+    <div class="pilier">
+      <div class="n">2</div>
+      <div>
+        <h3>Le public franco-israélien</h3>
+        <p>Les francophones installés en Israël&nbsp;: les nouveaux arrivants qui doivent tout reconstruire,
+          et les familles installées depuis des années.</p>
+        <p>Tandem TV est <strong>la chaîne qui leur parle dans leur langue, depuis leur pays</strong>,
+          sur le bouquet Annatel.</p>
+      </div>
+      <ul class="points">
+        <li><b>À la télévision</b><span>Sur le canal 14 du bouquet Annatel, dans tout le pays.</span></li>
+        <li><b>Et sur YouTube, avec le parrainage</b><span>Chaque émission est republiée sur notre chaîne YouTube&nbsp;: plus de 1&nbsp;000 émissions en ligne, 1,9 million de vues. Si vous parrainez une émission, votre nom l'y accompagne.</span></li>
+      </ul>
+    </div>
+
+    <div class="pilier">
+      <div class="n">3</div>
+      <div>
+        <h3>Une cible précise</h3>
+        <p>Ce public ne lit pas la presse israélienne, ne regarde pas les chaînes en hébreu, et il est
+          trop dispersé pour l'affichage. <strong>On ne l'atteint pas par hasard.</strong></p>
+        <p>Et il a des besoins concrets&nbsp;: pour chaque grande décision de sa vie en Israël, il cherche
+          un interlocuteur qui parle sa langue. C'est là que votre nom doit se trouver.</p>
+      </div>
+      <div class="besoins" aria-label="Ses grandes décisions">
+        <span>Acheter un logement</span><span>S'assurer</span><span>Se soigner</span><span>Ouvrir une entreprise</span>
+        <span>Faire valoir ses droits</span><span>Déclarer ses impôts</span><span>Changer de voiture</span>
+        <span>Scolariser ses enfants</span><span>Équiper sa maison</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="offres">
+  <div class="wrap">
+    <p class="num"><b>3</b> Nos offres</p>
+    <h2>Trois façons d'être présent</h2>
+    <p class="intro">Trois formules, à combiner si vous le souhaitez. Engagement de trois mois minimum pour les formules mensuelles.</p>
+    <div class="lancement">Tarif de lancement — 20&nbsp;% pour les six premiers partenaires</div>
+
+    <div class="offres">
+      <div class="offre">
+        <p class="type">Parrainage</p>
+        <h3>Parrainer une émission</h3>
+        <p class="quoi">Votre nom ouvre et referme l'émission, à chaque diffusion, et l'accompagne sur YouTube.</p>
+        <ul>
+          <li>« Avec le soutien de » votre nom, avant et après l'émission</li>
+          <li><strong>Au moins 25 diffusions de l'émission par mois</strong></li>
+          <li>À chaque diffusion — première diffusion et rediffusions</li>
+          <li>Aussi sur la version YouTube de l'émission</li>
+          <li>Seul partenaire de l'émission choisie</li>
+          <li>Billboard réalisé par nos soins</li>
+          <li>Relevé de diffusion chaque mois</li>
+        </ul>
+        <div class="prix">
+          <div class="m">2&nbsp;400 <small>NIS / mois</small></div>
+          <div class="s"><span class="barre">3&nbsp;000 NIS</span> · tarif de lancement</div>
+        </div>
+      </div>
+
+      <div class="offre">
+        <p class="type">Espace publicitaire</p>
+        <h3>Votre spot publicitaire à l'antenne</h3>
+        <p class="quoi">Une publicité de 15 à 30 secondes, diffusée entre nos émissions — comme un spot à la télévision.
+          Vous choisissez le nombre de diffusions par mois. Diffusion à l'antenne uniquement.</p>
+        <div class="paliers">
+          <div class="palier"><div><b>Découverte</b><br><span>100 diffusions / mois</span></div><strong>1&nbsp;440 NIS</strong></div>
+          <div class="palier"><div><b>Régulier</b><br><span>200 diffusions / mois</span></div><strong>2&nbsp;800 NIS</strong></div>
+          <div class="palier"><div><b>Intensif</b><br><span>300 diffusions / mois</span></div><strong>4&nbsp;000 NIS</strong></div>
+        </div>
+        <div class="realisation">
+          <p class="rt">Vous avez déjà votre vidéo&nbsp;? Nous la diffusons telle quelle.<br>Sinon, nous la réalisons pour vous&nbsp;:</p>
+          <div class="rl"><span>Montage à partir de vos éléments</span><strong>+ 900 NIS</strong></div>
+          <div class="rl"><span>Tournée chez vous</span><strong>+ 2&nbsp;500 NIS</strong></div>
+          <p class="rn">Frais de réalisation, payés une seule fois.</p>
+        </div>
+      </div>
+
+      <div class="offre">
+        <p class="type">Reportage</p>
+        <h3>Un reportage sur votre activité</h3>
+        <p class="quoi">Deux à trois minutes tournées chez vous&nbsp;: votre équipe, votre savoir-faire, vos clients.</p>
+        <ul>
+          <li>Tournage et montage par notre équipe</li>
+          <li>Diffusé à l'antenne</li>
+          <li>Publié sur notre chaîne YouTube</li>
+        </ul>
+        <div class="prix">
+          <div class="m">4&nbsp;500 <small>NIS</small></div>
+          <div class="s">une seule fois</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="releve"><span class="ic" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+      Chaque diffusion est horodatée et vérifiable.</div>
+
+    <div class="demo">
+      <h3>Le parrainage, à l'écran</h3>
+      <p class="d">Votre nom ouvre et referme l'émission. C'est une séquence à part entière&nbsp;: elle ne recouvre jamais le programme.</p>
+      <div class="illu plat"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 330" role="img" aria-label="Votre nom à la télévision et dans la version YouTube de l'émission">
+  <defs>
+    <linearGradient id="p_ecran" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3a2bb0"/><stop offset=".6" stop-color="#1f1370"/><stop offset="1" stop-color="#120a4a"/>
+    </linearGradient>
+    <radialGradient id="p_halo" cx=".5" cy=".45" r=".6">
+      <stop offset="0" stop-color="#8fa6ff" stop-opacity=".35"/><stop offset="1" stop-color="#8fa6ff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <!-- téléviseur -->
+  <rect x="40" y="36" width="470" height="272" rx="14" fill="#050310"/>
+  <rect x="54" y="50" width="442" height="244" rx="5" fill="url(#p_ecran)"/>
+  <path d="M54 50 h442 v54 q-230 -24 -442 36 z" fill="#fff" opacity=".05"/>
+  <text x="275" y="148" text-anchor="middle" font-family="-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-size="14" letter-spacing="4" fill="#c3cffa" font-weight="700">AVEC LE SOUTIEN DE</text>
+  <rect x="170" y="164" width="210" height="58" rx="9" fill="#fff"/>
+  <text x="275" y="202" text-anchor="middle" font-family="-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-size="22" fill="#180058" font-weight="800">VOTRE NOM</text>
+  <text x="478" y="282" text-anchor="end" font-family="-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-size="10" letter-spacing="2" fill="#fff" fill-opacity=".55" font-weight="700">TANDEM TV</text>
+  <!-- téléphone -->
+  <g transform="translate(560 16) rotate(4 90 150)">
+    <rect x="0" y="0" width="180" height="310" rx="26" fill="#050310"/>
+    <rect x="9" y="12" width="162" height="286" rx="18" fill="#f4f1ea"/>
+    <rect x="62" y="18" width="56" height="7" rx="3.5" fill="#050310"/>
+    <rect x="9" y="42" width="162" height="92" fill="url(#p_ecran)"/>
+    <text x="90" y="80" text-anchor="middle" font-family="-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-size="6.5" letter-spacing="1.6" fill="#c3cffa" font-weight="700">AVEC LE SOUTIEN DE</text>
+    <rect x="48" y="87" width="84" height="23" rx="4" fill="#fff"/>
+    <text x="90" y="103" text-anchor="middle" font-family="-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-size="9" fill="#180058" font-weight="800">VOTRE NOM</text>
+    <rect x="9" y="131" width="162" height="3" fill="#d9d4ca"/><rect x="9" y="131" width="30" height="3" fill="#c8102e"/>
+    <rect x="20" y="148" width="130" height="8" rx="4" fill="#15123a"/>
+    <rect x="20" y="162" width="92" height="8" rx="4" fill="#15123a"/>
+    <rect x="20" y="180" width="70" height="6" rx="3" fill="#b9b3a6"/>
+    <circle cx="28" cy="210" r="9" fill="#2c1a7a"/><rect x="44" y="204" width="80" height="6" rx="3" fill="#6a6455"/><rect x="44" y="214" width="50" height="5" rx="2.5" fill="#b9b3a6"/>
+    <rect x="20" y="236" width="140" height="6" rx="3" fill="#d9d4ca"/><rect x="20" y="248" width="120" height="6" rx="3" fill="#d9d4ca"/><rect x="20" y="260" width="132" height="6" rx="3" fill="#d9d4ca"/>
+  </g>
+</svg>
+</div>
+      <div class="deux-lieux">
+        <div><b>À l'antenne</b><span>Au début et à la fin de chaque diffusion de l'émission.</span></div>
+        <div><b>Sur YouTube</b><span>Dans la version en ligne de l'émission, qui reste disponible.</span></div>
+      </div>
+    </div>
+
+    <h3 class="sous-titre">Les émissions à parrainer</h3>
+    <p class="sous-intro">Un seul partenaire par émission, pour toute la durée du contrat.</p>
+    <div class="emissions">
+      <div class="em social"><span class="genre">Actualité</span><h4>Le Flash Info</h4>
+        <p>L'essentiel de l'actualité israélienne, en quelques minutes.</p>
+        <span class="reseaux">Réseaux sociaux uniquement, pour le moment</span></div>
+      <div class="em"><span class="genre">Entretien · 20 à 40 min</span><h4>L'interview de William Zerbib</h4>
+        <p>Un invité, une conversation menée jusqu'au bout.</p></div>
+      <div class="em"><span class="genre">Entretien de fond</span><h4>L'interview de Jérôme Haas</h4>
+        <p>Chercheurs, écrivains, responsables communautaires.</p></div>
+      <div class="em"><span class="genre">Édito</span><h4>L'édito de Stéphane Goldin</h4>
+        <p>Un regard tranché sur l'actualité israélienne, en quelques minutes.</p></div>
+      <div class="em"><span class="genre">Édito</span><h4>L'édito de Rony Hayot</h4>
+        <p>Israël vu de l'intérieur, sans filtre.</p></div>
+      <div class="em"><span class="genre">Chronique</span><h4>Les Passions d'un Hébreu</h4>
+        <p>L'histoire et la pensée juives, racontées par Rony Akrich.</p></div>
+      <div class="em"><span class="genre">Conférences</span><h4>Café Daat</h4>
+        <p>Les grandes rencontres de la vie intellectuelle francophone en Israël, filmées et diffusées.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <h2>Ils sont passés sur nos plateaux</h2>
+    <p class="intro">Plus de 150 invités depuis la création de la chaîne. Parmi eux&nbsp;:</p>
+    <div class="noms">
+      <span>Raphaël Enthoven</span><span>Daniel Shek</span><span>Georges Bensoussan</span><span>Dan Catarivas</span>
+      <span>Gilles-William Goldnadel</span><span>Céline Pina</span><span>Dov Maimon</span><span>Pierre Lurçat</span>
+      <span>Alexandre Del Valle</span><span>Florence Bergeaud-Blackler</span><span>Guy Millière</span>
+      <span>Haïm Musicant</span><span>Charles Rojzman</span><span>Michel Gad Wolkowicz</span>
+      <span>Nora Bussigny</span><span>Amine El Khatmi</span><span>Ari Afilalo</span><span>Alexandre Grinberg</span>
+      <span class="plus">+ 130 autres</span>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Ce que vous avez à fournir</h2>
+    <p class="intro">Rien, ou presque&nbsp;: le montage, la voix, l'habillage et la diffusion sont de notre côté.</p>
+    <div class="rien">
+      <div><b>Votre logo</b><span>Un fichier, dans n'importe quel format. Pas de logo&nbsp;? Nous composons votre nom dans notre habillage.</span></div>
+      <div><b>Votre vidéo, si vous en avez une</b><span>Pour l'espace publicitaire&nbsp;: votre spot de 15 à 30 secondes. Pas encore de vidéo&nbsp;? Nous la réalisons pour vous, avec des frais de réalisation (voir l'offre).</span></div>
+      <div><b>Une phrase</b><span>Ce que vous voulez qu'on retienne de vous. Nous vous aidons à la choisir.</span></div>
+      <div><b>Quelques images, si vous en avez</b><span>Vos produits, votre équipe, vos locaux, votre cabinet. Sinon, nous faisons sans.</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="comment" class="alt">
+  <div class="wrap">
+    <h2>Comment ça se passe</h2>
+    <p class="intro">Vous validez votre message avant qu'il passe. Toujours.</p>
+    <div class="etapes">
+      <div class="etape"><b>Vous nous écrivez</b><span>Deux lignes&nbsp;: ce que vous faites, et pour qui.</span></div>
+      <div class="etape"><b>On se parle</b><span>Quinze minutes pour choisir la formule qui vous convient.</span></div>
+      <div class="etape"><b>On produit</b><span>Vous validez avant toute diffusion.</span></div>
+      <div class="etape"><b>C'est à l'antenne</b><span>Et vous recevez le relevé chaque mois.</span></div>
+    </div>
+    <p class="delai">Comptez <strong>environ deux semaines</strong> entre notre premier échange et votre premier
+      passage à l'antenne — un peu moins pour un message simple, un peu plus s'il faut tourner chez vous.</p>
+  </div>
+</section>
+
+<section id="demande" class="demande">
+  <div class="wrap">
+    <p class="num"><b>4</b> Votre demande</p>
+    <h2>Je suis intéressé</h2>
+    <p class="sous">Cliquez ce qui vous intéresse. Il n'y a que quatre lignes à écrire — et nous vous
+      rappelons sous 24&nbsp;heures, au moment qui vous arrange.</p>
+
+    <form id="demande-form" novalidate method="POST"
+          action="https://formsubmit.co/contact@tandemtv.org">
+        <!-- Champs de service. « _honey » est un piège à robots : invisible pour
+             un humain, rempli par les automates, et la demande est alors ignorée. -->
+        <input type="hidden" name="_subject" value="Demande annonceur — Tandem TV">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://www.tandemtv.net/sponsoring/?envoye=1">
+        <input type="hidden" name="_resume" id="champ-resume">
+        <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true"
+               style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+      <!-- 1 -->
+      <fieldset class="bloc">
+        <legend><span class="pas">1</span> Ce qui vous intéresse <em>plusieurs choix possibles</em></legend>
+        <div class="cartes">
+          <label class="carte"><input type="checkbox" name="offre[]" value="Parrainer une émission">
+            <span class="coche" aria-hidden="true"></span>
+            <b>Parrainer une émission</b>
+            <span class="d">Votre nom ouvre et referme l'émission, à chaque diffusion.</span>
+            <span class="p">2&nbsp;400 NIS / mois</span></label>
+          <label class="carte"><input type="checkbox" name="offre[]" value="Un spot publicitaire">
+            <span class="coche" aria-hidden="true"></span>
+            <b>Un spot publicitaire</b>
+            <span class="d">15 à 30 secondes, diffusées entre nos émissions.</span>
+            <span class="p">1&nbsp;440, 2&nbsp;800 ou 4&nbsp;000 NIS / mois</span></label>
+          <label class="carte"><input type="checkbox" name="offre[]" value="Un reportage">
+            <span class="coche" aria-hidden="true"></span>
+            <b>Un reportage</b>
+            <span class="d">Deux à trois minutes tournées chez vous.</span>
+            <span class="p">4&nbsp;500 NIS, une seule fois</span></label>
+          <label class="carte"><input type="checkbox" name="offre[]" value="Je ne sais pas encore">
+            <span class="coche" aria-hidden="true"></span>
+            <b>Je ne sais pas encore</b>
+            <span class="d">Dites-nous ce qui conviendrait à mon activité.</span>
+            <span class="p">nous vous conseillons</span></label>
+        </div>
+      </fieldset>
+
+      <!-- 2 : parrainage -->
+      <fieldset class="bloc" data-si="Parrainer une émission" hidden>
+        <legend><span class="pas">2</span> Quelle émission&nbsp;?</legend>
+        <div class="pastilles">
+          <label class="pastille"><input type="radio" name="emission" value="Le Flash Info"><span>Le Flash Info</span></label>
+          <label class="pastille"><input type="radio" name="emission" value="L'interview de William Zerbib"><span>L'interview de William Zerbib</span></label>
+          <label class="pastille"><input type="radio" name="emission" value="L'interview de Jérôme Haas"><span>L'interview de Jérôme Haas</span></label>
+          <label class="pastille"><input type="radio" name="emission" value="L'édito de Stéphane Goldin"><span>L'édito de Stéphane Goldin</span></label>
+          <label class="pastille"><input type="radio" name="emission" value="L'édito de Rony Hayot"><span>L'édito de Rony Hayot</span></label>
+          <label class="pastille"><input type="radio" name="emission" value="Les Passions d'un Hébreu"><span>Les Passions d'un Hébreu</span></label>
+          <label class="pastille"><input type="radio" name="emission" value="Café Daat"><span>Café Daat</span></label>
+          <label class="pastille"><input type="radio" name="emission" value="Je ne sais pas encore"><span>Je ne sais pas encore</span></label>
+        </div>
+      </fieldset>
+
+      <!-- 3 : spot -->
+      <fieldset class="bloc" data-si="Un spot publicitaire" hidden>
+        <legend><span class="pas">2</span> Votre spot&nbsp;: quelle formule&nbsp;?</legend>
+        <div class="pastilles">
+          <label class="pastille"><input type="radio" name="formule" value="Découverte — 100 diffusions/mois"><span>Découverte · 100 diffusions <b class="tarif">1&nbsp;440 NIS/mois</b></span></label>
+          <label class="pastille"><input type="radio" name="formule" value="Régulier — 200 diffusions/mois"><span>Régulier · 200 diffusions <b class="tarif">2&nbsp;800 NIS/mois</b></span></label>
+          <label class="pastille"><input type="radio" name="formule" value="Intensif — 300 diffusions/mois"><span>Intensif · 300 diffusions <b class="tarif">4&nbsp;000 NIS/mois</b></span></label>
+          <label class="pastille"><input type="radio" name="formule" value="Je ne sais pas encore"><span>Je ne sais pas encore</span></label>
+        </div>
+        <div class="pastilles" style="margin-top:12px">
+          <label class="pastille"><input type="radio" name="video" value="J'ai déjà ma vidéo"><span>J'ai déjà ma vidéo <b class="tarif">aucun frais</b></span></label>
+          <label class="pastille"><input type="radio" name="video" value="Réalisation à partir de mes éléments"><span>Réalisez-la à partir de mes éléments <b class="tarif">900 NIS une fois</b></span></label>
+          <label class="pastille"><input type="radio" name="video" value="Tournage chez moi"><span>Venez tourner chez moi <b class="tarif">2&nbsp;500 NIS une fois</b></span></label>
+          <label class="pastille"><input type="radio" name="video" value="Je ne sais pas encore"><span>Je ne sais pas encore</span></label>
+        </div>
+      </fieldset>
+
+      <!-- 4 : activité -->
+      <fieldset class="bloc">
+        <legend><span class="pas">3</span> Votre activité</legend>
+        <p class="sous-legende" style="margin-top:0">Votre secteur</p>
+        <div class="pastilles" role="group" aria-label="Votre secteur">
+          <label class="pastille"><input type="radio" name="secteur" value="Immobilier"><span>Immobilier</span></label>
+          <label class="pastille"><input type="radio" name="secteur" value="Banque, assurance, courtage"><span>Banque, assurance</span></label>
+          <label class="pastille"><input type="radio" name="secteur" value="Droit"><span>Droit</span></label>
+          <label class="pastille"><input type="radio" name="secteur" value="Santé"><span>Santé</span></label>
+          <label class="pastille"><input type="radio" name="secteur" value="Comptabilité, fiscalité"><span>Comptabilité, fiscalité</span></label>
+          <label class="pastille"><input type="radio" name="secteur" value="Commerce, boutique"><span>Commerce, boutique</span></label>
+          <label class="pastille"><input type="radio" name="secteur" value="Restauration"><span>Restauration</span></label>
+          <label class="pastille"><input type="radio" name="secteur" value="Automobile"><span>Automobile</span></label>
+          <label class="pastille"><input type="radio" name="secteur" value="Éducation, formation"><span>Éducation, formation</span></label>
+          <label class="pastille"><input type="radio" name="secteur" value="Tourisme, voyage"><span>Tourisme, voyage</span></label>
+          <label class="pastille"><input type="radio" name="secteur" value="Institution, association"><span>Institution, association</span></label>
+          <label class="pastille"><input type="radio" name="secteur" value="Autre"><span>Autre</span></label>
+        </div>
+        <p class="sous-legende">Où êtes-vous&nbsp;?</p>
+        <div class="pastilles" role="group" aria-label="Votre ville">
+          <label class="pastille"><input type="radio" name="ville" value="Jérusalem"><span>Jérusalem</span></label>
+          <label class="pastille"><input type="radio" name="ville" value="Tel Aviv"><span>Tel Aviv</span></label>
+          <label class="pastille"><input type="radio" name="ville" value="Netanya"><span>Netanya</span></label>
+          <label class="pastille"><input type="radio" name="ville" value="Ashdod"><span>Ashdod</span></label>
+          <label class="pastille"><input type="radio" name="ville" value="Raanana"><span>Raanana</span></label>
+          <label class="pastille"><input type="radio" name="ville" value="Herzliya"><span>Herzliya</span></label>
+          <label class="pastille"><input type="radio" name="ville" value="Haïfa"><span>Haïfa</span></label>
+          <label class="pastille"><input type="radio" name="ville" value="Beer Sheva"><span>Beer Sheva</span></label>
+          <label class="pastille"><input type="radio" name="ville" value="Ailleurs en Israël"><span>Ailleurs en Israël</span></label>
+          <label class="pastille"><input type="radio" name="ville" value="Hors d'Israël"><span>Hors d'Israël</span></label>
+        </div>
+      </fieldset>
+
+      <!-- 5 : coordonnées -->
+      <fieldset class="bloc">
+        <legend><span class="pas">4</span> Pour vous rappeler</legend>
+        <div class="champs">
+          <label class="champ"><span>Votre entreprise, commerce ou cabinet</span>
+            <input type="text" name="entreprise" autocomplete="organization" required></label>
+          <label class="champ"><span>Votre nom</span>
+            <input type="text" name="nom" autocomplete="name" required></label>
+          <label class="champ"><span>Votre téléphone</span>
+            <input type="tel" name="telephone" autocomplete="tel" placeholder="+972…" required></label>
+          <label class="champ"><span>Votre e-mail</span>
+            <input type="email" name="email" autocomplete="email" required></label>
+        </div>
+        <p class="sous-legende">Quand vous rappeler&nbsp;? <em>heure d'Israël</em></p>
+        <div class="pastilles">
+          <label class="pastille"><input type="radio" name="rappel" value="Matin 8 h – 12 h"><span>Matin · 8 h – 12 h</span></label>
+          <label class="pastille"><input type="radio" name="rappel" value="Après-midi 12 h – 17 h"><span>Après-midi · 12 h – 17 h</span></label>
+          <label class="pastille"><input type="radio" name="rappel" value="Soirée 17 h – 20 h"><span>Soirée · 17 h – 20 h</span></label>
+          <label class="pastille"><input type="radio" name="rappel" value="Peu importe"><span>Peu importe</span></label>
+        </div>
+        <p class="sous-legende">Quand souhaitez-vous commencer&nbsp;?</p>
+        <div class="pastilles">
+          <label class="pastille"><input type="radio" name="debut" value="Dès que possible"><span>Dès que possible</span></label>
+          <label class="pastille"><input type="radio" name="debut" value="Dans le mois"><span>Dans le mois</span></label>
+          <label class="pastille"><input type="radio" name="debut" value="Dans les trois mois"><span>Dans les trois mois</span></label>
+          <label class="pastille"><input type="radio" name="debut" value="Je me renseigne"><span>Je me renseigne</span></label>
+        </div>
+        <div class="champs" style="margin-top:16px">
+          <label class="champ"><span>Votre site internet <em>facultatif</em></span>
+            <input type="text" name="site" autocomplete="url" placeholder="www…"></label>
+          <label class="champ"><span>Autre chose à nous dire&nbsp;? <em>facultatif</em></span>
+            <textarea name="message" rows="2"></textarea></label>
+        </div>
+      </fieldset>
+
+      <!-- récapitulatif -->
+      <div class="recap" id="recap" aria-live="polite">
+        <p class="recap-t">Le détail de votre demande</p>
+        <p class="recap-vide" id="recap-vide">Commencez par choisir ce qui vous intéresse.</p>
+        <ul class="recap-lignes" id="recap-lignes"></ul>
+        <div class="recap-totaux" id="recap-totaux"></div>
+        <p class="recap-note" id="recap-note"></p>
+      </div>
+
+      <div class="envoi">
+        <button class="cta" type="submit">Envoyer ma demande</button>
+        <p class="secours">Vous préférez écrire&nbsp;?
+          <a href="mailto:contact@tandemtv.org?subject=Communiquer%20sur%20Tandem%20TV">contact@tandemtv.org</a></p>
+      </div>
+      <p class="erreur" id="erreur" hidden></p>
+    </form>
+  </div>
+</section>
+
+<section id="contact" class="final">
+  <h2>Une question avant de vous décider&nbsp;?</h2>
+  <p>Écrivez-nous en deux lignes&nbsp;: ce que vous faites, et à qui vous vous adressez.</p>
+  <a class="cta" href="mailto:contact@tandemtv.org?subject=Communiquer%20sur%20Tandem%20TV">Écrire à contact@tandemtv.org</a>
+</section>
+
+<footer class="pied">
+  <div class="wrap">
+    <p class="pied-n">Tandem TV</p>
+    <p class="pied-d">La chaîne francophone d'Israël — canal&nbsp;14 du bouquet Annatel.</p>
+    <nav class="pied-l" aria-label="Pied de page">
+      <a href="/">Accueil</a>
+      <a href="/emissions/">Les émissions</a>
+      <a href="/grille/">La grille</a>
+      <a href="/a-propos/">À propos</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+  </div>
+</footer>
+<script src="/assets/annonceurs.js${vJs}" defer></script>
+</body></html>`;
 }
 
 export function sponsoringPage({ config, categories, nav, channel, buildTime, videoCount, showCount }) {

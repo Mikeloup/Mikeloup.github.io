@@ -847,6 +847,10 @@ async function main() {
   config.empreintes = {
     css: await empreinte('assets/style.css'),
     js: await empreinte('assets/app.js'),
+    // La page Sponsoring est autonome : elle a sa propre feuille et son
+    // propre script, qui ne sont charges que par elle.
+    annonceursCss: await empreinte('assets/annonceurs.css'),
+    annonceursJs: await empreinte('assets/annonceurs.js'),
   };
   config.siteUrl = config.siteUrl.replace(/\/$/, '');
 
@@ -1780,19 +1784,16 @@ async function main() {
     urls.push({ loc: '/sujets/', freq: 'weekly', priority: '0.6' });
   }
 
-  // Sponsoring : chiffres de la chaîne, relevés à chaque synchronisation
-  await writePage('/sponsoring/', R.sponsoringPage({
-    ...ctx, videoCount: allVideos.length, showCount: nav.shows.length,
-  }));
-  urls.push({ loc: '/sponsoring/', freq: 'monthly', priority: '0.5' });
-
-  // Page annonceurs — refonte de /sponsoring/, EN ATTENTE DE VALIDATION.
-  // Volontairement absente du sitemap, de la navigation et du pied de page, et
-  // marquee noindex/nofollow : elle n'est atteignable qu'a son adresse. Le jour
-  // ou Michael la valide, elle remplace sponsoringPage et retrouve ses liens.
-  await writePage('/annonceurs/', R.annonceursPage({
-    ...ctx, videoCount: allVideos.length, showCount: nav.shows.length,
-  }));
+  // Sponsoring — « Communiquer sur Tandem TV ».
+  //
+  // 23/09/2026 : validee par Michael, la page annonceurs prend la place de
+  // l'ancienne page sponsoring, qui n'est plus ecrite nulle part. C'est la
+  // seule page du site qui puisse rapporter de l'argent : elle est donc la
+  // mieux placee du sitemap apres l'accueil. L'ancienne adresse /annonceurs/,
+  // ou Michael a relu la page pendant sa mise au point, renvoie ici (voir
+  // data/anciennes-adresses.json).
+  await writePage('/sponsoring/', R.annonceursPage(ctx));
+  urls.push({ loc: '/sponsoring/', freq: 'monthly', priority: '0.8' });
 
   // Page d'arrivée après inscription à la lettre (Kit y renvoie l'abonné)
   if (config.newsletter?.formId) {
