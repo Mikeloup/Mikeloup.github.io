@@ -1,5 +1,5 @@
 {
-  "exported_at": "2026-09-25T20:08:36.687063",
+  "exported_at": "2026-09-25T20:23:41.340686",
   "window_days": 7,
   "rows": [
     {
@@ -3222,8 +3222,8 @@
       "heure_debut": "22:00",
       "type": "ANCRE",
       "heure_fixe": true,
-      "channel_id": "TEL_AVIV_NEW_YORK",
-      "title": "TEL AVIV NEW YORK EPISODE 20 - SEMAINE DU 30 AOUT  AU 7 SEPTEMBRE"
+      "channel_id": "OROT_VEKELIM",
+      "title": "La halakha face à la santé mentale - LES BÂTISSEURS — Rav Elikan"
     }
   ]
 }
