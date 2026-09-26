@@ -1,5 +1,5 @@
 {
-  "exported_at": "2026-09-26T18:22:16.742002",
+  "exported_at": "2026-09-26T18:37:21.699000",
   "window_days": 7,
   "rows": [
     {
@@ -2939,13 +2939,6 @@
     },
     {
       "date_diffusion": "2026-10-02",
-      "bloc_apres": null,
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "ISRAEL_EN_FRANCAIS"
-    },
-    {
-      "date_diffusion": "2026-10-02",
       "heure_debut": "08:00",
       "type": "ANCRE",
       "heure_fixe": true,
@@ -2957,150 +2950,19 @@
       "heure_debut": "09:18",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL",
-      "title": "On passe notre vie à faire pour les autres ce qu’on ne fait pas avec soi même"
-    },
-    {
-      "date_diffusion": "2026-10-02",
-      "bloc_apres": "LES_ISRAELIENNES",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "ISRAEL_EN_FRANCAIS"
-    },
-    {
-      "date_diffusion": "2026-10-02",
-      "heure_debut": "09:20",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "STEPHANE_GOLDIN",
-      "title": "Israël en 5787 : l’année du tournant"
-    },
-    {
-      "date_diffusion": "2026-10-02",
-      "heure_debut": "09:25",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 04.06.23"
-    },
-    {
-      "date_diffusion": "2026-10-02",
-      "heure_debut": "09:34",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "KATAVA",
-      "title": "Quand Superman faisait la paix entre Israël et les Palestiniens"
-    },
-    {
-      "date_diffusion": "2026-10-02",
-      "heure_debut": "09:38",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 21.05.23"
-    },
-    {
-      "date_diffusion": "2026-10-02",
-      "heure_debut": "09:46",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "KATAVA",
-      "title": "Gerard Hoffnung : le clown de l'orchestre"
-    },
-    {
-      "date_diffusion": "2026-10-02",
-      "bloc_apres": "LES_ISRAELIENNES",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
-    },
-    {
-      "date_diffusion": "2026-10-02",
-      "bloc_apres": "LES_ISRAELIENNES",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
-    },
-    {
-      "date_diffusion": "2026-10-02",
-      "bloc_apres": "LES_ISRAELIENNES",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL"
-    },
-    {
-      "date_diffusion": "2026-10-02",
-      "heure_debut": "10:00",
-      "type": "ANCRE",
-      "heure_fixe": true,
-      "channel_id": "CAFE_DAAT",
-      "title": "Drones israéliens : l'homme qui a conçu leur arme | Beni Levy"
-    },
-    {
-      "date_diffusion": "2026-10-02",
-      "heure_debut": "10:57",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR",
-      "title": "שבעת"
-    },
-    {
-      "date_diffusion": "2026-10-02",
-      "bloc_apres": "CAFE_DAAT",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "ISRAEL_EN_FRANCAIS"
-    },
-    {
-      "date_diffusion": "2026-10-02",
-      "heure_debut": "10:59",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL",
-      "title": "3en1 Merci l’hébreu!"
-    },
-    {
-      "date_diffusion": "2026-10-02",
-      "heure_debut": "11:00",
-      "type": "ANCRE",
-      "heure_fixe": true,
-      "channel_id": "WILLIAM_ZERBIB_L_INTERVIEW",
-      "title": "wz pm"
-    },
-    {
-      "date_diffusion": "2026-10-02",
-      "heure_debut": "11:36",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "TSAHAL_FR",
-      "title": "Protéger les eaux d’Israël, jour comme nuit"
-    },
-    {
-      "date_diffusion": "2026-10-02",
-      "bloc_apres": "WILLIAM_ZERBIB_L_INTERVIEW",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "ISRAEL_EN_FRANCAIS"
-    },
-    {
-      "date_diffusion": "2026-10-02",
-      "heure_debut": "11:37",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
       "channel_id": "TSAHAL_FR",
       "title": "Le Hamas et le Hezbollah peuvent opérer sur des fronts différents"
     },
     {
       "date_diffusion": "2026-10-02",
-      "heure_debut": "11:38",
-      "type": "COURT_NOMME",
+      "bloc_apres": "LES_ISRAELIENNES",
+      "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "TSAHAL_FR",
-      "title": "Le Hezbollah continue de violer l’accord et de menacer directement les soldats"
+      "channel_id": "ISRAEL_EN_FRANCAIS"
     },
     {
       "date_diffusion": "2026-10-02",
-      "heure_debut": "11:40",
+      "heure_debut": "09:19",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "SOLAL_ISRAEL",
@@ -3108,7 +2970,39 @@
     },
     {
       "date_diffusion": "2026-10-02",
-      "heure_debut": "11:44",
+      "heure_debut": "09:22",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "STEPHANE_GOLDIN",
+      "title": "Israël en 5787 : l’année du tournant"
+    },
+    {
+      "date_diffusion": "2026-10-02",
+      "heure_debut": "09:27",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "un jour une histoire 18.06.23"
+    },
+    {
+      "date_diffusion": "2026-10-02",
+      "heure_debut": "09:33",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "KATAVA",
+      "title": "Les 4 Fantastiques : Ben Grimm / La Chose est juif ?"
+    },
+    {
+      "date_diffusion": "2026-10-02",
+      "heure_debut": "09:39",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "CARTES_POSTALES",
+      "title": "Les jardins Bahai"
+    },
+    {
+      "date_diffusion": "2026-10-02",
+      "heure_debut": "09:44",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "SOLAL_ISRAEL",
@@ -3116,7 +3010,7 @@
     },
     {
       "date_diffusion": "2026-10-02",
-      "heure_debut": "11:45",
+      "heure_debut": "09:46",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "SOLAL_ISRAEL",
@@ -3124,10 +3018,102 @@
     },
     {
       "date_diffusion": "2026-10-02",
-      "bloc_apres": "WILLIAM_ZERBIB_L_INTERVIEW",
+      "heure_debut": "09:49",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "un jour une histoire 11.06.23"
+    },
+    {
+      "date_diffusion": "2026-10-02",
+      "bloc_apres": "LES_ISRAELIENNES",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "KFIR_ALMAGOR"
+    },
+    {
+      "date_diffusion": "2026-10-02",
+      "bloc_apres": "LES_ISRAELIENNES",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "SOLAL_ISRAEL"
+    },
+    {
+      "date_diffusion": "2026-10-02",
+      "bloc_apres": "LES_ISRAELIENNES",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
       "channel_id": "TSAHAL_FR"
+    },
+    {
+      "date_diffusion": "2026-10-02",
+      "heure_debut": "10:01",
+      "type": "ANCRE",
+      "heure_fixe": true,
+      "channel_id": "WILLIAM_ZERBIB_L_INTERVIEW",
+      "title": "wz pm"
+    },
+    {
+      "date_diffusion": "2026-10-02",
+      "heure_debut": "10:37",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "un jour une histoire 21.05.23"
+    },
+    {
+      "date_diffusion": "2026-10-02",
+      "bloc_apres": "WILLIAM_ZERBIB_L_INTERVIEW",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "ISRAEL_EN_FRANCAIS"
+    },
+    {
+      "date_diffusion": "2026-10-02",
+      "heure_debut": "10:44",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "TSAHAL_FR",
+      "title": "Le Hezbollah continue de violer l’accord et de menacer directement les soldats"
+    },
+    {
+      "date_diffusion": "2026-10-02",
+      "heure_debut": "10:45",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "SOLAL_ISRAEL",
+      "title": "On passe notre vie à faire pour les autres ce qu’on ne fait pas avec soi même"
+    },
+    {
+      "date_diffusion": "2026-10-02",
+      "heure_debut": "10:47",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "KATAVA",
+      "title": "Israël : la version disparue de Sesame Street (1998)"
+    },
+    {
+      "date_diffusion": "2026-10-02",
+      "heure_debut": "10:50",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "CARTES_POSTALES",
+      "title": "Massada"
+    },
+    {
+      "date_diffusion": "2026-10-02",
+      "heure_debut": "10:54",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "SOLAL_ISRAEL",
+      "title": "3en1 Merci l’hébreu!"
+    },
+    {
+      "date_diffusion": "2026-10-02",
+      "bloc_apres": "WILLIAM_ZERBIB_L_INTERVIEW",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "SOLAL_ISRAEL"
     },
     {
       "date_diffusion": "2026-10-02",
@@ -3141,11 +3127,11 @@
       "bloc_apres": "WILLIAM_ZERBIB_L_INTERVIEW",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL"
+      "channel_id": "TSAHAL_FR"
     },
     {
       "date_diffusion": "2026-10-02",
-      "heure_debut": "12:00",
+      "heure_debut": "10:59",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "YINON_SHOW",
@@ -3153,7 +3139,15 @@
     },
     {
       "date_diffusion": "2026-10-02",
-      "heure_debut": "13:00",
+      "heure_debut": "11:59",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "KFIR_ALMAGOR",
+      "title": "שבעת"
+    },
+    {
+      "date_diffusion": "2026-10-02",
+      "heure_debut": "12:00",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "OROT_VEKELIM",
@@ -3161,11 +3155,11 @@
     },
     {
       "date_diffusion": "2026-10-02",
-      "heure_debut": "13:56",
+      "heure_debut": "12:56",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL",
-      "title": "On passe notre vie à faire pour les autres ce qu’on ne fait pas avec soi même"
+      "channel_id": "TSAHAL_FR",
+      "title": "Protéger les eaux d’Israël, jour comme nuit"
     },
     {
       "date_diffusion": "2026-10-02",
@@ -3173,6 +3167,127 @@
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
       "channel_id": "ISRAEL_EN_FRANCAIS"
+    },
+    {
+      "date_diffusion": "2026-10-02",
+      "bloc_apres": "OROT_VEKELIM",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "KFIR_ALMAGOR"
+    },
+    {
+      "date_diffusion": "2026-10-02",
+      "bloc_apres": "OROT_VEKELIM",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "TSAHAL_FR"
+    },
+    {
+      "date_diffusion": "2026-10-02",
+      "bloc_apres": "OROT_VEKELIM",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "SOLAL_ISRAEL"
+    },
+    {
+      "date_diffusion": "2026-10-02",
+      "heure_debut": "13:00",
+      "type": "ANCRE",
+      "heure_fixe": true,
+      "channel_id": "JEROME_HAAS_L_INTERVIEW",
+      "title": "Pierre Lurçat présente « Le monde de Jabotinsky »"
+    },
+    {
+      "date_diffusion": "2026-10-02",
+      "heure_debut": "13:18",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "un jour une histoire 23.04.23"
+    },
+    {
+      "date_diffusion": "2026-10-02",
+      "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "ISRAEL_EN_FRANCAIS"
+    },
+    {
+      "date_diffusion": "2026-10-02",
+      "heure_debut": "13:25",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "STEPHANE_GOLDIN",
+      "title": "Israël en 5787 : l’année du tournant"
+    },
+    {
+      "date_diffusion": "2026-10-02",
+      "heure_debut": "13:31",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "KATAVA",
+      "title": "Quand Superman faisait la paix entre Israël et les Palestiniens"
+    },
+    {
+      "date_diffusion": "2026-10-02",
+      "heure_debut": "13:36",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "TSAHAL_FR",
+      "title": "Le Hamas et le Hezbollah peuvent opérer sur des fronts différents"
+    },
+    {
+      "date_diffusion": "2026-10-02",
+      "heure_debut": "13:38",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "SOLAL_ISRAEL",
+      "title": "DAVID un être & une histoire qui sommeille en chacun de nous"
+    },
+    {
+      "date_diffusion": "2026-10-02",
+      "heure_debut": "13:42",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "KATAVA",
+      "title": "Gerard Hoffnung : le clown de l'orchestre"
+    },
+    {
+      "date_diffusion": "2026-10-02",
+      "heure_debut": "13:45",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "SOLAL_ISRAEL",
+      "title": "Et si les animaux qui nous dérangent"
+    },
+    {
+      "date_diffusion": "2026-10-02",
+      "heure_debut": "13:47",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "SOLAL_ISRAEL",
+      "title": "Je crois que ce qu’il manque au monde c’est la diffusion de l’hébreu!"
+    },
+    {
+      "date_diffusion": "2026-10-02",
+      "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "KFIR_ALMAGOR"
+    },
+    {
+      "date_diffusion": "2026-10-02",
+      "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "SOLAL_ISRAEL"
+    },
+    {
+      "date_diffusion": "2026-10-02",
+      "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "TSAHAL_FR"
     },
     {
       "date_diffusion": "2026-10-02",
@@ -3187,30 +3302,16 @@
       "heure_debut": "14:22",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "STEPHANE_GOLDIN",
-      "title": "Israël en 5787 : l’année du tournant"
+      "channel_id": "CAFE_DAAT",
+      "title": "Une espionne du Mossad au Soudan : Yola Reitman raconte l’Opération Frères"
     },
     {
       "date_diffusion": "2026-10-02",
-      "bloc_apres": "TOUR_D_ISRAEL",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "ISRAEL_EN_FRANCAIS"
-    },
-    {
-      "date_diffusion": "2026-10-02",
-      "heure_debut": "14:28",
+      "heure_debut": "15:19",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "RADIO_SHALOM_BOCHURBERG",
       "title": "Le grand rabbin Olivier Kaufmann"
-    },
-    {
-      "date_diffusion": "2026-10-02",
-      "bloc_apres": "TOUR_D_ISRAEL",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
     },
     {
       "date_diffusion": "2026-10-02",
@@ -3224,115 +3325,25 @@
       "bloc_apres": "TOUR_D_ISRAEL",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
+      "channel_id": "KFIR_ALMAGOR"
+    },
+    {
+      "date_diffusion": "2026-10-02",
+      "bloc_apres": "TOUR_D_ISRAEL",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
       "channel_id": "TSAHAL_FR"
     },
     {
       "date_diffusion": "2026-10-02",
-      "heure_debut": "17:20",
-      "type": "COURT_NOMME",
+      "bloc_apres": "TOUR_D_ISRAEL",
+      "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR",
-      "title": "שבעת"
+      "channel_id": "ISRAEL_EN_FRANCAIS"
     },
     {
       "date_diffusion": "2026-10-02",
-      "heure_debut": "17:21",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL",
-      "title": "3en1 Merci l’hébreu!"
-    },
-    {
-      "date_diffusion": "2026-10-02",
-      "heure_debut": "17:22",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "TSAHAL_FR",
-      "title": "Protéger les eaux d’Israël, jour comme nuit"
-    },
-    {
-      "date_diffusion": "2026-10-02",
-      "heure_debut": "17:23",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL",
-      "title": "DAVID un être & une histoire qui sommeille en chacun de nous"
-    },
-    {
-      "date_diffusion": "2026-10-02",
-      "heure_debut": "17:25",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "TSAHAL_FR",
-      "title": "Le Hamas et le Hezbollah peuvent opérer sur des fronts différents"
-    },
-    {
-      "date_diffusion": "2026-10-02",
-      "heure_debut": "17:26",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL",
-      "title": "Et si les animaux qui nous dérangent"
-    },
-    {
-      "date_diffusion": "2026-10-02",
-      "heure_debut": "17:27",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL",
-      "title": "Je crois que ce qu’il manque au monde c’est la diffusion de l’hébreu!"
-    },
-    {
-      "date_diffusion": "2026-10-02",
-      "heure_debut": "17:29",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "RADIO_SHALOM_BOCHURBERG",
-      "title": "Benjamin Fogel pour son livre: \"Les évadés du convoi 53\""
-    },
-    {
-      "date_diffusion": "2026-10-02",
-      "heure_debut": "18:18",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "JEROME_HAAS_L_INTERVIEW",
-      "title": "Faire son Alya en Israël : les clés pour réussir | Patricia Hassoun"
-    },
-    {
-      "date_diffusion": "2026-10-02",
-      "heure_debut": "18:33",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 14.05.23"
-    },
-    {
-      "date_diffusion": "2026-10-02",
-      "heure_debut": "18:40",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "STEPHANE_GOLDIN",
-      "title": "Israël en 5787 : l’année du tournant"
-    },
-    {
-      "date_diffusion": "2026-10-02",
-      "heure_debut": "18:45",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "Rosh Hanikra"
-    },
-    {
-      "date_diffusion": "2026-10-02",
-      "heure_debut": "18:49",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "KATAVA",
-      "title": "Edgar Magnin, le rabbin d'Hollywood"
-    },
-    {
-      "date_diffusion": "2026-10-02",
-      "heure_debut": "18:52",
+      "heure_debut": "18:28",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "SOLAL_ISRAEL",
@@ -3340,23 +3351,87 @@
     },
     {
       "date_diffusion": "2026-10-02",
-      "heure_debut": "18:54",
+      "heure_debut": "18:29",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "KFIR_ALMAGOR",
+      "title": "שבעת"
+    },
+    {
+      "date_diffusion": "2026-10-02",
+      "heure_debut": "18:30",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "TSAHAL_FR",
+      "title": "Le Hezbollah continue de violer l’accord et de menacer directement les soldats"
+    },
+    {
+      "date_diffusion": "2026-10-02",
+      "heure_debut": "18:31",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "TSAHAL_FR",
+      "title": "Protéger les eaux d’Israël, jour comme nuit"
+    },
+    {
+      "date_diffusion": "2026-10-02",
+      "heure_debut": "18:31",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "TSAHAL_FR",
+      "title": "Le Hamas et le Hezbollah peuvent opérer sur des fronts différents"
+    },
+    {
+      "date_diffusion": "2026-10-02",
+      "heure_debut": "18:32",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "RADIO_SHALOM_BOCHURBERG",
-      "title": "Judith Sibony écrivain, journaliste, metteur en scène"
+      "title": "Benjamin Fogel pour son livre: \"Les évadés du convoi 53\""
     },
     {
       "date_diffusion": "2026-10-02",
-      "heure_debut": "19:43",
+      "heure_debut": "19:21",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 30.04.23"
+      "title": "un jour une histoire11.12.22"
     },
     {
       "date_diffusion": "2026-10-02",
-      "heure_debut": "19:50",
+      "heure_debut": "19:28",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "CARTES_POSTALES",
+      "title": "Ramat Hanadiv"
+    },
+    {
+      "date_diffusion": "2026-10-02",
+      "heure_debut": "19:32",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "STEPHANE_GOLDIN",
+      "title": "Israël en 5787 : l’année du tournant"
+    },
+    {
+      "date_diffusion": "2026-10-02",
+      "heure_debut": "19:37",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "KATAVA",
+      "title": "Edgar Magnin, le rabbin d'Hollywood"
+    },
+    {
+      "date_diffusion": "2026-10-02",
+      "heure_debut": "19:41",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "un jour une histoire 4.12.22"
+    },
+    {
+      "date_diffusion": "2026-10-02",
+      "heure_debut": "19:49",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "KATAVA",
@@ -3368,11 +3443,11 @@
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
-      "title": "appolonia"
+      "title": "Rosh Hanikra"
     },
     {
       "date_diffusion": "2026-10-02",
-      "heure_debut": "19:58",
+      "heure_debut": "19:59",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "YINON_SHOW",
@@ -3383,8 +3458,8 @@
       "heure_debut": "22:00",
       "type": "ANCRE",
       "heure_fixe": true,
-      "channel_id": "JEROME_HAAS_L_INTERVIEW",
-      "title": "Pierre Lurçat présente « Le monde de Jabotinsky »"
+      "channel_id": "CAFE_DAAT",
+      "title": "Drones israéliens : l'homme qui a conçu leur arme | Beni Levy"
     }
   ]
 }
