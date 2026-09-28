@@ -1,5 +1,5 @@
 {
-  "exported_at": "2026-09-28T19:23:15.509705",
+  "exported_at": "2026-09-28T19:38:20.722686",
   "window_days": 7,
   "rows": [
     {
@@ -2915,8 +2915,8 @@
       "heure_debut": "22:00",
       "type": "ANCRE",
       "heure_fixe": true,
-      "channel_id": "RADIO_SHALOM_BOCHURBERG",
-      "title": "Le grand rabbin Olivier Kaufmann"
+      "channel_id": "TEL_AVIV_NEW_YORK",
+      "title": "TEL AVIV NEW YORK EPISODE 24- SEMAINE DU 20 AU 27 SEPTEMBRE"
     }
   ]
 }
