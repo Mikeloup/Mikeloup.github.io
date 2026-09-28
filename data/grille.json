@@ -1,5 +1,5 @@
 {
-  "exported_at": "2026-09-29T01:40:22.646637",
+  "exported_at": "2026-09-29T01:55:27.564266",
   "window_days": 7,
   "rows": [
     {
@@ -2434,8 +2434,8 @@
       "heure_debut": "22:00",
       "type": "ANCRE",
       "heure_fixe": true,
-      "channel_id": "RADIO_SHALOM_BOCHURBERG",
-      "title": "Le grand rabbin Olivier Kaufmann"
+      "channel_id": "TEL_AVIV_NEW_YORK",
+      "title": "TEL AVIV NEW YORK EPISODE 24- SEMAINE DU 20 AU 27 SEPTEMBRE"
     },
     {
       "date_diffusion": "2026-10-05",
@@ -2478,7 +2478,7 @@
     },
     {
       "date_diffusion": "2026-10-05",
-      "heure_debut": "09:38",
+      "heure_debut": "09:37",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
@@ -2515,7 +2515,7 @@
     },
     {
       "date_diffusion": "2026-10-05",
-      "heure_debut": "09:59",
+      "heure_debut": "10:00",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "CAFE_DAAT",
@@ -2671,7 +2671,7 @@
     },
     {
       "date_diffusion": "2026-10-05",
-      "heure_debut": "14:28",
+      "heure_debut": "14:27",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "RONY_HAYOT",
@@ -2687,7 +2687,7 @@
     },
     {
       "date_diffusion": "2026-10-05",
-      "heure_debut": "14:45",
+      "heure_debut": "14:44",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
@@ -2695,7 +2695,7 @@
     },
     {
       "date_diffusion": "2026-10-05",
-      "heure_debut": "14:49",
+      "heure_debut": "14:50",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
@@ -2724,7 +2724,7 @@
     },
     {
       "date_diffusion": "2026-10-05",
-      "heure_debut": "14:59",
+      "heure_debut": "15:00",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "JEROME_HAAS_L_INTERVIEW",
@@ -2732,11 +2732,11 @@
     },
     {
       "date_diffusion": "2026-10-05",
-      "heure_debut": "15:30",
+      "heure_debut": "15:31",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": ""
+      "channel_id": "CARTES_POSTALES",
+      "title": "Ramat Hanadiv"
     },
     {
       "date_diffusion": "2026-10-05",
@@ -2747,15 +2747,15 @@
     },
     {
       "date_diffusion": "2026-10-05",
-      "heure_debut": "15:37",
+      "heure_debut": "15:36",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "Ramat Hanadiv"
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": ""
     },
     {
       "date_diffusion": "2026-10-05",
-      "heure_debut": "15:42",
+      "heure_debut": "15:43",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
@@ -2771,7 +2771,7 @@
     },
     {
       "date_diffusion": "2026-10-05",
-      "heure_debut": "15:56",
+      "heure_debut": "15:57",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
@@ -2787,7 +2787,7 @@
     },
     {
       "date_diffusion": "2026-10-05",
-      "heure_debut": "16:08",
+      "heure_debut": "16:09",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
@@ -2815,14 +2815,7 @@
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "RADIO_SHALOM_BOCHURBERG",
-      "title": "Alexandre Doulut et François Heilbronn"
-    },
-    {
-      "date_diffusion": "2026-10-05",
-      "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL"
+      "title": "Le grand rabbin Olivier Kaufmann"
     },
     {
       "date_diffusion": "2026-10-05",
@@ -2836,27 +2829,18 @@
       "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
+      "channel_id": "SOLAL_ISRAEL"
+    },
+    {
+      "date_diffusion": "2026-10-05",
+      "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
       "channel_id": "TSAHAL_FR"
     },
     {
       "date_diffusion": "2026-10-05",
-      "heure_debut": "18:25",
-      "type": "ANCRE",
-      "heure_fixe": true,
-      "channel_id": "TEL_AVIV_NEW_YORK",
-      "title": "TEL AVIV NEW YORK EPISODE 24- SEMAINE DU 20 AU 27 SEPTEMBRE"
-    },
-    {
-      "date_diffusion": "2026-10-05",
-      "heure_debut": "19:04",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "RADIO_SHALOM_BOCHURBERG",
-      "title": "Le grand rabbin Olivier Kaufmann"
-    },
-    {
-      "date_diffusion": "2026-10-05",
-      "heure_debut": "19:54",
+      "heure_debut": "17:15",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "RADIO_SHALOM_BOCHURBERG",
@@ -2864,7 +2848,31 @@
     },
     {
       "date_diffusion": "2026-10-05",
-      "heure_debut": "21:43",
+      "heure_debut": "18:06",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "RADIO_SHALOM_BOCHURBERG",
+      "title": "Judith Sibony écrivain, journaliste, metteur en scène"
+    },
+    {
+      "date_diffusion": "2026-10-05",
+      "heure_debut": "18:57",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "RADIO_SHALOM_BOCHURBERG",
+      "title": "Alexandre Doulut et François Heilbronn"
+    },
+    {
+      "date_diffusion": "2026-10-05",
+      "heure_debut": "19:59",
+      "type": "ANCRE",
+      "heure_fixe": true,
+      "channel_id": "RADIO_SHALOM_BOCHURBERG",
+      "title": "Le grand rabbin Olivier Kaufmann"
+    },
+    {
+      "date_diffusion": "2026-10-05",
+      "heure_debut": "22:01",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "YINON_SHOW",
