@@ -1,5 +1,5 @@
 {
-  "exported_at": "2026-09-29T08:57:44.660164",
+  "exported_at": "2026-09-29T09:12:49.583536",
   "window_days": 7,
   "rows": [
     {
@@ -2428,20 +2428,12 @@
       "heure_debut": "22:00",
       "type": "ANCRE",
       "heure_fixe": true,
-      "channel_id": "RADIO_SHALOM_BOCHURBERG",
-      "title": "Le grand rabbin Olivier Kaufmann"
+      "channel_id": "TEL_AVIV_NEW_YORK",
+      "title": "TEL AVIV NEW YORK EPISODE 24- SEMAINE DU 20 AU 27 SEPTEMBRE"
     },
     {
       "date_diffusion": "2026-10-05",
-      "heure_debut": "08:00",
-      "type": "ANCRE",
-      "heure_fixe": true,
-      "channel_id": "LES_ISRAELIENNES",
-      "title": "Élections 2026 : le 7 octobre n'a rien changé ?"
-    },
-    {
-      "date_diffusion": "2026-10-05",
-      "heure_debut": "09:18",
+      "heure_debut": "09:17",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "KATAVA",
@@ -2449,14 +2441,14 @@
     },
     {
       "date_diffusion": "2026-10-05",
-      "bloc_apres": "LES_ISRAELIENNES",
+      "bloc_apres": null,
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
       "channel_id": "ISRAEL_EN_FRANCAIS"
     },
     {
       "date_diffusion": "2026-10-05",
-      "heure_debut": "09:22",
+      "heure_debut": "09:21",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "STEPHANE_GOLDIN",
@@ -2472,7 +2464,7 @@
     },
     {
       "date_diffusion": "2026-10-05",
-      "heure_debut": "09:38",
+      "heure_debut": "09:37",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
@@ -2480,32 +2472,26 @@
     },
     {
       "date_diffusion": "2026-10-05",
-      "heure_debut": "09:46",
+      "heure_debut": "09:47",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
-      "title": "Bet Shearim"
+      "title": "Ein Hod"
     },
     {
       "date_diffusion": "2026-10-05",
-      "bloc_apres": "LES_ISRAELIENNES",
-      "type": "CLIPS_CHAINE",
+      "heure_debut": "09:52",
+      "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL"
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": ""
     },
     {
       "date_diffusion": "2026-10-05",
-      "bloc_apres": "LES_ISRAELIENNES",
+      "bloc_apres": null,
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
       "channel_id": "KFIR_ALMAGOR"
-    },
-    {
-      "date_diffusion": "2026-10-05",
-      "bloc_apres": "LES_ISRAELIENNES",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
     },
     {
       "date_diffusion": "2026-10-05",
@@ -2520,14 +2506,21 @@
       "bloc_apres": "CAFE_DAAT",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
+      "channel_id": "KFIR_ALMAGOR"
     },
     {
       "date_diffusion": "2026-10-05",
       "bloc_apres": "CAFE_DAAT",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL"
+      "channel_id": "ISRAEL_EN_FRANCAIS"
+    },
+    {
+      "date_diffusion": "2026-10-05",
+      "bloc_apres": "CAFE_DAAT",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "TSAHAL_FR"
     },
     {
       "date_diffusion": "2026-10-05",
@@ -2539,11 +2532,10 @@
     },
     {
       "date_diffusion": "2026-10-05",
-      "heure_debut": "11:36",
-      "type": "COURT_NOMME",
+      "bloc_apres": "WILLIAM_ZERBIB_L_INTERVIEW",
+      "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": ""
+      "channel_id": "SOLAL_ISRAEL"
     },
     {
       "date_diffusion": "2026-10-05",
@@ -2551,6 +2543,14 @@
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
       "channel_id": "ISRAEL_EN_FRANCAIS"
+    },
+    {
+      "date_diffusion": "2026-10-05",
+      "heure_debut": "11:37",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "Le partage de la Palestine"
     },
     {
       "date_diffusion": "2026-10-05",
@@ -2561,33 +2561,19 @@
     },
     {
       "date_diffusion": "2026-10-05",
-      "bloc_apres": "WILLIAM_ZERBIB_L_INTERVIEW",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL"
-    },
-    {
-      "date_diffusion": "2026-10-05",
-      "heure_debut": "11:48",
+      "heure_debut": "11:46",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
-      "title": "Carte postale La synagogue de Capharnaum2"
+      "title": "Grotte de sédécias"
     },
     {
       "date_diffusion": "2026-10-05",
-      "heure_debut": "12:00",
+      "heure_debut": "11:59",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "YINON_SHOW",
-      "title": "KOXIE, 20 ANS APRES \"Garçon\" AVEC OU SANS LA CEDILLE ?"
-    },
-    {
-      "date_diffusion": "2026-10-05",
-      "bloc_apres": "YINON_SHOW",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "ISRAEL_EN_FRANCAIS"
+      "title": "SIMON MOOS : FRANCAIS, JUIF, PATRIOTE... LE COMBAT POLITIQUE D'UNE NOUVELLE GENERATION"
     },
     {
       "date_diffusion": "2026-10-05",
@@ -2606,21 +2592,7 @@
     },
     {
       "date_diffusion": "2026-10-05",
-      "bloc_apres": "OROT_VEKELIM",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL"
-    },
-    {
-      "date_diffusion": "2026-10-05",
-      "bloc_apres": "OROT_VEKELIM",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "ISRAEL_EN_FRANCAIS"
-    },
-    {
-      "date_diffusion": "2026-10-05",
-      "heure_debut": "13:56",
+      "heure_debut": "13:53",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "KATAVA",
@@ -2631,7 +2603,21 @@
       "bloc_apres": "OROT_VEKELIM",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
+      "channel_id": "ISRAEL_EN_FRANCAIS"
+    },
+    {
+      "date_diffusion": "2026-10-05",
+      "bloc_apres": "OROT_VEKELIM",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "TSAHAL_FR"
+    },
+    {
+      "date_diffusion": "2026-10-05",
+      "bloc_apres": "OROT_VEKELIM",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "SOLAL_ISRAEL"
     },
     {
       "date_diffusion": "2026-10-05",
@@ -2658,7 +2644,7 @@
     },
     {
       "date_diffusion": "2026-10-05",
-      "heure_debut": "14:28",
+      "heure_debut": "14:27",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "RONY_HAYOT",
@@ -2666,23 +2652,23 @@
     },
     {
       "date_diffusion": "2026-10-05",
-      "heure_debut": "14:37",
+      "heure_debut": "14:36",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "Le partage de la Palestine"
+      "title": ""
     },
     {
       "date_diffusion": "2026-10-05",
-      "heure_debut": "14:44",
+      "heure_debut": "14:43",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
-      "title": "Cesarée"
+      "title": "Les jardins Bahai"
     },
     {
       "date_diffusion": "2026-10-05",
-      "heure_debut": "14:49",
+      "heure_debut": "14:48",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
@@ -2693,14 +2679,14 @@
       "bloc_apres": "TOUR_D_ISRAEL",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
+      "channel_id": "SOLAL_ISRAEL"
     },
     {
       "date_diffusion": "2026-10-05",
       "bloc_apres": "TOUR_D_ISRAEL",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL"
+      "channel_id": "KFIR_ALMAGOR"
     },
     {
       "date_diffusion": "2026-10-05",
@@ -2715,15 +2701,15 @@
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "JEROME_HAAS_L_INTERVIEW",
-      "title": "Pierre Lurçat présente « Le monde de Jabotinsky »"
+      "title": "20260927 Inv JH ESL"
     },
     {
       "date_diffusion": "2026-10-05",
-      "heure_debut": "15:18",
+      "heure_debut": "15:30",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": ""
+      "channel_id": "CARTES_POSTALES",
+      "title": "Massada"
     },
     {
       "date_diffusion": "2026-10-05",
@@ -2734,7 +2720,7 @@
     },
     {
       "date_diffusion": "2026-10-05",
-      "heure_debut": "15:25",
+      "heure_debut": "15:35",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
@@ -2742,15 +2728,7 @@
     },
     {
       "date_diffusion": "2026-10-05",
-      "heure_debut": "15:33",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "Ein Gedi"
-    },
-    {
-      "date_diffusion": "2026-10-05",
-      "heure_debut": "15:38",
+      "heure_debut": "15:42",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
@@ -2758,58 +2736,43 @@
     },
     {
       "date_diffusion": "2026-10-05",
-      "heure_debut": "15:44",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": ""
-    },
-    {
-      "date_diffusion": "2026-10-05",
-      "heure_debut": "15:52",
+      "heure_debut": "15:49",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
-      "title": "Ein Hod"
+      "title": "Ramat Hanadiv"
     },
     {
       "date_diffusion": "2026-10-05",
-      "heure_debut": "15:56",
+      "heure_debut": "15:55",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
-      "title": "Grotte de sédécias"
+      "title": "Rosh Hanikra"
     },
     {
       "date_diffusion": "2026-10-05",
-      "heure_debut": "16:02",
+      "heure_debut": "16:00",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
-      "title": "Les jardins Bahai"
+      "title": "appolonia"
     },
     {
       "date_diffusion": "2026-10-05",
-      "heure_debut": "16:08",
+      "heure_debut": "16:05",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
-      "title": "Massada"
+      "title": "nabatheens"
     },
     {
       "date_diffusion": "2026-10-05",
-      "heure_debut": "16:13",
+      "heure_debut": "16:09",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "RADIO_SHALOM_BOCHURBERG",
-      "title": "Alexandre Doulut et François Heilbronn"
-    },
-    {
-      "date_diffusion": "2026-10-05",
-      "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
+      "title": "Le grand rabbin Olivier Kaufmann"
     },
     {
       "date_diffusion": "2026-10-05",
@@ -2823,27 +2786,18 @@
       "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
+      "channel_id": "KFIR_ALMAGOR"
+    },
+    {
+      "date_diffusion": "2026-10-05",
+      "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
       "channel_id": "TSAHAL_FR"
     },
     {
       "date_diffusion": "2026-10-05",
-      "heure_debut": "18:16",
-      "type": "ANCRE",
-      "heure_fixe": true,
-      "channel_id": "TEL_AVIV_NEW_YORK",
-      "title": "TEL AVIV NEW YORK EPISODE 24- SEMAINE DU 20 AU 27 SEPTEMBRE"
-    },
-    {
-      "date_diffusion": "2026-10-05",
-      "heure_debut": "18:55",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "RADIO_SHALOM_BOCHURBERG",
-      "title": "Le grand rabbin Olivier Kaufmann"
-    },
-    {
-      "date_diffusion": "2026-10-05",
-      "heure_debut": "19:45",
+      "heure_debut": "17:00",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "RADIO_SHALOM_BOCHURBERG",
@@ -2851,11 +2805,43 @@
     },
     {
       "date_diffusion": "2026-10-05",
-      "heure_debut": "21:34",
+      "heure_debut": "17:49",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "un ujuh121025"
+    },
+    {
+      "date_diffusion": "2026-10-05",
+      "heure_debut": "18:01",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "RADIO_SHALOM_BOCHURBERG",
+      "title": "Judith Sibony écrivain, journaliste, metteur en scène"
+    },
+    {
+      "date_diffusion": "2026-10-05",
+      "heure_debut": "18:53",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "RADIO_SHALOM_BOCHURBERG",
+      "title": "Alexandre Doulut et François Heilbronn"
+    },
+    {
+      "date_diffusion": "2026-10-05",
+      "heure_debut": "20:00",
       "type": "ANCRE",
       "heure_fixe": true,
-      "channel_id": "JEROME_HAAS_L_INTERVIEW",
-      "title": "20260927 Inv JH ESL"
+      "channel_id": "RADIO_SHALOM_BOCHURBERG",
+      "title": "Le grand rabbin Olivier Kaufmann"
+    },
+    {
+      "date_diffusion": "2026-10-05",
+      "heure_debut": "22:00",
+      "type": "ANCRE",
+      "heure_fixe": true,
+      "channel_id": "YINON_SHOW",
+      "title": "KOXIE, 20 ANS APRES \"Garçon\" AVEC OU SANS LA CEDILLE ?"
     }
   ]
 }
