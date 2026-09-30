@@ -1,5 +1,5 @@
 {
-  "exported_at": "2026-09-30T11:22:09.887990",
+  "exported_at": "2026-09-30T11:37:14.928409",
   "window_days": 7,
   "rows": [
     {
@@ -1947,8 +1947,8 @@
       "heure_debut": "21:59",
       "type": "ANCRE",
       "heure_fixe": true,
-      "channel_id": "TEL_AVIV_NEW_YORK",
-      "title": "EPISODE 24- SEMAINE DU 20 AU 27 SEPTEMBRE"
+      "channel_id": "RADIO_SHALOM_BOCHURBERG",
+      "title": "Le grand rabbin Olivier Kaufmann"
     },
     {
       "date_diffusion": "2026-10-05",
@@ -1967,7 +1967,7 @@
     },
     {
       "date_diffusion": "2026-10-05",
-      "heure_debut": "09:21",
+      "heure_debut": "09:22",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "STEPHANE_GOLDIN",
@@ -1975,7 +1975,7 @@
     },
     {
       "date_diffusion": "2026-10-05",
-      "heure_debut": "09:27",
+      "heure_debut": "09:28",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "RONY_HAYOT",
@@ -2011,13 +2011,6 @@
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
       "channel_id": "SOLAL_ISRAEL"
-    },
-    {
-      "date_diffusion": "2026-10-05",
-      "bloc_apres": null,
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
     },
     {
       "date_diffusion": "2026-10-05",
@@ -2087,13 +2080,6 @@
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
       "title": "Massada"
-    },
-    {
-      "date_diffusion": "2026-10-05",
-      "bloc_apres": "WILLIAM_ZERBIB_L_INTERVIEW",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
     },
     {
       "date_diffusion": "2026-10-05",
@@ -2188,7 +2174,7 @@
     },
     {
       "date_diffusion": "2026-10-05",
-      "heure_debut": "14:42",
+      "heure_debut": "14:41",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
@@ -2196,7 +2182,7 @@
     },
     {
       "date_diffusion": "2026-10-05",
-      "heure_debut": "14:46",
+      "heure_debut": "14:45",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
@@ -2225,7 +2211,7 @@
     },
     {
       "date_diffusion": "2026-10-05",
-      "heure_debut": "14:59",
+      "heure_debut": "15:00",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "JEROME_HAAS_L_INTERVIEW",
@@ -2237,7 +2223,7 @@
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "RADIO_SHALOM_BOCHURBERG",
-      "title": "Le grand rabbin Olivier Kaufmann"
+      "title": "Alexandre Doulut et François Heilbronn"
     },
     {
       "date_diffusion": "2026-10-05",
@@ -2269,15 +2255,7 @@
     },
     {
       "date_diffusion": "2026-10-05",
-      "heure_debut": "16:25",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "RADIO_SHALOM_BOCHURBERG",
-      "title": "Benjamin Fogel pour son livre: \"Les évadés du convoi 53\""
-    },
-    {
-      "date_diffusion": "2026-10-05",
-      "heure_debut": "17:14",
+      "heure_debut": "16:22",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
@@ -2285,23 +2263,7 @@
     },
     {
       "date_diffusion": "2026-10-05",
-      "heure_debut": "17:22",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "RADIO_SHALOM_BOCHURBERG",
-      "title": "Judith Sibony écrivain, journaliste, metteur en scène"
-    },
-    {
-      "date_diffusion": "2026-10-05",
-      "heure_debut": "18:13",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "RADIO_SHALOM_BOCHURBERG",
-      "title": "Alexandre Doulut et François Heilbronn"
-    },
-    {
-      "date_diffusion": "2026-10-05",
-      "heure_debut": "19:02",
+      "heure_debut": "17:08",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
@@ -2309,15 +2271,63 @@
     },
     {
       "date_diffusion": "2026-10-05",
-      "heure_debut": "19:59",
+      "heure_debut": "17:39",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": ""
+    },
+    {
+      "date_diffusion": "2026-10-05",
+      "heure_debut": "17:47",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "2. UJUH Eurovision"
+    },
+    {
+      "date_diffusion": "2026-10-05",
+      "heure_debut": "17:54",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": ""
+    },
+    {
+      "date_diffusion": "2026-10-05",
+      "heure_debut": "18:01",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "1. UJUH Marc Chagall"
+    },
+    {
+      "date_diffusion": "2026-10-05",
+      "heure_debut": "18:08",
       "type": "ANCRE",
       "heure_fixe": true,
+      "channel_id": "TEL_AVIV_NEW_YORK",
+      "title": "EPISODE 24- SEMAINE DU 20 AU 27 SEPTEMBRE"
+    },
+    {
+      "date_diffusion": "2026-10-05",
+      "heure_debut": "18:47",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
       "channel_id": "RADIO_SHALOM_BOCHURBERG",
       "title": "Le grand rabbin Olivier Kaufmann"
     },
     {
       "date_diffusion": "2026-10-05",
-      "heure_debut": "22:00",
+      "heure_debut": "19:37",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "RADIO_SHALOM_BOCHURBERG",
+      "title": "Benjamin Fogel pour son livre: \"Les évadés du convoi 53\""
+    },
+    {
+      "date_diffusion": "2026-10-05",
+      "heure_debut": "21:26",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "YINON_SHOW",
@@ -2356,7 +2366,7 @@
     },
     {
       "date_diffusion": "2026-10-06",
-      "heure_debut": "09:27",
+      "heure_debut": "09:28",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "RONY_HAYOT",
@@ -2364,7 +2374,7 @@
     },
     {
       "date_diffusion": "2026-10-06",
-      "heure_debut": "09:37",
+      "heure_debut": "09:38",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
@@ -2380,7 +2390,7 @@
     },
     {
       "date_diffusion": "2026-10-06",
-      "heure_debut": "09:49",
+      "heure_debut": "09:50",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
@@ -2391,14 +2401,7 @@
       "bloc_apres": "LES_ISRAELIENNES",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
-    },
-    {
-      "date_diffusion": "2026-10-06",
-      "bloc_apres": "LES_ISRAELIENNES",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
+      "channel_id": "SOLAL_ISRAEL"
     },
     {
       "date_diffusion": "2026-10-06",
@@ -2414,6 +2417,20 @@
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
       "channel_id": "SOLAL_ISRAEL"
+    },
+    {
+      "date_diffusion": "2026-10-06",
+      "bloc_apres": "CAFE_DAAT",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "ISRAEL_EN_FRANCAIS"
+    },
+    {
+      "date_diffusion": "2026-10-06",
+      "bloc_apres": "CAFE_DAAT",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "KFIR_ALMAGOR"
     },
     {
       "date_diffusion": "2026-10-06",
@@ -2454,7 +2471,7 @@
     },
     {
       "date_diffusion": "2026-10-06",
-      "heure_debut": "11:50",
+      "heure_debut": "11:53",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
@@ -2462,7 +2479,7 @@
     },
     {
       "date_diffusion": "2026-10-06",
-      "heure_debut": "12:00",
+      "heure_debut": "11:59",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "WILLIAM_ZERBIB_L_INTERVIEW",
@@ -2492,19 +2509,11 @@
     },
     {
       "date_diffusion": "2026-10-06",
-      "heure_debut": "12:44",
+      "heure_debut": "12:47",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
       "title": "zichron yaakov"
-    },
-    {
-      "date_diffusion": "2026-10-06",
-      "heure_debut": "12:49",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": ""
     },
     {
       "date_diffusion": "2026-10-06",
@@ -2530,7 +2539,14 @@
     },
     {
       "date_diffusion": "2026-10-06",
-      "heure_debut": "13:59",
+      "bloc_apres": "YINON_SHOW",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "TSAHAL_FR"
+    },
+    {
+      "date_diffusion": "2026-10-06",
+      "heure_debut": "14:00",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "OROT_VEKELIM",
@@ -2538,7 +2554,7 @@
     },
     {
       "date_diffusion": "2026-10-06",
-      "heure_debut": "14:52",
+      "heure_debut": "14:53",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "KATAVA",
@@ -2556,6 +2572,13 @@
       "bloc_apres": "OROT_VEKELIM",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
+      "channel_id": "TSAHAL_FR"
+    },
+    {
+      "date_diffusion": "2026-10-06",
+      "bloc_apres": "OROT_VEKELIM",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
       "channel_id": "KFIR_ALMAGOR"
     },
     {
@@ -2563,7 +2586,7 @@
       "bloc_apres": "OROT_VEKELIM",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
+      "channel_id": "SOLAL_ISRAEL"
     },
     {
       "date_diffusion": "2026-10-06",
@@ -2590,7 +2613,7 @@
     },
     {
       "date_diffusion": "2026-10-06",
-      "heure_debut": "15:28",
+      "heure_debut": "15:27",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "RONY_HAYOT",
@@ -2598,7 +2621,7 @@
     },
     {
       "date_diffusion": "2026-10-06",
-      "heure_debut": "15:37",
+      "heure_debut": "15:36",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
@@ -2606,7 +2629,7 @@
     },
     {
       "date_diffusion": "2026-10-06",
-      "heure_debut": "15:44",
+      "heure_debut": "15:43",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
@@ -2614,11 +2637,18 @@
     },
     {
       "date_diffusion": "2026-10-06",
-      "heure_debut": "15:51",
+      "heure_debut": "15:50",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
       "title": ""
+    },
+    {
+      "date_diffusion": "2026-10-06",
+      "bloc_apres": "TOUR_D_ISRAEL",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "KFIR_ALMAGOR"
     },
     {
       "date_diffusion": "2026-10-06",
@@ -2634,7 +2664,7 @@
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "Le partage de la Palestine"
+      "title": ""
     },
     {
       "date_diffusion": "2026-10-06",
@@ -2645,19 +2675,11 @@
     },
     {
       "date_diffusion": "2026-10-06",
-      "heure_debut": "16:24",
+      "heure_debut": "16:25",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "Belvoir (1)"
-    },
-    {
-      "date_diffusion": "2026-10-06",
-      "heure_debut": "16:29",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "Bet Shearim"
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "un ujuh121025"
     },
     {
       "date_diffusion": "2026-10-06",
@@ -2665,23 +2687,46 @@
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
+      "title": "Safed"
+    },
+    {
+      "date_diffusion": "2026-10-06",
+      "heure_debut": "16:38",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "CARTES_POSTALES",
+      "title": "Belvoir (1)"
+    },
+    {
+      "date_diffusion": "2026-10-06",
+      "heure_debut": "16:43",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "CARTES_POSTALES",
+      "title": "Bet Shearim"
+    },
+    {
+      "date_diffusion": "2026-10-06",
+      "heure_debut": "16:49",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "CARTES_POSTALES",
       "title": "Carte postale La synagogue de Capharnaum2"
     },
     {
       "date_diffusion": "2026-10-06",
-      "heure_debut": "16:39",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "Cesarée"
-    },
-    {
-      "date_diffusion": "2026-10-06",
-      "heure_debut": "16:45",
+      "heure_debut": "16:55",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "RADIO_SHALOM_BOCHURBERG",
-      "title": "Alexandre Doulut et François Heilbronn"
+      "title": "Judith Sibony écrivain, journaliste, metteur en scène"
+    },
+    {
+      "date_diffusion": "2026-10-06",
+      "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "KFIR_ALMAGOR"
     },
     {
       "date_diffusion": "2026-10-06",
@@ -2699,14 +2744,15 @@
     },
     {
       "date_diffusion": "2026-10-06",
-      "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
-      "type": "CLIPS_CHAINE",
+      "heure_debut": "17:46",
+      "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
+      "channel_id": "RADIO_SHALOM_BOCHURBERG",
+      "title": "Alexandre Doulut et François Heilbronn"
     },
     {
       "date_diffusion": "2026-10-06",
-      "heure_debut": "18:59",
+      "heure_debut": "20:00",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "OROT_VEKELIM",
@@ -2714,23 +2760,7 @@
     },
     {
       "date_diffusion": "2026-10-06",
-      "heure_debut": "18:59",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "RADIO_SHALOM_BOCHURBERG",
-      "title": "Le grand rabbin Olivier Kaufmann"
-    },
-    {
-      "date_diffusion": "2026-10-06",
-      "heure_debut": "19:49",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "RADIO_SHALOM_BOCHURBERG",
-      "title": "Benjamin Fogel pour son livre: \"Les évadés du convoi 53\""
-    },
-    {
-      "date_diffusion": "2026-10-06",
-      "heure_debut": "21:38",
+      "heure_debut": "22:00",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "JEROME_HAAS_L_INTERVIEW",
