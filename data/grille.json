@@ -1,5 +1,5 @@
 {
-  "exported_at": "2026-10-01T00:41:36.646288",
+  "exported_at": "2026-10-01T00:56:41.713276",
   "window_days": 7,
   "rows": [
     {
@@ -2291,16 +2291,60 @@
       "heure_debut": "08:00",
       "type": "ANCRE",
       "heure_fixe": true,
-      "channel_id": "CAFE_DAAT",
-      "title": "Drones israéliens : l'homme qui a conçu leur arme | Beni Levy"
+      "channel_id": "WILLIAM_ZERBIB_L_INTERVIEW",
+      "title": "Pierre Martinet : Pour qui roule Macron ?"
     },
     {
       "date_diffusion": "2026-10-07",
-      "heure_debut": "08:57",
+      "bloc_apres": "WILLIAM_ZERBIB_L_INTERVIEW",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "KFIR_ALMAGOR"
+    },
+    {
+      "date_diffusion": "2026-10-07",
+      "bloc_apres": "WILLIAM_ZERBIB_L_INTERVIEW",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "ISRAEL_EN_FRANCAIS"
+    },
+    {
+      "date_diffusion": "2026-10-07",
+      "bloc_apres": "WILLIAM_ZERBIB_L_INTERVIEW",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "TSAHAL_FR"
+    },
+    {
+      "date_diffusion": "2026-10-07",
+      "bloc_apres": "WILLIAM_ZERBIB_L_INTERVIEW",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "SOLAL_ISRAEL"
+    },
+    {
+      "date_diffusion": "2026-10-07",
+      "heure_debut": "08:44",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "KATAVA",
       "title": "Illustratrices... et haredi, elles cassent les codes"
+    },
+    {
+      "date_diffusion": "2026-10-07",
+      "heure_debut": "08:48",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "STEPHANE_GOLDIN",
+      "title": "Israël en 5787 : l’année du tournant"
+    },
+    {
+      "date_diffusion": "2026-10-07",
+      "heure_debut": "08:53",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "CARTES_POSTALES",
+      "title": "Belvoir (1)"
     },
     {
       "date_diffusion": "2026-10-07",
@@ -2309,13 +2353,6 @@
       "heure_fixe": true,
       "channel_id": "YINON_SHOW",
       "title": "KOXIE, 20 ANS APRES \"Garçon\" AVEC OU SANS LA CEDILLE ?"
-    },
-    {
-      "date_diffusion": "2026-10-07",
-      "bloc_apres": "YINON_SHOW",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "ISRAEL_EN_FRANCAIS"
     },
     {
       "date_diffusion": "2026-10-07",
@@ -2348,11 +2385,18 @@
     },
     {
       "date_diffusion": "2026-10-07",
-      "heure_debut": "10:55",
+      "heure_debut": "10:54",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "STEPHANE_GOLDIN",
-      "title": "Israël en 5787 : l’année du tournant"
+      "channel_id": "CARTES_POSTALES",
+      "title": "Bet Shearim"
+    },
+    {
+      "date_diffusion": "2026-10-07",
+      "bloc_apres": "OROT_VEKELIM",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "TSAHAL_FR"
     },
     {
       "date_diffusion": "2026-10-07",
@@ -2397,22 +2441,22 @@
       "bloc_apres": "TOUR_D_ISRAEL",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
-    },
-    {
-      "date_diffusion": "2026-10-07",
-      "heure_debut": "11:44",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "Carte postale La synagogue de Capharnaum2"
+      "channel_id": "KFIR_ALMAGOR"
     },
     {
       "date_diffusion": "2026-10-07",
       "bloc_apres": "TOUR_D_ISRAEL",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
+      "channel_id": "TSAHAL_FR"
+    },
+    {
+      "date_diffusion": "2026-10-07",
+      "heure_debut": "11:55",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "CARTES_POSTALES",
+      "title": "Carte postale La synagogue de Capharnaum2"
     },
     {
       "date_diffusion": "2026-10-07",
@@ -2424,11 +2468,11 @@
     },
     {
       "date_diffusion": "2026-10-07",
-      "heure_debut": "12:30",
+      "heure_debut": "12:31",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "OROT_VEKELIM",
-      "title": "Accord Iran–USA à Versailles : Israël a-t-il été trahi ? Face à l'actu avec le Rav Fiszon"
+      "channel_id": "CAFE_DAAT",
+      "title": "Drones israéliens : l'homme qui a conçu leur arme | Beni Levy"
     },
     {
       "date_diffusion": "2026-10-07",
@@ -2436,14 +2480,6 @@
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
       "channel_id": "ISRAEL_EN_FRANCAIS"
-    },
-    {
-      "date_diffusion": "2026-10-07",
-      "heure_debut": "13:22",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "TEL_AVIV_NEW_YORK",
-      "title": "TEL AVIV NEW YORK- SEMAINE DU 5 AU 12 JUILLET"
     },
     {
       "date_diffusion": "2026-10-07",
@@ -2468,7 +2504,7 @@
     },
     {
       "date_diffusion": "2026-10-07",
-      "heure_debut": "14:04",
+      "heure_debut": "13:35",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "KATAVA",
@@ -2476,23 +2512,7 @@
     },
     {
       "date_diffusion": "2026-10-07",
-      "heure_debut": "14:09",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": ""
-    },
-    {
-      "date_diffusion": "2026-10-07",
-      "heure_debut": "14:16",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "OROT_VEKELIM",
-      "title": "Rav Elie Kling : à 14 ans, il décide de partir"
-    },
-    {
-      "date_diffusion": "2026-10-07",
-      "heure_debut": "15:54",
+      "heure_debut": "13:39",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "STEPHANE_GOLDIN",
@@ -2500,7 +2520,39 @@
     },
     {
       "date_diffusion": "2026-10-07",
-      "heure_debut": "15:59",
+      "heure_debut": "13:44",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "CAFE_DAAT",
+      "title": "Une espionne du Mossad au Soudan : Yola Reitman raconte l’Opération Frères"
+    },
+    {
+      "date_diffusion": "2026-10-07",
+      "heure_debut": "14:44",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": ""
+    },
+    {
+      "date_diffusion": "2026-10-07",
+      "heure_debut": "14:52",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "OROT_VEKELIM",
+      "title": "Faut-il lâcher l'Amérique ?"
+    },
+    {
+      "date_diffusion": "2026-10-07",
+      "heure_debut": "16:07",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "TEL_AVIV_NEW_YORK",
+      "title": "TEL AVIV NEW YORK- SEMAINE DU 5 AU 12 JUILLET"
+    },
+    {
+      "date_diffusion": "2026-10-07",
+      "heure_debut": "16:48",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "RONY_HAYOT",
@@ -2508,7 +2560,7 @@
     },
     {
       "date_diffusion": "2026-10-07",
-      "heure_debut": "16:08",
+      "heure_debut": "16:57",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
@@ -2516,7 +2568,7 @@
     },
     {
       "date_diffusion": "2026-10-07",
-      "heure_debut": "16:15",
+      "heure_debut": "17:05",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
@@ -2524,7 +2576,7 @@
     },
     {
       "date_diffusion": "2026-10-07",
-      "heure_debut": "17:10",
+      "heure_debut": "17:58",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
@@ -2532,7 +2584,7 @@
     },
     {
       "date_diffusion": "2026-10-07",
-      "heure_debut": "17:18",
+      "heure_debut": "18:06",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
@@ -2540,7 +2592,7 @@
     },
     {
       "date_diffusion": "2026-10-07",
-      "heure_debut": "18:11",
+      "heure_debut": "18:59",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
@@ -2548,7 +2600,7 @@
     },
     {
       "date_diffusion": "2026-10-07",
-      "heure_debut": "18:18",
+      "heure_debut": "19:07",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
@@ -2556,23 +2608,7 @@
     },
     {
       "date_diffusion": "2026-10-07",
-      "heure_debut": "19:12",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": ""
-    },
-    {
-      "date_diffusion": "2026-10-07",
-      "heure_debut": "19:19",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "Grotte de sédécias"
-    },
-    {
-      "date_diffusion": "2026-10-07",
-      "heure_debut": "20:01",
+      "heure_debut": "20:00",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "LES_ISRAELIENNES",
@@ -2583,8 +2619,8 @@
       "heure_debut": "22:00",
       "type": "ANCRE",
       "heure_fixe": true,
-      "channel_id": "WILLIAM_ZERBIB_L_INTERVIEW",
-      "title": "Pierre Martinet : Pour qui roule Macron ?"
+      "channel_id": "CAFE_DAAT",
+      "title": "Drones israéliens : l'homme qui a conçu leur arme | Beni Levy"
     }
   ]
 }
