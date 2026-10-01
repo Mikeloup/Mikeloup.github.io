@@ -3720,14 +3720,15 @@ h2{font-size:25px;margin:0 0 14px}
 .chiffres span{display:block;font-size:13px;color:var(--muted);margin-top:5px;line-height:1.35}
 .video{position:relative;padding-top:56.25%;border-radius:14px;overflow:hidden;background:#000;
        box-shadow:0 14px 36px rgba(0,0,0,.22)}
-.video-tete{margin:0 0 26px;box-shadow:0 18px 44px rgba(0,0,0,.45);
+.video-tete{margin:0 0 10px;box-shadow:0 18px 44px rgba(0,0,0,.45);
             outline:1px solid rgba(255,255,255,.18);outline-offset:-1px}
+.sondemande{margin:0 0 24px;font-size:13.5px;opacity:.72;text-align:center}
 .video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-.postes{list-style:none;margin:0;padding:0}
-.postes li{padding:13px 0;border-bottom:1px solid var(--line)}
-.postes li:last-child{border-bottom:none}
-.postes b{display:block;font-size:16.5px;font-weight:700}
-.postes span{display:block;color:var(--muted);font-size:14.5px;line-height:1.45;margin-top:2px}
+.postes{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:0}
+.postes div{background:var(--surface);border:1px solid var(--line);border-radius:12px;
+            padding:18px 16px}
+.postes b{display:block;font-size:16px;font-weight:800;line-height:1.25;margin:0 0 5px}
+.postes span{display:block;color:var(--muted);font-size:14px;line-height:1.45}
 details{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:0 0 9px}
 details[open]{border-color:var(--accent)}
 summary{cursor:pointer;font-weight:700;font-size:16px;list-style:none}
@@ -3751,6 +3752,7 @@ details p{margin:11px 0 0;font-size:15.5px;color:#39365c}
   .sousbouton{text-align:left}
   section{padding:56px 0}
   h2{font-size:30px}
+  .postes{grid-template-columns:repeat(4,1fr)}
   .pied .derniere{font-size:34px}
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
@@ -3766,12 +3768,13 @@ ${analytics}
     <p class="lede">Quand Israël est attaqué en dehors du champ de bataille, il faut répondre. Avec des faits, des arguments, des analyses justes et précises. C’est ce que fait Tandem TV, en français, depuis Israël — et c’est vous qui le rendez possible.</p>
 
     <div class="video video-tete">
-      <iframe src="https://www.youtube-nocookie.com/embed/${VIDEO}?rel=0"
+      <iframe src="https://www.youtube-nocookie.com/embed/${VIDEO}?autoplay=1&amp;mute=1&amp;playsinline=1&amp;rel=0&amp;cc_load_policy=0&amp;modestbranding=1"
               title="Tandem TV — appel aux dons"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               referrerpolicy="strict-origin-when-cross-origin"
-              allowfullscreen loading="lazy"></iframe>
+              allowfullscreen></iframe>
     </div>
+    <p class="sondemande">Cliquez sur la vidéo pour activer le son.</p>
 
     <p class="objectif"><span class="mot">Objectif :</span> <b>200 000 NIS</b> <span>à réunir d’ici le 4 novembre</span></p>
     <a class="cta" href="${LIEN}" rel="noopener">Faire un don</a>
@@ -3795,10 +3798,9 @@ ${analytics}
 <section>
   <div class="wrap">
     <h2>Ce que votre don finance</h2>
-    <p class="chapo">Poste par poste, sans rien d’autre derrière.</p>
-    <ul class="postes">
-${postes.map(([nom, detail]) => `      <li><b>${nom}</b><span>${detail}</span></li>`).join('\n')}
-    </ul>
+    <div class="postes">
+${postes.map(([nom, detail]) => `      <div><b>${nom}</b><span>${detail}</span></div>`).join('\n')}
+    </div>
   </div>
 </section>
 
@@ -3815,7 +3817,7 @@ ${postes.map(([nom, detail]) => `      <li><b>${nom}</b><span>${detail}</span></
 <section>
   <div class="wrap">
     <h2>Vos questions</h2>
-    <p class="chapo">Et le reste par courriel.</p>
+    <p class="chapo">Et le reste par courriel : <b>contact@tandemtv.org</b></p>
 ${questions.map(([q, r]) => `    <details><summary>${q}</summary><p>${r}</p></details>`).join('\n')}
   </div>
 </section>
