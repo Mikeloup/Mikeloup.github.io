@@ -1,5 +1,5 @@
 {
-  "exported_at": "2026-10-02T02:04:58.120359",
+  "exported_at": "2026-10-02T02:20:03.108666",
   "window_days": 7,
   "rows": [
     {
@@ -2279,7 +2279,7 @@
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "TEL_AVIV_NEW_YORK",
-      "title": "EPISODE 23- SEMAINE DU 13 AU 20 SEPTEMBRE"
+      "title": "EPISODE 24- SEMAINE DU 20 AU 27 SEPTEMBRE"
     },
     {
       "date_diffusion": "2026-10-08",
@@ -2297,7 +2297,7 @@
     },
     {
       "date_diffusion": "2026-10-08",
-      "heure_debut": "11:40",
+      "heure_debut": "11:41",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "STEPHANE_GOLDIN",
@@ -2312,7 +2312,7 @@
     },
     {
       "date_diffusion": "2026-10-08",
-      "heure_debut": "11:46",
+      "heure_debut": "11:47",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "RONY_HAYOT",
@@ -2320,11 +2320,10 @@
     },
     {
       "date_diffusion": "2026-10-08",
-      "heure_debut": "11:56",
-      "type": "COURT_NOMME",
+      "bloc_apres": "TEL_AVIV_NEW_YORK",
+      "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "Cesarée"
+      "channel_id": "KFIR_ALMAGOR"
     },
     {
       "date_diffusion": "2026-10-08",
@@ -2339,11 +2338,11 @@
       "bloc_apres": "YINON_SHOW",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
+      "channel_id": "SOLAL_ISRAEL"
     },
     {
       "date_diffusion": "2026-10-08",
-      "heure_debut": "12:59",
+      "heure_debut": "13:00",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "OROT_VEKELIM",
@@ -2365,18 +2364,11 @@
     },
     {
       "date_diffusion": "2026-10-08",
-      "heure_debut": "13:55",
+      "heure_debut": "13:57",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "KATAVA",
       "title": "Illustratrices... et haredi, elles cassent les codes"
-    },
-    {
-      "date_diffusion": "2026-10-08",
-      "bloc_apres": "OROT_VEKELIM",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
     },
     {
       "date_diffusion": "2026-10-08",
@@ -2403,11 +2395,11 @@
     },
     {
       "date_diffusion": "2026-10-08",
-      "heure_debut": "14:28",
+      "heure_debut": "14:30",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
-      "title": "Ein Gedi"
+      "title": "Cesarée"
     },
     {
       "date_diffusion": "2026-10-08",
@@ -2422,6 +2414,13 @@
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
       "channel_id": "TSAHAL_FR"
+    },
+    {
+      "date_diffusion": "2026-10-08",
+      "bloc_apres": "TOUR_D_ISRAEL",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "KFIR_ALMAGOR"
     },
     {
       "date_diffusion": "2026-10-08",
@@ -2448,19 +2447,11 @@
     },
     {
       "date_diffusion": "2026-10-08",
-      "heure_debut": "15:38",
+      "heure_debut": "15:36",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "Ein Hod"
-    },
-    {
-      "date_diffusion": "2026-10-08",
-      "heure_debut": "15:42",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "STEPHANE_GOLDIN",
-      "title": "Israël en 5787 : l’année du tournant"
+      "channel_id": "OROT_VEKELIM",
+      "title": "Rav Elie Kling : à 14 ans, il décide de partir"
     },
     {
       "date_diffusion": "2026-10-08",
@@ -2478,11 +2469,35 @@
     },
     {
       "date_diffusion": "2026-10-08",
-      "heure_debut": "15:51",
+      "heure_debut": "17:14",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "STEPHANE_GOLDIN",
+      "title": "Israël en 5787 : l’année du tournant"
+    },
+    {
+      "date_diffusion": "2026-10-08",
+      "heure_debut": "17:19",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "RONY_HAYOT",
       "title": "Israël déclare la guerre au crime organisé"
+    },
+    {
+      "date_diffusion": "2026-10-08",
+      "heure_debut": "17:28",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": ""
+    },
+    {
+      "date_diffusion": "2026-10-08",
+      "heure_debut": "17:37",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "CARTES_POSTALES",
+      "title": "Ein Gedi"
     },
     {
       "date_diffusion": "2026-10-08",
@@ -2493,7 +2508,7 @@
     },
     {
       "date_diffusion": "2026-10-08",
-      "heure_debut": "16:31",
+      "heure_debut": "18:30",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
@@ -2501,7 +2516,23 @@
     },
     {
       "date_diffusion": "2026-10-08",
-      "heure_debut": "16:39",
+      "heure_debut": "18:37",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "CARTES_POSTALES",
+      "title": "Ein Hod"
+    },
+    {
+      "date_diffusion": "2026-10-08",
+      "heure_debut": "19:30",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": ""
+    },
+    {
+      "date_diffusion": "2026-10-08",
+      "heure_debut": "19:38",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
@@ -2509,55 +2540,7 @@
     },
     {
       "date_diffusion": "2026-10-08",
-      "heure_debut": "17:33",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": ""
-    },
-    {
-      "date_diffusion": "2026-10-08",
-      "heure_debut": "17:40",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "Les jardins Bahai"
-    },
-    {
-      "date_diffusion": "2026-10-08",
-      "heure_debut": "18:34",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": ""
-    },
-    {
-      "date_diffusion": "2026-10-08",
-      "heure_debut": "18:43",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "Massada"
-    },
-    {
-      "date_diffusion": "2026-10-08",
-      "heure_debut": "19:36",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une hsitoire 221224"
-    },
-    {
-      "date_diffusion": "2026-10-08",
-      "heure_debut": "19:44",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "Ramat Hanadiv"
-    },
-    {
-      "date_diffusion": "2026-10-08",
-      "heure_debut": "20:00",
+      "heure_debut": "19:59",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "WILLIAM_ZERBIB_L_INTERVIEW",
@@ -2568,8 +2551,8 @@
       "heure_debut": "21:59",
       "type": "ANCRE",
       "heure_fixe": true,
-      "channel_id": "TEL_AVIV_NEW_YORK",
-      "title": "EPISODE 24- SEMAINE DU 20 AU 27 SEPTEMBRE"
+      "channel_id": "OROT_VEKELIM",
+      "title": "La halakha face à la santé mentale - LES BÂTISSEURS — Rav Elikan"
     }
   ]
 }
