@@ -3587,3 +3587,294 @@ export function storiesPage({ config, categories, nav, stories = [], buildTime }
     content,
   });
 }
+
+// =====================================================================
+// PAGE DE DONS — /dons/   (1er octobre 2026)
+//
+// Document AUTONOME, comme annonceursPage() : il ne passe pas par layout().
+// Raison identique (sa feuille de style redefinit :root, body, h2, section),
+// et une seconde qui lui est propre : l'annexe A du dossier de campagne
+// impose « aucun menu, aucun lien vers le site, aucune sortie possible ».
+// Une page de collecte qui offre une porte de sortie la voit empruntee.
+// Elle n'a donc ni en-tete ni pied de site, volontairement.
+//
+// LE TEXTE EST CELUI DE LA VIDEO (demande de Michael, 01/10/2026). La page
+// reprend la progression du script mot pour mot ou presque : la guerre sans
+// missiles, les mots qui deviennent une verite, la haine qui devient reelle,
+// « nous avons choisi de la mener », « avoir raison ne suffit pas », et la
+// derniere ligne en pied de page. Le visiteur qui arrive par la video doit
+// retrouver la meme voix, pas un argumentaire d'institution.
+//
+// CE QUI N'Y FIGURE PAS, ET POURQUOI : aucun compteur (rien ne le met a jour
+// automatiquement, et l'annexe dit « le compteur ne ment jamais »), aucun
+// chiffre d'audience (ceux du dossier datent du 29 aout et doivent etre
+// remesures), aucun taux de reduction d'impot (a faire relire par NETSAH),
+// aucune contrepartie promise aux donateurs (non arretees). Chacun de ces
+// blocs a sa place prete dans la page.
+// =====================================================================
+export function donsPage({ config }) {
+  const racine = config.siteUrl.replace(/\/$/, '');
+  const url = `${racine}/dons/`;
+  const titre = 'Répondez avec nous';
+  const description = 'Une guerre de l’information fait rage. Tandem TV y répond depuis Israël, '
+    + 'en français. Donnez-nous les moyens de répondre — objectif 200 000 ₪ avant le 4 novembre.';
+  const LIEN = 'https://www.helloasso.com/associations/netsah/formulaires/13';
+  const VIDEO = 'ES0iGnJ27ho';
+
+  const analytics = [
+    config.analytics?.cloudflareToken
+      ? `<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "${escapeHtml(config.analytics.cloudflareToken)}"}'></script>`
+      : '',
+    config.analytics?.plausibleDomain
+      ? `<script defer data-domain="${escapeHtml(config.analytics.plausibleDomain)}" src="https://plausible.io/js/script.js"></script>`
+      : '',
+    config.analytics?.gaMeasurementId
+      ? `<script async src="https://www.googletagmanager.com/gtag/js?id=${escapeHtml(config.analytics.gaMeasurementId)}"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','${escapeHtml(config.analytics.gaMeasurementId)}');</script>`
+      : '',
+  ].join('');
+
+  const postes = [
+    ['Développement des émissions partenaires', 'Rémunérer les producteurs et chroniqueurs qui fournissent les programmes', '70 000'],
+    ['Montage et post-production', 'Montage, habillage, sous-titrage', '45 000'],
+    ['Technique', 'Caméras, son, lumière, régie, entretien', '35 000'],
+    ['Diffusion et hébergement', 'Canal 14, serveurs, stockage, sauvegardes', '25 000'],
+    ['Communication', 'Campagne, réseaux sociaux, visuels', '25 000'],
+  ];
+
+  const montants = ['126 €', '200 €', '500 €', '1 260 €'];
+
+  const questions = [
+    ['Qui encaisse mon don ?',
+      'L’association <b>NETSAH</b>, qui porte le projet Tandem TV. Le paiement passe par HelloAsso, '
+      + 'plateforme française de paiement pour les associations, qui reverse les fonds à NETSAH.'],
+    ['Et pour un reçu ?',
+      'C’est NETSAH qui encaisse les dons et qui vous adresse les documents correspondants. '
+      + 'Pour toute question sur votre reçu, écrivez-nous à <b>contact@tandemtv.org</b>.'],
+    ['Puis-je donner autrement que par carte ?',
+      'Oui. Écrivez-nous à <b>contact@tandemtv.org</b> et nous vous indiquons la marche à suivre.'],
+    ['Puis-je donner tous les mois ?',
+      'Oui. Le formulaire propose <b>« Don mensuel »</b> à côté de « Don ponctuel ». Un don régulier, '
+      + 'même modeste, est ce qui nous aide le plus : il nous permet de programmer la production sur '
+      + 'plusieurs mois au lieu de la décider semaine par semaine.'],
+    ['HelloAsso prend-elle une commission ?',
+      'Non, aucune. Au moment du paiement, HelloAsso vous proposera une contribution volontaire à son '
+      + 'propre fonctionnement : elle est modifiable, et peut être ramenée à zéro sans que cela change '
+      + 'quoi que ce soit à votre don.'],
+  ];
+
+  const partageTexte = encodeURIComponent('Une guerre de l’information fait rage. Tandem TV y répond, depuis Israël, en français. Répondez avec nous :');
+  const partageUrl = encodeURIComponent(url);
+
+  return `<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>${escapeHtml(titre)} — Tandem TV</title>
+<meta name="description" content="${escapeHtml(description)}">
+<link rel="canonical" href="${url}">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Tandem TV">
+<meta property="og:url" content="${url}">
+<meta property="og:title" content="Répondez avec nous — Tandem TV">
+<meta property="og:description" content="${escapeHtml(description)}">
+<meta property="og:image" content="${racine}/assets/partage.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/favicon.png" sizes="any">
+<style>
+:root{--brand:#180058;--brand-soft:#2c1a7a;--accent:#2b5fd9;--accent-dk:#1d47ab;--rouge:#c8102e;
+      --bg:#fbfaf7;--bg-soft:#f4f1ea;--surface:#fff;--line:#e4dfd3;--text:#15123a;--muted:#6a6455}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);
+     font:17px/1.62 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+     -webkit-text-size-adjust:100%}
+.wrap{max-width:720px;margin:0 auto;padding:0 20px}
+h1,h2{letter-spacing:-.5px;font-weight:800}
+section{padding:40px 0}
+section.alt{background:var(--bg-soft)}
+section.sombre{background:var(--text);color:#fff}
+h2{font-size:25px;margin:0 0 14px}
+.chapo{color:var(--muted);font-size:16px;margin:0 0 20px}
+section.sombre .chapo{color:#b9b4d6}
+.hero{background:linear-gradient(160deg,var(--brand),var(--brand-soft) 60%,#3a2599);color:#fff;padding:30px 0 34px}
+.hero .marque{display:flex;align-items:center;gap:10px;margin:0 0 22px}
+.hero .marque img{height:34px;width:auto;display:block}
+.hero .marque span{text-transform:uppercase;letter-spacing:2.4px;font-size:11.5px;font-weight:700;opacity:.75}
+.hero h1{font-size:34px;line-height:1.1;margin:0 0 16px;max-width:15ch}
+.hero p.lede{font-size:18px;line-height:1.5;opacity:.94;margin:0 0 22px}
+.objectif{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin:0 0 20px;font-size:15px;opacity:.9}
+.objectif b{font-size:26px;font-weight:800;opacity:1}
+.cta{display:block;width:100%;text-align:center;background:#fff;color:var(--brand);font-weight:800;
+     font-size:19px;padding:17px 24px;border-radius:10px;text-decoration:none;box-shadow:0 8px 24px rgba(0,0,0,.26)}
+.cta.sombre{background:var(--rouge);color:#fff}
+.sousbouton{margin:10px 0 0;font-size:13.5px;opacity:.78;text-align:center}
+/* le texte de la video : des phrases courtes, posees les unes sous les autres */
+.martele{font-size:21px;line-height:1.45;font-weight:700;margin:0 0 18px;max-width:22ch}
+.martele span{display:block}
+.froid{font-size:17px;line-height:1.6;margin:0 0 14px;color:var(--muted)}
+section.sombre .froid{color:#c6c2e0}
+.mots{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 20px}
+.mots i{font-style:normal;border:1px solid var(--rouge);color:var(--rouge);border-radius:6px;
+        padding:5px 11px;font-size:14.5px;font-weight:700;letter-spacing:.3px}
+section.sombre .mots i{border-color:#ff5a74;color:#ff8295}
+.chiffres{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.chiffres div{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 12px;text-align:center}
+.chiffres b{display:block;font-size:22px;font-weight:800;color:var(--brand);line-height:1.15}
+.chiffres span{display:block;font-size:13px;color:var(--muted);margin-top:5px;line-height:1.35}
+.video{position:relative;padding-top:56.25%;border-radius:14px;overflow:hidden;background:#000;
+       box-shadow:0 14px 36px rgba(0,0,0,.22)}
+.video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+table{width:100%;border-collapse:collapse;font-size:15.5px}
+td{text-align:left;padding:11px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+td.montant{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+tr.total td{font-weight:800;border-bottom:none;border-top:2px solid var(--text);font-size:17px}
+td small{display:block;color:var(--muted);font-size:13.5px;line-height:1.4;margin-top:2px}
+.paliers{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 0 18px}
+.palier{display:flex;align-items:center;justify-content:center;background:var(--surface);
+        border:2px solid var(--line);border-radius:12px;padding:18px 10px;text-decoration:none;
+        color:var(--brand);font-size:24px;font-weight:800;transition:border-color .15s}
+.palier:hover{border-color:var(--accent)}
+.palier.libre{grid-column:1 / -1;border-style:dashed;font-size:17px;color:var(--text)}
+details{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:0 0 9px}
+details[open]{border-color:var(--accent)}
+summary{cursor:pointer;font-weight:700;font-size:16px;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";float:right;color:var(--accent);font-weight:800;font-size:20px;line-height:1}
+details[open] summary::after{content:"–"}
+details p{margin:11px 0 0;font-size:15.5px;color:#39365c}
+.pied{background:var(--brand);color:#fff;padding:34px 0 38px;font-size:14.5px;line-height:1.6}
+.pied .derniere{font-size:27px;font-weight:800;letter-spacing:-.5px;margin:0 0 22px;line-height:1.15}
+.pied p{margin:0 0 9px;opacity:.86}
+.pied b{opacity:1}
+.partage{margin:26px 0 20px;padding:18px 0 0;border-top:1px solid rgba(255,255,255,.22)}
+.partage p{margin:0 0 11px;font-weight:700;opacity:1}
+.partage a{display:inline-block;margin:0 8px 8px 0;padding:9px 15px;border-radius:8px;
+           border:1px solid rgba(255,255,255,.4);color:#fff;text-decoration:none;font-size:14.5px;font-weight:600}
+@media (min-width:700px){
+  .hero{padding:52px 0 56px}
+  .hero h1{font-size:46px}
+  .hero p.lede{font-size:20px}
+  .cta{display:inline-block;width:auto;min-width:320px}
+  .sousbouton{text-align:left}
+  section{padding:56px 0}
+  h2{font-size:30px}
+  .martele{font-size:25px;max-width:26ch}
+  .paliers{grid-template-columns:repeat(4,1fr)}
+  .pied .derniere{font-size:34px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+${analytics}
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="marque"><img src="/assets/logo.png" alt="Tandem TV" width="120" height="34"><span>Canal 14 &middot; Annatel</span></p>
+    <h1>Une autre guerre fait rage. Sans missiles.</h1>
+    <p class="lede">Une image. Un slogan. Un mensonge. Des millions de vues.<br>
+      Dans cette guerre de l’information, Tandem TV répond — depuis Israël, en français.</p>
+    <p class="objectif"><b>200 000 ₪</b> <span>à réunir d’ici le 4 novembre</span></p>
+    <a class="cta" href="${LIEN}" rel="noopener">Je donne</a>
+    <p class="sousbouton">Paiement sécurisé par HelloAsso &middot; au profit de l’association NETSAH</p>
+  </div>
+</header>
+
+<section class="sombre">
+  <div class="wrap">
+    <p class="martele"><span>Sans missiles.</span><span>Sans sirènes.</span><span>Une guerre de l’information.</span></p>
+    <div class="mots"><i>Génocide</i><i>Apartheid</i><i>État criminel</i></div>
+    <p class="froid">Répétés. Partagés. Jusqu’à devenir, pour des millions de personnes, une vérité.
+      Dans cette guerre, quelques secondes suffisent : une fausse information peut faire le tour du monde
+      avant même que la vérité ait commencé à répondre.</p>
+    <p class="froid">Et peu à peu, le récit s’installe. Dans les médias. Sur les campus. Dans les rues.
+      Dans les têtes.</p>
+    <p class="froid">Mais les mots ne restent pas toujours derrière un écran. La haine, elle, peut devenir
+      bien réelle. Des Juifs insultés. Menacés. Agressés. Et parfois assassinés. Alors certains recommencent
+      à cacher une étoile de David, à retirer une kippa, à avoir peur d’être simplement juifs. En 2026.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Cette guerre, nous avons choisi de la mener</h2>
+    <p class="chapo">Nous, c’est Tandem TV. Depuis Israël, en français, nous répondons.
+      Avec les faits. Avec le contexte. Avec les images.</p>
+    <div class="chiffres">
+      <div><b>24 h/24</b><span>une grille continue, tous les jours</span></div>
+      <div><b>Canal 14</b><span>du bouquet Annatel</span></div>
+      <div><b>En français</b><span>produite et tournée en Israël</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <h2>« Mais répondez ! »</h2>
+    <p class="chapo">Si vous aussi, devant votre écran, vous vous êtes déjà dit cela — regardez.</p>
+    <div class="video">
+      <iframe src="https://www.youtube-nocookie.com/embed/${VIDEO}?rel=0"
+              title="Tandem TV — Répondez avec nous"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen loading="lazy"></iframe>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Avoir raison ne suffit pas</h2>
+    <p class="chapo">Il faut être entendu. Et être entendu demande des moyens. Voici lesquels,
+      poste par poste.</p>
+    <table>
+      <tbody>
+${postes.map(([nom, detail, somme]) => `        <tr><td>${nom}<small>${detail}</small></td><td class="montant">${somme} ₪</td></tr>`).join('\n')}
+        <tr class="total"><td>Total</td><td class="montant">200 000 ₪</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <h2>Donnez-nous les moyens de répondre</h2>
+    <p class="chapo">Chaque montant ouvre directement le formulaire sécurisé.</p>
+    <div class="paliers">
+${montants.map((m) => `      <a class="palier" href="${LIEN}" rel="noopener">${m}</a>`).join('\n')}
+      <a class="palier libre" href="${LIEN}" rel="noopener">Un autre montant, ponctuel ou chaque mois</a>
+    </div>
+    <a class="cta sombre" href="${LIEN}" rel="noopener">Je donne</a>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Vos questions</h2>
+    <p class="chapo">Et le reste par courriel.</p>
+${questions.map(([q, r]) => `    <details><summary>${q}</summary><p>${r}</p></details>`).join('\n')}
+  </div>
+</section>
+
+<footer class="pied">
+  <div class="wrap">
+    <p class="derniere">Ne restez pas spectateur.</p>
+    <a class="cta" href="${LIEN}" rel="noopener">Je donne</a>
+    <div class="partage">
+      <p>Partagez cette vidéo. C’est gratuit, et c’est utile.</p>
+      <a href="https://wa.me/?text=${partageTexte}%20${partageUrl}" rel="noopener nofollow" target="_blank">WhatsApp</a>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=${partageUrl}" rel="noopener nofollow" target="_blank">Facebook</a>
+      <a href="https://x.com/intent/tweet?text=${partageTexte}&url=${partageUrl}" rel="noopener nofollow" target="_blank">X</a>
+      <a href="mailto:?subject=Tandem%20TV&body=${partageTexte}%20${partageUrl}" rel="noopener nofollow">Courriel</a>
+    </div>
+    <p>Collecte organisée au profit du projet <b>Tandem TV</b>, porté par l’association <b>NETSAH</b>.</p>
+    <p>Une question ? <b>contact@tandemtv.org</b></p>
+  </div>
+</footer>
+
+</body>
+</html>`;
+}

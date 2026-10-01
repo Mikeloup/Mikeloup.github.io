@@ -1795,6 +1795,15 @@ async function main() {
   await writePage('/sponsoring/', R.annonceursPage(ctx));
   urls.push({ loc: '/sponsoring/', freq: 'monthly', priority: '0.8' });
 
+  // 01/10/2026 : page de collecte, a l'ancienne adresse Wix /dons, qui
+  // recevait encore de vraies visites sans mener nulle part (voir
+  // data/anciennes-adresses.json). Document autonome comme /sponsoring/ :
+  // l'annexe A du dossier de campagne interdit toute sortie vers le site.
+  // Priorite haute et frequence hebdomadaire : c'est la page de la campagne
+  // en cours, elle doit etre reexploree souvent jusqu'au 4 novembre.
+  await writePage('/dons/', R.donsPage(ctx));
+  urls.push({ loc: '/dons/', freq: 'weekly', priority: '0.9' });
+
   // Page d'arrivée après inscription à la lettre (Kit y renvoie l'abonné)
   if (config.newsletter?.formId) {
     await writePage('/merci/', R.thanksPage({ ...ctx, latest: horsQuotidien.slice(0, 4) }));
