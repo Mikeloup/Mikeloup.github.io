@@ -1919,3 +1919,30 @@ a.g-src:hover { color: var(--accent); text-decoration: underline; text-underline
 .renvoi-sujet-mot { display: block; font-size: .78rem; text-transform: uppercase;
   letter-spacing: .06em; color: var(--muted); margin-bottom: .15rem; }
 .renvoi-sujet a { font-weight: 600; }
+
+
+/* ===================================================================
+   APPEL AUX DONS (01/10/2026)
+   Collecte d'octobre : /dons/. Trois entrees de menu et un bandeau sur
+   chaque page video. Le rouge de la charte sert d'accent -- il n'est
+   utilise nulle part ailleurs dans la navigation, c'est ce qui le rend
+   visible sans crier.
+   =================================================================== */
+.utility a.utility-don { color: #fff; background: var(--rouge); font-weight: 700;
+  border-radius: 999px; padding: 5px 14px; }
+.utility a.utility-don:hover { background: #a60d26; color: #fff; }
+.nav a.nav-don { color: var(--rouge); font-weight: 700; }
+a.pied-don { font-weight: 700; }
+
+.appel-don { display: flex; align-items: center; gap: 18px; flex-wrap: wrap;
+  margin: 22px 0 6px; padding: 18px 20px; border: 1px solid var(--line);
+  border-left: 4px solid var(--rouge); border-radius: 12px;
+  background: var(--surface-2); }
+.appel-don p { margin: 0; flex: 1 1 260px; font-size: 15.5px; line-height: 1.5; }
+.appel-don .btn-don { background: var(--rouge); color: #fff; border-color: var(--rouge);
+  font-weight: 700; white-space: nowrap; }
+.appel-don .btn-don:hover { background: #a60d26; border-color: #a60d26; color: #fff; }
+@media (max-width: 560px) {
+  .appel-don { gap: 12px; }
+  .appel-don .btn-don { width: 100%; text-align: center; }
+}

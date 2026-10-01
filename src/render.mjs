@@ -773,6 +773,10 @@ ${push}
       <!-- Sponsoring : seule page du site qui puisse rapporter de l'argent. Elle
            n'était atteignable qu'en déroulant toute la page jusqu'au pied. -->
       <a class="utility-fort" href="/sponsoring/">Sponsoring</a>
+      <!-- 01/10/2026 : la collecte d'octobre. Placee en dernier, la plus
+           visible : c'est la seule page du site qui demande quelque chose au
+           visiteur, et elle n'a que jusqu'au 4 novembre pour le faire. -->
+      <a class="utility-don" href="/dons/">Faire un don</a>
     </nav>
 
     <form class="search" id="site-search" action="/recherche/" method="get" role="search">
@@ -821,6 +825,7 @@ ${push}
       <span class="nav-only-mobile-sep" aria-hidden="true"></span>
       ${navPages.map((pg) => `<a class="nav-alt" href="/${pg.slug}/">${escapeHtml(libelle(pg))}</a>`).join('')}
       <a class="nav-alt" href="/sponsoring/">Sponsoring</a>
+      <a class="nav-alt nav-don" href="/dons/">Faire un don</a>
     </div>
   </nav>
 </header>
@@ -873,6 +878,7 @@ ${content}
         ${pages.filter((pg) => !pg.slug.startsWith('sujets/'))
           .map((pg) => `<li><a href="/${pg.slug}/">${escapeHtml(libelle(pg))}</a></li>`).join('')}
         <li><a href="/sponsoring/">Sponsoring</a></li>
+        <li><a class="pied-don" href="/dons/">Faire un don</a></li>
       </ul>
     </div>
   </div>
@@ -1702,6 +1708,16 @@ export function videoPage({
       <button class="share-time" id="share-at-time" type="button" hidden>Copier le lien à cet instant</button>
       <a class="right" href="https://www.youtube.com/watch?v=${video.id}" target="_blank" rel="noopener">Voir sur YouTube ↗</a>
     </div>
+
+    <!-- APPEL AUX DONS, SUR CHAQUE PAGE VIDEO (01/10/2026, demande de Michael).
+         Place juste sous le lecteur et la barre de partage : c'est la zone que
+         le visiteur regarde apres avoir lance la video, et la seule qu'il voie
+         a coup sur. Plus bas, il serait deja parti. -->
+    <aside class="appel-don">
+      <p><b>Cette émission existe grâce aux dons.</b> Tandem TV est une chaîne
+        indépendante, produite en Israël et en français.</p>
+      <a class="btn btn-don" href="/dons/">Faire un don</a>
+    </aside>
 
     ${summary}
     ${sommaireQuestions}
@@ -3706,6 +3722,18 @@ body{margin:0;background:var(--bg);color:var(--text);
      font:17px/1.62 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
      -webkit-text-size-adjust:100%}
 .wrap{max-width:720px;margin:0 auto;padding:0 20px}
+/* Menu de la page (01/10/2026). L'annexe A du dossier de campagne demandait
+   « aucune sortie possible » ; Michael a tranche l'inverse : la page doit etre
+   reliee au site comme les autres. La barre reste donc volontairement sobre et
+   discrete -- elle existe, elle n'attire pas l'oeil. */
+.barre{background:var(--brand);border-bottom:1px solid rgba(255,255,255,.14)}
+.barre .wrap{display:flex;align-items:center;gap:16px;overflow-x:auto;
+             padding-top:9px;padding-bottom:9px}
+.barre a{color:#fff;text-decoration:none;font-size:14px;font-weight:600;
+         white-space:nowrap;opacity:.82}
+.barre a:hover{opacity:1}
+.barre-marque{display:flex;align-items:center;opacity:1}
+.barre-marque img{height:22px;width:auto;display:block}
 h1,h2{letter-spacing:-.5px;font-weight:800}
 section{padding:40px 0}
 section.alt{background:var(--bg-soft)}
@@ -3772,6 +3800,16 @@ details p{margin:11px 0 0;font-size:15.5px;color:#39365c}
 ${analytics}
 </head>
 <body>
+
+<nav class="barre" aria-label="Menu">
+  <div class="wrap">
+    <a class="barre-marque" href="/"><img src="/assets/logo.png" alt="Tandem TV" width="96" height="27"></a>
+    <a href="/">Accueil</a>
+    <a href="/emissions/">Les émissions</a>
+    <a href="/grille/">La grille</a>
+    <a href="/sponsoring/">Sponsoring</a>
+  </div>
+</nav>
 
 <header class="hero">
   <div class="wrap">
