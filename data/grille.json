@@ -1,5 +1,5 @@
 {
-  "exported_at": "2026-10-02T00:34:28.471232",
+  "exported_at": "2026-10-02T00:49:33.194249",
   "window_days": 7,
   "rows": [
     {
@@ -2580,8 +2580,8 @@
       "heure_debut": "22:00",
       "type": "ANCRE",
       "heure_fixe": true,
-      "channel_id": "OROT_VEKELIM",
-      "title": "La halakha face à la santé mentale - LES BÂTISSEURS — Rav Elikan"
+      "channel_id": "RADIO_SHALOM_BOCHURBERG",
+      "title": "Le grand rabbin Olivier Kaufmann"
     }
   ]
 }
