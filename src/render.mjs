@@ -3598,12 +3598,16 @@ export function storiesPage({ config, categories, nav, stories = [], buildTime }
 // Une page de collecte qui offre une porte de sortie la voit empruntee.
 // Elle n'a donc ni en-tete ni pied de site, volontairement.
 //
-// LE TEXTE EST CELUI DE LA VIDEO (demande de Michael, 01/10/2026). La page
-// reprend la progression du script mot pour mot ou presque : la guerre sans
-// missiles, les mots qui deviennent une verite, la haine qui devient reelle,
-// « nous avons choisi de la mener », « avoir raison ne suffit pas », et la
-// derniere ligne en pied de page. Le visiteur qui arrive par la video doit
-// retrouver la meme voix, pas un argumentaire d'institution.
+// LE TEXTE S'INSPIRE DE LA VIDEO, IL NE LA RECOPIE PAS (Michael, 01/10/2026 :
+// « je t'ai dit de t'inspirer, pas de remplir la page avec ce texte... il faut
+// donner envie aux gens de faire un don »). Premiere version essayee : le
+// script colle tel quel, trois paragraphes de recit sombre avant la moindre
+// raison de donner. Une page de collecte n'est pas un sous-titrage : celui qui
+// arrive ici a deja vu la video, ou la verra plus bas. Il lui faut, en vingt
+// secondes, de quoi avoir ENVIE. D'ou : une promesse en tete, trois lignes sur
+// l'urgence, la video, ce que l'argent finance, les montants. La seule phrase
+// reprise mot pour mot est la derniere, en pied de page, parce qu'elle conclut
+// mieux que tout ce qu'on pourrait ecrire a la place.
 //
 // CE QUI N'Y FIGURE PAS, ET POURQUOI : aucun compteur (rien ne le met a jour
 // automatiquement, et l'annexe dit « le compteur ne ment jamais »), aucun
@@ -3615,9 +3619,9 @@ export function storiesPage({ config, categories, nav, stories = [], buildTime }
 export function donsPage({ config }) {
   const racine = config.siteUrl.replace(/\/$/, '');
   const url = `${racine}/dons/`;
-  const titre = 'Répondez avec nous';
-  const description = 'Une guerre de l’information fait rage. Tandem TV y répond depuis Israël, '
-    + 'en français. Donnez-nous les moyens de répondre — objectif 200 000 ₪ avant le 4 novembre.';
+  const titre = 'Soutenir Tandem TV';
+  const description = 'Donnez-nous les moyens de diffuser la réalité d’Israël et du monde juif. Tandem TV, la chaîne francophone d’Israël, '
+    + 'lance sa collecte — objectif 200 000 ₪ avant le 4 novembre.';
   const LIEN = 'https://www.helloasso.com/associations/netsah/formulaires/13';
   const VIDEO = 'ES0iGnJ27ho';
 
@@ -3677,7 +3681,7 @@ export function donsPage({ config }) {
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Tandem TV">
 <meta property="og:url" content="${url}">
-<meta property="og:title" content="Répondez avec nous — Tandem TV">
+<meta property="og:title" content="Donnez-nous les moyens de diffuser la réalité d’Israël et du monde juif">
 <meta property="og:description" content="${escapeHtml(description)}">
 <meta property="og:image" content="${racine}/assets/partage.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -3695,15 +3699,14 @@ body{margin:0;background:var(--bg);color:var(--text);
 h1,h2{letter-spacing:-.5px;font-weight:800}
 section{padding:40px 0}
 section.alt{background:var(--bg-soft)}
-section.sombre{background:var(--text);color:#fff}
+
 h2{font-size:25px;margin:0 0 14px}
 .chapo{color:var(--muted);font-size:16px;margin:0 0 20px}
-section.sombre .chapo{color:#b9b4d6}
 .hero{background:linear-gradient(160deg,var(--brand),var(--brand-soft) 60%,#3a2599);color:#fff;padding:30px 0 34px}
 .hero .marque{display:flex;align-items:center;gap:10px;margin:0 0 22px}
 .hero .marque img{height:34px;width:auto;display:block}
 .hero .marque span{text-transform:uppercase;letter-spacing:2.4px;font-size:11.5px;font-weight:700;opacity:.75}
-.hero h1{font-size:34px;line-height:1.1;margin:0 0 16px;max-width:15ch}
+.hero h1{font-size:31px;line-height:1.14;margin:0 0 16px;max-width:19ch}
 .hero p.lede{font-size:18px;line-height:1.5;opacity:.94;margin:0 0 22px}
 .objectif{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin:0 0 20px;font-size:15px;opacity:.9}
 .objectif b{font-size:26px;font-weight:800;opacity:1}
@@ -3711,15 +3714,10 @@ section.sombre .chapo{color:#b9b4d6}
      font-size:19px;padding:17px 24px;border-radius:10px;text-decoration:none;box-shadow:0 8px 24px rgba(0,0,0,.26)}
 .cta.sombre{background:var(--rouge);color:#fff}
 .sousbouton{margin:10px 0 0;font-size:13.5px;opacity:.78;text-align:center}
-/* le texte de la video : des phrases courtes, posees les unes sous les autres */
-.martele{font-size:21px;line-height:1.45;font-weight:700;margin:0 0 18px;max-width:22ch}
-.martele span{display:block}
-.froid{font-size:17px;line-height:1.6;margin:0 0 14px;color:var(--muted)}
-section.sombre .froid{color:#c6c2e0}
-.mots{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 20px}
-.mots i{font-style:normal;border:1px solid var(--rouge);color:var(--rouge);border-radius:6px;
-        padding:5px 11px;font-size:14.5px;font-weight:700;letter-spacing:.3px}
-section.sombre .mots i{border-color:#ff5a74;color:#ff8295}
+/* le bloc d'urgence : une phrase qui frappe, puis la raison concrete */
+section.urgence{background:var(--bg-soft);border-top:3px solid var(--rouge)}
+.punch{font-size:22px;line-height:1.3;font-weight:800;letter-spacing:-.4px;margin:0 0 14px;max-width:24ch}
+.froid{font-size:17px;line-height:1.6;margin:0;color:var(--muted);max-width:60ch}
 .chiffres{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
 .chiffres div{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 12px;text-align:center}
 .chiffres b{display:block;font-size:22px;font-weight:800;color:var(--brand);line-height:1.15}
@@ -3755,13 +3753,13 @@ details p{margin:11px 0 0;font-size:15.5px;color:#39365c}
            border:1px solid rgba(255,255,255,.4);color:#fff;text-decoration:none;font-size:14.5px;font-weight:600}
 @media (min-width:700px){
   .hero{padding:52px 0 56px}
-  .hero h1{font-size:46px}
+  .hero h1{font-size:42px;max-width:21ch}
   .hero p.lede{font-size:20px}
   .cta{display:inline-block;width:auto;min-width:320px}
   .sousbouton{text-align:left}
   section{padding:56px 0}
   h2{font-size:30px}
-  .martele{font-size:25px;max-width:26ch}
+  .punch{font-size:28px;max-width:28ch}
   .paliers{grid-template-columns:repeat(4,1fr)}
   .pied .derniere{font-size:34px}
 }
@@ -3774,27 +3772,22 @@ ${analytics}
 <header class="hero">
   <div class="wrap">
     <p class="marque"><img src="/assets/logo.png" alt="Tandem TV" width="120" height="34"><span>Canal 14 &middot; Annatel</span></p>
-    <h1>Une autre guerre fait rage. Sans missiles.</h1>
-    <p class="lede">Une image. Un slogan. Un mensonge. Des millions de vues.<br>
-      Dans cette guerre de l’information, Tandem TV répond — depuis Israël, en français.</p>
+    <h1>Donnez-nous les moyens de diffuser la réalité d’Israël et du monde juif</h1>
+    <p class="lede">Quand Israël est accusé, quelqu’un doit répondre. Avec les faits,
+      le contexte et les images. C’est ce que fait Tandem TV chaque jour, en français,
+      depuis Israël — et c’est vous qui le rendez possible.</p>
     <p class="objectif"><b>200 000 ₪</b> <span>à réunir d’ici le 4 novembre</span></p>
     <a class="cta" href="${LIEN}" rel="noopener">Je donne</a>
     <p class="sousbouton">Paiement sécurisé par HelloAsso &middot; au profit de l’association NETSAH</p>
   </div>
 </header>
 
-<section class="sombre">
+<section class="urgence">
   <div class="wrap">
-    <p class="martele"><span>Sans missiles.</span><span>Sans sirènes.</span><span>Une guerre de l’information.</span></p>
-    <div class="mots"><i>Génocide</i><i>Apartheid</i><i>État criminel</i></div>
-    <p class="froid">Répétés. Partagés. Jusqu’à devenir, pour des millions de personnes, une vérité.
-      Dans cette guerre, quelques secondes suffisent : une fausse information peut faire le tour du monde
-      avant même que la vérité ait commencé à répondre.</p>
-    <p class="froid">Et peu à peu, le récit s’installe. Dans les médias. Sur les campus. Dans les rues.
-      Dans les têtes.</p>
-    <p class="froid">Mais les mots ne restent pas toujours derrière un écran. La haine, elle, peut devenir
-      bien réelle. Des Juifs insultés. Menacés. Agressés. Et parfois assassinés. Alors certains recommencent
-      à cacher une étoile de David, à retirer une kippa, à avoir peur d’être simplement juifs. En 2026.</p>
+    <p class="punch">Une fausse image fait le tour du monde en quelques heures.</p>
+    <p class="froid">La réponse, elle, demande des journalistes, du montage, du matériel
+      et du temps. C’est exactement ce que nous produisons, tous les jours, depuis Israël
+      et en français — et ce que la campagne d’octobre doit financer.</p>
   </div>
 </section>
 
@@ -3813,8 +3806,8 @@ ${analytics}
 
 <section class="alt">
   <div class="wrap">
-    <h2>« Mais répondez ! »</h2>
-    <p class="chapo">Si vous aussi, devant votre écran, vous vous êtes déjà dit cela — regardez.</p>
+    <h2>Deux minutes, et vous saurez pourquoi</h2>
+    <p class="chapo">Regardez, puis décidez.</p>
     <div class="video">
       <iframe src="https://www.youtube-nocookie.com/embed/${VIDEO}?rel=0"
               title="Tandem TV — Répondez avec nous"
@@ -3827,9 +3820,8 @@ ${analytics}
 
 <section>
   <div class="wrap">
-    <h2>Avoir raison ne suffit pas</h2>
-    <p class="chapo">Il faut être entendu. Et être entendu demande des moyens. Voici lesquels,
-      poste par poste.</p>
+    <h2>Ce que votre don finance</h2>
+    <p class="chapo">Poste par poste, sans rien d’autre derrière.</p>
     <table>
       <tbody>
 ${postes.map(([nom, detail, somme]) => `        <tr><td>${nom}<small>${detail}</small></td><td class="montant">${somme} ₪</td></tr>`).join('\n')}
@@ -3841,8 +3833,10 @@ ${postes.map(([nom, detail, somme]) => `        <tr><td>${nom}<small>${detail}</
 
 <section class="alt">
   <div class="wrap">
-    <h2>Donnez-nous les moyens de répondre</h2>
-    <p class="chapo">Chaque montant ouvre directement le formulaire sécurisé.</p>
+    <h2>Choisissez votre don</h2>
+    <p class="chapo">Chaque montant ouvre directement le formulaire sécurisé. Et un don
+      mensuel, même modeste, vaut mieux qu’un grand geste unique : il nous permet de
+      produire au lieu d’improviser.</p>
     <div class="paliers">
 ${montants.map((m) => `      <a class="palier" href="${LIEN}" rel="noopener">${m}</a>`).join('\n')}
       <a class="palier libre" href="${LIEN}" rel="noopener">Un autre montant, ponctuel ou chaque mois</a>
