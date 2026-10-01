@@ -3674,6 +3674,20 @@ export function donsPage({ config }) {
     ['Communication', 'Campagne, réseaux sociaux, visuels'],
   ];
 
+  // L'AVANTAGE FISCAL, CHIFFRE (01/10/2026). NETSAH est une association
+  // FRANCAISE et delivre un recu fiscal au titre de l'article 200 du CGI --
+  // confirme par Bruno Lellouche, rapporte par Michael. Taux general de
+  // reduction d'impot sur le revenu : 66 % du don, dans la limite de 20 % du
+  // revenu imposable (impots.gouv.fr, verifie le 01/10/2026). Un don de
+  // 100 euros coute donc reellement 34 euros.
+  //
+  // C'est l'argument le plus fort de la page et il y manquait. Les montants
+  // (100 / 200 / 500 / 1 000) sont des exemples, pas des paliers imposes : le
+  // formulaire laisse le montant libre, et chaque ligne mene au meme endroit.
+  const TAUX_REDUCTION = 0.66;
+  const EXEMPLES_DON = [100, 200, 500, 1000];
+  const euros = (n) => n.toLocaleString('fr-FR').replace(/\u00a0|,/g, '\u202f');
+
   const questions = [
     ['Qui encaisse mon don ?',
       'Votre don va à <b>Tandem TV</b>, via l’association <b>NETSAH</b>. Le paiement passe par HelloAsso, '
@@ -3763,6 +3777,17 @@ h2{font-size:25px;margin:0 0 14px}
             outline:1px solid rgba(255,255,255,.18);outline-offset:-1px}
 .sondemande{margin:0 0 24px;font-size:13.5px;opacity:.72;text-align:center}
 .video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.fiscal{margin:26px 0 0;background:var(--surface);border:1px solid var(--line);
+        border-radius:12px;padding:20px 20px 16px}
+.fiscal-tete{margin:0 0 14px;font-size:15.5px;line-height:1.55}
+.fiscal-liste{list-style:none;margin:0 0 12px;padding:0}
+.fiscal-liste li{border-top:1px solid var(--line)}
+.fiscal-liste a{display:flex;justify-content:space-between;gap:12px;align-items:baseline;
+                padding:11px 2px;text-decoration:none;color:var(--text);font-size:16px}
+.fiscal-liste a:hover{color:var(--accent-dk)}
+.fiscal-liste b{color:var(--brand)}
+.fiscal-reste b{color:var(--rouge)}
+.fiscal-note{margin:0;font-size:13px;line-height:1.55;color:var(--muted)}
 .postes{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:0}
 .postes div{background:var(--surface);border:1px solid var(--line);border-radius:12px;
             padding:18px 16px}
@@ -3864,6 +3889,18 @@ ${postes.map(([nom, detail]) => `      <div><b>${nom}</b><span>${detail}</span><
       modeste, vaut mieux qu’un grand geste unique : il nous permet de produire au lieu
       d’improviser.</p>
     <a class="cta sombre" href="${LIEN}" rel="noopener">Faire un don</a>
+
+    <div class="fiscal">
+      <p class="fiscal-tete">Votre don ouvre droit à un reçu fiscal et à une réduction
+        d’impôt de 66 %. Autrement dit :</p>
+      <ul class="fiscal-liste">
+${EXEMPLES_DON.map((m) => `        <li><a href="${LIEN}" rel="noopener"><span>Je donne <b>${euros(m)} €</b></span><span class="fiscal-reste">me coûte <b>${euros(Math.round(m * (1 - TAUX_REDUCTION)))} €</b></span></a></li>`).join('\n')}
+      </ul>
+      <p class="fiscal-note">Réduction d’impôt sur le revenu en France, dans la limite de
+        20 % du revenu imposable. Le reçu vous est adressé par NETSAH. Si vous êtes
+        imposable en Israël, l’avantage existe aussi, sous un autre régime :
+        écrivez-nous à <b>contact@tandemtv.org</b>.</p>
+    </div>
   </div>
 </section>
 
