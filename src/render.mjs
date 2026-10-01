@@ -3638,6 +3638,17 @@ export function donsPage({ config }) {
       : '',
   ].join('');
 
+  // CHIFFRES DU BLOC « LA CHAINE EN CHIFFRES » — releves le 01/10/2026 dans
+  // YouTube Studio, onglet Donnees analytiques, periode « Depuis toujours »
+  // (4 juillet 2016 au 30 septembre 2026), capture transmise par Michael :
+  //   vues          2 091 695  -> « 2,1 millions »
+  //   abonnes          13 958  -> « pres de 14 000 » (compteur temps reel)
+  //   visionnage      200,8 k heures -> « 200 000 heures »
+  // Le nombre d'emissions en ligne (« + de 1 000 ») vient du catalogue
+  // publie, deja affiche sur /sponsoring/. A remesurer avant la campagne
+  // publique : ces chiffres ne peuvent que monter, ils restent donc justes,
+  // mais ils vieillissent.
+  //
   // Sans montants (Michael, 01/10/2026) : la page dit a quoi sert l'argent,
   // pas combien va ou. Le chiffrage reste dans le dossier de campagne.
   const postes = [
@@ -3714,7 +3725,7 @@ h2{font-size:25px;margin:0 0 14px}
      font-size:19px;padding:17px 24px;border-radius:10px;text-decoration:none;box-shadow:0 8px 24px rgba(0,0,0,.26)}
 .cta.sombre{background:var(--rouge);color:#fff}
 .sousbouton{margin:10px 0 0;font-size:13.5px;opacity:.78;text-align:center}
-.chiffres{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.chiffres{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .chiffres div{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 12px;text-align:center}
 .chiffres b{display:block;font-size:22px;font-weight:800;color:var(--brand);line-height:1.15}
 .chiffres span{display:block;font-size:13px;color:var(--muted);margin-top:5px;line-height:1.35}
@@ -3748,10 +3759,11 @@ details p{margin:11px 0 0;font-size:15.5px;color:#39365c}
   .hero{padding:52px 0 56px}
   .hero h1{font-size:42px;max-width:21ch}
   .hero p.lede{font-size:20px}
-  .cta{display:inline-block;width:auto;min-width:320px}
-  .sousbouton{text-align:left}
+  .cta{display:block;width:-moz-fit-content;width:fit-content;min-width:320px;
+       margin-left:auto;margin-right:auto}
   section{padding:56px 0}
   h2{font-size:30px}
+  .chiffres{grid-template-columns:repeat(3,1fr)}
   .postes{grid-template-columns:repeat(4,1fr)}
   .pied .derniere{font-size:34px}
 }
@@ -3785,11 +3797,14 @@ ${analytics}
 
 <section>
   <div class="wrap">
-    <h2>La chaîne, en trois points</h2>
+    <h2>La chaîne en chiffres</h2>
     <div class="chiffres">
       <div><b>24 h/24</b><span>une grille continue, tous les jours</span></div>
       <div><b>Canal 14</b><span>du bouquet Annatel</span></div>
-      <div><b>En français</b><span>produite et tournée en Israël</span></div>
+      <div><b>+ de 1 000</b><span>émissions en ligne</span></div>
+      <div><b>2,1 millions</b><span>de vues sur YouTube</span></div>
+      <div><b>près de 14 000</b><span>abonnés YouTube</span></div>
+      <div><b>200 000 heures</b><span>de programmes regardées</span></div>
     </div>
   </div>
 </section>
