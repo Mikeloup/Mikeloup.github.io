@@ -3620,8 +3620,8 @@ export function donsPage({ config }) {
   const racine = config.siteUrl.replace(/\/$/, '');
   const url = `${racine}/dons/`;
   const titre = 'Soutenir Tandem TV';
-  const description = 'Donnez-nous les moyens de diffuser la réalité d’Israël et du monde juif. Tandem TV, la chaîne francophone d’Israël, '
-    + 'lance sa collecte — objectif 200 000 ₪ avant le 4 novembre.';
+  const description = 'Donnez-nous les moyens de nous battre pour Israël et le monde juif. Tandem TV, la chaîne francophone d’Israël, '
+    + 'lance sa collecte — objectif 200 000 NIS avant le 4 novembre.';
   const LIEN = 'https://www.helloasso.com/associations/netsah/formulaires/13';
   const VIDEO = 'ES0iGnJ27ho';
 
@@ -3638,22 +3638,21 @@ export function donsPage({ config }) {
       : '',
   ].join('');
 
+  // Sans montants (Michael, 01/10/2026) : la page dit a quoi sert l'argent,
+  // pas combien va ou. Le chiffrage reste dans le dossier de campagne.
   const postes = [
-    ['Développement des émissions partenaires', 'Rémunérer les producteurs et chroniqueurs qui fournissent les programmes', '70 000'],
-    ['Montage et post-production', 'Montage, habillage, sous-titrage', '45 000'],
-    ['Technique', 'Caméras, son, lumière, régie, entretien', '35 000'],
-    ['Diffusion et hébergement', 'Canal 14, serveurs, stockage, sauvegardes', '25 000'],
-    ['Communication', 'Campagne, réseaux sociaux, visuels', '25 000'],
+    ['Montage et post-production', 'Montage, habillage, sous-titrage'],
+    ['Technique', 'Caméras, son, lumière, régie, entretien'],
+    ['Diffusion et hébergement', 'Serveurs, stockage, sauvegardes'],
+    ['Communication', 'Campagne, réseaux sociaux, visuels'],
   ];
-
-  const montants = ['126 €', '200 €', '500 €', '1 260 €'];
 
   const questions = [
     ['Qui encaisse mon don ?',
-      'L’association <b>NETSAH</b>, qui porte le projet Tandem TV. Le paiement passe par HelloAsso, '
-      + 'plateforme française de paiement pour les associations, qui reverse les fonds à NETSAH.'],
+      'Votre don va à <b>Tandem TV</b>, via l’association <b>NETSAH</b>. Le paiement passe par HelloAsso, '
+      + 'plateforme française de paiement pour les associations.'],
     ['Et pour un reçu ?',
-      'C’est NETSAH qui encaisse les dons et qui vous adresse les documents correspondants. '
+      'C’est NETSAH qui vous adresse les documents correspondants. '
       + 'Pour toute question sur votre reçu, écrivez-nous à <b>contact@tandemtv.org</b>.'],
     ['Puis-je donner autrement que par carte ?',
       'Oui. Écrivez-nous à <b>contact@tandemtv.org</b> et nous vous indiquons la marche à suivre.'],
@@ -3681,7 +3680,7 @@ export function donsPage({ config }) {
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Tandem TV">
 <meta property="og:url" content="${url}">
-<meta property="og:title" content="Donnez-nous les moyens de diffuser la réalité d’Israël et du monde juif">
+<meta property="og:title" content="Donnez-nous les moyens de nous battre pour Israël et le monde juif">
 <meta property="og:description" content="${escapeHtml(description)}">
 <meta property="og:image" content="${racine}/assets/partage.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -3710,32 +3709,25 @@ h2{font-size:25px;margin:0 0 14px}
 .hero p.lede{font-size:18px;line-height:1.5;opacity:.94;margin:0 0 22px}
 .objectif{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin:0 0 20px;font-size:15px;opacity:.9}
 .objectif b{font-size:26px;font-weight:800;opacity:1}
+.objectif .mot{text-transform:uppercase;letter-spacing:1.6px;font-size:12px;font-weight:700;opacity:.72}
 .cta{display:block;width:100%;text-align:center;background:#fff;color:var(--brand);font-weight:800;
      font-size:19px;padding:17px 24px;border-radius:10px;text-decoration:none;box-shadow:0 8px 24px rgba(0,0,0,.26)}
 .cta.sombre{background:var(--rouge);color:#fff}
 .sousbouton{margin:10px 0 0;font-size:13.5px;opacity:.78;text-align:center}
-/* le bloc d'urgence : une phrase qui frappe, puis la raison concrete */
-section.urgence{background:var(--bg-soft);border-top:3px solid var(--rouge)}
-.punch{font-size:22px;line-height:1.3;font-weight:800;letter-spacing:-.4px;margin:0 0 14px;max-width:24ch}
-.froid{font-size:17px;line-height:1.6;margin:0;color:var(--muted);max-width:60ch}
 .chiffres{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
 .chiffres div{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 12px;text-align:center}
 .chiffres b{display:block;font-size:22px;font-weight:800;color:var(--brand);line-height:1.15}
 .chiffres span{display:block;font-size:13px;color:var(--muted);margin-top:5px;line-height:1.35}
 .video{position:relative;padding-top:56.25%;border-radius:14px;overflow:hidden;background:#000;
        box-shadow:0 14px 36px rgba(0,0,0,.22)}
+.video-tete{margin:0 0 26px;box-shadow:0 18px 44px rgba(0,0,0,.45);
+            outline:1px solid rgba(255,255,255,.18);outline-offset:-1px}
 .video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-table{width:100%;border-collapse:collapse;font-size:15.5px}
-td{text-align:left;padding:11px 8px;border-bottom:1px solid var(--line);vertical-align:top}
-td.montant{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
-tr.total td{font-weight:800;border-bottom:none;border-top:2px solid var(--text);font-size:17px}
-td small{display:block;color:var(--muted);font-size:13.5px;line-height:1.4;margin-top:2px}
-.paliers{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 0 18px}
-.palier{display:flex;align-items:center;justify-content:center;background:var(--surface);
-        border:2px solid var(--line);border-radius:12px;padding:18px 10px;text-decoration:none;
-        color:var(--brand);font-size:24px;font-weight:800;transition:border-color .15s}
-.palier:hover{border-color:var(--accent)}
-.palier.libre{grid-column:1 / -1;border-style:dashed;font-size:17px;color:var(--text)}
+.postes{list-style:none;margin:0;padding:0}
+.postes li{padding:13px 0;border-bottom:1px solid var(--line)}
+.postes li:last-child{border-bottom:none}
+.postes b{display:block;font-size:16.5px;font-weight:700}
+.postes span{display:block;color:var(--muted);font-size:14.5px;line-height:1.45;margin-top:2px}
 details{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:0 0 9px}
 details[open]{border-color:var(--accent)}
 summary{cursor:pointer;font-weight:700;font-size:16px;list-style:none}
@@ -3759,8 +3751,6 @@ details p{margin:11px 0 0;font-size:15.5px;color:#39365c}
   .sousbouton{text-align:left}
   section{padding:56px 0}
   h2{font-size:30px}
-  .punch{font-size:28px;max-width:28ch}
-  .paliers{grid-template-columns:repeat(4,1fr)}
   .pied .derniere{font-size:34px}
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
@@ -3772,30 +3762,27 @@ ${analytics}
 <header class="hero">
   <div class="wrap">
     <p class="marque"><img src="/assets/logo.png" alt="Tandem TV" width="120" height="34"><span>Canal 14 &middot; Annatel</span></p>
-    <h1>Donnez-nous les moyens de diffuser la réalité d’Israël et du monde juif</h1>
-    <p class="lede">Quand Israël est accusé, quelqu’un doit répondre. Avec les faits,
-      le contexte et les images. C’est ce que fait Tandem TV chaque jour, en français,
-      depuis Israël — et c’est vous qui le rendez possible.</p>
-    <p class="objectif"><b>200 000 ₪</b> <span>à réunir d’ici le 4 novembre</span></p>
-    <a class="cta" href="${LIEN}" rel="noopener">Je donne</a>
-    <p class="sousbouton">Paiement sécurisé par HelloAsso &middot; au profit de l’association NETSAH</p>
+    <h1>Donnez-nous les moyens de nous battre pour Israël et le monde juif</h1>
+    <p class="lede">Quand Israël est attaqué en dehors du champ de bataille, il faut répondre. Avec des faits, des arguments, des analyses justes et précises. C’est ce que fait Tandem TV, en français, depuis Israël — et c’est vous qui le rendez possible.</p>
+
+    <div class="video video-tete">
+      <iframe src="https://www.youtube-nocookie.com/embed/${VIDEO}?rel=0"
+              title="Tandem TV — appel aux dons"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen loading="lazy"></iframe>
+    </div>
+
+    <p class="objectif"><span class="mot">Objectif :</span> <b>200 000 NIS</b> <span>à réunir d’ici le 4 novembre</span></p>
+    <a class="cta" href="${LIEN}" rel="noopener">Faire un don</a>
+    <p class="sousbouton">Paiement sécurisé par HelloAsso &middot; au profit de Tandem TV, via l’association NETSAH</p>
   </div>
 </header>
 
-<section class="urgence">
-  <div class="wrap">
-    <p class="punch">Une fausse image fait le tour du monde en quelques heures.</p>
-    <p class="froid">La réponse, elle, demande des journalistes, du montage, du matériel
-      et du temps. C’est exactement ce que nous produisons, tous les jours, depuis Israël
-      et en français — et ce que la campagne d’octobre doit financer.</p>
-  </div>
-</section>
 
 <section>
   <div class="wrap">
-    <h2>Cette guerre, nous avons choisi de la mener</h2>
-    <p class="chapo">Nous, c’est Tandem TV. Depuis Israël, en français, nous répondons.
-      Avec les faits. Avec le contexte. Avec les images.</p>
+    <h2>La chaîne, en trois points</h2>
     <div class="chiffres">
       <div><b>24 h/24</b><span>une grille continue, tous les jours</span></div>
       <div><b>Canal 14</b><span>du bouquet Annatel</span></div>
@@ -3804,44 +3791,24 @@ ${analytics}
   </div>
 </section>
 
-<section class="alt">
-  <div class="wrap">
-    <h2>Deux minutes, et vous saurez pourquoi</h2>
-    <p class="chapo">Regardez, puis décidez.</p>
-    <div class="video">
-      <iframe src="https://www.youtube-nocookie.com/embed/${VIDEO}?rel=0"
-              title="Tandem TV — Répondez avec nous"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerpolicy="strict-origin-when-cross-origin"
-              allowfullscreen loading="lazy"></iframe>
-    </div>
-  </div>
-</section>
 
 <section>
   <div class="wrap">
     <h2>Ce que votre don finance</h2>
     <p class="chapo">Poste par poste, sans rien d’autre derrière.</p>
-    <table>
-      <tbody>
-${postes.map(([nom, detail, somme]) => `        <tr><td>${nom}<small>${detail}</small></td><td class="montant">${somme} ₪</td></tr>`).join('\n')}
-        <tr class="total"><td>Total</td><td class="montant">200 000 ₪</td></tr>
-      </tbody>
-    </table>
+    <ul class="postes">
+${postes.map(([nom, detail]) => `      <li><b>${nom}</b><span>${detail}</span></li>`).join('\n')}
+    </ul>
   </div>
 </section>
 
 <section class="alt">
   <div class="wrap">
-    <h2>Choisissez votre don</h2>
-    <p class="chapo">Chaque montant ouvre directement le formulaire sécurisé. Et un don
-      mensuel, même modeste, vaut mieux qu’un grand geste unique : il nous permet de
-      produire au lieu d’improviser.</p>
-    <div class="paliers">
-${montants.map((m) => `      <a class="palier" href="${LIEN}" rel="noopener">${m}</a>`).join('\n')}
-      <a class="palier libre" href="${LIEN}" rel="noopener">Un autre montant, ponctuel ou chaque mois</a>
-    </div>
-    <a class="cta sombre" href="${LIEN}" rel="noopener">Je donne</a>
+    <h2>Faire un don</h2>
+    <p class="chapo">Le montant est libre, ponctuel ou chaque mois. Un don mensuel, même
+      modeste, vaut mieux qu’un grand geste unique : il nous permet de produire au lieu
+      d’improviser.</p>
+    <a class="cta sombre" href="${LIEN}" rel="noopener">Faire un don</a>
   </div>
 </section>
 
@@ -3856,7 +3823,7 @@ ${questions.map(([q, r]) => `    <details><summary>${q}</summary><p>${r}</p></de
 <footer class="pied">
   <div class="wrap">
     <p class="derniere">Ne restez pas spectateur.</p>
-    <a class="cta" href="${LIEN}" rel="noopener">Je donne</a>
+    <a class="cta" href="${LIEN}" rel="noopener">Faire un don</a>
     <div class="partage">
       <p>Partagez cette vidéo. C’est gratuit, et c’est utile.</p>
       <a href="https://wa.me/?text=${partageTexte}%20${partageUrl}" rel="noopener nofollow" target="_blank">WhatsApp</a>
@@ -3864,7 +3831,7 @@ ${questions.map(([q, r]) => `    <details><summary>${q}</summary><p>${r}</p></de
       <a href="https://x.com/intent/tweet?text=${partageTexte}&url=${partageUrl}" rel="noopener nofollow" target="_blank">X</a>
       <a href="mailto:?subject=Tandem%20TV&body=${partageTexte}%20${partageUrl}" rel="noopener nofollow">Courriel</a>
     </div>
-    <p>Collecte organisée au profit du projet <b>Tandem TV</b>, porté par l’association <b>NETSAH</b>.</p>
+    <p>Collecte organisée au profit de <b>Tandem TV</b>, via l’association <b>NETSAH</b>.</p>
     <p>Une question ? <b>contact@tandemtv.org</b></p>
   </div>
 </footer>
