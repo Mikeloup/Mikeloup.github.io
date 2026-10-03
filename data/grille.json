@@ -1,5 +1,5 @@
 {
-  "exported_at": "2026-10-03T10:14:27.042983",
+  "exported_at": "2026-10-03T10:29:32.098792",
   "window_days": 7,
   "rows": [
     {
@@ -1944,11 +1944,11 @@
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "TEL_AVIV_NEW_YORK",
-      "title": "EPISODE 24- SEMAINE DU 20 AU 27 SEPTEMBRE"
+      "title": "EPISODE 23- SEMAINE DU 13 AU 20 SEPTEMBRE"
     },
     {
       "date_diffusion": "2026-10-08",
-      "heure_debut": "11:40",
+      "heure_debut": "11:39",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "STEPHANE_GOLDIN",
@@ -1970,7 +1970,7 @@
     },
     {
       "date_diffusion": "2026-10-08",
-      "heure_debut": "11:48",
+      "heure_debut": "11:47",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "RONY_HAYOT",
@@ -1985,7 +1985,14 @@
     },
     {
       "date_diffusion": "2026-10-08",
-      "heure_debut": "11:59",
+      "bloc_apres": "TEL_AVIV_NEW_YORK",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "KFIR_ALMAGOR"
+    },
+    {
+      "date_diffusion": "2026-10-08",
+      "heure_debut": "12:00",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "YINON_SHOW",
@@ -2000,14 +2007,7 @@
     },
     {
       "date_diffusion": "2026-10-08",
-      "bloc_apres": "YINON_SHOW",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "ISRAEL_EN_FRANCAIS"
-    },
-    {
-      "date_diffusion": "2026-10-08",
-      "heure_debut": "13:00",
+      "heure_debut": "12:59",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "OROT_VEKELIM",
@@ -2036,14 +2036,6 @@
     },
     {
       "date_diffusion": "2026-10-08",
-      "heure_debut": "13:57",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "KATAVA",
-      "title": "Illustratrices... et haredi, elles cassent les codes"
-    },
-    {
-      "date_diffusion": "2026-10-08",
       "heure_debut": "14:00",
       "type": "ANCRE",
       "heure_fixe": true,
@@ -2055,8 +2047,8 @@
       "heure_debut": "14:22",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une hsitoire 290625"
+      "channel_id": "KATAVA",
+      "title": "Illustratrices... et haredi, elles cassent les codes"
     },
     {
       "date_diffusion": "2026-10-08",
@@ -2067,18 +2059,19 @@
     },
     {
       "date_diffusion": "2026-10-08",
-      "heure_debut": "14:31",
+      "heure_debut": "14:27",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "TEL_AVIV_NEW_YORK",
-      "title": "TEL AVIV NEW YORK PODCAST- EPISODE 10"
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "un jour une hsitoire 290625"
     },
     {
       "date_diffusion": "2026-10-08",
-      "bloc_apres": "TOUR_D_ISRAEL",
-      "type": "CLIPS_CHAINE",
+      "heure_debut": "14:36",
+      "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
+      "channel_id": "CARTES_POSTALES",
+      "title": "nabatheens"
     },
     {
       "date_diffusion": "2026-10-08",
@@ -2086,6 +2079,20 @@
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
       "channel_id": "SOLAL_ISRAEL"
+    },
+    {
+      "date_diffusion": "2026-10-08",
+      "bloc_apres": "TOUR_D_ISRAEL",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "TSAHAL_FR"
+    },
+    {
+      "date_diffusion": "2026-10-08",
+      "bloc_apres": "TOUR_D_ISRAEL",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "KFIR_ALMAGOR"
     },
     {
       "date_diffusion": "2026-10-08",
@@ -2097,7 +2104,7 @@
     },
     {
       "date_diffusion": "2026-10-08",
-      "heure_debut": "15:31",
+      "heure_debut": "15:30",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
@@ -2112,15 +2119,15 @@
     },
     {
       "date_diffusion": "2026-10-08",
-      "heure_debut": "15:38",
+      "heure_debut": "15:37",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
-      "title": "nabatheens"
+      "title": "tiberiad"
     },
     {
       "date_diffusion": "2026-10-08",
-      "heure_debut": "15:42",
+      "heure_debut": "15:41",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "STEPHANE_GOLDIN",
@@ -2142,7 +2149,7 @@
     },
     {
       "date_diffusion": "2026-10-08",
-      "heure_debut": "15:51",
+      "heure_debut": "15:49",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "RONY_HAYOT",
@@ -2165,23 +2172,7 @@
     },
     {
       "date_diffusion": "2026-10-08",
-      "heure_debut": "16:39",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "tiberiad"
-    },
-    {
-      "date_diffusion": "2026-10-08",
-      "heure_debut": "17:32",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": ""
-    },
-    {
-      "date_diffusion": "2026-10-08",
-      "heure_debut": "17:40",
+      "heure_debut": "16:37",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
@@ -2189,7 +2180,7 @@
     },
     {
       "date_diffusion": "2026-10-08",
-      "heure_debut": "18:33",
+      "heure_debut": "17:34",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
@@ -2197,7 +2188,7 @@
     },
     {
       "date_diffusion": "2026-10-08",
-      "heure_debut": "18:42",
+      "heure_debut": "17:43",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
@@ -2205,7 +2196,7 @@
     },
     {
       "date_diffusion": "2026-10-08",
-      "heure_debut": "19:34",
+      "heure_debut": "18:35",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
@@ -2213,11 +2204,27 @@
     },
     {
       "date_diffusion": "2026-10-08",
-      "heure_debut": "19:43",
+      "heure_debut": "18:43",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
       "title": "Safed"
+    },
+    {
+      "date_diffusion": "2026-10-08",
+      "heure_debut": "19:36",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": ""
+    },
+    {
+      "date_diffusion": "2026-10-08",
+      "heure_debut": "19:44",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "CARTES_POSTALES",
+      "title": "Belvoir (1)"
     },
     {
       "date_diffusion": "2026-10-08",
@@ -2232,35 +2239,27 @@
       "heure_debut": "22:00",
       "type": "ANCRE",
       "heure_fixe": true,
-      "channel_id": "OROT_VEKELIM",
-      "title": "La halakha face à la santé mentale - LES BÂTISSEURS — Rav Elikan"
+      "channel_id": "TEL_AVIV_NEW_YORK",
+      "title": "EPISODE 24- SEMAINE DU 20 AU 27 SEPTEMBRE"
     },
     {
       "date_diffusion": "2026-10-09",
-      "heure_debut": "08:00",
-      "type": "ANCRE",
-      "heure_fixe": true,
-      "channel_id": "LES_ISRAELIENNES",
-      "title": "Élections 2026 : le 7 octobre n'a rien changé ?"
-    },
-    {
-      "date_diffusion": "2026-10-09",
-      "heure_debut": "09:18",
+      "heure_debut": "09:17",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "TEL_AVIV_NEW_YORK",
-      "title": "Tel Aviv New York : L'interview- Daniel Shek, ancien ambassadeur d'Israel en France"
+      "title": "TEL AVIV NEW YORK PODCAST- EPISODE 10"
     },
     {
       "date_diffusion": "2026-10-09",
-      "bloc_apres": "LES_ISRAELIENNES",
+      "bloc_apres": null,
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
       "channel_id": "ISRAEL_EN_FRANCAIS"
     },
     {
       "date_diffusion": "2026-10-09",
-      "heure_debut": "09:53",
+      "heure_debut": "09:44",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "KATAVA",
@@ -2268,24 +2267,33 @@
     },
     {
       "date_diffusion": "2026-10-09",
-      "bloc_apres": "LES_ISRAELIENNES",
-      "type": "CLIPS_CHAINE",
+      "heure_debut": "09:47",
+      "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL"
+      "channel_id": "STEPHANE_GOLDIN",
+      "title": "Flydubai : l’incroyable sauvetage du vol vers Israël"
     },
     {
       "date_diffusion": "2026-10-09",
-      "bloc_apres": "LES_ISRAELIENNES",
+      "heure_debut": "09:53",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "CARTES_POSTALES",
+      "title": "Ramat Hanadiv"
+    },
+    {
+      "date_diffusion": "2026-10-09",
+      "bloc_apres": null,
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
       "channel_id": "KFIR_ALMAGOR"
     },
     {
       "date_diffusion": "2026-10-09",
-      "bloc_apres": "LES_ISRAELIENNES",
+      "bloc_apres": null,
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
+      "channel_id": "SOLAL_ISRAEL"
     },
     {
       "date_diffusion": "2026-10-09",
@@ -2304,18 +2312,11 @@
     },
     {
       "date_diffusion": "2026-10-09",
-      "bloc_apres": "CAFE_DAAT",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "ISRAEL_EN_FRANCAIS"
-    },
-    {
-      "date_diffusion": "2026-10-09",
       "heure_debut": "11:00",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "TEL_AVIV_NEW_YORK",
-      "title": "EPISODE 23- SEMAINE DU 13 AU 20 SEPTEMBRE"
+      "title": "EPISODE 24- SEMAINE DU 20 AU 27 SEPTEMBRE"
     },
     {
       "date_diffusion": "2026-10-09",
@@ -2340,11 +2341,11 @@
     },
     {
       "date_diffusion": "2026-10-09",
-      "heure_debut": "11:42",
+      "heure_debut": "11:44",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "STEPHANE_GOLDIN",
-      "title": "Flydubai : l’incroyable sauvetage du vol vers Israël"
+      "channel_id": "RONY_HAYOT",
+      "title": "Israël déclare la guerre au crime organisé"
     },
     {
       "date_diffusion": "2026-10-09",
@@ -2355,11 +2356,11 @@
     },
     {
       "date_diffusion": "2026-10-09",
-      "heure_debut": "11:50",
+      "heure_debut": "11:55",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "RONY_HAYOT",
-      "title": "Israël déclare la guerre au crime organisé"
+      "channel_id": "CARTES_POSTALES",
+      "title": "Rosh Hanikra"
     },
     {
       "date_diffusion": "2026-10-09",
@@ -2385,14 +2386,7 @@
     },
     {
       "date_diffusion": "2026-10-09",
-      "bloc_apres": "WILLIAM_ZERBIB_L_INTERVIEW",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL"
-    },
-    {
-      "date_diffusion": "2026-10-09",
-      "heure_debut": "12:41",
+      "heure_debut": "12:38",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
@@ -2400,11 +2394,25 @@
     },
     {
       "date_diffusion": "2026-10-09",
-      "heure_debut": "12:48",
+      "bloc_apres": "WILLIAM_ZERBIB_L_INTERVIEW",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "SOLAL_ISRAEL"
+    },
+    {
+      "date_diffusion": "2026-10-09",
+      "bloc_apres": "WILLIAM_ZERBIB_L_INTERVIEW",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "KFIR_ALMAGOR"
+    },
+    {
+      "date_diffusion": "2026-10-09",
+      "heure_debut": "12:57",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
-      "title": "Ramat Hanadiv"
+      "title": "appolonia"
     },
     {
       "date_diffusion": "2026-10-09",
@@ -2419,7 +2427,7 @@
       "bloc_apres": "YINON_SHOW",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL"
+      "channel_id": "TSAHAL_FR"
     },
     {
       "date_diffusion": "2026-10-09",
@@ -2431,11 +2439,10 @@
     },
     {
       "date_diffusion": "2026-10-09",
-      "heure_debut": "14:53",
-      "type": "COURT_NOMME",
+      "bloc_apres": "OROT_VEKELIM",
+      "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "KATAVA",
-      "title": "Illustratrices... et haredi, elles cassent les codes"
+      "channel_id": "SOLAL_ISRAEL"
     },
     {
       "date_diffusion": "2026-10-09",
@@ -2446,10 +2453,25 @@
     },
     {
       "date_diffusion": "2026-10-09",
+      "heure_debut": "14:55",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "KATAVA",
+      "title": "Illustratrices... et haredi, elles cassent les codes"
+    },
+    {
+      "date_diffusion": "2026-10-09",
       "bloc_apres": "OROT_VEKELIM",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL"
+      "channel_id": "TSAHAL_FR"
+    },
+    {
+      "date_diffusion": "2026-10-09",
+      "bloc_apres": "OROT_VEKELIM",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "KFIR_ALMAGOR"
     },
     {
       "date_diffusion": "2026-10-09",
@@ -2464,8 +2486,8 @@
       "heure_debut": "15:22",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": ""
+      "channel_id": "STEPHANE_GOLDIN",
+      "title": "Flydubai : l’incroyable sauvetage du vol vers Israël"
     },
     {
       "date_diffusion": "2026-10-09",
@@ -2476,18 +2498,19 @@
     },
     {
       "date_diffusion": "2026-10-09",
-      "heure_debut": "15:29",
+      "heure_debut": "15:28",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "Rosh Hanikra"
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": ""
     },
     {
       "date_diffusion": "2026-10-09",
-      "bloc_apres": "TOUR_D_ISRAEL",
-      "type": "CLIPS_CHAINE",
+      "heure_debut": "15:34",
+      "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
+      "channel_id": "CARTES_POSTALES",
+      "title": "nabatheens"
     },
     {
       "date_diffusion": "2026-10-09",
@@ -2498,14 +2521,6 @@
     },
     {
       "date_diffusion": "2026-10-09",
-      "heure_debut": "15:44",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "STEPHANE_GOLDIN",
-      "title": "Flydubai : l’incroyable sauvetage du vol vers Israël"
-    },
-    {
-      "date_diffusion": "2026-10-09",
       "bloc_apres": "TOUR_D_ISRAEL",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
@@ -2513,7 +2528,14 @@
     },
     {
       "date_diffusion": "2026-10-09",
-      "heure_debut": "15:51",
+      "bloc_apres": "TOUR_D_ISRAEL",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "TSAHAL_FR"
+    },
+    {
+      "date_diffusion": "2026-10-09",
+      "heure_debut": "15:45",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "RONY_HAYOT",
@@ -2529,6 +2551,14 @@
     },
     {
       "date_diffusion": "2026-10-09",
+      "heure_debut": "16:17",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "OROT_VEKELIM",
+      "title": "Théodore Herzl : 3 spécialistes brisent le mythe du fondateur"
+    },
+    {
+      "date_diffusion": "2026-10-09",
       "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
@@ -2543,22 +2573,6 @@
     },
     {
       "date_diffusion": "2026-10-09",
-      "heure_debut": "16:23",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": ""
-    },
-    {
-      "date_diffusion": "2026-10-09",
-      "heure_debut": "16:30",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "appolonia"
-    },
-    {
-      "date_diffusion": "2026-10-09",
       "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
@@ -2566,46 +2580,7 @@
     },
     {
       "date_diffusion": "2026-10-09",
-      "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
-    },
-    {
-      "date_diffusion": "2026-10-09",
-      "heure_debut": "17:23",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une hsitoire 221224"
-    },
-    {
-      "date_diffusion": "2026-10-09",
-      "heure_debut": "17:31",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "nabatheens"
-    },
-    {
-      "date_diffusion": "2026-10-09",
-      "heure_debut": "18:24",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une histoire 15.12.24"
-    },
-    {
-      "date_diffusion": "2026-10-09",
-      "heure_debut": "18:32",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "tiberiad"
-    },
-    {
-      "date_diffusion": "2026-10-09",
-      "heure_debut": "19:24",
+      "heure_debut": "17:45",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
@@ -2613,27 +2588,51 @@
     },
     {
       "date_diffusion": "2026-10-09",
-      "heure_debut": "19:33",
+      "heure_debut": "17:52",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "zichron yaakov"
+      "channel_id": "OROT_VEKELIM",
+      "title": "Maccabiades : les Jeux Olympiques juifs et la Torah"
     },
     {
       "date_diffusion": "2026-10-09",
-      "heure_debut": "19:59",
-      "type": "ANCRE",
-      "heure_fixe": true,
-      "channel_id": "TEL_AVIV_NEW_YORK",
-      "title": "EPISODE 24- SEMAINE DU 20 AU 27 SEPTEMBRE"
+      "heure_debut": "18:47",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "un jour une hsitoire 221224"
     },
     {
       "date_diffusion": "2026-10-09",
-      "heure_debut": "22:00",
+      "heure_debut": "18:53",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "LES_ISRAELIENNES",
+      "title": "Trump a-t-il trahi Israël ?"
+    },
+    {
+      "date_diffusion": "2026-10-09",
+      "heure_debut": "19:53",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "un jour une histoire 15.12.24"
+    },
+    {
+      "date_diffusion": "2026-10-09",
+      "heure_debut": "20:00",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "JEROME_HAAS_L_INTERVIEW",
       "title": "Peut-on faire baisser les prix en Israël ? | Éliane Setbon Lezmy"
+    },
+    {
+      "date_diffusion": "2026-10-09",
+      "heure_debut": "21:59",
+      "type": "ANCRE",
+      "heure_fixe": true,
+      "channel_id": "RADIO_SHALOM_BOCHURBERG",
+      "title": "Le grand rabbin Olivier Kaufmann"
     }
   ]
 }
