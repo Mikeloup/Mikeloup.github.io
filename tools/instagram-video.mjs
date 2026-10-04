@@ -119,10 +119,46 @@ const dejaPublie = (titre) => {
   const t = String(titre || '').trim();
   return t.length > 8 && recentes.some((m) => m.texte.includes(t));
 };
+// LE GARDE-FOU DU 4 OCTOBRE 2026.
+//
+// Ce qui s'est passe : le 2 octobre, la lettre hebdomadaire et le compte
+// Instagram ont presente comme nouveautes des emissions vieilles de trois
+// ans. Personne n'avait touche a ces outils.
+//
+// La cause : « nouveau » se jugeait sur vuLe seul -- la date d'entree au
+// catalogue, reconstituee a partir d'un cache GitHub. Une construction ayant
+// vu un catalogue tronque (panne de quota YouTube) redate du jour meme toutes
+// les videos manquantes. Elles deviennent alors « nouvelles » pour tout le
+// systeme, et le robot fait exactement ce qu'on lui a dit.
+//
+// Le garde-fou : une vraie nouveaute est recente DES DEUX COTES -- entree
+// recemment au catalogue ET publiee il y a peu sur YouTube. On ne remplace
+// pas vuLe par la date de publication : vuLe existe precisement parce qu'une
+// video deposee en prive puis rendue publique porte encore sa date d'origine.
+// On garde donc vuLe pour dire « nouvelle pour nous », et on ajoute une borne
+// large sur la publication pour ecarter l'absurde. Trois mois laissent passer
+// le cas legitime ; trois ans, non.
+//
+// Au passage : le filtre disait « !e.vuLe || ... » -- une entree SANS date
+// passait donc toujours. Elle est maintenant ecartee : rien plutot que faux.
 const heures = config.instagram?.maxAgeHours ?? 48;
+const joursPublication = Number(config.instagram?.maxPublicationAgeDays ?? 90);
 const candidates = entrees
   .filter((e) => e.legende && !dejaPublie(e.titre))
-  .filter((e) => !e.vuLe || (maintenant - Date.parse(e.vuLe)) < heures * 3600 * 1000)
+  .filter((e) => e.vuLe && (maintenant - Date.parse(e.vuLe)) < heures * 3600 * 1000)
+  .filter((e) => {
+    const p = Date.parse(e.publication || 0) || 0;
+    if (!p) {
+      console.log(`Ecartee (aucune date de publication) : ${e.titre}`);
+      return false;
+    }
+    if (maintenant - p >= joursPublication * 86400000) {
+      console.log(`Ecartee (publiee le ${String(e.publication).slice(0, 10)}, `
+        + `au-dela de ${joursPublication} jours) : ${e.titre}`);
+      return false;
+    }
+    return true;
+  })
   .sort((a, b) => Date.parse(a.vuLe || 0) - Date.parse(b.vuLe || 0));
 
 if (!candidates.length) { console.log('Aucune nouvelle vidéo à publier.'); process.exit(0); }

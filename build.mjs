@@ -2138,6 +2138,9 @@ async function ecrireManifesteInsta(config, allVideos, presentateurs = new Map()
         pied,
         image: v.thumbnail || `https://i.ytimg.com/vi/${v.id}/maxresdefault.jpg`,
         vuLe: v.vuLe || v.publishedAt || '',
+        // Ajoutee le 04/10/2026 : l'outil Instagram en a besoin pour
+        // verifier qu'une « nouveaute » n'est pas une archive redatee.
+        publication: v.publishedAt || '',
         youtube: `https://www.youtube.com/watch?v=${v.id}`,
         legende: insta.legende(v, { config, emission: cat?.title || '', invites }),
         collaborateurs: insta.collaborateursDe(v, {

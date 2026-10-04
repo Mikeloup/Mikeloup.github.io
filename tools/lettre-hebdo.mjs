@@ -97,6 +97,32 @@ const maintenant = Date.now();
 const date = (v) => Date.parse(v.f || v.p || 0) || 0;
 const jours = Number(hebdo.jours ?? 8);
 
+// LE GARDE-FOU DU 4 OCTOBRE 2026.
+//
+// Ce qui s'est passe : le 2 octobre, la lettre hebdomadaire et le compte
+// Instagram ont presente comme nouveautes des emissions vieilles de trois
+// ans. Personne n'avait touche a ces outils.
+//
+// La cause : « nouveau » se jugeait sur vuLe seul -- la date d'entree au
+// catalogue, reconstituee a partir d'un cache GitHub. Une construction ayant
+// vu un catalogue tronque (panne de quota YouTube) redate du jour meme toutes
+// les videos manquantes. Elles deviennent alors « nouvelles » pour tout le
+// systeme, et le robot fait exactement ce qu'on lui a dit.
+//
+// Le garde-fou : une vraie nouveaute est recente DES DEUX COTES -- entree
+// recemment au catalogue ET publiee il y a peu sur YouTube. On ne remplace
+// pas vuLe par la date de publication : vuLe existe precisement parce qu'une
+// video deposee en prive puis rendue publique porte encore sa date d'origine.
+// On garde donc vuLe pour dire « nouvelle pour nous », et on ajoute une borne
+// large sur la publication pour ecarter l'absurde. Trois mois laissent passer
+// le cas legitime ; trois ans, non.
+const publication = (v) => Date.parse(v.p || 0) || 0;
+const joursPublication = Number(hebdo.maxPublicationAgeDays ?? 90);
+const publieeRecemment = (v) => {
+  const p = publication(v);
+  return p > 0 && (maintenant - p) < joursPublication * 86400000;
+};
+
 // Le rendez-vous quotidien ne paraît qu'UNE fois dans la lettre.
 //
 // Michael, 11 septembre 2026 : « dans la newsletter ne mets qu'une seule
@@ -132,6 +158,7 @@ const estQuotidien = (v) => estLeRendezVousQuotidien(v, reglesJT);
 
 const parPeriode = toutes
   .filter((v) => maintenant - date(v) < jours * 86400000)
+  .filter(publieeRecemment)
   .sort((a, b) => date(b) - date(a));
 
 let quotidienDejaPris = false;
@@ -166,8 +193,9 @@ const aRevoir = toutes
   // trois semaines n'est pas une pépite à redécouvrir, c'est une nouvelle
   // périmée. Si vous préférez les y garder, retirer cette seule ligne.
   .filter((v) => !estQuotidien(v))
-  .filter((v) => maintenant - date(v) >= jours * 86400000)
-  .filter((v) => maintenant - date(v) < moisRetour * 30.44 * 86400000)
+  .filter((v) => publication(v) > 0)
+  .filter((v) => maintenant - publication(v) >= jours * 86400000)
+  .filter((v) => maintenant - publication(v) < moisRetour * 30.44 * 86400000)
   .sort((a, b) => (b.v || 0) - (a.v || 0))
   .slice(0, Number(hebdo.aRevoir ?? 2));
 
