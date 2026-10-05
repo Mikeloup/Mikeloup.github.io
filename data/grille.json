@@ -1,5 +1,5 @@
 {
-  "exported_at": "2026-10-05T18:32:57.345554",
+  "exported_at": "2026-10-05T18:48:02.252890",
   "window_days": 7,
   "rows": [
     {
@@ -2286,116 +2286,28 @@
       "heure_debut": "08:00",
       "type": "ANCRE",
       "heure_fixe": true,
-      "channel_id": "TEL_AVIV_NEW_YORK",
-      "title": "EPISODE 24- SEMAINE DU 20 AU 27 SEPTEMBRE"
+      "channel_id": "CAFE_DAAT",
+      "title": "Drones israéliens : l'homme qui a conçu leur arme | Beni Levy"
     },
     {
       "date_diffusion": "2026-10-11",
-      "bloc_apres": "TEL_AVIV_NEW_YORK",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
-    },
-    {
-      "date_diffusion": "2026-10-11",
-      "bloc_apres": "TEL_AVIV_NEW_YORK",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "ISRAEL_EN_FRANCAIS"
-    },
-    {
-      "date_diffusion": "2026-10-11",
-      "heure_debut": "08:41",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "RONY_HAYOT",
-      "title": "Israël déclare la guerre au crime organisé"
-    },
-    {
-      "date_diffusion": "2026-10-11",
-      "heure_debut": "08:49",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "STEPHANE_GOLDIN",
-      "title": "Flydubai : l’incroyable sauvetage du vol vers Israël"
-    },
-    {
-      "date_diffusion": "2026-10-11",
-      "heure_debut": "08:54",
+      "heure_debut": "08:57",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
-      "title": "Rosh Hanikra"
-    },
-    {
-      "date_diffusion": "2026-10-11",
-      "bloc_apres": "TEL_AVIV_NEW_YORK",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL"
-    },
-    {
-      "date_diffusion": "2026-10-11",
-      "bloc_apres": "TEL_AVIV_NEW_YORK",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
+      "title": "tiberiad"
     },
     {
       "date_diffusion": "2026-10-11",
       "heure_debut": "09:00",
       "type": "ANCRE",
       "heure_fixe": true,
-      "channel_id": "LES_ISRAELIENNES",
-      "title": "Élections 2026 : le 7 octobre n'a rien changé ?"
-    },
-    {
-      "date_diffusion": "2026-10-11",
-      "heure_debut": "10:18",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
       "channel_id": "TEL_AVIV_NEW_YORK",
-      "title": "TEL AVIV NEW YORK- SEMAINE DU 5 AU 12 JUILLET"
+      "title": "EPISODE 24- SEMAINE DU 20 AU 27 SEPTEMBRE"
     },
     {
       "date_diffusion": "2026-10-11",
-      "bloc_apres": "LES_ISRAELIENNES",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "ISRAEL_EN_FRANCAIS"
-    },
-    {
-      "date_diffusion": "2026-10-11",
-      "bloc_apres": "LES_ISRAELIENNES",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
-    },
-    {
-      "date_diffusion": "2026-10-11",
-      "bloc_apres": "LES_ISRAELIENNES",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
-    },
-    {
-      "date_diffusion": "2026-10-11",
-      "bloc_apres": "LES_ISRAELIENNES",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL"
-    },
-    {
-      "date_diffusion": "2026-10-11",
-      "heure_debut": "11:00",
-      "type": "ANCRE",
-      "heure_fixe": true,
-      "channel_id": "WILLIAM_ZERBIB_L_INTERVIEW",
-      "title": "Pierre Martinet : Pour qui roule Macron ?"
-    },
-    {
-      "date_diffusion": "2026-10-11",
-      "heure_debut": "11:36",
+      "heure_debut": "09:39",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "KATAVA",
@@ -2403,39 +2315,77 @@
     },
     {
       "date_diffusion": "2026-10-11",
-      "bloc_apres": "WILLIAM_ZERBIB_L_INTERVIEW",
+      "bloc_apres": "TEL_AVIV_NEW_YORK",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
       "channel_id": "ISRAEL_EN_FRANCAIS"
     },
     {
       "date_diffusion": "2026-10-11",
-      "heure_debut": "11:40",
+      "heure_debut": "09:43",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "OROT_VEKELIM",
-      "title": "J'ai interviewé BEN GOURION avec l'IA : Israël 1948, l'interview impossible"
+      "channel_id": "RONY_HAYOT",
+      "title": "Israël déclare la guerre au crime organisé"
     },
     {
       "date_diffusion": "2026-10-11",
-      "bloc_apres": "WILLIAM_ZERBIB_L_INTERVIEW",
-      "type": "CLIPS_CHAINE",
+      "heure_debut": "09:52",
+      "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL"
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": ""
     },
     {
       "date_diffusion": "2026-10-11",
-      "bloc_apres": "WILLIAM_ZERBIB_L_INTERVIEW",
+      "bloc_apres": "TEL_AVIV_NEW_YORK",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
       "channel_id": "TSAHAL_FR"
     },
     {
       "date_diffusion": "2026-10-11",
-      "bloc_apres": "WILLIAM_ZERBIB_L_INTERVIEW",
+      "bloc_apres": "TEL_AVIV_NEW_YORK",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "SOLAL_ISRAEL"
+    },
+    {
+      "date_diffusion": "2026-10-11",
+      "heure_debut": "10:01",
+      "type": "ANCRE",
+      "heure_fixe": true,
+      "channel_id": "LES_ISRAELIENNES",
+      "title": "Élections 2026 : le 7 octobre n'a rien changé ?"
+    },
+    {
+      "date_diffusion": "2026-10-11",
+      "heure_debut": "11:19",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "TEL_AVIV_NEW_YORK",
+      "title": "PODCAST TEL AVIV NEW YORK EPISODE 11- SEMAINE DU 21 AU 28 JUIN"
+    },
+    {
+      "date_diffusion": "2026-10-11",
+      "bloc_apres": "LES_ISRAELIENNES",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "ISRAEL_EN_FRANCAIS"
+    },
+    {
+      "date_diffusion": "2026-10-11",
+      "bloc_apres": "LES_ISRAELIENNES",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
       "channel_id": "KFIR_ALMAGOR"
+    },
+    {
+      "date_diffusion": "2026-10-11",
+      "bloc_apres": "LES_ISRAELIENNES",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "TSAHAL_FR"
     },
     {
       "date_diffusion": "2026-10-11",
@@ -2454,7 +2404,7 @@
     },
     {
       "date_diffusion": "2026-10-11",
-      "heure_debut": "13:00",
+      "heure_debut": "12:59",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "OROT_VEKELIM",
@@ -2486,8 +2436,8 @@
       "heure_debut": "13:55",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "STEPHANE_GOLDIN",
-      "title": "Flydubai : l’incroyable sauvetage du vol vers Israël"
+      "channel_id": "KATAVA",
+      "title": "Illustratrices... et haredi, elles cassent les codes"
     },
     {
       "date_diffusion": "2026-10-11",
@@ -2502,8 +2452,8 @@
       "heure_debut": "14:22",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "RONY_HAYOT",
-      "title": "Israël déclare la guerre au crime organisé"
+      "channel_id": "STEPHANE_GOLDIN",
+      "title": "Flydubai : l’incroyable sauvetage du vol vers Israël"
     },
     {
       "date_diffusion": "2026-10-11",
@@ -2514,27 +2464,19 @@
     },
     {
       "date_diffusion": "2026-10-11",
-      "heure_debut": "14:31",
+      "heure_debut": "14:27",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "RONY_HAYOT",
+      "title": "Israël déclare la guerre au crime organisé"
+    },
+    {
+      "date_diffusion": "2026-10-11",
+      "heure_debut": "14:35",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "JEROME_HAAS_L_INTERVIEW",
-      "title": "Pierre Lurçat présente « Le monde de Jabotinsky »"
-    },
-    {
-      "date_diffusion": "2026-10-11",
-      "heure_debut": "14:48",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": ""
-    },
-    {
-      "date_diffusion": "2026-10-11",
-      "heure_debut": "14:56",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "appolonia"
+      "title": "Faire son Alya en Israël : les clés pour réussir | Patricia Hassoun"
     },
     {
       "date_diffusion": "2026-10-11",
@@ -2545,11 +2487,56 @@
     },
     {
       "date_diffusion": "2026-10-11",
+      "heure_debut": "14:55",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "CARTES_POSTALES",
+      "title": "zichron yaakov"
+    },
+    {
+      "date_diffusion": "2026-10-11",
+      "bloc_apres": "TOUR_D_ISRAEL",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "KFIR_ALMAGOR"
+    },
+    {
+      "date_diffusion": "2026-10-11",
       "heure_debut": "15:00",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "JEROME_HAAS_L_INTERVIEW",
       "title": "Peut-on faire baisser les prix en Israël ? | Éliane Setbon Lezmy"
+    },
+    {
+      "date_diffusion": "2026-10-11",
+      "heure_debut": "15:31",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": ""
+    },
+    {
+      "date_diffusion": "2026-10-11",
+      "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "ISRAEL_EN_FRANCAIS"
+    },
+    {
+      "date_diffusion": "2026-10-11",
+      "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "SOLAL_ISRAEL"
+    },
+    {
+      "date_diffusion": "2026-10-11",
+      "heure_debut": "15:41",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "JEROME_HAAS_L_INTERVIEW",
+      "title": "Mahnaz Shirali"
     },
     {
       "date_diffusion": "2026-10-11",
@@ -2563,85 +2550,79 @@
       "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "ISRAEL_EN_FRANCAIS"
-    },
-    {
-      "date_diffusion": "2026-10-11",
-      "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
       "channel_id": "TSAHAL_FR"
     },
     {
       "date_diffusion": "2026-10-11",
-      "heure_debut": "15:35",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "CAFE_DAAT",
-      "title": "Une espionne du Mossad au Soudan : Yola Reitman raconte l’Opération Frères"
-    },
-    {
-      "date_diffusion": "2026-10-11",
-      "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL"
-    },
-    {
-      "date_diffusion": "2026-10-11",
-      "heure_debut": "16:36",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "KATAVA",
-      "title": "Illustratrices... et haredi, elles cassent les codes"
-    },
-    {
-      "date_diffusion": "2026-10-11",
-      "heure_debut": "16:40",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "JEROME_HAAS_L_INTERVIEW",
-      "title": "Israël : exode réel ou chiffres trompeurs ? Dov Maimon"
-    },
-    {
-      "date_diffusion": "2026-10-11",
-      "heure_debut": "17:06",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": ""
-    },
-    {
-      "date_diffusion": "2026-10-11",
-      "heure_debut": "17:12",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "OROT_VEKELIM",
-      "title": "Chirurgien dans Tsahal : « J'ai soigné le terroriste » (7 octobre)"
-    },
-    {
-      "date_diffusion": "2026-10-11",
-      "heure_debut": "19:00",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "JEROME_HAAS_L_INTERVIEW",
-      "title": "Faire son Alya en Israël : les clés pour réussir | Patricia Hassoun"
-    },
-    {
-      "date_diffusion": "2026-10-11",
-      "heure_debut": "19:17",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": ""
-    },
-    {
-      "date_diffusion": "2026-10-11",
-      "heure_debut": "19:23",
+      "heure_debut": "16:05",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
-      "title": "nabatheens"
+      "title": "Beit Alpha"
+    },
+    {
+      "date_diffusion": "2026-10-11",
+      "heure_debut": "16:32",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": ""
+    },
+    {
+      "date_diffusion": "2026-10-11",
+      "heure_debut": "17:07",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "CARTES_POSTALES",
+      "title": "Safed"
+    },
+    {
+      "date_diffusion": "2026-10-11",
+      "heure_debut": "17:33",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": ""
+    },
+    {
+      "date_diffusion": "2026-10-11",
+      "heure_debut": "18:08",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "CARTES_POSTALES",
+      "title": "Belvoir (1)"
+    },
+    {
+      "date_diffusion": "2026-10-11",
+      "heure_debut": "18:22",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "STEPHANE_GOLDIN",
+      "title": "Flydubai : l’incroyable sauvetage du vol vers Israël"
+    },
+    {
+      "date_diffusion": "2026-10-11",
+      "heure_debut": "18:34",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": ""
+    },
+    {
+      "date_diffusion": "2026-10-11",
+      "heure_debut": "19:08",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "CARTES_POSTALES",
+      "title": "Bet Shearim"
+    },
+    {
+      "date_diffusion": "2026-10-11",
+      "heure_debut": "19:35",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": ""
     },
     {
       "date_diffusion": "2026-10-11",
@@ -2653,11 +2634,11 @@
     },
     {
       "date_diffusion": "2026-10-11",
-      "heure_debut": "22:01",
+      "heure_debut": "22:00",
       "type": "ANCRE",
       "heure_fixe": true,
-      "channel_id": "CAFE_DAAT",
-      "title": "Drones israéliens : l'homme qui a conçu leur arme | Beni Levy"
+      "channel_id": "WILLIAM_ZERBIB_L_INTERVIEW",
+      "title": "Pierre Martinet : Pour qui roule Macron ?"
     }
   ]
 }
