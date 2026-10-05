@@ -30,8 +30,28 @@ jobs:
         uses: actions/cache@v4
         with:
           path: data/cache.json
-          key: catalogue-youtube-${{ github.run_id }}
-          restore-keys: catalogue-youtube-
+          # NOM DE CLE CHANGE LE 05/10/2026, ET C EST LE CORRECTIF DE FOND.
+          #
+          # Le 3 octobre a 16h47, une construction a vu un catalogue tronque.
+          # Toutes les videos absentes de ce releve ont ete redatees du jour
+          # meme : huit emissions de mai 2023 sont devenues des nouveautes, et
+          # Instagram en a poste une toutes les quinze minutes.
+          #
+          # Ces fausses dates vivent dans le cache, et chaque construction les
+          # recopie dans le cache suivant. Il y en avait 814 au 5 octobre :
+          # en supprimer un ne sert a rien, « restore-keys » retombe aussitot
+          # sur le precedent, tout aussi faux.
+          #
+          # Changer le NOM de la cle coupe la chaine d un coup. La prochaine
+          # construction ne trouve plus rien, et marquerPremiereVue applique
+          # alors sa regle du premier passage : chaque video recoit sa vraie
+          # date de publication YouTube. Le catalogue repart propre.
+          #
+          # Consequence attendue et voulue : plus aucune video n est
+          # « nouvelle » le temps qu une vraie nouveaute paraisse. Instagram
+          # et la lettre se taisent jusque-la. C est le comportement correct.
+          key: catalogue-v2-${{ github.run_id }}
+          restore-keys: catalogue-v2-
 
       - name: Generer le site depuis YouTube
         env:
