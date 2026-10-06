@@ -93,6 +93,28 @@ if (typesInconnus) {
     + 'Espacement calcule sur toutes les publications, comme avant le 27/08.');
 }
 
+// PLAFOND QUOTIDIEN (06/10/2026).
+//
+// Les 3 et 4 octobre, le compte a recu une quinzaine de plaquettes d'emissions
+// de mai 2023, a raison d'une toutes les trois heures. L'espacement a tenu --
+// c'est le choix des videos qui etait faux. Mais il n'existait AUCUNE borne
+// sur la journee : 3 heures d'ecart autorisent huit publications par jour.
+//
+// Tandem TV ne sort pas huit nouveautes par jour. Un plafond bas ne gene donc
+// jamais la vie normale, et transforme le prochain accident -- quel qu'il
+// soit, et il y en aura un -- en desagrement au lieu d'un deluge. C'est une
+// ceinture, pas un reglage de confort : ne pas la monter sans raison.
+//
+// Il protege aussi d'une limite d'Instagram : 25 publications par 24 h
+// glissantes, au-dela desquelles l'API refuse tout (erreur 9).
+const parJour = Number(config.instagram?.maxPerDay ?? 3);
+const depuis24h = aCompter.filter((m) => m.date && (maintenant - m.date) < 86400000).length;
+if (parJour && depuis24h >= parJour) {
+  console.log(`Plafond du jour atteint : ${depuis24h} plaquette(s) publiee(s) ces 24 h, `
+    + `maximum ${parJour}. Rien n'est publie.`);
+  process.exit(0);
+}
+
 const espacement = (config.instagram?.minMinutesBetween ?? 180) * 60000;
 const derniere = Math.max(0, ...aCompter.map((m) => m.date || 0));
 if (derniere && maintenant - derniere < espacement) {

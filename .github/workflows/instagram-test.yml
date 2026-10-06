@@ -1,6 +1,17 @@
 name: Verifier le jeton Instagram
 
 on:
+  # TOUS LES LUNDIS (ajoute le 06/10/2026).
+  #
+  # Le jeton Instagram a expire le 6 octobre a 6h27, et personne ne l'a su :
+  # les publications se sont arretees, et c'est Michael qui s'en est apercu en
+  # regardant le compte. Un jeton vit 60 jours ; on ne peut pas s'en souvenir.
+  #
+  # Desormais ce controle part seul chaque lundi matin. S'il echoue, GitHub
+  # envoie le courriel d'echec habituel -- et on sait qu'il faut renouveler le
+  # jeton AVANT que les publications s'arretent.
+  schedule:
+    - cron: '17 3 * * 1'
   workflow_dispatch:
 
 jobs:

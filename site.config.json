@@ -61,6 +61,7 @@
     "userId": "27954556280895113",
     "publishOnNewVideos": true,
     "maxPerRun": 1,
+    "maxPerDay": 3,
     "maxAgeHours": 48,
     "minMinutesBetween": 180,
     "captionTemplate": "{titre}\n\n{emission} — à revoir sur {site}, et à l’antenne sur le canal {canal} du bouquet Annatel TV.\n\nLien dans la bio ↑",
