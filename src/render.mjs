@@ -2499,7 +2499,7 @@ ${analytics}
           La télévision fonctionne autrement, et c'est précisément son intérêt.</p>
       </div>
       <ul class="points">
-        <li><b>Vous êtes seul</b><span>Dans un fil d'actualité, vous êtes le quarantième annonceur de la journée. Ici, vous êtes le seul partenaire de l'émission que vous avez choisie.</span></li>
+        <li><b>Vous êtes seul</b><span>Dans un fil d'actualité, vous êtes le quarantième annonceur de la journée. Ici, vous êtes le seul annonceur de l'émission que vous avez choisie.</span></li>
         <li><b>Vous êtes vu</b><span>La télévision se regarde dans un salon, souvent à plusieurs, sans pouce pour faire défiler.</span></li>
         <li><b>Vous durez</b><span>Une publicité en ligne s'arrête le jour où vous cessez de payer. Une émission que vous accompagnez, elle, installe votre nom, diffusion après diffusion.</span></li>
       </ul>
@@ -2543,7 +2543,7 @@ ${analytics}
     <p class="num"><b>3</b> Nos offres</p>
     <h2>Trois façons d'être présent</h2>
     <p class="intro">Trois formules, à combiner si vous le souhaitez. Engagement de trois mois minimum pour les formules mensuelles.</p>
-    <div class="lancement">Tarif de lancement — 20&nbsp;% pour les six premiers partenaires</div>
+    <div class="lancement">Tarif de lancement — 20&nbsp;% pour les six premiers annonceurs</div>
 
     <div class="offres">
       <div class="offre">
@@ -2555,7 +2555,7 @@ ${analytics}
           <li><strong>Au moins 25 diffusions de l'émission par mois</strong></li>
           <li>À chaque diffusion — première diffusion et rediffusions</li>
           <li>Aussi sur la version YouTube de l'émission</li>
-          <li>Seul partenaire de l'émission choisie</li>
+          <li>Seul annonceur de l'émission choisie</li>
           <li>Billboard réalisé par nos soins</li>
           <li>Relevé de diffusion chaque mois</li>
         </ul>
@@ -2647,11 +2647,8 @@ ${analytics}
     </div>
 
     <h3 class="sous-titre">Les émissions à parrainer</h3>
-    <p class="sous-intro">Un seul partenaire par émission, pour toute la durée du contrat.</p>
+    <p class="sous-intro">Un seul annonceur par émission, pour toute la durée du contrat.</p>
     <div class="emissions">
-      <div class="em social"><span class="genre">Actualité</span><h4>Le Flash Info</h4>
-        <p>L'essentiel de l'actualité israélienne, en quelques minutes.</p>
-        <span class="reseaux">Réseaux sociaux uniquement, pour le moment</span></div>
       <div class="em"><span class="genre">Entretien · 20 à 40 min</span><h4>L'interview de William Zerbib</h4>
         <p>Un invité, une conversation menée jusqu'au bout.</p></div>
       <div class="em"><span class="genre">Entretien de fond</span><h4>L'interview de Jérôme Haas</h4>
@@ -2660,8 +2657,6 @@ ${analytics}
         <p>Un regard tranché sur l'actualité israélienne, en quelques minutes.</p></div>
       <div class="em"><span class="genre">Édito</span><h4>L'édito de Rony Hayot</h4>
         <p>Israël vu de l'intérieur, sans filtre.</p></div>
-      <div class="em"><span class="genre">Chronique</span><h4>Les Passions d'un Hébreu</h4>
-        <p>L'histoire et la pensée juives, racontées par Rony Akrich.</p></div>
       <div class="em"><span class="genre">Conférences</span><h4>Café Daat</h4>
         <p>Les grandes rencontres de la vie intellectuelle francophone en Israël, filmées et diffusées.</p></div>
     </div>
@@ -2767,12 +2762,10 @@ ${analytics}
       <fieldset class="bloc" data-si="Parrainer une émission" hidden>
         <legend><span class="pas">2</span> Quelle émission&nbsp;?</legend>
         <div class="pastilles">
-          <label class="pastille"><input type="radio" name="emission" value="Le Flash Info"><span>Le Flash Info</span></label>
           <label class="pastille"><input type="radio" name="emission" value="L'interview de William Zerbib"><span>L'interview de William Zerbib</span></label>
           <label class="pastille"><input type="radio" name="emission" value="L'interview de Jérôme Haas"><span>L'interview de Jérôme Haas</span></label>
           <label class="pastille"><input type="radio" name="emission" value="L'édito de Stéphane Goldin"><span>L'édito de Stéphane Goldin</span></label>
           <label class="pastille"><input type="radio" name="emission" value="L'édito de Rony Hayot"><span>L'édito de Rony Hayot</span></label>
-          <label class="pastille"><input type="radio" name="emission" value="Les Passions d'un Hébreu"><span>Les Passions d'un Hébreu</span></label>
           <label class="pastille"><input type="radio" name="emission" value="Café Daat"><span>Café Daat</span></label>
           <label class="pastille"><input type="radio" name="emission" value="Je ne sais pas encore"><span>Je ne sais pas encore</span></label>
         </div>
