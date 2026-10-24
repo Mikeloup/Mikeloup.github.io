@@ -1,5 +1,5 @@
 {
-  "exported_at": "2026-10-25T01:26:28.128832",
+  "exported_at": "2026-10-25T01:41:33.192790",
   "window_days": 7,
   "rows": [
     {
@@ -2803,8 +2803,8 @@
       "heure_debut": "22:00",
       "type": "ANCRE",
       "heure_fixe": true,
-      "channel_id": "RADIO_SHALOM_BOCHURBERG",
-      "title": "Le grand rabbin Olivier Kaufmann"
+      "channel_id": "CAFE_DAAT",
+      "title": "Drones israéliens : l'homme qui a conçu leur arme | Beni Levy"
     }
   ]
 }
