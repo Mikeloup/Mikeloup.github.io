@@ -123,6 +123,15 @@
       "programmes": [
         "SOLAL_ISRAEL"
       ]
+    },
+    "bob-hasbara": {
+      "url": "https://www.instagram.com/bobhasbara/",
+      "nom": "Bob Hasbara",
+      "description": "Bob Hasbara debunke les mythes sur Israël.",
+      "image": "/assets/partenaires/bob-hasbara.jpg",
+      "programmes": [
+        "BOB_HASBARA"
+      ]
     }
   }
 }

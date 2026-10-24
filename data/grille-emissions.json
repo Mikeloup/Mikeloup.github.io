@@ -105,5 +105,13 @@
     "nom": "Solal Israel",
     "site": ""
   },
-  "_comment_presentateur": "Nom du chroniqueur ou du journaliste qui tient l'emission. Il s'affiche sous le nom du programme sur l'affiche « ce soir » et dans la legende Instagram — c'est la maniere de rendre a chacun ce qui lui revient, et cela vaut invitation a partager pour les personnes concernees. Laissez vide quand l'emission n'a pas de figure identifiee, ou quand le nom figure deja dans le titre du programme : « L'edito de Rony Hayot / Rony Hayot » se lirait comme un begaiement."
+  "_comment_presentateur": "Nom du chroniqueur ou du journaliste qui tient l'emission. Il s'affiche sous le nom du programme sur l'affiche « ce soir » et dans la legende Instagram — c'est la maniere de rendre a chacun ce qui lui revient, et cela vaut invitation a partager pour les personnes concernees. Laissez vide quand l'emission n'a pas de figure identifiee, ou quand le nom figure deja dans le titre du programme : « L'edito de Rony Hayot / Rony Hayot » se lirait comme un begaiement.",
+  "ISRAEL_MAGAZINE": {
+    "nom": "Israel Magazine",
+    "site": ""
+  },
+  "BOB_HASBARA": {
+    "nom": "Bob Hasbara",
+    "site": ""
+  }
 }
