@@ -189,6 +189,102 @@ export async function estDejaEnLigne({ token, userId, caption, limite = 25 } = {
  * profil, qui lui est cliquable, et on garde la légende courte — les premières
  * lignes sont les seules lues avant le « plus ».
  */
+// -----------------------------------------------------------------------------
+// LA SEULE REGLE QUI DIT SI UNE VIDEO PEUT PARTIR SUR INSTAGRAM.
+//
+// Ecrite ici, et appelee par les DEUX chemins automatiques :
+//   - build.mjs          -> publierInstagram(), pendant la construction ;
+//   - tools/instagram-video.mjs -> apres le deploiement.
+//
+// Pourquoi ici et pas dans chacun des deux : parce que le 4 octobre 2026 la
+// regle d'age a ete ecrite dans l'outil et PAS dans la construction. Les deux
+// chemins font le meme geste ; un seul etait protege. Le 23 octobre a 20h18 et
+// 23h19, la construction a donc publie deux episodes des « Experts » du
+// 13 mars 2025 -- dix-neuf mois d'age. Michael, le 24 : « pourquoi une vieille
+// image de video est publiee sur insta ? ca date d'il y a 2 ans !!! », puis le
+// 28 : « toujours probleme pour insta il m'affiche de tres vieilles videos ».
+// Le defaut n'etait pas dans la regle, il etait dans le fait qu'elle n'existait
+// qu'a un endroit. Un garde-fou recopie est un garde-fou qui divergera.
+// (Meme raisonnement que MODELE_LEGENDE_DEFAUT ci-dessus, meme cause.)
+//
+// Deux bornes, et la premiere est la plus importante :
+//
+//   1. UN PLANCHER DE DATE ABSOLU (minPublicationDate). Aucune video publiee
+//      avant cette date ne part, jamais. Consigne de Michael du 28/10/2026 :
+//      « n'ajoute que des nouvelles videos a partir d'aujourd'hui, aucune
+//      ancienne. » Une borne glissante ne suffisait pas : le 3 octobre, un
+//      releve YouTube tronque par une panne de quota avait redate du jour
+//      meme huit emissions de 2023. Une date fixe ne peut pas etre deplacee
+//      par une redatation -- c'est tout son interet.
+//
+//   2. UNE FENETRE GLISSANTE (maxPublicationAgeDays), conservee en plus. Le
+//      jour ou le plancher sera vieux de deux ans, c'est elle qui tiendra.
+//
+// On juge sur la date de publication YouTube, jamais sur vuLe : vuLe est
+// reconstitue a partir d'un cache et peut mentir, publishedAt vient de
+// YouTube et ne ment pas. Une entree SANS date est ecartee -- rien plutot
+// que faux.
+//
+// Renvoie { ok, raison }. La raison est faite pour etre journalisee telle
+// quelle : un refus muet se confond avec « il n'y avait rien a publier ».
+// -----------------------------------------------------------------------------
+// OU VIT LE PLANCHER, ET POURQUOI PAS DANS site.config.json.
+//
+// Premiere tentative, le 29/10 : poser minPublicationDate dans
+// site.config.json. Elle a vecu cinq minutes. publication/publier.sh tourne
+// tout seul TOUTES LES DIX MINUTES sur le MacBook et commence par
+// « git checkout origin/main -- site.config.json » : toute modification
+// locale de ce fichier est effacee avant d'avoir pu etre enregistree.
+//
+// Le plancher vit donc ici, en clair, dans le code. site.config.json peut
+// quand meme le redefinir (minPublicationDate) le jour ou il sera pousse par
+// la voie normale ; a defaut, c'est cette valeur qui s'applique.
+//
+// POUR DEPLACER LE PLANCHER : changer la date ci-dessous, et relancer
+// tools/essai-plancher-instagram.mjs.
+export const PLANCHER_PUBLICATION_DEFAUT = '2026-10-28';
+
+export function videoAutoriseeSurInstagram(entree, config = {}, maintenant = Date.now()) {
+  const i = config.instagram || {};
+  const titre = String(entree?.titre || entree?.title || '').trim();
+  const brut = entree?.publication || entree?.publishedAt || '';
+  // PIEGE, hérité du code d'origine (`Date.parse(v.publishedAt || 0) || 0`) :
+  // une date absente devient `Date.parse(0)`, et Date.parse coerce 0 en la
+  // chaine "0", que JavaScript lit comme le 1er janvier 2000. L'entree sans
+  // date n'etait donc pas reconnue comme telle -- elle etait datee de l'an
+  // 2000. Ici le plancher la rejetait quand meme, mais en annonçant une
+  // mauvaise raison ; le jour ou le plancher bougerait, le refus deviendrait
+  // faux. On ne parse que si quelque chose a parser.
+  const publiee = brut ? (Date.parse(brut) || 0) : 0;
+
+  if (!publiee) {
+    return { ok: false, raison: `aucune date de publication — ${titre}` };
+  }
+
+  const plancherBrut = i.minPublicationDate ?? PLANCHER_PUBLICATION_DEFAUT;
+  const plancher = Date.parse(`${plancherBrut}T00:00:00Z`) || 0;
+  if (!plancher) {
+    // Un plancher illisible ne doit pas ouvrir la porte en grand.
+    return { ok: false, raison: `plancher de date illisible dans site.config.json (« ${plancherBrut} ») — rien n'est publie tant qu'il n'est pas corrige` };
+  }
+  if (publiee < plancher) {
+    return {
+      ok: false,
+      raison: `publiee le ${String(brut).slice(0, 10)}, avant le plancher du ${plancherBrut} — ${titre}`,
+    };
+  }
+
+  const jours = Number(i.maxPublicationAgeDays ?? 90);
+  if (jours > 0 && maintenant - publiee >= jours * 86400000) {
+    return {
+      ok: false,
+      raison: `publiee le ${String(brut).slice(0, 10)}, au-dela de ${jours} jours — ${titre}`,
+    };
+  }
+
+  return { ok: true, raison: '' };
+}
+
 export function legende(video, { config, emission = '', invites = [] } = {}) {
   const i = config.instagram || {};
   const tv = config.tv || {};

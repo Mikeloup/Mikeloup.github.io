@@ -2223,12 +2223,21 @@ async function publierInstagram(config, allVideos, known, personnesParVideo = ne
   // sur le site ou non — car leur vignette 4:5 n'est mise en ligne qu'à la
   // construction suivante (voir plus bas).
   const heures = config.instagram?.maxAgeHours ?? 48;
+  // Le garde-fou d'age vit desormais dans src/instagram.mjs, appele a
+  // l'identique par ce chemin-ci ET par tools/instagram-video.mjs. Il etait
+  // auparavant recopie dans les deux : ecrit le 04/10 dans l'outil, oublie
+  // ici, d'ou les deux « Experts » de mars 2025 publies le 23/10.
   const candidates = allVideos
     // Seules les vidéos réellement publiques. Michael téléverse en privé puis
     // publie quand il le décide : annoncer plus tôt enverrait les curieux vers
     // une vidéo qui n'existe pas encore pour eux.
     .filter((v) => v.privacy === 'public')
     .filter((v) => v.vuLe && (buildMs - Date.parse(v.vuLe)) < heures * 3600 * 1000)
+    .filter((v) => {
+      const verdict = insta.videoAutoriseeSurInstagram(v, config, buildMs);
+      if (!verdict.ok) log(`Instagram : écartée (${verdict.raison})`);
+      return verdict.ok;
+    })
     .sort((a, b) => new Date(a.vuLe) - new Date(b.vuLe))
     .filter((v) => !dejaPublie(v.title));
 

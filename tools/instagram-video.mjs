@@ -164,22 +164,16 @@ const dejaPublie = (titre) => {
 // Au passage : le filtre disait « !e.vuLe || ... » -- une entree SANS date
 // passait donc toujours. Elle est maintenant ecartee : rien plutot que faux.
 const heures = config.instagram?.maxAgeHours ?? 48;
-const joursPublication = Number(config.instagram?.maxPublicationAgeDays ?? 90);
+// Le garde-fou d'age ci-dessus vit desormais dans src/instagram.mjs, pour que
+// la construction (build.mjs) applique EXACTEMENT la meme regle. Il y a aussi
+// gagne un plancher de date absolu (consigne de Michael du 28/10/2026).
 const candidates = entrees
   .filter((e) => e.legende && !dejaPublie(e.titre))
   .filter((e) => e.vuLe && (maintenant - Date.parse(e.vuLe)) < heures * 3600 * 1000)
   .filter((e) => {
-    const p = Date.parse(e.publication || 0) || 0;
-    if (!p) {
-      console.log(`Ecartee (aucune date de publication) : ${e.titre}`);
-      return false;
-    }
-    if (maintenant - p >= joursPublication * 86400000) {
-      console.log(`Ecartee (publiee le ${String(e.publication).slice(0, 10)}, `
-        + `au-dela de ${joursPublication} jours) : ${e.titre}`);
-      return false;
-    }
-    return true;
+    const verdict = insta.videoAutoriseeSurInstagram(e, config, maintenant);
+    if (!verdict.ok) console.log(`Ecartee (${verdict.raison})`);
+    return verdict.ok;
   })
   .sort((a, b) => Date.parse(a.vuLe || 0) - Date.parse(b.vuLe || 0));
 
