@@ -1,5 +1,5 @@
 {
-  "exported_at": "2026-11-06T09:52:10.974525",
+  "exported_at": "2026-11-06T10:07:15.927227",
   "window_days": 7,
   "rows": [
     {
@@ -2964,8 +2964,8 @@
       "heure_debut": "22:00",
       "type": "ANCRE",
       "heure_fixe": true,
-      "channel_id": "JEROME_HAAS_L_INTERVIEW",
-      "title": "Peut-on faire baisser les prix en Israël ? | Éliane Setbon Lezmy"
+      "channel_id": "RADIO_SHALOM_BOCHURBERG",
+      "title": "Le grand rabbin Olivier Kaufmann"
     }
   ]
 }
