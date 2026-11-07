@@ -3899,6 +3899,16 @@ ${EXEMPLES_DON.map((m) => `        <li><a href="${LIEN}" rel="noopener"><span>Je
 
 <section>
   <div class="wrap">
+    <h2>Écouter plutôt que regarder</h2>
+    <p class="chapo">Les émissions sont aussi en podcast, gratuitement.</p>
+    <p>Neuf émissions, plus de deux cent vingt épisodes — entretiens, éditos, histoire et
+      patrimoine — sur Apple Podcasts, bientôt sur Spotify et Deezer. En voiture, en marchant,
+      sans l’image : <a href="https://www.tandemtv.net/tandem-radio/" rel="noopener">tandemtv.net/tandem-radio</a></p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
     <h2>Vos questions</h2>
     <p class="chapo">Et le reste par courriel : <b>contact@tandemtv.org</b></p>
 ${questions.map(([q, r]) => `    <details><summary>${q}</summary><p>${r}</p></details>`).join('\n')}

@@ -64,7 +64,7 @@
     "maxPerDay": 3,
     "maxAgeHours": 48,
     "minMinutesBetween": 180,
-    "captionTemplate": "{titre}\n\n{emission} — à revoir sur {site}, et à l’antenne sur le canal {canal} du bouquet Annatel TV.\n\nLien dans la bio ↑",
+    "captionTemplate": "{titre}\n\n{emission} — à revoir sur {site}, et à l’antenne sur le canal {canal} du bouquet Annatel TV.\n\nAussi en podcast, sans l\u2019image : tandemtv.net/tandem-radio\n\nLien dans la bio ↑",
     "hashtags": [
       "TandemTV",
       "Israel",
@@ -112,6 +112,12 @@
   "_comment_channelId": "Laissez vide : la chaîne est retrouvée automatiquement via channelHandle.",
   "_comment_pages": "Pages éditoriales du site. Chaque entrée correspond à un fichier content/<slug>.md. Retirez une ligne pour faire disparaître la page du site et des menus. Ajoutez \"footerOnly\": true pour qu'une page n'apparaisse que dans le pied de page (mentions légales, confidentialité) et pas dans le menu principal.",
   "pages": [
+    {
+      "slug": "tandem-radio",
+      "title": "Tandem Radio : écouter les émissions de Tandem TV en podcast",
+      "menuTitle": "Écouter en podcast",
+      "description": "Les émissions de Tandem TV en podcast : neuf programmes et plus de 220 épisodes — entretiens, éditos, histoire et patrimoine — sur Apple Podcasts, bientôt sur Spotify et Deezer. Écoute gratuite, sans inscription."
+    },
     {
       "slug": "a-propos",
       "title": "À propos",
