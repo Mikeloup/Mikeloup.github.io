@@ -14,7 +14,7 @@ C'est le même travail que celui du [canal 14](/television-israelienne-francopho
 | **Spotify** | en cours de mise en place |
 | **Deezer** | en cours de mise en place |
 | **Toute autre application** | chaque émission a son adresse RSS : collez-la dans votre application de podcast, quelle qu'elle soit |
-| **La radio en continu** | à l'étude — voir plus bas |
+| **La radio en continu** | à venir |
 
 S'abonner à une émission dans votre application suffit : **chaque nouvel épisode y arrive tout seul**, dans l'heure qui suit sa mise en ligne. Rien à surveiller, rien à télécharger.
 
@@ -47,14 +47,6 @@ S'abonner à une émission dans votre application suffit : **chaque nouvel épis
 ### L'actualité
 
 **[Israël Magazine](https://podcasts.apple.com/podcast/id6831681895)** — Les entretiens avec ceux qui font la politique israélienne, menés par André Darmon. *([RSS](https://github.com/Mikeloup/Mikeloup.github.io/releases/download/radio/israel-magazine.xml))*
-
----
-
-## Et la radio en continu ?
-
-Un flux en continu — une vraie radio, qu'on allume sans choisir — est à l'étude. Il suppose un serveur allumé en permanence et un catalogue assez fourni pour qu'une boucle ne se répète pas trop vite.
-
-Le catalogue existe déjà. La question qui reste est simple : y a-t-il des auditeurs ? C'est l'usage des podcasts, dans les prochaines semaines, qui y répondra.
 
 ---
 

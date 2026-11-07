@@ -528,6 +528,31 @@ function tvBanner(config, { grille = false, direct = false } = {}) {
 }
 
 /**
+ * Bandeau « aussi en podcast », sur la page d'accueil.
+ *
+ * Le 7 novembre 2026, la page des podcasts n'etait atteignable que par la
+ * barre du haut -- la plus discrete du site. Un lien qu'on ne voit pas ne
+ * vaut pas mieux qu'un lien absent.
+ *
+ * Meme forme et meme classe CSS que le bandeau television, pose juste en
+ * dessous : on regarde, ou on ecoute. Il DISPARAIT si la page n'est pas
+ * declaree -- mieux vaut pas de bandeau qu'un bandeau qui mene nulle part.
+ */
+function podcastBanner(config) {
+  const page = (config.pages || []).find((pg) => pg.slug === 'tandem-radio');
+  if (!page) return '';
+  return `
+<aside class="tv-banner">
+  <span class="tv-badge" aria-hidden="true">RADIO</span>
+  <div class="tv-corps">
+    <p>
+      <strong>Les émissions sont aussi en podcast</strong> — neuf émissions, plus de deux cents épisodes, à écouter gratuitement, sans inscription. <a href="/tandem-radio/">Écouter en podcast <span aria-hidden="true">→</span></a>
+    </p>
+  </div>
+</aside>`;
+}
+
+/**
  * Formulaire d'inscription à la lettre d'information.
  * Simple HTML qui poste chez Kit : aucun script tiers, aucune clé exposée,
  * et cela fonctionne même si le visiteur a désactivé JavaScript.
@@ -998,6 +1023,8 @@ export function homePage({
   ${bandeauJT(jt, editionsJT)}
 
   ${tvBanner(config, { grille: Boolean(nav.grille), direct: Boolean(grille?.pourNavigateurCourt?.length) })}
+
+  ${podcastBanner(config)}
 
   <section class="row">
     <div class="row-head">
