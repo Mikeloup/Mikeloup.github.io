@@ -1,5 +1,5 @@
 {
-  "exported_at": "2026-11-07T21:48:56.628076",
+  "exported_at": "2026-11-07T22:04:01.803948",
   "window_days": 7,
   "rows": [
     {
@@ -2655,7 +2655,7 @@
     },
     {
       "date_diffusion": "2026-11-13",
-      "heure_debut": "08:38",
+      "heure_debut": "08:37",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "RONY_AKRICH",
@@ -2663,32 +2663,11 @@
     },
     {
       "date_diffusion": "2026-11-13",
-      "bloc_apres": "RADIO_SHALOM_SZWARC",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL"
-    },
-    {
-      "date_diffusion": "2026-11-13",
-      "heure_debut": "08:55",
+      "heure_debut": "08:52",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "Cesarée"
-    },
-    {
-      "date_diffusion": "2026-11-13",
-      "bloc_apres": "RADIO_SHALOM_SZWARC",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
-    },
-    {
-      "date_diffusion": "2026-11-13",
-      "bloc_apres": "RADIO_SHALOM_SZWARC",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": ""
     },
     {
       "date_diffusion": "2026-11-13",
@@ -2715,14 +2694,7 @@
     },
     {
       "date_diffusion": "2026-11-13",
-      "bloc_apres": "ECUJE",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL"
-    },
-    {
-      "date_diffusion": "2026-11-13",
-      "heure_debut": "10:27",
+      "heure_debut": "10:22",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
@@ -2730,14 +2702,7 @@
     },
     {
       "date_diffusion": "2026-11-13",
-      "bloc_apres": "ECUJE",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
-    },
-    {
-      "date_diffusion": "2026-11-13",
-      "heure_debut": "10:34",
+      "heure_debut": "10:28",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
@@ -2748,7 +2713,7 @@
       "bloc_apres": "ECUJE",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
+      "channel_id": "KFIR_ALMAGOR"
     },
     {
       "date_diffusion": "2026-11-13",
@@ -2756,6 +2721,13 @@
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
       "channel_id": "LEON_LE_MEDIA"
+    },
+    {
+      "date_diffusion": "2026-11-13",
+      "bloc_apres": "ECUJE",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "TSAHAL_FR"
     },
     {
       "date_diffusion": "2026-11-13",
@@ -2770,7 +2742,7 @@
       "bloc_apres": "CAFE_DAAT",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
+      "channel_id": "TSAHAL_FR"
     },
     {
       "date_diffusion": "2026-11-13",
@@ -2784,18 +2756,11 @@
       "bloc_apres": "CAFE_DAAT",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
-    },
-    {
-      "date_diffusion": "2026-11-13",
-      "bloc_apres": "CAFE_DAAT",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
       "channel_id": "SOLAL_ISRAEL"
     },
     {
       "date_diffusion": "2026-11-13",
-      "heure_debut": "12:13",
+      "heure_debut": "12:09",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
@@ -2803,7 +2768,7 @@
     },
     {
       "date_diffusion": "2026-11-13",
-      "heure_debut": "12:19",
+      "heure_debut": "12:17",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
@@ -2814,11 +2779,18 @@
       "bloc_apres": "CAFE_DAAT",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
+      "channel_id": "KFIR_ALMAGOR"
+    },
+    {
+      "date_diffusion": "2026-11-13",
+      "bloc_apres": "CAFE_DAAT",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
       "channel_id": "ISRAEL_EN_FRANCAIS"
     },
     {
       "date_diffusion": "2026-11-13",
-      "heure_debut": "12:29",
+      "heure_debut": "12:32",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "STEPHANE_GOLDIN",
@@ -2853,15 +2825,22 @@
       "bloc_apres": "TEL_AVIV_NEW_YORK",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
+      "channel_id": "ISRAEL_EN_FRANCAIS"
     },
     {
       "date_diffusion": "2026-11-13",
-      "heure_debut": "13:45",
+      "heure_debut": "13:46",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
       "title": "Grotte de sédécias"
+    },
+    {
+      "date_diffusion": "2026-11-13",
+      "bloc_apres": "TEL_AVIV_NEW_YORK",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "KFIR_ALMAGOR"
     },
     {
       "date_diffusion": "2026-11-13",
@@ -2875,7 +2854,7 @@
       "bloc_apres": "TEL_AVIV_NEW_YORK",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "ISRAEL_EN_FRANCAIS"
+      "channel_id": "SOLAL_ISRAEL"
     },
     {
       "date_diffusion": "2026-11-13",
@@ -2887,25 +2866,26 @@
     },
     {
       "date_diffusion": "2026-11-13",
-      "bloc_apres": "LES_ISRAELIENNES",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL"
-    },
-    {
-      "date_diffusion": "2026-11-13",
-      "bloc_apres": "LES_ISRAELIENNES",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "LEON_LE_MEDIA"
-    },
-    {
-      "date_diffusion": "2026-11-13",
-      "heure_debut": "14:51",
+      "heure_debut": "14:47",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
       "title": ""
+    },
+    {
+      "date_diffusion": "2026-11-13",
+      "bloc_apres": "LES_ISRAELIENNES",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "TSAHAL_FR"
+    },
+    {
+      "date_diffusion": "2026-11-13",
+      "heure_debut": "14:53",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "CARTES_POSTALES",
+      "title": "Les jardins Bahai"
     },
     {
       "date_diffusion": "2026-11-13",
@@ -2916,50 +2896,36 @@
     },
     {
       "date_diffusion": "2026-11-13",
-      "bloc_apres": "LES_ISRAELIENNES",
+      "heure_debut": "15:00",
+      "type": "ANCRE",
+      "heure_fixe": true,
+      "channel_id": "WILLIAM_ZERBIB_L_INTERVIEW",
+      "title": "Trump, États-Unis : vers un cauchemar diplomatique pour Israël ? | Philippe Karsenty"
+    },
+    {
+      "date_diffusion": "2026-11-13",
+      "bloc_apres": "WILLIAM_ZERBIB_L_INTERVIEW",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
       "channel_id": "TSAHAL_FR"
     },
     {
       "date_diffusion": "2026-11-13",
-      "bloc_apres": "LES_ISRAELIENNES",
+      "bloc_apres": "WILLIAM_ZERBIB_L_INTERVIEW",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
       "channel_id": "ISRAEL_EN_FRANCAIS"
     },
     {
       "date_diffusion": "2026-11-13",
-      "heure_debut": "15:00",
-      "type": "ANCRE",
-      "heure_fixe": true,
-      "channel_id": "YINON_SHOW",
-      "title": "ERIC HASSOUN: 20 ANS DE BUSINESS AU COEUR DE LA COMMUNAUTE JUIVE"
-    },
-    {
-      "date_diffusion": "2026-11-13",
-      "bloc_apres": "YINON_SHOW",
+      "bloc_apres": "WILLIAM_ZERBIB_L_INTERVIEW",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
+      "channel_id": "KFIR_ALMAGOR"
     },
     {
       "date_diffusion": "2026-11-13",
-      "bloc_apres": "YINON_SHOW",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "LEON_LE_MEDIA"
-    },
-    {
-      "date_diffusion": "2026-11-13",
-      "bloc_apres": "YINON_SHOW",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL"
-    },
-    {
-      "date_diffusion": "2026-11-13",
-      "heure_debut": "16:16",
+      "heure_debut": "15:48",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
@@ -2967,7 +2933,7 @@
     },
     {
       "date_diffusion": "2026-11-13",
-      "heure_debut": "16:25",
+      "heure_debut": "15:55",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
@@ -2975,10 +2941,18 @@
     },
     {
       "date_diffusion": "2026-11-13",
+      "heure_debut": "16:00",
+      "type": "ANCRE",
+      "heure_fixe": true,
+      "channel_id": "YINON_SHOW",
+      "title": "AARON AVEC 2A: IL RASSEMBLE LES RELIGIONS"
+    },
+    {
+      "date_diffusion": "2026-11-13",
       "bloc_apres": "YINON_SHOW",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
+      "channel_id": "TSAHAL_FR"
     },
     {
       "date_diffusion": "2026-11-13",
@@ -2989,15 +2963,14 @@
     },
     {
       "date_diffusion": "2026-11-13",
-      "heure_debut": "17:00",
-      "type": "ANCRE",
-      "heure_fixe": true,
-      "channel_id": "TOUR_D_ISRAEL",
-      "title": "La Jérusalem musulmane"
+      "bloc_apres": "YINON_SHOW",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "SOLAL_ISRAEL"
     },
     {
       "date_diffusion": "2026-11-13",
-      "heure_debut": "17:22",
+      "heure_debut": "17:04",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
@@ -3005,14 +2978,7 @@
     },
     {
       "date_diffusion": "2026-11-13",
-      "bloc_apres": "TOUR_D_ISRAEL",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
-    },
-    {
-      "date_diffusion": "2026-11-13",
-      "heure_debut": "17:31",
+      "heure_debut": "17:12",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
@@ -3020,43 +2986,22 @@
     },
     {
       "date_diffusion": "2026-11-13",
-      "bloc_apres": "TOUR_D_ISRAEL",
+      "bloc_apres": "YINON_SHOW",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
+      "channel_id": "KFIR_ALMAGOR"
     },
     {
       "date_diffusion": "2026-11-13",
-      "bloc_apres": "TOUR_D_ISRAEL",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "ISRAEL_EN_FRANCAIS"
-    },
-    {
-      "date_diffusion": "2026-11-13",
-      "heure_debut": "18:00",
+      "heure_debut": "17:59",
       "type": "ANCRE",
       "heure_fixe": true,
-      "channel_id": "OROT_VEKELIM",
-      "title": "Guerre avec l’Iran avant les élections ?"
+      "channel_id": "TOUR_D_ISRAEL",
+      "title": "La Jérusalem musulmane"
     },
     {
       "date_diffusion": "2026-11-13",
-      "bloc_apres": "OROT_VEKELIM",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL"
-    },
-    {
-      "date_diffusion": "2026-11-13",
-      "bloc_apres": "OROT_VEKELIM",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
-    },
-    {
-      "date_diffusion": "2026-11-13",
-      "heure_debut": "19:16",
+      "heure_debut": "18:22",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
@@ -3064,7 +3009,14 @@
     },
     {
       "date_diffusion": "2026-11-13",
-      "heure_debut": "19:24",
+      "bloc_apres": "TOUR_D_ISRAEL",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "TSAHAL_FR"
+    },
+    {
+      "date_diffusion": "2026-11-13",
+      "heure_debut": "18:31",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
@@ -3072,21 +3024,29 @@
     },
     {
       "date_diffusion": "2026-11-13",
-      "bloc_apres": "OROT_VEKELIM",
+      "bloc_apres": "TOUR_D_ISRAEL",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
       "channel_id": "ISRAEL_EN_FRANCAIS"
     },
     {
       "date_diffusion": "2026-11-13",
-      "bloc_apres": "OROT_VEKELIM",
+      "bloc_apres": "TOUR_D_ISRAEL",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
       "channel_id": "KFIR_ALMAGOR"
     },
     {
       "date_diffusion": "2026-11-13",
-      "heure_debut": "19:59",
+      "heure_debut": "19:00",
+      "type": "ANCRE",
+      "heure_fixe": true,
+      "channel_id": "OROT_VEKELIM",
+      "title": "Guerre avec l’Iran avant les élections ?"
+    },
+    {
+      "date_diffusion": "2026-11-13",
+      "heure_debut": "20:13",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "JEROME_HAAS_L_INTERVIEW",
@@ -3094,11 +3054,11 @@
     },
     {
       "date_diffusion": "2026-11-13",
-      "heure_debut": "21:59",
+      "heure_debut": "22:00",
       "type": "ANCRE",
       "heure_fixe": true,
-      "channel_id": "WILLIAM_ZERBIB_L_INTERVIEW",
-      "title": "Trump, États-Unis : vers un cauchemar diplomatique pour Israël ? | Philippe Karsenty"
+      "channel_id": "YINON_SHOW",
+      "title": "ERIC HASSOUN: 20 ANS DE BUSINESS AU COEUR DE LA COMMUNAUTE JUIVE"
     }
   ]
 }
