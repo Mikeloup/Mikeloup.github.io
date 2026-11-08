@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tandem Radio — essai de lecture</title>
+<style>
+  :root { color-scheme: light dark; }
+  body { margin: 0; padding: 1.5rem 1rem 3rem; background: #f6f7f9; color: #16213a;
+         font: 16px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
+  .page { max-width: 42rem; margin: 0 auto; }
+  h1 { font-size: 1.5rem; line-height: 1.2; margin: 0 0 .5rem; }
+  p.chapo { color: #51607d; margin: 0 0 1.5rem; }
+  section { background: #fff; border: 1px solid #dde2ea; border-radius: 12px;
+            padding: 1rem 1.1rem 1.2rem; margin-bottom: 1.1rem; }
+  h2 { font-size: 1.05rem; margin: 0 0 .25rem; }
+  .dit { color: #51607d; margin: 0 0 .75rem; font-size: .94rem; }
+  audio { width: 100%; }
+  pre { font: .78rem/1.5 ui-monospace, Menlo, Consolas, monospace; color: #51607d;
+        background: rgba(14,34,74,.06); border-left: 3px solid #5b8def;
+        border-radius: 0 6px 6px 0; padding: .55rem .7rem; overflow-x: auto; margin: .8rem 0 0; }
+  ul { margin: 0; padding-left: 1.1rem; }
+  li { margin-bottom: .3rem; }
+  footer { color: #51607d; font-size: .85rem; margin-top: 1.5rem; }
+  @media (prefers-color-scheme: dark) {
+    body { background: #0b1220; color: #e8edf6; }
+    p.chapo, .dit, footer, pre { color: #9aa8c0; }
+    section { background: #121b2d; border-color: #25324a; }
+    pre { background: rgba(123,164,245,.1); }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <h1>Le même épisode, servi de deux façons</h1>
+  <p class="chapo">Les deux lecteurs ci-dessous jouent <strong>exactement le même fichier audio</strong> :
+  « Safed », Cartes postales. Seule change la manière dont le serveur l'annonce.
+  Appuyez sur lecture sur l'un, puis sur l'autre.</p>
+
+  <section>
+    <h2>A — tel qu'il est aujourd'hui</h2>
+    <p class="dit">Hébergé sur GitHub, comme les 223 épisodes en ligne.</p>
+    <audio controls preload="none"
+      src="https://github.com/Mikeloup/Mikeloup.github.io/releases/download/radio/TTV00000229.m4a"></audio>
+    <pre>content-type: application/octet-stream
+content-disposition: attachment
+x-content-type-options: nosniff</pre>
+  </section>
+
+  <section>
+    <h2>B — servi comme de l'audio</h2>
+    <p class="dit">Même fichier, même taille, annoncé correctement.</p>
+    <audio controls preload="none" src="essai.m4a"></audio>
+    <pre>content-type: audio/mp4
+content-disposition: inline</pre>
+  </section>
+
+  <section>
+    <h2>Ce qu'il faut nous dire</h2>
+    <ul>
+      <li>Quel appareil et quel navigateur (iPhone, iPad, Mac — Safari ou Chrome).</li>
+      <li>Est-ce que <strong>A</strong> joue le son, oui ou non.</li>
+      <li>Est-ce que <strong>B</strong> joue le son, oui ou non.</li>
+      <li>Si un lecteur ne fait rien, ou propose un téléchargement, dites-le tel quel.</li>
+    </ul>
+  </section>
+
+  <footer>Tandem TV — essai technique, 8 novembre 2026. Cette page ne collecte rien.</footer>
+
+</div>
+</body>
+</html>
