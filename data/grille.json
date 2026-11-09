@@ -1,5 +1,5 @@
 {
-  "exported_at": "2026-11-09T18:33:28.970301",
+  "exported_at": "2026-11-09T19:03:37.305419",
   "window_days": 7,
   "rows": [
     {
@@ -2880,12 +2880,19 @@
       "heure_debut": "08:28",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "RONY_AKRICH",
-      "title": "Sommes-nous vraiment du bon côté ? | Rony Akrich"
+      "channel_id": "STEPHANE_GOLDIN",
+      "title": "États-Unis : la fin de l’aide militaire à Israël ? | Stéphane Goldin"
     },
     {
       "date_diffusion": "2026-11-15",
-      "heure_debut": "08:42",
+      "bloc_apres": "RADIO_SHALOM_SZWARC",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "ISRAEL_EN_FRANCAIS"
+    },
+    {
+      "date_diffusion": "2026-11-15",
+      "heure_debut": "08:31",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "RONY_HAYOT",
@@ -2900,44 +2907,23 @@
     },
     {
       "date_diffusion": "2026-11-15",
-      "heure_debut": "08:50",
+      "heure_debut": "08:38",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "STEPHANE_GOLDIN",
-      "title": "États-Unis : la fin de l’aide militaire à Israël ? | Stéphane Goldin"
+      "channel_id": "RONY_AKRICH",
+      "title": "Sommes-nous vraiment du bon côté ? | Rony Akrich"
     },
     {
       "date_diffusion": "2026-11-15",
-      "bloc_apres": "RADIO_SHALOM_SZWARC",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "ISRAEL_EN_FRANCAIS"
-    },
-    {
-      "date_diffusion": "2026-11-15",
-      "bloc_apres": "RADIO_SHALOM_SZWARC",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
-    },
-    {
-      "date_diffusion": "2026-11-15",
-      "bloc_apres": "RADIO_SHALOM_SZWARC",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
-    },
-    {
-      "date_diffusion": "2026-11-15",
-      "heure_debut": "08:54",
+      "heure_debut": "08:53",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "Belvoir (1)"
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": ""
     },
     {
       "date_diffusion": "2026-11-15",
-      "heure_debut": "09:00",
+      "heure_debut": "08:59",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "ECUJE",
@@ -2945,11 +2931,10 @@
     },
     {
       "date_diffusion": "2026-11-15",
-      "heure_debut": "10:09",
-      "type": "COURT_NOMME",
+      "bloc_apres": "ECUJE",
+      "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "TEL_AVIV_NEW_YORK",
-      "title": "EPISODE 28- SEMAINE DU 18 AU 25 OCTOBRE"
+      "channel_id": "TSAHAL_FR"
     },
     {
       "date_diffusion": "2026-11-15",
@@ -2960,7 +2945,22 @@
     },
     {
       "date_diffusion": "2026-11-15",
-      "heure_debut": "10:48",
+      "bloc_apres": "ECUJE",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "SOLAL_ISRAEL"
+    },
+    {
+      "date_diffusion": "2026-11-15",
+      "heure_debut": "10:12",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "RONY_AKRICH",
+      "title": "Quand désobéir devient un devoir | Rony Akrich"
+    },
+    {
+      "date_diffusion": "2026-11-15",
+      "heure_debut": "10:27",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
@@ -2968,18 +2968,11 @@
     },
     {
       "date_diffusion": "2026-11-15",
-      "heure_debut": "10:54",
+      "heure_debut": "10:34",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
-      "title": "Bet Shearim"
-    },
-    {
-      "date_diffusion": "2026-11-15",
-      "bloc_apres": "ECUJE",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL"
+      "title": "Beit Alpha"
     },
     {
       "date_diffusion": "2026-11-15",
@@ -2990,43 +2983,15 @@
     },
     {
       "date_diffusion": "2026-11-15",
-      "bloc_apres": "ECUJE",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
-    },
-    {
-      "date_diffusion": "2026-11-15",
       "heure_debut": "11:00",
       "type": "ANCRE",
       "heure_fixe": true,
-      "channel_id": "CAFE_DAAT",
-      "title": "Prendre des décisions en situation d’incertitude —  Professeur Avi Rivkind"
+      "channel_id": "TEL_AVIV_NEW_YORK",
+      "title": "EPISODE 28- SEMAINE DU 18 AU 25 OCTOBRE"
     },
     {
       "date_diffusion": "2026-11-15",
-      "bloc_apres": "CAFE_DAAT",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
-    },
-    {
-      "date_diffusion": "2026-11-15",
-      "bloc_apres": "CAFE_DAAT",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "ISRAEL_EN_FRANCAIS"
-    },
-    {
-      "date_diffusion": "2026-11-15",
-      "bloc_apres": "CAFE_DAAT",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL"
-    },
-    {
-      "date_diffusion": "2026-11-15",
-      "heure_debut": "12:06",
+      "heure_debut": "11:39",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
@@ -3034,39 +2999,35 @@
     },
     {
       "date_diffusion": "2026-11-15",
-      "heure_debut": "12:12",
-      "type": "COURT_NOMME",
+      "bloc_apres": "TEL_AVIV_NEW_YORK",
+      "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "Carte postale La synagogue de Capharnaum2"
+      "channel_id": "ISRAEL_EN_FRANCAIS"
     },
     {
       "date_diffusion": "2026-11-15",
-      "heure_debut": "12:29",
-      "type": "COURT_NOMME",
+      "bloc_apres": "TEL_AVIV_NEW_YORK",
+      "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "RONY_AKRICH",
-      "title": "Sommes-nous vraiment du bon côté ? | Rony Akrich"
+      "channel_id": "KFIR_ALMAGOR"
     },
     {
       "date_diffusion": "2026-11-15",
-      "heure_debut": "12:44",
-      "type": "COURT_NOMME",
+      "bloc_apres": "TEL_AVIV_NEW_YORK",
+      "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "RONY_HAYOT",
-      "title": "Paris, Israël et la morale à deux vitesses | Rony Hayot"
+      "channel_id": "TSAHAL_FR"
     },
     {
       "date_diffusion": "2026-11-15",
-      "heure_debut": "12:50",
-      "type": "COURT_NOMME",
+      "bloc_apres": "TEL_AVIV_NEW_YORK",
+      "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "STEPHANE_GOLDIN",
-      "title": "États-Unis : la fin de l’aide militaire à Israël ? | Stéphane Goldin"
+      "channel_id": "SOLAL_ISRAEL"
     },
     {
       "date_diffusion": "2026-11-15",
-      "heure_debut": "13:00",
+      "heure_debut": "12:00",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "WILLIAM_ZERBIB_L_INTERVIEW",
@@ -3074,11 +3035,18 @@
     },
     {
       "date_diffusion": "2026-11-15",
-      "heure_debut": "13:22",
+      "heure_debut": "12:23",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": ""
+      "channel_id": "CARTES_POSTALES",
+      "title": "Safed"
+    },
+    {
+      "date_diffusion": "2026-11-15",
+      "bloc_apres": "WILLIAM_ZERBIB_L_INTERVIEW",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "SOLAL_ISRAEL"
     },
     {
       "date_diffusion": "2026-11-15",
@@ -3086,14 +3054,6 @@
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
       "channel_id": "ISRAEL_EN_FRANCAIS"
-    },
-    {
-      "date_diffusion": "2026-11-15",
-      "heure_debut": "13:30",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "Cesarée"
     },
     {
       "date_diffusion": "2026-11-15",
@@ -3111,7 +3071,31 @@
     },
     {
       "date_diffusion": "2026-11-15",
-      "heure_debut": "13:59",
+      "heure_debut": "12:31",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "RONY_HAYOT",
+      "title": "Paris, Israël et la morale à deux vitesses | Rony Hayot"
+    },
+    {
+      "date_diffusion": "2026-11-15",
+      "heure_debut": "12:40",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "STEPHANE_GOLDIN",
+      "title": "États-Unis : la fin de l’aide militaire à Israël ? | Stéphane Goldin"
+    },
+    {
+      "date_diffusion": "2026-11-15",
+      "heure_debut": "12:44",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": ""
+    },
+    {
+      "date_diffusion": "2026-11-15",
+      "heure_debut": "13:00",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "YINON_SHOW",
@@ -3119,11 +3103,10 @@
     },
     {
       "date_diffusion": "2026-11-15",
-      "heure_debut": "15:07",
-      "type": "COURT_NOMME",
+      "bloc_apres": "YINON_SHOW",
+      "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "TEL_AVIV_NEW_YORK",
-      "title": "EPISODE 28- SEMAINE DU 18 AU 25 OCTOBRE"
+      "channel_id": "TSAHAL_FR"
     },
     {
       "date_diffusion": "2026-11-15",
@@ -3134,7 +3117,14 @@
     },
     {
       "date_diffusion": "2026-11-15",
-      "heure_debut": "15:47",
+      "bloc_apres": "YINON_SHOW",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "SOLAL_ISRAEL"
+    },
+    {
+      "date_diffusion": "2026-11-15",
+      "heure_debut": "14:10",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
@@ -3142,18 +3132,11 @@
     },
     {
       "date_diffusion": "2026-11-15",
-      "bloc_apres": "YINON_SHOW",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
-    },
-    {
-      "date_diffusion": "2026-11-15",
-      "heure_debut": "15:55",
+      "heure_debut": "14:16",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
-      "title": "Ein Gedi"
+      "title": "Belvoir (1)"
     },
     {
       "date_diffusion": "2026-11-15",
@@ -3164,7 +3147,7 @@
     },
     {
       "date_diffusion": "2026-11-15",
-      "heure_debut": "16:00",
+      "heure_debut": "15:00",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "TOUR_D_ISRAEL",
@@ -3172,10 +3155,11 @@
     },
     {
       "date_diffusion": "2026-11-15",
-      "bloc_apres": "TOUR_D_ISRAEL",
-      "type": "CLIPS_CHAINE",
+      "heure_debut": "15:22",
+      "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": ""
     },
     {
       "date_diffusion": "2026-11-15",
@@ -3186,18 +3170,11 @@
     },
     {
       "date_diffusion": "2026-11-15",
-      "bloc_apres": "TOUR_D_ISRAEL",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
-    },
-    {
-      "date_diffusion": "2026-11-15",
-      "heure_debut": "16:49",
+      "heure_debut": "15:29",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": ""
+      "channel_id": "CARTES_POSTALES",
+      "title": "Bet Shearim"
     },
     {
       "date_diffusion": "2026-11-15",
@@ -3208,7 +3185,21 @@
     },
     {
       "date_diffusion": "2026-11-15",
-      "heure_debut": "16:59",
+      "bloc_apres": "TOUR_D_ISRAEL",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "KFIR_ALMAGOR"
+    },
+    {
+      "date_diffusion": "2026-11-15",
+      "bloc_apres": "TOUR_D_ISRAEL",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "TSAHAL_FR"
+    },
+    {
+      "date_diffusion": "2026-11-15",
+      "heure_debut": "15:59",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "OROT_VEKELIM",
@@ -3216,26 +3207,10 @@
     },
     {
       "date_diffusion": "2026-11-15",
-      "heure_debut": "18:13",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": ""
-    },
-    {
-      "date_diffusion": "2026-11-15",
       "bloc_apres": "OROT_VEKELIM",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
-    },
-    {
-      "date_diffusion": "2026-11-15",
-      "heure_debut": "18:23",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "Grotte de sédécias"
+      "channel_id": "KFIR_ALMAGOR"
     },
     {
       "date_diffusion": "2026-11-15",
@@ -3249,11 +3224,18 @@
       "bloc_apres": "OROT_VEKELIM",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
+      "channel_id": "TSAHAL_FR"
     },
     {
       "date_diffusion": "2026-11-15",
-      "heure_debut": "19:14",
+      "bloc_apres": "OROT_VEKELIM",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "SOLAL_ISRAEL"
+    },
+    {
+      "date_diffusion": "2026-11-15",
+      "heure_debut": "17:20",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
@@ -3261,15 +3243,39 @@
     },
     {
       "date_diffusion": "2026-11-15",
-      "heure_debut": "19:23",
+      "heure_debut": "17:28",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "Les jardins Bahai"
+      "channel_id": "RADIO_SHALOM_BOCHURBERG",
+      "title": "Philippe Allouche et Galith Touati"
     },
     {
       "date_diffusion": "2026-11-15",
-      "heure_debut": "19:59",
+      "heure_debut": "18:21",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": ""
+    },
+    {
+      "date_diffusion": "2026-11-15",
+      "heure_debut": "18:28",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "CARTES_POSTALES",
+      "title": "Carte postale La synagogue de Capharnaum2"
+    },
+    {
+      "date_diffusion": "2026-11-15",
+      "heure_debut": "19:28",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "CARTES_POSTALES",
+      "title": "Cesarée"
+    },
+    {
+      "date_diffusion": "2026-11-15",
+      "heure_debut": "20:00",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "JEROME_HAAS_L_INTERVIEW",
@@ -3280,8 +3286,8 @@
       "heure_debut": "22:00",
       "type": "ANCRE",
       "heure_fixe": true,
-      "channel_id": "TEL_AVIV_NEW_YORK",
-      "title": "EPISODE 28- SEMAINE DU 18 AU 25 OCTOBRE"
+      "channel_id": "CAFE_DAAT",
+      "title": "Prendre des décisions en situation d’incertitude —  Professeur Avi Rivkind"
     }
   ]
 }
