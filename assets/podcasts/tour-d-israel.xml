@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<channel>
+<title>Tour d'Israël</title>
+<link>https://www.tandemtv.net</link>
+<description>L'archéologie et le patrimoine d'Israël, site par site.</description>
+<language>fr</language>
+<copyright>© 2026 Tandem TV</copyright>
+<lastBuildDate>Mon, 09 Nov 2026 16:49:40 +0000</lastBuildDate>
+<atom:link href="https://www.tandemtv.net/assets/podcasts/tour-d-israel.xml" rel="self" type="application/rss+xml"/>
+<itunes:author>Tandem TV</itunes:author>
+<itunes:summary>L'archéologie et le patrimoine d'Israël, site par site.</itunes:summary>
+<itunes:image href="https://www.tandemtv.net/assets/podcasts/tour-d-israel.png"/>
+<itunes:category text="Society &amp; Culture"/>
+<itunes:explicit>false</itunes:explicit>
+<itunes:type>episodic</itunes:type>
+<itunes:owner>
+<itunes:name>Tandem TV</itunes:name>
+<itunes:email>contact@tandemtv.org</itunes:email>
+</itunes:owner>
+<item>
+<title>La Jérusalem musulmane</title>
+<description>La Jérusalem musulmane — Tour d'Israël, Tandem TV. Diffusé le 18/06/2023. À voir en vidéo sur https://www.tandemtv.net</description>
+<itunes:summary>La Jérusalem musulmane — Tour d'Israël, Tandem TV. Diffusé le 18/06/2023. À voir en vidéo sur https://www.tandemtv.net</itunes:summary>
+<guid isPermaLink="false">TTV00000268</guid>
+<pubDate>Sun, 18 Jun 2023 00:00:00 +0000</pubDate>
+<enclosure url="https://pub-c4f0916694d64a50b659c0915f2549ee.r2.dev/TTV00000268.m4a" length="16299753" type="audio/mp4"/>
+<itunes:duration>1315</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
+<item>
+<title>La Jérusalem byzantine</title>
+<description>La Jérusalem byzantine — Tour d'Israël, Tandem TV. Diffusé le 13/05/2023. À voir en vidéo sur https://www.tandemtv.net</description>
+<itunes:summary>La Jérusalem byzantine — Tour d'Israël, Tandem TV. Diffusé le 13/05/2023. À voir en vidéo sur https://www.tandemtv.net</itunes:summary>
+<guid isPermaLink="false">TTV00000267</guid>
+<pubDate>Sat, 13 May 2023 00:00:00 +0000</pubDate>
+<enclosure url="https://pub-c4f0916694d64a50b659c0915f2549ee.r2.dev/TTV00000267.m4a" length="37029913" type="audio/mp4"/>
+<itunes:duration>929</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
+<item>
+<title>Jérusalem, des Hasmonéens à Hérode le Grand</title>
+<description>Jérusalem, des Hasmonéens à Hérode le Grand — Tour d'Israël, Tandem TV. Diffusé le 19/02/2023. À voir en vidéo sur https://www.tandemtv.net</description>
+<itunes:summary>Jérusalem, des Hasmonéens à Hérode le Grand — Tour d'Israël, Tandem TV. Diffusé le 19/02/2023. À voir en vidéo sur https://www.tandemtv.net</itunes:summary>
+<guid isPermaLink="false">TTV00000265</guid>
+<pubDate>Sun, 19 Feb 2023 00:00:00 +0000</pubDate>
+<enclosure url="https://pub-c4f0916694d64a50b659c0915f2549ee.r2.dev/TTV00000265.m4a" length="17975680" type="audio/mp4"/>
+<itunes:duration>1442</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
+<item>
+<title>Jérusalem à la période perse et hasmonéenne</title>
+<description>Jérusalem à la période perse et hasmonéenne — Tour d'Israël, Tandem TV. Diffusé le 22/01/2023. À voir en vidéo sur https://www.tandemtv.net</description>
+<itunes:summary>Jérusalem à la période perse et hasmonéenne — Tour d'Israël, Tandem TV. Diffusé le 22/01/2023. À voir en vidéo sur https://www.tandemtv.net</itunes:summary>
+<guid isPermaLink="false">TTV00000264</guid>
+<pubDate>Sun, 22 Jan 2023 00:00:00 +0000</pubDate>
+<enclosure url="https://pub-c4f0916694d64a50b659c0915f2549ee.r2.dev/TTV00000264.m4a" length="17604681" type="audio/mp4"/>
+<itunes:duration>1421</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
+<item>
+<title>Jérusalem à l'âge du bronze et du fer</title>
+<description>Jérusalem à l'âge du bronze et du fer — Tour d'Israël, Tandem TV. Diffusé le 18/12/2022. À voir en vidéo sur https://www.tandemtv.net</description>
+<itunes:summary>Jérusalem à l'âge du bronze et du fer — Tour d'Israël, Tandem TV. Diffusé le 18/12/2022. À voir en vidéo sur https://www.tandemtv.net</itunes:summary>
+<guid isPermaLink="false">TTV00000263</guid>
+<pubDate>Sun, 18 Dec 2022 00:00:00 +0000</pubDate>
+<enclosure url="https://pub-c4f0916694d64a50b659c0915f2549ee.r2.dev/TTV00000263.m4a" length="35358136" type="audio/mp4"/>
+<itunes:duration>1098</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
+<item>
+<title>Capharnaüm</title>
+<description>Capharnaüm — Tour d'Israël, Tandem TV. Diffusé le 13/11/2022. À voir en vidéo sur https://www.tandemtv.net</description>
+<itunes:summary>Capharnaüm — Tour d'Israël, Tandem TV. Diffusé le 13/11/2022. À voir en vidéo sur https://www.tandemtv.net</itunes:summary>
+<guid isPermaLink="false">TTV00000262</guid>
+<pubDate>Sun, 13 Nov 2022 00:00:00 +0000</pubDate>
+<enclosure url="https://pub-c4f0916694d64a50b659c0915f2549ee.r2.dev/TTV00000262.m4a" length="35294862" type="audio/mp4"/>
+<itunes:duration>1088</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
+<item>
+<title>Jérusalem, les origines de la ville sainte</title>
+<description>Jérusalem, les origines de la ville sainte — Tour d'Israël, Tandem TV. Diffusé le 11/10/2022. À voir en vidéo sur https://www.tandemtv.net</description>
+<itunes:summary>Jérusalem, les origines de la ville sainte — Tour d'Israël, Tandem TV. Diffusé le 11/10/2022. À voir en vidéo sur https://www.tandemtv.net</itunes:summary>
+<guid isPermaLink="false">TTV00000261</guid>
+<pubDate>Tue, 11 Oct 2022 00:00:00 +0000</pubDate>
+<enclosure url="https://pub-c4f0916694d64a50b659c0915f2549ee.r2.dev/TTV00000261.m4a" length="44129394" type="audio/mp4"/>
+<itunes:duration>1107</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
+<item>
+<title>La synagogue de Beit Alpha</title>
+<description>La synagogue de Beit Alpha — Tour d'Israël, Tandem TV. Diffusé le 28/09/2022. À voir en vidéo sur https://www.tandemtv.net</description>
+<itunes:summary>La synagogue de Beit Alpha — Tour d'Israël, Tandem TV. Diffusé le 28/09/2022. À voir en vidéo sur https://www.tandemtv.net</itunes:summary>
+<guid isPermaLink="false">TTV00000260</guid>
+<pubDate>Wed, 28 Sep 2022 00:00:00 +0000</pubDate>
+<enclosure url="https://pub-c4f0916694d64a50b659c0915f2549ee.r2.dev/TTV00000260.m4a" length="22361523" type="audio/mp4"/>
+<itunes:duration>561</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
+<item>
+<title>Le tombeau du prophète Samuel</title>
+<description>Le tombeau du prophète Samuel — Tour d'Israël, Tandem TV. Diffusé le 11/09/2022. À voir en vidéo sur https://www.tandemtv.net</description>
+<itunes:summary>Le tombeau du prophète Samuel — Tour d'Israël, Tandem TV. Diffusé le 11/09/2022. À voir en vidéo sur https://www.tandemtv.net</itunes:summary>
+<guid isPermaLink="false">TTV00000259</guid>
+<pubDate>Sun, 11 Sep 2022 00:00:00 +0000</pubDate>
+<enclosure url="https://pub-c4f0916694d64a50b659c0915f2549ee.r2.dev/TTV00000259.m4a" length="26318124" type="audio/mp4"/>
+<itunes:duration>660</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
+<item>
+<title>Les manuscrits de la mer Morte</title>
+<description>Les manuscrits de la mer Morte — Tour d'Israël, Tandem TV. Diffusé le 17/07/2022. À voir en vidéo sur https://www.tandemtv.net</description>
+<itunes:summary>Les manuscrits de la mer Morte — Tour d'Israël, Tandem TV. Diffusé le 17/07/2022. À voir en vidéo sur https://www.tandemtv.net</itunes:summary>
+<guid isPermaLink="false">TTV00000258</guid>
+<pubDate>Sun, 17 Jul 2022 00:00:00 +0000</pubDate>
+<enclosure url="https://pub-c4f0916694d64a50b659c0915f2549ee.r2.dev/TTV00000258.m4a" length="13046947" type="audio/mp4"/>
+<itunes:duration>1048</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
+<item>
+<title>La Jérusalem chrétienne</title>
+<description>La Jérusalem chrétienne — Tour d'Israël, Tandem TV. Diffusé le 26/06/2022. À voir en vidéo sur https://www.tandemtv.net</description>
+<itunes:summary>La Jérusalem chrétienne — Tour d'Israël, Tandem TV. Diffusé le 26/06/2022. À voir en vidéo sur https://www.tandemtv.net</itunes:summary>
+<guid isPermaLink="false">TTV00000257</guid>
+<pubDate>Sun, 26 Jun 2022 00:00:00 +0000</pubDate>
+<enclosure url="https://pub-c4f0916694d64a50b659c0915f2549ee.r2.dev/TTV00000257.m4a" length="39788922" type="audio/mp4"/>
+<itunes:duration>998</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
+<item>
+<title>Les synagogues du Golan</title>
+<description>Les synagogues du Golan — Tour d'Israël, Tandem TV. Diffusé le 22/05/2022. À voir en vidéo sur https://www.tandemtv.net</description>
+<itunes:summary>Les synagogues du Golan — Tour d'Israël, Tandem TV. Diffusé le 22/05/2022. À voir en vidéo sur https://www.tandemtv.net</itunes:summary>
+<guid isPermaLink="false">TTV00000256</guid>
+<pubDate>Sun, 22 May 2022 00:00:00 +0000</pubDate>
+<enclosure url="https://pub-c4f0916694d64a50b659c0915f2549ee.r2.dev/TTV00000256.m4a" length="11154113" type="audio/mp4"/>
+<itunes:duration>895</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
+<item>
+<title>Les croisades</title>
+<description>Les croisades — Tour d'Israël, Tandem TV. Diffusé le 24/04/2022. À voir en vidéo sur https://www.tandemtv.net</description>
+<itunes:summary>Les croisades — Tour d'Israël, Tandem TV. Diffusé le 24/04/2022. À voir en vidéo sur https://www.tandemtv.net</itunes:summary>
+<guid isPermaLink="false">TTV00000255</guid>
+<pubDate>Sun, 24 Apr 2022 00:00:00 +0000</pubDate>
+<enclosure url="https://pub-c4f0916694d64a50b659c0915f2549ee.r2.dev/TTV00000255.m4a" length="35170687" type="audio/mp4"/>
+<itunes:duration>1100</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
+<item>
+<title>Le Cardo de Jérusalem</title>
+<description>Le Cardo de Jérusalem — Tour d'Israël, Tandem TV. Diffusé le 20/03/2022. À voir en vidéo sur https://www.tandemtv.net</description>
+<itunes:summary>Le Cardo de Jérusalem — Tour d'Israël, Tandem TV. Diffusé le 20/03/2022. À voir en vidéo sur https://www.tandemtv.net</itunes:summary>
+<guid isPermaLink="false">TTV00000254</guid>
+<pubDate>Sun, 20 Mar 2022 00:00:00 +0000</pubDate>
+<enclosure url="https://pub-c4f0916694d64a50b659c0915f2549ee.r2.dev/TTV00000254.m4a" length="52162839" type="audio/mp4"/>
+<itunes:duration>1631</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
+<item>
+<title>Maresha</title>
+<description>Maresha — Tour d'Israël, Tandem TV. Diffusé le 10/02/2022. À voir en vidéo sur https://www.tandemtv.net</description>
+<itunes:summary>Maresha — Tour d'Israël, Tandem TV. Diffusé le 10/02/2022. À voir en vidéo sur https://www.tandemtv.net</itunes:summary>
+<guid isPermaLink="false">TTV00000253</guid>
+<pubDate>Thu, 10 Feb 2022 00:00:00 +0000</pubDate>
+<enclosure url="https://pub-c4f0916694d64a50b659c0915f2549ee.r2.dev/TTV00000253.m4a" length="14409783" type="audio/mp4"/>
+<itunes:duration>1171</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
+<item>
+<title>Massada</title>
+<description>Massada — Tour d'Israël, Tandem TV. Diffusé le 18/11/2021. À voir en vidéo sur https://www.tandemtv.net</description>
+<itunes:summary>Massada — Tour d'Israël, Tandem TV. Diffusé le 18/11/2021. À voir en vidéo sur https://www.tandemtv.net</itunes:summary>
+<guid isPermaLink="false">TTV00000252</guid>
+<pubDate>Thu, 18 Nov 2021 00:00:00 +0000</pubDate>
+<enclosure url="https://pub-c4f0916694d64a50b659c0915f2549ee.r2.dev/TTV00000252.m4a" length="32868886" type="audio/mp4"/>
+<itunes:duration>1061</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
+<item>
+<title>Acco</title>
+<description>Acco — Tour d'Israël, Tandem TV. Diffusé le 16/11/2021. À voir en vidéo sur https://www.tandemtv.net</description>
+<itunes:summary>Acco — Tour d'Israël, Tandem TV. Diffusé le 16/11/2021. À voir en vidéo sur https://www.tandemtv.net</itunes:summary>
+<guid isPermaLink="false">TTV00000251</guid>
+<pubDate>Tue, 16 Nov 2021 00:00:00 +0000</pubDate>
+<enclosure url="https://pub-c4f0916694d64a50b659c0915f2549ee.r2.dev/TTV00000251.m4a" length="34077640" type="audio/mp4"/>
+<itunes:duration>1113</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
+<item>
+<title>Le mont du Temple</title>
+<description>Le mont du Temple — Tour d'Israël, Tandem TV. Diffusé le 07/11/2021. À voir en vidéo sur https://www.tandemtv.net</description>
+<itunes:summary>Le mont du Temple — Tour d'Israël, Tandem TV. Diffusé le 07/11/2021. À voir en vidéo sur https://www.tandemtv.net</itunes:summary>
+<guid isPermaLink="false">TTV00000250</guid>
+<pubDate>Sun, 07 Nov 2021 00:00:00 +0000</pubDate>
+<enclosure url="https://pub-c4f0916694d64a50b659c0915f2549ee.r2.dev/TTV00000250.m4a" length="38065092" type="audio/mp4"/>
+<itunes:duration>1217</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
+<item>
+<title>Jérusalem au temps des croisades</title>
+<description>Jérusalem au temps des croisades — Tour d'Israël, Tandem TV. Diffusé le 30/07/2020. À voir en vidéo sur https://www.tandemtv.net</description>
+<itunes:summary>Jérusalem au temps des croisades — Tour d'Israël, Tandem TV. Diffusé le 30/07/2020. À voir en vidéo sur https://www.tandemtv.net</itunes:summary>
+<guid isPermaLink="false">TTV00000249</guid>
+<pubDate>Thu, 30 Jul 2020 00:00:00 +0000</pubDate>
+<enclosure url="https://pub-c4f0916694d64a50b659c0915f2549ee.r2.dev/TTV00000249.m4a" length="47259507" type="audio/mp4"/>
+<itunes:duration>1185</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
+</channel>
+</rss>

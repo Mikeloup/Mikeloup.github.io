@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<channel>
+<title>Israël Magazine</title>
+<link>https://www.tandemtv.net</link>
+<description>Les entretiens avec ceux qui font la politique israélienne, menés par André Darmon.</description>
+<language>fr</language>
+<copyright>© 2026 Tandem TV</copyright>
+<lastBuildDate>Mon, 09 Nov 2026 16:49:59 +0000</lastBuildDate>
+<atom:link href="https://www.tandemtv.net/assets/podcasts/israel-magazine.xml" rel="self" type="application/rss+xml"/>
+<itunes:author>Tandem TV</itunes:author>
+<itunes:summary>Les entretiens avec ceux qui font la politique israélienne, menés par André Darmon.</itunes:summary>
+<itunes:image href="https://www.tandemtv.net/assets/podcasts/israel-magazine.png"/>
+<itunes:category text="News"/>
+<itunes:explicit>false</itunes:explicit>
+<itunes:type>episodic</itunes:type>
+<itunes:owner>
+<itunes:name>Tandem TV</itunes:name>
+<itunes:email>contact@tandemtv.org</itunes:email>
+</itunes:owner>
+<item>
+<title>Itamar Ben Gvir : l'interview par André Darmon</title>
+<description>Itamar Ben Gvir : l'interview par André Darmon — Israël Magazine, Tandem TV. Diffusé le 11/10/2026. À voir en vidéo sur https://www.tandemtv.net</description>
+<itunes:summary>Itamar Ben Gvir : l'interview par André Darmon — Israël Magazine, Tandem TV. Diffusé le 11/10/2026. À voir en vidéo sur https://www.tandemtv.net</itunes:summary>
+<guid isPermaLink="false">TTV00001103</guid>
+<pubDate>Sun, 11 Oct 2026 00:00:00 +0000</pubDate>
+<enclosure url="https://pub-c4f0916694d64a50b659c0915f2549ee.r2.dev/TTV00001103.m4a" length="10239087" type="audio/mp4"/>
+<itunes:duration>844</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
+</channel>
+</rss>
