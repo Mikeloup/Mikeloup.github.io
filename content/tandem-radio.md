@@ -1,6 +1,6 @@
 # Tandem Radio : écouter les émissions de Tandem TV en podcast
 
-**En bref.** Les émissions de **Tandem TV** s'écoutent désormais sans l'image. **Tandem Radio**, c'est neuf podcasts et plus de deux cent vingt épisodes — entretiens, éditos, magazines, patrimoine — disponibles sur **Apple Podcasts** et, bientôt, sur Spotify et Deezer. L'écoute est gratuite et sans inscription.
+**En bref.** Les émissions de **Tandem TV** s'écoutent désormais sans l'image. **Tandem Radio**, c'est neuf podcasts et plus de deux cent vingt épisodes — entretiens, éditos, magazines, patrimoine — disponibles sur **Apple Podcasts** et **Spotify**, et bientôt sur Deezer. L'écoute est gratuite et sans inscription.
 
 C'est le même travail que celui du [canal 14](/television-israelienne-francophone/), porté à l'oreille : en voiture, en marchant, en cuisinant. Un entretien de quarante minutes ne demande pas qu'on le regarde — il demande qu'on l'écoute.
 
@@ -10,8 +10,8 @@ C'est le même travail que celui du [canal 14](/television-israelienne-francopho
 
 | | |
 |---|---|
-| **Apple Podcasts** | les neuf émissions y sont publiées — liens ci-dessous |
-| **Spotify** | en cours de mise en place |
+| **Apple Podcasts** | les neuf émissions, réunies dans la chaîne **[Tandem Radio](https://podcasts.apple.com/fr/channel/tandem-radio/id6832064526)** |
+| **Spotify** | les neuf émissions y sont publiées — liens ci-dessous |
 | **Deezer** | en cours de mise en place |
 | **Toute autre application** | chaque émission a son adresse RSS : collez-la dans votre application de podcast, quelle qu'elle soit |
 | **La radio en continu** | à venir |
@@ -24,29 +24,29 @@ S'abonner à une émission dans votre application suffit : **chaque nouvel épis
 
 ### Les entretiens
 
-**[L'interview de William Zerbib](https://podcasts.apple.com/podcast/id6831622902)** — William Zerbib reçoit pour des entretiens sur la géopolitique du Proche-Orient et l'antisémitisme dans le monde et en France en particulier. Analystes, essayistes et témoins y développent ce que les formats courts ne permettent pas. *([RSS](https://github.com/Mikeloup/Mikeloup.github.io/releases/download/radio/l-interview-de-william-zerbib.xml))*
+**[L'interview de William Zerbib](https://podcasts.apple.com/podcast/id6831622902)** — William Zerbib reçoit pour des entretiens sur la géopolitique du Proche-Orient et l'antisémitisme dans le monde et en France en particulier. Analystes, essayistes et témoins y développent ce que les formats courts ne permettent pas. *([Spotify](https://open.spotify.com/show/1DTIBEQBYfxizbgIiMQnWm) · [RSS](https://github.com/Mikeloup/Mikeloup.github.io/releases/download/radio/l-interview-de-william-zerbib.xml))*
 
-**[L'interview de Jérôme Haas](https://podcasts.apple.com/podcast/id6831634871)** — De l'histoire d'Israël à celle des communautés juives en diaspora, en passant par la géopolitique du Proche-Orient, Jérôme Haas reçoit des invités qui éclairent le débat. *([RSS](https://github.com/Mikeloup/Mikeloup.github.io/releases/download/radio/l-interview-de-jerome-haas.xml))*
+**[L'interview de Jérôme Haas](https://podcasts.apple.com/podcast/id6831634871)** — De l'histoire d'Israël à celle des communautés juives en diaspora, en passant par la géopolitique du Proche-Orient, Jérôme Haas reçoit des invités qui éclairent le débat. *([Spotify](https://open.spotify.com/show/3Bxb56CLX0JDZRO5da3O83) · [RSS](https://github.com/Mikeloup/Mikeloup.github.io/releases/download/radio/l-interview-de-jerome-haas.xml))*
 
 ### Les éditos
 
-**[L'édito de Stéphane Goldin](https://podcasts.apple.com/podcast/id6831649274)** — Chaque semaine, Stéphane Goldin décrypte en quelques minutes un mouvement de la géopolitique régionale : l'Iran, le Liban, Gaza et la Judée-Samarie, la Turquie ou la Syrie, et ce qu'ils changent pour Israël. *([RSS](https://github.com/Mikeloup/Mikeloup.github.io/releases/download/radio/l-edito-de-stephane-goldin.xml))*
+**[L'édito de Stéphane Goldin](https://podcasts.apple.com/podcast/id6831649274)** — Chaque semaine, Stéphane Goldin décrypte en quelques minutes un mouvement de la géopolitique régionale : l'Iran, le Liban, Gaza et la Judée-Samarie, la Turquie ou la Syrie, et ce qu'ils changent pour Israël. *([Spotify](https://open.spotify.com/show/5fwqL4TVTCZUm5sNjLVXQI) · [RSS](https://github.com/Mikeloup/Mikeloup.github.io/releases/download/radio/l-edito-de-stephane-goldin.xml))*
 
-**[L'édito de Rony Hayot](https://podcasts.apple.com/podcast/id6831641848)** — Rony Hayot commente l'actualité israélienne et française sans détour. *([RSS](https://github.com/Mikeloup/Mikeloup.github.io/releases/download/radio/l-edito-de-rony-hayot.xml))*
+**[L'édito de Rony Hayot](https://podcasts.apple.com/podcast/id6831641848)** — Rony Hayot commente l'actualité israélienne et française sans détour. *([Spotify](https://open.spotify.com/show/2alNOvLSoVkRtm2IqQnrc1) · [RSS](https://github.com/Mikeloup/Mikeloup.github.io/releases/download/radio/l-edito-de-rony-hayot.xml))*
 
-**[Les Passions d'un Hébreu](https://podcasts.apple.com/podcast/id6831678117)** — Rony Akrich interroge Israël à la lumière du texte et de l'histoire. *([RSS](https://github.com/Mikeloup/Mikeloup.github.io/releases/download/radio/les-passions-d-un-hebreu.xml))*
+**[Les Passions d'un Hébreu](https://podcasts.apple.com/podcast/id6831678117)** — Rony Akrich interroge Israël à la lumière du texte et de l'histoire. *([Spotify](https://open.spotify.com/show/4ZWcDn6XaEMvbLrBn6U1uO) · [RSS](https://github.com/Mikeloup/Mikeloup.github.io/releases/download/radio/les-passions-d-un-hebreu.xml))*
 
 ### L'histoire et le patrimoine
 
-**[Un jour une histoire](https://podcasts.apple.com/podcast/id6832009731)** — Une émission de Haïm Musicant : chaque épisode raconte en quelques minutes une date, un lieu ou une figure de l'histoire juive et israélienne. *([RSS](https://github.com/Mikeloup/Mikeloup.github.io/releases/download/radio/un-jour-une-histoire.xml))*
+**[Un jour une histoire](https://podcasts.apple.com/podcast/id6832009731)** — Une émission de Haïm Musicant : chaque épisode raconte en quelques minutes une date, un lieu ou une figure de l'histoire juive et israélienne. *([Spotify](https://open.spotify.com/show/2OcTWXOINuRkfVxRfQp2rI) · [RSS](https://github.com/Mikeloup/Mikeloup.github.io/releases/download/radio/un-jour-une-histoire.xml))*
 
-**[Tour d'Israël](https://podcasts.apple.com/podcast/id6831626689)** — L'archéologie et le patrimoine d'Israël, site par site. *([RSS](https://github.com/Mikeloup/Mikeloup.github.io/releases/download/radio/tour-d-israel.xml))*
+**[Tour d'Israël](https://podcasts.apple.com/podcast/id6831626689)** — L'archéologie et le patrimoine d'Israël, site par site. *([Spotify](https://open.spotify.com/show/2h1fUcL2oxGETZJSSyq2rl) · [RSS](https://github.com/Mikeloup/Mikeloup.github.io/releases/download/radio/tour-d-israel.xml))*
 
-**[Cartes postales](https://podcasts.apple.com/podcast/id6831553447)** — Un lieu d'Israël en quelques minutes : Massada, Césarée, Rosh Hanikra, les jardins Bahaï, Ein Gedi. Ce qu'on y voit, et pourquoi on s'y arrête. *([RSS](https://github.com/Mikeloup/Mikeloup.github.io/releases/download/radio/cartes-postales.xml))*
+**[Cartes postales](https://podcasts.apple.com/podcast/id6831553447)** — Un lieu d'Israël en quelques minutes : Massada, Césarée, Rosh Hanikra, les jardins Bahaï, Ein Gedi. Ce qu'on y voit, et pourquoi on s'y arrête. *([Spotify](https://open.spotify.com/show/2CIili1QfvzgFVdmtdvPKg) · [RSS](https://github.com/Mikeloup/Mikeloup.github.io/releases/download/radio/cartes-postales.xml))*
 
 ### L'actualité
 
-**[Israël Magazine](https://podcasts.apple.com/podcast/id6831681895)** — Les entretiens avec ceux qui font la politique israélienne, menés par André Darmon. *([RSS](https://github.com/Mikeloup/Mikeloup.github.io/releases/download/radio/israel-magazine.xml))*
+**[Israël Magazine](https://podcasts.apple.com/podcast/id6831681895)** — Les entretiens avec ceux qui font la politique israélienne, menés par André Darmon. *([Spotify](https://open.spotify.com/show/0uKghR4BQhm8twFhcMiX5w) · [RSS](https://github.com/Mikeloup/Mikeloup.github.io/releases/download/radio/israel-magazine.xml))*
 
 ---
 
