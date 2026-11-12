@@ -1,5 +1,5 @@
 {
-  "exported_at": "2026-11-12T22:28:44.252432",
+  "exported_at": "2026-11-12T22:58:52.579637",
   "window_days": 7,
   "rows": [
     {
@@ -2356,80 +2356,12 @@
       "heure_debut": "08:00",
       "type": "ANCRE",
       "heure_fixe": true,
-      "channel_id": "RADIO_SHALOM_SZWARC",
-      "title": "DU COTE DE CHEZ SZWARC AVEC LISE BENKEMOUN"
-    },
-    {
-      "date_diffusion": "2026-11-17",
-      "heure_debut": "08:28",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "RONY_AKRICH",
-      "title": "Quand désobéir devient un devoir | Rony Akrich"
-    },
-    {
-      "date_diffusion": "2026-11-17",
-      "heure_debut": "08:42",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": ""
-    },
-    {
-      "date_diffusion": "2026-11-17",
-      "heure_debut": "08:49",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "RONY_HAYOT",
-      "title": "Paris, Israël et la morale à deux vitesses | Rony Hayot"
-    },
-    {
-      "date_diffusion": "2026-11-17",
-      "heure_debut": "08:54",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "STEPHANE_GOLDIN",
-      "title": "États-Unis : la fin de l’aide militaire à Israël ? | Stéphane Goldin"
-    },
-    {
-      "date_diffusion": "2026-11-17",
-      "bloc_apres": "RADIO_SHALOM_SZWARC",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL"
-    },
-    {
-      "date_diffusion": "2026-11-17",
-      "bloc_apres": "RADIO_SHALOM_SZWARC",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
-    },
-    {
-      "date_diffusion": "2026-11-17",
-      "bloc_apres": "RADIO_SHALOM_SZWARC",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
-    },
-    {
-      "date_diffusion": "2026-11-17",
-      "bloc_apres": "RADIO_SHALOM_SZWARC",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "ISRAEL_EN_FRANCAIS"
-    },
-    {
-      "date_diffusion": "2026-11-17",
-      "heure_debut": "09:00",
-      "type": "ANCRE",
-      "heure_fixe": true,
       "channel_id": "ECUJE",
       "title": "Jacques Attali en conversation avec Haïm Korsia"
     },
     {
       "date_diffusion": "2026-11-17",
-      "heure_debut": "10:08",
+      "heure_debut": "09:08",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "TEL_AVIV_NEW_YORK",
@@ -2437,15 +2369,7 @@
     },
     {
       "date_diffusion": "2026-11-17",
-      "heure_debut": "10:46",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "Beit Alpha"
-    },
-    {
-      "date_diffusion": "2026-11-17",
-      "heure_debut": "10:53",
+      "heure_debut": "09:46",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
@@ -2453,28 +2377,30 @@
     },
     {
       "date_diffusion": "2026-11-17",
-      "bloc_apres": "ECUJE",
-      "type": "CLIPS_CHAINE",
+      "heure_debut": "09:53",
+      "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
+      "channel_id": "RONY_HAYOT",
+      "title": "Paris, Israël et la morale à deux vitesses | Rony Hayot"
+    },
+    {
+      "date_diffusion": "2026-11-17",
+      "heure_debut": "09:58",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "STEPHANE_GOLDIN",
+      "title": "États-Unis : la fin de l’aide militaire à Israël ? | Stéphane Goldin"
     },
     {
       "date_diffusion": "2026-11-17",
       "bloc_apres": "ECUJE",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
+      "channel_id": "SOLAL_ISRAEL"
     },
     {
       "date_diffusion": "2026-11-17",
-      "bloc_apres": "ECUJE",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "ISRAEL_EN_FRANCAIS"
-    },
-    {
-      "date_diffusion": "2026-11-17",
-      "heure_debut": "11:01",
+      "heure_debut": "10:01",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "CAFE_DAAT",
@@ -2482,7 +2408,7 @@
     },
     {
       "date_diffusion": "2026-11-17",
-      "heure_debut": "12:02",
+      "heure_debut": "11:03",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "LES_ISRAELIENNES",
@@ -2497,7 +2423,59 @@
     },
     {
       "date_diffusion": "2026-11-17",
-      "heure_debut": "12:59",
+      "heure_debut": "12:00",
+      "type": "ANCRE",
+      "heure_fixe": true,
+      "channel_id": "WILLIAM_ZERBIB_L_INTERVIEW",
+      "title": "Pourquoi la France perd son influence en Afrique | Ferhat Mehenni"
+    },
+    {
+      "date_diffusion": "2026-11-17",
+      "bloc_apres": "WILLIAM_ZERBIB_L_INTERVIEW",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "KFIR_ALMAGOR"
+    },
+    {
+      "date_diffusion": "2026-11-17",
+      "bloc_apres": "WILLIAM_ZERBIB_L_INTERVIEW",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "ISRAEL_EN_FRANCAIS"
+    },
+    {
+      "date_diffusion": "2026-11-17",
+      "bloc_apres": "WILLIAM_ZERBIB_L_INTERVIEW",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "TSAHAL_FR"
+    },
+    {
+      "date_diffusion": "2026-11-17",
+      "bloc_apres": "WILLIAM_ZERBIB_L_INTERVIEW",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "SOLAL_ISRAEL"
+    },
+    {
+      "date_diffusion": "2026-11-17",
+      "heure_debut": "12:36",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "RONY_AKRICH",
+      "title": "Quand désobéir devient un devoir | Rony Akrich"
+    },
+    {
+      "date_diffusion": "2026-11-17",
+      "heure_debut": "12:50",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": ""
+    },
+    {
+      "date_diffusion": "2026-11-17",
+      "heure_debut": "13:00",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "JEROME_HAAS_L_INTERVIEW",
@@ -2508,7 +2486,7 @@
       "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
+      "channel_id": "SOLAL_ISRAEL"
     },
     {
       "date_diffusion": "2026-11-17",
@@ -2516,6 +2494,14 @@
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
       "channel_id": "ISRAEL_EN_FRANCAIS"
+    },
+    {
+      "date_diffusion": "2026-11-17",
+      "heure_debut": "13:25",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "CARTES_POSTALES",
+      "title": "Belvoir (1)"
     },
     {
       "date_diffusion": "2026-11-17",
@@ -2529,31 +2515,23 @@
       "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL"
+      "channel_id": "KFIR_ALMAGOR"
     },
     {
       "date_diffusion": "2026-11-17",
-      "heure_debut": "13:31",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "STEPHANE_GOLDIN",
-      "title": "États-Unis : la fin de l’aide militaire à Israël ? | Stéphane Goldin"
-    },
-    {
-      "date_diffusion": "2026-11-17",
-      "heure_debut": "13:34",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "RONY_HAYOT",
-      "title": "Paris, Israël et la morale à deux vitesses | Rony Hayot"
-    },
-    {
-      "date_diffusion": "2026-11-17",
-      "heure_debut": "13:40",
+      "heure_debut": "13:37",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "RONY_AKRICH",
       "title": "Détruire ne suffit pas : il faut reconstruire | Rony Akrich"
+    },
+    {
+      "date_diffusion": "2026-11-17",
+      "heure_debut": "13:52",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": ""
     },
     {
       "date_diffusion": "2026-11-17",
@@ -2565,67 +2543,7 @@
     },
     {
       "date_diffusion": "2026-11-17",
-      "bloc_apres": "YINON_SHOW",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
-    },
-    {
-      "date_diffusion": "2026-11-17",
-      "bloc_apres": "YINON_SHOW",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
-    },
-    {
-      "date_diffusion": "2026-11-17",
-      "bloc_apres": "YINON_SHOW",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL"
-    },
-    {
-      "date_diffusion": "2026-11-17",
-      "heure_debut": "15:11",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "RONY_AKRICH",
-      "title": "Sommes-nous vraiment du bon côté ? | Rony Akrich"
-    },
-    {
-      "date_diffusion": "2026-11-17",
-      "heure_debut": "15:26",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": ""
-    },
-    {
-      "date_diffusion": "2026-11-17",
-      "bloc_apres": "YINON_SHOW",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "ISRAEL_EN_FRANCAIS"
-    },
-    {
-      "date_diffusion": "2026-11-17",
-      "heure_debut": "15:33",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "Safed"
-    },
-    {
-      "date_diffusion": "2026-11-17",
-      "heure_debut": "16:00",
-      "type": "ANCRE",
-      "heure_fixe": true,
-      "channel_id": "OROT_VEKELIM",
-      "title": "Guerre avec l’Iran avant les élections ?"
-    },
-    {
-      "date_diffusion": "2026-11-17",
-      "heure_debut": "17:13",
+      "heure_debut": "15:07",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "TEL_AVIV_NEW_YORK",
@@ -2633,11 +2551,63 @@
     },
     {
       "date_diffusion": "2026-11-17",
-      "heure_debut": "17:51",
+      "heure_debut": "15:45",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
       "title": ""
+    },
+    {
+      "date_diffusion": "2026-11-17",
+      "heure_debut": "15:51",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "RONY_HAYOT",
+      "title": "Paris, Israël et la morale à deux vitesses | Rony Hayot"
+    },
+    {
+      "date_diffusion": "2026-11-17",
+      "heure_debut": "15:56",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "STEPHANE_GOLDIN",
+      "title": "États-Unis : la fin de l’aide militaire à Israël ? | Stéphane Goldin"
+    },
+    {
+      "date_diffusion": "2026-11-17",
+      "bloc_apres": "YINON_SHOW",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "KFIR_ALMAGOR"
+    },
+    {
+      "date_diffusion": "2026-11-17",
+      "bloc_apres": "YINON_SHOW",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "SOLAL_ISRAEL"
+    },
+    {
+      "date_diffusion": "2026-11-17",
+      "heure_debut": "16:01",
+      "type": "ANCRE",
+      "heure_fixe": true,
+      "channel_id": "OROT_VEKELIM",
+      "title": "Guerre avec l’Iran avant les élections ?"
+    },
+    {
+      "date_diffusion": "2026-11-17",
+      "bloc_apres": "OROT_VEKELIM",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "KFIR_ALMAGOR"
+    },
+    {
+      "date_diffusion": "2026-11-17",
+      "bloc_apres": "OROT_VEKELIM",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "TSAHAL_FR"
     },
     {
       "date_diffusion": "2026-11-17",
@@ -2655,14 +2625,31 @@
     },
     {
       "date_diffusion": "2026-11-17",
-      "bloc_apres": "OROT_VEKELIM",
-      "type": "CLIPS_CHAINE",
+      "heure_debut": "17:19",
+      "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
+      "channel_id": "RONY_AKRICH",
+      "title": "Sommes-nous vraiment du bon côté ? | Rony Akrich"
     },
     {
       "date_diffusion": "2026-11-17",
-      "heure_debut": "18:01",
+      "heure_debut": "17:33",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": ""
+    },
+    {
+      "date_diffusion": "2026-11-17",
+      "heure_debut": "17:41",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "CARTES_POSTALES",
+      "title": "Bet Shearim"
+    },
+    {
+      "date_diffusion": "2026-11-17",
+      "heure_debut": "18:00",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "TOUR_D_ISRAEL",
@@ -2680,49 +2667,18 @@
       "bloc_apres": "TOUR_D_ISRAEL",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "ISRAEL_EN_FRANCAIS"
-    },
-    {
-      "date_diffusion": "2026-11-17",
-      "heure_debut": "18:25",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "Belvoir (1)"
-    },
-    {
-      "date_diffusion": "2026-11-17",
-      "bloc_apres": "TOUR_D_ISRAEL",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL"
-    },
-    {
-      "date_diffusion": "2026-11-17",
-      "bloc_apres": "TOUR_D_ISRAEL",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
       "channel_id": "KFIR_ALMAGOR"
     },
     {
       "date_diffusion": "2026-11-17",
-      "heure_debut": "18:51",
-      "type": "COURT_NOMME",
+      "bloc_apres": "TOUR_D_ISRAEL",
+      "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": ""
+      "channel_id": "ISRAEL_EN_FRANCAIS"
     },
     {
       "date_diffusion": "2026-11-17",
-      "heure_debut": "19:25",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "Bet Shearim"
-    },
-    {
-      "date_diffusion": "2026-11-17",
-      "heure_debut": "19:51",
+      "heure_debut": "18:34",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
@@ -2730,7 +2686,31 @@
     },
     {
       "date_diffusion": "2026-11-17",
-      "heure_debut": "20:00",
+      "heure_debut": "18:43",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "CARTES_POSTALES",
+      "title": "Carte postale La synagogue de Capharnaum2"
+    },
+    {
+      "date_diffusion": "2026-11-17",
+      "heure_debut": "19:35",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": ""
+    },
+    {
+      "date_diffusion": "2026-11-17",
+      "heure_debut": "19:43",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "CARTES_POSTALES",
+      "title": "Cesarée"
+    },
+    {
+      "date_diffusion": "2026-11-17",
+      "heure_debut": "19:59",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "LES_ISRAELIENNES",
@@ -2741,20 +2721,20 @@
       "heure_debut": "22:00",
       "type": "ANCRE",
       "heure_fixe": true,
-      "channel_id": "WILLIAM_ZERBIB_L_INTERVIEW",
-      "title": "Pourquoi la France perd son influence en Afrique | Ferhat Mehenni"
+      "channel_id": "RADIO_SHALOM_SZWARC",
+      "title": "DU COTE DE CHEZ SZWARC AVEC LISE BENKEMOUN"
     },
     {
       "date_diffusion": "2026-11-18",
       "heure_debut": "08:00",
       "type": "ANCRE",
       "heure_fixe": true,
-      "channel_id": "LES_ISRAELIENNES",
-      "title": "Vote arabe : la grande surprise des élections israéliennes, avec Stéphane Amar"
+      "channel_id": "RADIO_SHALOM_SZWARC",
+      "title": "DU COTE DE CHEZ SZWARC AVEC LISE BENKEMOUN"
     },
     {
       "date_diffusion": "2026-11-18",
-      "heure_debut": "08:56",
+      "heure_debut": "08:28",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "STEPHANE_GOLDIN",
@@ -2762,10 +2742,42 @@
     },
     {
       "date_diffusion": "2026-11-18",
-      "bloc_apres": "LES_ISRAELIENNES",
+      "bloc_apres": "RADIO_SHALOM_SZWARC",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
       "channel_id": "ISRAEL_EN_FRANCAIS"
+    },
+    {
+      "date_diffusion": "2026-11-18",
+      "heure_debut": "08:32",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "RONY_HAYOT",
+      "title": "Paris, Israël et la morale à deux vitesses | Rony Hayot"
+    },
+    {
+      "date_diffusion": "2026-11-18",
+      "heure_debut": "08:38",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "RONY_AKRICH",
+      "title": "Quand désobéir devient un devoir | Rony Akrich"
+    },
+    {
+      "date_diffusion": "2026-11-18",
+      "heure_debut": "08:52",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": ""
+    },
+    {
+      "date_diffusion": "2026-11-18",
+      "heure_debut": "09:00",
+      "type": "ANCRE",
+      "heure_fixe": true,
+      "channel_id": "LES_ISRAELIENNES",
+      "title": "Vote arabe : la grande surprise des élections israéliennes, avec Stéphane Amar"
     },
     {
       "date_diffusion": "2026-11-18",
@@ -2776,50 +2788,25 @@
     },
     {
       "date_diffusion": "2026-11-18",
-      "heure_debut": "09:00",
-      "type": "ANCRE",
-      "heure_fixe": true,
-      "channel_id": "ECUJE",
-      "title": "Jacques Attali en conversation avec Haïm Korsia"
-    },
-    {
-      "date_diffusion": "2026-11-18",
-      "heure_debut": "10:08",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "RONY_HAYOT",
-      "title": "Paris, Israël et la morale à deux vitesses | Rony Hayot"
-    },
-    {
-      "date_diffusion": "2026-11-18",
-      "bloc_apres": "ECUJE",
+      "bloc_apres": "LES_ISRAELIENNES",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
       "channel_id": "ISRAEL_EN_FRANCAIS"
     },
     {
       "date_diffusion": "2026-11-18",
-      "heure_debut": "10:15",
-      "type": "COURT_NOMME",
+      "bloc_apres": "LES_ISRAELIENNES",
+      "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "RONY_AKRICH",
-      "title": "Quand désobéir devient un devoir | Rony Akrich"
+      "channel_id": "KFIR_ALMAGOR"
     },
     {
       "date_diffusion": "2026-11-18",
-      "heure_debut": "10:30",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": ""
-    },
-    {
-      "date_diffusion": "2026-11-18",
-      "heure_debut": "10:37",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "Ramat Hanadiv"
+      "heure_debut": "10:00",
+      "type": "ANCRE",
+      "heure_fixe": true,
+      "channel_id": "ECUJE",
+      "title": "Jacques Attali en conversation avec Haïm Korsia"
     },
     {
       "date_diffusion": "2026-11-18",
@@ -2833,7 +2820,7 @@
       "bloc_apres": "ECUJE",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
+      "channel_id": "ISRAEL_EN_FRANCAIS"
     },
     {
       "date_diffusion": "2026-11-18",
@@ -2844,7 +2831,39 @@
     },
     {
       "date_diffusion": "2026-11-18",
-      "heure_debut": "11:00",
+      "heure_debut": "11:14",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "RONY_AKRICH",
+      "title": "Sommes-nous vraiment du bon côté ? | Rony Akrich"
+    },
+    {
+      "date_diffusion": "2026-11-18",
+      "heure_debut": "11:28",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": ""
+    },
+    {
+      "date_diffusion": "2026-11-18",
+      "heure_debut": "11:35",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "CARTES_POSTALES",
+      "title": "Rosh Hanikra"
+    },
+    {
+      "date_diffusion": "2026-11-18",
+      "heure_debut": "11:40",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "TOUR_D_ISRAEL",
+      "title": "Jérusalem à l'âge du bronze et du fer"
+    },
+    {
+      "date_diffusion": "2026-11-18",
+      "heure_debut": "12:00",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "CAFE_DAAT",
@@ -2880,39 +2899,7 @@
     },
     {
       "date_diffusion": "2026-11-18",
-      "heure_debut": "12:08",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "RONY_AKRICH",
-      "title": "Détruire ne suffit pas : il faut reconstruire | Rony Akrich"
-    },
-    {
-      "date_diffusion": "2026-11-18",
-      "heure_debut": "12:23",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": ""
-    },
-    {
-      "date_diffusion": "2026-11-18",
-      "heure_debut": "12:31",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "Rosh Hanikra"
-    },
-    {
-      "date_diffusion": "2026-11-18",
-      "heure_debut": "12:35",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "TOUR_D_ISRAEL",
-      "title": "Capharnaüm"
-    },
-    {
-      "date_diffusion": "2026-11-18",
-      "heure_debut": "12:58",
+      "heure_debut": "13:09",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "STEPHANE_GOLDIN",
@@ -2920,44 +2907,31 @@
     },
     {
       "date_diffusion": "2026-11-18",
-      "heure_debut": "13:00",
-      "type": "ANCRE",
-      "heure_fixe": true,
-      "channel_id": "TEL_AVIV_NEW_YORK",
-      "title": "EPISODE 29- SEMAINE DU 25 AU 31 OCTOBRE- DEBRIEF ELECTIONS EN ISRAEL"
+      "heure_debut": "13:13",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "RONY_HAYOT",
+      "title": "Paris, Israël et la morale à deux vitesses | Rony Hayot"
     },
     {
       "date_diffusion": "2026-11-18",
-      "heure_debut": "13:38",
+      "heure_debut": "13:18",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "RONY_AKRICH",
-      "title": "Sommes-nous vraiment du bon côté ? | Rony Akrich"
+      "title": "Quand désobéir devient un devoir | Rony Akrich"
     },
     {
       "date_diffusion": "2026-11-18",
-      "bloc_apres": "TEL_AVIV_NEW_YORK",
-      "type": "CLIPS_CHAINE",
+      "heure_debut": "13:33",
+      "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "ISRAEL_EN_FRANCAIS"
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": ""
     },
     {
       "date_diffusion": "2026-11-18",
-      "bloc_apres": "TEL_AVIV_NEW_YORK",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
-    },
-    {
-      "date_diffusion": "2026-11-18",
-      "bloc_apres": "TEL_AVIV_NEW_YORK",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL"
-    },
-    {
-      "date_diffusion": "2026-11-18",
-      "heure_debut": "13:56",
+      "heure_debut": "13:39",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
@@ -2968,27 +2942,12 @@
       "heure_debut": "14:00",
       "type": "ANCRE",
       "heure_fixe": true,
-      "channel_id": "WILLIAM_ZERBIB_L_INTERVIEW",
-      "title": "Pourquoi la France perd son influence en Afrique | Ferhat Mehenni"
+      "channel_id": "TEL_AVIV_NEW_YORK",
+      "title": "EPISODE 29- SEMAINE DU 25 AU 31 OCTOBRE- DEBRIEF ELECTIONS EN ISRAEL"
     },
     {
       "date_diffusion": "2026-11-18",
-      "heure_debut": "14:31",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "RONY_HAYOT",
-      "title": "Paris, Israël et la morale à deux vitesses | Rony Hayot"
-    },
-    {
-      "date_diffusion": "2026-11-18",
-      "bloc_apres": "WILLIAM_ZERBIB_L_INTERVIEW",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "ISRAEL_EN_FRANCAIS"
-    },
-    {
-      "date_diffusion": "2026-11-18",
-      "heure_debut": "14:37",
+      "heure_debut": "14:38",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
@@ -2996,44 +2955,28 @@
     },
     {
       "date_diffusion": "2026-11-18",
-      "bloc_apres": "WILLIAM_ZERBIB_L_INTERVIEW",
+      "bloc_apres": "TEL_AVIV_NEW_YORK",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "ISRAEL_EN_FRANCAIS"
+    },
+    {
+      "date_diffusion": "2026-11-18",
+      "bloc_apres": "TEL_AVIV_NEW_YORK",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
       "channel_id": "TSAHAL_FR"
     },
     {
       "date_diffusion": "2026-11-18",
-      "bloc_apres": "WILLIAM_ZERBIB_L_INTERVIEW",
+      "bloc_apres": "TEL_AVIV_NEW_YORK",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
       "channel_id": "SOLAL_ISRAEL"
     },
     {
       "date_diffusion": "2026-11-18",
-      "heure_debut": "14:47",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "TOUR_D_ISRAEL",
-      "title": "La synagogue de Beit Alpha"
-    },
-    {
-      "date_diffusion": "2026-11-18",
-      "bloc_apres": "WILLIAM_ZERBIB_L_INTERVIEW",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
-    },
-    {
-      "date_diffusion": "2026-11-18",
-      "heure_debut": "15:00",
-      "type": "ANCRE",
-      "heure_fixe": true,
-      "channel_id": "JEROME_HAAS_L_INTERVIEW",
-      "title": "Trop connectés pour être heureux ? | Claire Dahan"
-    },
-    {
-      "date_diffusion": "2026-11-18",
-      "heure_debut": "15:24",
+      "heure_debut": "14:49",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
@@ -3041,17 +2984,26 @@
     },
     {
       "date_diffusion": "2026-11-18",
-      "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
+      "bloc_apres": "TEL_AVIV_NEW_YORK",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
+      "channel_id": "KFIR_ALMAGOR"
     },
     {
       "date_diffusion": "2026-11-18",
-      "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
-      "type": "CLIPS_CHAINE",
+      "heure_debut": "14:59",
+      "type": "ANCRE",
+      "heure_fixe": true,
+      "channel_id": "JEROME_HAAS_L_INTERVIEW",
+      "title": "Trop connectés pour être heureux ? | Claire Dahan"
+    },
+    {
+      "date_diffusion": "2026-11-18",
+      "heure_debut": "15:23",
+      "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL"
+      "channel_id": "TOUR_D_ISRAEL",
+      "title": "La synagogue de Beit Alpha"
     },
     {
       "date_diffusion": "2026-11-18",
@@ -3065,7 +3017,14 @@
       "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
+      "channel_id": "TSAHAL_FR"
+    },
+    {
+      "date_diffusion": "2026-11-18",
+      "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "SOLAL_ISRAEL"
     },
     {
       "date_diffusion": "2026-11-18",
@@ -3077,11 +3036,11 @@
     },
     {
       "date_diffusion": "2026-11-18",
-      "heure_debut": "15:47",
+      "heure_debut": "15:50",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "TOUR_D_ISRAEL",
-      "title": "Le tombeau du prophète Samuel"
+      "channel_id": "CARTES_POSTALES",
+      "title": "tiberiad"
     },
     {
       "date_diffusion": "2026-11-18",
@@ -3122,11 +3081,19 @@
     },
     {
       "date_diffusion": "2026-11-18",
-      "heure_debut": "17:19",
+      "heure_debut": "17:20",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
-      "title": "tiberiad"
+      "title": "zichron yaakov"
+    },
+    {
+      "date_diffusion": "2026-11-18",
+      "heure_debut": "17:25",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "TOUR_D_ISRAEL",
+      "title": "Le tombeau du prophète Samuel"
     },
     {
       "date_diffusion": "2026-11-18",
@@ -3134,14 +3101,6 @@
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
       "channel_id": "KFIR_ALMAGOR"
-    },
-    {
-      "date_diffusion": "2026-11-18",
-      "heure_debut": "17:23",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "TOUR_D_ISRAEL",
-      "title": "Les manuscrits de la mer Morte"
     },
     {
       "date_diffusion": "2026-11-18",
@@ -3167,7 +3126,7 @@
     },
     {
       "date_diffusion": "2026-11-18",
-      "heure_debut": "19:16",
+      "heure_debut": "19:15",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
@@ -3178,38 +3137,38 @@
       "bloc_apres": "OROT_VEKELIM",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "ISRAEL_EN_FRANCAIS"
+      "channel_id": "TSAHAL_FR"
     },
     {
       "date_diffusion": "2026-11-18",
-      "heure_debut": "19:24",
+      "heure_debut": "19:22",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
-      "title": "zichron yaakov"
+      "title": "Beit Alpha"
+    },
+    {
+      "date_diffusion": "2026-11-18",
+      "heure_debut": "19:30",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "TOUR_D_ISRAEL",
+      "title": "Les manuscrits de la mer Morte"
     },
     {
       "date_diffusion": "2026-11-18",
       "bloc_apres": "OROT_VEKELIM",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
+      "channel_id": "ISRAEL_EN_FRANCAIS"
     },
     {
       "date_diffusion": "2026-11-18",
-      "heure_debut": "19:29",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "TOUR_D_ISRAEL",
-      "title": "La Jérusalem chrétienne"
-    },
-    {
-      "date_diffusion": "2026-11-18",
-      "heure_debut": "19:59",
+      "heure_debut": "20:00",
       "type": "ANCRE",
       "heure_fixe": true,
-      "channel_id": "RADIO_SHALOM_SZWARC",
-      "title": "DU COTE DE CHEZ SZWARC AVEC LISE BENKEMOUN"
+      "channel_id": "WILLIAM_ZERBIB_L_INTERVIEW",
+      "title": "Pourquoi la France perd son influence en Afrique | Ferhat Mehenni"
     },
     {
       "date_diffusion": "2026-11-18",
