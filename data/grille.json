@@ -1,5 +1,5 @@
 {
-  "exported_at": "2026-11-12T20:58:16.032391",
+  "exported_at": "2026-11-12T21:13:21.892243",
   "window_days": 7,
   "rows": [
     {
@@ -3089,7 +3089,7 @@
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "YINON_SHOW",
-      "title": "ERIC HASSOUN: 20 ANS DE BUSINESS AU COEUR DE LA COMMUNAUTE JUIVE"
+      "title": "AARON AVEC 2A: IL RASSEMBLE LES RELIGIONS"
     },
     {
       "date_diffusion": "2026-11-18",
@@ -3114,7 +3114,7 @@
     },
     {
       "date_diffusion": "2026-11-18",
-      "heure_debut": "17:12",
+      "heure_debut": "17:05",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
@@ -3122,7 +3122,7 @@
     },
     {
       "date_diffusion": "2026-11-18",
-      "heure_debut": "17:19",
+      "heure_debut": "17:13",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
@@ -3137,7 +3137,7 @@
     },
     {
       "date_diffusion": "2026-11-18",
-      "heure_debut": "17:23",
+      "heure_debut": "17:17",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "TOUR_D_ISRAEL",
@@ -3145,7 +3145,7 @@
     },
     {
       "date_diffusion": "2026-11-18",
-      "heure_debut": "18:00",
+      "heure_debut": "17:59",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "OROT_VEKELIM",
@@ -3163,7 +3163,7 @@
       "bloc_apres": "OROT_VEKELIM",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
+      "channel_id": "TSAHAL_FR"
     },
     {
       "date_diffusion": "2026-11-18",
@@ -3175,14 +3175,7 @@
     },
     {
       "date_diffusion": "2026-11-18",
-      "bloc_apres": "OROT_VEKELIM",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "ISRAEL_EN_FRANCAIS"
-    },
-    {
-      "date_diffusion": "2026-11-18",
-      "heure_debut": "19:24",
+      "heure_debut": "19:22",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
@@ -3193,15 +3186,22 @@
       "bloc_apres": "OROT_VEKELIM",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
+      "channel_id": "KFIR_ALMAGOR"
     },
     {
       "date_diffusion": "2026-11-18",
-      "heure_debut": "19:29",
+      "heure_debut": "19:27",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "TOUR_D_ISRAEL",
       "title": "La Jérusalem chrétienne"
+    },
+    {
+      "date_diffusion": "2026-11-18",
+      "bloc_apres": "OROT_VEKELIM",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "ISRAEL_EN_FRANCAIS"
     },
     {
       "date_diffusion": "2026-11-18",
@@ -3216,8 +3216,8 @@
       "heure_debut": "22:00",
       "type": "ANCRE",
       "heure_fixe": true,
-      "channel_id": "RADIO_SHALOM_BOCHURBERG",
-      "title": "Philippe Allouche et Galith Touati"
+      "channel_id": "YINON_SHOW",
+      "title": "ERIC HASSOUN: 20 ANS DE BUSINESS AU COEUR DE LA COMMUNAUTE JUIVE"
     }
   ]
 }
