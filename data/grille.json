@@ -1,5 +1,5 @@
 {
-  "exported_at": "2026-11-12T17:57:17.911181",
+  "exported_at": "2026-11-12T18:27:26.378454",
   "window_days": 7,
   "rows": [
     {
@@ -3044,7 +3044,7 @@
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "YINON_SHOW",
-      "title": "ERIC HASSOUN: 20 ANS DE BUSINESS AU COEUR DE LA COMMUNAUTE JUIVE"
+      "title": "AARON AVEC 2A: IL RASSEMBLE LES RELIGIONS"
     },
     {
       "date_diffusion": "2026-11-18",
@@ -3069,7 +3069,7 @@
     },
     {
       "date_diffusion": "2026-11-18",
-      "heure_debut": "17:10",
+      "heure_debut": "17:03",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
@@ -3084,7 +3084,7 @@
     },
     {
       "date_diffusion": "2026-11-18",
-      "heure_debut": "17:18",
+      "heure_debut": "17:11",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
@@ -3092,7 +3092,7 @@
     },
     {
       "date_diffusion": "2026-11-18",
-      "heure_debut": "17:24",
+      "heure_debut": "17:18",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "TOUR_D_ISRAEL",
@@ -3100,7 +3100,7 @@
     },
     {
       "date_diffusion": "2026-11-18",
-      "heure_debut": "17:59",
+      "heure_debut": "18:00",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "OROT_VEKELIM",
@@ -3123,7 +3123,7 @@
     },
     {
       "date_diffusion": "2026-11-18",
-      "heure_debut": "19:19",
+      "heure_debut": "19:20",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
@@ -3161,11 +3161,11 @@
     },
     {
       "date_diffusion": "2026-11-18",
-      "heure_debut": "21:59",
+      "heure_debut": "22:00",
       "type": "ANCRE",
       "heure_fixe": true,
-      "channel_id": "RADIO_SHALOM_BOCHURBERG",
-      "title": "Philippe Allouche et Galith Touati"
+      "channel_id": "YINON_SHOW",
+      "title": "ERIC HASSOUN: 20 ANS DE BUSINESS AU COEUR DE LA COMMUNAUTE JUIVE"
     }
   ]
 }
