@@ -52,5 +52,14 @@ jobs:
       - name: Publier la video
         env:
           INSTAGRAM_TOKEN: ${{ secrets.INSTAGRAM_TOKEN }}
-          PUBLIER: ${{ inputs.publier || 'oui' }}
+          # 13/11/2026 : repli passe de « oui » a « non ».
+          # Ce workflow se declenche a CHAQUE publication du site, et le
+          # Mac mini pousse la grille toutes les 15 minutes. Declenche
+          # ainsi, il n'y a aucun input : le repli s'appliquait, et il
+          # valait « oui » -- donc chaque deploiement publiait pour de
+          # vrai. Du 11/11 au 13/11, la meme interview de Ferhat Mehenni
+          # est sortie une quinzaine de fois sur tandem_tv_2.
+          # Le declenchement manuel (workflow_dispatch) reste intact :
+          # il fournit son propre input.
+          PUBLIER: ${{ inputs.publier || 'non' }}
         run: node tools/instagram-video.mjs
