@@ -113,5 +113,10 @@
   "BOB_HASBARA": {
     "nom": "Bob Hasbara",
     "site": ""
+  },
+  "STUDIO_420": {
+    "nom": "STUDIO 420",
+    "site": "studio-420",
+    "presentateur": "Emmanuelle Adda et Francky Perez"
   }
 }

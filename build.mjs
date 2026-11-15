@@ -2085,8 +2085,14 @@ async function presentateursParRubrique(categories) {
   for (const e of Object.values(emissions)) {
     if (e && typeof e === 'object' && e.site && e.presentateur) parSlug.set(e.site, e.presentateur);
   }
-  for (const [titre, nom] of Object.entries(personnes.presentateurs || {})) {
+  for (const [titre, brut] of Object.entries(personnes.presentateurs || {})) {
     const c = categories.find((x) => normKey(x.title) === normKey(titre));
+    // Plusieurs présentateurs possibles depuis le 15/11/2026 (STUDIO 420).
+    // On les réunit en une chaîne : tout ce qui lit cette carte affiche du
+    // texte -- le manifeste Instagram et l'affiche du soir.
+    const nom = Array.isArray(brut)
+      ? brut.filter((n) => typeof n === 'string' && n.trim()).join(' et ')
+      : brut;
     if (c && nom) parSlug.set(c.slug, nom);
   }
   for (const c of categories) {

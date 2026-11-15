@@ -119,9 +119,16 @@
     "Lucas Moulard",
     "Isabelle Nizard",
     "Simon Moos",
-    "Fadila Tatah"
+    "Fadila Tatah",
+    "Emmanuelle Adda",
+    "Francky Perez"
   ],
-  "presentateurs": {},
+  "presentateurs": {
+    "STUDIO 420": [
+      "Emmanuelle Adda",
+      "Francky Perez"
+    ]
+  },
   "fiches": {
     "Lucas Moulard": {
       "role": "Influenceur politique, chaîne Lucas Talk Actu",
@@ -219,6 +226,12 @@
     },
     "Sophia Aram": {
       "vignette": "NgmPbEfEccs"
+    },
+    "Emmanuelle Adda": {
+      "role": "Co-présentatrice de STUDIO 420"
+    },
+    "Francky Perez": {
+      "role": "Co-présentateur de STUDIO 420"
     }
   },
   "_comment_photo": "Chaque fiche illustre la personne avec la miniature de sa vidéo la plus récente. Pour imposer une autre image, ajoutez \"photo\": \"https://…\" dans l'entrée correspondante de 'fiches'."

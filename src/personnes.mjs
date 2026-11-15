@@ -209,14 +209,27 @@ export function collecterPersonnes(categories, allVideos, manuel = {},
   };
 
   // 1. Présentateurs, déduits du nom des émissions.
+  //
+  // Une émission peut être tenue par plusieurs personnes : STUDIO 420 l'est
+  // par Emmanuelle Adda et Francky Perez (15/11/2026). La table
+  // `presentateurs` de personnes.json accepte donc, pour une émission, un nom
+  // OU une liste de noms. Chacun est alors crédité à égalité : aucun n'est
+  // « le » présentateur, et chacun reçoit l'émission dans sa page personnelle.
   const presentateurParRubrique = new Map();
   for (const cat of categories) {
-    const nom = manuel.presentateurs?.[cat.title] || presentateurDeLaRubrique(cat.title);
-    if (!nom || exclure.has(canonique(nom).toLowerCase())) continue;
-    presentateurParRubrique.set(cat.slug, canonique(nom));
-    for (const v of cat.videos) ajouter(nom, v, cat.title);
-    const p = gens.get(clef(canonique(nom)));
-    if (p) p.presente.add(cat.title);
+    const brut = manuel.presentateurs?.[cat.title] || presentateurDeLaRubrique(cat.title);
+    const noms = (Array.isArray(brut) ? brut : [brut])
+      .filter((n) => typeof n === 'string' && n.trim())
+      .filter((n) => !exclure.has(canonique(n).toLowerCase()));
+    if (!noms.length) continue;
+    // La carte garde une CHAÎNE : elle alimente des affichages (manifeste
+    // Instagram, affiche du soir) qui attendent du texte, pas un tableau.
+    presentateurParRubrique.set(cat.slug, noms.map((n) => canonique(n)).join(' et '));
+    for (const nom of noms) {
+      for (const v of cat.videos) ajouter(nom, v, cat.title);
+      const q = gens.get(clef(canonique(nom)));
+      if (q) q.presente.add(cat.title);
+    }
   }
 
   // 2. Invités, déduits des titres de vidéos.
