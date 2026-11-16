@@ -1,5 +1,5 @@
 {
-  "exported_at": "2026-11-17T01:17:15.920009",
+  "exported_at": "2026-11-17T01:32:21.102852",
   "window_days": 7,
   "rows": [
     {
@@ -2699,12 +2699,12 @@
       "heure_debut": "08:00",
       "type": "ANCRE",
       "heure_fixe": true,
-      "channel_id": "RADIO_SHALOM_SZWARC",
-      "title": "DU COTE DE CHEZ SZWARC AVEC LISE BENKEMOUN"
+      "channel_id": "ECUJE",
+      "title": "Jacques Attali en conversation avec Haïm Korsia"
     },
     {
       "date_diffusion": "2026-11-23",
-      "heure_debut": "08:28",
+      "heure_debut": "09:08",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "STEPHANE_GOLDIN",
@@ -2712,14 +2712,14 @@
     },
     {
       "date_diffusion": "2026-11-23",
-      "bloc_apres": "RADIO_SHALOM_SZWARC",
+      "bloc_apres": "ECUJE",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
       "channel_id": "ISRAEL_EN_FRANCAIS"
     },
     {
       "date_diffusion": "2026-11-23",
-      "heure_debut": "08:33",
+      "heure_debut": "09:13",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "RONY_HAYOT",
@@ -2727,7 +2727,7 @@
     },
     {
       "date_diffusion": "2026-11-23",
-      "heure_debut": "08:42",
+      "heure_debut": "09:22",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
@@ -2735,7 +2735,7 @@
     },
     {
       "date_diffusion": "2026-11-23",
-      "heure_debut": "08:49",
+      "heure_debut": "09:29",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
@@ -2743,63 +2743,10 @@
     },
     {
       "date_diffusion": "2026-11-23",
-      "bloc_apres": "RADIO_SHALOM_SZWARC",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
-    },
-    {
-      "date_diffusion": "2026-11-23",
-      "heure_debut": "09:00",
-      "type": "ANCRE",
-      "heure_fixe": true,
-      "channel_id": "ECUJE",
-      "title": "Jacques Attali en conversation avec Haïm Korsia"
-    },
-    {
-      "date_diffusion": "2026-11-23",
-      "heure_debut": "10:08",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "RONY_HAYOT",
-      "title": "Paris, Israël et la morale à deux vitesses | Rony Hayot"
-    },
-    {
-      "date_diffusion": "2026-11-23",
-      "bloc_apres": "ECUJE",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "ISRAEL_EN_FRANCAIS"
-    },
-    {
-      "date_diffusion": "2026-11-23",
-      "heure_debut": "10:13",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": ""
-    },
-    {
-      "date_diffusion": "2026-11-23",
-      "heure_debut": "10:19",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "zichron yaakov"
-    },
-    {
-      "date_diffusion": "2026-11-23",
       "bloc_apres": "ECUJE",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
       "channel_id": "TSAHAL_FR"
-    },
-    {
-      "date_diffusion": "2026-11-23",
-      "bloc_apres": "ECUJE",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL"
     },
     {
       "date_diffusion": "2026-11-23",
@@ -2810,7 +2757,7 @@
     },
     {
       "date_diffusion": "2026-11-23",
-      "heure_debut": "10:59",
+      "heure_debut": "10:00",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "CAFE_DAAT",
@@ -2821,7 +2768,7 @@
       "bloc_apres": "CAFE_DAAT",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
+      "channel_id": "TSAHAL_FR"
     },
     {
       "date_diffusion": "2026-11-23",
@@ -2832,10 +2779,19 @@
     },
     {
       "date_diffusion": "2026-11-23",
-      "bloc_apres": "CAFE_DAAT",
-      "type": "CLIPS_CHAINE",
+      "heure_debut": "11:03",
+      "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
+      "channel_id": "RONY_HAYOT",
+      "title": "Paris, Israël et la morale à deux vitesses | Rony Hayot"
+    },
+    {
+      "date_diffusion": "2026-11-23",
+      "heure_debut": "11:09",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "RADIO_SHALOM_SZWARC",
+      "title": "DU COTE DE CHEZ SZWARC AVEC LISE BENKEMOUN"
     },
     {
       "date_diffusion": "2026-11-23",
@@ -2846,7 +2802,7 @@
     },
     {
       "date_diffusion": "2026-11-23",
-      "heure_debut": "12:07",
+      "heure_debut": "11:40",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
@@ -2854,23 +2810,15 @@
     },
     {
       "date_diffusion": "2026-11-23",
-      "heure_debut": "12:16",
+      "heure_debut": "11:46",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
-      "title": "Beit Alpha"
+      "title": "zichron yaakov"
     },
     {
       "date_diffusion": "2026-11-23",
-      "heure_debut": "12:29",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "STEPHANE_GOLDIN",
-      "title": "Gaza : pourquoi Israël a frappé l’hôpital Nasser | Stéphane Goldin"
-    },
-    {
-      "date_diffusion": "2026-11-23",
-      "heure_debut": "13:00",
+      "heure_debut": "12:00",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "TEL_AVIV_NEW_YORK",
@@ -2878,11 +2826,10 @@
     },
     {
       "date_diffusion": "2026-11-23",
-      "heure_debut": "13:38",
-      "type": "COURT_NOMME",
+      "bloc_apres": "TEL_AVIV_NEW_YORK",
+      "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": ""
+      "channel_id": "KFIR_ALMAGOR"
     },
     {
       "date_diffusion": "2026-11-23",
@@ -2893,29 +2840,30 @@
     },
     {
       "date_diffusion": "2026-11-23",
-      "heure_debut": "13:44",
+      "bloc_apres": "TEL_AVIV_NEW_YORK",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "SOLAL_ISRAEL"
+    },
+    {
+      "date_diffusion": "2026-11-23",
+      "heure_debut": "12:43",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": ""
+    },
+    {
+      "date_diffusion": "2026-11-23",
+      "heure_debut": "12:52",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
-      "title": "Safed"
+      "title": "Beit Alpha"
     },
     {
       "date_diffusion": "2026-11-23",
-      "bloc_apres": "TEL_AVIV_NEW_YORK",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
-    },
-    {
-      "date_diffusion": "2026-11-23",
-      "bloc_apres": "TEL_AVIV_NEW_YORK",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
-    },
-    {
-      "date_diffusion": "2026-11-23",
-      "heure_debut": "14:00",
+      "heure_debut": "13:00",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "LES_ISRAELIENNES",
@@ -2923,21 +2871,15 @@
     },
     {
       "date_diffusion": "2026-11-23",
-      "bloc_apres": "LES_ISRAELIENNES",
-      "type": "CLIPS_CHAINE",
+      "heure_debut": "13:56",
+      "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL"
+      "channel_id": "STEPHANE_GOLDIN",
+      "title": "Gaza : pourquoi Israël a frappé l’hôpital Nasser | Stéphane Goldin"
     },
     {
       "date_diffusion": "2026-11-23",
-      "bloc_apres": "LES_ISRAELIENNES",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "ISRAEL_EN_FRANCAIS"
-    },
-    {
-      "date_diffusion": "2026-11-23",
-      "heure_debut": "14:59",
+      "heure_debut": "14:00",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "WILLIAM_ZERBIB_L_INTERVIEW",
@@ -2945,7 +2887,7 @@
     },
     {
       "date_diffusion": "2026-11-23",
-      "heure_debut": "15:27",
+      "heure_debut": "14:27",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
@@ -2960,11 +2902,11 @@
     },
     {
       "date_diffusion": "2026-11-23",
-      "heure_debut": "15:33",
+      "heure_debut": "14:34",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
-      "title": "Belvoir (1)"
+      "title": "Safed"
     },
     {
       "date_diffusion": "2026-11-23",
@@ -2982,7 +2924,7 @@
     },
     {
       "date_diffusion": "2026-11-23",
-      "heure_debut": "16:00",
+      "heure_debut": "15:00",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "YINON_SHOW",
@@ -2990,11 +2932,10 @@
     },
     {
       "date_diffusion": "2026-11-23",
-      "heure_debut": "17:09",
-      "type": "COURT_NOMME",
+      "bloc_apres": "YINON_SHOW",
+      "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": ""
+      "channel_id": "TSAHAL_FR"
     },
     {
       "date_diffusion": "2026-11-23",
@@ -3005,18 +2946,26 @@
     },
     {
       "date_diffusion": "2026-11-23",
-      "heure_debut": "17:17",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "Bet Shearim"
-    },
-    {
-      "date_diffusion": "2026-11-23",
       "bloc_apres": "YINON_SHOW",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
+      "channel_id": "SOLAL_ISRAEL"
+    },
+    {
+      "date_diffusion": "2026-11-23",
+      "heure_debut": "16:12",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": ""
+    },
+    {
+      "date_diffusion": "2026-11-23",
+      "heure_debut": "16:19",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "CARTES_POSTALES",
+      "title": "Belvoir (1)"
     },
     {
       "date_diffusion": "2026-11-23",
@@ -3027,7 +2976,7 @@
     },
     {
       "date_diffusion": "2026-11-23",
-      "heure_debut": "18:00",
+      "heure_debut": "17:00",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "TOUR_D_ISRAEL",
@@ -3035,7 +2984,7 @@
     },
     {
       "date_diffusion": "2026-11-23",
-      "heure_debut": "18:22",
+      "heure_debut": "17:22",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
@@ -3050,11 +2999,11 @@
     },
     {
       "date_diffusion": "2026-11-23",
-      "heure_debut": "18:29",
+      "heure_debut": "17:31",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
-      "title": "Carte postale La synagogue de Capharnaum2"
+      "title": "Bet Shearim"
     },
     {
       "date_diffusion": "2026-11-23",
@@ -3065,7 +3014,7 @@
     },
     {
       "date_diffusion": "2026-11-23",
-      "heure_debut": "19:00",
+      "heure_debut": "18:00",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "OROT_VEKELIM",
@@ -3073,7 +3022,44 @@
     },
     {
       "date_diffusion": "2026-11-23",
-      "heure_debut": "20:13",
+      "heure_debut": "19:13",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": ""
+    },
+    {
+      "date_diffusion": "2026-11-23",
+      "bloc_apres": "OROT_VEKELIM",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "ISRAEL_EN_FRANCAIS"
+    },
+    {
+      "date_diffusion": "2026-11-23",
+      "heure_debut": "19:20",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "CARTES_POSTALES",
+      "title": "Carte postale La synagogue de Capharnaum2"
+    },
+    {
+      "date_diffusion": "2026-11-23",
+      "bloc_apres": "OROT_VEKELIM",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "TSAHAL_FR"
+    },
+    {
+      "date_diffusion": "2026-11-23",
+      "bloc_apres": "OROT_VEKELIM",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "KFIR_ALMAGOR"
+    },
+    {
+      "date_diffusion": "2026-11-23",
+      "heure_debut": "20:00",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "JEROME_HAAS_L_INTERVIEW",
@@ -3084,8 +3070,8 @@
       "heure_debut": "22:00",
       "type": "ANCRE",
       "heure_fixe": true,
-      "channel_id": "RADIO_SHALOM_BOCHURBERG",
-      "title": "Philippe Allouche et Galith Touati"
+      "channel_id": "RADIO_SHALOM_SZWARC",
+      "title": "DU COTE DE CHEZ SZWARC AVEC LISE BENKEMOUN"
     }
   ]
 }
