@@ -304,7 +304,67 @@ export function legende(video, { config, emission = '', invites = [] } = {}) {
     .replace(/\{canal\}/g, tv.channelNumber || '14');
 
   const mots = Array.isArray(i.hashtags) ? i.hashtags.filter(Boolean) : [];
-  return mots.length ? `${texte}\n\n${mots.map((m) => (m.startsWith('#') ? m : `#${m}`)).join(' ')}` : texte;
+  const avecMots = mots.length
+    ? `${texte}\n\n${mots.map((m) => (m.startsWith('#') ? m : `#${m}`)).join(' ')}`
+    : texte;
+
+  // L'IDENTIFIANT YOUTUBE, EN CLAIR, A LA FIN DE CHAQUE LEGENDE.
+  //
+  // Il n'est pas decoratif : c'est l'empreinte que dejaPublieeSurLeFil() va
+  // relire pour dire « cette video est deja sortie ». Cette empreinte etait le
+  // TITRE. Le 17 novembre 2026, le titre de la video de Paul Amar a ete modifie
+  // pour corriger son referencement ; les publications existantes portaient
+  // l'ancien titre, la nouvelle legende portait le nouveau, le garde-fou n'a
+  // donc rien reconnu -- et la meme video est repartie une quatrieme fois.
+  // Michael, le meme jour : « je veux juste que ca fonctionne proprement et pas
+  // revenir en arriere tous les 3 jours pour les memes bugs. »
+  //
+  // Un titre se retouche, c'est meme tout son interet. Un identifiant YouTube
+  // ne change jamais. L'empreinte doit donc etre l'identifiant -- et pour
+  // pouvoir le relire sur Instagram, il faut qu'il y soit ecrit : Meta ne garde
+  // aucun champ libre sur une publication, la legende est le seul endroit ou
+  // deposer une marque durable. Elle a l'avantage d'etre utile au lecteur, qui
+  // sait ainsi ou retrouver la video.
+  //
+  // En DERNIERE position, et nulle part ailleurs : estDejaEnLigne() prend la
+  // premiere ligne non vide comme empreinte, et cette ligne doit rester le
+  // titre.
+  const id = String(video?.id || '').trim();
+  return id ? `${avecMots}\n\nyoutu.be/${id}` : avecMots;
+}
+
+/**
+ * Cette VIDEO est-elle deja sortie sur le fil ?
+ *
+ * Rend true, false, ou null (fil illisible : l'appelant s'abstient).
+ *
+ * POURQUOI CETTE FONCTION EXISTE, ET POURQUOI ICI
+ * -----------------------------------------------
+ * Elle existe parce que la regle qu'elle porte etait RECOPIEE a deux endroits
+ * -- build.mjs ligne 2211 et tools/instagram-video.mjs ligne 140 -- sous le
+ * meme nom `dejaPublie(titre)` et avec le meme defaut. Ce fichier contient
+ * deja deux commentaires qui disent pourquoi un garde-fou recopie finit par
+ * diverger (MODELE_LEGENDE_DEFAUT, videoAutoriseeSurInstagram) ; celui-la
+ * n'avait simplement pas encore ete rapatrie.
+ *
+ * Elle compare sur l'IDENTIFIANT YOUTUBE, qui ne change jamais, et garde le
+ * titre en second recours -- uniquement pour les publications anterieures au
+ * 17 novembre 2026, qui ne portent pas encore l'identifiant dans leur legende.
+ * Ce second recours est un filet de transition, pas la regle : il peut mentir
+ * des qu'un titre est retouche, l'identifiant non.
+ */
+export function dejaPublieeSurLeFil(recentes, video) {
+  if (!Array.isArray(recentes)) return null;
+
+  const id = String(video?.id || '').trim();
+  if (id.length >= 8 && recentes.some((m) => String(m.texte || '').includes(id))) return true;
+
+  // Filet pour l'ancien fil. Huit caracteres au minimum : « Katava » seul
+  // correspondrait a n'importe quoi.
+  const titre = String(video?.title ?? video?.titre ?? '').trim();
+  if (titre.length > 8 && recentes.some((m) => String(m.texte || '').includes(titre))) return true;
+
+  return false;
 }
 
 /**

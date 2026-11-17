@@ -2208,10 +2208,11 @@ async function publierInstagram(config, allVideos, known, personnesParVideo = ne
     warn('Instagram : impossible de relire les publications récentes. Aucune publication ce tour-ci.');
     return;
   }
-  const dejaPublie = (titre) => {
-    const t = String(titre || '').trim();
-    return t.length > 8 && recentes.some((m) => m.texte.includes(t));
-  };
+  // « Deja publiee ? » vit desormais dans src/instagram.mjs, appelee a
+  // l'identique par ce chemin-ci ET par tools/instagram-video.mjs. La regle
+  // etait recopiee dans les deux, et comparait le TITRE : un titre retouche
+  // rendait le garde-fou aveugle et la video repartait. Voir
+  // dejaPublieeSurLeFil().
 
   // Espacement minimal entre deux publications. Le site se reconstruit toutes
   // les quinze minutes : sans ce frein, l'activation initiale déverserait
@@ -2245,7 +2246,7 @@ async function publierInstagram(config, allVideos, known, personnesParVideo = ne
       return verdict.ok;
     })
     .sort((a, b) => new Date(a.vuLe) - new Date(b.vuLe))
-    .filter((v) => !dejaPublie(v.title));
+    .filter((v) => insta.dejaPublieeSurLeFil(recentes, v) !== true);
 
   if (!candidates.length) { log('Instagram : aucune nouvelle vidéo à publier.'); return; }
 

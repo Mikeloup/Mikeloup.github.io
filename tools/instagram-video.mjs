@@ -137,10 +137,10 @@ if (plancher && derniereToutes && maintenant - derniereToutes < plancher) {
 // 4. La plus ancienne des videos jamais publiees, pour respecter l'ordre de
 //    parution. Un titre court ne suffit pas a identifier : on exige huit
 //    caracteres, sans quoi « Katava » matcherait n'importe quoi.
-const dejaPublie = (titre) => {
-  const t = String(titre || '').trim();
-  return t.length > 8 && recentes.some((m) => m.texte.includes(t));
-};
+// « Deja publiee ? » vit desormais dans src/instagram.mjs, appelee a
+// l'identique par ce chemin-ci ET par build.mjs. La regle etait recopiee dans
+// les deux, et comparait le TITRE : un titre retouche rendait le garde-fou
+// aveugle et la video repartait. Voir dejaPublieeSurLeFil().
 // LE GARDE-FOU DU 4 OCTOBRE 2026.
 //
 // Ce qui s'est passe : le 2 octobre, la lettre hebdomadaire et le compte
@@ -168,7 +168,7 @@ const heures = config.instagram?.maxAgeHours ?? 48;
 // la construction (build.mjs) applique EXACTEMENT la meme regle. Il y a aussi
 // gagne un plancher de date absolu (consigne de Michael du 28/10/2026).
 const candidates = entrees
-  .filter((e) => e.legende && !dejaPublie(e.titre))
+  .filter((e) => e.legende && insta.dejaPublieeSurLeFil(recentes, e) !== true)
   .filter((e) => e.vuLe && (maintenant - Date.parse(e.vuLe)) < heures * 3600 * 1000)
   .filter((e) => {
     const verdict = insta.videoAutoriseeSurInstagram(e, config, maintenant);
