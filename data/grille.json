@@ -1,5 +1,5 @@
 {
-  "exported_at": "2026-11-20T11:19:18.621968",
+  "exported_at": "2026-11-20T11:34:24.036036",
   "window_days": 7,
   "rows": [
     {
@@ -2640,10 +2640,11 @@
     },
     {
       "date_diffusion": "2026-11-26",
-      "bloc_apres": "RADIO_SHALOM_SZWARC",
-      "type": "CLIPS_CHAINE",
+      "heure_debut": "08:29",
+      "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
+      "channel_id": "STEPHANE_GOLDIN",
+      "title": "Trump–Xi–Poutine parlent de paix : l’Iran prépare-t-il la guerre ? | Stéphane Goldin"
     },
     {
       "date_diffusion": "2026-11-26",
@@ -2654,15 +2655,7 @@
     },
     {
       "date_diffusion": "2026-11-26",
-      "heure_debut": "08:31",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "STEPHANE_GOLDIN",
-      "title": "Trump–Xi–Poutine parlent de paix : l’Iran prépare-t-il la guerre ? | Stéphane Goldin"
-    },
-    {
-      "date_diffusion": "2026-11-26",
-      "heure_debut": "08:34",
+      "heure_debut": "08:33",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "RONY_HAYOT",
@@ -2680,11 +2673,18 @@
       "bloc_apres": "RADIO_SHALOM_SZWARC",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
+      "channel_id": "KFIR_ALMAGOR"
+    },
+    {
+      "date_diffusion": "2026-11-26",
+      "bloc_apres": "RADIO_SHALOM_SZWARC",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
       "channel_id": "SOLAL_ISRAEL"
     },
     {
       "date_diffusion": "2026-11-26",
-      "heure_debut": "08:44",
+      "heure_debut": "08:45",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
@@ -2692,11 +2692,11 @@
     },
     {
       "date_diffusion": "2026-11-26",
-      "heure_debut": "08:51",
+      "heure_debut": "08:53",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
-      "title": "Safed"
+      "title": "Belvoir (1)"
     },
     {
       "date_diffusion": "2026-11-26",
@@ -2718,11 +2718,11 @@
       "bloc_apres": "ECUJE",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
+      "channel_id": "KFIR_ALMAGOR"
     },
     {
       "date_diffusion": "2026-11-26",
-      "heure_debut": "10:10",
+      "heure_debut": "10:12",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
@@ -2733,26 +2733,34 @@
       "bloc_apres": "ECUJE",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "ISRAEL_EN_FRANCAIS"
+      "channel_id": "TSAHAL_FR"
     },
     {
       "date_diffusion": "2026-11-26",
-      "heure_debut": "10:17",
+      "heure_debut": "10:18",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "WILLIAM_ZERBIB_L_INTERVIEW",
+      "title": "Mélenchon : « Il n’est plus Gandhi, il est Arafat » | Paul Amar"
+    },
+    {
+      "date_diffusion": "2026-11-26",
+      "heure_debut": "10:47",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
-      "title": "Belvoir (1)"
+      "title": "Bet Shearim"
     },
     {
       "date_diffusion": "2026-11-26",
       "bloc_apres": "ECUJE",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
+      "channel_id": "ISRAEL_EN_FRANCAIS"
     },
     {
       "date_diffusion": "2026-11-26",
-      "heure_debut": "10:59",
+      "heure_debut": "11:00",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "CAFE_DAAT",
@@ -2763,7 +2771,30 @@
       "bloc_apres": "CAFE_DAAT",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
+      "channel_id": "KFIR_ALMAGOR"
+    },
+    {
+      "date_diffusion": "2026-11-26",
+      "bloc_apres": "CAFE_DAAT",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
       "channel_id": "TSAHAL_FR"
+    },
+    {
+      "date_diffusion": "2026-11-26",
+      "heure_debut": "12:05",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": ""
+    },
+    {
+      "date_diffusion": "2026-11-26",
+      "heure_debut": "12:11",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "CARTES_POSTALES",
+      "title": "Carte postale La synagogue de Capharnaum2"
     },
     {
       "date_diffusion": "2026-11-26",
@@ -2774,30 +2805,7 @@
     },
     {
       "date_diffusion": "2026-11-26",
-      "heure_debut": "12:02",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "JEROME_HAAS_L_INTERVIEW",
-      "title": "Béziers, la « petite Jérusalem » : l’histoire oubliée des Juifs | Chantal VIOTTE-RABINOVITCH"
-    },
-    {
-      "date_diffusion": "2026-11-26",
-      "bloc_apres": "CAFE_DAAT",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
-    },
-    {
-      "date_diffusion": "2026-11-26",
       "heure_debut": "12:31",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": ""
-    },
-    {
-      "date_diffusion": "2026-11-26",
-      "heure_debut": "12:39",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "STEPHANE_GOLDIN",
@@ -2805,7 +2813,7 @@
     },
     {
       "date_diffusion": "2026-11-26",
-      "heure_debut": "12:42",
+      "heure_debut": "12:34",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "RONY_HAYOT",
@@ -2817,14 +2825,6 @@
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
       "channel_id": "SOLAL_ISRAEL"
-    },
-    {
-      "date_diffusion": "2026-11-26",
-      "heure_debut": "12:54",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "Bet Shearim"
     },
     {
       "date_diffusion": "2026-11-26",
@@ -2861,22 +2861,22 @@
       "bloc_apres": "TEL_AVIV_NEW_YORK",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
+      "channel_id": "TSAHAL_FR"
+    },
+    {
+      "date_diffusion": "2026-11-26",
+      "heure_debut": "13:49",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "CARTES_POSTALES",
+      "title": "Cesarée"
     },
     {
       "date_diffusion": "2026-11-26",
       "bloc_apres": "TEL_AVIV_NEW_YORK",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
-    },
-    {
-      "date_diffusion": "2026-11-26",
-      "heure_debut": "13:55",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "Carte postale La synagogue de Capharnaum2"
+      "channel_id": "KFIR_ALMAGOR"
     },
     {
       "date_diffusion": "2026-11-26",
@@ -2898,7 +2898,7 @@
       "bloc_apres": "LES_ISRAELIENNES",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
+      "channel_id": "ISRAEL_EN_FRANCAIS"
     },
     {
       "date_diffusion": "2026-11-26",
@@ -2909,15 +2909,22 @@
     },
     {
       "date_diffusion": "2026-11-26",
-      "heure_debut": "15:00",
-      "type": "ANCRE",
-      "heure_fixe": true,
-      "channel_id": "WILLIAM_ZERBIB_L_INTERVIEW",
-      "title": "Mélenchon : « Il n’est plus Gandhi, il est Arafat » | Paul Amar"
+      "bloc_apres": "LES_ISRAELIENNES",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "KFIR_ALMAGOR"
     },
     {
       "date_diffusion": "2026-11-26",
-      "heure_debut": "15:27",
+      "heure_debut": "15:00",
+      "type": "ANCRE",
+      "heure_fixe": true,
+      "channel_id": "JEROME_HAAS_L_INTERVIEW",
+      "title": "Béziers, la « petite Jérusalem » : l’histoire oubliée des Juifs | Chantal VIOTTE-RABINOVITCH"
+    },
+    {
+      "date_diffusion": "2026-11-26",
+      "heure_debut": "15:26",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
@@ -2925,36 +2932,36 @@
     },
     {
       "date_diffusion": "2026-11-26",
-      "bloc_apres": "WILLIAM_ZERBIB_L_INTERVIEW",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
-    },
-    {
-      "date_diffusion": "2026-11-26",
-      "heure_debut": "15:35",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "Cesarée"
-    },
-    {
-      "date_diffusion": "2026-11-26",
-      "bloc_apres": "WILLIAM_ZERBIB_L_INTERVIEW",
+      "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
       "channel_id": "ISRAEL_EN_FRANCAIS"
     },
     {
       "date_diffusion": "2026-11-26",
-      "bloc_apres": "WILLIAM_ZERBIB_L_INTERVIEW",
+      "heure_debut": "15:34",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "CARTES_POSTALES",
+      "title": "Ein Gedi"
+    },
+    {
+      "date_diffusion": "2026-11-26",
+      "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
       "channel_id": "SOLAL_ISRAEL"
     },
     {
       "date_diffusion": "2026-11-26",
-      "bloc_apres": "WILLIAM_ZERBIB_L_INTERVIEW",
+      "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "TSAHAL_FR"
+    },
+    {
+      "date_diffusion": "2026-11-26",
+      "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
       "channel_id": "KFIR_ALMAGOR"
@@ -2979,6 +2986,13 @@
       "bloc_apres": "YINON_SHOW",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
+      "channel_id": "ISRAEL_EN_FRANCAIS"
+    },
+    {
+      "date_diffusion": "2026-11-26",
+      "bloc_apres": "YINON_SHOW",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
       "channel_id": "TSAHAL_FR"
     },
     {
@@ -2990,22 +3004,7 @@
     },
     {
       "date_diffusion": "2026-11-26",
-      "bloc_apres": "YINON_SHOW",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "ISRAEL_EN_FRANCAIS"
-    },
-    {
-      "date_diffusion": "2026-11-26",
-      "heure_debut": "17:11",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "JEROME_HAAS_L_INTERVIEW",
-      "title": "Béziers, la « petite Jérusalem » : l’histoire oubliée des Juifs | Chantal VIOTTE-RABINOVITCH"
-    },
-    {
-      "date_diffusion": "2026-11-26",
-      "heure_debut": "17:37",
+      "heure_debut": "17:14",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
@@ -3013,15 +3012,23 @@
     },
     {
       "date_diffusion": "2026-11-26",
-      "heure_debut": "17:45",
+      "heure_debut": "17:21",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "Ein Gedi"
+      "channel_id": "WILLIAM_ZERBIB_L_INTERVIEW",
+      "title": "Mélenchon : « Il n’est plus Gandhi, il est Arafat » | Paul Amar"
     },
     {
       "date_diffusion": "2026-11-26",
-      "heure_debut": "17:59",
+      "heure_debut": "17:49",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "CARTES_POSTALES",
+      "title": "Ein Hod"
+    },
+    {
+      "date_diffusion": "2026-11-26",
+      "heure_debut": "18:00",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "TOUR_D_ISRAEL",
@@ -3029,10 +3036,25 @@
     },
     {
       "date_diffusion": "2026-11-26",
+      "heure_debut": "18:22",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": ""
+    },
+    {
+      "date_diffusion": "2026-11-26",
       "bloc_apres": "TOUR_D_ISRAEL",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
       "channel_id": "ISRAEL_EN_FRANCAIS"
+    },
+    {
+      "date_diffusion": "2026-11-26",
+      "bloc_apres": "TOUR_D_ISRAEL",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "SOLAL_ISRAEL"
     },
     {
       "date_diffusion": "2026-11-26",
@@ -3050,30 +3072,15 @@
     },
     {
       "date_diffusion": "2026-11-26",
-      "heure_debut": "18:38",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": ""
-    },
-    {
-      "date_diffusion": "2026-11-26",
-      "heure_debut": "18:46",
+      "heure_debut": "18:49",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
-      "title": "Ein Hod"
+      "title": "Grotte de sédécias"
     },
     {
       "date_diffusion": "2026-11-26",
-      "bloc_apres": "TOUR_D_ISRAEL",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL"
-    },
-    {
-      "date_diffusion": "2026-11-26",
-      "heure_debut": "19:00",
+      "heure_debut": "18:59",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "OROT_VEKELIM",
@@ -3081,7 +3088,7 @@
     },
     {
       "date_diffusion": "2026-11-26",
-      "heure_debut": "20:13",
+      "heure_debut": "20:12",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "YINON_SHOW",
@@ -3089,11 +3096,11 @@
     },
     {
       "date_diffusion": "2026-11-26",
-      "heure_debut": "21:59",
+      "heure_debut": "22:00",
       "type": "ANCRE",
       "heure_fixe": true,
-      "channel_id": "JEROME_HAAS_L_INTERVIEW",
-      "title": "Béziers, la « petite Jérusalem » : l’histoire oubliée des Juifs | Chantal VIOTTE-RABINOVITCH"
+      "channel_id": "WILLIAM_ZERBIB_L_INTERVIEW",
+      "title": "Mélenchon : « Il n’est plus Gandhi, il est Arafat » | Paul Amar"
     }
   ]
 }
