@@ -78,6 +78,34 @@ def telecharger(url):
     return None
 
 
+def nom_du_presentateur(valeur):
+    """Rend TOUJOURS du texte, que la fiche porte un nom ou plusieurs.
+
+    LE 21 NOVEMBRE 2026, LE SITE A CESSE DE SE DEPLOYER. Pillow levait
+    « AttributeError: 'list' object has no attribute 'split' » et le travail
+    entier echouait -- donc plus aucune mise a jour en ligne, alors que la
+    grille se rafraichit toutes les quinze minutes.
+
+    La cause : data/personnes.json porte « STUDIO 420 » ->
+    ['Emmanuelle Adda', 'Francky Perez']. Toutes les autres emissions ont UN
+    presentateur, donc le champ avait toujours ete du texte. Studio 420 est
+    la premiere a en avoir deux, et sa vignette n'avait jamais ete fabriquee
+    jusque-la -- le script saute celles qui existent deja. Le defaut dormait
+    depuis la declaration de l'emission, le 15 novembre.
+
+    On ne corrige donc pas la donnee, qui a raison : une emission PEUT avoir
+    deux presentateurs. C'est le dessin qui doit savoir les ecrire.
+    """
+    if isinstance(valeur, (list, tuple)):
+        noms = [str(v).strip() for v in valeur if str(v).strip()]
+        if not noms:
+            return ''
+        if len(noms) == 1:
+            return noms[0]
+        return ' et '.join([', '.join(noms[:-1]), noms[-1]])
+    return str(valeur or '').strip()
+
+
 def vignette(source, titre, sous_titre, logo, rubrique='', presentateur=''):
     # Fond : la miniature elle-meme, agrandie, floutee, assombrie.
     r = max(L / source.width, H / source.height) * 1.15
@@ -111,6 +139,7 @@ def vignette(source, titre, sous_titre, logo, rubrique='', presentateur=''):
         y_titre += 52
     # Le chroniqueur, sous le nom de l'emission. Jamais ecrit quand son nom est
     # deja dans celui de la rubrique : c'est le site qui filtre, pas ce script.
+    presentateur = nom_du_presentateur(presentateur)
     if presentateur:
         d.text((62, y_titre - 8), presentateur, font=police(30, gras=False),
                fill=(232, 228, 248))
@@ -281,8 +310,8 @@ def dessiner_ce_soir(fiche, logo):
             noms = decouper(ligne.get('rubrique', ''), f_rubrique, d, largeur)[:2]
             # Le chroniqueur, sous le nom de l'emission : c'est lui que le
             # public suit, et le nommer est la moindre des choses.
-            par = decouper((ligne.get('presentateur') or '').strip(), f_par, d, largeur)[:2] \
-                if (ligne.get('presentateur') or '').strip() else []
+            nom_par = nom_du_presentateur(ligne.get('presentateur'))
+            par = decouper(nom_par, f_par, d, largeur)[:2] if nom_par else []
             titre = (ligne.get('titre') or '').strip()
             morceaux = decouper(titre, f_titre, d, largeur)[:essai] if (titre and essai) else []
             adresse = ('@' + ligne['compte']) if ligne.get('compte') else ligne.get('url', '')
@@ -427,6 +456,7 @@ def dessiner_story(source, titre, logo, rubrique='', presentateur=''):
     if rubrique:
         d.text((62, y), rubrique.upper(), font=police(32), fill=BLEU_PIED)
         y += 54
+    presentateur = nom_du_presentateur(presentateur)
     if presentateur:
         d.text((62, y), presentateur, font=police(32, gras=False), fill=(232, 228, 248))
         y += 52
