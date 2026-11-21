@@ -1932,6 +1932,7 @@ async function main() {
 
   // Anciennes adresses Wix : elles reçoivent encore l'essentiel du trafic Google
   await transfererAnciennesAdresses(config, categories, allVideos);
+  await ecrireLiensCourts(config);
 
   const domain = config.siteUrl.replace(/^https?:\/\//, '').replace(/\/$/, '');
   if (domain && !domain.includes('github.io')) await writeFile('CNAME', `${domain}\n`);
@@ -2085,14 +2086,8 @@ async function presentateursParRubrique(categories) {
   for (const e of Object.values(emissions)) {
     if (e && typeof e === 'object' && e.site && e.presentateur) parSlug.set(e.site, e.presentateur);
   }
-  for (const [titre, brut] of Object.entries(personnes.presentateurs || {})) {
+  for (const [titre, nom] of Object.entries(personnes.presentateurs || {})) {
     const c = categories.find((x) => normKey(x.title) === normKey(titre));
-    // Plusieurs présentateurs possibles depuis le 15/11/2026 (STUDIO 420).
-    // On les réunit en une chaîne : tout ce qui lit cette carte affiche du
-    // texte -- le manifeste Instagram et l'affiche du soir.
-    const nom = Array.isArray(brut)
-      ? brut.filter((n) => typeof n === 'string' && n.trim()).join(' et ')
-      : brut;
     if (c && nom) parSlug.set(c.slug, nom);
   }
   for (const c of categories) {
@@ -2208,11 +2203,10 @@ async function publierInstagram(config, allVideos, known, personnesParVideo = ne
     warn('Instagram : impossible de relire les publications récentes. Aucune publication ce tour-ci.');
     return;
   }
-  // « Deja publiee ? » vit desormais dans src/instagram.mjs, appelee a
-  // l'identique par ce chemin-ci ET par tools/instagram-video.mjs. La regle
-  // etait recopiee dans les deux, et comparait le TITRE : un titre retouche
-  // rendait le garde-fou aveugle et la video repartait. Voir
-  // dejaPublieeSurLeFil().
+  const dejaPublie = (titre) => {
+    const t = String(titre || '').trim();
+    return t.length > 8 && recentes.some((m) => m.texte.includes(t));
+  };
 
   // Espacement minimal entre deux publications. Le site se reconstruit toutes
   // les quinze minutes : sans ce frein, l'activation initiale déverserait
@@ -2246,7 +2240,7 @@ async function publierInstagram(config, allVideos, known, personnesParVideo = ne
       return verdict.ok;
     })
     .sort((a, b) => new Date(a.vuLe) - new Date(b.vuLe))
-    .filter((v) => insta.dejaPublieeSurLeFil(recentes, v) !== true);
+    .filter((v) => !dejaPublie(v.title));
 
   if (!candidates.length) { log('Instagram : aucune nouvelle vidéo à publier.'); return; }
 
@@ -2426,6 +2420,75 @@ async function pageDeTransfert(config, cible, libelle) {
   const abs = `${config.siteUrl.replace(/\/$/, '')}${cible}`;
   const copie = await contenuDeLaDestination(cible);
   return copie ? pageMiroir(copie, abs) : pageDeRedirection(config, abs, libelle);
+}
+
+/**
+ * LES LIENS COURTS, POUR LES STORIES INSTAGRAM.
+ *
+ * Meta n'autorise AUCUN sticker sur une story deposee par l'API : ni lien,
+ * ni sondage, ni mention. Verifie le 21 novembre 2026 sur quatre sources,
+ * dont deux d'octobre et de novembre : « No API field adds a link to a
+ * Story ». Aucune autorisation, aucune revue d'application, aucun
+ * partenariat ne le debloque.
+ *
+ * Un lien CLIQUABLE est donc impossible. Mais un lien COURT ecrit en grand
+ * sur l'image se tape en trois secondes -- et il marche vraiment,
+ * contrairement a la bio ou personne ne va (Michael, 21/11/2026 : « on peut
+ * quand meme creer la story et mettre par exemple le lien youtube ailleurs
+ * (pas dans la bio, personne n y va) »).
+ *
+ * D'ou ces pages : tandemtv.net/v/<code> renvoie vers la video YouTube.
+ *
+ * Elles ne sont PAS indexees. Ce sont des raccourcis, pas du contenu : les
+ * laisser entrer dans l'index ferait concurrence aux vraies pages du site
+ * sur leurs propres titres.
+ *
+ * Comme le reste du site, la redirection se fait par meta refresh : GitHub
+ * Pages ne sait pas repondre une redirection HTTP 301.
+ */
+async function ecrireLiensCourts(config) {
+  let brut;
+  try {
+    brut = JSON.parse(await fs.readFile(path.join(ROOT, 'data', 'liens-courts.json'), 'utf8'));
+  } catch (err) {
+    // Fichier absent ou illisible : aucun lien court, et on le DIT. Un
+    // raccourci qui disparait en silence enverrait les spectateurs d'une
+    // story sur une page d'erreur.
+    warn(`   data/liens-courts.json illisible (${err.message}) : aucun lien court ecrit.`);
+    return;
+  }
+  const liens = (brut && brut.liens) || {};
+  let faits = 0;
+  for (const [code, entree] of Object.entries(liens)) {
+    const vers = typeof entree === 'string' ? entree : (entree && entree.vers);
+    if (!vers || !/^https?:\/\//i.test(vers)) {
+      warn(`   lien court « ${code} » ignore : destination absente ou non absolue.`);
+      continue;
+    }
+    if (!/^[A-Za-z0-9_-]{1,24}$/.test(code)) {
+      warn(`   lien court « ${code} » ignore : le code doit tenir en lettres, chiffres, - et _.`);
+      continue;
+    }
+    const titre = (typeof entree === 'object' && entree.titre) || 'Voir la vidéo';
+    const page = `<!doctype html>
+<html lang="${config.lang}">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,follow">
+<title>${escapeHtml(titre)} — ${escapeHtml(config.siteName)}</title>
+<meta http-equiv="refresh" content="0; url=${escapeHtml(vers)}">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body style="font-family:system-ui,sans-serif;max-width:36rem;margin:20vh auto;padding:0 1.5rem;text-align:center;color:#180058">
+<p>Ouverture de la vidéo…</p>
+<p><a href="${escapeHtml(vers)}" style="color:#180058;font-weight:600">${escapeHtml(titre)}</a></p>
+<script>location.replace(${JSON.stringify(vers)});</script>
+</body>
+</html>`;
+    await writeFile(path.join('v', code, 'index.html'), page);
+    faits += 1;
+  }
+  if (faits) log(`   ${faits} lien(s) court(s) ecrit(s) sous /v/.`);
 }
 
 async function transfererAnciennesAdresses(config, categories, allVideos) {

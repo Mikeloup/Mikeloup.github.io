@@ -1,0 +1,14 @@
+{
+  "_comment": "Liens courts de tandemtv.net, pour les Stories Instagram. Meta n'autorise AUCUN sticker sur une story deposee par l'API -- ni lien, ni sondage, ni mention (verifie le 21/11/2026 sur quatre sources, dont deux d'octobre et novembre : « No API field adds a link to a Story »). Un lien CLIQUABLE est donc impossible. Mais un lien COURT ecrit en grand sur l'image se tape en trois secondes, et il marche vraiment -- contrairement a la bio, ou personne ne va (Michael, 21/11/2026).",
+  "_forme": "Chaque clef est le code court. La page est ecrite dans dist/v/<code>/ et renvoie vers 'vers'. Sur la story on affiche donc : tandemtv.net/v/<code>",
+  "_regle": "Ces pages ne sont PAS indexees (noindex) : ce sont des raccourcis, pas du contenu. Elles ne doivent pas concurrencer les vraies pages du site dans les resultats de recherche.",
+  "_qui_ecrit_ici": "scripts/reels_pipeline.py, au moment ou il publie un Reel, ajoute le code de l'episode. Jamais retroactivement : seuls les Reels publies a partir du 21/11/2026 ont un lien court (regle de Michael du 20/11 : « toute correction doit etre proactive et non retroactive »).",
+  "liens": {
+    "essai": {
+      "vers": "https://www.youtube.com/@tandem_tv",
+      "titre": "Tandem TV sur YouTube",
+      "ajoute": "2026-11-21",
+      "_role": "lien de verification : il doit rester, c'est lui qui prouve que le mecanisme marche apres chaque reconstruction du site"
+    }
+  }
+}
