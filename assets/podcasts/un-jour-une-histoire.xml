@@ -6,7 +6,7 @@
 <description>Une émission de Haïm Musicant : chaque épisode raconte en quelques minutes une date, un lieu ou une figure de l'histoire juive et israélienne.</description>
 <language>fr</language>
 <copyright>© 2026 Tandem TV</copyright>
-<lastBuildDate>Sat, 21 Nov 2026 13:34:59 +0000</lastBuildDate>
+<lastBuildDate>Sat, 21 Nov 2026 17:40:10 +0000</lastBuildDate>
 <atom:link href="https://www.tandemtv.net/assets/podcasts/un-jour-une-histoire.xml" rel="self" type="application/rss+xml"/>
 <itunes:author>Tandem TV</itunes:author>
 <itunes:summary>Une émission de Haïm Musicant : chaque épisode raconte en quelques minutes une date, un lieu ou une figure de l'histoire juive et israélienne.</itunes:summary>
@@ -18,6 +18,16 @@
 <itunes:name>Tandem TV</itunes:name>
 <itunes:email>contact@tandemtv.org</itunes:email>
 </itunes:owner>
+<item>
+<title>Un jour une histoire : Hannah Szenes</title>
+<description>Un jour une histoire : Hannah Szenes — Un jour une histoire, Tandem TV. Diffusé le 08/11/2026. À voir en vidéo sur https://www.tandemtv.net</description>
+<itunes:summary>Un jour une histoire : Hannah Szenes — Un jour une histoire, Tandem TV. Diffusé le 08/11/2026. À voir en vidéo sur https://www.tandemtv.net</itunes:summary>
+<guid isPermaLink="false">TTV00001275</guid>
+<pubDate>Sun, 08 Nov 2026 00:00:00 +0000</pubDate>
+<enclosure url="https://pub-c4f0916694d64a50b659c0915f2549ee.r2.dev/TTV00001275.m4a" length="15490528" type="audio/mp4"/>
+<itunes:duration>387</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
 <item>
 <title>26 octobre 1994, Israël et la Jordanie signent la paix.</title>
 <description>26 octobre 1994, Israël et la Jordanie signent la paix. — Un jour une histoire, Tandem TV. Diffusé le 25/10/2026. À voir en vidéo sur https://www.tandemtv.net</description>
