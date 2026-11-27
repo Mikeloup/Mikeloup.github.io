@@ -1,5 +1,5 @@
 {
-  "exported_at": "2026-11-27T04:57:58.750853",
+  "exported_at": "2026-11-27T05:13:04.235627",
   "window_days": 7,
   "rows": [
     {
@@ -481,6 +481,13 @@
     },
     {
       "date_diffusion": "2026-11-28",
+      "bloc_apres": null,
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "LEON_LE_MEDIA"
+    },
+    {
+      "date_diffusion": "2026-11-28",
       "heure_debut": "08:00",
       "type": "ANCRE",
       "heure_fixe": true,
@@ -520,58 +527,6 @@
       "heure_debut": "09:00",
       "type": "ANCRE",
       "heure_fixe": true,
-      "channel_id": "RADIO_SHALOM_SZWARC",
-      "title": "DU COTE DE CHEZ SZWARC AVEC LISE BENKEMOUN"
-    },
-    {
-      "date_diffusion": "2026-11-28",
-      "heure_debut": "09:29",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "TOUR_D_ISRAEL",
-      "title": "Jérusalem à l'âge du bronze et du fer"
-    },
-    {
-      "date_diffusion": "2026-11-28",
-      "heure_debut": "09:48",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "RONY_HAYOT",
-      "title": "Juifs de France : le cri d’alarme venu d’Israël | Rony Hayot"
-    },
-    {
-      "date_diffusion": "2026-11-28",
-      "bloc_apres": "RADIO_SHALOM_SZWARC",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
-    },
-    {
-      "date_diffusion": "2026-11-28",
-      "bloc_apres": "RADIO_SHALOM_SZWARC",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "ISRAEL_EN_FRANCAIS"
-    },
-    {
-      "date_diffusion": "2026-11-28",
-      "bloc_apres": "RADIO_SHALOM_SZWARC",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL"
-    },
-    {
-      "date_diffusion": "2026-11-28",
-      "bloc_apres": "RADIO_SHALOM_SZWARC",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
-    },
-    {
-      "date_diffusion": "2026-11-28",
-      "heure_debut": "10:01",
-      "type": "ANCRE",
-      "heure_fixe": true,
       "channel_id": "ECUJE",
       "title": "Jacques Attali en conversation avec Haïm Korsia"
     },
@@ -587,11 +542,11 @@
       "bloc_apres": "ECUJE",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "LEON_LE_MEDIA"
+      "channel_id": "KFIR_ALMAGOR"
     },
     {
       "date_diffusion": "2026-11-28",
-      "heure_debut": "11:13",
+      "heure_debut": "10:09",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "STUDIO_420",
@@ -602,18 +557,33 @@
       "bloc_apres": "ECUJE",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL"
+      "channel_id": "LEON_LE_MEDIA"
     },
     {
       "date_diffusion": "2026-11-28",
       "bloc_apres": "ECUJE",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
+      "channel_id": "SOLAL_ISRAEL"
     },
     {
       "date_diffusion": "2026-11-28",
-      "heure_debut": "12:00",
+      "heure_debut": "10:56",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "STEPHANE_GOLDIN",
+      "title": "Trump–Xi–Poutine parlent de paix : l’Iran prépare-t-il la guerre ? | Stéphane Goldin"
+    },
+    {
+      "date_diffusion": "2026-11-28",
+      "bloc_apres": "ECUJE",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "ISRAEL_EN_FRANCAIS"
+    },
+    {
+      "date_diffusion": "2026-11-28",
+      "heure_debut": "11:00",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "CAFE_DAAT",
@@ -624,7 +594,7 @@
       "bloc_apres": "CAFE_DAAT",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
+      "channel_id": "TSAHAL_FR"
     },
     {
       "date_diffusion": "2026-11-28",
@@ -638,79 +608,11 @@
       "bloc_apres": "CAFE_DAAT",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
-    },
-    {
-      "date_diffusion": "2026-11-28",
-      "bloc_apres": "CAFE_DAAT",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "ISRAEL_EN_FRANCAIS"
-    },
-    {
-      "date_diffusion": "2026-11-28",
-      "bloc_apres": "CAFE_DAAT",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
       "channel_id": "SOLAL_ISRAEL"
     },
     {
       "date_diffusion": "2026-11-28",
-      "heure_debut": "13:09",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "STEPHANE_GOLDIN",
-      "title": "Trump–Xi–Poutine parlent de paix : l’Iran prépare-t-il la guerre ? | Stéphane Goldin"
-    },
-    {
-      "date_diffusion": "2026-11-28",
-      "heure_debut": "13:11",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "Les Marx Brothers"
-    },
-    {
-      "date_diffusion": "2026-11-28",
-      "heure_debut": "13:21",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "WILLIAM_ZERBIB_L_INTERVIEW",
-      "title": "Mélenchon : « Il n’est plus Gandhi, il est Arafat » | Paul Amar"
-    },
-    {
-      "date_diffusion": "2026-11-28",
-      "heure_debut": "13:48",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "Carte postale La synagogue de Capharnaum2"
-    },
-    {
-      "date_diffusion": "2026-11-28",
-      "heure_debut": "14:00",
-      "type": "ANCRE",
-      "heure_fixe": true,
-      "channel_id": "TEL_AVIV_NEW_YORK",
-      "title": "EPISODE 29- SEMAINE DU 25 AU 31 OCTOBRE- DEBRIEF ELECTIONS EN ISRAEL"
-    },
-    {
-      "date_diffusion": "2026-11-28",
-      "bloc_apres": "TEL_AVIV_NEW_YORK",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL"
-    },
-    {
-      "date_diffusion": "2026-11-28",
-      "bloc_apres": "TEL_AVIV_NEW_YORK",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
-    },
-    {
-      "date_diffusion": "2026-11-28",
-      "heure_debut": "14:42",
+      "heure_debut": "12:06",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "RONY_HAYOT",
@@ -718,11 +620,56 @@
     },
     {
       "date_diffusion": "2026-11-28",
-      "heure_debut": "14:51",
+      "bloc_apres": "CAFE_DAAT",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "KFIR_ALMAGOR"
+    },
+    {
+      "date_diffusion": "2026-11-28",
+      "heure_debut": "12:16",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "RADIO_SHALOM_SZWARC",
+      "title": "DU COTE DE CHEZ SZWARC AVEC LISE BENKEMOUN"
+    },
+    {
+      "date_diffusion": "2026-11-28",
+      "heure_debut": "12:45",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "Un violon sur le toit"
+      "title": "26 octobre 1994, Israël et la Jordanie signent la paix."
+    },
+    {
+      "date_diffusion": "2026-11-28",
+      "heure_debut": "13:00",
+      "type": "ANCRE",
+      "heure_fixe": true,
+      "channel_id": "TEL_AVIV_NEW_YORK",
+      "title": "EPISODE 29- SEMAINE DU 25 AU 31 OCTOBRE- DEBRIEF ELECTIONS EN ISRAEL"
+    },
+    {
+      "date_diffusion": "2026-11-28",
+      "heure_debut": "13:38",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "CARTES_POSTALES",
+      "title": "Bet Shearim"
+    },
+    {
+      "date_diffusion": "2026-11-28",
+      "bloc_apres": "TEL_AVIV_NEW_YORK",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "LEON_LE_MEDIA"
+    },
+    {
+      "date_diffusion": "2026-11-28",
+      "bloc_apres": "TEL_AVIV_NEW_YORK",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "KFIR_ALMAGOR"
     },
     {
       "date_diffusion": "2026-11-28",
@@ -730,6 +677,72 @@
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
       "channel_id": "ISRAEL_EN_FRANCAIS"
+    },
+    {
+      "date_diffusion": "2026-11-28",
+      "bloc_apres": "TEL_AVIV_NEW_YORK",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "SOLAL_ISRAEL"
+    },
+    {
+      "date_diffusion": "2026-11-28",
+      "bloc_apres": "TEL_AVIV_NEW_YORK",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "TSAHAL_FR"
+    },
+    {
+      "date_diffusion": "2026-11-28",
+      "heure_debut": "13:49",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "Adon Olam"
+    },
+    {
+      "date_diffusion": "2026-11-28",
+      "heure_debut": "14:00",
+      "type": "ANCRE",
+      "heure_fixe": true,
+      "channel_id": "WILLIAM_ZERBIB_L_INTERVIEW",
+      "title": "Mélenchon : « Il n’est plus Gandhi, il est Arafat » | Paul Amar"
+    },
+    {
+      "date_diffusion": "2026-11-28",
+      "heure_debut": "14:27",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "TOUR_D_ISRAEL",
+      "title": "Jérusalem à la période perse et hasmonéenne"
+    },
+    {
+      "date_diffusion": "2026-11-28",
+      "bloc_apres": "WILLIAM_ZERBIB_L_INTERVIEW",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "ISRAEL_EN_FRANCAIS"
+    },
+    {
+      "date_diffusion": "2026-11-28",
+      "bloc_apres": "WILLIAM_ZERBIB_L_INTERVIEW",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "KFIR_ALMAGOR"
+    },
+    {
+      "date_diffusion": "2026-11-28",
+      "bloc_apres": "WILLIAM_ZERBIB_L_INTERVIEW",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "SOLAL_ISRAEL"
+    },
+    {
+      "date_diffusion": "2026-11-28",
+      "bloc_apres": "WILLIAM_ZERBIB_L_INTERVIEW",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "TSAHAL_FR"
     },
     {
       "date_diffusion": "2026-11-28",
@@ -741,26 +754,19 @@
     },
     {
       "date_diffusion": "2026-11-28",
-      "heure_debut": "15:22",
+      "heure_debut": "15:23",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "TOUR_D_ISRAEL",
-      "title": "Capharnaüm"
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "Les Marx Brothers"
     },
     {
       "date_diffusion": "2026-11-28",
-      "heure_debut": "15:41",
+      "heure_debut": "15:32",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
-      "title": "Cesarée"
-    },
-    {
-      "date_diffusion": "2026-11-28",
-      "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
+      "title": "Carte postale La synagogue de Capharnaum2"
     },
     {
       "date_diffusion": "2026-11-28",
@@ -768,6 +774,14 @@
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
       "channel_id": "SOLAL_ISRAEL"
+    },
+    {
+      "date_diffusion": "2026-11-28",
+      "heure_debut": "15:40",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "STEPHANE_GOLDIN",
+      "title": "Trump–Xi–Poutine parlent de paix : l’Iran prépare-t-il la guerre ? | Stéphane Goldin"
     },
     {
       "date_diffusion": "2026-11-28",
@@ -781,6 +795,13 @@
       "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
+      "channel_id": "ISRAEL_EN_FRANCAIS"
+    },
+    {
+      "date_diffusion": "2026-11-28",
+      "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
       "channel_id": "TSAHAL_FR"
     },
     {
@@ -788,11 +809,11 @@
       "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "ISRAEL_EN_FRANCAIS"
+      "channel_id": "KFIR_ALMAGOR"
     },
     {
       "date_diffusion": "2026-11-28",
-      "heure_debut": "16:00",
+      "heure_debut": "15:59",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "YINON_SHOW",
@@ -829,20 +850,6 @@
     },
     {
       "date_diffusion": "2026-11-28",
-      "bloc_apres": "YINON_SHOW",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL"
-    },
-    {
-      "date_diffusion": "2026-11-28",
-      "bloc_apres": "YINON_SHOW",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "ISRAEL_EN_FRANCAIS"
-    },
-    {
-      "date_diffusion": "2026-11-28",
       "heure_debut": "18:00",
       "type": "ANCRE",
       "heure_fixe": true,
@@ -851,34 +858,10 @@
     },
     {
       "date_diffusion": "2026-11-28",
-      "heure_debut": "18:22",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "STEPHANE_GOLDIN",
-      "title": "Trump–Xi–Poutine parlent de paix : l’Iran prépare-t-il la guerre ? | Stéphane Goldin"
-    },
-    {
-      "date_diffusion": "2026-11-28",
       "bloc_apres": "TOUR_D_ISRAEL",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "ISRAEL_EN_FRANCAIS"
-    },
-    {
-      "date_diffusion": "2026-11-28",
-      "heure_debut": "18:25",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": ""
-    },
-    {
-      "date_diffusion": "2026-11-28",
-      "heure_debut": "18:32",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "WILLIAM_ZERBIB_L_INTERVIEW",
-      "title": "Mélenchon : « Il n’est plus Gandhi, il est Arafat » | Paul Amar"
+      "channel_id": "SOLAL_ISRAEL"
     },
     {
       "date_diffusion": "2026-11-28",
@@ -889,10 +872,57 @@
     },
     {
       "date_diffusion": "2026-11-28",
+      "heure_debut": "18:25",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "RONY_HAYOT",
+      "title": "Juifs de France : le cri d’alarme venu d’Israël | Rony Hayot"
+    },
+    {
+      "date_diffusion": "2026-11-28",
+      "heure_debut": "18:35",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "RADIO_SHALOM_SZWARC",
+      "title": "DU COTE DE CHEZ SZWARC AVEC LISE BENKEMOUN"
+    },
+    {
+      "date_diffusion": "2026-11-28",
+      "heure_debut": "19:05",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "Un violon sur le toit"
+    },
+    {
+      "date_diffusion": "2026-11-28",
       "bloc_apres": "TOUR_D_ISRAEL",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL"
+      "channel_id": "ISRAEL_EN_FRANCAIS"
+    },
+    {
+      "date_diffusion": "2026-11-28",
+      "heure_debut": "19:17",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "CARTES_POSTALES",
+      "title": "Cesarée"
+    },
+    {
+      "date_diffusion": "2026-11-28",
+      "heure_debut": "19:22",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "TOUR_D_ISRAEL",
+      "title": "Jérusalem à l'âge du bronze et du fer"
+    },
+    {
+      "date_diffusion": "2026-11-28",
+      "bloc_apres": "TOUR_D_ISRAEL",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "LEON_LE_MEDIA"
     },
     {
       "date_diffusion": "2026-11-28",
@@ -900,14 +930,6 @@
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
       "channel_id": "KFIR_ALMAGOR"
-    },
-    {
-      "date_diffusion": "2026-11-28",
-      "heure_debut": "19:04",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "OROT_VEKELIM",
-      "title": "Macron à l'ONU : « L'histoire le jugera »"
     },
     {
       "date_diffusion": "2026-11-28",
@@ -919,11 +941,11 @@
     },
     {
       "date_diffusion": "2026-11-28",
-      "heure_debut": "22:00",
+      "heure_debut": "21:59",
       "type": "ANCRE",
       "heure_fixe": true,
-      "channel_id": "WILLIAM_ZERBIB_L_INTERVIEW",
-      "title": "Mélenchon : « Il n’est plus Gandhi, il est Arafat » | Paul Amar"
+      "channel_id": "RADIO_SHALOM_SZWARC",
+      "title": "DU COTE DE CHEZ SZWARC AVEC LISE BENKEMOUN"
     },
     {
       "date_diffusion": "2026-11-29",
@@ -935,139 +957,7 @@
     },
     {
       "date_diffusion": "2026-11-29",
-      "bloc_apres": "RADIO_SHALOM_BOCHURBERG",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
-    },
-    {
-      "date_diffusion": "2026-11-29",
-      "bloc_apres": "RADIO_SHALOM_BOCHURBERG",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
-    },
-    {
-      "date_diffusion": "2026-11-29",
-      "bloc_apres": "RADIO_SHALOM_BOCHURBERG",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL"
-    },
-    {
-      "date_diffusion": "2026-11-29",
-      "heure_debut": "08:55",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "STEPHANE_GOLDIN",
-      "title": "Trump–Xi–Poutine parlent de paix : l’Iran prépare-t-il la guerre ? | Stéphane Goldin"
-    },
-    {
-      "date_diffusion": "2026-11-29",
-      "bloc_apres": "RADIO_SHALOM_BOCHURBERG",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "ISRAEL_EN_FRANCAIS"
-    },
-    {
-      "date_diffusion": "2026-11-29",
-      "heure_debut": "09:00",
-      "type": "ANCRE",
-      "heure_fixe": true,
-      "channel_id": "ECUJE",
-      "title": "Jacques Attali en conversation avec Haïm Korsia"
-    },
-    {
-      "date_diffusion": "2026-11-29",
-      "bloc_apres": "ECUJE",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
-    },
-    {
-      "date_diffusion": "2026-11-29",
-      "bloc_apres": "ECUJE",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
-    },
-    {
-      "date_diffusion": "2026-11-29",
-      "heure_debut": "10:10",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "STUDIO_420",
-      "title": "L’écoute de l’âme pour dénouer les fausses croyances - Méthode D-STRECE - Laurence Bernheim"
-    },
-    {
-      "date_diffusion": "2026-11-29",
-      "bloc_apres": "ECUJE",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL"
-    },
-    {
-      "date_diffusion": "2026-11-29",
-      "bloc_apres": "ECUJE",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "ISRAEL_EN_FRANCAIS"
-    },
-    {
-      "date_diffusion": "2026-11-29",
-      "heure_debut": "10:54",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "Ramat Hanadiv"
-    },
-    {
-      "date_diffusion": "2026-11-29",
-      "heure_debut": "11:00",
-      "type": "ANCRE",
-      "heure_fixe": true,
-      "channel_id": "CAFE_DAAT",
-      "title": "Prendre des décisions en situation d’incertitude —  Professeur Avi Rivkind"
-    },
-    {
-      "date_diffusion": "2026-11-29",
-      "heure_debut": "12:01",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "TEL_AVIV_NEW_YORK",
-      "title": "EPISODE 29- SEMAINE DU 25 AU 31 OCTOBRE- DEBRIEF ELECTIONS EN ISRAEL"
-    },
-    {
-      "date_diffusion": "2026-11-29",
-      "bloc_apres": "CAFE_DAAT",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
-    },
-    {
-      "date_diffusion": "2026-11-29",
-      "bloc_apres": "CAFE_DAAT",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
-    },
-    {
-      "date_diffusion": "2026-11-29",
-      "bloc_apres": "CAFE_DAAT",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "ISRAEL_EN_FRANCAIS"
-    },
-    {
-      "date_diffusion": "2026-11-29",
-      "bloc_apres": "CAFE_DAAT",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL"
-    },
-    {
-      "date_diffusion": "2026-11-29",
-      "heure_debut": "12:46",
+      "heure_debut": "08:49",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "RONY_HAYOT",
@@ -1075,7 +965,60 @@
     },
     {
       "date_diffusion": "2026-11-29",
-      "heure_debut": "12:55",
+      "bloc_apres": "RADIO_SHALOM_BOCHURBERG",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "SOLAL_ISRAEL"
+    },
+    {
+      "date_diffusion": "2026-11-29",
+      "bloc_apres": "RADIO_SHALOM_BOCHURBERG",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "KFIR_ALMAGOR"
+    },
+    {
+      "date_diffusion": "2026-11-29",
+      "bloc_apres": "RADIO_SHALOM_BOCHURBERG",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "TSAHAL_FR"
+    },
+    {
+      "date_diffusion": "2026-11-29",
+      "heure_debut": "09:01",
+      "type": "ANCRE",
+      "heure_fixe": true,
+      "channel_id": "RADIO_SHALOM_SZWARC",
+      "title": "DU COTE DE CHEZ SZWARC AVEC LISE BENKEMOUN"
+    },
+    {
+      "date_diffusion": "2026-11-29",
+      "heure_debut": "09:29",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "TOUR_D_ISRAEL",
+      "title": "Le tombeau du prophète Samuel"
+    },
+    {
+      "date_diffusion": "2026-11-29",
+      "heure_debut": "09:41",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "2. UJUH Eurovision"
+    },
+    {
+      "date_diffusion": "2026-11-29",
+      "heure_debut": "09:48",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "CARTES_POSTALES",
+      "title": "Massada"
+    },
+    {
+      "date_diffusion": "2026-11-29",
+      "heure_debut": "09:52",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "STEPHANE_GOLDIN",
@@ -1083,44 +1026,132 @@
     },
     {
       "date_diffusion": "2026-11-29",
-      "heure_debut": "13:00",
-      "type": "ANCRE",
-      "heure_fixe": true,
-      "channel_id": "WILLIAM_ZERBIB_L_INTERVIEW",
-      "title": "Mélenchon : « Il n’est plus Gandhi, il est Arafat » | Paul Amar"
-    },
-    {
-      "date_diffusion": "2026-11-29",
-      "heure_debut": "13:27",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "RADIO_SHALOM_SZWARC",
-      "title": "DU COTE DE CHEZ SZWARC AVEC LISE BENKEMOUN"
-    },
-    {
-      "date_diffusion": "2026-11-29",
-      "bloc_apres": "WILLIAM_ZERBIB_L_INTERVIEW",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
-    },
-    {
-      "date_diffusion": "2026-11-29",
-      "bloc_apres": "WILLIAM_ZERBIB_L_INTERVIEW",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL"
-    },
-    {
-      "date_diffusion": "2026-11-29",
-      "bloc_apres": "WILLIAM_ZERBIB_L_INTERVIEW",
+      "bloc_apres": "RADIO_SHALOM_SZWARC",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
       "channel_id": "KFIR_ALMAGOR"
     },
     {
       "date_diffusion": "2026-11-29",
-      "heure_debut": "14:00",
+      "bloc_apres": "RADIO_SHALOM_SZWARC",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "ISRAEL_EN_FRANCAIS"
+    },
+    {
+      "date_diffusion": "2026-11-29",
+      "bloc_apres": "RADIO_SHALOM_SZWARC",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "SOLAL_ISRAEL"
+    },
+    {
+      "date_diffusion": "2026-11-29",
+      "bloc_apres": "RADIO_SHALOM_SZWARC",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "TSAHAL_FR"
+    },
+    {
+      "date_diffusion": "2026-11-29",
+      "heure_debut": "09:59",
+      "type": "ANCRE",
+      "heure_fixe": true,
+      "channel_id": "ECUJE",
+      "title": "Jacques Attali en conversation avec Haïm Korsia"
+    },
+    {
+      "date_diffusion": "2026-11-29",
+      "heure_debut": "11:08",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "TEL_AVIV_NEW_YORK",
+      "title": "EPISODE 29- SEMAINE DU 25 AU 31 OCTOBRE- DEBRIEF ELECTIONS EN ISRAEL"
+    },
+    {
+      "date_diffusion": "2026-11-29",
+      "bloc_apres": "ECUJE",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "ISRAEL_EN_FRANCAIS"
+    },
+    {
+      "date_diffusion": "2026-11-29",
+      "bloc_apres": "ECUJE",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "KFIR_ALMAGOR"
+    },
+    {
+      "date_diffusion": "2026-11-29",
+      "bloc_apres": "ECUJE",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "TSAHAL_FR"
+    },
+    {
+      "date_diffusion": "2026-11-29",
+      "heure_debut": "11:52",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "CARTES_POSTALES",
+      "title": "Ramat Hanadiv"
+    },
+    {
+      "date_diffusion": "2026-11-29",
+      "bloc_apres": "ECUJE",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "SOLAL_ISRAEL"
+    },
+    {
+      "date_diffusion": "2026-11-29",
+      "heure_debut": "12:00",
+      "type": "ANCRE",
+      "heure_fixe": true,
+      "channel_id": "CAFE_DAAT",
+      "title": "Prendre des décisions en situation d’incertitude —  Professeur Avi Rivkind"
+    },
+    {
+      "date_diffusion": "2026-11-29",
+      "bloc_apres": "CAFE_DAAT",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "TSAHAL_FR"
+    },
+    {
+      "date_diffusion": "2026-11-29",
+      "bloc_apres": "CAFE_DAAT",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "KFIR_ALMAGOR"
+    },
+    {
+      "date_diffusion": "2026-11-29",
+      "heure_debut": "13:04",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "STUDIO_420",
+      "title": "L’écoute de l’âme pour dénouer les fausses croyances - Méthode D-STRECE - Laurence Bernheim"
+    },
+    {
+      "date_diffusion": "2026-11-29",
+      "bloc_apres": "CAFE_DAAT",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "SOLAL_ISRAEL"
+    },
+    {
+      "date_diffusion": "2026-11-29",
+      "heure_debut": "13:50",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "RONY_HAYOT",
+      "title": "Juifs de France : le cri d’alarme venu d’Israël | Rony Hayot"
+    },
+    {
+      "date_diffusion": "2026-11-29",
+      "heure_debut": "13:59",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "JEROME_HAAS_L_INTERVIEW",
@@ -1131,20 +1162,49 @@
       "heure_debut": "14:22",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "TOUR_D_ISRAEL",
-      "title": "La Jérusalem chrétienne"
+      "channel_id": "STEPHANE_GOLDIN",
+      "title": "Trump–Xi–Poutine parlent de paix : l’Iran prépare-t-il la guerre ? | Stéphane Goldin"
     },
     {
       "date_diffusion": "2026-11-29",
-      "heure_debut": "14:39",
+      "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "ISRAEL_EN_FRANCAIS"
+    },
+    {
+      "date_diffusion": "2026-11-29",
+      "heure_debut": "14:25",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "2. UJUH Eurovision"
+      "title": ""
     },
     {
       "date_diffusion": "2026-11-29",
-      "heure_debut": "14:46",
+      "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "KFIR_ALMAGOR"
+    },
+    {
+      "date_diffusion": "2026-11-29",
+      "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "SOLAL_ISRAEL"
+    },
+    {
+      "date_diffusion": "2026-11-29",
+      "heure_debut": "14:36",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "TOUR_D_ISRAEL",
+      "title": "Les manuscrits de la mer Morte"
+    },
+    {
+      "date_diffusion": "2026-11-29",
+      "heure_debut": "14:53",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
@@ -1155,32 +1215,11 @@
       "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "ISRAEL_EN_FRANCAIS"
-    },
-    {
-      "date_diffusion": "2026-11-29",
-      "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL"
-    },
-    {
-      "date_diffusion": "2026-11-29",
-      "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
-    },
-    {
-      "date_diffusion": "2026-11-29",
-      "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
       "channel_id": "TSAHAL_FR"
     },
     {
       "date_diffusion": "2026-11-29",
-      "heure_debut": "15:00",
+      "heure_debut": "14:59",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "YINON_SHOW",
@@ -1188,25 +1227,18 @@
     },
     {
       "date_diffusion": "2026-11-29",
+      "heure_debut": "16:07",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "TEL_AVIV_NEW_YORK",
+      "title": "EPISODE 29- SEMAINE DU 25 AU 31 OCTOBRE- DEBRIEF ELECTIONS EN ISRAEL"
+    },
+    {
+      "date_diffusion": "2026-11-29",
       "bloc_apres": "YINON_SHOW",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
       "channel_id": "TSAHAL_FR"
-    },
-    {
-      "date_diffusion": "2026-11-29",
-      "bloc_apres": "YINON_SHOW",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "ISRAEL_EN_FRANCAIS"
-    },
-    {
-      "date_diffusion": "2026-11-29",
-      "heure_debut": "16:09",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "STUDIO_420",
-      "title": "L’écoute de l’âme pour dénouer les fausses croyances - Méthode D-STRECE - Laurence Bernheim"
     },
     {
       "date_diffusion": "2026-11-29",
@@ -1220,15 +1252,22 @@
       "bloc_apres": "YINON_SHOW",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
+      "channel_id": "ISRAEL_EN_FRANCAIS"
+    },
+    {
+      "date_diffusion": "2026-11-29",
+      "bloc_apres": "YINON_SHOW",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
       "channel_id": "SOLAL_ISRAEL"
     },
     {
       "date_diffusion": "2026-11-29",
-      "heure_debut": "16:55",
+      "heure_debut": "16:51",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "appolonia"
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "1. UJUH Marc Chagall"
     },
     {
       "date_diffusion": "2026-11-29",
@@ -1243,37 +1282,8 @@
       "heure_debut": "17:22",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "RONY_HAYOT",
-      "title": "Juifs de France : le cri d’alarme venu d’Israël | Rony Hayot"
-    },
-    {
-      "date_diffusion": "2026-11-29",
-      "bloc_apres": "TOUR_D_ISRAEL",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
-    },
-    {
-      "date_diffusion": "2026-11-29",
-      "heure_debut": "17:31",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "RADIO_SHALOM_SZWARC",
-      "title": "DU COTE DE CHEZ SZWARC AVEC LISE BENKEMOUN"
-    },
-    {
-      "date_diffusion": "2026-11-29",
-      "bloc_apres": "TOUR_D_ISRAEL",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
-    },
-    {
-      "date_diffusion": "2026-11-29",
-      "bloc_apres": "TOUR_D_ISRAEL",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL"
+      "channel_id": "STUDIO_420",
+      "title": "L’écoute de l’âme pour dénouer les fausses croyances - Méthode D-STRECE - Laurence Bernheim"
     },
     {
       "date_diffusion": "2026-11-29",
@@ -1284,7 +1294,60 @@
     },
     {
       "date_diffusion": "2026-11-29",
-      "heure_debut": "18:05",
+      "bloc_apres": "TOUR_D_ISRAEL",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "TSAHAL_FR"
+    },
+    {
+      "date_diffusion": "2026-11-29",
+      "bloc_apres": "TOUR_D_ISRAEL",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "SOLAL_ISRAEL"
+    },
+    {
+      "date_diffusion": "2026-11-29",
+      "heure_debut": "18:08",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "Boris Cyrulnik"
+    },
+    {
+      "date_diffusion": "2026-11-29",
+      "bloc_apres": "TOUR_D_ISRAEL",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "KFIR_ALMAGOR"
+    },
+    {
+      "date_diffusion": "2026-11-29",
+      "heure_debut": "18:16",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "WILLIAM_ZERBIB_L_INTERVIEW",
+      "title": "Mélenchon : « Il n’est plus Gandhi, il est Arafat » | Paul Amar"
+    },
+    {
+      "date_diffusion": "2026-11-29",
+      "heure_debut": "18:44",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "CARTES_POSTALES",
+      "title": "appolonia"
+    },
+    {
+      "date_diffusion": "2026-11-29",
+      "heure_debut": "18:47",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "TOUR_D_ISRAEL",
+      "title": "La Jérusalem chrétienne"
+    },
+    {
+      "date_diffusion": "2026-11-29",
+      "heure_debut": "19:09",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
@@ -1292,23 +1355,7 @@
     },
     {
       "date_diffusion": "2026-11-29",
-      "heure_debut": "18:13",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "YINON_SHOW",
-      "title": "ERIC HASSOUN: 20 ANS DE BUSINESS AU COEUR DE LA COMMUNAUTE JUIVE"
-    },
-    {
-      "date_diffusion": "2026-11-29",
-      "heure_debut": "19:24",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "1. UJUH Marc Chagall"
-    },
-    {
-      "date_diffusion": "2026-11-29",
-      "heure_debut": "19:31",
+      "heure_debut": "19:45",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
@@ -1316,19 +1363,11 @@
     },
     {
       "date_diffusion": "2026-11-29",
-      "heure_debut": "19:36",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "TOUR_D_ISRAEL",
-      "title": "Les synagogues du Golan"
-    },
-    {
-      "date_diffusion": "2026-11-29",
-      "heure_debut": "19:59",
+      "heure_debut": "20:00",
       "type": "ANCRE",
       "heure_fixe": true,
-      "channel_id": "RADIO_SHALOM_SZWARC",
-      "title": "DU COTE DE CHEZ SZWARC AVEC LISE BENKEMOUN"
+      "channel_id": "WILLIAM_ZERBIB_L_INTERVIEW",
+      "title": "Mélenchon : « Il n’est plus Gandhi, il est Arafat » | Paul Amar"
     },
     {
       "date_diffusion": "2026-11-29",
@@ -1340,14 +1379,7 @@
     },
     {
       "date_diffusion": "2026-11-30",
-      "bloc_apres": null,
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
-    },
-    {
-      "date_diffusion": "2026-11-30",
-      "heure_debut": "08:01",
+      "heure_debut": "08:00",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "RADIO_SHALOM_BOCHURBERG",
@@ -1358,7 +1390,7 @@
       "bloc_apres": "RADIO_SHALOM_BOCHURBERG",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
+      "channel_id": "KFIR_ALMAGOR"
     },
     {
       "date_diffusion": "2026-11-30",
@@ -1372,22 +1404,22 @@
       "bloc_apres": "RADIO_SHALOM_BOCHURBERG",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL"
+      "channel_id": "TSAHAL_FR"
+    },
+    {
+      "date_diffusion": "2026-11-30",
+      "heure_debut": "08:52",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "STEPHANE_GOLDIN",
+      "title": "Trump–Xi–Poutine parlent de paix : l’Iran prépare-t-il la guerre ? | Stéphane Goldin"
     },
     {
       "date_diffusion": "2026-11-30",
       "bloc_apres": "RADIO_SHALOM_BOCHURBERG",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
-    },
-    {
-      "date_diffusion": "2026-11-30",
-      "heure_debut": "08:53",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "STEPHANE_GOLDIN",
-      "title": "Trump–Xi–Poutine parlent de paix : l’Iran prépare-t-il la guerre ? | Stéphane Goldin"
+      "channel_id": "SOLAL_ISRAEL"
     },
     {
       "date_diffusion": "2026-11-30",
@@ -1402,23 +1434,23 @@
       "heure_debut": "09:29",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "RONY_HAYOT",
-      "title": "Juifs de France : le cri d’alarme venu d’Israël | Rony Hayot"
+      "channel_id": "TOUR_D_ISRAEL",
+      "title": "Le mont du Temple"
+    },
+    {
+      "date_diffusion": "2026-11-30",
+      "heure_debut": "09:49",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": ""
     },
     {
       "date_diffusion": "2026-11-30",
       "bloc_apres": "RADIO_SHALOM_SZWARC",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
-    },
-    {
-      "date_diffusion": "2026-11-30",
-      "heure_debut": "09:39",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": ""
+      "channel_id": "ISRAEL_EN_FRANCAIS"
     },
     {
       "date_diffusion": "2026-11-30",
@@ -1432,26 +1464,11 @@
       "bloc_apres": "RADIO_SHALOM_SZWARC",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL"
+      "channel_id": "KFIR_ALMAGOR"
     },
     {
       "date_diffusion": "2026-11-30",
-      "heure_debut": "09:51",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "Carte postale La synagogue de Capharnaum2"
-    },
-    {
-      "date_diffusion": "2026-11-30",
-      "bloc_apres": "RADIO_SHALOM_SZWARC",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "ISRAEL_EN_FRANCAIS"
-    },
-    {
-      "date_diffusion": "2026-11-30",
-      "heure_debut": "10:00",
+      "heure_debut": "10:01",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "TEL_AVIV_NEW_YORK",
@@ -1459,18 +1476,26 @@
     },
     {
       "date_diffusion": "2026-11-30",
-      "heure_debut": "10:38",
+      "heure_debut": "10:39",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "TOUR_D_ISRAEL",
-      "title": "Le mont du Temple"
+      "channel_id": "RONY_HAYOT",
+      "title": "Juifs de France : le cri d’alarme venu d’Israël | Rony Hayot"
+    },
+    {
+      "date_diffusion": "2026-11-30",
+      "heure_debut": "10:47",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "CARTES_POSTALES",
+      "title": "Belvoir (1)"
     },
     {
       "date_diffusion": "2026-11-30",
       "bloc_apres": "TEL_AVIV_NEW_YORK",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
+      "channel_id": "SOLAL_ISRAEL"
     },
     {
       "date_diffusion": "2026-11-30",
@@ -1481,7 +1506,14 @@
     },
     {
       "date_diffusion": "2026-11-30",
-      "heure_debut": "11:00",
+      "bloc_apres": "TEL_AVIV_NEW_YORK",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "KFIR_ALMAGOR"
+    },
+    {
+      "date_diffusion": "2026-11-30",
+      "heure_debut": "11:01",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "WILLIAM_ZERBIB_L_INTERVIEW",
@@ -1489,26 +1521,19 @@
     },
     {
       "date_diffusion": "2026-11-30",
-      "heure_debut": "11:27",
+      "heure_debut": "11:29",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "TOUR_D_ISRAEL",
+      "title": "Jérusalem au temps des croisades"
+    },
+    {
+      "date_diffusion": "2026-11-30",
+      "heure_debut": "11:49",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
       "title": ""
-    },
-    {
-      "date_diffusion": "2026-11-30",
-      "heure_debut": "11:36",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "Cesarée"
-    },
-    {
-      "date_diffusion": "2026-11-30",
-      "bloc_apres": "WILLIAM_ZERBIB_L_INTERVIEW",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "ISRAEL_EN_FRANCAIS"
     },
     {
       "date_diffusion": "2026-11-30",
@@ -1522,14 +1547,14 @@
       "bloc_apres": "WILLIAM_ZERBIB_L_INTERVIEW",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
+      "channel_id": "ISRAEL_EN_FRANCAIS"
     },
     {
       "date_diffusion": "2026-11-30",
       "bloc_apres": "WILLIAM_ZERBIB_L_INTERVIEW",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
+      "channel_id": "TSAHAL_FR"
     },
     {
       "date_diffusion": "2026-11-30",
@@ -1541,11 +1566,11 @@
     },
     {
       "date_diffusion": "2026-11-30",
-      "heure_debut": "12:22",
+      "heure_debut": "12:23",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "TOUR_D_ISRAEL",
-      "title": "Jérusalem au temps des croisades"
+      "channel_id": "CARTES_POSTALES",
+      "title": "Bet Shearim"
     },
     {
       "date_diffusion": "2026-11-30",
@@ -1570,19 +1595,18 @@
     },
     {
       "date_diffusion": "2026-11-30",
-      "heure_debut": "12:45",
+      "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "KFIR_ALMAGOR"
+    },
+    {
+      "date_diffusion": "2026-11-30",
+      "heure_debut": "12:50",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
       "title": ""
-    },
-    {
-      "date_diffusion": "2026-11-30",
-      "heure_debut": "12:53",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "Ein Gedi"
     },
     {
       "date_diffusion": "2026-11-30",
@@ -1597,18 +1621,25 @@
       "bloc_apres": "YINON_SHOW",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
+      "channel_id": "KFIR_ALMAGOR"
     },
     {
       "date_diffusion": "2026-11-30",
       "bloc_apres": "YINON_SHOW",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
+      "channel_id": "ISRAEL_EN_FRANCAIS"
     },
     {
       "date_diffusion": "2026-11-30",
-      "heure_debut": "14:08",
+      "bloc_apres": "YINON_SHOW",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "TSAHAL_FR"
+    },
+    {
+      "date_diffusion": "2026-11-30",
+      "heure_debut": "14:10",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "STUDIO_420",
@@ -1620,13 +1651,6 @@
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
       "channel_id": "SOLAL_ISRAEL"
-    },
-    {
-      "date_diffusion": "2026-11-30",
-      "bloc_apres": "YINON_SHOW",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "ISRAEL_EN_FRANCAIS"
     },
     {
       "date_diffusion": "2026-11-30",
@@ -1661,25 +1685,11 @@
     },
     {
       "date_diffusion": "2026-11-30",
-      "bloc_apres": "TOUR_D_ISRAEL",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "ISRAEL_EN_FRANCAIS"
-    },
-    {
-      "date_diffusion": "2026-11-30",
-      "heure_debut": "15:34",
+      "heure_debut": "15:33",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": ""
-    },
-    {
-      "date_diffusion": "2026-11-30",
-      "bloc_apres": "TOUR_D_ISRAEL",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL"
+      "channel_id": "ECUJE",
+      "title": "Jacques Attali en conversation avec Haïm Korsia"
     },
     {
       "date_diffusion": "2026-11-30",
@@ -1690,15 +1700,21 @@
     },
     {
       "date_diffusion": "2026-11-30",
-      "heure_debut": "15:44",
-      "type": "COURT_NOMME",
+      "bloc_apres": "TOUR_D_ISRAEL",
+      "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "CAFE_DAAT",
-      "title": "Prendre des décisions en situation d’incertitude —  Professeur Avi Rivkind"
+      "channel_id": "ISRAEL_EN_FRANCAIS"
     },
     {
       "date_diffusion": "2026-11-30",
-      "heure_debut": "16:52",
+      "bloc_apres": "TOUR_D_ISRAEL",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "SOLAL_ISRAEL"
+    },
+    {
+      "date_diffusion": "2026-11-30",
+      "heure_debut": "16:48",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
@@ -1706,35 +1722,35 @@
     },
     {
       "date_diffusion": "2026-11-30",
-      "heure_debut": "17:00",
+      "heure_debut": "16:56",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "OROT_VEKELIM",
-      "title": "7 octobre, 3 ans après : a-t-on gagné ?"
+      "title": "Macron à l'ONU : « L'histoire le jugera »"
     },
     {
       "date_diffusion": "2026-11-30",
-      "heure_debut": "18:15",
+      "heure_debut": "17:52",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": ""
+    },
+    {
+      "date_diffusion": "2026-11-30",
+      "heure_debut": "17:59",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "OROT_VEKELIM",
+      "title": "Guerre avec l’Iran avant les élections ?"
+    },
+    {
+      "date_diffusion": "2026-11-30",
+      "heure_debut": "19:15",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "STUDIO_420",
       "title": "L’écoute de l’âme pour dénouer les fausses croyances - Méthode D-STRECE - Laurence Bernheim"
-    },
-    {
-      "date_diffusion": "2026-11-30",
-      "heure_debut": "19:00",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": ""
-    },
-    {
-      "date_diffusion": "2026-11-30",
-      "heure_debut": "19:08",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "Ein Hod"
     },
     {
       "date_diffusion": "2026-11-30",
@@ -1762,19 +1778,17 @@
     },
     {
       "date_diffusion": "2026-12-01",
-      "heure_debut": "08:48",
-      "type": "COURT_NOMME",
+      "bloc_apres": "RADIO_SHALOM_BOCHURBERG",
+      "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": ""
+      "channel_id": "KFIR_ALMAGOR"
     },
     {
       "date_diffusion": "2026-12-01",
-      "heure_debut": "08:53",
-      "type": "COURT_NOMME",
+      "bloc_apres": "RADIO_SHALOM_BOCHURBERG",
+      "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "Massada"
+      "channel_id": "TSAHAL_FR"
     },
     {
       "date_diffusion": "2026-12-01",
@@ -1785,10 +1799,11 @@
     },
     {
       "date_diffusion": "2026-12-01",
-      "bloc_apres": "RADIO_SHALOM_BOCHURBERG",
-      "type": "CLIPS_CHAINE",
+      "heure_debut": "08:53",
+      "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "ISRAEL_EN_FRANCAIS"
+      "channel_id": "STEPHANE_GOLDIN",
+      "title": "Trump–Xi–Poutine parlent de paix : l’Iran prépare-t-il la guerre ? | Stéphane Goldin"
     },
     {
       "date_diffusion": "2026-12-01",
@@ -1800,33 +1815,11 @@
     },
     {
       "date_diffusion": "2026-12-01",
-      "bloc_apres": "RADIO_SHALOM_SZWARC",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
-    },
-    {
-      "date_diffusion": "2026-12-01",
-      "bloc_apres": "RADIO_SHALOM_SZWARC",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
-    },
-    {
-      "date_diffusion": "2026-12-01",
-      "heure_debut": "09:31",
+      "heure_debut": "09:29",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "RONY_HAYOT",
       "title": "Juifs de France : le cri d’alarme venu d’Israël | Rony Hayot"
-    },
-    {
-      "date_diffusion": "2026-12-01",
-      "heure_debut": "09:39",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "STEPHANE_GOLDIN",
-      "title": "Trump–Xi–Poutine parlent de paix : l’Iran prépare-t-il la guerre ? | Stéphane Goldin"
     },
     {
       "date_diffusion": "2026-12-01",
@@ -1837,6 +1830,22 @@
     },
     {
       "date_diffusion": "2026-12-01",
+      "heure_debut": "09:38",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": ""
+    },
+    {
+      "date_diffusion": "2026-12-01",
+      "heure_debut": "09:45",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "CARTES_POSTALES",
+      "title": "Cesarée"
+    },
+    {
+      "date_diffusion": "2026-12-01",
       "bloc_apres": "RADIO_SHALOM_SZWARC",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
@@ -1844,11 +1853,17 @@
     },
     {
       "date_diffusion": "2026-12-01",
-      "heure_debut": "09:49",
-      "type": "COURT_NOMME",
+      "bloc_apres": "RADIO_SHALOM_SZWARC",
+      "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": ""
+      "channel_id": "KFIR_ALMAGOR"
+    },
+    {
+      "date_diffusion": "2026-12-01",
+      "bloc_apres": "RADIO_SHALOM_SZWARC",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "TSAHAL_FR"
     },
     {
       "date_diffusion": "2026-12-01",
@@ -1870,11 +1885,11 @@
       "bloc_apres": "CAFE_DAAT",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
+      "channel_id": "ISRAEL_EN_FRANCAIS"
     },
     {
       "date_diffusion": "2026-12-01",
-      "heure_debut": "11:04",
+      "heure_debut": "11:03",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "STUDIO_420",
@@ -1889,7 +1904,7 @@
     },
     {
       "date_diffusion": "2026-12-01",
-      "heure_debut": "11:48",
+      "heure_debut": "11:47",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
@@ -1897,33 +1912,26 @@
     },
     {
       "date_diffusion": "2026-12-01",
-      "heure_debut": "11:55",
+      "heure_debut": "11:52",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
-      "title": "Ramat Hanadiv"
+      "title": "Ein Gedi"
     },
     {
       "date_diffusion": "2026-12-01",
-      "heure_debut": "12:01",
-      "type": "ANCRE",
-      "heure_fixe": true,
-      "channel_id": "TEL_AVIV_NEW_YORK",
-      "title": "EPISODE 29- SEMAINE DU 25 AU 31 OCTOBRE- DEBRIEF ELECTIONS EN ISRAEL"
-    },
-    {
-      "date_diffusion": "2026-12-01",
-      "bloc_apres": "TEL_AVIV_NEW_YORK",
+      "bloc_apres": "CAFE_DAAT",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
       "channel_id": "KFIR_ALMAGOR"
     },
     {
       "date_diffusion": "2026-12-01",
-      "bloc_apres": "TEL_AVIV_NEW_YORK",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "ISRAEL_EN_FRANCAIS"
+      "heure_debut": "12:00",
+      "type": "ANCRE",
+      "heure_fixe": true,
+      "channel_id": "TEL_AVIV_NEW_YORK",
+      "title": "EPISODE 29- SEMAINE DU 25 AU 31 OCTOBRE- DEBRIEF ELECTIONS EN ISRAEL"
     },
     {
       "date_diffusion": "2026-12-01",
@@ -1937,7 +1945,21 @@
       "bloc_apres": "TEL_AVIV_NEW_YORK",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
+      "channel_id": "KFIR_ALMAGOR"
+    },
+    {
+      "date_diffusion": "2026-12-01",
+      "bloc_apres": "TEL_AVIV_NEW_YORK",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
       "channel_id": "SOLAL_ISRAEL"
+    },
+    {
+      "date_diffusion": "2026-12-01",
+      "bloc_apres": "TEL_AVIV_NEW_YORK",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "ISRAEL_EN_FRANCAIS"
     },
     {
       "date_diffusion": "2026-12-01",
@@ -1946,6 +1968,14 @@
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
       "title": ""
+    },
+    {
+      "date_diffusion": "2026-12-01",
+      "heure_debut": "12:57",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "STEPHANE_GOLDIN",
+      "title": "Trump–Xi–Poutine parlent de paix : l’Iran prépare-t-il la guerre ? | Stéphane Goldin"
     },
     {
       "date_diffusion": "2026-12-01",
@@ -1968,13 +1998,6 @@
       "bloc_apres": "WILLIAM_ZERBIB_L_INTERVIEW",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
-    },
-    {
-      "date_diffusion": "2026-12-01",
-      "bloc_apres": "WILLIAM_ZERBIB_L_INTERVIEW",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
       "channel_id": "TSAHAL_FR"
     },
     {
@@ -1982,7 +2005,7 @@
       "bloc_apres": "WILLIAM_ZERBIB_L_INTERVIEW",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "ISRAEL_EN_FRANCAIS"
+      "channel_id": "KFIR_ALMAGOR"
     },
     {
       "date_diffusion": "2026-12-01",
@@ -1993,15 +2016,22 @@
     },
     {
       "date_diffusion": "2026-12-01",
-      "heure_debut": "13:54",
+      "heure_debut": "13:55",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "STEPHANE_GOLDIN",
-      "title": "Trump–Xi–Poutine parlent de paix : l’Iran prépare-t-il la guerre ? | Stéphane Goldin"
+      "channel_id": "CARTES_POSTALES",
+      "title": "Ein Hod"
     },
     {
       "date_diffusion": "2026-12-01",
-      "heure_debut": "14:00",
+      "bloc_apres": "WILLIAM_ZERBIB_L_INTERVIEW",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "ISRAEL_EN_FRANCAIS"
+    },
+    {
+      "date_diffusion": "2026-12-01",
+      "heure_debut": "13:59",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "YINON_SHOW",
@@ -2019,11 +2049,11 @@
       "bloc_apres": "YINON_SHOW",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "ISRAEL_EN_FRANCAIS"
+      "channel_id": "KFIR_ALMAGOR"
     },
     {
       "date_diffusion": "2026-12-01",
-      "heure_debut": "15:09",
+      "heure_debut": "15:10",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "STUDIO_420",
@@ -2038,22 +2068,14 @@
     },
     {
       "date_diffusion": "2026-12-01",
-      "heure_debut": "15:54",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "Rosh Hanikra"
-    },
-    {
-      "date_diffusion": "2026-12-01",
       "bloc_apres": "YINON_SHOW",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
+      "channel_id": "ISRAEL_EN_FRANCAIS"
     },
     {
       "date_diffusion": "2026-12-01",
-      "heure_debut": "15:59",
+      "heure_debut": "16:00",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "TOUR_D_ISRAEL",
@@ -2076,18 +2098,11 @@
     },
     {
       "date_diffusion": "2026-12-01",
-      "heure_debut": "16:30",
+      "heure_debut": "16:31",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "ECUJE",
       "title": "Jacques Attali en conversation avec Haïm Korsia"
-    },
-    {
-      "date_diffusion": "2026-12-01",
-      "bloc_apres": "TOUR_D_ISRAEL",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
     },
     {
       "date_diffusion": "2026-12-01",
@@ -2105,7 +2120,7 @@
     },
     {
       "date_diffusion": "2026-12-01",
-      "heure_debut": "17:45",
+      "heure_debut": "17:46",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "JEROME_HAAS_L_INTERVIEW",
@@ -2113,7 +2128,14 @@
     },
     {
       "date_diffusion": "2026-12-01",
-      "heure_debut": "18:08",
+      "bloc_apres": "TOUR_D_ISRAEL",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "KFIR_ALMAGOR"
+    },
+    {
+      "date_diffusion": "2026-12-01",
+      "heure_debut": "18:13",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
@@ -2121,15 +2143,15 @@
     },
     {
       "date_diffusion": "2026-12-01",
-      "heure_debut": "18:19",
+      "heure_debut": "18:21",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
-      "title": "appolonia"
+      "title": "Grotte de sédécias"
     },
     {
       "date_diffusion": "2026-12-01",
-      "heure_debut": "19:09",
+      "heure_debut": "19:14",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
@@ -2137,11 +2159,11 @@
     },
     {
       "date_diffusion": "2026-12-01",
-      "heure_debut": "19:20",
+      "heure_debut": "19:23",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
-      "title": "nabatheens"
+      "title": "Les jardins Bahai"
     },
     {
       "date_diffusion": "2026-12-01",
@@ -2153,7 +2175,7 @@
     },
     {
       "date_diffusion": "2026-12-01",
-      "heure_debut": "22:00",
+      "heure_debut": "21:59",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "LES_ISRAELIENNES",
@@ -2164,74 +2186,6 @@
       "heure_debut": "08:00",
       "type": "ANCRE",
       "heure_fixe": true,
-      "channel_id": "RADIO_SHALOM_SZWARC",
-      "title": "DU COTE DE CHEZ SZWARC AVEC LISE BENKEMOUN"
-    },
-    {
-      "date_diffusion": "2026-12-02",
-      "heure_debut": "08:29",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "STEPHANE_GOLDIN",
-      "title": "Trump–Xi–Poutine parlent de paix : l’Iran prépare-t-il la guerre ? | Stéphane Goldin"
-    },
-    {
-      "date_diffusion": "2026-12-02",
-      "bloc_apres": "RADIO_SHALOM_SZWARC",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
-    },
-    {
-      "date_diffusion": "2026-12-02",
-      "heure_debut": "08:32",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "RONY_HAYOT",
-      "title": "Juifs de France : le cri d’alarme venu d’Israël | Rony Hayot"
-    },
-    {
-      "date_diffusion": "2026-12-02",
-      "bloc_apres": "RADIO_SHALOM_SZWARC",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "ISRAEL_EN_FRANCAIS"
-    },
-    {
-      "date_diffusion": "2026-12-02",
-      "bloc_apres": "RADIO_SHALOM_SZWARC",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL"
-    },
-    {
-      "date_diffusion": "2026-12-02",
-      "bloc_apres": "RADIO_SHALOM_SZWARC",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
-    },
-    {
-      "date_diffusion": "2026-12-02",
-      "heure_debut": "08:46",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": ""
-    },
-    {
-      "date_diffusion": "2026-12-02",
-      "heure_debut": "08:53",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "Safed"
-    },
-    {
-      "date_diffusion": "2026-12-02",
-      "heure_debut": "09:01",
-      "type": "ANCRE",
-      "heure_fixe": true,
       "channel_id": "CAFE_DAAT",
       "title": "Prendre des décisions en situation d’incertitude —  Professeur Avi Rivkind"
     },
@@ -2240,14 +2194,14 @@
       "bloc_apres": "CAFE_DAAT",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
+      "channel_id": "KFIR_ALMAGOR"
     },
     {
       "date_diffusion": "2026-12-02",
       "bloc_apres": "CAFE_DAAT",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "ISRAEL_EN_FRANCAIS"
+      "channel_id": "TSAHAL_FR"
     },
     {
       "date_diffusion": "2026-12-02",
@@ -2258,23 +2212,46 @@
     },
     {
       "date_diffusion": "2026-12-02",
-      "heure_debut": "10:06",
+      "heure_debut": "09:07",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "RADIO_SHALOM_BOCHURBERG",
-      "title": "Myriam Spira"
+      "channel_id": "STEPHANE_GOLDIN",
+      "title": "Trump–Xi–Poutine parlent de paix : l’Iran prépare-t-il la guerre ? | Stéphane Goldin"
     },
     {
       "date_diffusion": "2026-12-02",
-      "heure_debut": "10:55",
+      "heure_debut": "09:11",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "RONY_HAYOT",
+      "title": "Juifs de France : le cri d’alarme venu d’Israël | Rony Hayot"
+    },
+    {
+      "date_diffusion": "2026-12-02",
+      "bloc_apres": "CAFE_DAAT",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "ISRAEL_EN_FRANCAIS"
+    },
+    {
+      "date_diffusion": "2026-12-02",
+      "heure_debut": "09:19",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": "Le partage de la Palestine"
+    },
+    {
+      "date_diffusion": "2026-12-02",
+      "heure_debut": "09:26",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
-      "title": "Belvoir (1)"
+      "title": "nabatheens"
     },
     {
       "date_diffusion": "2026-12-02",
-      "heure_debut": "11:00",
+      "heure_debut": "10:00",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "TEL_AVIV_NEW_YORK",
@@ -2282,25 +2259,19 @@
     },
     {
       "date_diffusion": "2026-12-02",
-      "bloc_apres": "TEL_AVIV_NEW_YORK",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
-    },
-    {
-      "date_diffusion": "2026-12-02",
-      "bloc_apres": "TEL_AVIV_NEW_YORK",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "ISRAEL_EN_FRANCAIS"
-    },
-    {
-      "date_diffusion": "2026-12-02",
-      "heure_debut": "11:39",
+      "heure_debut": "10:38",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
       "title": ""
+    },
+    {
+      "date_diffusion": "2026-12-02",
+      "heure_debut": "10:45",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "CARTES_POSTALES",
+      "title": "tiberiad"
     },
     {
       "date_diffusion": "2026-12-02",
@@ -2315,6 +2286,64 @@
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
       "channel_id": "KFIR_ALMAGOR"
+    },
+    {
+      "date_diffusion": "2026-12-02",
+      "bloc_apres": "TEL_AVIV_NEW_YORK",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "TSAHAL_FR"
+    },
+    {
+      "date_diffusion": "2026-12-02",
+      "bloc_apres": "TEL_AVIV_NEW_YORK",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "ISRAEL_EN_FRANCAIS"
+    },
+    {
+      "date_diffusion": "2026-12-02",
+      "heure_debut": "11:00",
+      "type": "ANCRE",
+      "heure_fixe": true,
+      "channel_id": "WILLIAM_ZERBIB_L_INTERVIEW",
+      "title": "Mélenchon : « Il n’est plus Gandhi, il est Arafat » | Paul Amar"
+    },
+    {
+      "date_diffusion": "2026-12-02",
+      "heure_debut": "11:27",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "RADIO_SHALOM_SZWARC",
+      "title": "DU COTE DE CHEZ SZWARC AVEC LISE BENKEMOUN"
+    },
+    {
+      "date_diffusion": "2026-12-02",
+      "bloc_apres": "WILLIAM_ZERBIB_L_INTERVIEW",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "SOLAL_ISRAEL"
+    },
+    {
+      "date_diffusion": "2026-12-02",
+      "bloc_apres": "WILLIAM_ZERBIB_L_INTERVIEW",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "TSAHAL_FR"
+    },
+    {
+      "date_diffusion": "2026-12-02",
+      "bloc_apres": "WILLIAM_ZERBIB_L_INTERVIEW",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "KFIR_ALMAGOR"
+    },
+    {
+      "date_diffusion": "2026-12-02",
+      "bloc_apres": "WILLIAM_ZERBIB_L_INTERVIEW",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "ISRAEL_EN_FRANCAIS"
     },
     {
       "date_diffusion": "2026-12-02",
@@ -2329,16 +2358,16 @@
       "heure_debut": "12:22",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "WILLIAM_ZERBIB_L_INTERVIEW",
-      "title": "Mélenchon : « Il n’est plus Gandhi, il est Arafat » | Paul Amar"
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": ""
     },
     {
       "date_diffusion": "2026-12-02",
-      "heure_debut": "12:49",
+      "heure_debut": "12:29",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
-      "title": "Bet Shearim"
+      "title": "zichron yaakov"
     },
     {
       "date_diffusion": "2026-12-02",
@@ -2367,14 +2396,6 @@
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
       "channel_id": "TSAHAL_FR"
-    },
-    {
-      "date_diffusion": "2026-12-02",
-      "heure_debut": "12:57",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "STEPHANE_GOLDIN",
-      "title": "Trump–Xi–Poutine parlent de paix : l’Iran prépare-t-il la guerre ? | Stéphane Goldin"
     },
     {
       "date_diffusion": "2026-12-02",
@@ -2400,7 +2421,7 @@
     },
     {
       "date_diffusion": "2026-12-02",
-      "heure_debut": "14:10",
+      "heure_debut": "14:09",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "STUDIO_420",
@@ -2411,22 +2432,22 @@
       "bloc_apres": "YINON_SHOW",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL"
+      "channel_id": "ISRAEL_EN_FRANCAIS"
     },
     {
       "date_diffusion": "2026-12-02",
       "bloc_apres": "YINON_SHOW",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "ISRAEL_EN_FRANCAIS"
+      "channel_id": "SOLAL_ISRAEL"
     },
     {
       "date_diffusion": "2026-12-02",
-      "heure_debut": "14:53",
+      "heure_debut": "14:56",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": ""
+      "channel_id": "STEPHANE_GOLDIN",
+      "title": "Trump–Xi–Poutine parlent de paix : l’Iran prépare-t-il la guerre ? | Stéphane Goldin"
     },
     {
       "date_diffusion": "2026-12-02",
@@ -2456,8 +2477,8 @@
       "heure_debut": "15:30",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "ECUJE",
-      "title": "Jacques Attali en conversation avec Haïm Korsia"
+      "channel_id": "RADIO_SHALOM_SZWARC",
+      "title": "DU COTE DE CHEZ SZWARC AVEC LISE BENKEMOUN"
     },
     {
       "date_diffusion": "2026-12-02",
@@ -2475,7 +2496,7 @@
     },
     {
       "date_diffusion": "2026-12-02",
-      "heure_debut": "16:44",
+      "heure_debut": "16:00",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
@@ -2483,19 +2504,27 @@
     },
     {
       "date_diffusion": "2026-12-02",
-      "heure_debut": "16:52",
+      "heure_debut": "16:08",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "WILLIAM_ZERBIB_L_INTERVIEW",
-      "title": "Mélenchon : « Il n’est plus Gandhi, il est Arafat » | Paul Amar"
+      "channel_id": "RADIO_SHALOM_BOCHURBERG",
+      "title": "Myriam Spira"
     },
     {
       "date_diffusion": "2026-12-02",
-      "heure_debut": "17:20",
+      "heure_debut": "17:01",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
-      "title": "Carte postale La synagogue de Capharnaum2"
+      "title": "Beit Alpha"
+    },
+    {
+      "date_diffusion": "2026-12-02",
+      "heure_debut": "17:09",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": ""
     },
     {
       "date_diffusion": "2026-12-02",
@@ -2506,15 +2535,15 @@
     },
     {
       "date_diffusion": "2026-12-02",
-      "heure_debut": "17:44",
+      "heure_debut": "18:02",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": ""
+      "channel_id": "CARTES_POSTALES",
+      "title": "Safed"
     },
     {
       "date_diffusion": "2026-12-02",
-      "heure_debut": "18:10",
+      "heure_debut": "18:11",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "STUDIO_420",
@@ -2522,7 +2551,7 @@
     },
     {
       "date_diffusion": "2026-12-02",
-      "heure_debut": "18:56",
+      "heure_debut": "18:57",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
@@ -2530,15 +2559,15 @@
     },
     {
       "date_diffusion": "2026-12-02",
-      "heure_debut": "19:02",
+      "heure_debut": "19:04",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
-      "title": "Cesarée"
+      "title": "Belvoir (1)"
     },
     {
       "date_diffusion": "2026-12-02",
-      "heure_debut": "19:59",
+      "heure_debut": "20:00",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "RADIO_SHALOM_BOCHURBERG",
@@ -2549,12 +2578,19 @@
       "heure_debut": "22:00",
       "type": "ANCRE",
       "heure_fixe": true,
-      "channel_id": "WILLIAM_ZERBIB_L_INTERVIEW",
-      "title": "Mélenchon : « Il n’est plus Gandhi, il est Arafat » | Paul Amar"
+      "channel_id": "RADIO_SHALOM_SZWARC",
+      "title": "DU COTE DE CHEZ SZWARC AVEC LISE BENKEMOUN"
     },
     {
       "date_diffusion": "2026-12-03",
-      "heure_debut": "08:00",
+      "bloc_apres": null,
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "ISRAEL_EN_FRANCAIS"
+    },
+    {
+      "date_diffusion": "2026-12-03",
+      "heure_debut": "08:01",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "RADIO_SHALOM_BOCHURBERG",
@@ -2572,15 +2608,7 @@
       "bloc_apres": "RADIO_SHALOM_BOCHURBERG",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "ISRAEL_EN_FRANCAIS"
-    },
-    {
-      "date_diffusion": "2026-12-03",
-      "heure_debut": "08:50",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "RONY_HAYOT",
-      "title": "Juifs de France : le cri d’alarme venu d’Israël | Rony Hayot"
+      "channel_id": "KFIR_ALMAGOR"
     },
     {
       "date_diffusion": "2026-12-03",
@@ -2591,7 +2619,82 @@
     },
     {
       "date_diffusion": "2026-12-03",
+      "heure_debut": "08:52",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "STEPHANE_GOLDIN",
+      "title": "Trump–Xi–Poutine parlent de paix : l’Iran prépare-t-il la guerre ? | Stéphane Goldin"
+    },
+    {
+      "date_diffusion": "2026-12-03",
+      "bloc_apres": "RADIO_SHALOM_BOCHURBERG",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "ISRAEL_EN_FRANCAIS"
+    },
+    {
+      "date_diffusion": "2026-12-03",
       "heure_debut": "09:00",
+      "type": "ANCRE",
+      "heure_fixe": true,
+      "channel_id": "RADIO_SHALOM_SZWARC",
+      "title": "DU COTE DE CHEZ SZWARC AVEC LISE BENKEMOUN"
+    },
+    {
+      "date_diffusion": "2026-12-03",
+      "heure_debut": "09:28",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "RONY_HAYOT",
+      "title": "Juifs de France : le cri d’alarme venu d’Israël | Rony Hayot"
+    },
+    {
+      "date_diffusion": "2026-12-03",
+      "bloc_apres": "RADIO_SHALOM_SZWARC",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "ISRAEL_EN_FRANCAIS"
+    },
+    {
+      "date_diffusion": "2026-12-03",
+      "heure_debut": "09:37",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": ""
+    },
+    {
+      "date_diffusion": "2026-12-03",
+      "heure_debut": "09:43",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "CARTES_POSTALES",
+      "title": "Grotte de sédécias"
+    },
+    {
+      "date_diffusion": "2026-12-03",
+      "bloc_apres": "RADIO_SHALOM_SZWARC",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "KFIR_ALMAGOR"
+    },
+    {
+      "date_diffusion": "2026-12-03",
+      "bloc_apres": "RADIO_SHALOM_SZWARC",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "SOLAL_ISRAEL"
+    },
+    {
+      "date_diffusion": "2026-12-03",
+      "bloc_apres": "RADIO_SHALOM_SZWARC",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "TSAHAL_FR"
+    },
+    {
+      "date_diffusion": "2026-12-03",
+      "heure_debut": "09:59",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "CAFE_DAAT",
@@ -2609,18 +2712,25 @@
       "bloc_apres": "CAFE_DAAT",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "ISRAEL_EN_FRANCAIS"
+      "channel_id": "TSAHAL_FR"
     },
     {
       "date_diffusion": "2026-12-03",
       "bloc_apres": "CAFE_DAAT",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
+      "channel_id": "SOLAL_ISRAEL"
     },
     {
       "date_diffusion": "2026-12-03",
-      "heure_debut": "10:05",
+      "bloc_apres": "CAFE_DAAT",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "ISRAEL_EN_FRANCAIS"
+    },
+    {
+      "date_diffusion": "2026-12-03",
+      "heure_debut": "11:05",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "STUDIO_420",
@@ -2628,78 +2738,19 @@
     },
     {
       "date_diffusion": "2026-12-03",
-      "bloc_apres": "CAFE_DAAT",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL"
-    },
-    {
-      "date_diffusion": "2026-12-03",
-      "heure_debut": "10:51",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "STEPHANE_GOLDIN",
-      "title": "Trump–Xi–Poutine parlent de paix : l’Iran prépare-t-il la guerre ? | Stéphane Goldin"
-    },
-    {
-      "date_diffusion": "2026-12-03",
-      "heure_debut": "10:54",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "Rosh Hanikra"
-    },
-    {
-      "date_diffusion": "2026-12-03",
-      "heure_debut": "11:00",
-      "type": "ANCRE",
-      "heure_fixe": true,
-      "channel_id": "TEL_AVIV_NEW_YORK",
-      "title": "EPISODE 29- SEMAINE DU 25 AU 31 OCTOBRE- DEBRIEF ELECTIONS EN ISRAEL"
-    },
-    {
-      "date_diffusion": "2026-12-03",
-      "heure_debut": "11:38",
+      "heure_debut": "11:47",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": "un jour une hsitoire 290625"
+      "title": ""
     },
     {
       "date_diffusion": "2026-12-03",
-      "bloc_apres": "TEL_AVIV_NEW_YORK",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL"
-    },
-    {
-      "date_diffusion": "2026-12-03",
-      "bloc_apres": "TEL_AVIV_NEW_YORK",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
-    },
-    {
-      "date_diffusion": "2026-12-03",
-      "bloc_apres": "TEL_AVIV_NEW_YORK",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "ISRAEL_EN_FRANCAIS"
-    },
-    {
-      "date_diffusion": "2026-12-03",
-      "bloc_apres": "TEL_AVIV_NEW_YORK",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
-    },
-    {
-      "date_diffusion": "2026-12-03",
-      "heure_debut": "11:55",
+      "heure_debut": "11:53",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "CARTES_POSTALES",
-      "title": "appolonia"
+      "title": "Les jardins Bahai"
     },
     {
       "date_diffusion": "2026-12-03",
@@ -2711,21 +2762,6 @@
     },
     {
       "date_diffusion": "2026-12-03",
-      "heure_debut": "12:27",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "RADIO_SHALOM_SZWARC",
-      "title": "DU COTE DE CHEZ SZWARC AVEC LISE BENKEMOUN"
-    },
-    {
-      "date_diffusion": "2026-12-03",
-      "bloc_apres": "WILLIAM_ZERBIB_L_INTERVIEW",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "TSAHAL_FR"
-    },
-    {
-      "date_diffusion": "2026-12-03",
       "bloc_apres": "WILLIAM_ZERBIB_L_INTERVIEW",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
@@ -2743,7 +2779,22 @@
       "bloc_apres": "WILLIAM_ZERBIB_L_INTERVIEW",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
+      "channel_id": "TSAHAL_FR"
+    },
+    {
+      "date_diffusion": "2026-12-03",
+      "bloc_apres": "WILLIAM_ZERBIB_L_INTERVIEW",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
       "channel_id": "KFIR_ALMAGOR"
+    },
+    {
+      "date_diffusion": "2026-12-03",
+      "heure_debut": "12:49",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "UN_JOUR_UNE_HISTOIRE",
+      "title": ""
     },
     {
       "date_diffusion": "2026-12-03",
@@ -2758,8 +2809,23 @@
       "heure_debut": "13:22",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "RONY_HAYOT",
-      "title": "Juifs de France : le cri d’alarme venu d’Israël | Rony Hayot"
+      "channel_id": "CARTES_POSTALES",
+      "title": "Massada"
+    },
+    {
+      "date_diffusion": "2026-12-03",
+      "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "SOLAL_ISRAEL"
+    },
+    {
+      "date_diffusion": "2026-12-03",
+      "heure_debut": "13:29",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "STEPHANE_GOLDIN",
+      "title": "Trump–Xi–Poutine parlent de paix : l’Iran prépare-t-il la guerre ? | Stéphane Goldin"
     },
     {
       "date_diffusion": "2026-12-03",
@@ -2770,7 +2836,22 @@
     },
     {
       "date_diffusion": "2026-12-03",
-      "heure_debut": "13:31",
+      "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "KFIR_ALMAGOR"
+    },
+    {
+      "date_diffusion": "2026-12-03",
+      "heure_debut": "13:34",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "RONY_HAYOT",
+      "title": "Juifs de France : le cri d’alarme venu d’Israël | Rony Hayot"
+    },
+    {
+      "date_diffusion": "2026-12-03",
+      "heure_debut": "13:51",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
@@ -2778,40 +2859,26 @@
     },
     {
       "date_diffusion": "2026-12-03",
-      "heure_debut": "13:38",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "nabatheens"
-    },
-    {
-      "date_diffusion": "2026-12-03",
-      "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "SOLAL_ISRAEL"
-    },
-    {
-      "date_diffusion": "2026-12-03",
-      "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "ISRAEL_EN_FRANCAIS"
-    },
-    {
-      "date_diffusion": "2026-12-03",
-      "bloc_apres": "JEROME_HAAS_L_INTERVIEW",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
-    },
-    {
-      "date_diffusion": "2026-12-03",
-      "heure_debut": "14:00",
+      "heure_debut": "13:59",
       "type": "ANCRE",
       "heure_fixe": true,
       "channel_id": "YINON_SHOW",
       "title": "ILANA FERHADIAN: 7ANS D'ATTENTE POUR DEVENIR MERE"
+    },
+    {
+      "date_diffusion": "2026-12-03",
+      "heure_debut": "15:08",
+      "type": "COURT_NOMME",
+      "heure_fixe": false,
+      "channel_id": "TEL_AVIV_NEW_YORK",
+      "title": "EPISODE 29- SEMAINE DU 25 AU 31 OCTOBRE- DEBRIEF ELECTIONS EN ISRAEL"
+    },
+    {
+      "date_diffusion": "2026-12-03",
+      "bloc_apres": "YINON_SHOW",
+      "type": "CLIPS_CHAINE",
+      "heure_fixe": false,
+      "channel_id": "ISRAEL_EN_FRANCAIS"
     },
     {
       "date_diffusion": "2026-12-03",
@@ -2833,21 +2900,6 @@
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
       "channel_id": "SOLAL_ISRAEL"
-    },
-    {
-      "date_diffusion": "2026-12-03",
-      "heure_debut": "15:13",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "STUDIO_420",
-      "title": "L’écoute de l’âme pour dénouer les fausses croyances - Méthode D-STRECE - Laurence Bernheim"
-    },
-    {
-      "date_diffusion": "2026-12-03",
-      "bloc_apres": "YINON_SHOW",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "ISRAEL_EN_FRANCAIS"
     },
     {
       "date_diffusion": "2026-12-03",
@@ -2862,8 +2914,8 @@
       "heure_debut": "16:22",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "STEPHANE_GOLDIN",
-      "title": "Trump–Xi–Poutine parlent de paix : l’Iran prépare-t-il la guerre ? | Stéphane Goldin"
+      "channel_id": "ECUJE",
+      "title": "Jacques Attali en conversation avec Haïm Korsia"
     },
     {
       "date_diffusion": "2026-12-03",
@@ -2874,26 +2926,10 @@
     },
     {
       "date_diffusion": "2026-12-03",
-      "heure_debut": "16:26",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": ""
-    },
-    {
-      "date_diffusion": "2026-12-03",
       "bloc_apres": "TOUR_D_ISRAEL",
       "type": "CLIPS_CHAINE",
       "heure_fixe": false,
       "channel_id": "TSAHAL_FR"
-    },
-    {
-      "date_diffusion": "2026-12-03",
-      "heure_debut": "16:33",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "RADIO_SHALOM_SZWARC",
-      "title": "DU COTE DE CHEZ SZWARC AVEC LISE BENKEMOUN"
     },
     {
       "date_diffusion": "2026-12-03",
@@ -2904,22 +2940,7 @@
     },
     {
       "date_diffusion": "2026-12-03",
-      "heure_debut": "17:06",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "tiberiad"
-    },
-    {
-      "date_diffusion": "2026-12-03",
-      "bloc_apres": "TOUR_D_ISRAEL",
-      "type": "CLIPS_CHAINE",
-      "heure_fixe": false,
-      "channel_id": "KFIR_ALMAGOR"
-    },
-    {
-      "date_diffusion": "2026-12-03",
-      "heure_debut": "17:27",
+      "heure_debut": "17:35",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
@@ -2927,15 +2948,15 @@
     },
     {
       "date_diffusion": "2026-12-03",
-      "heure_debut": "18:07",
+      "heure_debut": "17:43",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "zichron yaakov"
+      "channel_id": "OROT_VEKELIM",
+      "title": "7 octobre, 3 ans après : a-t-on gagné ?"
     },
     {
       "date_diffusion": "2026-12-03",
-      "heure_debut": "18:28",
+      "heure_debut": "19:00",
       "type": "COURT_NOMME",
       "heure_fixe": false,
       "channel_id": "UN_JOUR_UNE_HISTOIRE",
@@ -2943,19 +2964,11 @@
     },
     {
       "date_diffusion": "2026-12-03",
-      "heure_debut": "19:09",
+      "heure_debut": "19:07",
       "type": "COURT_NOMME",
       "heure_fixe": false,
-      "channel_id": "CARTES_POSTALES",
-      "title": "Beit Alpha"
-    },
-    {
-      "date_diffusion": "2026-12-03",
-      "heure_debut": "19:29",
-      "type": "COURT_NOMME",
-      "heure_fixe": false,
-      "channel_id": "UN_JOUR_UNE_HISTOIRE",
-      "title": ""
+      "channel_id": "OROT_VEKELIM",
+      "title": "Macron à l'ONU : « L'histoire le jugera »"
     },
     {
       "date_diffusion": "2026-12-03",
@@ -2967,11 +2980,11 @@
     },
     {
       "date_diffusion": "2026-12-03",
-      "heure_debut": "21:59",
+      "heure_debut": "22:00",
       "type": "ANCRE",
       "heure_fixe": true,
-      "channel_id": "RADIO_SHALOM_SZWARC",
-      "title": "DU COTE DE CHEZ SZWARC AVEC LISE BENKEMOUN"
+      "channel_id": "TEL_AVIV_NEW_YORK",
+      "title": "EPISODE 29- SEMAINE DU 25 AU 31 OCTOBRE- DEBRIEF ELECTIONS EN ISRAEL"
     }
   ]
 }
